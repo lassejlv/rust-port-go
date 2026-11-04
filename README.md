@@ -8,7 +8,30 @@ Ferrugo's long-term goal is to compile Rust projects with a compiler and package
 
 Compile and run a small, typed Rust binary without invoking `rustc` or upstream `cargo`, then build that same binary from a `Cargo.toml` using Ferrugo's package command. Keep supported behavior tested, reject unsupported features, and grow compatibility in reviewable checkpoints on `main`.
 
-Implementation is in progress. See [the roadmap](docs/ROADMAP.md), [interfaces](docs/INTERFACES.md), and [progress log](docs/PROGRESS.md).
+The executable bootstrap works. The full port remains in progress. See [supported behavior and limits](docs/COMPATIBILITY.md), [Cargo commands](docs/CARGO.md), [the roadmap](docs/ROADMAP.md), and [progress log](docs/PROGRESS.md).
+
+## Build and try it
+
+Install Go 1.23 or newer and a C11 compiler (`cc`, GCC, or Clang). The Go implementation uses only the standard library.
+
+```sh
+make build
+./bin/ferrugo-cargo run --manifest-path examples/hello/Cargo.toml
+./bin/ferrugo --check examples/hello/src/main.rs
+./bin/ferrugo examples/hello/src/main.rs -o /tmp/hello-ferrugo
+/tmp/hello-ferrugo
+./bin/ferrugo --emit=c examples/hello/src/main.rs -o /tmp/hello-ferrugo.c
+make check
+```
+
+To start a package:
+
+```sh
+./bin/ferrugo-cargo new /tmp/my-ferrugo-app
+./bin/ferrugo-cargo run --manifest-path /tmp/my-ferrugo-app/Cargo.toml
+```
+
+Set `CC` to a C compiler executable if needed. `make GO=/path/to/go build` selects a Go toolchain. `--check` and `--emit=c` do not invoke the C compiler. Both Cargo output profiles currently use checked arithmetic and the same backend settings.
 
 ## Architecture
 
