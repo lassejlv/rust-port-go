@@ -9,14 +9,15 @@ import (
 )
 
 type checked struct {
-	program *syntax.Program
-	types   map[*syntax.Expr]string
-	names   map[*syntax.Expr]string
-	decls   map[*syntax.Stmt]string
-	params  map[*syntax.Function][]string
-	funcs   map[string]*syntax.Function
-	calls   map[*syntax.Expr]string
-	fnNames map[*syntax.Function]string
+	program  *syntax.Program
+	types    map[*syntax.Expr]string
+	names    map[*syntax.Expr]string
+	decls    map[*syntax.Stmt]string
+	params   map[*syntax.Function][]string
+	funcs    map[string]*syntax.Function
+	calls    map[*syntax.Expr]string
+	fnNames  map[*syntax.Function]string
+	diverges map[*syntax.Expr]bool
 }
 
 type binding struct {
@@ -29,6 +30,7 @@ type checker struct {
 	nextVariable int
 	returnType   string
 	loopDepth    int
+	bottom       map[*syntax.Expr]bool
 }
 
 // Check validates the complete bootstrap binary crate without producing files.
@@ -39,12 +41,12 @@ func analyze(source string) (*checked, error) {
 	if err != nil {
 		return nil, err
 	}
-	c := &checker{checked: &checked{
+	c := &checker{bottom: make(map[*syntax.Expr]bool), checked: &checked{
 		program: program,
 		types:   make(map[*syntax.Expr]string), names: make(map[*syntax.Expr]string),
 		decls: make(map[*syntax.Stmt]string), params: make(map[*syntax.Function][]string),
 		funcs: make(map[string]*syntax.Function), calls: make(map[*syntax.Expr]string),
-		fnNames: make(map[*syntax.Function]string),
+		fnNames: make(map[*syntax.Function]string), diverges: make(map[*syntax.Expr]bool),
 	}}
 	for i, f := range program.Functions {
 		if _, exists := c.funcs[f.Name]; exists {
@@ -56,6 +58,17 @@ func analyze(source string) (*checked, error) {
 		for _, p := range f.Params {
 			if !supportedType(p.Type) || p.Type == "()" {
 				return nil, fail(p.Span, "unsupported parameter type %q", p.Type)
+			}
+		}
+		if f.ReturnType == "&str" {
+			stringParams := 0
+			for _, p := range f.Params {
+				if p.Type == "&str" {
+					stringParams++
+				}
+			}
+			if stringParams != 1 {
+				return nil, fail(f.Span, "returning &str requires exactly one &str parameter for lifetime elision; explicit lifetimes are unsupported")
 			}
 		}
 		c.funcs[f.Name] = f
@@ -112,8 +125,16 @@ func (c *checker) lookup(name string) (binding, bool) {
 
 // block returns whether control can reach the end. expected applies to its tail.
 func (c *checker) block(b *syntax.Block, expected string, nested bool) (bool, error) {
+	_, falls, err := c.blockValue(b, expected, nested)
+	return falls, err
+}
+
+// blockValue also infers a result type when expected is empty. A block that
+// always transfers control has no value; () is its concrete fallback when no
+// context supplies a type. The enclosing expression records that divergence.
+func (c *checker) blockValue(b *syntax.Block, expected string, nested bool) (string, bool, error) {
 	if b == nil {
-		return false, fmt.Errorf("internal error: missing block")
+		return "", false, fmt.Errorf("internal error: missing block")
 	}
 	if nested {
 		c.scopes = append(c.scopes, map[string]binding{})
@@ -123,18 +144,24 @@ func (c *checker) block(b *syntax.Block, expected string, nested bool) (bool, er
 	for i := range b.Statements {
 		stmtFalls, err := c.statement(&b.Statements[i])
 		if err != nil {
-			return false, err
+			return "", false, err
 		}
 		falls = falls && stmtFalls
 	}
 	if b.Tail != nil {
-		if _, err := c.expr(b.Tail, expected); err != nil {
-			return false, err
+		typ, err := c.expr(b.Tail, expected)
+		if err != nil {
+			return "", false, err
 		}
-	} else if falls && expected != "()" {
-		return false, fail(b.Span, "expected a %s block result", expected)
+		return typ, falls && !c.diverges[b.Tail], nil
 	}
-	return falls, nil
+	if falls && expected != "" && expected != "()" {
+		return "", false, fail(b.Span, "expected a %s block result", expected)
+	}
+	if !falls && expected != "" {
+		return expected, false, nil
+	}
+	return "()", falls, nil
 }
 
 func (c *checker) statement(s *syntax.Stmt) (bool, error) {
@@ -156,6 +183,7 @@ func (c *checker) statement(s *syntax.Stmt) (bool, error) {
 		name := c.newVariable()
 		c.decls[s] = name
 		c.scopes[len(c.scopes)-1][s.Name] = binding{typ: t, cname: name, mutable: s.Mutable}
+		return !c.diverges[s.Expr], nil
 	case "assign":
 		b, ok := c.lookup(s.Name)
 		if !ok {
@@ -174,10 +202,12 @@ func (c *checker) statement(s *syntax.Stmt) (bool, error) {
 			return false, err
 		}
 		c.decls[s] = b.cname
+		return !c.diverges[s.Expr], nil
 	case "expr":
-		if _, err := c.expr(s.Expr, ""); err != nil {
+		if _, err := c.expr(s.Expr, s.Type); err != nil {
 			return false, err
 		}
+		return !c.diverges[s.Expr], nil
 	case "return":
 		if s.Expr == nil {
 			if c.returnType != "()" {
@@ -213,6 +243,7 @@ func (c *checker) statement(s *syntax.Stmt) (bool, error) {
 		if err != nil {
 			return false, err
 		}
+		return !c.diverges[s.Expr], nil
 	case "break", "continue":
 		if c.loopDepth == 0 {
 			return false, fail(s.Span, "%s outside a loop", s.Kind)
@@ -223,7 +254,6 @@ func (c *checker) statement(s *syntax.Stmt) (bool, error) {
 	default:
 		return false, fail(s.Span, "unsupported statement %q", s.Kind)
 	}
-	return true, nil
 }
 
 func (c *checker) expr(e *syntax.Expr, expected string) (string, error) {
@@ -235,6 +265,23 @@ func (c *checker) expr(e *syntax.Expr, expected string) (string, error) {
 	case "int":
 		var err error
 		typ, err = c.integer(e, expected, false)
+		if err != nil {
+			return "", err
+		}
+	case "unit":
+		typ = "()"
+	case "block":
+		var falls bool
+		var err error
+		typ, falls, err = c.blockValue(e.Body, expected, true)
+		if err != nil {
+			return "", err
+		}
+		c.diverges[e] = !falls
+		c.bottom[e] = c.blockBottom(e.Body, falls)
+	case "if":
+		var err error
+		typ, err = c.ifExpression(e, expected)
 		if err != nil {
 			return "", err
 		}
@@ -261,6 +308,9 @@ func (c *checker) expr(e *syntax.Expr, expected string) (string, error) {
 			if err != nil {
 				return "", err
 			}
+			if c.bottom[e.Right] {
+				return "", fail(e.Span, "value-less divergent operands are unsupported for unary -")
+			}
 			if !integerType(typ) {
 				return "", fail(e.Span, "unary - requires an integer")
 			}
@@ -273,6 +323,7 @@ func (c *checker) expr(e *syntax.Expr, expected string) (string, error) {
 		default:
 			return "", fail(e.Span, "unsupported unary operator %q", e.Op)
 		}
+		c.diverges[e] = c.diverges[e.Right]
 	case "binary":
 		var err error
 		typ, err = c.binary(e, expected)
@@ -295,6 +346,9 @@ func (c *checker) expr(e *syntax.Expr, expected string) (string, error) {
 				return "", err
 			}
 		}
+		for _, arg := range e.Args {
+			c.diverges[e] = c.diverges[e] || c.diverges[arg]
+		}
 		c.calls[e] = c.fnNames[f]
 		typ = f.ReturnType
 	case "macro":
@@ -302,8 +356,14 @@ func (c *checker) expr(e *syntax.Expr, expected string) (string, error) {
 			return "", err
 		}
 		typ = "()"
+		for _, arg := range e.Args {
+			c.diverges[e] = c.diverges[e] || c.diverges[arg]
+		}
 	default:
 		return "", fail(e.Span, "unsupported expression %q", e.Kind)
+	}
+	if c.bottom[e] && expected != "" {
+		typ = expected
 	}
 	if expected != "" && typ != expected {
 		return "", fail(e.Span, "expected %s, found %s", expected, typ)
@@ -320,6 +380,7 @@ func (c *checker) binary(e *syntax.Expr, expected string) (string, error) {
 		if _, err := c.expr(e.Right, "bool"); err != nil {
 			return "", err
 		}
+		c.diverges[e] = c.diverges[e.Left]
 		return "bool", nil
 	}
 	compare := e.Op == "==" || e.Op == "!=" || e.Op == "<" || e.Op == "<=" || e.Op == ">" || e.Op == ">="
@@ -336,6 +397,9 @@ func (c *checker) binary(e *syntax.Expr, expected string) (string, error) {
 			context = c.hint(e.Right)
 		}
 	}
+	if context == "" {
+		context = "i32"
+	}
 	left, err := c.expr(e.Left, context)
 	if err != nil {
 		return "", err
@@ -344,6 +408,14 @@ func (c *checker) binary(e *syntax.Expr, expected string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+	// Rust resolves these operators through traits. Coercing an operand that
+	// has no value to the other operand's type would accept invalid Rust (for
+	// example 1i32 + { return; }). Full never-type trait inference is outside
+	// this bootstrap; typed unreachable tails remain ordinary typed operands.
+	if c.bottom[e.Left] || c.bottom[e.Right] {
+		return "", fail(e.Span, "value-less divergent operands are unsupported for %s", e.Op)
+	}
+	c.diverges[e] = c.diverges[e.Left] || c.diverges[e.Right]
 	if left != right {
 		return "", fail(e.Span, "operands have different types")
 	}
@@ -374,6 +446,18 @@ func (c *checker) hint(e *syntax.Expr) string {
 		if err == nil {
 			return suffix
 		}
+	case "unit":
+		return "()"
+	case "block":
+		return c.blockHint(e.Body)
+	case "if":
+		if e.Else == nil {
+			return "()"
+		}
+		if h := c.blockHint(e.Body); h != "" {
+			return h
+		}
+		return c.blockHint(e.Else)
 	case "string":
 		return "&str"
 	case "bool":
@@ -394,6 +478,84 @@ func (c *checker) hint(e *syntax.Expr) string {
 		return c.hint(e.Right)
 	}
 	return ""
+}
+
+// blockBottom distinguishes a block with no value from a merely unreachable
+// tail. An unreachable typed tail must still agree with its expected type.
+func (c *checker) blockBottom(b *syntax.Block, falls bool) bool {
+	if b.Tail != nil {
+		return c.bottom[b.Tail]
+	}
+	return !falls
+}
+
+func (c *checker) ifExpression(e *syntax.Expr, expected string) (string, error) {
+	if _, err := c.expr(e.Left, "bool"); err != nil {
+		return "", err
+	}
+	if e.Else == nil {
+		if _, _, err := c.blockValue(e.Body, "()", true); err != nil {
+			return "", err
+		}
+		c.diverges[e] = c.diverges[e.Left]
+		return "()", nil
+	}
+	context := expected
+	if context == "" {
+		context = c.blockHint(e.Body)
+		if context == "" {
+			context = c.blockHint(e.Else)
+		}
+	}
+	left, leftFalls, err := c.blockValue(e.Body, context, true)
+	if err != nil {
+		return "", err
+	}
+	leftBottom := c.blockBottom(e.Body, leftFalls)
+	rightContext := context
+	if rightContext == "" && !leftBottom {
+		rightContext = left
+	}
+	right, rightFalls, err := c.blockValue(e.Else, rightContext, true)
+	if err != nil {
+		return "", err
+	}
+	rightBottom := c.blockBottom(e.Else, rightFalls)
+	c.diverges[e] = c.diverges[e.Left] || (!leftFalls && !rightFalls)
+	c.bottom[e] = leftBottom && rightBottom
+	if leftBottom {
+		if !rightBottom {
+			return right, nil
+		}
+		if expected != "" {
+			return expected, nil
+		}
+		return "()", nil
+	}
+	if !rightBottom && left != right {
+		return "", fail(e.Span, "if branches have different types: %s and %s", left, right)
+	}
+	return left, nil
+}
+
+// blockHint uses explicit types and fixed initializer types in a temporary
+// lexical scope. It does not commit unsuffixed integers to a default too early.
+func (c *checker) blockHint(b *syntax.Block) string {
+	if b == nil {
+		return ""
+	}
+	c.scopes = append(c.scopes, map[string]binding{})
+	defer func() { c.scopes = c.scopes[:len(c.scopes)-1] }()
+	for _, s := range b.Statements {
+		if s.Kind == "let" {
+			typ := s.Type
+			if typ == "" {
+				typ = c.hint(s.Expr)
+			}
+			c.scopes[len(c.scopes)-1][s.Name] = binding{typ: typ}
+		}
+	}
+	return c.hint(b.Tail)
 }
 
 func (c *checker) integer(e *syntax.Expr, expected string, negative bool) (string, error) {

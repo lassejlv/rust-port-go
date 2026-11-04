@@ -320,3 +320,101 @@ func FuzzEmitC(f *testing.F) {
 	}
 	f.Fuzz(func(t *testing.T, source string) { _, _ = EmitC(source) })
 }
+
+func TestNativeExpressionValues(t *testing.T) {
+	cases := []struct{ name, source, want string }{
+		{"if values and nested else if", `
+fn classify(n: i32) -> i64 { if n < 0 { -1 } else if n == 0 { 0 } else { 1 } }
+fn main() {
+ let x: i64 = if true { 9_000_000_000 } else { 0 };
+ let inferred = if true { 1 } else { 2i64 };
+ println!("{} {} {} {} {}",x,inferred,classify(-1),classify(0),classify(1));
+}`, "9000000000 1 -1 0 1\n"},
+		{"branch evaluation and string values", `
+fn choose(flag: bool, context: &str) -> &str {
+ if flag { print!("T"); "yes\0!" } else { print!("F"); "no🦀" }
+}
+fn main() { println!("{} {}",choose(true,""),choose(false,"")); }
+`, "TFyes\x00! no🦀\n"},
+		{"block values and operand snapshots", `
+fn main() {
+ let mut x = 1;
+ let y = x + { x = 2; x };
+ let z = { x = 3; x } + { x = 4; x };
+ let total = ({ let t = y + z; t }) * 2;
+ println!("{} {} {} {}",x,y,z,total);
+}`, "4 3 7 20\n"},
+		{"grouped and RHS if block arithmetic", `
+fn value() -> i32 { return {1} + 2; }
+fn main() {
+ let a = if true {1} else {2} + 3;
+ let b = {4} + 5;
+ println!("{} {} {} {}",a,b,(if false {1} else {2}) + 3,({6}) + value());
+}`, "4 9 5 9\n"},
+		{"unit and discarded expressions", `
+fn done() -> () { (); return (); }
+fn main() {
+ done();
+ if true { print!("A"); () } else { print!("B"); () }
+ {} -1;
+ if false { 1 } else { 2 };
+ { 3 };
+ println!("!");
+ ()
+}`, "A!\n"},
+		{"returning conditional branches", `
+fn choose(flag: bool) -> i64 { if flag { return 7; } else { 8 } }
+fn both(flag: bool) -> i32 { if flag { return 10; } else { return 11; } }
+fn blockreturn() -> i32 { { return 12; } }
+fn main() { println!("{} {} {} {} {}",choose(true),choose(false),both(true),both(false),blockreturn()); }
+`, "7 8 10 11 12\n"},
+		{"divergent initializer and operands", `
+fn mark(n:i32) -> i32 { print!("{}",n); n }
+fn initialize() -> i32 { let value:i32 = { return 20; }; value }
+fn left() -> i32 { ({ return 21; 0 }) + mark(9) }
+fn right() -> i32 { mark(1) + { return 22; 0 } }
+fn main() { println!("{} {} {}",initialize(),left(),right()); }
+`, "120 21 22\n"},
+		{"divergent argument prevents later evaluation", `
+fn mark() -> i32 { print!("BAD"); 0 }
+fn pair(a:i32,b:i32) -> i32 { print!("BAD"); a+b }
+fn early() -> i32 { pair({ return 41; },mark()) }
+fn main() { println!("{}",early()); }
+`, "41\n"},
+		{"divergent conditions", `
+fn conditional() -> i32 { if { return 31; } { 1 } else { 2 } }
+fn looping() -> i32 { while { return 32; } {} 9 }
+fn main() { println!("{} {}",conditional(),looping()); }
+`, "31 32\n"},
+		{"short circuit with returning RHS", `
+fn and(flag:bool) -> bool { flag && { return true; } }
+fn or(flag:bool) -> bool { flag || { return false; } }
+fn main() { println!("{} {} {} {}",and(false),and(true),or(false),or(true)); }
+`, "false true false true\n"},
+		{"break and continue branches inside initializer", `
+fn main() {
+ let mut n = 0;
+ while n < 5 {
+  n += 1;
+  let value:i32 = if n == 2 { continue; } else if n == 4 { break; } else { n };
+  print!("{}",value);
+ }
+ println!("={}",n);
+}`, "13=4\n"},
+		{"condition block reevaluates and shadowed result escapes", `
+fn main() {
+ let mut n=0;
+ while { print!("{}",n); n < 3 } { n += 1; }
+ let n = { let n = n + 10; n };
+ println!("={}",n);
+}`, "0123=13\n"},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			result := runNative(t, tc.source)
+			if result.status != 0 || result.stderr != "" || result.stdout != tc.want {
+				t.Fatalf("status=%d stdout=%q stderr=%q; want stdout=%q", result.status, result.stdout, result.stderr, tc.want)
+			}
+		})
+	}
+}

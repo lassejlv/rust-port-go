@@ -78,7 +78,7 @@ func (g *generator) block(b *syntax.Block, function bool, result string) {
 	}
 	if b.Tail != nil {
 		value := g.expr(b.Tail)
-		if function && result != "()" {
+		if function && result != "()" && !g.checked.diverges[b.Tail] {
 			g.line("return %s;", value)
 		} else if value != "" {
 			g.line("(void)(%s);", value)
@@ -90,14 +90,49 @@ func (g *generator) block(b *syntax.Block, function bool, result string) {
 	g.indent--
 	g.line("}")
 }
+func (g *generator) resultTarget(e *syntax.Expr) string {
+	if g.checked.types[e] == "()" || g.checked.diverges[e] {
+		return ""
+	}
+	g.counter++
+	name := fmt.Sprintf("fr_t%d", g.counter)
+	g.line("%s %s;", cType(g.checked.types[e]), name)
+	return name
+}
+func (g *generator) valueBlock(b *syntax.Block, target string) {
+	g.line("{")
+	g.indent++
+	for i := range b.Statements {
+		g.statement(&b.Statements[i])
+	}
+	if b.Tail != nil {
+		value := g.expr(b.Tail)
+		if !g.checked.diverges[b.Tail] && value != "" {
+			if target != "" {
+				g.line("%s = %s;", target, value)
+			} else {
+				g.line("(void)(%s);", value)
+			}
+		}
+	}
+	g.indent--
+	g.line("}")
+}
 func (g *generator) statement(s *syntax.Stmt) {
 	switch s.Kind {
 	case "let":
 		value := g.expr(s.Expr)
-		g.line("%s %s = %s;", cType(g.checked.types[s.Expr]), g.checked.decls[s], value)
+		if value == "" {
+			g.line("%s %s;", cType(g.checked.types[s.Expr]), g.checked.decls[s])
+		} else {
+			g.line("%s %s = %s;", cType(g.checked.types[s.Expr]), g.checked.decls[s], value)
+		}
 	case "assign":
 		value := g.expr(s.Expr)
 		name := g.checked.decls[s]
+		if g.checked.diverges[s.Expr] {
+			return
+		}
 		if s.Op != "=" {
 			value = g.arithmetic(strings.TrimSuffix(s.Op, "="), g.checked.types[s.Expr], name, value)
 		}
@@ -112,6 +147,9 @@ func (g *generator) statement(s *syntax.Stmt) {
 			g.line("return;")
 		} else {
 			value := g.expr(s.Expr)
+			if g.checked.diverges[s.Expr] {
+				return
+			}
 			if value == "" {
 				g.line("return;")
 			} else {
@@ -130,8 +168,10 @@ func (g *generator) statement(s *syntax.Stmt) {
 		g.line("while (true) {")
 		g.indent++
 		condition := g.expr(s.Expr)
-		g.line("if (!(%s)) break;", condition)
-		g.block(s.Body, false, "()")
+		if !g.checked.diverges[s.Expr] {
+			g.line("if (!(%s)) break;", condition)
+			g.block(s.Body, false, "()")
+		}
 		g.indent--
 		g.line("}")
 	case "block":
@@ -149,6 +189,25 @@ func (g *generator) arithmetic(op, t, a, b string) string {
 func (g *generator) expr(e *syntax.Expr) string {
 	t := g.checked.types[e]
 	switch e.Kind {
+	case "unit":
+		return ""
+	case "block":
+		target := g.resultTarget(e)
+		g.valueBlock(e.Body, target)
+		return target
+	case "if":
+		condition := g.expr(e.Left)
+		if g.checked.diverges[e.Left] {
+			return ""
+		}
+		target := g.resultTarget(e)
+		g.line("if (%s)", condition)
+		g.valueBlock(e.Body, target)
+		if e.Else != nil {
+			g.line("else")
+			g.valueBlock(e.Else, target)
+		}
+		return target
 	case "int":
 		n, _, _ := parseInteger(e.Text)
 		return integerC(n, t)
@@ -165,12 +224,18 @@ func (g *generator) expr(e *syntax.Expr) string {
 			return integerC(new(big.Int).Neg(n), t)
 		}
 		a := g.expr(e.Right)
+		if g.checked.diverges[e.Right] {
+			return ""
+		}
 		if e.Op == "!" {
 			return g.temp(t, "!("+a+")")
 		}
 		return g.temp(t, fmt.Sprintf("fr_neg_%s(%s)", t, a))
 	case "binary":
 		a := g.expr(e.Left)
+		if g.checked.diverges[e.Left] {
+			return ""
+		}
 		if e.Op == "&&" || e.Op == "||" {
 			name := g.temp("bool", a)
 			condition := name
@@ -180,12 +245,17 @@ func (g *generator) expr(e *syntax.Expr) string {
 			g.line("if (%s) {", condition)
 			g.indent++
 			b := g.expr(e.Right)
-			g.line("%s = %s;", name, b)
+			if !g.checked.diverges[e.Right] {
+				g.line("%s = %s;", name, b)
+			}
 			g.indent--
 			g.line("}")
 			return name
 		}
 		b := g.expr(e.Right)
+		if g.checked.diverges[e.Right] {
+			return ""
+		}
 		if strings.Contains("+-*/%", e.Op) {
 			return g.temp(t, g.arithmetic(e.Op, t, a, b))
 		}
@@ -201,6 +271,9 @@ func (g *generator) expr(e *syntax.Expr) string {
 		args := make([]string, len(e.Args))
 		for i, a := range e.Args {
 			args[i] = g.expr(a)
+			if g.checked.diverges[a] {
+				return ""
+			}
 		}
 		call := g.checked.calls[e] + "(" + strings.Join(args, ", ") + ")"
 		if t == "()" {
@@ -240,6 +313,9 @@ func cString(s string) string {
 func (g *generator) macro(e *syntax.Expr) string {
 	if e.Text == "assert" {
 		condition := g.expr(e.Args[0])
+		if g.checked.diverges[e.Args[0]] {
+			return ""
+		}
 		g.line("if (!(%s)) fr_panic(\"assertion failed at line %d\");", condition, e.Span.Line)
 		return ""
 	}
@@ -250,6 +326,9 @@ func (g *generator) macro(e *syntax.Expr) string {
 	args := make([]string, len(e.Args)-1)
 	for i, a := range e.Args[1:] {
 		args[i] = g.expr(a)
+		if g.checked.diverges[a] {
+			return ""
+		}
 	}
 	var literal strings.Builder
 	flush := func() {

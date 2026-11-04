@@ -24,7 +24,8 @@ type Block struct {
 
 // Stmt.Kind: let, assign, expr, return, if, while, break, continue, block.
 // For assign, Name is the target and Op is =, +=, -=, *=, /= or %=.
-// For if/while, Expr is the condition and Body is the body. Else is optional.
+// For legacy if/while, Expr is the condition and Body is the body. Else is optional.
+// An expr statement with Type="()" has no semicolon and must evaluate to unit.
 type Stmt struct {
 	Kind, Name, Type, Op string
 	Mutable              bool
@@ -33,12 +34,14 @@ type Stmt struct {
 	Span                 Span
 }
 
-// Expr.Kind: int, bool, string, name, unary, binary, call, macro.
+// Expr.Kind: int, bool, string, unit, name, unary, binary, call, macro, if, block.
 // Text holds literal spelling (decoded for string), identifier or callee name.
 // Op holds unary/binary operator; Left/Right are operands; Args holds arguments.
+// For if, Left is the condition and Body/Else are branches. For block, Body is its block.
 type Expr struct {
 	Kind, Text, Op string
 	Left, Right    *Expr
 	Args           []*Expr
+	Body, Else     *Block
 	Span           Span
 }

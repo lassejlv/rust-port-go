@@ -152,7 +152,7 @@ func (p *parser) block() (*Block, error) {
 			b.Statements = append(b.Statements, s)
 			continue
 		}
-		e, err := p.expression(1)
+		e, err := p.statementExpression()
 		if err != nil {
 			return nil, err
 		}
@@ -177,12 +177,26 @@ func (p *parser) block() (*Block, error) {
 			b.Tail = e
 			break
 		}
+		if (e.Kind == "if" || e.Kind == "block") && !p.grouped[e] {
+			b.Statements = append(b.Statements, Stmt{Kind: "expr", Type: "()", Expr: e, Span: e.Span})
+			continue
+		}
 		return nil, sourceError(p.current().span, "expected ; or }, found %s", describe(p.current()))
 	}
 	if _, err := p.expect("}"); err != nil {
 		return nil, err
 	}
 	return b, nil
+}
+
+// A bare block/if in statement position ends before infix operators. This is
+// how Rust separates `{} -1;` into a unit block and a unary-minus statement.
+// Parentheses opt back into ordinary expression parsing, as do all RHS contexts.
+func (p *parser) statementExpression() (*Expr, error) {
+	if p.at("if") || p.at("{") {
+		return p.prefix()
+	}
+	return p.expression(1)
 }
 
 func isAssignment(kind string) bool {
@@ -226,8 +240,6 @@ func (p *parser) statement() (Stmt, bool, error) {
 			}
 		}
 		_, err = p.expect(";")
-	case p.take("if"):
-		s, err = p.ifStatement(start)
 	case p.take("while"):
 		s.Kind = "while"
 		s.Expr, err = p.expression(1)
@@ -241,40 +253,40 @@ func (p *parser) statement() (Stmt, bool, error) {
 	case p.take("continue"):
 		s.Kind = "continue"
 		_, err = p.expect(";")
-	case p.at("{"):
-		s.Kind = "block"
-		s.Body, err = p.block()
 	default:
 		return s, false, nil
 	}
 	return s, true, err
 }
 
-func (p *parser) ifStatement(start token) (Stmt, error) {
-	s := Stmt{Kind: "if", Span: start.span}
+func (p *parser) ifExpression(start token) (*Expr, error) {
+	e := &Expr{Kind: "if", Span: start.span}
 	var err error
-	s.Expr, err = p.expression(1)
+	e.Left, err = p.expression(1)
 	if err != nil {
-		return s, err
+		return nil, err
 	}
-	s.Body, err = p.block()
+	e.Body, err = p.block()
 	if err != nil {
-		return s, err
+		return nil, err
 	}
 	if p.take("else") {
 		if p.at("if") {
 			nestedStart := p.current()
 			p.index++
-			nested, err := p.ifStatement(nestedStart)
+			nested, err := p.ifExpression(nestedStart)
 			if err != nil {
-				return s, err
+				return nil, err
 			}
-			s.Else = &Block{Statements: []Stmt{nested}, Span: nestedStart.span}
+			e.Else = &Block{Tail: nested, Span: nestedStart.span}
 		} else {
-			s.Else, err = p.block()
+			e.Else, err = p.block()
+			if err != nil {
+				return nil, err
+			}
 		}
 	}
-	return s, err
+	return e, nil
 }
 
 var precedence = map[string]int{"||": 1, "&&": 2, "==": 3, "!=": 3, "<": 4, "<=": 4, ">": 4, ">=": 4, "+": 5, "-": 5, "*": 6, "/": 6, "%": 6}
@@ -321,7 +333,20 @@ func (p *parser) prefix() (*Expr, error) {
 		}
 		return &Expr{Kind: "unary", Op: t.kind, Right: rhs, Span: t.span}, nil
 	}
+	if p.take("if") {
+		return p.ifExpression(t)
+	}
+	if p.at("{") {
+		body, err := p.block()
+		if err != nil {
+			return nil, err
+		}
+		return &Expr{Kind: "block", Body: body, Span: t.span}, nil
+	}
 	if p.take("(") {
+		if p.take(")") {
+			return &Expr{Kind: "unit", Span: t.span}, nil
+		}
 		e, err := p.expression(1)
 		if err != nil {
 			return nil, err

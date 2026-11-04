@@ -103,7 +103,17 @@ func TestManifestDiscoverySearchesParents(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if actual != filepath.Join(root, "Cargo.toml") {
+	actualInfo, err := os.Stat(actual)
+	if err != nil {
+		t.Fatal(err)
+	}
+	expectedInfo, err := os.Stat(filepath.Join(root, "Cargo.toml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	// macOS may canonicalize /var to /private/var in os.Getwd. Compare
+	// filesystem identity, since both paths must identify the same manifest.
+	if !os.SameFile(actualInfo, expectedInfo) {
 		t.Fatalf("wrong manifest %s", actual)
 	}
 }

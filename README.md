@@ -8,7 +8,7 @@ Ferrugo's long-term goal is to compile Rust projects with a compiler and package
 
 Compile and run a small, typed Rust binary without invoking `rustc` or upstream `cargo`, then build that same binary from a `Cargo.toml` using Ferrugo's package command. Keep supported behavior tested, reject unsupported features, and grow compatibility in reviewable checkpoints on `main`.
 
-The executable bootstrap works. The full port remains in progress. See [supported behavior and limits](docs/COMPATIBILITY.md), [Cargo commands](docs/CARGO.md), [the roadmap](docs/ROADMAP.md), and [progress log](docs/PROGRESS.md).
+The executable bootstrap works. The full port remains in progress. See [supported behavior and limits](docs/COMPATIBILITY.md), [Cargo commands](docs/CARGO.md), [the roadmap](docs/ROADMAP.md), and [progress log](docs/PROGRESS.md), and [upstream scope](docs/UPSTREAM.md).
 
 ## Build and try it
 
@@ -22,6 +22,8 @@ make build
 /tmp/hello-ferrugo
 ./bin/ferrugo --emit=c examples/hello/src/main.rs -o /tmp/hello-ferrugo.c
 make check
+# Optional: compare the committed fixtures with an installed rustc
+FERRUGO_RUSTC=rustc go test -count=1 ./internal/conformance
 ```
 
 To start a package:

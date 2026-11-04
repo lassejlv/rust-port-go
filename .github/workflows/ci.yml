@@ -8,6 +8,7 @@ permissions:
 jobs:
   bootstrap:
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
@@ -16,6 +17,15 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: '1.23.x'
+          cache: false
       - run: go vet ./...
       - run: go test -race ./...
       - run: make demo
+      - name: Install Rust comparison toolchain
+        run: |
+          rustup toolchain install 1.99.1 --profile minimal
+          rustup override set 1.99.1
+      - name: Compare conformance fixtures with rustc
+        run: go test -count=1 -v ./internal/conformance
+        env:
+          FERRUGO_RUSTC: rustc
