@@ -195,3 +195,13 @@ Nineteen top-level source files now have recorded evidence. The typed storage/in
 - Updated hosted reference checks for the hash module. The preceding edition checkpoint passed all hosted jobs at `048b316`.
 
 The current ledger has fourteen validated top-level files. Completion counts now reflect the reopened contracts instead of retaining premature full-file credit. Typed storage/intervals, semver/Cargo versions and the span runtime continue in parallel; production Rust remains the overall unfinished goal.
+
+## 2026-11-04 — checkpoint 18: typed storage and complete union-find interfaces
+
+- Ported complete typed slices and vectors plus all five original vector tests. The primary APIs retain actual borrowed cells, owned callback/range cleanup, generic trait overrides, iterator specializations, zero-sized vectors through `usize::MAX`, full formatter state and nightly codecs.
+- Independent original-source comparisons pass 150,068 records and 189,668 operation steps across eight separate feature/arithmetic/assertion profiles, including 40,232 caught panics and 104 isolated abort cases. The original index macro and serialization implementations are used unchanged in reference builds.
+- Closed union-find's full Debug and public return-type gaps. The primary snapshot now returns the validated typed vector; its legacy slice-shaped result remains a convenience. All 25,040 full formatter records and the original 3,788 algorithm records pass.
+- Follow-up API review reopened the binary-search implementation for owned key/extractor cleanup and borrowed operator cells. Existing search comparisons remain retained, and the source test file remains separately validated.
+- Minimum-Go, normal/nightly, race, vet, original-source and artifact-integrity checks pass for the integrated block. Hosted checks now include the storage reference and union-find formatter. The preceding hash checkpoint passed all hosted jobs at `b472da0`.
+
+Seventeen top-level files currently have completion evidence. Interval ownership/formatting, earlier reopened contracts, semver's owned iterator collection, stable hashing and span/session runtime remain active work. None of these milestones establishes production Rust compatibility.

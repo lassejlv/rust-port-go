@@ -1,0 +1,25 @@
+[package]
+name = "storage_reference"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[lib]
+path = "wrapper/lib.rs"
+
+[[bin]]
+name = "storage-reference-proof"
+path = "wrapper/main.rs"
+
+[dependencies]
+rustc_index_macros = { path = "crates/rustc_index_macros" }
+rustc_serialize = { path = "crates/rustc_serialize", optional = true }
+
+[features]
+default = []
+nightly = ["dep:rustc_serialize", "rustc_index_macros/nightly"]
+
+[workspace]
+resolver = "3"
+members = ["crates/rustc_index_macros", "crates/rustc_serialize", "crates/rustc_hashes"]
+default-members = ["."]

@@ -33,3 +33,13 @@ Validated with Go 1.23.12 and pinned
 The oracle's faithful, scoped `IndexVec` shim is detailed in `PORT.md`; it is
 not a full port of the index container. Panic classes, mutation, and callback
 order are compared; Rust and Go runtime panic message spelling is not equated.
+
+The later `format/` reference compiles the full unchanged original `idx.rs`,
+`slice.rs`, `vec.rs`, union-find and both original tests. Its 25,040 records
+compare full borrowed-cell Debug, all formatter options, independent character
+writes, writer failures, callback panics and formatter reuse/state
+across four independent arithmetic/debug profiles. The primary `SnapshotVec`
+now returns the full shared Go typed vector; the existing 3,788 records also
+exercise that path through the legacy convenience. Focused checks cover its
+Clone/Eq/Hash/Debug, typed indexing/iteration, independent storage, zero-sized
+capacity and selected overflow profiles. See `format/README.md` for commands.

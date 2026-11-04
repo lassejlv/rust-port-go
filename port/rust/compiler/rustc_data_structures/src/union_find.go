@@ -5,9 +5,6 @@
 package datastructures
 
 import (
-	"strconv"
-	"strings"
-
 	rustcindex "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src"
 )
 
@@ -162,33 +159,40 @@ func (snapshot UnionFindSnapshot[Key]) Set(key, root Key) {
 
 func (snapshot UnionFindSnapshot[Key]) Len() uint { return uint(len(snapshot.Raw)) }
 
-// Snapshot maps each key to its current root and compresses paths through Find.
-// The upfront FromIndex(len) call preserves IndexSlice::indices validation and
-// precedes the per-key conversions in ascending index order.
-func (sets *UnionFind[Key]) Snapshot() UnionFindSnapshot[Key] {
-	_ = sets.index.FromIndex(uint(len(sets.table)))
-	roots := make([]Key, len(sets.table))
-	for i := range roots {
-		roots[i] = sets.Find(sets.index.FromIndex(uint(i)))
-	}
-	return UnionFindSnapshot[Key]{Raw: roots, index: sets.index}
+// SnapshotVec is the primary source snapshot result: the full validated typed
+// vector, with caller-supplied Key Clone/Eq/Debug and layout witnesses. Keys
+// retain Rust's Idx/Copy trait laws; Key Drop is not a lawful Rust operation.
+// The static index iterator validates len before collection and constructs each
+// key immediately before Find, preserving all source callback/panic ordering.
+func (sets *UnionFind[Key]) SnapshotVec(keyOps rustcindex.ValueOps[Key]) *rustcindex.IndexVec[Key, Key] {
+	return sets.SnapshotVecWithConfig(keyOps, rustcindex.IndexStorageConfig{OverflowChecks: true, DebugAssertions: sets.config.DebugAssertions})
 }
 
-// Debug mirrors the derived Rust Debug representation, using formatKey for the
-// key type's own Debug implementation (for example, decimal for u32/usize).
-func (sets *UnionFind[Key]) Debug(formatKey func(Key) string) string {
-	var result strings.Builder
-	result.WriteString("UnionFind { table: [")
-	for i, entry := range sets.table {
-		if i != 0 {
-			result.WriteString(", ")
+// SnapshotVecWithConfig selects the returned storage's independent source build
+// profile without changing the existing UF config or callback contracts.
+func (sets *UnionFind[Key]) SnapshotVecWithConfig(keyOps rustcindex.ValueOps[Key], config rustcindex.IndexStorageConfig) *rustcindex.IndexVec[Key, Key] {
+	idx := rustcindex.NewIdxWithConfig(sets.index.FromIndex, sets.index.ToIndex, rustcindex.IdxConfig{OverflowChecks: config.OverflowChecks})
+	indices := rustcindex.IndexSliceFromRaw(sets.table, idx, rustcindex.ValueOps[unionFindEntry[Key]]{}).Indices()
+	source := rustcindex.IndexIntoIterator[Key]{IntoIter: func() rustcindex.IndexValueIterator[Key] {
+		return rustcindex.IndexValueIterator[Key]{
+			Next: func() (Key, bool) {
+				key, ok := indices.Next()
+				if !ok {
+					var zero Key
+					return zero, false
+				}
+				return sets.Find(key), true
+			},
+			SizeHint:      func() (uint, uint, bool) { lower, upper := indices.SizeHint(); return lower, upper, true },
+			TrustedLength: true,
 		}
-		result.WriteString("UnionFindEntry { parent: ")
-		result.WriteString(formatKey(entry.parent))
-		result.WriteString(", rank: ")
-		result.WriteString(strconv.FormatUint(uint64(entry.rank), 10))
-		result.WriteString(" }")
-	}
-	result.WriteString("] }")
-	return result.String()
+	}}
+	return rustcindex.IndexVecFromIteratorWithConfig(source, idx, keyOps, config)
+}
+
+// Snapshot is the existing slice-shaped compatibility convenience. Use
+// SnapshotVec for the complete IndexVec return contract and all element traits.
+func (sets *UnionFind[Key]) Snapshot() UnionFindSnapshot[Key] {
+	snapshot := sets.SnapshotVec(rustcindex.ValueOps[Key]{Copy: true})
+	return UnionFindSnapshot[Key]{Raw: snapshot.Raw.AsGoSlice(), index: sets.index}
 }

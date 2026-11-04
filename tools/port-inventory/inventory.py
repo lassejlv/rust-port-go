@@ -125,6 +125,7 @@ def prepare(root):
             ["git", "-C", str(cache), "sparse-checkout", "set"] + ([
                 "compiler/rustc_lexer", "compiler/rustc_parse_format",
                 "compiler/rustc_data_structures", "compiler/rustc_index",
+                "compiler/rustc_index_macros",
                 "compiler/rustc_span", "compiler/rustc_macros",
                 "compiler/rustc_serialize", "compiler/rustc_hashes",
                 "library/core/src/unicode", "LICENSES",

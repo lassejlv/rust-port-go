@@ -1,0 +1,20 @@
+[package]
+name = "ferrugo-index-storage-oracle"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+storage_reference = { path = "../../../.toolchain/oracles/index-storage-reference" }
+serde_json = "=1.0.145"
+
+[features]
+default = []
+nightly = ["storage_reference/nightly"]
+
+[workspace]
+resolver = "3"
+
+[[bin]]
+name = "ferrugo-index-storage-oracle"
+path = "oracle.rs"

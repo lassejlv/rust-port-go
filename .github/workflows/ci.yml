@@ -58,8 +58,12 @@ jobs:
         env:
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: 1.99.1
-      - name: Prepare original edition derives and codecs
-        run: python3 tools/port-rust-edition/reference-build/prepare.py --fetch --validate
+      - name: Prepare original compiler derives and storage references
+        run: |
+          python3 tools/port-rust-edition/reference-build/prepare.py --fetch --validate
+          python3 tools/port-rust-index-storage/reference-build/prepare.py --fetch --validate
+          cargo fetch --locked --manifest-path tools/port-rust-index-storage/oracle/Cargo.toml
+          python3 -m unittest discover -s tools/port-rust-index-storage/oracle -p '*_test.py'
         env:
           FERRUGO_RUSTC: rustc
           FERRUGO_CARGO: cargo
@@ -90,15 +94,19 @@ jobs:
           go run ./tools/port-rust-base-n -check
           go run ./tools/port-rust-binary-search -check
           go run ./tools/port-rust-union-find -check
+          go run ./tools/port-rust-union-find/format -check
           go run ./tools/port-rust-thousands -check
           go test -tags ferrugo_rustc_nightly ./port/rust/compiler/rustc_index/src
+          go test -tags ferrugo_rustc_nightly ./port/rust/compiler/rustc_index/src/vec
           go run -tags ferrugo_rustc_nightly ./tools/port-rust-index -check
           go run ./tools/port-rust-parse-format -check
           go run ./tools/port-rust-parse-format/char-unicode -check
           go run ./tools/port-cargo-restricted-names -check
           go run ./tools/port-rust-edition -check
           python3 tools/port-rust-hashes/generate.py --check
+          go run ./tools/port-rust-index-storage/oracle -check
         env:
+          FERRUGO_GO: go
           FERRUGO_RUSTC: rustc
           FERRUGO_CARGO: cargo
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home

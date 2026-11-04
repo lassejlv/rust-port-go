@@ -15,8 +15,9 @@ The Go implementation uses only the standard library.
 `UnionFind[Key]` holds the same fixed parent/rank table. `Find` updates each
 visited key to its original grandparent and advances to its original parent.
 `Unify` performs its two finds in source order, retains the first root on equal
-ranks, increments that rank, and attaches the second root. `Snapshot` calls
-`Find` for every key in increasing index order and returns independent storage.
+ranks, increments that rank, and attaches the second root. Primary `SnapshotVec`
+calls `Find` for every key in increasing index order and returns a full,
+independent typed vector with caller-supplied element trait witnesses.
 This is a complete port of this compiler utility, not a complete Rust compiler.
 
 ## Typed indices and container dependency
@@ -45,12 +46,16 @@ porting. The Go file uses scoped adapters for the operations this utility needs:
   constructs its keys in increasing order, matching `IndexSlice::indices`.
 - Table access uses `ToIndex` followed by slice bounds checking. Lookup and
   callback failures panic; panic message spelling follows the host language.
-- `UnionFindSnapshot.Raw` corresponds to the returned owned `IndexVec::raw`.
-  `At` and `Set` retain typed indexing. Changing it never changes the forest.
+- `SnapshotVec(keyOps)` returns the actual shared Go `IndexVec<Key, Key>`.
+  Clone, equality, hashing, full Debug, typed indexing and iterators use that
+  separately validated component. `SnapshotVecWithConfig` selects its source
+  arithmetic/assertion profile. The legacy `Snapshot` projects the primary
+  path into `UnionFindSnapshot.Raw`/`At`/`Set`/`Len` as a convenience.
 
-`Idx` is independently ported and validated as its own source file; this
-integration adds no completion credit. These scoped storage/snapshot adapters
-do not claim to port the general `IndexVec` or `IndexSlice` files.
+`Idx`, `IndexVec` and `IndexSlice` are independently ported and validated source
+files; their use here adds no completion credit. The forest's private fixed
+table remains a scoped representation adapter. Primary snapshot results and
+Debug list formatting use the actual shared typed-storage implementation.
 
 ## Debug and release configuration
 
@@ -61,8 +66,12 @@ lookups and equality call in both assertions, including callback panic timing.
 Rank overflow cannot occur in a constructible lawful forest: a rank-r root
 requires at least 2^r keys, while the rank field has 32 bits.
 
-`Debug(formatKey)` preserves the derived representation and delegates each key's
-Rust-style debug formatting to the supplied formatter. Go pointer layout,
+`FormatDebug(formatter, borrowedKeyDebug)` preserves the complete derived
+formatter contract at the actual parent cells: flags, independent string/char
+writes, pretty indentation, writer errors and mutable state after failure.
+`Debug(formatKey)` remains the compact string convenience. The complete source
+formatter comparisons and primary return mapping are documented in
+`format/README.md`. Go pointer layout,
 borrow checking, and Rust's automatic `Send`/`Sync` trait system are not
 reproduced. As with Rust's exclusive `&mut self`, callers must exclude concurrent
 mutation. A Go zero value lacks its required index adapter; use a constructor.
