@@ -447,6 +447,32 @@ func (r *moduleResolver) rewriteExpr(scope *moduleScope, e *syntax.Expr) error {
 // resolving the same parsed syntax tree again remains stable and private paths
 // never bypass visibility just because a previous pass populated their key.
 func (r *moduleResolver) resolveType(scope *moduleScope, name string, span syntax.Span) (string, error) {
+	if strings.HasPrefix(name, "[") {
+		if !strings.HasSuffix(name, "]") {
+			return "", fail(span, "malformed array type %q", name)
+		}
+		body := name[1 : len(name)-1]
+		separator := strings.LastIndex(body, ";")
+		if separator <= 0 || separator == len(body)-1 {
+			return "", fail(span, "malformed array type %q", name)
+		}
+		length, err := parseArrayLength(body[separator+1:], span)
+		if err != nil {
+			return "", err
+		}
+		element, err := r.resolveType(scope, body[:separator], span)
+		if err != nil {
+			return "", err
+		}
+		return arrayType(element, length), nil
+	}
+	if array, ok := arrayInfo(name); ok {
+		element, err := r.resolveType(scope, array.Element, span)
+		if err != nil {
+			return "", err
+		}
+		return arrayType(element, array.Length), nil
+	}
 	if integerType(name) {
 		return name, nil
 	}

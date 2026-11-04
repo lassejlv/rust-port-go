@@ -162,6 +162,8 @@ func FuzzParse(f *testing.F) {
 	f.Add(`fn main(){let result=true|false&&false;let wide=18446744073709551615u64;}`)
 	f.Add(`fn main(){let a=-1i16 as u8 as u64;let b=(a as u16)<<1u8;}`)
 	f.Add(`fn main(){if !true as u8 == 0 {let value=257u16 as (u8);}}`)
+	f.Add(`fn main(){let mut a:[u8;3]=[1,2,3];a[0]+=a.len() as u8;}`)
+	f.Add(`fn main(){let a=[[1u8;0usize];2];let x=a[0].len();}`)
 	f.Fuzz(func(t *testing.T, source string) { _, _ = Parse(source) })
 }
 
@@ -359,7 +361,6 @@ func TestPostfixFeaturesRemainExplicitlyUnsupported(t *testing.T) {
 	for _, source := range []string{
 		`fn main() { {1i32}.abs(); }`,
 		`fn main() { if true {1i32} else {2i32}.abs(); }`,
-		`fn main() { {1}[0]; }`,
 		`fn f() -> i32 { let x = {1}?; x } fn main() {}`,
 	} {
 		t.Run(source, func(t *testing.T) {
@@ -858,6 +859,22 @@ func TestMalformedAndUnsupportedIntegerSuffixes(t *testing.T) {
 }
 
 func operatorTree(e *Expr) string {
+	if e.Kind == "if" {
+		body, otherwise := "()", "()"
+		if e.Body != nil && e.Body.Tail != nil {
+			body = operatorTree(e.Body.Tail)
+		}
+		if e.Else != nil && e.Else.Tail != nil {
+			otherwise = operatorTree(e.Else.Tail)
+		}
+		return "(if " + operatorTree(e.Left) + " " + body + " " + otherwise + ")"
+	}
+	if e.Kind == "index" {
+		return "(index " + operatorTree(e.Left) + " " + operatorTree(e.Right) + ")"
+	}
+	if e.Kind == "len" {
+		return "(len " + operatorTree(e.Left) + ")"
+	}
 	if e.Kind == "cast" {
 		return "(as " + operatorTree(e.Left) + " " + e.Text + ")"
 	}
@@ -1067,6 +1084,231 @@ func TestCastMissingAndUnsupportedSyntaxTargets(t *testing.T) {
 		t.Run(source, func(t *testing.T) {
 			if _, err := Parse(source); err == nil {
 				t.Fatal("invalid or unsupported cast target accepted")
+			}
+		})
+	}
+}
+
+func TestRecursiveArrayTypeSourceSpelling(t *testing.T) {
+	p, err := Parse(`
+#[derive(Copy,Clone)] struct Record { pub values:[i32;0x2_usize], grid:[[u8;2];3] }
+fn identity(values:[crate::Record;2usize])->[self::Record;2] { values }
+fn main(){let grid: [ [u16; 0b10_usize] ; 0x3 ] = [[1;2];3];}
+`)
+	if err != nil {
+		t.Fatal(err)
+	}
+	fields := p.Structs[0].Fields
+	if fields[0].Type != "[i32;0x2_usize]" || fields[1].Type != "[[u8;2];3]" {
+		t.Fatalf("record array source types=%#v", fields)
+	}
+	function := p.Functions[0]
+	if function.Params[0].Type != "[crate::Record;2usize]" || function.ReturnType != "[self::Record;2]" {
+		t.Fatal("named element type path lost")
+	}
+	if got := p.Functions[1].Body.Statements[0].Type; got != "[[u16;0b10_usize];0x3]" {
+		t.Fatalf("array source type=%q", got)
+	}
+	for _, length := range []string{"0", "2usize", "0x10_usize", "65537", "184467440737095516160usize"} {
+		t.Run(length, func(t *testing.T) {
+			if _, err := Parse("fn main(){let a:[u8;" + length + "]=[1;" + length + "];}"); err != nil {
+				t.Fatalf("length normalization/range checking leaked into parser: %v", err)
+			}
+		})
+	}
+}
+
+func TestArrayListsEmptyValuesAndRepeats(t *testing.T) {
+	p, err := Parse(`fn main(){
+ let empty:[u8;0]=[];
+ let values=[first(),2,third(),];
+ let repeated=[make();0usize];
+ let nested=[[1,2],[3;2]];
+ let records=[Point{x:1},Point{x:2}];
+}`)
+	if err != nil {
+		t.Fatal(err)
+	}
+	statements := p.Functions[0].Body.Statements
+	if e := statements[0].Expr; e.Kind != "array" || len(e.Args) != 0 {
+		t.Fatalf("empty array=%#v", e)
+	}
+	list := statements[1].Expr
+	if list.Kind != "array" || len(list.Args) != 3 || list.Args[0].Kind != "call" || list.Args[0].Text != "first" || list.Args[1].Text != "2" || list.Args[2].Text != "third" {
+		t.Fatal("array source element order lost")
+	}
+	repeat := statements[2].Expr
+	if repeat.Kind != "repeat" || repeat.Text != "0usize" || repeat.Left.Kind != "call" || repeat.Left.Text != "make" || len(repeat.Args) != 0 {
+		t.Fatalf("repeat operand/count=%#v", repeat)
+	}
+	if nested := statements[3].Expr; nested.Kind != "array" || nested.Args[0].Kind != "array" || nested.Args[1].Kind != "repeat" {
+		t.Fatal("nested array expressions lost")
+	}
+	if records := statements[4].Expr; records.Args[0].Kind != "struct" || records.Args[1].Fields[0].Value.Text != "2" {
+		t.Fatal("record array elements lost")
+	}
+}
+
+func TestArrayIndexFieldLengthAndAssignmentChains(t *testing.T) {
+	p, err := Parse(`fn main(){
+ let x=rows[row+1].items[column].len();
+ matrix[row][column]+=value;
+ record.values[0]<<=1u8;
+ let y=record.len;
+}`)
+	if err != nil {
+		t.Fatal(err)
+	}
+	statements := p.Functions[0].Body.Statements
+	length := statements[0].Expr
+	if length.Kind != "len" || length.Left.Kind != "index" || length.Left.Right.Text != "column" || length.Left.Left.Kind != "field" || length.Left.Left.Text != "items" || length.Left.Left.Left.Kind != "index" || length.Left.Left.Left.Right.Op != "+" {
+		t.Fatalf("array projection chain=%#v", length)
+	}
+	assignment := statements[1]
+	if assignment.Kind != "assign" || assignment.Name != "" || assignment.Target == nil || assignment.Target.Kind != "index" || assignment.Target.Left.Kind != "index" || assignment.Target.Left.Left.Text != "matrix" || assignment.Op != "+=" {
+		t.Fatalf("nested index assignment=%#v", assignment)
+	}
+	assignment = statements[2]
+	if assignment.Target.Kind != "index" || assignment.Target.Left.Kind != "field" || assignment.Target.Left.Text != "values" || assignment.Op != "<<=" {
+		t.Fatal("mixed field/index assignment lost")
+	}
+	if e := statements[3].Expr; e.Kind != "field" || e.Text != "len" {
+		t.Fatal("field named len confused with length call")
+	}
+}
+
+func TestArrayIndexAndLengthPrecedence(t *testing.T) {
+	cases := []struct{ expression, want string }{
+		{`values[index] as u16 + other`, `(+ (as (index values index) u16) other)`},
+		{`-values[index] << 1`, `(<< (- (index values index)) 1)`},
+		{`data[1 + 2 * 3] & mask`, `(& (index data (+ 1 (* 2 3))) mask)`},
+		{`matrix[row][column]`, `(index (index matrix row) column)`},
+		{`values.len() + 1`, `(+ (len values) 1)`},
+		{`values[if flag {0} else {1}]`, `(index values (if flag 0 1))`},
+	}
+	for _, tc := range cases {
+		t.Run(tc.expression, func(t *testing.T) {
+			p, err := Parse("fn main(){let result=" + tc.expression + ";}")
+			if err != nil {
+				t.Fatal(err)
+			}
+			if got := operatorTree(p.Functions[0].Body.Statements[0].Expr); got != tc.want {
+				t.Fatalf("tree=%s, want %s", got, tc.want)
+			}
+		})
+	}
+	for _, expression := range []string{`[1,2][0]`, `({[1]})[0]`, `(if true {[1]} else {[2]})[0]`, `make()[0]`, `{[1]}[0]`} {
+		t.Run(expression, func(t *testing.T) {
+			p, err := Parse("fn main(){let value=" + expression + ";}")
+			if err != nil {
+				t.Fatal(err)
+			}
+			if p.Functions[0].Body.Statements[0].Expr.Kind != "index" {
+				t.Fatal("rvalue receiver indexing missing")
+			}
+		})
+	}
+}
+
+func TestBareBlockAndIfIndexStatementSeparation(t *testing.T) {
+	for _, source := range []string{
+		`fn main(){{}[0];}`,
+		`fn main(){{[1]}[0];}`,
+		`fn main(){if true {} else {}[0];}`,
+		`fn main(){if true {[1]} else {[2]}[0];}`,
+	} {
+		t.Run(source, func(t *testing.T) {
+			p, err := Parse(source)
+			if err != nil {
+				t.Fatal(err)
+			}
+			statements := p.Functions[0].Body.Statements
+			if len(statements) != 2 || statements[0].Type != "()" || statements[1].Expr.Kind != "array" {
+				t.Fatal("Rust statement boundary incorrectly treated as indexing")
+			}
+		})
+	}
+	for _, source := range []string{`fn main(){{[1]}.len();}`, `fn main(){if true {[1]} else {[2]}.len();}`} {
+		p, err := Parse(source)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if p.Functions[0].Body.Statements[0].Expr.Kind != "len" {
+			t.Fatal("dot length postfix should continue bare block expression")
+		}
+	}
+}
+
+func TestArrayConditionContexts(t *testing.T) {
+	for _, source := range []string{
+		`fn main(){if [true][0] {}}`,
+		`fn main(){if [Point{flag:true}][0].flag {}}`,
+		`fn main(){if values[Point{index:0}.index] {}}`,
+		`fn main(){while [true;1usize][0] {}}`,
+		`fn main(){if values.len() > 0 {}}`,
+		`fn main(){if test([Point{flag:true}]) {}}`,
+	} {
+		t.Run(source, func(t *testing.T) {
+			if _, err := Parse(source); err != nil {
+				t.Fatalf("array context rejected: %v", err)
+			}
+		})
+	}
+}
+
+func TestArraySourceSpans(t *testing.T) {
+	source := "fn main(){\n let values=[1,2];\n let repeated=[make();2usize];\n values[0]+=values.len();\n}"
+	p, err := Parse(source)
+	if err != nil {
+		t.Fatal(err)
+	}
+	statements := p.Functions[0].Body.Statements
+	array := statements[0].Expr
+	if array.Span.Line != 2 || array.Span.Column != 13 || array.Span.Offset != strings.Index(source, "[1,2]") || array.Args[0].Span.Offset != strings.Index(source, "[1,2]")+1 || array.Args[1].Span.Offset != strings.Index(source, "[1,2]")+3 {
+		t.Fatalf("array literal spans=%#v", array.Span)
+	}
+	repeat := statements[1].Expr
+	if repeat.Span.Offset != strings.Index(source, "[make()") || repeat.Left.Span.Offset != strings.Index(source, "make()") {
+		t.Fatal("repeat operand span lost")
+	}
+	assignment := statements[2]
+	if assignment.Target.Span.Line != 4 || assignment.Target.Span.Offset != strings.Index(source, "values[0]") || assignment.Target.Right.Span.Offset != strings.Index(source, "values[0]")+7 || assignment.Expr.Kind != "len" || assignment.Expr.Span.Offset != strings.Index(source, "values.len()") {
+		t.Fatal("index/length source spans lost")
+	}
+}
+
+func TestRejectArraySyntaxOutsideLiteralLengthSubset(t *testing.T) {
+	cases := []struct{ source, want string }{
+		{`fn f(a:[i32]){} fn main(){}`, "slices"},
+		{`fn f(a:&[i32;2]){} fn main(){}`, "array references"},
+		{`fn main(){let a=&[1,2];}`, "borrows"},
+		{`fn main(){let a:[i32;COUNT]=[];}`, "integer literals"},
+		{`fn main(){let a:[i32;1+1]=[];}`, "single integer literal"},
+		{`fn main(){let a:[i32;2u8]=[];}`, "unsuffixed or usize"},
+		{`fn main(){let a=[1;COUNT];}`, "integer literals"},
+		{`fn main(){let a=[1;1+1];}`, "single integer literal"},
+		{`fn main(){let a=[1;2i32];}`, "unsuffixed or usize"},
+		{`fn main(){let a=[1;-1];}`, "integer literals"},
+		{`fn main(){let a=[1;(2)];}`, "integer literals"},
+		{`fn main(){let a=[1;2,];}`, "single integer literal"},
+		{`fn main(){let a=[1;2;3];}`, "single integer literal"},
+		{`fn main(){let a=[1 2];}`, "expected ]"},
+		{`fn main(){let a=[1,,2];}`, "expected identifier"},
+		{`fn main(){let a=[..other];}`, "range syntax"},
+		{`fn main(){let a=[1..2];}`, "range syntax"},
+		{`fn main(){let a=values[..];}`, "slices and ranges"},
+		{`fn main(){let a=values[1..2];}`, "slices and ranges"},
+		{`fn main(){let a=values[1..];}`, "slices and ranges"},
+		{`fn main(){let a=values[];}`, "indexing requires"},
+		{`fn main(){let a=values[0,1];}`, "expected ]"},
+		{`fn main(){let a=values.len(1);}`, "takes no arguments"},
+		{`fn main(){let a=values.iter();}`, "methods and callable"},
+	}
+	for _, tc := range cases {
+		t.Run(tc.source, func(t *testing.T) {
+			_, err := Parse(tc.source)
+			if err == nil || !strings.Contains(err.Error(), tc.want) {
+				t.Fatalf("error=%v, want %q", err, tc.want)
 			}
 		})
 	}

@@ -67,7 +67,7 @@ func (c *checker) fixedCastSource(e *syntax.Expr) bool {
 		}
 		binding, ok := c.lookup(e.Text)
 		return ok && !binding.defaulted
-	case "cast", "call", "field", "bool", "string", "struct", "unit", "macro":
+	case "cast", "call", "field", "index", "len", "array", "repeat", "bool", "string", "struct", "unit", "macro":
 		return true
 	case "unary":
 		return c.fixedCastSource(e.Right)

@@ -25,11 +25,15 @@ Compile signed and unsigned integers through 64 bits plus isize/usize, with exac
 
 The integer implementation is pushed in checkpoint 9 and passed hosted Linux/macOS CI.
 
-## Active goal: integer casts
+## Implemented milestone: integer casts
 
 Compile `as` casts across supported integer widths and from bool to integer with Rust narrowing/sign-extension rules, evaluation order and literal inference boundaries. Compare the expanded fixtures against rustc and validate optimized generated C, then push and verify CI.
 
-The next language goal is fixed-size Copy arrays, usize indexing, bounds checks and array length access.
+The cast implementation is pushed in checkpoint 10. Local comparisons and race tests pass; hosted CI is tracked in the progress log.
+
+## Active goal: fixed-size Copy arrays
+
+Compile owned Copy-array types, literals/repeats, function values, indexing/mutation and length access. Preserve index place semantics, side effects and bounds panics, and handle zero-sized values without inflating storage. Compare the expanded fixtures with rustc and review generated C under UBSan, then push and verify CI.
 
 ## Implemented milestones
 

@@ -21,6 +21,9 @@ type checked struct {
 	structs     map[string]*syntax.Struct
 	structOrder []string
 	assignTypes map[*syntax.Stmt]string
+	arrays      map[string]arraySpec
+	typeOrder   []string
+	zeroSized   map[string]bool
 }
 
 type binding struct {
@@ -65,7 +68,7 @@ func analyzeProgramMode(program *syntax.Program, requireMain bool) (*checked, er
 		decls: make(map[*syntax.Stmt]string), params: make(map[*syntax.Function][]string),
 		funcs: make(map[string]*syntax.Function), calls: make(map[*syntax.Expr]string),
 		fnNames: make(map[*syntax.Function]string), diverges: make(map[*syntax.Expr]bool),
-		structs: make(map[string]*syntax.Struct), assignTypes: make(map[*syntax.Stmt]string),
+		structs: make(map[string]*syntax.Struct), assignTypes: make(map[*syntax.Stmt]string), arrays: make(map[string]arraySpec), zeroSized: make(map[string]bool),
 	}}
 	if err := c.collectStructs(); err != nil {
 		return nil, err
@@ -124,6 +127,9 @@ func analyzeProgramMode(program *syntax.Program, requireMain bool) (*checked, er
 		if falls && f.ReturnType != "()" && f.Body.Tail == nil {
 			return nil, fail(f.Span, "function %q can finish without returning %s", f.Name, f.ReturnType)
 		}
+	}
+	if err := c.finishLayouts(); err != nil {
+		return nil, err
 	}
 	return c.checked, nil
 }
@@ -290,6 +296,25 @@ func (c *checker) expr(e *syntax.Expr, expected string) (string, error) {
 	}
 	var typ string
 	switch e.Kind {
+	case "array", "repeat":
+		var err error
+		typ, err = c.arrayExpression(e, expected)
+		if err != nil {
+			return "", err
+		}
+	case "index":
+		var err error
+		typ, err = c.indexExpression(e, expected)
+		if err != nil {
+			return "", err
+		}
+	case "len":
+		var err error
+		typ, err = c.lengthExpression(e)
+		if err != nil {
+			return "", err
+		}
+
 	case "int":
 		var err error
 		typ, err = c.integer(e, expected, false)
@@ -566,6 +591,28 @@ func (c *checker) hint(e *syntax.Expr) string {
 		return ""
 	}
 	switch e.Kind {
+	case "array":
+		if typ := c.types[e]; typ != "" {
+			return typ
+		}
+		for _, arg := range e.Args {
+			if hint := c.hint(arg); hint != "" {
+				return arrayType(hint, len(e.Args))
+			}
+		}
+	case "repeat":
+		if element := c.hint(e.Left); element != "" {
+			if length, err := parseArrayLength(e.Text, e.Span); err == nil {
+				return arrayType(element, length)
+			}
+		}
+	case "index":
+		if array, ok := arrayInfo(c.hint(e.Left)); ok {
+			return array.Element
+		}
+	case "len":
+		return "usize"
+
 	case "cast":
 		return e.Target
 	case "struct":
@@ -828,6 +875,9 @@ func (c *checker) macro(e *syntax.Expr) error {
 		}
 		if structType(typ) {
 			return fail(arg.Span, "struct values cannot be formatted without a Display implementation")
+		}
+		if _, ok := arrayInfo(typ); ok {
+			return fail(arg.Span, "array values cannot be formatted without a Display implementation")
 		}
 
 	}

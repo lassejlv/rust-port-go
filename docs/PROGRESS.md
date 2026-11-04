@@ -114,3 +114,16 @@ This milestone links supported local library code into one bootstrap C executabl
 - Added 19 cast fixtures and inference regressions; all 112 language cases pass against rustc. Existing 16 Cargo package cases continue to pass offline.
 - Independent review matched 1,420 fixed-source cast outputs and 31 inference/grammar reproductions; optimized emitted C passed UBSan.
 - Full local tests and vet pass. General coercion/float/char/reference casts and full global inference remain further work; fixed-size arrays are the next language milestone.
+
+## 2026-11-04 — checkpoint 11: owned Copy arrays
+
+- Added fixed-size array types/literals/repeats, nested arrays and records, typed function values, usize indexing, indexed mutation and array length access.
+- Added bounds panics and preserved repeat evaluation once even at zero length, RHS-before-place assignment order, and place-versus-temporary index behavior.
+- Added mixed array/record layout analysis, element privacy and canonical type identity across crates; bare value-less divergent indexes reject while typed unreachable usize tails retain valid control flow.
+- Added 22 array fixtures and replaced the unsupported-array boundary with slices. All 134 language conformance cases pass against rustc; the 16 package fixtures remain green.
+- Review caught and corrected inflated zero-sized storage and unnecessary whole-array/record copies during len/field reads. Logical zero-sized aggregates now use one dummy byte; zero-sized fields carry no stored data. Constructors and indexed places retain side effects and bounds checks.
+- Added native regressions for large zero-sized nests, repeated length/scalar-field reads, zero-sized field effects and zero-length arrays of large elements.
+- Independent review matched 23 array/side-effect/layout regressions against rustc and ran their emitted C at O2 with UBSan without reports.
+- Updated the two-library Cargo demo to use an array of returned records and usize indexing. Local race tests, vet and both demos pass.
+
+Lengths are literal-only and bounded to 65536; general const evaluation, slices/borrowing, reference/string/unit elements, iteration traits and Rust layout/ABI introspection remain future work.

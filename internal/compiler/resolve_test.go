@@ -551,3 +551,115 @@ func TestResolveCastTargetsAcrossCrateAliases(t *testing.T) {
 		}
 	}
 }
+
+func TestResolveNestedArrayTypesAcrossRecordsAndAliases(t *testing.T) {
+	source := `
+mod model{#[derive(Copy,Clone)]pub struct Point{pub x:i32}}
+use model::Point as P;
+#[derive(Copy,Clone)]struct Bucket{values:[P;0x2usize]}
+fn take(items:[[P;2];1])->[P;0b10]{items[0]}
+fn main(){let values:[P;2]=[P{x:1};2];let nested:[[P;2];1]=[values];let b=Bucket{values:take(nested)};println!("{}",b.values[0].x);}
+`
+	program, err := syntax.Parse(source)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for attempt := 0; attempt < 2; attempt++ {
+		flat, err := resolveModules(program)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if flat.Structs[0].Fields[0].Type != "array:2:struct:model::Point" {
+			t.Fatalf("field type=%s", flat.Structs[0].Fields[0].Type)
+		}
+		take := flat.Functions[0]
+		if take.Params[0].Type != "array:1:array:2:struct:model::Point" || take.ReturnType != "array:2:struct:model::Point" {
+			t.Fatalf("take signature=%#v", take)
+		}
+		main := flat.Functions[1]
+		if main.Body.Statements[0].Type != "array:2:struct:model::Point" || main.Body.Statements[1].Type != "array:1:array:2:struct:model::Point" {
+			t.Fatal("let arrays not normalized")
+		}
+		if program.Structs[0].Fields[0].Type != "[P;0x2usize]" || program.Functions[0].Params[0].Type != "[[P;2];1]" {
+			t.Fatal("source signature or record fields mutated")
+		}
+	}
+}
+
+func TestResolveArrayLengthNormalization(t *testing.T) {
+	cases := []struct{ source, want string }{
+		{"[i8;0]", "array:0:i8"},
+		{"[u16;0x2usize]", "array:2:u16"},
+		{"[i64;0b10]", "array:2:i64"},
+		{"[bool;0o2_usize]", "array:2:bool"},
+		{"[[u8;2];3]", "array:3:array:2:u8"},
+		{"[u8;65_536usize]", "array:65536:u8"},
+	}
+	for _, tt := range cases {
+		t.Run(tt.source, func(t *testing.T) {
+			program := parseResolverCrate(t, `fn take(x:i32){}fn main(){}`, "")
+			program.Functions[0].Params[0].Type = tt.source
+			flat, err := resolveModules(program)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if flat.Functions[0].Params[0].Type != tt.want {
+				t.Fatalf("got %s, want %s", flat.Functions[0].Params[0].Type, tt.want)
+			}
+		})
+	}
+}
+
+func TestResolveArrayTypesRejectBadLengthsAndElements(t *testing.T) {
+	cases := []struct{ source, want string }{
+		{"[i32;2u8]", "unsuffixed or usize"},
+		{"[i32;2i32]", "unsuffixed or usize"},
+		{"[i32;65537]", "array length"},
+		{"[i32;18446744073709551616usize]", "array length"},
+		{"[i32;-1]", "array length"},
+		{"[Absent;0]", "unresolved module path"},
+		{"[[Absent;2];3]", "unresolved module path"},
+		{"[i32]", "malformed array type"},
+		{"[i32;]", "malformed array type"},
+		{"[;2]", "malformed array type"},
+		{"[i32;2", "malformed array type"},
+	}
+	for _, tt := range cases {
+		t.Run(tt.source, func(t *testing.T) {
+			program := parseResolverCrate(t, `fn take(x:i32){}fn main(){}`, "")
+			program.Functions[0].Params[0].Type = tt.source
+			_, err := resolveModules(program)
+			if err == nil || !strings.Contains(err.Error(), tt.want) {
+				t.Fatalf("got %v, want %s", err, tt.want)
+			}
+		})
+	}
+}
+
+func TestResolveArrayElementPrivacyAcrossCratesAndReanalysis(t *testing.T) {
+	dependency := parseResolverCrate(t, `#[derive(Copy,Clone)]pub struct Point{pub x:i32}`, "@crate1")
+	root := parseResolverCrate(t, `use dep::Point as P;fn take(p:[dep::Point;1])->[P;1]{p}fn main(){let values:[P;1]=[P{x:1}];let again=take(values);}`, "")
+	root.Externs = map[string]*syntax.Program{"dep": dependency}
+	for attempt := 0; attempt < 2; attempt++ {
+		flat, err := resolveModules(root)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if flat.Functions[0].Params[0].Type != "array:1:struct:@crate1::Point" || flat.Functions[0].ReturnType != "array:1:struct:@crate1::Point" {
+			t.Fatal("extern array type identity lost")
+		}
+		if flat.Functions[1].Body.Statements[0].Type != "array:1:struct:@crate1::Point" {
+			t.Fatal("canonical let array did not revalidate")
+		}
+	}
+	for _, typ := range []string{"[hidden::Point;0]", "array:0:struct:hidden::Point", "array:2:array:0:struct:hidden::Point"} {
+		t.Run(typ, func(t *testing.T) {
+			program := parseResolverCrate(t, `mod hidden{#[derive(Copy,Clone)]struct Point{pub x:i32}}fn take(p:i32){}fn main(){}`, "")
+			program.Functions[0].Params[0].Type = typ
+			_, err := resolveModules(program)
+			if err == nil || !strings.Contains(err.Error(), "private") {
+				t.Fatalf("private array element accepted: %v", err)
+			}
+		})
+	}
+}

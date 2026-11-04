@@ -47,6 +47,9 @@ func (g *generator) line(format string, args ...any) {
 	g.WriteByte('\n')
 }
 func cType(t string) string {
+	if strings.HasPrefix(t, "array:") {
+		return "fr_array_" + hex.EncodeToString([]byte(t))
+	}
 	if info, ok := integerInfo(t); ok {
 		return info.CType
 	}
@@ -69,33 +72,66 @@ func cType(t string) string {
 }
 func cField(name string) string { return "fr_field_" + name }
 func (g *generator) structDefinitions() {
-	for _, key := range g.checked.structOrder {
+	for _, key := range g.checked.typeOrder {
 		name := cType(key)
 		g.line("typedef struct %s %s;", name, name)
 	}
-	for _, key := range g.checked.structOrder {
-		structure := g.checked.structs[key]
+	for _, key := range g.checked.typeOrder {
 		g.line("struct %s {", cType(key))
 		g.indent++
-		if len(structure.Fields) == 0 {
+		if g.checked.zeroSized[key] {
 			g.line("unsigned char fr_empty;")
-		}
-		for _, field := range structure.Fields {
-			g.line("%s %s;", cType(field.Type), cField(field.Name))
+		} else if array, ok := g.checked.arrays[key]; ok {
+			g.line("%s fr_data[%d];", cType(array.Element), array.Length)
+		} else {
+			structure := g.checked.structs[key]
+			for _, field := range structure.Fields {
+				if !g.checked.zeroSized[field.Type] {
+					g.line("%s %s;", cType(field.Type), cField(field.Name))
+				}
+			}
 		}
 		g.indent--
 		g.line("};")
 	}
 }
+
 func (g *generator) place(e *syntax.Expr) string {
 	if e.Kind == "name" {
 		return g.checked.names[e]
 	}
 	if e.Kind == "field" {
-		return "(" + g.place(e.Left) + ")." + cField(e.Text)
+		base := g.place(e.Left)
+		if base == "" {
+			return ""
+		}
+		if g.checked.zeroSized[g.checked.types[e]] {
+			return g.zeroValue(g.checked.types[e])
+		}
+		return "(" + base + ")." + cField(e.Text)
+	}
+	if e.Kind == "index" {
+		base := g.place(e.Left)
+		if base == "" {
+			return ""
+		}
+		index := g.expr(e.Right)
+		if g.checked.diverges[e.Right] {
+			return ""
+		}
+		array := g.checked.arrays[g.checked.types[e.Left]]
+		g.checkIndex(index, array.Length, e.Span.Line)
+		if array.Length == 0 {
+			return "(*((" + cType(array.Element) + " *)0))"
+		}
+		if g.checked.zeroSized[array.Element] {
+			return g.zeroValue(array.Element)
+		}
+		return "(" + base + ").fr_data[" + index + "]"
 	}
 	panic("unchecked assignment place: " + e.Kind)
 }
+
 func (g *generator) signature(f *syntax.Function) string {
 	var params []string
 	for i, p := range f.Params {
@@ -171,12 +207,15 @@ func (g *generator) statement(s *syntax.Stmt) {
 		}
 	case "assign":
 		value := g.expr(s.Expr)
+		if g.checked.diverges[s.Expr] {
+			return
+		}
 		name := g.checked.decls[s]
 		if s.Target != nil {
 			name = g.place(s.Target)
-		}
-		if g.checked.diverges[s.Expr] {
-			return
+			if name == "" {
+				return
+			}
 		}
 		if s.Op != "=" {
 			value = g.arithmetic(strings.TrimSuffix(s.Op, "="), g.checked.assignTypes[s], name, value)
@@ -244,6 +283,22 @@ func (g *generator) arithmetic(op, t, a, b string) string {
 func (g *generator) expr(e *syntax.Expr) string {
 	t := g.checked.types[e]
 	switch e.Kind {
+	case "array", "repeat":
+		return g.arrayValue(e)
+	case "index":
+		return g.indexValue(e)
+	case "len":
+		var value string
+		if isArrayPlace(e.Left) {
+			value = g.place(e.Left)
+		} else {
+			value = g.expr(e.Left)
+		}
+		if value == "" || g.checked.diverges[e.Left] {
+			return ""
+		}
+		array := g.checked.arrays[g.checked.types[e.Left]]
+		return fmt.Sprintf("((uintptr_t)%d)", array.Length)
 	case "cast":
 		value := g.expr(e.Left)
 		if g.checked.diverges[e.Left] {
@@ -267,9 +322,17 @@ func (g *generator) expr(e *syntax.Expr) string {
 		g.line("memcpy(&%s, &%s, sizeof(%s));", result, narrowed, result)
 		return result
 	case "field":
-		value := g.expr(e.Left)
-		if g.checked.diverges[e.Left] {
+		var value string
+		if isArrayPlace(e.Left) {
+			value = g.place(e.Left)
+		} else {
+			value = g.expr(e.Left)
+		}
+		if value == "" || g.checked.diverges[e.Left] {
 			return ""
+		}
+		if g.checked.zeroSized[t] {
+			return g.zeroValue(t)
 		}
 		return g.temp(t, "("+value+")."+cField(e.Text))
 	case "struct":
@@ -279,7 +342,9 @@ func (g *generator) expr(e *syntax.Expr) string {
 			if g.checked.diverges[field.Value] {
 				return ""
 			}
-			fields = append(fields, "."+cField(field.Name)+" = "+value)
+			if !g.checked.zeroSized[g.checked.types[field.Value]] {
+				fields = append(fields, "."+cField(field.Name)+" = "+value)
+			}
 		}
 		if len(fields) == 0 {
 			fields = append(fields, ".fr_empty = 0")

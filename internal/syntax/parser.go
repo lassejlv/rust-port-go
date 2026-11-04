@@ -227,8 +227,31 @@ func (p *parser) structLiteral(e *Expr) (*Expr, error) {
 	return e, nil
 }
 
-func (p *parser) postfix(e *Expr) (*Expr, error) {
-	for p.take(".") {
+func (p *parser) postfix(e *Expr, allowIndex bool) (*Expr, error) {
+	for {
+		if allowIndex && p.take("[") {
+			if p.at("..") {
+				return nil, sourceError(p.current().span, "slices and ranges are not supported")
+			}
+			if p.at("]") {
+				return nil, sourceError(p.current().span, "array indexing requires an expression")
+			}
+			index, err := p.fullExpression(1)
+			if err != nil {
+				return nil, err
+			}
+			if p.at("..") {
+				return nil, sourceError(p.current().span, "slices and ranges are not supported")
+			}
+			if _, err := p.expect("]"); err != nil {
+				return nil, err
+			}
+			e = &Expr{Kind: "index", Left: e, Right: index, Span: e.Span}
+			continue
+		}
+		if !p.take(".") {
+			break
+		}
 		if p.current().kind == "int" {
 			return nil, sourceError(p.current().span, "tuple fields and floating-point literals are not supported")
 		}
@@ -236,12 +259,79 @@ func (p *parser) postfix(e *Expr) (*Expr, error) {
 		if err != nil {
 			return nil, err
 		}
-		e = &Expr{Kind: "field", Text: field.text, Left: e, Span: e.Span}
-		if p.at("(") {
-			return nil, sourceError(p.current().span, "methods and callable fields are not supported")
+		if p.take("(") {
+			if field.text != "len" {
+				return nil, sourceError(field.span, "methods and callable fields are not supported")
+			}
+			if !p.take(")") {
+				return nil, sourceError(p.current().span, "array .len() takes no arguments")
+			}
+			e = &Expr{Kind: "len", Left: e, Span: e.Span}
+		} else {
+			e = &Expr{Kind: "field", Text: field.text, Left: e, Span: e.Span}
 		}
+		// Dot projection makes a bare block/if an ordinary expression; subsequent
+		// indexing is then permitted even in statement position.
+		allowIndex = true
 	}
 	return e, nil
+}
+
+func (p *parser) arrayLengthLiteral() (string, error) {
+	length := p.current()
+	if length.kind != "int" {
+		return "", sourceError(length.span, "array lengths must be unsuffixed or usize integer literals; constant expressions are not supported")
+	}
+	for _, suffix := range []string{"i8", "i16", "i32", "i64", "isize", "u8", "u16", "u32", "u64"} {
+		if strings.HasSuffix(length.text, suffix) {
+			return "", sourceError(length.span, "array lengths must be unsuffixed or usize integer literals")
+		}
+	}
+	p.index++
+	return length.text, nil
+}
+
+func (p *parser) arrayLiteral(start token) (*Expr, error) {
+	array := &Expr{Kind: "array", Span: start.span}
+	if p.take("]") {
+		return array, nil
+	}
+	if p.at("..") {
+		return nil, sourceError(p.current().span, "array spread and range syntax are not supported")
+	}
+	first, err := p.fullExpression(1)
+	if err != nil {
+		return nil, err
+	}
+	if p.take(";") {
+		length, err := p.arrayLengthLiteral()
+		if err != nil {
+			return nil, err
+		}
+		if !p.at("]") {
+			return nil, sourceError(p.current().span, "array repeat counts must be a single integer literal")
+		}
+		p.index++
+		return &Expr{Kind: "repeat", Left: first, Text: length, Span: start.span}, nil
+	}
+	array.Args = append(array.Args, first)
+	for p.take(",") {
+		if p.at("]") {
+			break
+		}
+		value, err := p.fullExpression(1)
+		if err != nil {
+			return nil, err
+		}
+		array.Args = append(array.Args, value)
+	}
+	if p.at("..") {
+		return nil, sourceError(p.current().span, "array spread and range syntax are not supported")
+	}
+	if _, err := p.expect("]"); err != nil {
+		return nil, err
+	}
+	return array, nil
 }
 
 func (p *parser) fullExpression(min int) (*Expr, error) {
@@ -390,6 +480,27 @@ func (p *parser) function() (*Function, error) {
 
 func (p *parser) typeName() (string, error) {
 	start := p.current()
+	if p.take("[") {
+		element, err := p.typeName()
+		if err != nil {
+			return "", err
+		}
+		if p.at("]") {
+			return "", sourceError(start.span, "slices are not supported; array types require [T; N]")
+		}
+		if _, err := p.expect(";"); err != nil {
+			return "", err
+		}
+		length, err := p.arrayLengthLiteral()
+		if err != nil {
+			return "", err
+		}
+		if !p.at("]") {
+			return "", sourceError(p.current().span, "array type lengths must be a single integer literal")
+		}
+		p.index++
+		return "[" + element + ";" + length + "]", nil
+	}
 	if p.take("(") {
 		if p.take(")") {
 			return "()", nil
@@ -404,6 +515,9 @@ func (p *parser) typeName() (string, error) {
 		return typ, nil
 	}
 	if p.take("&") {
+		if p.at("[") {
+			return "", sourceError(start.span, "array references and slices are not supported")
+		}
 		if _, err := p.expect("str"); err != nil {
 			return "", err
 		}
@@ -450,7 +564,7 @@ func (p *parser) block() (*Block, error) {
 		if err != nil {
 			return nil, err
 		}
-		if (e.Kind == "name" || e.Kind == "field") && isAssignment(p.current().kind) {
+		if (e.Kind == "name" || e.Kind == "field" || e.Kind == "index") && isAssignment(p.current().kind) {
 			op := p.current()
 			p.index++
 			rhs, err := p.expression(1)
@@ -461,7 +575,7 @@ func (p *parser) block() (*Block, error) {
 				return nil, err
 			}
 			assignment := Stmt{Kind: "assign", Op: op.kind, Expr: rhs, Span: e.Span}
-			if e.Kind == "field" {
+			if e.Kind == "field" || e.Kind == "index" {
 				assignment.Target = e
 			} else {
 				assignment.Name = e.Text
@@ -494,7 +608,11 @@ func (p *parser) block() (*Block, error) {
 // Parentheses opt back into ordinary expression parsing, as do all RHS contexts.
 func (p *parser) statementExpression() (*Expr, error) {
 	if p.at("if") || p.at("{") {
-		e, err := p.prefix()
+		e, err := p.atom()
+		if err != nil {
+			return nil, err
+		}
+		e, err = p.postfix(e, false)
 		if err != nil {
 			return nil, err
 		}
@@ -679,11 +797,17 @@ func (p *parser) prefix() (*Expr, error) {
 	if err != nil {
 		return nil, err
 	}
-	return p.postfix(e)
+	return p.postfix(e, true)
 }
 
 func (p *parser) atom() (*Expr, error) {
 	t := p.current()
+	if p.at("&") || p.at("&&") {
+		return nil, sourceError(t.span, "references, borrows and slices are not supported")
+	}
+	if p.take("[") {
+		return p.arrayLiteral(t)
+	}
 	if p.take("if") {
 		return p.ifExpression(t)
 	}

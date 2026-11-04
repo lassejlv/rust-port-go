@@ -11,6 +11,7 @@ Ferrugo 0.1.0 implements the subset below. It is not yet compatible with complet
 - Parameters with explicit types; explicitly typed function returns, default unit returns.
 - Brace-style named records deriving exactly `Copy` and `Clone`, with supported integer/boolean or nested Copy-record fields; named type paths and simple type imports. Constructors support named/shorthand fields and preserve written evaluation order.
 - Record values in locals, function parameters/results and branches, field reads, and field assignments rooted in mutable locals; type and field privacy is checked.
+- Owned fixed-size Copy arrays: `[T; N]`, lists/repeats, nested arrays/records, function values, `usize` indexing, mutable indexed places and array `.len()`. Lengths are unsuffixed/usize literals up to 65536; elements are supported integers, bool, Copy records or nested arrays. Repeat operands evaluate once even when N is zero.
 - Decimal/binary/octal/hexadecimal integers, underscores, optional supported integer suffixes, signed minima; unsuffixed integers default to `i32` with limited contextual inference.
 - UTF-8 string literals and common escapes, including embedded NUL. CRLF source text in strings normalizes to LF; escaped CRLF line continuations are supported. Strings carry lengths at runtime.
 - `let`, optional type annotations, `mut`, lexical shadowing and nested scopes.
@@ -30,9 +31,11 @@ The C11 backend generates native executables using libc. Operands and arguments 
 
 ## Known limits
 
-There is no ownership/borrow checker yet: the accepted subset has copyable scalar/record values and static string literals only. There are no references beyond literal-backed `&str`, heap allocation, general user-defined types, traits, generics, closures, patterns, arrays/slices, enums, move-only structs, statics, const evaluation, async, unsafe, FFI, inline assembly, procedural or declarative macros, attributes, conditional compilation, standard library APIs, argument/input APIs, incremental compilation or Rust ABI support.
+There is no ownership/borrow checker yet: the accepted subset has copyable scalar/record values and static string literals only. There are no references beyond literal-backed `&str`, heap allocation, general user-defined types, traits, generics, closures, patterns, slices, general iterators, enums, move-only structs, statics, const evaluation, async, unsafe, FFI, inline assembly, procedural or declarative macros, attributes, conditional compilation, standard library APIs, argument/input APIs, incremental compilation or Rust ABI support.
 
-Move-only/plain structs, tuple/unit struct declarations, generic records, methods, struct update syntax, unit or reference fields, and trait-based record formatting/comparison remain unsupported. Records require the supported `Copy`/`Clone` derive pair; this does not implement general trait selection. Empty records use an inaccessible C padding byte; Rust layout/ABI introspection remains unsupported.
+Array borrows/slices, reference/string/unit elements, general constant length expressions and lengths above 65536 remain unsupported. Dynamic bounds checks panic with status 101; constant unconditional-panic linting is incomplete.
+
+Move-only/plain structs, tuple/unit struct declarations, generic records, methods, struct update syntax, unit or reference fields, and trait-based record formatting/comparison remain unsupported. Records require the supported `Copy`/`Clone` derive pair; this does not implement general trait selection. Logical zero-sized arrays/records use an inaccessible C padding byte and zero-sized record fields are omitted. Rust layout/ABI introspection remains unsupported.
 
 Public reexports, restricted visibility, grouped/glob/absolute imports, local module/import items, shared function/module/import/record names in one namespace, and shadowing primitive types with record declarations or record import aliases remain unsupported. Module nesting is bounded to 256 levels. Source-string compiler APIs support inline modules only; file-based APIs load external declarations.
 

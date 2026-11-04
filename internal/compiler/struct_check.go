@@ -26,7 +26,7 @@ func moduleContains(owner, current string) bool {
 }
 
 func (c *checker) supportedType(typ string) bool {
-	return supportedType(typ) || c.structs[typ] != nil
+	return supportedType(typ) || c.structs[typ] != nil || c.copyElement(typ)
 }
 
 func (c *checker) collectStructs() error {
@@ -55,37 +55,14 @@ func (c *checker) collectStructs() error {
 			}
 		}
 	}
-	state := make(map[string]int)
-	var visit func(string) error
-	visit = func(key string) error {
-		if state[key] == 2 {
-			return nil
-		}
-		s := c.structs[key]
-		if state[key] == 1 {
-			return fail(s.Span, "recursive by-value struct layout involving %q", s.Name)
-		}
-		state[key] = 1
-		for _, field := range s.Fields {
-			if structType(field.Type) {
-				if err := visit(field.Type); err != nil {
-					return err
-				}
-			}
-		}
-		state[key] = 2
-		c.structOrder = append(c.structOrder, key)
-		return nil
-	}
-	for _, s := range c.program.Structs {
-		if err := visit("struct:" + s.Name); err != nil {
-			return err
-		}
-	}
+
 	return nil
 }
 
 func (c *checker) visibleType(typ string, span syntax.Span) error {
+	if array, ok := arrayInfo(typ); ok {
+		return c.visibleType(array.Element, span)
+	}
 	s := c.structs[typ]
 	if s != nil && !s.Public && !moduleContains(itemModule(s.Name), c.currentModule) {
 		return fail(span, "type %q is private", s.Name)
@@ -179,6 +156,29 @@ func (c *checker) place(e *syntax.Expr) (string, binding, error) {
 		c.names[e], c.types[e] = root.cname, root.typ
 		return root.typ, root, nil
 	}
+	if e.Kind == "index" {
+		typ, root, err := c.place(e.Left)
+		if err != nil {
+			return "", binding{}, err
+		}
+		array, ok := arrayInfo(typ)
+		if !ok {
+			return "", binding{}, fail(e.Span, "index assignment receiver must be an array")
+		}
+		if _, err := c.expr(e.Right, "usize"); err != nil {
+			return "", binding{}, err
+		}
+		if c.bottom[e.Right] {
+			return "", binding{}, fail(e.Span, "value-less divergent indexes are unsupported")
+		}
+
+		if err := c.visibleType(array.Element, e.Span); err != nil {
+			return "", binding{}, err
+		}
+		c.types[e] = array.Element
+		c.diverges[e] = c.diverges[e.Left] || c.diverges[e.Right]
+		return array.Element, root, nil
+	}
 	if e.Kind != "field" {
 		return "", binding{}, fail(e.Span, "field assignment must be rooted in a mutable local variable")
 	}
@@ -191,6 +191,7 @@ func (c *checker) place(e *syntax.Expr) (string, binding, error) {
 		return "", binding{}, err
 	}
 	c.types[e] = field.Type
+	c.diverges[e] = c.diverges[e.Left]
 	return field.Type, root, nil
 }
 
@@ -205,5 +206,5 @@ func (c *checker) fieldAssignment(s *syntax.Stmt) (bool, error) {
 	if err := c.assignmentRHS(s, typ); err != nil {
 		return false, err
 	}
-	return !c.diverges[s.Expr], nil
+	return !c.diverges[s.Expr] && !c.diverges[s.Target], nil
 }
