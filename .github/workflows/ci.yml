@@ -73,3 +73,15 @@ jobs:
           FERRUGO_GO: go
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: 1.99.1
+      - name: Verify compiler utility references
+        run: |
+          go run ./tools/port-rust-base-n -check
+          go run ./tools/port-rust-binary-search -check
+          go run ./tools/port-rust-union-find -check
+          go run ./tools/port-rust-thousands -check
+          go run ./tools/port-rust-index -check
+          go test -tags ferrugo_rustc_nightly ./port/rust/compiler/rustc_index/src
+          go run -tags ferrugo_rustc_nightly ./tools/port-rust-index -check
+        env:
+          FERRUGO_RUSTC: rustc
+          RUSTUP_TOOLCHAIN: 1.99.1

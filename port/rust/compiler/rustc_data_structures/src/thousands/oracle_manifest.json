@@ -1,0 +1,23 @@
+{
+  "format": 1,
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_path": "compiler/rustc_data_structures/src/thousands/mod.rs",
+  "source_git_blob": "b251ebe58f6b9942537c650fe5b65e0315c41f3b",
+  "source_sha256": "adcd6db15c34f2fbf4aa9804427cd2f86c8e9e63be5a07316b1ab5e6240d21fb",
+  "tests_path": "compiler/rustc_data_structures/src/thousands/tests.rs",
+  "tests_git_blob": "0f9a648802b85ae6731512c13cabe4fddd02d8b2",
+  "tests_sha256": "9596a03a2af2075b20952c1483b31d43a6b9d76918b9184148a96bb60b6de56f",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "host_pointer_bits": 64,
+  "upstream_tests": 4,
+  "cases": {
+    "f": 42181,
+    "i": 2297,
+    "s": 1052,
+    "u": 2297
+  },
+  "oracle_source_sha256": "63dd3ee3780be35f8be3f3e9dffcd045b83edb80e91f780a264bac0cd781a093",
+  "request_sha256": "3e157b465059c52f326ae99f15cfef90839977ef63fb98e46c97ae5907458ba7",
+  "oracle_raw_sha256": "0335da6963720f688b0fb68b48fe0095cadd21f6925725ef9f3df94030adbbb7",
+  "fixture_sha256": "59fcc39bcd625dde82bad00cf0e51f7c582a626ba04efcf89375d2dd55ff651a"
+}

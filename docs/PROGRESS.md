@@ -151,3 +151,16 @@ The next goal is complete upstream file ports with a per-file inventory and repr
 - Verified the minimum Go 1.23 toolchain and fixed executable lookup, machine-specific report metadata and cross-version gzip regeneration differences before pushing. Removed a scheduling-dependent Rust queue test probe; the direct upstream operation comparisons and controlled Go concurrency regression remain.
 
 These six completed source files begin the direct port. The broader compiler, standard libraries, Cargo integration and production compatibility gates remain unfinished. Work continues with the compiler's binary-search and base-encoding utilities.
+
+## 2026-11-04 — checkpoint 14: compiler utility files and complete generic adapters
+
+- Ported the complete binary-search module and its test file, preserving borrowed result ranges and separate Rust less-than, not-equal and less-or-equal operators. The expanded oracle matches 41,835 operator cases and 34,536 comparator-adapter cases, including callback traces and panics.
+- Ported complete base-N encoding and its test file: all 128 input bits, exact digit alphabet, fixed widths, custom trait implementations and independent method overrides. Original comparisons cover 74,781 numeric cases, 543 failure cases and 1,225 custom-trait cases.
+- Ported complete union-find and its test file with source-order path compression, rank updates, owned snapshots, debug/release checks and typed-index adapters. All 3,788 original-source records match results, parent/rank state, callbacks and recovered partial mutations.
+- Expanded Cargo's graph adapter from native-comparable keys to every comparator-ordered Go key type, including slices and records containing slices. Independent Eq/Ne callbacks and stable edge addresses now have original-source comparison coverage. Existing integer-corpus results are unchanged.
+- Ported the complete typed-index file, including custom/default operations, checked/wrapping profiles and all standard/nightly range conversions. All 32,644 original-source records match; source feature availability has an explicit Go build tag. Union-find's built-in index adapters now use this shared component.
+- Ported the complete number-formatting module and its test file. All four upstream tests and 47,827 cases match, including 42,181 floating-point values, nonfinite values, signed zero and rounding boundaries.
+- Review found and closed generic extension-point gaps before these new files received completion credit. Retained dependency shims are scoped and documented; they do not count as ports of other source files.
+- Original-source, minimum-Go, race, vet, reproducibility and cross-version fixture checks pass. Hosted CI now rebuilds the new utility references; the preceding source-port and Linux jobs passed, while the macOS runner remained queued.
+
+Fifteen source files now have recorded port/validation evidence. This does not complete their containing compiler crate or production Rust compatibility. The complete format-string parser and its literal-escaping dependency are next.

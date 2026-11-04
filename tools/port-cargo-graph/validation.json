@@ -48,6 +48,13 @@
   ],
   "upstream_tests_per_profile": 3,
   "cases_per_profile": 1416,
+  "node_key_profiles": [
+    "i32/int",
+    "Vec\u003ci32\u003e/[]int",
+    "RecordKey{Vec\u003ci32\u003e,i32}/struct{Parts []int;Tag int}",
+    "custom node/edge Eq and Ne with operator traces and panics"
+  ],
+  "generic_operator_probes_per_profile": 8,
   "case_input_sha256": "457dc7863308521b88cdc44c33364b3bf711ba1d5c0eb0b3a16a5c662622c4a9",
   "profiles": [
     "debug (debug_assertions=true)",
@@ -68,6 +75,22 @@
         "path_end": 1688
       }
     },
+    "generic_debug_stderr": {
+      "sha256": "d44da894d6b1899877921ae21a9f2c5877934d4df0b684accac071ad1f522b71",
+      "bytes": 180
+    },
+    "generic_debug_stdout": {
+      "sha256": "3d045d7f87b61558c73dcedb9e53f9a904e60ef2ac044869de3b37c9b87a4103",
+      "bytes": 1544
+    },
+    "generic_release_stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "generic_release_stdout": {
+      "sha256": "4d6de306edd5083c63eaf055cf4b959e5bd15aa6b4b32f55faf9ae0d619b7f3d",
+      "bytes": 1530
+    },
     "release_stderr": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
@@ -84,19 +107,24 @@
     }
   },
   "evidence_sha256": {
-    "port/cargo/src/util/graph.go": "be71c0f6896f16bab40aa26d0cc1dd00de0f84ef882c1082a4b122e4e87ed637",
+    "port/cargo/src/util/graph.go": "e4627accc01ba1d6613e5e8154ce875a9dca38c606a5ee5aea94bc5dc9230d4d",
+    "port/cargo/src/util/graph_generic_test.go": "a94d456c3b6349a74d32bc3e7537f6faf458d5ead15199d8d3a0b37dc7b23875",
     "port/cargo/src/util/graph_test.go": "090f77ba424a1c6971223ebec8dafa983f8a0ac6ee2fdded8ec1792d4988b63d",
     "port/cargo/src/util/testdata/graph_cases.json.gz": "2dd0e6cd25f8eaa9708e878208e42b9d59640df2ef62873bf48098b65d9ed839",
+    "port/cargo/src/util/testdata/graph_generic_debug.stderr": "d44da894d6b1899877921ae21a9f2c5877934d4df0b684accac071ad1f522b71",
+    "port/cargo/src/util/testdata/graph_generic_debug.stdout": "3d045d7f87b61558c73dcedb9e53f9a904e60ef2ac044869de3b37c9b87a4103",
+    "port/cargo/src/util/testdata/graph_generic_release.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "port/cargo/src/util/testdata/graph_generic_release.stdout": "4d6de306edd5083c63eaf055cf4b959e5bd15aa6b4b32f55faf9ae0d619b7f3d",
     "tools/port-cargo-graph/Cargo.lock": "0411c64d7bbab5c036742bfdb79f456aad36e58dd5bc01872547d7d656fc572a",
     "tools/port-cargo-graph/Cargo.toml": "ee10dfede39e0dc48850343273bb2c2cdf2ffd98b36ca0beb0355ea58ca9a65d",
-    "tools/port-cargo-graph/main.go": "84c7b63baf80944d57707305a2a9f826927e76719c67aaa05bc8159504272b13",
-    "tools/port-cargo-graph/oracle.rs": "95d83a79338f651127cbdc659ee1febb08abd77c2436ef573f4870bbb10ea87a"
+    "tools/port-cargo-graph/main.go": "d57350bba154ae1c169b17df47f46f35cddccc0d2172b21456b54e78b40f122d",
+    "tools/port-cargo-graph/oracle.rs": "6c5fb6206273ac03ac822fad0ee99029bb40041939ca23bc3de8a53f7d249ea5"
   },
   "commands": [
     "GOCACHE=/tmp/ferrugo-go-cache .toolchain/go/bin/go run ./tools/port-cargo-graph",
     "GOCACHE=/tmp/ferrugo-go-cache .toolchain/go/bin/go run ./tools/port-cargo-graph -check",
     "GOCACHE=/tmp/ferrugo-go-cache .toolchain/go/bin/go test ./port/cargo/src/util -run '^TestGraph' -count=1"
   ],
-  "storage_adapter": "im_rc::OrdMap is replaced by Go maps traversed through comparator-sorted keys; Clone eagerly creates independent adjacency/edge storage with supplied Clone adapters. Debug assertions are enabled by default; DisableDebugAssertions selects release behavior.",
+  "storage_adapter": "im_rc::OrdMap/BTreeMap/BTreeSet are replaced by comparator-searched sorted entries accepting N any without native Go equality or hashing. Direct node Eq/Ne and map equality's tuple node/edge Ne dispatch through independent adapters. Clone eagerly creates independent adjacency/edge storage; allocation sharing, comparator-search patterns and Clone callback timing differ from im_rc. Debug assertions default on; DisableDebugAssertions selects release behavior.",
   "skips": []
 }

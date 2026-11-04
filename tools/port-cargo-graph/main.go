@@ -34,26 +34,28 @@ type outputEvidence struct {
 	Panics map[string]int `json:"panic_results,omitempty"`
 }
 type report struct {
-	Format        int                       `json:"format"`
-	CargoRevision string                    `json:"cargo_revision"`
-	SourcePath    string                    `json:"source_path"`
-	SourceGitBlob string                    `json:"source_git_blob"`
-	SourceSHA256  string                    `json:"source_sha256"`
-	SourceLines   int                       `json:"source_lines"`
-	SourceBytes   int                       `json:"source_bytes"`
-	Rustc         string                    `json:"rustc"`
-	Go            string                    `json:"go"`
-	Host          string                    `json:"host"`
-	Dependencies  []dependency              `json:"oracle_dependencies"`
-	UpstreamTests int                       `json:"upstream_tests_per_profile"`
-	Cases         int                       `json:"cases_per_profile"`
-	InputSHA256   string                    `json:"case_input_sha256"`
-	Profiles      []string                  `json:"profiles"`
-	Outputs       map[string]outputEvidence `json:"original_source_outputs"`
-	Files         map[string]string         `json:"evidence_sha256"`
-	Commands      []string                  `json:"commands"`
-	Storage       string                    `json:"storage_adapter"`
-	Skips         []string                  `json:"skips"`
+	Format         int                       `json:"format"`
+	CargoRevision  string                    `json:"cargo_revision"`
+	SourcePath     string                    `json:"source_path"`
+	SourceGitBlob  string                    `json:"source_git_blob"`
+	SourceSHA256   string                    `json:"source_sha256"`
+	SourceLines    int                       `json:"source_lines"`
+	SourceBytes    int                       `json:"source_bytes"`
+	Rustc          string                    `json:"rustc"`
+	Go             string                    `json:"go"`
+	Host           string                    `json:"host"`
+	Dependencies   []dependency              `json:"oracle_dependencies"`
+	UpstreamTests  int                       `json:"upstream_tests_per_profile"`
+	Cases          int                       `json:"cases_per_profile"`
+	KeyProfiles    []string                  `json:"node_key_profiles"`
+	OperatorProbes int                       `json:"generic_operator_probes_per_profile"`
+	InputSHA256    string                    `json:"case_input_sha256"`
+	Profiles       []string                  `json:"profiles"`
+	Outputs        map[string]outputEvidence `json:"original_source_outputs"`
+	Files          map[string]string         `json:"evidence_sha256"`
+	Commands       []string                  `json:"commands"`
+	Storage        string                    `json:"storage_adapter"`
+	Skips          []string                  `json:"skips"`
 }
 
 func hash(data []byte) string { sum := sha256.Sum256(data); return hex.EncodeToString(sum[:]) }
@@ -271,7 +273,7 @@ func run(root, cargo, rustc, goBinary, cargoHome string, check, offline bool) er
 	if err != nil {
 		return err
 	}
-	if !bytes.Contains(output, []byte("matched 1416 original-source graph cases")) {
+	if !bytes.Contains(output, []byte("matched 1416 original-source graph cases")) || !bytes.Contains(output, []byte("matched vector/record keys and direct Eq/Ne operator traces in both profiles")) {
 		return fmt.Errorf("unexpected Go graph test result:\n%s", output)
 	}
 	fixturePath := "port/cargo/src/util/testdata/graph_cases.json.gz"
@@ -297,7 +299,7 @@ func run(root, cargo, rustc, goBinary, cargoHome string, check, offline bool) er
 		return err
 	}
 	files := make(map[string]string)
-	for _, path := range []string{"port/cargo/src/util/graph.go", "port/cargo/src/util/graph_test.go", fixturePath, "tools/port-cargo-graph/main.go", "tools/port-cargo-graph/oracle.rs", "tools/port-cargo-graph/Cargo.toml", "tools/port-cargo-graph/Cargo.lock"} {
+	for _, path := range []string{"port/cargo/src/util/graph.go", "port/cargo/src/util/graph_test.go", "port/cargo/src/util/graph_generic_test.go", fixturePath, "port/cargo/src/util/testdata/graph_generic_debug.stdout", "port/cargo/src/util/testdata/graph_generic_debug.stderr", "port/cargo/src/util/testdata/graph_generic_release.stdout", "port/cargo/src/util/testdata/graph_generic_release.stderr", "tools/port-cargo-graph/main.go", "tools/port-cargo-graph/oracle.rs", "tools/port-cargo-graph/Cargo.toml", "tools/port-cargo-graph/Cargo.lock"} {
 		data, err := os.ReadFile(absolute(path))
 		if err != nil {
 			return err
@@ -315,7 +317,16 @@ func run(root, cargo, rustc, goBinary, cargoHome string, check, offline bool) er
 		}
 		outputs[name] = item
 	}
-	metadata := report{Format: 1, CargoRevision: cargoRevision, SourcePath: "src/util/graph.rs", SourceGitBlob: graphSourceBlob, SourceSHA256: graphSourceHash, SourceLines: bytes.Count(original, []byte{'\n'}), SourceBytes: len(original), Rustc: pinnedRustc, Go: strings.TrimSpace(string(goVersion)), Host: runtime.GOOS + "/" + runtime.GOARCH, Dependencies: dependencies, UpstreamTests: 3, Cases: fixture.Cases, InputSHA256: fixture.InputSHA256, Profiles: []string{"debug (debug_assertions=true)", "release (debug_assertions=false)"}, Outputs: outputs, Files: files, Commands: []string{"GOCACHE=/tmp/ferrugo-go-cache .toolchain/go/bin/go run ./tools/port-cargo-graph", "GOCACHE=/tmp/ferrugo-go-cache .toolchain/go/bin/go run ./tools/port-cargo-graph -check", "GOCACHE=/tmp/ferrugo-go-cache .toolchain/go/bin/go test ./port/cargo/src/util -run '^TestGraph' -count=1"}, Storage: "im_rc::OrdMap is replaced by Go maps traversed through comparator-sorted keys; Clone eagerly creates independent adjacency/edge storage with supplied Clone adapters. Debug assertions are enabled by default; DisableDebugAssertions selects release behavior.", Skips: []string{}}
+	for _, profile := range []string{"debug", "release"} {
+		for _, stream := range []string{"stdout", "stderr"} {
+			data, err := os.ReadFile(absolute("port/cargo/src/util/testdata/graph_generic_" + profile + "." + stream))
+			if err != nil {
+				return err
+			}
+			outputs["generic_"+profile+"_"+stream] = outputEvidence{SHA256: hash(data), Bytes: len(data)}
+		}
+	}
+	metadata := report{Format: 1, CargoRevision: cargoRevision, SourcePath: "src/util/graph.rs", SourceGitBlob: graphSourceBlob, SourceSHA256: graphSourceHash, SourceLines: bytes.Count(original, []byte{'\n'}), SourceBytes: len(original), Rustc: pinnedRustc, Go: strings.TrimSpace(string(goVersion)), Host: runtime.GOOS + "/" + runtime.GOARCH, Dependencies: dependencies, UpstreamTests: 3, Cases: fixture.Cases, KeyProfiles: []string{"i32/int", "Vec<i32>/[]int", "RecordKey{Vec<i32>,i32}/struct{Parts []int;Tag int}", "custom node/edge Eq and Ne with operator traces and panics"}, OperatorProbes: 8, InputSHA256: fixture.InputSHA256, Profiles: []string{"debug (debug_assertions=true)", "release (debug_assertions=false)"}, Outputs: outputs, Files: files, Commands: []string{"GOCACHE=/tmp/ferrugo-go-cache .toolchain/go/bin/go run ./tools/port-cargo-graph", "GOCACHE=/tmp/ferrugo-go-cache .toolchain/go/bin/go run ./tools/port-cargo-graph -check", "GOCACHE=/tmp/ferrugo-go-cache .toolchain/go/bin/go test ./port/cargo/src/util -run '^TestGraph' -count=1"}, Storage: "im_rc::OrdMap/BTreeMap/BTreeSet are replaced by comparator-searched sorted entries accepting N any without native Go equality or hashing. Direct node Eq/Ne and map equality's tuple node/edge Ne dispatch through independent adapters. Clone eagerly creates independent adjacency/edge storage; allocation sharing, comparator-search patterns and Clone callback timing differ from im_rc. Debug assertions default on; DisableDebugAssertions selects release behavior.", Skips: []string{}}
 	data, err := json.MarshalIndent(metadata, "", "  ")
 	if err != nil {
 		return err
@@ -350,6 +361,6 @@ func run(root, cargo, rustc, goBinary, cargoHome string, check, offline bool) er
 	if check {
 		action = "verified"
 	}
-	fmt.Printf("%s graph validation: 3 upstream tests per profile; %d corpus cases per debug/release profile; exact stdout, panic categories and stderr/test-printer parity (%s; %s/%s)\n", action, fixture.Cases, strings.TrimSpace(string(goVersion)), runtime.GOOS, runtime.GOARCH)
+	fmt.Printf("%s graph validation: 3 upstream tests per profile; %d corpus cases per debug/release profile; vector/record keys and 8 Eq/Ne operator probes per profile; exact stdout, panic categories and stderr/test-printer parity (%s; %s/%s)\n", action, fixture.Cases, strings.TrimSpace(string(goVersion)), runtime.GOOS, runtime.GOARCH)
 	return nil
 }

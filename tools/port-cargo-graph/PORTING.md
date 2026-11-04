@@ -6,7 +6,7 @@ This port accounts for the entire 303-line `src/util/graph.rs` from
 - Git blob: `74cdc51a0c36f21ce64f291540be571c05b12d63`.
 - Original bytes: 8,926.
 - Source SHA-256: `238123cc4c8300921008db5bcec1bbdf0946a023e0acafe9997e6917b5fada51`.
-- Destination: `port/cargo/src/util/graph.go`, with tests in `graph_test.go`.
+- Destination: `port/cargo/src/util/graph.go`, with tests in `graph_test.go` and `graph_generic_test.go`.
 - License: MIT OR Apache-2.0; the upstream notices are in `port/cargo`.
 
 The production implementation uses only Go's standard library. The Rust oracle
@@ -33,30 +33,49 @@ is a development tool and never services production graph operations.
 
 ## Go adapters
 
-`N` is comparable, and the required `Compare` callback supplies Rust's total
-ordering. It must agree with Go equality. `ContainsBy` takes a comparison
-against a borrowed query, preserving `Borrow<Q>` lookup without requiring the
-query to have the node's Go type. Traversal always sorts keys with `Compare`;
-Go map iteration order never decides traversal or path selection.
+`N` is unconstrained (`any`). The required `Compare` callback supplies Rust's
+total ordering and stored-key identity. Storage, marks, seen sets, backlinks and
+printer key sets all use comparator-searched sorted entries; no operation
+requires native Go equality or hashing. Slice keys and records containing slices
+are supported directly, including equal keys backed by different allocations.
+`ContainsBy` takes a comparison against a borrowed query, preserving `Borrow<Q>`
+lookup without requiring the query to have the node's Go type.
 
-`EdgeDefault`, `CloneNode`, `CloneEdge`, `EqualEdge`, and `DisplayNode` supply the
-corresponding Rust traits. Default and Clone fall back to Go's zero value and
+`EqualNode` and `NotEqualNode` independently adapt direct Rust `==` and `!=`
+expressions. Their defaults are `Compare(a,b) == 0` and `!EqualNode(a,b)`;
+adapters must obey Rust's Ord/Eq value laws. Reachability uses Eq, reconstruction
+uses Ne, and the debug path-membership check uses Eq. Independent-map equality
+matches the pinned `im_rc` DiffIter: compare key order, then compare the stored
+tuple with Ne. Consequently it invokes node Ne and edge Ne, rather than
+substituting Eq or ordering for those operators. Exact operator traces and
+callback panic propagation are checked against the original Rust source.
+
+`EdgeDefault`, `CloneNode`, `CloneEdge`, `EqualEdge`, `NotEqualEdge`, and
+`DisplayNode` supply the corresponding Rust traits. Default and Clone fall back to Go's zero value and
 value assignment; reference-bearing types need explicit adapters matching their
-Rust semantics. Equality requires `EqualEdge`. `NewGraph` also implements the
+Rust semantics. Equality requires `EqualEdge` or `NotEqualEdge`; Ne falls back
+to `!EqualEdge` when its override is absent. `NewGraph` also implements the
 original Default constructor because Go needs the runtime ordering adapter.
 
-The external `im_rc::OrdMap` storage is replaced by Go maps with sorted traversal.
-`Clone` eagerly allocates independent adjacency and edge storage and invokes the
+The external ordered containers are replaced by sorted Go entry slices with
+binary-search lookup. The collection representation and comparator-search
+patterns differ from the Rust trees; ordering is still the sole stored-key
+identity, and iteration is always ordered. `Clone` eagerly allocates independent
+adjacency and edge storage and invokes the
 Clone adapters. The Rust persistent map can share allocations and defer element
 cloning until mutation; allocation sharing, performance, and callback invocation
-timing are therefore storage adaptations. Graph values, mutation independence,
+timing are therefore storage adaptations. Rust's shared-subtree map equality
+can also skip callbacks that an independent Go comparison evaluates; exact
+operator-trace fixtures therefore compare independently constructed maps.
+Graph values, mutation independence,
 edge defaulting, traversal results, and failures are tested. Each edge has a
 unique nonzero-sized storage cell so that within-graph pointer assertions also
 work when `E` has zero size.
 
 Go cannot enforce Rust's shared and mutable borrow lifetimes. Edge/path pointers
 borrow the graph; callers must write edge values only through `Link`, avoid
-mutation during iteration, and use `Clone` rather than copying a Graph struct.
+mutation during iteration, avoid mutating stored key data through aliases, and
+use `Clone` rather than copying a Graph struct.
 These are API contracts, not runtime calls into Rust.
 
 `PrintForTest` accepts an `io.Writer`, exposing write errors to Go callers. The
@@ -116,9 +135,21 @@ assertion failures. No panic had an unclassified category. There are no skipped
 source methods or upstream test cases. Root review remains required before an
 inventory row is marked validated.
 
-Additional Go tests exercise custom ordering/display, borrowed lookups, default
-edge creation, pointer stability, zero-sized edge identity, iterator early stops,
-reference-bearing edge Clone/Eq adapters, and independent clone/reversal mutation.
+Additional original-source fixtures in `testdata/graph_generic_{debug,release}`
+exercise actual `Graph<Vec<i32>,i32>` and records containing vectors, compared to
+Go `[]int` and structs containing slices. They preserve borrowed slice lookups,
+independent but equal key allocations, ordering, missing-child failures, paths,
+clone/reverse behavior, Debug and normalized test printing. Eight operator probes
+per profile preserve direct node Eq/Ne traces, `im_rc` map equality's node/edge Ne
+traces, node Eq/Ne panic propagation, edge Eq bypass when Ne is overridden, and
+edge Ne panic propagation. These fixtures are regenerated and replayed alongside
+the unchanged 1,416-case integer corpus.
+
+Additional Go tests exercise nil versus allocated empty slice keys, a record's
+complete key identity, comparator lookup, retained keys and pointer stability as
+entry slices move, custom ordering/display, default edges, zero-sized edge
+identity, iterator early stops, reference-bearing Clone/Eq adapters, Sort's cloned
+node outputs, and independent clone/reversal mutation.
 
 ## Reproduction
 
@@ -136,7 +167,8 @@ second rebuilds/runs the original source and verifies all retained bytes and
 report hashes. `-offline=false` permits an initial fetch into
 `.toolchain/port-cargo-home`; committed lockfile checksums still apply.
 `validation.json` records tool versions, host, source identity, dependency pins,
-input/output digests, panic counts, and all implementation/harness/fixture hashes.
+input/output digests, panic counts, key/operator profiles, and all
+implementation/harness/fixture hashes.
 
 For CI installations without the repository-local toolchain, use ordinary PATH
 names. Flags override the corresponding environment variables:

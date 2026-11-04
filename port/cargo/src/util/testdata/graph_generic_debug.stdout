@@ -1,0 +1,61 @@
+vec_keys
+len 4
+iter []|[1]|[2,3]|[4]
+edges []>[1]:10|[1]>[1,0]:20|[1]>[2,3]:21|[2,3]>[4]:30
+repeat_identity true
+child_only false
+sort_initial panic missing_node
+reversed_iter []|[1]|[1,0]|[2,3]|[4]
+reversed_edges [1]>[]:10|[1,0]>[1]:20|[2,3]>[1]:21|[4]>[2,3]:30
+sort_complete ok [1,0]|[4]|[2,3]|[1]|[]
+bottom ok []:none|[1]:10|[1,0]:20
+top ok [4]:none|[2,3]:30|[1]:21|[]:10
+reachable true false
+clone_equal true
+changed_equal false
+original_edge 20
+cloned_edge 99
+borrowed true false
+record_keys
+len 4
+iter []#0|[1]#1|[2,3]#3|[4]#4
+edges []#0>[1]#1:10|[1]#1>[1,0]#2:20|[1]#1>[2,3]#3:21|[2,3]#3>[4]#4:30
+repeat_identity true
+child_only false
+sort_initial panic missing_node
+reversed_iter []#0|[1]#1|[1,0]#2|[2,3]#3|[4]#4
+reversed_edges [1]#1>[]#0:10|[1,0]#2>[1]#1:20|[2,3]#3>[1]#1:21|[4]#4>[2,3]#3:30
+sort_complete ok [1,0]#2|[4]#4|[2,3]#3|[1]#1|[]#0
+bottom ok []#0:none|[1]#1:10|[1,0]#2:20
+top ok [4]#4:none|[2,3]#3:30|[1]#1:21|[]#0:10
+reachable true false
+clone_equal true
+changed_equal false
+original_edge 20
+cloned_edge 99
+record_debug
+Graph {
+  - []#0
+    - [1]#1
+  - [1]#1
+    - [1,0]#2
+    - [2,3]#3
+  - [1,0]#2
+  - [2,3]#3
+    - [4]#4
+  - [4]#4
+}
+record_field_identity 6
+operators
+reach true
+reach_trace eq:1:2,eq:2:2
+bottom 0:none,2:8
+bottom_trace ne:2:0,eq:0:2,eq:2:2
+equal true
+equal_trace ne:0:0,ne:1:1,ne:2:2,ne:1:1,ne:1:1,ne:2:2,ne:2:2
+edge_equal true
+edge_equal_trace ne:0:0,ne:1:1,edge_ne:7:7
+eq_panic true eq:1:2
+ne_panic true ne:2:0
+edge_eq_bypassed true ne:0:0,ne:1:1,edge_ne:7:7
+edge_ne_panic true ne:0:0,ne:1:1,edge_ne:7:7

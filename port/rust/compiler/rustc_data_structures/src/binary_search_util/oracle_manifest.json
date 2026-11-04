@@ -1,0 +1,21 @@
+{
+  "format": 2,
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "sources": [
+    {
+      "path": "compiler/rustc_data_structures/src/binary_search_util/mod.rs",
+      "git_blob": "1c6e227cec40870c0288f60270f609aeb4ebdc8e",
+      "sha256": "6ed8ff0a143e0e4badf23ccd92e483fb14597584c0665cee582882597f086fc9"
+    },
+    {
+      "path": "compiler/rustc_data_structures/src/binary_search_util/tests.rs",
+      "git_blob": "d74febb5c0fc4a13e2530de71982520e3a944fcf",
+      "sha256": "6439fcec412b6c59802000c946aa3cd6c493df11dcfb465cf187a5e97f6fd10b"
+    }
+  ],
+  "cases": 41835,
+  "oracle_source_sha256": "6ba19a9c39879b4d8be1b8cbd94c363846037cad0bef498cdc7d05d1b8eaabe3",
+  "oracle_sha256": "2fae8696e9ee2ba28f96dd64a5169af1ebdb60c24a86b31b597ee87fbe759b21",
+  "fixture_sha256": "abe36a14f3b3bb53dde8c42ab07d9c6466757cc22b2dda43b034b123e107e09f"
+}

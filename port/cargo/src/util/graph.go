@@ -16,15 +16,21 @@ import (
 )
 
 // GraphOptions supplies the Rust Ord, Default, Clone, Eq and Display behavior.
-// Compare is required and must define a total order consistent with Go ==.
+// Compare is required and defines the total order and stored-key identity;
+// nodes need neither Go equality nor hashing. EqualNode and NotEqualNode adapt
+// direct Rust == and != expressions, independently of ordered-container lookup.
+// EqualNode defaults to Compare(a,b)==0; NotEqualNode defaults to !EqualNode.
+// The adapters must obey Rust's Ord/Eq laws.
+//
 // EdgeDefault defaults to Go's zero E. CloneNode and CloneEdge default to value
 // assignment: supply adapters for reference-bearing values whose Rust Clone
-// semantics require independent data. EqualEdge is required only by Equal.
+// semantics require independent data. Equal requires EqualEdge or NotEqualEdge;
+// map equality uses Rust's !=, with NotEqualEdge defaulting to !EqualEdge.
 // DisplayNode defaults to fmt.Sprint. Adapters must remain fixed for a graph.
 //
 // Rust enables the path invariants in debug builds. They are enabled by default
 // here; DisableDebugAssertions selects the upstream release-build behavior.
-type GraphOptions[N comparable, E any] struct {
+type GraphOptions[N any, E any] struct {
 	Compare                func(N, N) int
 	EdgeDefault            func() E
 	CloneNode              func(N) N
@@ -32,15 +38,80 @@ type GraphOptions[N comparable, E any] struct {
 	EqualEdge              func(E, E) bool
 	DisplayNode            func(N) string
 	DisableDebugAssertions bool
+	EqualNode              func(N, N) bool
+	NotEqualNode           func(N, N) bool
+	NotEqualEdge           func(E, E) bool
 }
 
 // Graph stores sorted nodes and sorted outgoing edges, matching im_rc::OrdMap.
 // Link adds its source node but deliberately does not add its child node.
 // Graph must be cloned with Clone rather than copied by assignment. Operations
 // and iterator use must not overlap mutations, as required by Rust's borrows.
-type Graph[N comparable, E any] struct {
-	nodes   map[N]map[N]*graphEdge[E]
+// Keys must not be mutated while stored, including through referenced data.
+type Graph[N any, E any] struct {
+	nodes   graphOrdered[N, *graphOrdered[N, *graphEdge[E]]]
 	options GraphOptions[N, E]
+}
+
+// graphOrdered replaces ordered maps/sets without restricting their key type.
+// Entry values containing references are separately allocated where pointers
+// escape, so moving the entry slice never changes an edge's address.
+type graphOrdered[K any, V any] struct {
+	entries []graphOrderedEntry[K, V]
+}
+type graphOrderedEntry[K any, V any] struct {
+	key   K
+	value V
+}
+
+func (ordered *graphOrdered[K, V]) position(key K, compare func(K, K) int) (int, bool) {
+	low, high := 0, len(ordered.entries)
+	for low < high {
+		middle := low + (high-low)/2
+		switch comparison := compare(ordered.entries[middle].key, key); {
+		case comparison < 0:
+			low = middle + 1
+		case comparison > 0:
+			high = middle
+		default:
+			return middle, true
+		}
+	}
+	return low, false
+}
+func (ordered *graphOrdered[K, V]) get(key K, compare func(K, K) int) (V, bool) {
+	index, exists := ordered.position(key, compare)
+	if exists {
+		return ordered.entries[index].value, true
+	}
+	var zero V
+	return zero, false
+}
+func (ordered *graphOrdered[K, V]) insertAt(index int, key K, value V) {
+	ordered.entries = append(ordered.entries, graphOrderedEntry[K, V]{})
+	copy(ordered.entries[index+1:], ordered.entries[index:])
+	ordered.entries[index] = graphOrderedEntry[K, V]{key, value}
+}
+func (ordered *graphOrdered[K, V]) insertIfAbsent(key K, value V, compare func(K, K) int) bool {
+	index, exists := ordered.position(key, compare)
+	if exists {
+		return false
+	}
+	ordered.insertAt(index, key, value)
+	return true
+}
+func (ordered *graphOrdered[K, V]) remove(key K, compare func(K, K) int) (V, bool) {
+	index, exists := ordered.position(key, compare)
+	if !exists {
+		var zero V
+		return zero, false
+	}
+	value := ordered.entries[index].value
+	copy(ordered.entries[index:], ordered.entries[index+1:])
+	last := len(ordered.entries) - 1
+	ordered.entries[last] = graphOrderedEntry[K, V]{}
+	ordered.entries = ordered.entries[:last]
+	return value, true
 }
 
 // Nonzero storage keeps each edge's address distinct even when E has size zero.
@@ -53,7 +124,7 @@ type graphEdge[E any] struct {
 // A cycle can have a non-nil first Edge, exactly as in the original algorithm.
 // Edge pointers borrow graph storage and must not be written except through a
 // Link call; the original edge()/path methods return shared Rust references.
-type GraphPathEntry[N comparable, E any] struct {
+type GraphPathEntry[N any, E any] struct {
 	Node N
 	Edge *E
 }
@@ -65,11 +136,11 @@ const (
 )
 
 // NewGraph implements Graph::new and its equivalent Default constructor.
-func NewGraph[N comparable, E any](options GraphOptions[N, E]) *Graph[N, E] {
+func NewGraph[N any, E any](options GraphOptions[N, E]) *Graph[N, E] {
 	if options.Compare == nil {
 		panic("cargo graph: node comparison adapter is required")
 	}
-	return &Graph[N, E]{nodes: make(map[N]map[N]*graphEdge[E]), options: options}
+	return &Graph[N, E]{options: options}
 }
 
 func (graph *Graph[N, E]) cloneNode(node N) N {
@@ -84,41 +155,42 @@ func (graph *Graph[N, E]) cloneEdge(edge E) E {
 	}
 	return edge
 }
-func (graph *Graph[N, E]) keys(nodes map[N]*graphEdge[E]) []N {
-	keys := make([]N, 0, len(nodes))
-	for node := range nodes {
-		keys = append(keys, node)
+func (graph *Graph[N, E]) equalNode(left, right N) bool {
+	if graph.options.EqualNode != nil {
+		return graph.options.EqualNode(left, right)
 	}
-	slices.SortFunc(keys, graph.options.Compare)
-	return keys
+	return graph.options.Compare(left, right) == 0
 }
-func (graph *Graph[N, E]) nodeKeys() []N {
-	keys := make([]N, 0, len(graph.nodes))
-	for node := range graph.nodes {
-		keys = append(keys, node)
+func (graph *Graph[N, E]) notEqualNode(left, right N) bool {
+	if graph.options.NotEqualNode != nil {
+		return graph.options.NotEqualNode(left, right)
 	}
-	slices.SortFunc(keys, graph.options.Compare)
-	return keys
+	return !graph.equalNode(left, right)
+}
+func (graph *Graph[N, E]) ensureNode(node N) *graphOrdered[N, *graphEdge[E]] {
+	index, exists := graph.nodes.position(node, graph.options.Compare)
+	if exists {
+		return graph.nodes.entries[index].value
+	}
+	edges := new(graphOrdered[N, *graphEdge[E]])
+	graph.nodes.insertAt(index, node, edges)
+	return edges
 }
 
-func (graph *Graph[N, E]) Add(node N) {
-	if _, exists := graph.nodes[node]; !exists {
-		graph.nodes[node] = make(map[N]*graphEdge[E])
-	}
-}
+func (graph *Graph[N, E]) Add(node N) { graph.ensureNode(node) }
 
 // Link returns the existing edge or inserts EdgeDefault(), adding only node.
 func (graph *Graph[N, E]) Link(node, child N) *E {
-	graph.Add(node)
-	edges := graph.nodes[node]
-	if edge, exists := edges[child]; exists {
-		return &edge.value
+	edges := graph.ensureNode(node)
+	index, exists := edges.position(child, graph.options.Compare)
+	if exists {
+		return &edges.entries[index].value.value
 	}
 	edge := new(graphEdge[E])
 	if graph.options.EdgeDefault != nil {
 		edge.value = graph.options.EdgeDefault()
 	}
-	edges[child] = edge
+	edges.insertAt(index, child, edge)
 	return &edge.value
 }
 
@@ -135,7 +207,7 @@ func (graph *Graph[N, E]) Reversed() *Graph[N, E] {
 }
 
 func (graph *Graph[N, E]) Contains(node N) bool {
-	_, exists := graph.nodes[node]
+	_, exists := graph.nodes.position(node, graph.options.Compare)
 	return exists
 }
 
@@ -143,26 +215,34 @@ func (graph *Graph[N, E]) Contains(node N) bool {
 // compareNodeToQuery must compare each node's borrowed value to the query using
 // the same ordering as Compare. It returns negative/zero/positive in that order.
 func (graph *Graph[N, E]) ContainsBy(compareNodeToQuery func(N) int) bool {
-	_, exists := slices.BinarySearchFunc(graph.nodeKeys(), struct{}{}, func(node N, _ struct{}) int {
-		return compareNodeToQuery(node)
+	_, exists := slices.BinarySearchFunc(graph.nodes.entries, struct{}{}, func(entry graphOrderedEntry[N, *graphOrdered[N, *graphEdge[E]]], _ struct{}) int {
+		return compareNodeToQuery(entry.key)
 	})
 	return exists
 }
 
 // Edge returns nil when either the source or edge is absent.
 func (graph *Graph[N, E]) Edge(from, to N) *E {
-	if edge := graph.nodes[from][to]; edge != nil {
-		return &edge.value
+	edges, exists := graph.nodes.get(from, graph.options.Compare)
+	if !exists {
+		return nil
 	}
-	return nil
+	edge, exists := edges.get(to, graph.options.Compare)
+	if !exists {
+		return nil
+	}
+	return &edge.value
 }
 
 // Edges yields outgoing child nodes and borrowed values in node order.
 func (graph *Graph[N, E]) Edges(from N) iter.Seq2[N, *E] {
 	return func(yield func(N, *E) bool) {
-		edges := graph.nodes[from]
-		for _, node := range graph.keys(edges) {
-			if !yield(node, &edges[node].value) {
+		edges, exists := graph.nodes.get(from, graph.options.Compare)
+		if !exists {
+			return
+		}
+		for _, entry := range edges.entries {
+			if !yield(entry.key, &entry.value.value) {
 				return
 			}
 		}
@@ -172,62 +252,61 @@ func (graph *Graph[N, E]) Edges(from N) iter.Seq2[N, *E] {
 // Sort implements Cargo's marked depth-first postorder, including on cycles.
 // It panics if an edge points to a child that has not been added as a node.
 func (graph *Graph[N, E]) Sort() []N {
-	result := make([]N, 0, len(graph.nodes))
-	marks := make(map[N]bool)
-	for _, node := range graph.nodeKeys() {
+	result := make([]N, 0, len(graph.nodes.entries))
+	marks := new(graphOrdered[N, struct{}])
+	for node := range graph.Iter() {
 		graph.sortInnerVisit(node, &result, marks)
 	}
 	return result
 }
 
-func (graph *Graph[N, E]) sortInnerVisit(node N, destination *[]N, marks map[N]bool) {
-	if marks[node] {
+func (graph *Graph[N, E]) sortInnerVisit(node N, destination *[]N, marks *graphOrdered[N, struct{}]) {
+	if !marks.insertIfAbsent(graph.cloneNode(node), struct{}{}, graph.options.Compare) {
 		return
 	}
-	marks[node] = true
-	edges, exists := graph.nodes[node]
+	edges, exists := graph.nodes.get(node, graph.options.Compare)
 	if !exists {
 		panic(GraphMissingNodePanic)
 	}
-	for _, child := range graph.keys(edges) {
-		graph.sortInnerVisit(child, destination, marks)
+	for _, child := range edges.entries {
+		graph.sortInnerVisit(child.key, destination, marks)
 	}
 	*destination = append(*destination, graph.cloneNode(node))
 }
 
 func (graph *Graph[N, E]) Iter() iter.Seq[N] {
 	return func(yield func(N) bool) {
-		for _, node := range graph.nodeKeys() {
-			if !yield(node) {
+		for _, entry := range graph.nodes.entries {
+			if !yield(entry.key) {
 				return
 			}
 		}
 	}
 }
 
-func (graph *Graph[N, E]) Len() int { return len(graph.nodes) }
+func (graph *Graph[N, E]) Len() int { return len(graph.nodes.entries) }
 
 // IsPathFromTo checks edges, so a node has no path to itself without a cycle.
 // Popping a child with no node entry ends the entire search, preserving the
 // original while-let condition even if other stack entries remain pending.
 func (graph *Graph[N, E]) IsPathFromTo(from, to N) bool {
 	stack := []N{from}
-	seen := map[N]bool{from: true}
+	seen := new(graphOrdered[N, struct{}])
+	seen.insertIfAbsent(from, struct{}{}, graph.options.Compare)
 	for len(stack) != 0 {
 		last := len(stack) - 1
 		node := stack[last]
 		stack = stack[:last]
-		edges, exists := graph.nodes[node]
+		edges, exists := graph.nodes.get(node, graph.options.Compare)
 		if !exists {
 			break
 		}
-		for _, child := range graph.keys(edges) {
-			if child == to {
+		for _, child := range edges.entries {
+			if graph.equalNode(child.key, to) {
 				return true
 			}
-			if !seen[child] {
-				seen[child] = true
-				stack = append(stack, child)
+			if seen.insertIfAbsent(child.key, struct{}{}, graph.options.Compare) {
+				stack = append(stack, child.key)
 			}
 		}
 	}
@@ -244,7 +323,7 @@ func (graph *Graph[N, E]) PathToBottom(node N) []GraphPathEntry[N, E] {
 func (graph *Graph[N, E]) PathToTop(node N) []GraphPathEntry[N, E] {
 	return graph.pathTo(node, func(node N) iter.Seq2[N, *E] {
 		return func(yield func(N, *E) bool) {
-			for _, parent := range graph.nodeKeys() {
+			for parent := range graph.Iter() {
 				if edge := graph.Edge(parent, node); edge != nil && !yield(parent, edge) {
 					return
 				}
@@ -258,7 +337,7 @@ func (graph *Graph[N, E]) pathTo(start N, edges func(N) iter.Seq2[N, *E]) []Grap
 		parent N
 		edge   *E
 	}
-	backLinks := make(map[N]backLink)
+	backLinks := new(graphOrdered[N, backLink])
 	queue := []N{start}
 	last := start
 	for head := 0; head < len(queue); head++ {
@@ -267,9 +346,8 @@ func (graph *Graph[N, E]) pathTo(start N, edges func(N) iter.Seq2[N, *E]) []Grap
 		outEdges := true
 		for child, edge := range edges(node) {
 			outEdges = false
-			if _, exists := backLinks[child]; !exists {
+			if backLinks.insertIfAbsent(child, backLink{node, edge}, graph.options.Compare) {
 				queue = append(queue, child)
-				backLinks[child] = backLink{node, edge}
 			}
 		}
 		if outEdges {
@@ -280,15 +358,21 @@ func (graph *Graph[N, E]) pathTo(start N, edges func(N) iter.Seq2[N, *E]) []Grap
 	result := make([]GraphPathEntry[N, E], 0)
 	next := last
 	for {
-		link, exists := backLinks[next]
+		link, exists := backLinks.remove(next, graph.options.Compare)
 		if !exists {
 			break
 		}
-		delete(backLinks, next)
 		result = append(result, GraphPathEntry[N, E]{next, link.edge})
 		next = link.parent
 	}
-	if !slices.ContainsFunc(result, func(entry GraphPathEntry[N, E]) bool { return entry.Node == next }) {
+	allDifferent := true
+	for _, entry := range result {
+		if !graph.notEqualNode(entry.Node, next) {
+			allDifferent = false
+			break
+		}
+	}
+	if allDifferent {
 		result = append(result, GraphPathEntry[N, E]{next, nil})
 	}
 	slices.Reverse(result)
@@ -306,7 +390,14 @@ func (graph *Graph[N, E]) pathTo(start N, edges func(N) iter.Seq2[N, *E]) []Grap
 		}
 		last := result[len(result)-1].Node
 		for child := range edges(last) {
-			if !slices.ContainsFunc(result, func(entry GraphPathEntry[N, E]) bool { return entry.Node == child }) {
+			contains := false
+			for _, entry := range result {
+				if graph.equalNode(entry.Node, child) {
+					contains = true
+					break
+				}
+			}
+			if !contains {
 				_ = graph.PrintForTest(os.Stderr)
 				panic(GraphPathEndPanic)
 			}
@@ -315,37 +406,51 @@ func (graph *Graph[N, E]) pathTo(start N, edges func(N) iter.Seq2[N, *E]) []Grap
 	return result
 }
 
-// Clone copies the adjacency maps and applies the Clone adapters to their data.
+// Clone eagerly copies the ordered storage and applies its Clone adapters.
 // It replaces im_rc's copy-on-write representation with independent Go storage.
 func (graph *Graph[N, E]) Clone() *Graph[N, E] {
 	result := NewGraph(graph.options)
-	for node := range graph.Iter() {
-		copyNode := graph.cloneNode(node)
-		edges := make(map[N]*graphEdge[E])
-		for child, edge := range graph.Edges(node) {
-			edges[graph.cloneNode(child)] = &graphEdge[E]{value: graph.cloneEdge(*edge)}
+	for _, node := range graph.nodes.entries {
+		edges := new(graphOrdered[N, *graphEdge[E]])
+		for _, child := range node.value.entries {
+			edges.entries = append(edges.entries, graphOrderedEntry[N, *graphEdge[E]]{
+				graph.cloneNode(child.key), &graphEdge[E]{value: graph.cloneEdge(child.value.value)},
+			})
 		}
-		result.nodes[copyNode] = edges
+		result.nodes.entries = append(result.nodes.entries, graphOrderedEntry[N, *graphOrdered[N, *graphEdge[E]]]{graph.cloneNode(node.key), edges})
 	}
 	return result
 }
 
-// Equal implements PartialEq/Eq using the supplied E equality adapter.
+// Equal implements im_rc ordered-map PartialEq/Eq. Its diff compares key
+// ordering and then tuple !=, dispatching node and edge Ne independently of Eq.
 func (graph *Graph[N, E]) Equal(other *Graph[N, E]) bool {
-	if graph.options.EqualEdge == nil {
+	if graph.options.EqualEdge == nil && graph.options.NotEqualEdge == nil {
 		panic("cargo graph: edge equality adapter is required")
 	}
-	if len(graph.nodes) != len(other.nodes) {
+	if graph.Len() != other.Len() {
 		return false
 	}
-	for node, edges := range graph.nodes {
-		otherEdges, exists := other.nodes[node]
-		if !exists || len(edges) != len(otherEdges) {
+	for index, node := range graph.nodes.entries {
+		otherNode := other.nodes.entries[index]
+		if graph.options.Compare(node.key, otherNode.key) != 0 || graph.notEqualNode(node.key, otherNode.key) {
 			return false
 		}
-		for child, edge := range edges {
-			otherEdge, exists := otherEdges[child]
-			if !exists || !graph.options.EqualEdge(edge.value, otherEdge.value) {
+		if len(node.value.entries) != len(otherNode.value.entries) {
+			return false
+		}
+		for index, child := range node.value.entries {
+			otherChild := otherNode.value.entries[index]
+			if graph.options.Compare(child.key, otherChild.key) != 0 || graph.notEqualNode(child.key, otherChild.key) {
+				return false
+			}
+			different := false
+			if graph.options.NotEqualEdge != nil {
+				different = graph.options.NotEqualEdge(child.value.value, otherChild.value.value)
+			} else {
+				different = !graph.options.EqualEdge(child.value.value, otherChild.value.value)
+			}
+			if different {
 				return false
 			}
 		}
@@ -379,28 +484,23 @@ func (graph *Graph[N, E]) Format(state fmt.State, _ rune) {
 // TestString reproduces the debug-only print_for_test normalization: all nodes
 // and child-only keys receive consecutive integers in their original order.
 func (graph *Graph[N, E]) TestString() string {
-	names := make(map[N]bool)
-	for node, edges := range graph.nodes {
-		names[node] = true
-		for child := range edges {
-			names[child] = true
+	names := new(graphOrdered[N, struct{}])
+	for node := range graph.Iter() {
+		names.insertIfAbsent(node, struct{}{}, graph.options.Compare)
+	}
+	for _, node := range graph.nodes.entries {
+		for _, child := range node.value.entries {
+			names.insertIfAbsent(child.key, struct{}{}, graph.options.Compare)
 		}
-	}
-	ordered := make([]N, 0, len(names))
-	for node := range names {
-		ordered = append(ordered, node)
-	}
-	slices.SortFunc(ordered, graph.options.Compare)
-	indices := make(map[N]int)
-	for index, node := range ordered {
-		indices[node] = index
 	}
 	var out strings.Builder
 	out.WriteString("Graph for tests = Graph {\n")
 	for node := range graph.Iter() {
-		fmt.Fprintf(&out, "  - %d\n", indices[node])
+		index, _ := names.position(node, graph.options.Compare)
+		fmt.Fprintf(&out, "  - %d\n", index)
 		for child := range graph.Edges(node) {
-			fmt.Fprintf(&out, "    - %d\n", indices[child])
+			index, _ := names.position(child, graph.options.Compare)
+			fmt.Fprintf(&out, "    - %d\n", index)
 		}
 	}
 	out.WriteString("}\n")

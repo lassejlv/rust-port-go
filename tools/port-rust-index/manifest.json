@@ -1,0 +1,38 @@
+{
+  "format": 1,
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_path": "compiler/rustc_index/src/idx.rs",
+  "source_git_blob": "60c4dd90d8f666fc855b5a5e6e22f07209dfd1f8",
+  "source_sha256": "7e943e3cf43dcbb2c2cb286e1bb470e59c09ed97243460485d2c260b1e1761ef",
+  "SourceLines": 145,
+  "SourceBytes": 3793,
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "host_pointer_bits": 64,
+  "profiles": [
+    {
+      "nightly": false,
+      "overflow_checks": false,
+      "records": 6997
+    },
+    {
+      "nightly": false,
+      "overflow_checks": true,
+      "records": 6997
+    },
+    {
+      "nightly": true,
+      "overflow_checks": false,
+      "records": 9325
+    },
+    {
+      "nightly": true,
+      "overflow_checks": true,
+      "records": 9325
+    }
+  ],
+  "total_records": 32644,
+  "oracle_source_sha256": "31f76b80c85a97f2d7d28d82fa0112ed4aec2bcb0045281d516ee458eeea6922",
+  "requests_sha256": "487d4702362ef9943f41a1e6d894c865373ec0eedf7387c37ddfd6faa6b171d0",
+  "responses_sha256": "75c1b438cf2205173f5c9848ff6846f82b8d570972bc8d7a0afaae57e3155b34",
+  "fixture_sha256": "f3f49d53bc40a02dd2dc8ed80c421f120dd425732927ae402e3c1164abe2d205"
+}

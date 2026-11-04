@@ -36,7 +36,7 @@ File roles are initially classified from deterministic path rules. Review the ac
 
 ## Source caches and tooling
 
-The ignored source caches live at `.toolchain/upstream-rust` and `.toolchain/upstream-cargo`. Both use a local `main` branch at the exact pinned commit. Initial sparse checkouts materialize Rust's lexer, compiler data structures, core Unicode and license files, and Cargo's source/crate directories. Working-tree files are read-only references; do not edit them or push to upstream remotes. Git metadata remains available to fetch further pinned reference files when a port needs them.
+The ignored source caches live at `.toolchain/upstream-rust` and `.toolchain/upstream-cargo`. Both use a local `main` branch at the exact pinned commit. Initial sparse checkouts materialize Rust's lexer, compiler data structures and typed indices, core Unicode and license files, and Cargo's source/crate directories. Working-tree files are read-only references; do not edit them or push to upstream remotes. Git metadata remains available to fetch further pinned reference files when a port needs them.
 
 Use Python 3.8 or newer and Git. The tooling uses only the Python standard library:
 
