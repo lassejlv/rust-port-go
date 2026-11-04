@@ -29,7 +29,7 @@ def executable(name,root):
         path=Path(name);value=path if path.is_absolute() else root/path
     else:value=shutil.which(name)
     if not value or not os.access(value,os.X_OK):raise SystemExit("unavailable executable: "+name)
-    return str(Path(value).resolve())
+    return os.path.abspath(value)
 def command(args,**kwargs):
     result=subprocess.run(args,stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=120,**kwargs)
     if result.returncode:raise SystemExit(f"command failed: {args}\n{result.stderr.decode(errors='replace')}")

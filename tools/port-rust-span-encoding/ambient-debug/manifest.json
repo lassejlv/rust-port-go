@@ -221,17 +221,17 @@
   ],
   "tool_sha256": {
     "tools/port-rust-span-encoding/ambient-debug/oracle.rs": "f9ad2878e6bc93e0cbbc71dd38dbd98fdc035989a12b5d577b7fa118dd3e00b9",
-    "tools/port-rust-span-encoding/ambient-debug/generate.py": "8450cdacdbd0e00808cc389d07b432c9898f6a2db6bb9780ed6c12be8f252129",
+    "tools/port-rust-span-encoding/ambient-debug/generate.py": "dafc8a0fdbf0086719422ba42d82386e0517952a99de15947571970096bffddb",
     "tools/port-rust-span-encoding/ambient-debug/PORT.md": "3473432fb2567604477da9487afbd0543abdc8424cc2ec38771698883cad475c",
     "tools/port-rust-span-encoding/ambient-debug/test_probe.py": "27a943bfaa2d86a7538cd54b0dd8904e6db2b71515c174784fa9015aa0fe37af",
-    "tools/port-rust-span-encoding/prepare.py": "689c1f2758931d9e89eb638d1243e19fdcdc9921c243323f4abdcc08584ce640",
+    "tools/port-rust-span-encoding/prepare.py": "cbd45f05cba7b558a8aa3cd006e8994e75b9795eea1c5e94bafbf523893394ac",
     "tools/port-rust-span-encoding/generate.py": "3be2bf06a8057b609d43bafc404ab8b3ab54cb26f87e005b6a73276490fb0ed2",
     "tools/port-rust-span-encoding/runtime.rs": "36d421e3074cd4420ebd8dc955c99f319bb98904b24576c9eb5aa6e6405c080c",
     "tools/port-rust-span-encoding/adapters.rs": "61397b0a311a7b57279f6a4c35ca570e4e23a4e36f1d7377c5cdfc08f0241781",
     "tools/port-rust-span-encoding/Cargo.toml": "2d0d2fcb82254d2bfb2b96c5bde68807e8dcc4ba7bb3cfa7898e52d36f03bc9d",
     "tools/port-rust-span-encoding/Cargo.lock": "ab536ad479572b83d8fb6944426363aa12a889d00998ec417805fc9665ac6bee",
     "tools/port-rust-span-encoding/upstream/rustc_index_macros/Cargo.toml": "07bf308e98725b888072d7fbe9fd0203501be32a41e6f97ba299b49bd653c37a",
-    "tools/port-rust-span-encoding/manifest.json": "ea615d693c8afa4e12120d4fc345527f85619cedd91a19c4f92054f0a416ba0d"
+    "tools/port-rust-span-encoding/manifest.json": "a4ae2602b28f1f858418848d7ecf2c1e2b95c93290888eb5f9c60633ce3a6e25"
   },
   "profiles": [
     {

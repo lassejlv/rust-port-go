@@ -22,7 +22,7 @@ def executable(variable,local,fallback):
  value=str(ROOT/value) if not pathlib.Path(value).is_absolute() and ("/" in value or "\\" in value) else value
  resolved=shutil.which(value)
  if not resolved:raise RuntimeError(f'{variable}: executable {value!r} unavailable')
- return str(pathlib.Path(resolved).resolve())
+ return os.path.abspath(resolved)
 
 def verify_registry(metadata,lock,cargo_home):
  locked={(p['name'],p['version']):p for p in tomllib.loads(lock.decode())['package'] if p.get('source','').startswith('registry+')}

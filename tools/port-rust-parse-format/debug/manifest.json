@@ -40,7 +40,7 @@
   },
   "tool_sha256": {
     "oracle.rs": "9ed2ec02103f1f6aeecd3ae4f1d51a0670ef14e46eb4de6ff4754096108e104b",
-    "generate.py": "ccfb2b37d30ec81f93aa2952a49e68f0210213432d46682aab91fce26c564e28",
+    "generate.py": "91038c987f9d662f902dbc2d3a703c76841a8cedb4297689aaa45d41d1ddf7fb",
     "test_generate.py": "64f8a5989f6e70f4dc82e627fc034850cb4085359f74034a5e2330c8aca60bcf",
     "PORT.md": "9490994aa6ca7842eea209a399c02326a518410453a058d5ce83094bd71396ea"
   },

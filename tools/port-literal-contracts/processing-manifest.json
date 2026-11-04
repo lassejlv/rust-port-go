@@ -34,7 +34,7 @@
     "port/support/rustfmt/string_debug_test.go": "17176d415a3e757d422c26a701710b845c9f5ed6f2e82632c90177ac48408865",
     "tools/port-lexer-debug/Cargo.lock": "2bbe9bd05a3e4812c97f2b04d9ddc503d83e1bae84602a51aae109ea660be012",
     "tools/port-lexer-debug/Cargo.toml": "1bc7d19b8ce1d635c7cdb5282790abac27a2e6c464df570b48d00bfde7bf3937",
-    "tools/port-lexer-debug/generate.py": "282c384c505c130590233d43b42a97145cec423a20287e7fd60fe392afb88c05",
+    "tools/port-lexer-debug/generate.py": "1c34ef1c4a7cdde52fe6e89336cb0f2d4a7de9a3f7ef29762d43152d2d1193f6",
     "tools/port-lexer-debug/oracle.rs": "5b1863f171b7b4302380b87c8a7f5e610f0369217d9cd859fe328b269ecf867d",
     "tools/port-lexer-debug/owned.rs": "5baaefc1f49367f02b2f27d89d6d489029dfc0e770fa3ed9964e8b1635831c4a",
     "tools/port-lexer-debug/profile.rs": "9d48a2a0df3863f24862b6e2744d795845003b346e0e15ef74cf9bfcb43e07cf",
@@ -68,7 +68,7 @@
     "owned.rs": "5baaefc1f49367f02b2f27d89d6d489029dfc0e770fa3ed9964e8b1635831c4a",
     "profile.rs": "9d48a2a0df3863f24862b6e2744d795845003b346e0e15ef74cf9bfcb43e07cf"
   },
-  "generator_sha256": "282c384c505c130590233d43b42a97145cec423a20287e7fd60fe392afb88c05",
+  "generator_sha256": "1c34ef1c4a7cdde52fe6e89336cb0f2d4a7de9a3f7ef29762d43152d2d1193f6",
   "registry_dependencies": [
     {
       "name": "dissimilar",

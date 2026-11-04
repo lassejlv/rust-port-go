@@ -27,7 +27,7 @@ def executable(variable,local,fallback):
  if not value:raise RuntimeError(f'{variable} explicitly empty')
  resolved=shutil.which(value)
  if not resolved:raise RuntimeError(f'{variable}: executable {value!r} unavailable')
- return str(pathlib.Path(resolved).resolve())
+ return os.path.abspath(resolved)
 
 def verify_registry(metadata,lock,cargo_home):
  locked={(p['name'],p['version']):p for p in tomllib.loads(lock.decode())['package'] if p.get('source','').startswith('registry+')}

@@ -29,7 +29,7 @@ def main():
  if prepare.execute([env['RUSTC'],'--version'],env).decode().strip()!=prepare.RUST:raise RuntimeError('native compiler differs')
  cfg=prepare.execute([env['RUSTC'],'--print','cfg'],env).splitlines()
  if b'target_pointer_width="64"'not in cfg or b'target_os="linux"'not in cfg:raise RuntimeError('native signal audit requires the recorded 64-bit Linux target')
- destination=ROOT/'.toolchain/oracles/span-ambient-debug-reference';provenance,original=prepare.prepare(destination,env);prepare.write(destination/'oracle.rs',(HERE/'oracle.rs').read_bytes());staged=parent_driver.reference_inputs(destination)
+ destination=(ROOT/'.toolchain/oracles/span-ambient-debug-reference').resolve();provenance,original=prepare.prepare(destination,env);prepare.write(destination/'oracle.rs',(HERE/'oracle.rs').read_bytes());staged=parent_driver.reference_inputs(destination)
  lock=(destination/'Cargo.lock').read_bytes();prepare.verify_lock(lock,original);metadata=json.loads(prepare.execute([cargo,'metadata','--locked','--offline','--format-version=1'],env,destination));prepare.verify_packages(metadata,destination);deps=prepare.verify_registry(metadata,lock,pathlib.Path(env['CARGO_HOME']))
  requests=cases();observations=[];profiles=[]
  for debug in [False,True]:

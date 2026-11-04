@@ -217,3 +217,14 @@ Seventeen top-level files currently have completion evidence. Interval ownership
 - The integrated minimum-Go snapshot passes the full race suite, vet and nightly storage/interval tests; all 150 language and 16 Cargo fixture comparisons still match original Rust/Cargo. Owned-search and shared-builder regeneration and 34 source/tool integrity tests pass.
 
 Twenty-six top-level files have recorded completion evidence. Base-N formatting/owned conversion and Cargo graph's generic persistent-container contracts remain reopened. Complete semver/Cargo version and stable-hash blocks are under integration; the wider span runtime is next. Production Rust compilation remains unfinished.
+
+Hosted preparation exposed an executable-selection bug: resolving a Rustup
+`cargo` symlink changed its invocation name to `rustup`. Four new Python
+reference clients now preserve the absolute command path without resolving its
+symlink. A regression checks PATH and explicit selections for rustc, Cargo and
+Go through an actual symlink multiplexer. Only tool/evidence bindings change;
+native fixture records and compressed bytes remain retained.
+All affected native clients then passed fresh checks through actual symlink
+dispatchers, including the complete lexer/literal/profile matrices, parser
+Debug, owned search, span encoding and ambient lock/abort proof. The companion
+span client also canonicalizes its reference directory before identity checks.

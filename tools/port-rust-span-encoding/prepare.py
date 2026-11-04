@@ -17,7 +17,7 @@ def selected(variable,local,fallback):
  if not name:raise RuntimeError(f'{variable} explicitly empty')
  executable=shutil.which(name)
  if not executable:raise RuntimeError(f'{variable}: executable {name!r} not found')
- return str(pathlib.Path(executable).resolve())
+ return os.path.abspath(executable)
 def environment():
  env=os.environ.copy()
  for key in ['RUSTFLAGS','CARGO_ENCODED_RUSTFLAGS','RUSTC_WRAPPER','RUSTC_WORKSPACE_WRAPPER','CARGO_BUILD_TARGET','RUSTC_BOOTSTRAP','UPDATE_EXPECT']:env.pop(key,None)

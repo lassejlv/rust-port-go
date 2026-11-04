@@ -26,7 +26,7 @@
   "raw_sha256": "5655151cb0e82460b1eb4102b7b53d29020a76d6228a326a717a3aba4c979abd",
   "fixture_sha256": "69fcb8a34bb9b6f5b5c6acb6ea2544225d380b4da3e825f3216378b0eba050bf",
   "wrapper_sha256": "e24ac42d37854f665c6993cc8ecb21e667a32330f538f784956b78261aa54c4d",
-  "generator_sha256": "380e9faf78bc7a4ae9eb9853debdab919a153bbc1f0e3d7b2620b6af59d47263",
+  "generator_sha256": "d8538500c0b8cb0e314ab23d747eb6bc79f7b65f3394ea9df6e24f53397dc6c9",
   "legacy_preserved": [
     {
       "path": "port/rust/compiler/rustc_data_structures/src/binary_search_util/testdata/oracle.bin.gz",
