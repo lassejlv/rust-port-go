@@ -73,6 +73,8 @@ jobs:
           cargo fetch --locked --manifest-path tools/port-rust-index-storage/oracle/Cargo.toml
           python3 -m unittest discover -s tools/port-rust-index-storage/oracle -p '*_test.py'
           python3 tools/port-rust-fingerprint/reference-build/prepare.py --fetch
+          python3 tools/port-rust-def-id/reference-build/prepare.py --fetch
+          python3 -m unittest discover -s tools/port-rust-def-id/reference-build -p 'test_*.py'
           python3 tools/port-rust-span-encoding/fetch.py
           go run ./tools/port-rust-interval -fetch-dependency -check
         env:
@@ -127,6 +129,7 @@ jobs:
           python3 tools/port-rust-span-encoding/ambient-debug/generate.py -check
           python3 -m unittest discover -s tools/port-rust-span-encoding -p 'test_*.py'
           python3 tools/port-rust-fingerprint/generate.py --offline --check
+          python3 tools/port-rust-fingerprint/hasher-contract/generate.py --offline --check
           python3 tools/port-lexer-debug/generate.py --check
           python3 -m unittest discover -s tools/port-lexer-debug -p 'test_*.py'
           go run ./tools/port-lexer-debug/char -check

@@ -252,3 +252,13 @@ Twenty-eight top-level files have completion evidence. The next compiler block i
 - The isolated minimum-Go snapshot passes vet and affected-package race checks. Fresh BLAKE3, scalar-width and non-exhaustive-builder checks, all 48 executable-dispatch subcases, reference integrity tests and canonical complete-span preparation pass. The three timed-out fixture cases also pass locally with the revised concurrency flags; macOS verification remains a hosted check.
 
 The ledger remains at 28 completed top-level files. Full session/source-file/symbol/hygiene/source-map and caching-view implementations are active uncommitted work, with native reference coverage being added before they receive completion records. The production compiler goal remains unfinished.
+
+## 2026-11-04 — checkpoint 22: complete Hasher entrypoints
+
+- Added complete required/default `Hasher` entrypoints to the existing 64/128-bit hash wrappers and fingerprints. Callers can supply raw-write-only hashers, independent typed overrides and arbitrary borrowed state. Exact Unhasher specialization remains distinct from wrapper and reference-wrapper implementations; inherited slice hashing retains the element loop and omits a length prefix.
+- The unchanged source matches 2,808 native cases through both Go entrypoints, giving 5,616 comparisons. The corpus includes seeded and noncomparable state, callback failures, empty slices, all panic contexts and 380 native aborts replayed twice. Existing 85,483 hash-wrapper and 55,292 fingerprint records retain their original bytes.
+- Added an independently usable development reference builder using actual pinned macro/hash/codec sources and exact registry dependencies. Its surrounding Symbol/Span providers are scoped interfaces and receive no source-file credit. Local input and registry checks run before and after Cargo. Executable dispatch regressions cover PATH, absolute and relative symlinks without changing Rustup command names.
+- The isolated minimum-Go snapshot passes affected-package race tests and vet, fresh native regeneration, executable/source integrity tests and the complete file-map verifier. The existing large fixture bytes are unchanged.
+- Checkpoint 21 passed all four hosted jobs: Linux, macOS, upstream source comparisons and the complete original-span reference. Full source-map/symbol/hygiene/definition-ID and owned Base-N contracts continue in the shared working tree.
+
+The source ledger remains at 28 completed top-level files. This checkpoint closes additional trait entrypoints without claiming another complete source file. Production Rust compilation remains unfinished.
