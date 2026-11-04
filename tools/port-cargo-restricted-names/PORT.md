@@ -36,6 +36,28 @@ Rust's transparent Error implementation does not add the private error as a
 source-chain node. The original error has no Clone, equality, or public
 variant-inspection API, and the port adds none.
 
+`restricted_names_format.go` completes the streaming trait contracts. Both
+the public error and its private kind implement
+`WriteDisplayFormatter(*rustfmt.Formatter)` and
+`WriteDebugFormatter(*rustfmt.Formatter)`. Display delegates transparently to
+the inner kind and streams the original literal/argument pieces; it ignores
+outer width, precision, fill and numeric flags. Debug uses the real nested
+tuple/struct shapes and neutral Unicode-17 character/string witnesses.
+Compact fields retain the mutable formatter, while pretty fields receive
+copied children and indentation adapters. The first writer error stops later
+writes; actual empty writes, independent character writes, accepted prefixes,
+formatter state and reuse remain observable. `WriteDisplay`/`WriteDebug`
+provide writer/options conveniences, and `Error`/`RustDebug` use the same
+streaming implementation. The Go `fmt.Formatter` bridge prevents Go from
+adding outer padding/truncation; `%#v` selects compact Rust Debug. Full source
+flags use the primary formatter API.
+
+Writer arguments are temporary borrowed operations, never owned or destroyed
+by the error. Translated source panic sites use the explicit formatter's
+`Context.Panic`; arbitrary raw Go panics retain Go-local cleanup timing. The
+neutral helpers are supporting runtime code, with no additional source-file
+completion credit.
+
 The validation order, first offending character, component splitting, reserved
 profile names, and sanitizer prefix-skipping behavior are retained. In
 particular:
@@ -56,7 +78,8 @@ All string parameters must be valid UTF-8, reflecting Rust `&str` and
 Invalid Go byte strings, negative runes, surrogates, and out-of-range runes
 panic explicitly. Go does not reproduce Rust's static string lifetime or
 ownership restrictions; immutable Go string values preserve the required
-contents. No source API accepts callbacks or exposes mutable internal state.
+contents. Validators and sanitizers accept no callbacks or mutable internal
+state; formatting accepts the source's fallible writer witness.
 
 ## Exact Unicode profile and dependencies
 
@@ -70,8 +93,10 @@ XID behavior comes from the already ported lexer predicates, with exact
 `unicode-ident 1.0.24` / Unicode 17 tables. The full scalar oracle verifies
 those predicates directly against the Cargo source's locked dependency,
 including the lexer helper's intentional addition of underscore to XID_Start.
-Alphanumeric and Rust Debug-escaping tables are generated from the reference
-standard library; production never uses the host Go Unicode tables.
+Alphanumeric and retained Debug-escaping profile tables are generated from the
+reference standard library. Streaming Debug reuses the independently validated
+neutral Rust-1.99.1/Unicode-17 helpers. Production never uses host Go Unicode
+classification or escaping tables.
 
 Profile lowercasing calls `util.Lowercase17`, a small compatibility wrapper
 around the existing complete lowercase implementation used by Cargo's
@@ -98,6 +123,8 @@ copying the unchanged source into a temporary standalone Cargo project.
 Debug, and `std::error::Error::source`. The original inline test module also
 compiles and runs unchanged; its 18 assertions are mirrored, in order, in
 `restricted_names_extra_test.go` without separate source-file credit.
+The separate `format_oracle.rs` calls the unchanged error's generated
+Display/Debug implementations through real `std::fmt::Formatter` values.
 
 The standalone lockfile preserves the original versions and checksums of all
 six required registry packages: thiserror 2.0.18, thiserror-impl 2.0.18,
@@ -148,6 +175,20 @@ values for XID_Start, XID_Continue, standard alphanumeric, ASCII digit, lowercas
 and character/string Debug-escape predicates. Surrogates are explicitly marked
 as non-scalars. The Rust wrapper also checks the special escape mappings and
 first/following string and character Debug behavior across that whole domain.
+
+`restricted_names_formats.bin.gz` retains 31,664 original formatter scripts
+with 659,866 attempted writes and 28,016 failing scripts. Sixteen error inputs
+reach every variant and exercise empty payloads, Unicode, combining marks,
+NUL/control characters, quotes, backslashes and multiline text. Nineteen
+format patterns cover pretty/compact Debug, both hexadecimal Debug flags,
+width/precision/alignment, signs, zero padding, and ASCII/Unicode/newline/NUL
+fill. Each input runs with default and independently overridden `write_char`.
+The reference discovers successful write counts, then independently runs every
+failure cut and cuts beyond the final write. It deliberately reuses the same
+formatter for an integer after the first success/error, recording both results,
+all writer attempts/accepted bytes, and fill/alignment/width/precision/public
+flag state before, after and after reuse. Expected values always come from
+original Rust execution, never from the Go implementation.
 
 This validates the complete restricted-names file and its dependency profile.
 It adds no accepted syntax or Unicode naming claims to the bootstrap Cargo

@@ -15,6 +15,11 @@ Results:
   six validators and two sanitizers. Validator results compare success/error,
   complete Display, complete derived Debug, and transparent Error source.
   Sanitizer results compare exact UTF-8 bytes, including NUL placeholders.
+- Streaming formatter corpus: **31,664 scripts passed**, comparing **659,866
+  attempted C/S writes** and **28,016 failing scripts**. All four error variants,
+  19 source format patterns, empty/Unicode/NUL/control/multiline payloads,
+  default/overridden `write_char`, every discovered failure position, accepted
+  byte prefixes and mutable formatter reuse/state match original Rust.
 - Unicode domain: **1,112,064 scalar values passed**, comparing locked
   XID_Start/XID_Continue, standard alphanumeric, ASCII-only decimal digit,
   lowercase mappings, and first/following Rust Debug-escaping predicates.
@@ -27,6 +32,10 @@ Results:
   preconditions.
 - Go 1.23.12 full package/tool/shared-util tests and vet passed.
 - Go race checks passed for the complete new package and generation tool.
+- After the streaming update, Go 1.23.12 package/tool race checks passed
+  (7.019s/1.268s), vet passed, and bare-PATH live `-check` regenerated all
+  validation/scalar/formatter observations against Go 1.27.3 evidence without
+  changing compressed bytes or generation metadata.
 - Fuzzing passed **59,273 executions** in approximately 11 seconds with two
   workers, exercising all validators and valid-placeholder sanitization.
 - Live regeneration under Go 1.23.12 with bare `rustc` and `cargo` selected

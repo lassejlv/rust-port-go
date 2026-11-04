@@ -12,7 +12,7 @@ import "cmp"
 // slice aliases data, and a missing key returns nil. The search itself allocates
 // no storage.
 //
-// BinarySearchSliceWithOperators supplies the full Rust trait adapter. This convenience
+// BinarySearchSliceOwned supplies the full borrowed/owned adapter. This convenience
 // adapter uses Go's ordered-key semantics, including cmp.Compare's total ordering
 // of floating-point NaNs; Rust primitive floats do not implement Ord.
 func BinarySearchSlice[E any, K cmp.Ordered](data []E, keyFn func(*E) K, key K) []E {
@@ -41,9 +41,10 @@ func BinarySearchSliceBy[E, K any](data []E, keyFn func(*E) K, key K, compare fu
 	})
 }
 
-// BinarySearchSliceWithOperators is the full binary_search_slice port, including
-// independent Rust operator overrides. data must be sorted consistently with the
-// operators and keyFn. Results for inconsistent orders are unspecified. Callback
+// BinarySearchSliceWithOperators is the trivial-destructor, value-operator
+// convenience. BinarySearchSliceOwned supplies borrowed cells and ownership.
+// data must be sorted consistently with operators and keyFn. Results for
+// inconsistent orders are unspecified. Callback
 // panics propagate, and empty input calls neither the extractor nor operators.
 //
 // The result aliases data. Rust's shared-borrow immutability has no static Go

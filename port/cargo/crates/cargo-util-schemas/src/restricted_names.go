@@ -9,7 +9,6 @@
 package cargoutilschemas
 
 import (
-	"fmt"
 	"strings"
 	"unicode/utf8"
 
@@ -39,40 +38,12 @@ type errorKind struct {
 	what, name, reason, help string
 }
 
-func (e *NameValidationError) Error() string { return e.kind.Error() }
-func (e *NameValidationError) Source() error { return e.kind.Source() }
-func (e *NameValidationError) RustDebug() string {
-	return "NameValidationError(" + e.kind.RustDebug() + ")"
-}
-func (e errorKind) Source() error { return nil }
-func (e errorKind) Error() string {
-	switch e.tag {
-	case emptyName:
-		return e.what + " cannot be empty"
-	case invalidCharacter:
-		return fmt.Sprintf("invalid character `%c` in %s: `%s`, %s", e.ch, e.what, e.name, e.reason)
-	case profileReserved:
-		return fmt.Sprintf("profile name `%s` is reserved\n%s\nSee https://doc.rust-lang.org/cargo/reference/profiles.html for more on configuring profiles.", e.name, e.help)
-	case featureDepColon:
-		return fmt.Sprintf("feature named `%s` is not allowed to start with `dep:`", e.name)
-	default:
-		panic("restricted_names: invalid private error kind")
-	}
-}
-func (e errorKind) RustDebug() string {
-	switch e.tag {
-	case emptyName:
-		return "Empty(" + nameDebugString(e.what) + ")"
-	case invalidCharacter:
-		return fmt.Sprintf("InvalidCharacter { ch: %s, what: %s, name: %s, reason: %s }", nameDebugChar(e.ch), nameDebugString(e.what), nameDebugString(e.name), nameDebugString(e.reason))
-	case profileReserved:
-		return fmt.Sprintf("ProfileNameReservedKeyword { name: %s, help: %s }", nameDebugString(e.name), nameDebugString(e.help))
-	case featureDepColon:
-		return "FeatureNameStartsWithDepColon(" + nameDebugString(e.name) + ")"
-	default:
-		panic("restricted_names: invalid private error kind")
-	}
-}
+func (e *NameValidationError) Error() string     { return nameFormatString(e.WriteDisplayFormatter) }
+func (e *NameValidationError) Source() error     { return e.kind.Source() }
+func (e *NameValidationError) RustDebug() string { return nameFormatString(e.WriteDebugFormatter) }
+func (e errorKind) Source() error                { return nil }
+func (e errorKind) Error() string                { return nameFormatString(e.WriteDisplayFormatter) }
+func (e errorKind) RustDebug() string            { return nameFormatString(e.WriteDebugFormatter) }
 
 func nameUTF8(name string) {
 	if !utf8.ValidString(name) {
@@ -232,46 +203,4 @@ func nameInRanges(ch rune, ranges [][2]rune) bool {
 		}
 	}
 	return lo < len(ranges) && ranges[lo][0] <= ch
-}
-
-func nameEscape(ch rune, ranges [][2]rune) string {
-	switch ch {
-	case '\x00':
-		return `\0`
-	case '\t':
-		return `\t`
-	case '\n':
-		return `\n`
-	case '\r':
-		return `\r`
-	case '\\':
-		return `\\`
-	}
-	if nameInRanges(ch, ranges) {
-		return fmt.Sprintf(`\u{%x}`, ch)
-	}
-	return string(ch)
-}
-func nameDebugChar(ch rune) string {
-	if ch == '\'' {
-		return `'\''`
-	}
-	return "'" + nameEscape(ch, nameEscapedRanges) + "'"
-}
-func nameDebugString(value string) string {
-	var result strings.Builder
-	result.WriteByte('"')
-	first := true
-	for _, ch := range value {
-		if ch == '"' {
-			result.WriteString(`\"`)
-		} else if first {
-			result.WriteString(nameEscape(ch, nameEscapedRanges))
-		} else {
-			result.WriteString(nameEscape(ch, nameNonInitialEscapedRanges))
-		}
-		first = false
-	}
-	result.WriteByte('"')
-	return result.String()
 }

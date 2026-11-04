@@ -6,6 +6,7 @@ The original module and original upstream test compile directly under Rust 1.99.
 
 Completed validation:
 
+- **1,558 additional native owned cases** match the primary storage and slice APIs: 526 successful, 376 catchable panics and 656 isolated aborts. These compare actual extractor/query/key cells, temporary destruction, inherited/processing panic state, mutable borrowed results and full `usize::MAX` zero-sized storage. The slice projection retains the original embedded zero-sized array address. See [owned/VALIDATION.json](owned/VALIDATION.json) and [owned/README.md](owned/README.md).
 - Every original upstream test assertion passes in Rust and Go.
 - **41,835 original-source operator cases** match Go ranges and exact extractor/comparison/operator traces. The comparator convenience adapter separately matches 34,536 applicable cases.
 - The cases include 22,176 exhaustive short sorted-slice/target cases across ascending, descending, absolute-value and modulo-based orders; 5,460 unsorted/cyclic/stateful-order probes; 4,864 callback-panic configurations; 2,000 deterministic larger random cases; 35 signed-extreme/custom-order cases; 7,296 independent operator-panic configurations; and four explicit independent-trait trace/panic regressions.

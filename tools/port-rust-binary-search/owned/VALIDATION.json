@@ -1,0 +1,122 @@
+{
+  "scope": "Independent original-source owned binary-search oracle and Go replay only; production owned.go/mod.go remain parent-owned. No ledger/commits or source-credit extension.",
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_path": "compiler/rustc_data_structures/src/binary_search_util/mod.rs",
+  "source_git_blob": "1c6e227cec40870c0288f60270f609aeb4ebdc8e",
+  "source_sha256": "6ed8ff0a143e0e4badf23ccd92e483fb14597584c0665cee582882597f086fc9",
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+  "go_compiler": "go version go1.23.12 linux/amd64",
+  "records": 1558,
+  "outcomes": {
+    "ok": 526,
+    "panic": 376,
+    "abort": 656
+  },
+  "contexts": {
+    "0": 748,
+    "1": 270,
+    "2": 270,
+    "3": 270
+  },
+  "native_expectations": "Every expectation comes from the unchanged include of the verified source; sorted fixture generation and panic ordinals come from native baseline observations. No Go search implementation is used to generate expected results.",
+  "checks": [
+    {
+      "command": "go test -count=1 ./port/rust/compiler/rustc_data_structures/src/binary_search_util",
+      "result": "passed"
+    },
+    {
+      "command": "go test -race -count=1 ./port/rust/compiler/rustc_data_structures/src/binary_search_util",
+      "result": "passed"
+    },
+    {
+      "command": "go vet ./port/rust/compiler/rustc_data_structures/src/binary_search_util",
+      "result": "passed"
+    },
+    {
+      "command": "FERRUGO_RUN_BINARY_OWNED_ORACLE=1 go test -count=1 -run \"^TestBinarySearchOwnedOracleRegeneration$\" ./port/rust/compiler/rustc_data_structures/src/binary_search_util",
+      "result": "passed"
+    }
+  ],
+  "primary_coverage": [
+    "StorageOwned/StorageOwnedWithContext directly",
+    "SliceOwned/SliceOwnedWithContext directly for representable data",
+    "consumed Fn Drop on empty/miss/success/panic",
+    "non-Copy temporary Drop after lt/ne/le and during local cleanup",
+    "actual temporary/query/data/Fn capture cells and lawful metadata mutations",
+    "callback/operator/keyDrop/FnDrop panics with partial snapshots",
+    "normal/inherited-caught/inherited-escaping/processing contexts",
+    "isolated native SIGABRT and Go exit134 classes",
+    "safe Rust Vec<()> usize::MAX and Go IndexRaw full-domain length/alias",
+    "ordinary embedded-array ZST slice-backed alias regression",
+    "legacy scalar probe/operator parity plus unchanged full old corpus"
+  ],
+  "zst_max": {
+    "pointer_bits": 64,
+    "length": "18446744073709551615",
+    "successful_extract_compare_drop_cycles": 131,
+    "native_safe_constructor": "vec![(); usize::MAX]",
+    "no_huge_allocation": true,
+    "full_borrowed_result_alias": true
+  },
+  "production_finding": {
+    "ordinary_embedded_zst_slice_alias": "review found AsGoSlice fresh allocation lost original pointer; root fixed slice convenience projection; expanded native/Go witness now passes",
+    "other_discrepancies": []
+  },
+  "legacy_preserved": [
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/binary_search_util/testdata/oracle.bin.gz",
+      "sha256": "abe36a14f3b3bb53dde8c42ab07d9c6466757cc22b2dda43b034b123e107e09f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/binary_search_util/oracle_manifest.json",
+      "sha256": "9b71daacbe6c943a456074eba37acb64696d6a27fb58abe83a4da7ba814a996e"
+    }
+  ],
+  "bounds": {
+    "max_cases": 4000,
+    "max_data_length": 128,
+    "max_native_events": 2048,
+    "native_child_timeout_seconds": 10
+  },
+  "raw_fixture_bytes": 2167279,
+  "raw_fixture_sha256": "5655151cb0e82460b1eb4102b7b53d29020a76d6228a326a717a3aba4c979abd",
+  "compressed_fixture_sha256": "69fcb8a34bb9b6f5b5c6acb6ea2544225d380b4da3e825f3216378b0eba050bf",
+  "panic_contract": "Translated Rust panic sites call Context.Panic. Raw Go callback-local defers/recover preserve Go timing and are a separate convenience boundary.",
+  "architecture_scope": "Native x86_64 64-bit source/compiler profile validated. Full-usize ZST traces are explicitly skipped for a different Go word width; no unexecuted target runtime claim.",
+  "owned_files": [
+    {
+      "path": "tools/port-rust-binary-search/owned/README.md",
+      "sha256": "aadb6752a56702a251b5015c05b763c9bb31c6c45272ba31efc5bcfd31131db0"
+    },
+    {
+      "path": "tools/port-rust-binary-search/owned/generate.py",
+      "sha256": "380e9faf78bc7a4ae9eb9853debdab919a153bbc1f0e3d7b2620b6af59d47263"
+    },
+    {
+      "path": "tools/port-rust-binary-search/owned/oracle.rs",
+      "sha256": "e24ac42d37854f665c6993cc8ecb21e667a32330f538f784956b78261aa54c4d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/binary_search_util/owned_test.go",
+      "sha256": "9ca3443afc8adc0291575264aa29a0352fd7c59af678419b6658806c691fcd80"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/binary_search_util/owned_oracle_manifest.json",
+      "sha256": "555956e71853ffcc114fab71acf06583a775d57b54e1089bbe3f1724bab9d4f1"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/binary_search_util/testdata/owned_oracle.jsonl.gz",
+      "sha256": "69fcb8a34bb9b6f5b5c6acb6ea2544225d380b4da3e825f3216378b0eba050bf"
+    }
+  ],
+  "parent_production_inputs": [
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/binary_search_util/mod.go",
+      "sha256": "206e26204105d9aae997f80876c14e2a6ef04da29b9ccb95a000b5fe0ae78262"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/binary_search_util/owned.go",
+      "sha256": "228b18fee596f51fcce703e49a795f87a3d272eae697f55bcfc3dc2f44a75d30"
+    }
+  ]
+}

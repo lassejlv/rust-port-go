@@ -1,0 +1,275 @@
+{
+  "format": 1,
+  "revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "records": 1344,
+  "aborts": 140,
+  "lock_held_at_abort": 48,
+  "source_provenance_sha256": "a616786b638bfc9ba5636e07177f4defe9f82412e88285337a0a34c9233e5ef2",
+  "compiled_reference_sha256": {
+    "Cargo.lock": "ab536ad479572b83d8fb6944426363aa12a889d00998ec417805fc9665ac6bee",
+    "Cargo.toml": "2d0d2fcb82254d2bfb2b96c5bde68807e8dcc4ba7bb3cfa7898e52d36f03bc9d",
+    "adapters.rs": "61397b0a311a7b57279f6a4c35ca570e4e23a4e36f1d7377c5cdfc08f0241781",
+    "atomic_ref.rs": "9fec5fd1b7c9b8ff668dd7533faec22e9ccfc505bf863f88d5f85e5dad828e66",
+    "foundations.rs": "7e748afc156e0107a6d16c1904e90221c664fb9661e7a79c3f1cb9e9aa17d450",
+    "fragments/byte_pos.rs": "0a4ba245fb9b5da0f67afaeba8af541da535136a30deb92508b4849a900d10d5",
+    "fragments/def_index.rs": "4d5605a3799bbc2678023e20dc07555122efaeae497bf7b70140d267571445f9",
+    "fragments/dyn_send.rs": "a11f030a49023bbe8791a6ab3ee45a275aad976ec13c2b483ee3763aa11854db",
+    "fragments/dyn_sync.rs": "0d881d4ecb83f32218fd8e07e83e01d19fa737cbc79754374274766da2ce4356",
+    "fragments/local_def_id.rs": "1e40273ed7ffce5a9bc08b1f55040650a9fb9a95a029687c29daec5c5ab9d7b1",
+    "fragments/raw_span.rs": "bdf29a725d005e3ebb54306ed2eef46b593dc6495f7b464b9dcd2f25fc3d89b2",
+    "fragments/session_tls.rs": "81eedb42fb2a2cfbbaac8ec7af003a1aa5611d0edf42ea746ee1bd10f3322721",
+    "fragments/span_data.rs": "f6ea85e05cf925546c578894c21a21df1a97d23665fe8781b68a03b42dcae027",
+    "fragments/span_data_debug.rs": "39a2b09aec20e22a3052b3d69340bee883ccbe9cd1659d879c303b796c2a5526",
+    "fragments/span_data_impl.rs": "18596fb0c2845cf0e792095f9c93dcc1373314efd13ceb3d288d941ad51c5820",
+    "fragments/span_debug.rs": "812ac7dcf7a6fdb690480ad8f62860a6d375f67dbd0fa9cb091900c3d7e4ca18",
+    "fragments/span_hi.rs": "ceb80520ab660e466bb292350404faf4d95c353357f3b9d80c070807af8c4402",
+    "fragments/span_lo.rs": "21cb006d17b02babb999ee3cda1de806032743292e1ae852e2b2cf2433742aef",
+    "fragments/span_lo_hi.rs": "d78ce305243502fadcac368b401e24224100ee29c39d4180d4b1c6f40c18f071",
+    "fragments/span_track.rs": "4617bfa1b918c49ea3192a4057499622b9881fae54b4bf240e58a660aa0b70ce",
+    "fragments/sync_mode.rs": "6d44eb3aec81306a49cc852ec60e0bdcc36b5bdb9ea8dd7740f5a20e21a92c2a",
+    "fragments/syntax_context.rs": "ed5ace72c8d60a765bee6596bd1083307e5194d42d5869ba28fcb073b76a81e4",
+    "fragments/syntax_context_is_root.rs": "e75cb55d6a8eab889a404891dcc1415628516af7f00450aac2d315f7226d87df",
+    "fragments/syntax_context_root.rs": "683ba37fed020b52762cc05874862977bfc92c912fbb30e9c2ec9e22283f1030",
+    "fragments/with_session_globals.rs": "76ef87720e2cc46b9001aa63aa0de8278f7bb6e04e722a9c7f2cbdc955f91517",
+    "fx.rs": "4aa1903ab2e425e4651bd9fb2954ca76399c6d0cb1cc8ddda214638141605e51",
+    "identities.rs": "2c920885469bb57f0f2fc52938689f2c408c09c07d31db17b14dede5f5e6fb6f",
+    "idx.rs": "7e943e3cf43dcbb2c2cb286e1bb470e59c09ed97243460485d2c260b1e1761ef",
+    "int_overflow.rs": "8ac274897ec3ddbb6265b96829df9d21ed4670b8d2b3b9d4de155ce24a7259ed",
+    "oracle.rs": "f9ad2878e6bc93e0cbbc71dd38dbd98fdc035989a12b5d577b7fa118dd3e00b9",
+    "original/Cargo.lock": "080fd4f801bd66eac0f2e1ec5de21ccd845ec75063922d35efe7a0203e46fcca",
+    "original/compiler/rustc_data_structures/src/atomic_ref.rs": "9fec5fd1b7c9b8ff668dd7533faec22e9ccfc505bf863f88d5f85e5dad828e66",
+    "original/compiler/rustc_data_structures/src/fx.rs": "4aa1903ab2e425e4651bd9fb2954ca76399c6d0cb1cc8ddda214638141605e51",
+    "original/compiler/rustc_data_structures/src/marker.rs": "a90ac6631947358f9a9e8b2684264a0bfa46e4955390aafe6d161df09a5dd71b",
+    "original/compiler/rustc_data_structures/src/stable_hash.rs": "57fa93d5c9f60748ddcac08e27fdc620fbcde7e21609aedbb126aca139bcac44",
+    "original/compiler/rustc_data_structures/src/sync.rs": "951929bf33d012c144e59ab5520c1720374d88c8357ae757bfbfba7c5ad215f1",
+    "original/compiler/rustc_data_structures/src/sync/lock.rs": "598218c24c6ab67ed2971ae5d4970acfac28cb01d02f46ba5b415e46a3985783",
+    "original/compiler/rustc_index/src/idx.rs": "7e943e3cf43dcbb2c2cb286e1bb470e59c09ed97243460485d2c260b1e1761ef",
+    "original/compiler/rustc_index_macros/Cargo.toml": "03540eee714e13159e40207ebe2232b191557604c17e47a33782887891663c48",
+    "original/compiler/rustc_index_macros/src/lib.rs": "b4a0df8e82dba729cae71a23a7c55038333a1173c353e37616ee780920a9ff9a",
+    "original/compiler/rustc_index_macros/src/newtype.rs": "21beb96d3a0d59a3883948415d1d3680b8415a74e9ee4250d0dce40fb47d36d1",
+    "original/compiler/rustc_serialize/src/int_overflow.rs": "8ac274897ec3ddbb6265b96829df9d21ed4670b8d2b3b9d4de155ce24a7259ed",
+    "original/compiler/rustc_span/src/def_id.rs": "6f40f30da61a682ceb75898f2b021bff0c75e438824f9860d612043ce3168b1e",
+    "original/compiler/rustc_span/src/hygiene.rs": "86a49903b158f4547665773e03d83791a819f60fac616fd413ffdeca2d1471da",
+    "original/compiler/rustc_span/src/lib.rs": "9682c3b7d227039f040afff82aae4d2fd8133692bc9ef84f0974323f8a0acca0",
+    "original/compiler/rustc_span/src/span_encoding.rs": "6f5efe1fef5a093cf9046ec794813ae5a9e3f56e9a524d4f7e3276a35ffa13d0",
+    "reference_runtime.rs": "28d53bc3a61d0ddc4b6a4586d22e14dd5aacba7cf1562a52160aed27c592a2cc",
+    "span_encoding_original.rs": "6f5efe1fef5a093cf9046ec794813ae5a9e3f56e9a524d4f7e3276a35ffa13d0",
+    "sync_lock.rs": "598218c24c6ab67ed2971ae5d4970acfac28cb01d02f46ba5b415e46a3985783",
+    "sync_runtime.rs": "ba60022e2658adf95c071fc1b50bdf633709f455aee35aafea91fe0dfb5e1907",
+    "upstream/rustc_index_macros/Cargo.toml": "07bf308e98725b888072d7fbe9fd0203501be32a41e6f97ba299b49bd653c37a",
+    "upstream/rustc_index_macros/src/lib.rs": "b4a0df8e82dba729cae71a23a7c55038333a1173c353e37616ee780920a9ff9a",
+    "upstream/rustc_index_macros/src/newtype.rs": "21beb96d3a0d59a3883948415d1d3680b8415a74e9ee4250d0dce40fb47d36d1"
+  },
+  "registry_dependencies": [
+    {
+      "name": "bitflags",
+      "version": "2.10.0",
+      "checksum": "812e12b5285cc515a9c72a5c1d3b6d46a19dac5acfef5265968c166106e31dd3",
+      "compiled_files": 59
+    },
+    {
+      "name": "cfg-if",
+      "version": "1.0.4",
+      "checksum": "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801",
+      "compiled_files": 14
+    },
+    {
+      "name": "equivalent",
+      "version": "1.0.2",
+      "checksum": "877a4ace8713b0bcf2a4e7eec82529c029f1d0619886d18145fea96c3ffe5c0f",
+      "compiled_files": 10
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.17.1",
+      "checksum": "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a",
+      "compiled_files": 50
+    },
+    {
+      "name": "indexmap",
+      "version": "2.14.0",
+      "checksum": "d466e9454f08e4a911e14806c24e16fba1b4c121d1ea474396f396069cf949d9",
+      "compiled_files": 42
+    },
+    {
+      "name": "itoa",
+      "version": "1.0.15",
+      "checksum": "4a5f13b858c8d314ee3e8f639011f7ccefe71f97f96e50151fb991f267928e2c",
+      "compiled_files": 14
+    },
+    {
+      "name": "libc",
+      "version": "0.2.191",
+      "checksum": "65cd87c9a6d60536580b316ad985726104730a5151c99845f2490428ef91240a",
+      "compiled_files": 452
+    },
+    {
+      "name": "lock_api",
+      "version": "0.4.14",
+      "checksum": "224399e74b87b5f3557511d98dff8b14089b3dadafcab6bb93eab67d3aace965",
+      "compiled_files": 10
+    },
+    {
+      "name": "memchr",
+      "version": "2.8.0",
+      "checksum": "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79",
+      "compiled_files": 57
+    },
+    {
+      "name": "parking_lot",
+      "version": "0.12.5",
+      "checksum": "93857453250e3077bd71ff98b6a65ea6621a19bb0f559a85248955ac12c45a1a",
+      "compiled_files": 28
+    },
+    {
+      "name": "parking_lot_core",
+      "version": "0.9.12",
+      "checksum": "2621685985a2ebf1c516881c026032ac7deafcda1a2c9b7850dc81e3dfcb64c1",
+      "compiled_files": 24
+    },
+    {
+      "name": "proc-macro2",
+      "version": "1.0.106",
+      "checksum": "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934",
+      "compiled_files": 33
+    },
+    {
+      "name": "quote",
+      "version": "1.0.45",
+      "checksum": "41f2619966050689382d2b44f664f4bc593e129785a36d6ee376ddf37259b924",
+      "compiled_files": 35
+    },
+    {
+      "name": "redox_syscall",
+      "version": "0.5.18",
+      "checksum": "ed2bf2547551a7053d6fdfafda3f938979645c44812fbfcda098faae3f1a362d",
+      "compiled_files": 32
+    },
+    {
+      "name": "rustc-hash",
+      "version": "2.1.1",
+      "checksum": "357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d",
+      "compiled_files": 14
+    },
+    {
+      "name": "ryu",
+      "version": "1.0.20",
+      "checksum": "28d3b2b1366ec20994f1fd18c3c594f05c5dd4bc44d8bb0c1c632c8d6829481f",
+      "compiled_files": 37
+    },
+    {
+      "name": "scoped-tls",
+      "version": "1.0.1",
+      "checksum": "e1cf6437eb19a8f4a6cc0f7dca544973b0b78843adbfeb3683d1a94a0024a294",
+      "compiled_files": 9
+    },
+    {
+      "name": "scopeguard",
+      "version": "1.2.0",
+      "checksum": "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49",
+      "compiled_files": 11
+    },
+    {
+      "name": "serde",
+      "version": "1.0.228",
+      "checksum": "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e",
+      "compiled_files": 33
+    },
+    {
+      "name": "serde_core",
+      "version": "1.0.228",
+      "checksum": "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad",
+      "compiled_files": 27
+    },
+    {
+      "name": "serde_derive",
+      "version": "1.0.228",
+      "checksum": "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79",
+      "compiled_files": 36
+    },
+    {
+      "name": "serde_json",
+      "version": "1.0.145",
+      "checksum": "402a6f66d8c709116cf22f558eab210f5a50187f702eb4d7e5ef38d9a7f1c79c",
+      "compiled_files": 88
+    },
+    {
+      "name": "smallvec",
+      "version": "1.15.1",
+      "checksum": "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03",
+      "compiled_files": 19
+    },
+    {
+      "name": "syn",
+      "version": "2.0.117",
+      "checksum": "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99",
+      "compiled_files": 105
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.24",
+      "checksum": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+      "compiled_files": 26
+    },
+    {
+      "name": "windows-link",
+      "version": "0.2.1",
+      "checksum": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5",
+      "compiled_files": 8
+    }
+  ],
+  "tool_sha256": {
+    "tools/port-rust-span-encoding/ambient-debug/oracle.rs": "f9ad2878e6bc93e0cbbc71dd38dbd98fdc035989a12b5d577b7fa118dd3e00b9",
+    "tools/port-rust-span-encoding/ambient-debug/generate.py": "8450cdacdbd0e00808cc389d07b432c9898f6a2db6bb9780ed6c12be8f252129",
+    "tools/port-rust-span-encoding/ambient-debug/PORT.md": "3473432fb2567604477da9487afbd0543abdc8424cc2ec38771698883cad475c",
+    "tools/port-rust-span-encoding/ambient-debug/test_probe.py": "27a943bfaa2d86a7538cd54b0dd8904e6db2b71515c174784fa9015aa0fe37af",
+    "tools/port-rust-span-encoding/prepare.py": "689c1f2758931d9e89eb638d1243e19fdcdc9921c243323f4abdcc08584ce640",
+    "tools/port-rust-span-encoding/generate.py": "3be2bf06a8057b609d43bafc404ab8b3ab54cb26f87e005b6a73276490fb0ed2",
+    "tools/port-rust-span-encoding/runtime.rs": "36d421e3074cd4420ebd8dc955c99f319bb98904b24576c9eb5aa6e6405c080c",
+    "tools/port-rust-span-encoding/adapters.rs": "61397b0a311a7b57279f6a4c35ca570e4e23a4e36f1d7377c5cdfc08f0241781",
+    "tools/port-rust-span-encoding/Cargo.toml": "2d0d2fcb82254d2bfb2b96c5bde68807e8dcc4ba7bb3cfa7898e52d36f03bc9d",
+    "tools/port-rust-span-encoding/Cargo.lock": "ab536ad479572b83d8fb6944426363aa12a889d00998ec417805fc9665ac6bee",
+    "tools/port-rust-span-encoding/upstream/rustc_index_macros/Cargo.toml": "07bf308e98725b888072d7fbe9fd0203501be32a41e6f97ba299b49bd653c37a",
+    "tools/port-rust-span-encoding/manifest.json": "ea615d693c8afa4e12120d4fc345527f85619cedd91a19c4f92054f0a416ba0d"
+  },
+  "profiles": [
+    {
+      "name": "d0o0",
+      "debug_assertions": false,
+      "overflow_checks": false,
+      "rustflags": [],
+      "rustc_bootstrap": true
+    },
+    {
+      "name": "d0o1",
+      "debug_assertions": false,
+      "overflow_checks": true,
+      "rustflags": [
+        "--cfg",
+        "probe_overflow_checks"
+      ],
+      "rustc_bootstrap": true
+    },
+    {
+      "name": "d1o0",
+      "debug_assertions": true,
+      "overflow_checks": false,
+      "rustflags": [],
+      "rustc_bootstrap": true
+    },
+    {
+      "name": "d1o1",
+      "debug_assertions": true,
+      "overflow_checks": true,
+      "rustflags": [
+        "--cfg",
+        "probe_overflow_checks"
+      ],
+      "rustc_bootstrap": true
+    }
+  ],
+  "raw_sha256": "df369dbac36fb284e1785bc3a3b66fd2169e6ba45b0cb11997769ae9e2da4d66",
+  "scope": "Separate unchanged-source primary Debug ambient/processing-panic and actual native lock-at-abort proof; no main span corpus changes.",
+  "fixture_sha256": "4a6a8bffcf4ea6fef7cbc77e928010ca7149f679143a44eff520a15735c22bd8"
+}

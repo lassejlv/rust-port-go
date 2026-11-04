@@ -1,0 +1,2 @@
+# Preserve the pinned reference manifest verbatim, including its final blank line.
+tools/port-rust-span-encoding/upstream/rustc_index_macros/Cargo.toml -whitespace

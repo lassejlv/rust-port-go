@@ -1,0 +1,8 @@
+{
+  "reference_rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "reference_scope": "Observed std Debug builders only; supporting adapter, no standard-library source completion credit",
+  "cases": 1284,
+  "source_sha256": "9596c084a495c27f797d0a1e447a6a5e01eb8cc207d9b9358a1c818d0cb6caa2",
+  "raw_sha256": "925a6eb570ea3dc137570842d31824884a207bc3f9f8286a7bfd9f223c4d5a21",
+  "fixture_sha256": "155db4c9bf668c7164b857680ff039fd46cfb986edd2091d86eccbed6824efa9"
+}

@@ -1,0 +1,147 @@
+{
+  "format": 1,
+  "revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "pointer_bits": 64,
+  "derived_types": 9,
+  "value_cases": 40,
+  "format_patterns": 19,
+  "records": 156460,
+  "raw_sha256": "c353d189d5004da84fd30fb9ae9e12a5f4fd39a31caf6a7d3e0704a4369b41f0",
+  "sources": {
+    "Cargo.lock": {
+      "git_blob": "feeba051664e2fb683fdc8914790a81261b3b5d7",
+      "sha256": "080fd4f801bd66eac0f2e1ec5de21ccd845ec75063922d35efe7a0203e46fcca"
+    },
+    "compiler/rustc_parse_format/src/lib.rs": {
+      "git_blob": "90e04fe388ad6f592d5785e8c36964ce284a0da6",
+      "sha256": "451e6c20b1fe8c186fb19c996cc72581220327148154140a307d6d1fafb5b59e"
+    },
+    "compiler/rustc_parse_format/src/tests.rs": {
+      "git_blob": "a2e03a514fa5fcc8304933ef59e02aa4400c4181",
+      "sha256": "8ad525beb126768ecdb887c4b4a2774db4e419aa4c4f7677b8a545c7405fc531"
+    },
+    "compiler/rustc_lexer/src/lib.rs": {
+      "git_blob": "0aa57e75889fa2d81deb1ec8bf5480b1c930fff1",
+      "sha256": "fb7f451aae9d46a171e5599635483b27613a4067d107edd9caf89d79a32ceadf"
+    },
+    "compiler/rustc_lexer/src/tests.rs": {
+      "git_blob": "a7357ba38c8e4484da814ef3c22bf33b75bdbeb2",
+      "sha256": "90516c7444d6102ab1fceae40cf260cf473ec6542bc372d8bf9d6033eaf507da"
+    }
+  },
+  "parent_support_sha256": {
+    "Cargo.toml": "c0f877dacc51c60ab953f75f656d27f969a93bad365c15af98c02162cba6d07e",
+    "Cargo.lock": "e69468cacdbdaa2367aa30fd76538983afaee7755d9273aa35ad2057bb0daf63",
+    "upstream/rustc_parse_format/Cargo.toml": "4928874dadf294fda0726805bcbd0360df2dd45ac4d0ac12409ca1fc02b99461",
+    "upstream/rustc_lexer/Cargo.toml": "cadd38eb191ae566cf29ff4250090031418c826b98693f246a24a829828f5cd9",
+    "upstream/rustc_index/Cargo.toml": "3080149d60c2fea4f0c96ade5344cc87b9507e724c08377b1fdf9e44e9d9a1f0",
+    "upstream/rustc_index/src/lib.rs": "af274994ee75ca7286e53c04dacd711aec93c84c027091381bf81301d4cd5dbc"
+  },
+  "tool_sha256": {
+    "oracle.rs": "9ed2ec02103f1f6aeecd3ae4f1d51a0670ef14e46eb4de6ff4754096108e104b",
+    "generate.py": "ccfb2b37d30ec81f93aa2952a49e68f0210213432d46682aab91fce26c564e28",
+    "test_generate.py": "64f8a5989f6e70f4dc82e627fc034850cb4085359f74034a5e2330c8aca60bcf",
+    "PORT.md": "9490994aa6ca7842eea209a399c02326a518410453a058d5ce83094bd71396ea"
+  },
+  "registry_dependencies": [
+    {
+      "name": "dissimilar",
+      "version": "1.0.10",
+      "checksum": "8975ffdaa0ef3661bfe02dbdcc06c9f829dfafe6a3c474de366a8d5e44276921",
+      "compiled_files": 18
+    },
+    {
+      "name": "expect-test",
+      "version": "1.5.1",
+      "checksum": "63af43ff4431e848fb47472a920f14fa71c24de13255a5692e93d4e90302acb0",
+      "compiled_files": 10
+    },
+    {
+      "name": "itoa",
+      "version": "1.0.15",
+      "checksum": "4a5f13b858c8d314ee3e8f639011f7ccefe71f97f96e50151fb991f267928e2c",
+      "compiled_files": 14
+    },
+    {
+      "name": "memchr",
+      "version": "2.8.0",
+      "checksum": "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79",
+      "compiled_files": 57
+    },
+    {
+      "name": "once_cell",
+      "version": "1.21.3",
+      "checksum": "42f5e15c9953c5e4ccceeb2e7382a716482c34515315f7b03532b8b4e8393d2d",
+      "compiled_files": 29
+    },
+    {
+      "name": "proc-macro2",
+      "version": "1.0.106",
+      "checksum": "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934",
+      "compiled_files": 33
+    },
+    {
+      "name": "quote",
+      "version": "1.0.45",
+      "checksum": "41f2619966050689382d2b44f664f4bc593e129785a36d6ee376ddf37259b924",
+      "compiled_files": 35
+    },
+    {
+      "name": "rustc-literal-escaper",
+      "version": "0.0.8",
+      "checksum": "bfe6f213fb658c8fb95baabd5420393438cf5a98d707f5dd701d9197c705f71e",
+      "compiled_files": 14
+    },
+    {
+      "name": "ryu",
+      "version": "1.0.20",
+      "checksum": "28d3b2b1366ec20994f1fd18c3c594f05c5dd4bc44d8bb0c1c632c8d6829481f",
+      "compiled_files": 37
+    },
+    {
+      "name": "serde",
+      "version": "1.0.228",
+      "checksum": "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e",
+      "compiled_files": 33
+    },
+    {
+      "name": "serde_core",
+      "version": "1.0.228",
+      "checksum": "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad",
+      "compiled_files": 27
+    },
+    {
+      "name": "serde_derive",
+      "version": "1.0.228",
+      "checksum": "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79",
+      "compiled_files": 36
+    },
+    {
+      "name": "serde_json",
+      "version": "1.0.145",
+      "checksum": "402a6f66d8c709116cf22f558eab210f5a50187f702eb4d7e5ef38d9a7f1c79c",
+      "compiled_files": 88
+    },
+    {
+      "name": "syn",
+      "version": "2.0.117",
+      "checksum": "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99",
+      "compiled_files": 105
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.24",
+      "checksum": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+      "compiled_files": 26
+    },
+    {
+      "name": "unicode-properties",
+      "version": "0.1.4",
+      "checksum": "7df058c713841ad818f1dc5d3fd88063241cc61f49f5fbea4b951e8cf5a8d71d",
+      "compiled_files": 15
+    }
+  ],
+  "scope": "Original nine derived Debug impls and their used std formatter contracts; no parser algorithm or additional source completion credit.",
+  "fixture_sha256": "75f4f8d52e3e7a31db63c8632b736c779511051a87ae7c5386d59f140ca4bded"
+}

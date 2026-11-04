@@ -1,0 +1,73 @@
+{
+  "format": 1,
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "host_pointer_bits": 64,
+  "sources": [
+    {
+      "path": "compiler/rustc_index/src/idx.rs",
+      "git_blob": "60c4dd90d8f666fc855b5a5e6e22f07209dfd1f8",
+      "sha256": "7e943e3cf43dcbb2c2cb286e1bb470e59c09ed97243460485d2c260b1e1761ef"
+    },
+    {
+      "path": "compiler/rustc_index/src/slice.rs",
+      "git_blob": "415fe370b702c4dea8f511f1faacb128af4cc6be",
+      "sha256": "3a3396fc2031f78f3ada674dc2a9c7dcb35f35e9c7f7262bf88dde0f210a7c38"
+    },
+    {
+      "path": "compiler/rustc_index/src/vec.rs",
+      "git_blob": "97aad8e6e8c048812f27d1b4df46ed26604be2fa",
+      "sha256": "c05e514a32afe051d425a60a94218a31af741ea762a6f0c8a64f89100332402d"
+    },
+    {
+      "path": "compiler/rustc_index/src/interval.rs",
+      "git_blob": "475c81e66ab09229137350775db615e39df24eee",
+      "sha256": "1f1e094a6d260ebd3ffd00309a324d4c2ab93620463c6fb6dec5ba22715da3bc"
+    },
+    {
+      "path": "compiler/rustc_index/src/interval/tests.rs",
+      "git_blob": "cf3222e6c6572303939f620858a4d98a90ba2bbe",
+      "sha256": "a2e057843e58fbee1b3057fe09bd25f70c64953701d7d60883d3aa0a4f87a2e2"
+    }
+  ],
+  "smallvec_version": "1.15.1",
+  "smallvec_archive_sha256": "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03",
+  "smallvec_source_sha256": "881e5b2c9afecd0091df0d1232fd557edbb9d58304d073356b066728af14ab2e",
+  "smallvec_features": [],
+  "original_tests": 7,
+  "oracle_sha256": "7a1e31a1af11c76472fab3413d42aae5ea977b9a71510560c0fed9fb50c6c985",
+  "storage_wrapper_sha256": "ee9bc86ab0232034bcbd007faf258921a5923f99c70b8e8eaa823a6c4bc963f9",
+  "profiles": [
+    {
+      "OverflowChecks": true,
+      "DebugAssertions": true,
+      "Records": 10095,
+      "RequestsSHA256": "eb62d2756b1ee6a560b6fb4ce9bcc54653f6d0685ab2813de2d04b2b698c3eff",
+      "ResponsesSHA256": "e35e346fcd10e29bfad4b532f315a0026f2c9f33cae66e3ada2e47d3103a1739"
+    },
+    {
+      "OverflowChecks": false,
+      "DebugAssertions": false,
+      "Records": 10095,
+      "RequestsSHA256": "eb62d2756b1ee6a560b6fb4ce9bcc54653f6d0685ab2813de2d04b2b698c3eff",
+      "ResponsesSHA256": "b8f75151846955490e7a0d16ee2e678644f65d634faab485fb0aa20bed458716"
+    },
+    {
+      "OverflowChecks": true,
+      "DebugAssertions": false,
+      "Records": 10095,
+      "RequestsSHA256": "eb62d2756b1ee6a560b6fb4ce9bcc54653f6d0685ab2813de2d04b2b698c3eff",
+      "ResponsesSHA256": "824ba2c44a2d7be8b4e84ec5b7ed08183c39554b2d2943bc3e46b61f0636d4e1"
+    },
+    {
+      "OverflowChecks": false,
+      "DebugAssertions": true,
+      "Records": 10095,
+      "RequestsSHA256": "eb62d2756b1ee6a560b6fb4ce9bcc54653f6d0685ab2813de2d04b2b698c3eff",
+      "ResponsesSHA256": "c7759ef8f270762fe62a604e15bbb2c5f011be29b77a35ee1c4e9d6f3595b8e9"
+    }
+  ],
+  "records": 40380,
+  "fixture_sha256": "716603ba891092d7dec244ef898471147e8bc0ac1ec1ad259231ac1b995e6f6f",
+  "raw_fixture_sha256": "6aba6b43da60c8ec75999c63471086715b2be08072f63148483c38ddbd39a478"
+}

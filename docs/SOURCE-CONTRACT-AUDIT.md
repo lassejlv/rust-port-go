@@ -6,19 +6,16 @@ text is insufficient when a caller can supply other formatter options, a
 fallible writer, independent character writes or owned callback state.
 
 Review of the typed-storage block and follow-up API review exposed gaps in
-seven earlier implementation records. Six remain reopened as `unported`,
+seven earlier implementation records. Two remain reopened as `unported`,
 retaining all existing port and comparison evidence. Union-find's gaps closed
-in checkpoint 18. The reopened status means full-file work remains; it does
+in checkpoint 18; lexer, binary search, format parser and restricted names
+close in checkpoint 19. The reopened status means full-file work remains; it does
 not remove the implemented algorithms or their tests.
 
 | Upstream file | Remaining contract |
 | --- | --- |
-| Rust `compiler/rustc_lexer/src/lib.rs` | Complete derived Debug formatter, options, writer errors and caller state |
 | Rust `compiler/rustc_data_structures/src/base_n.rs` | Display formatter/writer and owned generic conversion behavior |
-| Rust `compiler/rustc_data_structures/src/binary_search_util/mod.rs` | Owned extracted-key temporaries, borrowed key operator cells and owned extractor cleanup |
-| Rust `compiler/rustc_parse_format/src/lib.rs` | Complete derived Debug formatter for all source types and fallible output |
 | Cargo `src/util/graph.rs` | Borrowed Display/Debug writer dispatch and remaining generic persistent-container observations |
-| Cargo `crates/cargo-util-schemas/src/restricted_names.rs` | Complete derived Debug and Display writer contracts |
 
 Union-find now exposes full mutable Debug formatting on actual parent cells
 and a primary snapshot API returning the validated `IndexVec<Key, Key>`, with
@@ -27,11 +24,19 @@ formatter records complement the existing 3,788 algorithm records. The new
 slice/vector implementation and all five original vector tests have their own
 completed file records; no general standard-library source credit is inferred.
 
-The separately inventoried `rustc-literal-escaper 0.0.8` implementation is marked
-`partial` for its formatter and owned callback contracts. Its complete archive
-inventory, nine mirrored tests, 27 benchmark workloads and escaping/scalar
-comparisons remain retained. Archive test and benchmark files do not gain
-completion credit for their implementation dependency.
+The separately inventoried `rustc-literal-escaper 0.0.8` implementation now
+includes its complete formatter and owned callback contracts. Its complete
+archive inventory, nine mirrored tests, 27 benchmark workloads and escaping/
+scalar comparisons remain retained. These dependency records stay separate
+from top-level Rust/Cargo source counts.
+
+The lexer additionally has its lazy consumed iterator, structured ordering,
+independent build profiles and contextual internal failures checked against
+unchanged Rust. Binary search owns each extracted temporary and extractor,
+borrows actual query/operator cells, and handles full-width zero-sized input.
+Format parser and name errors now preserve full mutable formatter state,
+writer errors and independent character/string dispatch. Each closure has
+retained native evidence under its source-specific tool directory.
 
 Concrete reference tests demonstrate why this matters. Rust integer Debug can
 call `write_char` independently from `write_str`; alternate formatting can emit
@@ -43,7 +48,7 @@ string loses callbacks, errors and later observable state.
 The new hash and storage ports compare those interactions directly against
 unchanged original source. A shared supporting builder runtime is being
 extracted from independently checked implementations so earlier ports can use
-the same complete contracts. Supporting adapters receive no extra upstream
+the same complete contracts. That shared runtime is now integrated. Supporting adapters receive no extra upstream
 source-file credit. Each reopened row can return to `validated` only after its
 missing behavior is implemented and reference evidence is retained.
 

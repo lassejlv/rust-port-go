@@ -10,6 +10,7 @@ package rustclexer
 
 import (
 	"fmt"
+	rustfmt "github.com/lassejlv/rust-port-go/port/support/rustfmt"
 	"strings"
 	"unicode/utf8"
 )
@@ -176,12 +177,23 @@ func requireUTF8(input string) {
 // StripShebang returns the number of bytes in the first line of a shebang,
 // excluding its line ending. A #! whose next significant token is [ is Rust.
 func StripShebang(input string) (int, bool) {
-	requireUTF8(input)
+	return StripShebangWithContext(input, rustfmt.Context{})
+}
+
+// StripShebangWithContext carries source ambient panic state into its lexer.
+func StripShebangWithContext(input string, context rustfmt.Context) (int, bool) {
+	return StripShebangWithConfigAndContext(input, DefaultCursorConfig(), context)
+}
+func StripShebangWithConfig(input string, config CursorConfig) (int, bool) {
+	return StripShebangWithConfigAndContext(input, config, rustfmt.Context{})
+}
+func StripShebangWithConfigAndContext(input string, config CursorConfig, context rustfmt.Context) (int, bool) {
+	requireUTF8WithContext(input, context)
 	if !strings.HasPrefix(input, "#!") {
 		return 0, false
 	}
 	tail := input[2:]
-	cursor := NewCursor(tail, FrontmatterNo)
+	cursor := NewCursorWithConfigAndContext(tail, FrontmatterNo, config, context)
 	for {
 		t := cursor.AdvanceToken().Kind
 		if t.Tag == Whitespace || ((t.Tag == LineComment || t.Tag == BlockComment) && t.DocStyle == NoDocStyle) {
@@ -206,30 +218,20 @@ func StripShebang(input string) (int, bool) {
 // is the number of leading characters to skip (1 for r, 2 for br or cr).
 // As in upstream, a missing prefix character panics.
 func ValidateRawStr(input string, prefixLen uint32) *RawStrError {
-	cursor := NewCursor(input, FrontmatterNo)
-	if input == "" {
-		panic("rustclexer: ValidateRawStr requires a nonempty string")
-	}
-	for i := uint32(0); i < prefixLen; i++ {
-		if _, ok := cursor.Bump(); !ok {
-			panic("rustclexer: raw string prefix exceeds input")
-		}
-	}
-	_, err := cursor.rawDoubleQuotedString(prefixLen)
-	return err
+	return ValidateRawStrWithConfig(input, prefixLen, DefaultCursorConfig())
 }
 
 // Tokenize lexes input, excluding the EOF token. When lexing a complete document,
 // first StripShebang and then allow frontmatter. Disallow it for document slices.
 func Tokenize(input string, frontmatter FrontmatterAllowed) []Token {
-	cursor := NewCursor(input, frontmatter)
+	iterator := NewTokenizer(input, frontmatter)
 	tokens := make([]Token, 0)
 	for {
-		t := cursor.AdvanceToken()
-		if t.Kind.Tag == Eof {
+		token, ok := iterator.Next()
+		if !ok {
 			return tokens
 		}
-		tokens = append(tokens, t)
+		tokens = append(tokens, token)
 	}
 }
 
@@ -270,15 +272,21 @@ type Cursor struct {
 	lenRemaining       int
 	frontmatterAllowed FrontmatterAllowed
 	prev               rune
+	config             CursorConfig
+	context            rustfmt.Context
 }
 
 func NewCursor(input string, frontmatter FrontmatterAllowed) *Cursor {
-	requireUTF8(input)
-	return &Cursor{remaining: input, lenRemaining: len(input), frontmatterAllowed: frontmatter}
+	return NewCursorWithConfig(input, frontmatter, DefaultCursorConfig())
 }
 
 func (c *Cursor) AsStr() string { return c.remaining }
-func (c *Cursor) Prev() rune    { return c.prev }
+func (c *Cursor) Prev() rune {
+	if !c.config.DebugAssertions {
+		return EOFChar
+	}
+	return c.prev
+}
 func (c *Cursor) First() rune {
 	if c.remaining == "" {
 		return EOFChar
@@ -309,7 +317,9 @@ func (c *Cursor) Bump() (rune, bool) {
 	}
 	r, width := utf8.DecodeRuneInString(c.remaining)
 	c.remaining = c.remaining[width:]
-	c.prev = r
+	if c.config.DebugAssertions {
+		c.prev = r
+	}
 	return r, true
 }
 
@@ -317,7 +327,7 @@ func (c *Cursor) Bump() (rune, bool) {
 // slicing. Like upstream, it does not update Prev.
 func (c *Cursor) BumpBytes(n int) {
 	if n < 0 || n > len(c.remaining) || (n < len(c.remaining) && !utf8.RuneStart(c.remaining[n])) {
-		panic("rustclexer: byte advance is not a UTF-8 character boundary")
+		c.context.Panic("rustclexer: byte advance is not a UTF-8 character boundary")
 	}
 	c.remaining = c.remaining[n:]
 }
@@ -495,9 +505,11 @@ func (c *Cursor) AdvanceToken() Token {
 }
 
 func (c *Cursor) frontmatter(hasInvalidPrecedingWhitespace bool) TokenKind {
+	c.debugAssert(c.Prev() == '-')
 	pos := c.PosWithinToken()
 	c.EatWhile(func(r rune) bool { return r == '-' })
-	lengthOpening := c.PosWithinToken() - pos + 1
+	lengthOpening := c.addU32(c.subU32(c.PosWithinToken(), pos), 1)
+	c.debugAssert(lengthOpening >= 3)
 	c.EatWhile(func(r rune) bool { return r != '\n' && IsHorizontalWhitespace(r) })
 	if IsIDStart(c.First()) {
 		c.Bump()
@@ -559,6 +571,7 @@ func (c *Cursor) frontmatter(hasInvalidPrecedingWhitespace bool) TokenKind {
 }
 
 func (c *Cursor) lineComment() TokenKind {
+	c.debugAssert(c.Prev() == '/' && c.First() == '/')
 	c.Bump()
 	doc := NoDocStyle
 	if c.First() == '!' {
@@ -571,6 +584,7 @@ func (c *Cursor) lineComment() TokenKind {
 }
 
 func (c *Cursor) blockComment() TokenKind {
+	c.debugAssert(c.Prev() == '/' && c.First() == '*')
 	c.Bump()
 	doc := NoDocStyle
 	if c.First() == '!' {
@@ -599,12 +613,14 @@ func (c *Cursor) blockComment() TokenKind {
 }
 
 func (c *Cursor) whitespace() TokenKind {
+	c.debugAssert(IsWhitespace(c.Prev()))
 	c.EatWhile(IsWhitespace)
 	return simple(Whitespace)
 }
 
 func (c *Cursor) identOrUnknownPrefix(alreadyInvalid bool) TokenKind {
-	// alreadyInvalid is used only by upstream's debug assertion.
+	c.debugAssert(IsIDStart(c.Prev()) || alreadyInvalid)
+	// alreadyInvalid participates in the source debug assertion above.
 	c.EatWhile(IsIDContinue)
 	switch c.First() {
 	case '#', '"', '\'':
@@ -656,6 +672,7 @@ func (c *Cursor) cOrByteString(normal, raw LiteralTag, allowSingleQuoted bool) T
 func asciiDigit(r rune) bool { return '0' <= r && r <= '9' }
 
 func (c *Cursor) number(firstDigit rune) LiteralKind {
+	c.debugAssert(c.Prev() >= '0' && c.Prev() <= '9')
 	base := Decimal
 	if firstDigit == '0' {
 		switch c.First() {
@@ -707,6 +724,7 @@ func (c *Cursor) number(firstDigit rune) LiteralKind {
 }
 
 func (c *Cursor) lifetimeOrChar() TokenKind {
+	c.debugAssert(c.Prev() == '\'')
 	invalid := false
 	canBeLifetime := false
 	if c.Second() != '\'' {
@@ -745,6 +763,7 @@ func (c *Cursor) lifetimeOrChar() TokenKind {
 }
 
 func (c *Cursor) singleQuotedString() bool {
+	c.debugAssert(c.Prev() == '\'')
 	if c.Second() == '\'' && c.First() != '\\' {
 		c.Bump()
 		c.Bump()
@@ -777,6 +796,7 @@ func (c *Cursor) singleQuotedString() bool {
 }
 
 func (c *Cursor) doubleQuotedString() bool {
+	c.debugAssert(c.Prev() == '"')
 	for {
 		r, ok := c.Bump()
 		if !ok {
@@ -795,9 +815,10 @@ func (c *Cursor) doubleQuotedString() bool {
 // suffix. Failure does not restore the cursor. Successful recognition resets the
 // byte position within the token. Call on a cursor before its leading hashes.
 func (c *Cursor) GuardedDoubleQuotedString() (GuardedStr, bool) {
+	c.debugAssert(c.Prev() != '#')
 	var startHashes uint32
 	for c.First() == '#' {
-		startHashes++
+		startHashes = c.addU32(startHashes, 1)
 		c.Bump()
 	}
 	if c.First() != '"' {
@@ -812,7 +833,7 @@ func (c *Cursor) GuardedDoubleQuotedString() (GuardedStr, bool) {
 	}
 	var endHashes uint32
 	for c.First() == '#' && endHashes < startHashes {
-		endHashes++
+		endHashes = c.addU32(endHashes, 1)
 		c.Bump()
 	}
 	c.eatLiteralSuffix()
@@ -833,11 +854,12 @@ func (c *Cursor) rawDoubleQuotedString(prefixLen uint32) (uint8, *RawStrError) {
 }
 
 func (c *Cursor) rawStringUnvalidated(prefixLen uint32) (uint32, *RawStrError) {
+	c.debugAssert(c.Prev() == 'r')
 	startPos := c.PosWithinToken()
 	var possibleOffset, maxHashes, startHashes uint32
 	hasPossibleOffset := false
 	for c.First() == '#' {
-		startHashes++
+		startHashes = c.addU32(startHashes, 1)
 		c.Bump()
 	}
 	r, ok := c.Bump()
@@ -853,13 +875,13 @@ func (c *Cursor) rawStringUnvalidated(prefixLen uint32) (uint32, *RawStrError) {
 		c.Bump()
 		var endHashes uint32
 		for c.First() == '#' && endHashes < startHashes {
-			endHashes++
+			endHashes = c.addU32(endHashes, 1)
 			c.Bump()
 		}
 		if endHashes == startHashes {
 			return startHashes, nil
 		} else if endHashes > maxHashes {
-			possibleOffset = c.PosWithinToken() - startPos - endHashes + prefixLen
+			possibleOffset = c.addU32(c.subU32(c.subU32(c.PosWithinToken(), startPos), endHashes), prefixLen)
 			hasPossibleOffset = true
 			maxHashes = endHashes
 		}
@@ -896,6 +918,7 @@ func (c *Cursor) eatHexadecimalDigits() bool {
 }
 
 func (c *Cursor) eatFloatExponent() bool {
+	c.debugAssert(c.Prev() == 'e' || c.Prev() == 'E')
 	if c.First() == '-' || c.First() == '+' {
 		c.Bump()
 	}
@@ -954,82 +977,8 @@ func (d DocStyle) String() string {
 	return fmt.Sprintf("DocStyle(%d)", d)
 }
 
-// RustDebug formats tokens identically to the upstream derived Debug output.
-func (t Token) RustDebug() string {
-	return fmt.Sprintf("Token { kind: %s, len: %d }", t.Kind.RustDebug(), t.Len)
-}
-
-func (k TokenKind) RustDebug() string {
-	switch k.Tag {
-	case LineComment:
-		return fmt.Sprintf("LineComment { doc_style: %s }", k.DocStyle)
-	case BlockComment:
-		return fmt.Sprintf("BlockComment { doc_style: %s, terminated: %t }", k.DocStyle, k.Terminated)
-	case Frontmatter:
-		return fmt.Sprintf("Frontmatter { has_invalid_preceding_whitespace: %t, invalid_infostring: %t }", k.HasInvalidPrecedingWhitespace, k.InvalidInfostring)
-	case Literal:
-		return fmt.Sprintf("Literal { kind: %s, suffix_start: %d }", k.Literal.RustDebug(), k.SuffixStart)
-	case Lifetime:
-		return fmt.Sprintf("Lifetime { starts_with_number: %t }", k.StartsWithNumber)
-	default:
-		return k.Tag.String()
-	}
-}
-
-func (k LiteralKind) RustDebug() string {
-	switch k.Tag {
-	case Int:
-		return fmt.Sprintf("Int { base: %s, empty_int: %t }", k.Base, k.EmptyInt)
-	case Float:
-		return fmt.Sprintf("Float { base: %s, empty_exponent: %t }", k.Base, k.EmptyExponent)
-	case Char, Byte, Str, ByteStr, CStr:
-		name := [...]string{"Char", "Byte", "Str", "ByteStr", "CStr"}[k.Tag-Char]
-		return fmt.Sprintf("%s { terminated: %t }", name, k.Terminated)
-	case RawStr, RawByteStr, RawCStr:
-		name := [...]string{"RawStr", "RawByteStr", "RawCStr"}[k.Tag-RawStr]
-		hashes := "None"
-		if k.HasNHashes {
-			hashes = fmt.Sprintf("Some(%d)", k.NHashes)
-		}
-		return fmt.Sprintf("%s { n_hashes: %s }", name, hashes)
-	}
-	return fmt.Sprintf("LiteralTag(%d)", k.Tag)
-}
-
-func (e RawStrError) RustDebug() string {
-	switch e.Tag {
-	case InvalidStarter:
-		return fmt.Sprintf("InvalidStarter { bad_char: %s }", rustDebugChar(e.BadChar))
-	case NoTerminator:
-		offset := "None"
-		if e.HasPossibleTerminatorOffset {
-			offset = fmt.Sprintf("Some(%d)", e.PossibleTerminatorOffset)
-		}
-		return fmt.Sprintf("NoTerminator { expected: %d, found: %d, possible_terminator_offset: %s }", e.Expected, e.Found, offset)
-	case TooManyDelimiters:
-		return fmt.Sprintf("TooManyDelimiters { found: %d }", e.Found)
-	}
-	return fmt.Sprintf("RawStrErrorTag(%d)", e.Tag)
-}
-
-func rustDebugChar(r rune) string {
-	switch r {
-	case '\x00':
-		return "'\\0'"
-	case '\t':
-		return "'\\t'"
-	case '\r':
-		return "'\\r'"
-	case '\n':
-		return "'\\n'"
-	case '\\':
-		return "'\\\\'"
-	case '\'':
-		return "'\\''"
-	default:
-		if r < 0x20 || r == 0x7f {
-			return fmt.Sprintf("'\\u{%x}'", r)
-		}
-		return "'" + string(r) + "'"
-	}
-}
+// RustDebug uses the ordinary default source Debug formatter.
+func (t Token) RustDebug() string       { return rustfmt.String(t.FormatDebug) }
+func (k TokenKind) RustDebug() string   { return rustfmt.String(k.FormatDebug) }
+func (k LiteralKind) RustDebug() string { return rustfmt.String(k.FormatDebug) }
+func (e RawStrError) RustDebug() string { return rustfmt.String(e.FormatDebug) }

@@ -1,0 +1,19 @@
+[package]
+name = "fingerprint_reference"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[lib]
+path = "wrapper/lib.rs"
+
+[dependencies]
+rustc_serialize = { path = "crates/rustc_serialize" }
+rustc_hashes = { path = "crates/rustc_hashes" }
+rustc-stable-hash = "=0.1.2"
+indexmap = "=2.14.0"
+
+[workspace]
+resolver = "3"
+members = ["crates/rustc_serialize", "crates/rustc_hashes"]
+default-members = ["."]

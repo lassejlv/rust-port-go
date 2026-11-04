@@ -1,0 +1,30 @@
+[package]
+name = "ferrugo-span-encoding-oracle"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[[bin]]
+name = "oracle"
+path = "oracle.rs"
+
+[dependencies]
+rustc_index_macros = { path = "upstream/rustc_index_macros", features = ["nightly"] }
+indexmap = "=2.14.0"
+rustc-hash = "=2.1.1"
+scoped-tls = "=1.0.1"
+parking_lot = "=0.12.5"
+proc-macro2 = "=1.0.106"
+quote = "=1.0.45"
+syn = { version = "=2.0.117", features = ["full", "extra-traits"] }
+unicode-ident = "=1.0.24"
+# Development-only JSON transport, pinned to the original Rust lockfile.
+serde_json = "=1.0.145"
+serde = "=1.0.228"
+serde_core = "=1.0.228"
+ryu = "=1.0.20"
+itoa = "=1.0.15"
+memchr = "=2.8.0"
+
+[workspace]
+members = ["upstream/rustc_index_macros"]

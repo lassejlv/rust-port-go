@@ -425,6 +425,7 @@ type manifest struct {
 	Go            string            `json:"generation_go"`
 	Host          string            `json:"generation_host"`
 	Cases         int               `json:"cases"`
+	FormatCases   int               `json:"format_cases"`
 	ScalarValues  int               `json:"scalar_values"`
 	OriginalTests int               `json:"original_tests"`
 	Hashes        map[string]string `json:"sha256"`
@@ -471,13 +472,13 @@ func run(root, sourceRoot, cargoHome, cargo, rustc string, check bool) error {
 	}
 	defer os.RemoveAll(temp)
 	hashes := map[string]string{}
-	for _, name := range []string{"Cargo.toml", "Cargo.lock", "oracle.rs", "main.go"} {
+	for _, name := range []string{"Cargo.toml", "Cargo.lock", "oracle.rs", "format_oracle.rs", "main.go", "format.go"} {
 		data, err := os.ReadFile(filepath.Join(root, toolPath, name))
 		if err != nil {
 			return err
 		}
 		hashes[name] = digest(data)
-		if name != "main.go" {
+		if !strings.HasSuffix(name, ".go") {
 			if err := os.WriteFile(filepath.Join(temp, name), data, 0600); err != nil {
 				return err
 			}
@@ -517,6 +518,10 @@ func run(root, sourceRoot, cargoHome, cargo, rustc string, check bool) error {
 	if err != nil {
 		return err
 	}
+	formatCorpus, formatCount, err := nameFormatCorpus(ctx, temp, env, binaryPath)
+	if err != nil {
+		return err
+	}
 	table, err := tables(unicode)
 	if err != nil {
 		return err
@@ -527,7 +532,7 @@ func run(root, sourceRoot, cargoHome, cargo, rustc string, check bool) error {
 	corpus.Write(request)
 	corpus.Write(answers)
 	files := map[string][]byte{"restricted_names_unicode.go": table}
-	for name, raw := range map[string][]byte{"testdata/restricted_names_cases.bin.gz": corpus.Bytes(), "testdata/restricted_names_unicode.bin.gz": unicode} {
+	for name, raw := range map[string][]byte{"testdata/restricted_names_cases.bin.gz": corpus.Bytes(), "testdata/restricted_names_unicode.bin.gz": unicode, "testdata/restricted_names_formats.bin.gz": formatCorpus} {
 		old, readErr := os.ReadFile(filepath.Join(root, targetPath, name))
 		if readErr != nil && !os.IsNotExist(readErr) {
 			return readErr
@@ -544,7 +549,7 @@ func run(root, sourceRoot, cargoHome, cargo, rustc string, check bool) error {
 	}
 	hashes["requests.raw"] = digest(request)
 	hashes["responses.raw"] = digest(answers)
-	m := manifest{1, revision, sourcePins, deps, rustVersion, "17.0.0", runtime.Version(), runtime.GOOS + "/" + runtime.GOARCH, count, 1112064, 1, hashes}
+	m := manifest{Format: 1, Revision: revision, Sources: sourcePins, Dependencies: deps, Rustc: rustVersion, Unicode: "17.0.0", Go: runtime.Version(), Host: runtime.GOOS + "/" + runtime.GOARCH, Cases: count, FormatCases: formatCount, ScalarValues: 1112064, OriginalTests: 1, Hashes: hashes}
 	manifestPath := filepath.Join(root, toolPath, "manifest.json")
 	if check {
 		old, err := os.ReadFile(manifestPath)
@@ -592,7 +597,7 @@ func run(root, sourceRoot, cargoHome, cargo, rustc string, check bool) error {
 			return err
 		}
 	}
-	fmt.Printf("validated original restricted_names.rs: %d cases, 1112064 Unicode scalars, 1 original test; %s\n", count, runtime.Version())
+	fmt.Printf("validated original restricted_names.rs: %d cases, %d formatter scripts, 1112064 Unicode scalars, 1 original test; %s\n", count, formatCount, runtime.Version())
 	return nil
 }
 func main() {

@@ -1,0 +1,41 @@
+{
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_path": "compiler/rustc_data_structures/src/binary_search_util/mod.rs",
+  "source_git_blob": "1c6e227cec40870c0288f60270f609aeb4ebdc8e",
+  "source_sha256": "6ed8ff0a143e0e4badf23ccd92e483fb14597584c0665cee582882597f086fc9",
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+  "pointer_bits": 64,
+  "original_source_unchanged": true,
+  "native_backend": "Actual std partition_point from compiler profile; no copied search implementation; safe Vec<()> supports usize::MAX without allocation.",
+  "cases": 1558,
+  "outcomes": {
+    "ok": 526,
+    "panic": 376,
+    "abort": 656
+  },
+  "contexts": {
+    "0": 748,
+    "1": 270,
+    "2": 270,
+    "3": 270
+  },
+  "max_cases": 4000,
+  "max_data_length": 128,
+  "max_native_events": 2048,
+  "native_child_timeout_seconds": 10,
+  "raw_sha256": "5655151cb0e82460b1eb4102b7b53d29020a76d6228a326a717a3aba4c979abd",
+  "fixture_sha256": "69fcb8a34bb9b6f5b5c6acb6ea2544225d380b4da3e825f3216378b0eba050bf",
+  "wrapper_sha256": "e24ac42d37854f665c6993cc8ecb21e667a32330f538f784956b78261aa54c4d",
+  "generator_sha256": "380e9faf78bc7a4ae9eb9853debdab919a153bbc1f0e3d7b2620b6af59d47263",
+  "legacy_preserved": [
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/binary_search_util/testdata/oracle.bin.gz",
+      "sha256": "abe36a14f3b3bb53dde8c42ab07d9c6466757cc22b2dda43b034b123e107e09f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/binary_search_util/oracle_manifest.json",
+      "sha256": "9b71daacbe6c943a456074eba37acb64696d6a27fb58abe83a4da7ba814a996e"
+    }
+  ],
+  "scope": "Independent original-source ownership/probe-order/borrow/ZST oracle only. Primary translated panic sites use Context.Panic; raw Go callback-local timing is a separate convenience boundary."
+}

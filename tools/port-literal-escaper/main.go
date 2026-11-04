@@ -54,32 +54,34 @@ type sourceFile struct {
 	Evidence     string `json:"evidence"`
 }
 type manifest struct {
-	Format                      int          `json:"format"`
-	Name                        string       `json:"name"`
-	Version                     string       `json:"version"`
-	Registry                    string       `json:"registry"`
-	URL                         string       `json:"url"`
-	CrateSHA256                 string       `json:"crate_sha256"`
-	SourceRevision              string       `json:"source_revision"`
-	License                     string       `json:"license"`
-	Files                       []sourceFile `json:"files"`
-	UpstreamTests               int          `json:"upstream_tests"`
-	UpstreamTestsPassed         bool         `json:"upstream_tests_passed"`
-	PortedBenchmarkWorkloads    int          `json:"ported_benchmark_workloads"`
-	OracleShimSHA256            string       `json:"oracle_shim_sha256"`
-	OracleEncoding              string       `json:"oracle_encoding"`
-	GoldenCases                 int          `json:"golden_cases"`
-	GoldenSHA256                string       `json:"golden_sha256"`
-	GoldenGzipSHA256            string       `json:"golden_gzip_sha256"`
-	MetadataHex                 string       `json:"metadata_hex"`
-	MixedConstructorsHex        string       `json:"mixed_constructors_hex"`
-	MixedConstructorValues      []uint16     `json:"mixed_constructor_values"`
-	MixedConstructorEncoding    string       `json:"mixed_constructor_encoding"`
-	PrivateTraitSpecializations []string     `json:"private_trait_specializations"`
-	ScalarValues                int          `json:"scalar_values"`
-	ScalarOperations            int          `json:"scalar_operations_per_value"`
-	ScalarTraceSHA256           string       `json:"scalar_trace_sha256"`
-	ScalarTraceBytes            int64        `json:"scalar_trace_bytes"`
+	Format                      int               `json:"format"`
+	Name                        string            `json:"name"`
+	Version                     string            `json:"version"`
+	Registry                    string            `json:"registry"`
+	URL                         string            `json:"url"`
+	CrateSHA256                 string            `json:"crate_sha256"`
+	SourceRevision              string            `json:"source_revision"`
+	License                     string            `json:"license"`
+	Files                       []sourceFile      `json:"files"`
+	UpstreamTests               int               `json:"upstream_tests"`
+	UpstreamTestsPassed         bool              `json:"upstream_tests_passed"`
+	PortedBenchmarkWorkloads    int               `json:"ported_benchmark_workloads"`
+	OracleShimSHA256            string            `json:"oracle_shim_sha256"`
+	OracleEncoding              string            `json:"oracle_encoding"`
+	GoldenCases                 int               `json:"golden_cases"`
+	GoldenSHA256                string            `json:"golden_sha256"`
+	GoldenGzipSHA256            string            `json:"golden_gzip_sha256"`
+	MetadataHex                 string            `json:"metadata_hex"`
+	MixedConstructorsHex        string            `json:"mixed_constructors_hex"`
+	MixedConstructorValues      []uint16          `json:"mixed_constructor_values"`
+	MixedConstructorEncoding    string            `json:"mixed_constructor_encoding"`
+	PrivateTraitSpecializations []string          `json:"private_trait_specializations"`
+	ScalarValues                int               `json:"scalar_values"`
+	ScalarOperations            int               `json:"scalar_operations_per_value"`
+	ScalarTraceSHA256           string            `json:"scalar_trace_sha256"`
+	ScalarTraceBytes            int64             `json:"scalar_trace_bytes"`
+	ImplementationSupportSHA256 map[string]string `json:"implementation_support_sha256"`
+	ContractEvidenceSHA256      map[string]string `json:"contract_evidence_sha256"`
 }
 type request struct {
 	op     byte
@@ -243,6 +245,57 @@ func run(opts options) error {
 		return err
 	}
 	m := manifest{Format: 1, Name: crateName, Version: crateVersion, Registry: "https://crates.io", URL: "https://static.crates.io/crates/" + crateName + "/" + crateName + "-" + crateVersion + ".crate", CrateSHA256: crateSHA256, SourceRevision: vcs.Git.SHA1, License: "Apache-2.0 OR MIT", UpstreamTests: 9, UpstreamTestsPassed: true, PortedBenchmarkWorkloads: 27, OracleShimSHA256: digest(oracleSource), OracleEncoding: "FERRUGOE; metadata length u32 LE + metadata; case count u32 LE; each case: operation u8, UTF8 input length u32 LE + input, response length u32 LE + response; response: event count u32 LE, then {start u32 LE,end u32 LE,kind u8,value u32 LE}; kind0=EscapeError,1=char,2=byte,3=MixedUnit::Char,4=MixedUnit::HighByte,5=NonZero<char>; scalar trace uses these same responses for direct operations0..7, Unicode escapes0..4, continuations2..4 for every valid scalar", GoldenCases: len(requests), GoldenSHA256: digest(golden.Bytes()), GoldenGzipSHA256: digest(compressed), MetadataHex: hex.EncodeToString(metadata), ScalarValues: 1_112_064, ScalarOperations: 16, ScalarTraceSHA256: hex.EncodeToString(scalarHash.Sum(nil)), ScalarTraceBytes: scalarHash.count}
+	// Full-source completion also depends on the separately retained original
+	// formatter/ownership contracts; stale adapters cannot silently keep credit.
+	m.ImplementationSupportSHA256 = map[string]string{}
+	for _, name := range []string{dependencyPath + "/src/debug_format.go", dependencyPath + "/src/callback_owned.go", "port/support/rustfmt/builders.go", "port/support/rustfmt/formatter.go", "port/support/rustfmt/char_debug.go", "port/support/rustfmt/char_debug_tables.go"} {
+		data, e := os.ReadFile(filepath.Join(root, filepath.FromSlash(name)))
+		if e != nil {
+			return e
+		}
+		m.ImplementationSupportSHA256[name] = digest(data)
+	}
+	m.ContractEvidenceSHA256 = map[string]string{}
+	for _, contract := range []struct {
+		stem, scope string
+		records     int
+	}{{"debug", "literal", 35658}, {"owned", "owned-literal", 4032}, {"processing", "processing-literal", 28}} {
+		base := "tools/port-literal-contracts/" + contract.stem
+		data, e := os.ReadFile(filepath.Join(root, base+"-manifest.json"))
+		if e != nil {
+			return e
+		}
+		var proof struct {
+			Scope, Rustc string
+			Records      int
+			Fixture      string            `json:"fixture_sha256"`
+			Bound        map[string]string `json:"bound_sha256"`
+		}
+		if e = json.Unmarshal(data, &proof); e != nil {
+			return e
+		}
+		if proof.Scope != contract.scope || proof.Records != contract.records || proof.Rustc != "rustc 1.99.1 (58cf8f9c3 2026-10-13)" || len(proof.Bound) == 0 {
+			return fmt.Errorf("invalid full-source contract evidence: %s", base)
+		}
+		for name, want := range proof.Bound {
+			body, e := os.ReadFile(filepath.Join(root, filepath.FromSlash(name)))
+			if e != nil {
+				return e
+			}
+			if digest(body) != want {
+				return fmt.Errorf("stale full-source contract input: %s", name)
+			}
+		}
+		fixture, e := os.ReadFile(filepath.Join(root, base+".tsv.gz"))
+		if e != nil {
+			return e
+		}
+		if digest(fixture) != proof.Fixture {
+			return fmt.Errorf("changed full-source contract fixture: %s", base)
+		}
+		m.ContractEvidenceSHA256[base+"-manifest.json"] = digest(data)
+		m.ContractEvidenceSHA256[base+".tsv.gz"] = digest(fixture)
+	}
 	outputs := map[string][]byte{"src/testdata/oracle.bin.gz": compressed}
 	m.MixedConstructorsHex = hex.EncodeToString(constructors)
 	m.MixedConstructorValues = []uint16{1, 65, 127, 128, 255}
@@ -265,8 +318,8 @@ func run(opts options) error {
 		case "src/lib.rs":
 			entry.Role = "implementation"
 			entry.Target = "src/lib.go"
-			entry.Status = "partial"
-			entry.Evidence = "Algorithms validated against unchanged Rust for all public modes/errors, complete scalar traces and MixedUnit constructors; full mutable Debug formatter and owned callback destruction contracts remain under completion review"
+			entry.Status = "ported"
+			entry.Evidence = "Entire implementation: algorithms/private specializations, all modes/errors, full scalar traces and MixedUnit constructors; complete mutable Debug writer/state contract (35,658 native observations) and all owned/borrowed callback modes (4,032 scripts, 524 isolated aborts, 28 panic-hook aborts). Additional adapter and contract hashes are retained in this manifest; see tools/port-lexer-debug/PORT.md"
 		case "tests/test.rs":
 			entry.Role = "tests"
 			entry.Target = "tests/test_test.go"

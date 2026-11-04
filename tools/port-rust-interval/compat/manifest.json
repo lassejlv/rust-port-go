@@ -1,0 +1,52 @@
+{
+  "aborts": 106,
+  "abort_sha256": "37ad59ff0d80ee0979dbd2ab868d4bf3fde7169951f94c58102e76318f1a3199",
+  "smallvec_archive_sha256": "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03",
+  "smallvec_source_sha256": "881e5b2c9afecd0091df0d1232fd557edbb9d58304d073356b066728af14ab2e",
+  "revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+  "go": "go1.23.12",
+  "profiles": [
+    "wrapping-nodebug",
+    "wrapping-debug",
+    "checked-nodebug",
+    "checked-debug"
+  ],
+  "records": 22000,
+  "original_tests_per_profile": 7,
+  "sources": [
+    {
+      "path": "compiler/rustc_index/src/idx.rs",
+      "blob": "60c4dd90d8f666fc855b5a5e6e22f07209dfd1f8",
+      "sha256": "7e943e3cf43dcbb2c2cb286e1bb470e59c09ed97243460485d2c260b1e1761ef"
+    },
+    {
+      "path": "compiler/rustc_index/src/slice.rs",
+      "blob": "415fe370b702c4dea8f511f1faacb128af4cc6be",
+      "sha256": "3a3396fc2031f78f3ada674dc2a9c7dcb35f35e9c7f7262bf88dde0f210a7c38"
+    },
+    {
+      "path": "compiler/rustc_index/src/vec.rs",
+      "blob": "97aad8e6e8c048812f27d1b4df46ed26604be2fa",
+      "sha256": "c05e514a32afe051d425a60a94218a31af741ea762a6f0c8a64f89100332402d"
+    },
+    {
+      "path": "compiler/rustc_index/src/interval.rs",
+      "blob": "475c81e66ab09229137350775db615e39df24eee",
+      "sha256": "1f1e094a6d260ebd3ffd00309a324d4c2ab93620463c6fb6dec5ba22715da3bc"
+    },
+    {
+      "path": "compiler/rustc_index/src/interval/tests.rs",
+      "blob": "cf3222e6c6572303939f620858a4d98a90ba2bbe",
+      "sha256": "a2e057843e58fbee1b3057fe09bd25f70c64953701d7d60883d3aa0a4f87a2e2"
+    }
+  ],
+  "inputs": {
+    "main.go": "fab22f87569ff18b983985d72697ed038da40bcce8fe93c8e18b62b9e1203729",
+    "oracle.rs": "09de1f5318363bf26f621ca08ad83ae616c57d6e81512f1470229b68fff858c6",
+    "validation/validation.go": "80838f5b239d2f4bc4cbd4ed167062cda456aa01de1f1d0550be5f6c4534c70d",
+    "witness/main.go": "1b9384c315748d07599be82600b34e21bf95c5313eae9b86fcb79a87b94ea527"
+  },
+  "decoded_sha256": "3c1f13e13e132acc83f881ea62e6db83e6d090bfb93c311fd76cf7cd498b6253",
+  "compressed_sha256": "09bcc9f8b3747f6100ddcff96a3c92640df585102a4bc13e5211727e9ea5f313"
+}

@@ -205,3 +205,15 @@ The current ledger has fourteen validated top-level files. Completion counts now
 - Minimum-Go, normal/nightly, race, vet, original-source and artifact-integrity checks pass for the integrated block. Hosted checks now include the storage reference and union-find formatter. The preceding hash checkpoint passed all hosted jobs at `b472da0`.
 
 Seventeen top-level files currently have completion evidence. Interval ownership/formatting, earlier reopened contracts, semver's owned iterator collection, stable hashing and span/session runtime remain active work. None of these milestones establishes production Rust compatibility.
+
+## 2026-11-04 — checkpoint 19: intervals, spans and source-contract restorations
+
+- Ported complete interval sets/sparse matrices and all seven original tests. The unchanged original matches 62,380 comparison records and 106 isolated aborts across four independent assertion/overflow profiles, including owned range cleanup and full formatter state.
+- Ported complete fingerprints and their original permutation test. The reference uses actual serialization/hash dependencies and compares 9,144 requests, 55,292 records, typed hash callbacks, layout/codec operations and ownership failure ordering.
+- Ported complete span encoding with all four representations, interner identity, tracking, owned context mapping and encoded-versus-location trait distinctions. Four native profiles match 15,264 requests and 142,168 steps. A separate 1,344-case review corpus closes internal contextual failure timing, including actual interner-lock observations before abort.
+- Restored full-file lexer, binary-search, format-parser and restricted-name records after implementing their remaining contracts. Evidence covers lazy owned lexer iteration, independent flags/ordering, real borrowed cells, full-width zero-sized search and mutable fallible formatter behavior. The separate literal-escaper dependency also regains its completed implementation record.
+- Integrated the shared streaming formatter/runtime adapter, with native builder and exhaustive Unicode Debug evidence. It receives no standard-library source credit. Surrounding span/session/definition/hygiene and stable-hash bridge files remain explicitly partial.
+- Added native regeneration, artifact-integrity and feature-profile gates to hosted CI. The preceding typed-storage checkpoint passed all hosted jobs at `801a17e`.
+- The integrated minimum-Go snapshot passes the full race suite, vet and nightly storage/interval tests; all 150 language and 16 Cargo fixture comparisons still match original Rust/Cargo. Owned-search and shared-builder regeneration and 34 source/tool integrity tests pass.
+
+Twenty-six top-level files have recorded completion evidence. Base-N formatting/owned conversion and Cargo graph's generic persistent-container contracts remain reopened. Complete semver/Cargo version and stable-hash blocks are under integration; the wider span runtime is next. Production Rust compilation remains unfinished.

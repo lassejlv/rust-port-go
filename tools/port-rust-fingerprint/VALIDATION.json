@@ -1,0 +1,132 @@
+{
+  "scope": "Complete pinned fingerprint.rs and fingerprint/tests.rs; scoped Unhasher/Default/Hasher helper only. No shared stable_hash.go edits or whole dependency/std crate completion credit.",
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_mapping": [
+    {
+      "source": "compiler/rustc_data_structures/src/fingerprint.rs",
+      "git_blob": "1855d1ff921fcd43c3daecd97c017562209f95df",
+      "sha256": "b34cbc70955dd34efe762559bf5704908a4f93a3f9d6efb88de2f91c9a26127f",
+      "target": [
+        "fingerprint.go",
+        "fingerprint_format.go"
+      ],
+      "status": "complete"
+    },
+    {
+      "source": "compiler/rustc_data_structures/src/fingerprint/tests.rs",
+      "git_blob": "e04af19abf2bd9a410f8b167680cd832d70dac1b",
+      "sha256": "444d317b5f39c7374a803f8fa5125cc412bfaa843ad6570b556ee7e0885dcea1",
+      "target": [
+        "fingerprint/tests_test.go"
+      ],
+      "status": "complete"
+    }
+  ],
+  "partial_unhash": {
+    "source": "compiler/rustc_data_structures/src/unhash.rs",
+    "git_blob": "0617ef83aad9c791aa11f7b22540c388024afdd6",
+    "target": "fingerprint_unhasher.go",
+    "implemented": [
+      "Unhasher",
+      "Default",
+      "Hasher"
+    ],
+    "unported": [
+      "UnhashMap",
+      "UnhashSet",
+      "UnindexMap"
+    ]
+  },
+  "go_compiler": "go version go1.23.12 linux/amd64",
+  "checks": [
+    {
+      "command": "go test -race -count=1 ./port/rust/compiler/rustc_data_structures/src ./port/rust/compiler/rustc_data_structures/src/fingerprint",
+      "result": "passed"
+    },
+    {
+      "command": "go vet ./port/rust/compiler/rustc_data_structures/src ./port/rust/compiler/rustc_data_structures/src/fingerprint ./tools/port-rust-fingerprint/witness",
+      "result": "passed"
+    },
+    {
+      "command": "FERRUGO_RUN_FINGERPRINT_ORACLE=1 go test -count=1 -run \"^TestFingerprintOriginalOracleRegeneration$\" ./port/rust/compiler/rustc_data_structures/src",
+      "result": "passed"
+    }
+  ],
+  "original_source_test": "combine_commutative_is_order_independent: passed unmodified in debug-assertions on/off Cargo builds; all original values/permutations mirrored in Go",
+  "native_reference": {
+    "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+    "pinned_source_version": "1.101.0",
+    "development_only": true,
+    "feature_gate_injection": "-Zcrate-attr=feature(never_type) -Cdebug-assertions=true",
+    "requests": 9144,
+    "records": 55292,
+    "registry_archives": 6,
+    "verified_expanded_registry_files": 149,
+    "stateful_actual_go_hash_requests": 96,
+    "abort_scenarios": 36,
+    "context_masks": "all48 ordinary/inherited-caught/inherited-uncaught/processing combinations:12 catchable,36 abort",
+    "native_layout_profile": "amd64: Fingerprint size16 align8; PackedFingerprint size16 align1; no whole-compiler ABI claim"
+  },
+  "files": [
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint.go",
+      "sha256": "fd3a1836bba6df3b63404a4167705abc55e080ae25809cffc2238842478454b6"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint_format.go",
+      "sha256": "4f941cb198dbe0789e4afe2ccf700fa09dac9e27ccf97d15d9cf69f11eebaa0d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint_unhasher.go",
+      "sha256": "da48cbaa75cb55647991cc3c9d10feb2de4fc9129e20cb27eef632f6c38bfc7b"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint_test.go",
+      "sha256": "7bc936560316b1877a2b0a97944032627b836bab9e28c7c51f75920a819b100f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint_fallback_test.go",
+      "sha256": "46a1b3aace5907c70e5bbba03ffd8223bc55ceafde8fc83530f535cda73223ea"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint/tests_test.go",
+      "sha256": "d1b46a5bfcd8591f28eabbc2b449d828cfd07892604e77c9df12dcdba18b54fa"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint_oracle_manifest.json",
+      "sha256": "8966d2c5cf4e007950db52429d569401365cb388893c7fdff96643c745ea3cd8"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/testdata/fingerprint_oracle.tsv.gz",
+      "sha256": "dcb1fd9c0664a0afe04a84c2928f8a6f43606533182be04a022b6af39df4e818"
+    }
+  ],
+  "manifest_sha256": "8966d2c5cf4e007950db52429d569401365cb388893c7fdff96643c745ea3cd8",
+  "production_dependencies": {
+    "hash_package": [
+      "Hash64",
+      "NewHash64",
+      "Uint128",
+      "StableHasherHash",
+      "U64Hasher",
+      "NumericFormatter"
+    ],
+    "neutral_formatting": [
+      "Context",
+      "WriteTuple",
+      "WriteString"
+    ],
+    "runtime_rust_dependency": false
+  },
+  "raw_go_fallback": {
+    "isolated_cases": 8,
+    "source_timing": "Translated Rust panic sites must use Context.Panic.",
+    "boundary": "An escaping raw processing-mode Go panic aborts before component argument cleanup; normal-path Close has the same boundary guard.",
+    "host_timing": "Raw callback-local Go defers remain observable and cannot be undone; callback-local recovered panics do not reach the guard.",
+    "result": "all8 isolated processing-mode fallback cases passed; existing36 native abort comparisons unchanged",
+    "local_defer_cases": 4,
+    "nodefer_native_trace_cases": 4
+  },
+  "original_source_test_destination": "port/rust/compiler/rustc_data_structures/src/fingerprint/tests_test.go",
+  "original_source_test_execution": "one mirrored external child-package test; no duplicate original test in parent package"
+}

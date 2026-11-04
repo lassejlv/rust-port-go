@@ -1,0 +1,117 @@
+{
+  "format": 1,
+  "scope": "profiles",
+  "original_lexer_tests_passed": 17,
+  "bound_sha256": {
+    "port/dependencies/rustc-literal-escaper/v0_0_8/src/callback_owned.go": "4732d602d876a49509edb97ac0a4b6d3464075490813a01f4f74e00473df04df",
+    "port/dependencies/rustc-literal-escaper/v0_0_8/src/debug_format.go": "1259910573c6b38fa003dc9e867dd2f18394c41271fa40789dfd0103302792bb",
+    "port/dependencies/rustc-literal-escaper/v0_0_8/src/lib.go": "41b48f681339fed84a9fc99600501a6cef16c9a7f921cbde64f97cbc66cfeb1b",
+    "port/dependencies/rustc-literal-escaper/v0_0_8/src/lib_test.go": "7e69ac0a4e2da70835f7612fcfacb16c42236cecaa6187039249a8d8b539001f",
+    "port/dependencies/rustc-literal-escaper/v0_0_8/src/oracle_contract_test.go": "e49e3e6f00b499216bfa7ac46d6d9d28b62ae5dd9cc70404e6c628ceb32855e8",
+    "port/dependencies/rustc-literal-escaper/v0_0_8/src/oracle_owned_test.go": "d30fdeb2dfc5476d0aba5bd25235e5faf8a332683ffc089bc3fa7e8e7a279e70",
+    "port/rust/compiler/rustc_lexer/src/callback_owned.go": "79d5f8964ed0ccfb9f844a8116ba99631458c72c0b88183159ad24ead3741530",
+    "port/rust/compiler/rustc_lexer/src/debug_format.go": "a3fc34987c776fce2c1869ce4aa454ac9f712f33fc5aa7e0f4f22989622c9a01",
+    "port/rust/compiler/rustc_lexer/src/lib.go": "ebf33e906fbae261feb8df4d7e3a0352d9efe3ec93a90982b102cca2ac257394",
+    "port/rust/compiler/rustc_lexer/src/lib_test.go": "5dc29c06045751452b004cfa6e249063a5bd46a4e7488b71087ce35564132dd6",
+    "port/rust/compiler/rustc_lexer/src/oracle_contract_test.go": "ad167127bd0be951c191b2d4dfc6e17a2cc07f97ed46dddc2fcaaa152ab07dae",
+    "port/rust/compiler/rustc_lexer/src/oracle_internal_context_test.go": "88791606fa3404625581e7d7e29fcfe4b8f4a653db9829fe28edd4dd725cee5e",
+    "port/rust/compiler/rustc_lexer/src/oracle_iterator_owned_test.go": "41791c4c9057f90ee32cd6ff15c28f73232d290cc0cdf07f7a407932a013327e",
+    "port/rust/compiler/rustc_lexer/src/oracle_owned_test.go": "c58268e2e2b999681078018a66405f7b189e421191d95ad4ff7847764bfcdc9e",
+    "port/rust/compiler/rustc_lexer/src/oracle_profile_test.go": "2fcf405ae02c45ecd10581387360f09db56c5ebcd7fb7d1f5e2d0fa078c39a05",
+    "port/rust/compiler/rustc_lexer/src/oracle_test.go": "aa2d9c7543fe5feeb4c4518a1ed00c1d148dfe5f10f16d3756c63a0de71eae77",
+    "port/rust/compiler/rustc_lexer/src/order.go": "98443723ee98920500c823ab249ac4e709db98a0289b7efa1bec9e9757ffc599",
+    "port/rust/compiler/rustc_lexer/src/profile.go": "a6b1f2c1f51657288729b7270f09d703eaecb939695697dbd24a38af4884633d",
+    "port/rust/compiler/rustc_lexer/src/tests_test.go": "236f0c147d90f938000bac5e7c2b0b95d207fb03e89960dc7d41f6576ef714c2",
+    "port/rust/compiler/rustc_lexer/src/tokenizer.go": "e75fe734a1531dc0586c9fb5dc7c58693fe7be9e821db7b9d6e0d2ca0bb01d7e",
+    "port/rust/compiler/rustc_lexer/src/unicode_tables.go": "7e5357420ca54d205021c7d6ba3c0c71038ff9c5042e5b6c950e2e65993061eb",
+    "port/rust/compiler/rustc_lexer/src/unicode_tables_test.go": "2c626cd8c7de3b53fe47bd6118861cfeb1a5f31fa7ea0f8e1228f446e4a4c675",
+    "port/support/rustfmt/builders.go": "b7ea0ab46481e747191a2a60bdda94306d353d8ea040d0ad1a0755db2395f99f",
+    "port/support/rustfmt/builders_test.go": "c49e3b4e0dd769c00dca490c7101a27cf340fe42f16de4937ada81a17c227ced",
+    "port/support/rustfmt/char_debug.go": "ee693582aab3bd317cb9ef124f86dbc9b8852b3c46adbd99ba6880fb9cb2e891",
+    "port/support/rustfmt/char_debug_tables.go": "c6924f94132671c791c7b8ce8f6b80e03186d1a1f835e73e8ed1da19cef7cd28",
+    "port/support/rustfmt/char_debug_test.go": "e8ed700fcd5b796b8efd021531a6318eb2acf370a518d96ae62bc920cea08e09",
+    "port/support/rustfmt/formatter.go": "fcc8fab6ee2e0d198f59b6f4dedb52ccd084caaaec0f8b25a5d2cc70f6b422a0",
+    "port/support/rustfmt/string_debug_test.go": "17176d415a3e757d422c26a701710b845c9f5ed6f2e82632c90177ac48408865",
+    "tools/port-lexer-debug/Cargo.lock": "2bbe9bd05a3e4812c97f2b04d9ddc503d83e1bae84602a51aae109ea660be012",
+    "tools/port-lexer-debug/Cargo.toml": "1bc7d19b8ce1d635c7cdb5282790abac27a2e6c464df570b48d00bfde7bf3937",
+    "tools/port-lexer-debug/generate.py": "282c384c505c130590233d43b42a97145cec423a20287e7fd60fe392afb88c05",
+    "tools/port-lexer-debug/oracle.rs": "5b1863f171b7b4302380b87c8a7f5e610f0369217d9cd859fe328b269ecf867d",
+    "tools/port-lexer-debug/owned.rs": "5baaefc1f49367f02b2f27d89d6d489029dfc0e770fa3ed9964e8b1635831c4a",
+    "tools/port-lexer-debug/profile.rs": "9d48a2a0df3863f24862b6e2744d795845003b346e0e15ef74cf9bfcb43e07cf",
+    "tools/port-lexer-debug/test_generate.py": "51e887d4a225b60252f59e065e6952907978abacc9a43d90738b54cde6bd8e33",
+    "tools/port-lexer-debug/validation/integrity.go": "e836cdd6cd5f8efac50a56598b0d1c87e109d77bb9d66ef7dbfc805ab17580df",
+    "tools/port-lexer-debug/validation/owned.go": "69a96c183e429a4b48c6a55b2a3361124dda4ac7fece3ea1782197d1d8e5af00",
+    "tools/port-lexer-debug/validation/validation.go": "88992d656a0a7d80362f05fcda95310f60fbc4aacf455001f36e286a1920a561"
+  },
+  "revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "records": 15480,
+  "raw_sha256": "dce8b04eb25837ffc6358af0088d8de2d726cf4b1ed8a4aaf0efa292f5ac6ebb",
+  "sources": {
+    "Cargo.lock": {
+      "git_blob": "feeba051664e2fb683fdc8914790a81261b3b5d7",
+      "sha256": "080fd4f801bd66eac0f2e1ec5de21ccd845ec75063922d35efe7a0203e46fcca"
+    },
+    "compiler/rustc_lexer/src/lib.rs": {
+      "git_blob": "0aa57e75889fa2d81deb1ec8bf5480b1c930fff1",
+      "sha256": "fb7f451aae9d46a171e5599635483b27613a4067d107edd9caf89d79a32ceadf"
+    },
+    "compiler/rustc_lexer/src/tests.rs": {
+      "git_blob": "a7357ba38c8e4484da814ef3c22bf33b75bdbeb2",
+      "sha256": "90516c7444d6102ab1fceae40cf260cf473ec6542bc372d8bf9d6033eaf507da"
+    }
+  },
+  "support_sha256": {
+    "Cargo.toml": "1bc7d19b8ce1d635c7cdb5282790abac27a2e6c464df570b48d00bfde7bf3937",
+    "Cargo.lock": "2bbe9bd05a3e4812c97f2b04d9ddc503d83e1bae84602a51aae109ea660be012",
+    "oracle.rs": "5b1863f171b7b4302380b87c8a7f5e610f0369217d9cd859fe328b269ecf867d",
+    "owned.rs": "5baaefc1f49367f02b2f27d89d6d489029dfc0e770fa3ed9964e8b1635831c4a",
+    "profile.rs": "9d48a2a0df3863f24862b6e2744d795845003b346e0e15ef74cf9bfcb43e07cf"
+  },
+  "generator_sha256": "282c384c505c130590233d43b42a97145cec423a20287e7fd60fe392afb88c05",
+  "registry_dependencies": [
+    {
+      "name": "dissimilar",
+      "version": "1.0.10",
+      "checksum": "8975ffdaa0ef3661bfe02dbdcc06c9f829dfafe6a3c474de366a8d5e44276921",
+      "compiled_files": 18
+    },
+    {
+      "name": "expect-test",
+      "version": "1.5.1",
+      "checksum": "63af43ff4431e848fb47472a920f14fa71c24de13255a5692e93d4e90302acb0",
+      "compiled_files": 10
+    },
+    {
+      "name": "memchr",
+      "version": "2.8.0",
+      "checksum": "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79",
+      "compiled_files": 57
+    },
+    {
+      "name": "once_cell",
+      "version": "1.21.3",
+      "checksum": "42f5e15c9953c5e4ccceeb2e7382a716482c34515315f7b03532b8b4e8393d2d",
+      "compiled_files": 29
+    },
+    {
+      "name": "rustc-literal-escaper",
+      "version": "0.0.8",
+      "checksum": "bfe6f213fb658c8fb95baabd5420393438cf5a98d707f5dd701d9197c705f71e",
+      "compiled_files": 14
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.24",
+      "checksum": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+      "compiled_files": 26
+    },
+    {
+      "name": "unicode-properties",
+      "version": "0.1.4",
+      "checksum": "7df058c713841ad818f1dc5d3fd88063241cc61f49f5fbea4b951e8cf5a8d71d",
+      "compiled_files": 15
+    }
+  ],
+  "fixture_sha256": "9f9395fae28754ce161cd3b32cb5d56b97b8b4761e707df5b4b770790cce51d0"
+}

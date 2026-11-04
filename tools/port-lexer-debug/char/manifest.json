@@ -1,0 +1,15 @@
+{
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "unicode": [
+    17,
+    0,
+    0
+  ],
+  "Scalars": 1112064,
+  "Ranges": 911,
+  "BlockSize": 256,
+  "Blocks": 4344,
+  "Source": "175757a682433b607b65a2feace3e4c843a92b955812219bfe3b1ef76f0e82b3",
+  "Raw": "dd3a3038a19a06cc52495faccdfcc3017da356cf0446519ae50c6302331125d2",
+  "Compressed": "239fa1d4c41794532a0c73d132e38b4304beda8cde15dc9ab10e43ab075a0a9a"
+}

@@ -1,6 +1,7 @@
 // Original-source development oracle. SPDX-License-Identifier: MIT OR Apache-2.0
 #[path = "restricted_names.rs"]
 mod restricted_names;
+mod format_oracle;
 
 use std::error::Error;
 use std::io::{self, Read, Write};
@@ -59,6 +60,9 @@ fn unicode(output: &mut impl Write) {
 }
 fn main() {
     assert_eq!(std::char::UNICODE_VERSION, (17, 0, 0));
+    if std::env::args().nth(1).as_deref() == Some("format") {
+        format_oracle::run(); return;
+    }
     let mut output = io::BufWriter::new(io::stdout().lock());
     if std::env::args().nth(1).as_deref() == Some("unicode") {
         unicode(&mut output);

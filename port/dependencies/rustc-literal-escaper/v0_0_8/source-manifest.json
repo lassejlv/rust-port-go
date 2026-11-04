@@ -147,9 +147,9 @@
       "lines": 687,
       "role": "implementation",
       "target": "src/lib.go",
-      "status": "partial",
+      "status": "ported",
       "target_sha256": "41b48f681339fed84a9fc99600501a6cef16c9a7f921cbde64f97cbc66cfeb1b",
-      "evidence": "Algorithms validated against unchanged Rust for all public modes/errors, complete scalar traces and MixedUnit constructors; full mutable Debug formatter and owned callback destruction contracts remain under completion review"
+      "evidence": "Entire implementation: algorithms/private specializations, all modes/errors, full scalar traces and MixedUnit constructors; complete mutable Debug writer/state contract (35,658 native observations) and all owned/borrowed callback modes (4,032 scripts, 524 isolated aborts, 28 panic-hook aborts). Additional adapter and contract hashes are retained in this manifest; see tools/port-lexer-debug/PORT.md"
     },
     {
       "path": "tests/test.rs",
@@ -188,5 +188,21 @@
   "scalar_values": 1112064,
   "scalar_operations_per_value": 16,
   "scalar_trace_sha256": "3d37900f0331e0071d790a7335984975df4b15fb62403d1355822213b1a26263",
-  "scalar_trace_bytes": 302482110
+  "scalar_trace_bytes": 302482110,
+  "implementation_support_sha256": {
+    "port/dependencies/rustc-literal-escaper/v0_0_8/src/callback_owned.go": "4732d602d876a49509edb97ac0a4b6d3464075490813a01f4f74e00473df04df",
+    "port/dependencies/rustc-literal-escaper/v0_0_8/src/debug_format.go": "1259910573c6b38fa003dc9e867dd2f18394c41271fa40789dfd0103302792bb",
+    "port/support/rustfmt/builders.go": "b7ea0ab46481e747191a2a60bdda94306d353d8ea040d0ad1a0755db2395f99f",
+    "port/support/rustfmt/char_debug.go": "ee693582aab3bd317cb9ef124f86dbc9b8852b3c46adbd99ba6880fb9cb2e891",
+    "port/support/rustfmt/char_debug_tables.go": "c6924f94132671c791c7b8ce8f6b80e03186d1a1f835e73e8ed1da19cef7cd28",
+    "port/support/rustfmt/formatter.go": "fcc8fab6ee2e0d198f59b6f4dedb52ccd084caaaec0f8b25a5d2cc70f6b422a0"
+  },
+  "contract_evidence_sha256": {
+    "tools/port-literal-contracts/debug-manifest.json": "515ddb2ba9303ad48be46844c04134a331de0941449a121f3e70c544ee2244e3",
+    "tools/port-literal-contracts/debug.tsv.gz": "cce2e94b8794ab34d040f96a63883b6bd7fa259ad2ccaff1dfbad7b67fd6c5da",
+    "tools/port-literal-contracts/owned-manifest.json": "3a2978818c08a5da1671ff4bab56a6781ef2c00552b6a160ab15db9de8e22aa4",
+    "tools/port-literal-contracts/owned.tsv.gz": "2c8827a5e1fd1ba93a983bb4733ae131160a30fa4891511e03e063f18b662f42",
+    "tools/port-literal-contracts/processing-manifest.json": "4051d8b5bcc921f770e6f24097d1e1f7fa37e0c2a94366adab4075c66817343c",
+    "tools/port-literal-contracts/processing.tsv.gz": "5c28facc4d328716f9f250e64eeca814b9fd3d6ae0e76bad35f67e024789324d"
+  }
 }

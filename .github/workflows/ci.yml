@@ -55,6 +55,7 @@ jobs:
           cargo fetch --locked --manifest-path tools/port-literal-escaper/oracle/Cargo.toml
           cargo fetch --locked --manifest-path tools/port-cargo-restricted-names/Cargo.toml
           cargo fetch --locked --manifest-path tools/port-rust-hashes/Cargo.toml
+          cargo fetch --locked --manifest-path tools/port-lexer-debug/Cargo.toml
         env:
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: 1.99.1
@@ -64,9 +65,12 @@ jobs:
           python3 tools/port-rust-index-storage/reference-build/prepare.py --fetch --validate
           cargo fetch --locked --manifest-path tools/port-rust-index-storage/oracle/Cargo.toml
           python3 -m unittest discover -s tools/port-rust-index-storage/oracle -p '*_test.py'
+          python3 tools/port-rust-fingerprint/reference-build/prepare.py --fetch
+          python3 tools/port-rust-span-encoding/fetch.py
         env:
           FERRUGO_RUSTC: rustc
           FERRUGO_CARGO: cargo
+          FERRUGO_GO: go
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: 1.99.1
       - name: Compare source ports with the originals
@@ -93,6 +97,7 @@ jobs:
         run: |
           go run ./tools/port-rust-base-n -check
           go run ./tools/port-rust-binary-search -check
+          python3 tools/port-rust-binary-search/owned/generate.py --check
           go run ./tools/port-rust-union-find -check
           go run ./tools/port-rust-union-find/format -check
           go run ./tools/port-rust-thousands -check
@@ -101,10 +106,23 @@ jobs:
           go run -tags ferrugo_rustc_nightly ./tools/port-rust-index -check
           go run ./tools/port-rust-parse-format -check
           go run ./tools/port-rust-parse-format/char-unicode -check
+          python3 tools/port-rust-parse-format/debug/generate.py -check
+          python3 -m unittest discover -s tools/port-rust-parse-format/debug -p 'test_*.py'
           go run ./tools/port-cargo-restricted-names -check
           go run ./tools/port-rust-edition -check
           python3 tools/port-rust-hashes/generate.py --check
           go run ./tools/port-rust-index-storage/oracle -check
+          go test -tags ferrugo_rustc_nightly ./port/rust/compiler/rustc_index/src/interval
+          go run ./tools/port-rust-interval -fetch-dependency -check
+          go run ./tools/port-rust-interval/compat -check
+          python3 tools/port-rust-span-encoding/generate.py -check
+          python3 tools/port-rust-span-encoding/ambient-debug/generate.py -check
+          python3 -m unittest discover -s tools/port-rust-span-encoding -p 'test_*.py'
+          python3 tools/port-rust-fingerprint/generate.py --offline --check
+          python3 tools/port-lexer-debug/generate.py --check
+          python3 -m unittest discover -s tools/port-lexer-debug -p 'test_*.py'
+          go run ./tools/port-lexer-debug/char -check
+          go run ./tools/port-lexer-debug/string -check
         env:
           FERRUGO_GO: go
           FERRUGO_RUSTC: rustc

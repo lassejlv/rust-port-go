@@ -1,0 +1,929 @@
+{
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+  "pinned_source_version": "1.101.0",
+  "source_files": [
+    {
+      "path": "compiler/rustc_data_structures/src/fingerprint.rs",
+      "git_blob": "1855d1ff921fcd43c3daecd97c017562209f95df",
+      "sha256": "b34cbc70955dd34efe762559bf5704908a4f93a3f9d6efb88de2f91c9a26127f",
+      "bytes": 7605
+    },
+    {
+      "path": "compiler/rustc_data_structures/src/fingerprint/tests.rs",
+      "git_blob": "e04af19abf2bd9a410f8b167680cd832d70dac1b",
+      "sha256": "444d317b5f39c7374a803f8fa5125cc412bfaa843ad6570b556ee7e0885dcea1",
+      "bytes": 684
+    },
+    {
+      "path": "compiler/rustc_data_structures/src/stable_hash.rs",
+      "git_blob": "57f59016568270ce3184af9316d5c71e51d24e30",
+      "sha256": "57fa93d5c9f60748ddcac08e27fdc620fbcde7e21609aedbb126aca139bcac44",
+      "bytes": 26893
+    },
+    {
+      "path": "compiler/rustc_data_structures/src/unhash.rs",
+      "git_blob": "0617ef83aad9c791aa11f7b22540c388024afdd6",
+      "sha256": "7598e552999f67eb9b7bc8fc5cfcffa7b3ce37e07f7c5b200ad0c75b826aab0e",
+      "bytes": 872
+    },
+    {
+      "path": "compiler/rustc_hashes/Cargo.toml",
+      "git_blob": "c7a273cff88c968a757f8ad5f18bcd44db95f6ed",
+      "sha256": "08bcaff62f67ba9680009ea889aee456c6e77af67df9004df5875d7e1890d45c",
+      "bytes": 175
+    },
+    {
+      "path": "compiler/rustc_hashes/src/lib.rs",
+      "git_blob": "c8f3057dac5fc26da8c243f95d8a978ee8cc00b7",
+      "sha256": "ecb7777ffca8e89ad7056cc864771983a3eb4384049d739fbd5b562ed2d53850",
+      "bytes": 3752
+    },
+    {
+      "path": "compiler/rustc_serialize/Cargo.toml",
+      "git_blob": "e5c91d0ec3a7c2b38bb20b4d2c08e9faf75f5abd",
+      "sha256": "8f716f7e3b52ce39b7cdf98d6887fd5a1d0024e73dc3c7a95d9eba36d462da4c",
+      "bytes": 419
+    },
+    {
+      "path": "compiler/rustc_serialize/src/int_overflow.rs",
+      "git_blob": "6782fbc33da15bd46691a04eaeb1606ad2a5a4e9",
+      "sha256": "8ac274897ec3ddbb6265b96829df9d21ed4670b8d2b3b9d4de155ce24a7259ed",
+      "bytes": 2012
+    },
+    {
+      "path": "compiler/rustc_serialize/src/leb128.rs",
+      "git_blob": "da328dcea03363fe123aec5e40a044475ac6ad69",
+      "sha256": "3323ed9adf7b14a8e5214e569a7c211c5099327d17066c63606920b6575abf55",
+      "bytes": 5153
+    },
+    {
+      "path": "compiler/rustc_serialize/src/leb128/tests.rs",
+      "git_blob": "8434cd1e2e1899136dbee5d5e91b1aa6812674d7",
+      "sha256": "474e874cc45978e0b1c5dcdd7871a2fdb6574999271642931c7965dc7c412abc",
+      "bytes": 3675
+    },
+    {
+      "path": "compiler/rustc_serialize/src/lib.rs",
+      "git_blob": "6f1076619ca80557adb9c89d0221b9f1bb760799",
+      "sha256": "2b2c1cb515d2f82d698a34f0cb0ae5ec8d72d8ef9c3d148ec41f129be6935d39",
+      "bytes": 608
+    },
+    {
+      "path": "compiler/rustc_serialize/src/opaque.rs",
+      "git_blob": "4a644d3bb6eac98dc0d3b492601ddaabfdf08b0c",
+      "sha256": "5278a6afb931010faf6556873857a3b50247ff11fa8cf8fd6e863014970fb48a",
+      "bytes": 16532
+    },
+    {
+      "path": "compiler/rustc_serialize/src/opaque/mem_encoder.rs",
+      "git_blob": "56beebb49af73611a5c4b0f7b63fe48fcb5b77b4",
+      "sha256": "2ac5315770b11c0d7dc45aa8769d96dee66fb71286116e7ca10a7872c1aee206",
+      "bytes": 4084
+    },
+    {
+      "path": "compiler/rustc_serialize/src/opaque/tests.rs",
+      "git_blob": "caaf51fdb7d02536c4d74db5b6232cd96cc7b29e",
+      "sha256": "57f04e60e71a5aed9e4508a48871dd81ecbd8756bc7a998e44d2639386d4e4a8",
+      "bytes": 7354
+    },
+    {
+      "path": "compiler/rustc_serialize/src/serialize.rs",
+      "git_blob": "6426dc37e99a050d80a4a8ed1d2e8bee49f330be",
+      "sha256": "e3a1208be1cddade8b4de2ca7776be03e8f96621c42dc311a1fa46fc20995c57",
+      "bytes": 23423
+    }
+  ],
+  "stable_hash_fragments": [
+    {
+      "source": "compiler/rustc_data_structures/src/stable_hash.rs",
+      "marker": "pub trait StableHashCtxt {",
+      "start_line": 25,
+      "end_line": 38,
+      "sha256": "b5c7e29b66950368d90fd223bd652e233db04b95732da42f425d8d87c5fec7b7"
+    },
+    {
+      "source": "compiler/rustc_data_structures/src/stable_hash.rs",
+      "marker": "pub struct DummyStableHashCtxt;",
+      "start_line": 42,
+      "end_line": 42,
+      "sha256": "9be7f4c67e4a95ecb40281a5a7f1fb083d43e8fcaa1281a43ed4d7688fccc9dd"
+    },
+    {
+      "source": "compiler/rustc_data_structures/src/stable_hash.rs",
+      "marker": "impl StableHashCtxt for DummyStableHashCtxt {",
+      "start_line": 44,
+      "end_line": 57,
+      "sha256": "f5d2ef28c66876ad9a537170c110a69b31f3851f1a52aa8b2824b430d62e5615"
+    },
+    {
+      "source": "compiler/rustc_data_structures/src/stable_hash.rs",
+      "marker": "pub struct RawSpan(pub u64);",
+      "start_line": 61,
+      "end_line": 61,
+      "sha256": "bdf29a725d005e3ebb54306ed2eef46b593dc6495f7b464b9dcd2f25fc3d89b2"
+    },
+    {
+      "source": "compiler/rustc_data_structures/src/stable_hash.rs",
+      "marker": "pub struct RawDefId(pub u32, pub u32);",
+      "start_line": 65,
+      "end_line": 65,
+      "sha256": "e1bb34940c8a245d9b9950ed19ce8f138c55d6b202a1074f9a93009da609f51f"
+    },
+    {
+      "source": "compiler/rustc_data_structures/src/stable_hash.rs",
+      "marker": "pub trait StableHash {",
+      "start_line": 105,
+      "end_line": 107,
+      "sha256": "1f57a069a0e54fc01294dd93f0de240c38d1c7034f9a245ff103ebfe892ffffa"
+    },
+    {
+      "source": "compiler/rustc_data_structures/src/stable_hash.rs",
+      "marker": "pub trait StableOrd: Ord {",
+      "start_line": 146,
+      "end_line": 152,
+      "sha256": "0d8faad7501058be4a61e3ea5c7277347f70e5b477354d04a8d4f16ee3975505"
+    },
+    {
+      "source": "compiler/rustc_data_structures/src/stable_hash.rs",
+      "marker": "pub trait StableCompare {",
+      "start_line": 173,
+      "end_line": 177,
+      "sha256": "1e7548b290d0a7a7682b5c634778848bfeb5219cfe9c4a61cd553a84c9c527ab"
+    },
+    {
+      "source": "compiler/rustc_data_structures/src/stable_hash.rs",
+      "marker": "impl<T: StableOrd> StableCompare for T {",
+      "start_line": 181,
+      "end_line": 187,
+      "sha256": "66e024b38d9ec6b486541c0144eaf66f796132168a14ed686b28246af4f197f1"
+    },
+    {
+      "source": "compiler/rustc_data_structures/src/stable_hash.rs",
+      "marker": "macro_rules! impl_stable_traits_for_trivial_type {",
+      "start_line": 198,
+      "end_line": 219,
+      "sha256": "48386c0b64b54f682c6ee04971cb55a2f6306be9effaee3ee1934fffaf6bee0e"
+    },
+    {
+      "source": "compiler/rustc_data_structures/src/stable_hash.rs",
+      "marker": "#[derive(Clone, Copy, Hash, Eq, PartialEq, Debug)]\npub struct StableHashControls {",
+      "start_line": 756,
+      "end_line": 759,
+      "sha256": "1a9ab1a2b2f7424d03672b3b7cf756a09351b7b55440df5ffd0aa3e51713b899"
+    }
+  ],
+  "registry_dependencies": [
+    {
+      "name": "equivalent",
+      "version": "1.0.2",
+      "sha256": "877a4ace8713b0bcf2a4e7eec82529c029f1d0619886d18145fea96c3ffe5c0f",
+      "compiled_source_files": 10,
+      "compiled_source_tree_sha256": "fb700687badc6ceb65c40182c729952e0954afcf62a05468c1954e8acfd241b3"
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.17.1",
+      "sha256": "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a",
+      "compiled_source_files": 50,
+      "compiled_source_tree_sha256": "bb7c75ab3fa03892e4f001bc2b861b51cb370559fdc583a30d78ea17a8248582"
+    },
+    {
+      "name": "indexmap",
+      "version": "2.14.0",
+      "sha256": "d466e9454f08e4a911e14806c24e16fba1b4c121d1ea474396f396069cf949d9",
+      "compiled_source_files": 42,
+      "compiled_source_tree_sha256": "ee0c75e324cbbd4b81962cbc69a7b32b1f7ab2974fa4a96452d5284e2a8c06d8"
+    },
+    {
+      "name": "rustc-stable-hash",
+      "version": "0.1.2",
+      "sha256": "781442f29170c5c93b7185ad559492601acdc71d5bb0706f5868094f45cfcd08",
+      "compiled_source_files": 17,
+      "compiled_source_tree_sha256": "1414a6a2040951f51bdff3dd8d54ad5c46ced2ff5602bc97eb28a6829a7c4005"
+    },
+    {
+      "name": "smallvec",
+      "version": "1.15.1",
+      "sha256": "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03",
+      "compiled_source_files": 19,
+      "compiled_source_tree_sha256": "2ade7b56ec3bf0d6df7ce61815fc63ddfe48d2d00bf1ba916342f636e1e8b9d4"
+    },
+    {
+      "name": "thin-vec",
+      "version": "0.2.21",
+      "sha256": "d6a4b9ba8738cb4a4f399d37e266becfd475e75eb73425b87a05a2f2039ba63e",
+      "compiled_source_files": 11,
+      "compiled_source_tree_sha256": "4f14cd9449ac0ddbc4244dbe13a7460300d889e8f16cd9cb39b575967369bf60"
+    }
+  ],
+  "development_only": true,
+  "rustc_bootstrap": "1",
+  "rustflags": "-Zcrate-attr=feature(never_type) -Cdebug-assertions=true",
+  "scope": "Complete fingerprint.rs and its original test; exact scoped Unhasher block only in Go; real codecs/hash algorithms for reference only; source version1.101 built by development compiler1.99 without body changes; no whole-compiler ABI claim.",
+  "source_test_passed": "combine_commutative_is_order_independent",
+  "formats": [
+    {
+      "Pattern": "{}",
+      "Options": {},
+      "Debug": false
+    },
+    {
+      "Pattern": "{:20}",
+      "Options": {
+        "Width": 20
+      },
+      "Debug": false
+    },
+    {
+      "Pattern": "{:>20}",
+      "Options": {
+        "Width": 20,
+        "Alignment": 2
+      },
+      "Debug": false
+    },
+    {
+      "Pattern": "{:*^20}",
+      "Options": {
+        "Width": 20,
+        "Alignment": 3,
+        "Fill": 42
+      },
+      "Debug": false
+    },
+    {
+      "Pattern": "{:+#020.2}",
+      "Options": {
+        "Plus": true,
+        "Alternate": true,
+        "ZeroPad": true,
+        "Width": 20
+      },
+      "Debug": false
+    },
+    {
+      "Pattern": "{:.0}",
+      "Options": {},
+      "Debug": false
+    },
+    {
+      "Pattern": "{:?}",
+      "Options": {},
+      "Debug": true
+    },
+    {
+      "Pattern": "{:#?}",
+      "Options": {
+        "Alternate": true
+      },
+      "Debug": true
+    },
+    {
+      "Pattern": "{:>24?}",
+      "Options": {
+        "Width": 24,
+        "Alignment": 2
+      },
+      "Debug": true
+    },
+    {
+      "Pattern": "{:<24?}",
+      "Options": {
+        "Width": 24,
+        "Alignment": 1
+      },
+      "Debug": true
+    },
+    {
+      "Pattern": "{:^24?}",
+      "Options": {
+        "Width": 24,
+        "Alignment": 3
+      },
+      "Debug": true
+    },
+    {
+      "Pattern": "{:+?}",
+      "Options": {
+        "Plus": true
+      },
+      "Debug": true
+    },
+    {
+      "Pattern": "{:024?}",
+      "Options": {
+        "Width": 24,
+        "ZeroPad": true
+      },
+      "Debug": true
+    },
+    {
+      "Pattern": "{:+024?}",
+      "Options": {
+        "Width": 24,
+        "Plus": true,
+        "ZeroPad": true
+      },
+      "Debug": true
+    },
+    {
+      "Pattern": "{:x?}",
+      "Options": {
+        "DebugRadix": 1
+      },
+      "Debug": true
+    },
+    {
+      "Pattern": "{:#x?}",
+      "Options": {
+        "DebugRadix": 1,
+        "Alternate": true
+      },
+      "Debug": true
+    },
+    {
+      "Pattern": "{:X?}",
+      "Options": {
+        "DebugRadix": 2
+      },
+      "Debug": true
+    },
+    {
+      "Pattern": "{:#X?}",
+      "Options": {
+        "DebugRadix": 2,
+        "Alternate": true
+      },
+      "Debug": true
+    },
+    {
+      "Pattern": "{:*^24x?}",
+      "Options": {
+        "Width": 24,
+        "Alignment": 3,
+        "Fill": 42,
+        "DebugRadix": 1
+      },
+      "Debug": true
+    },
+    {
+      "Pattern": "{:.3?}",
+      "Options": {},
+      "Debug": true
+    },
+    {
+      "Pattern": "{:+#024x?}",
+      "Options": {
+        "Plus": true,
+        "Alternate": true,
+        "Width": 24,
+        "ZeroPad": true,
+        "DebugRadix": 1
+      },
+      "Debug": true
+    },
+    {
+      "Pattern": "{:🦀^24?}",
+      "Options": {
+        "Width": 24,
+        "Alignment": 3,
+        "Fill": 129408
+      },
+      "Debug": true
+    },
+    {
+      "Pattern": "{:\u0000^24?}",
+      "Options": {
+        "Width": 24,
+        "Alignment": 3,
+        "Fill": 0,
+        "FillSet": true
+      },
+      "Debug": true
+    },
+    {
+      "Pattern": "{:-#24?}",
+      "Options": {
+        "Width": 24,
+        "Alternate": true
+      },
+      "Debug": true
+    },
+    {
+      "Pattern": "{:<024?}",
+      "Options": {
+        "Width": 24,
+        "Alignment": 1,
+        "ZeroPad": true
+      },
+      "Debug": true
+    }
+  ],
+  "requests": 9144,
+  "records": 55292,
+  "request_sha256": "d25b8ff00c5deadd018b9508f4953e1db4be570d45603e4615914ff6a6f5ce12",
+  "raw_sha256": "ac0f53f0a63f0177387aed11b92afed28685820f04dac234d816c4174ce9756c",
+  "fixture_sha256": "dcb1fd9c0664a0afe04a84c2928f8a6f43606533182be04a022b6af39df4e818",
+  "hash_proof": "96 stateful hash requests replay actual Go Hash/StableHash typed callbacks into real Rust DefaultHasher/StableSipHasher and compare unchanged source operations.",
+  "owned_aborts": [
+    {
+      "read": 0,
+      "drop": 1,
+      "trace": [
+        "read:0:1:false",
+        "drop:1:0:true",
+        "drop:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 0,
+      "drop": 2,
+      "trace": [
+        "read:0:1:false",
+        "drop:1:0:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 0,
+      "drop": 3,
+      "trace": [
+        "read:0:1:false",
+        "drop:1:0:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 1,
+      "drop": 1,
+      "trace": [
+        "read:0:1:false",
+        "read:1:1:false",
+        "drop:1:1:true",
+        "drop:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 1,
+      "drop": 2,
+      "trace": [
+        "read:0:1:false",
+        "read:1:1:false",
+        "drop:1:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 1,
+      "drop": 3,
+      "trace": [
+        "read:0:1:false",
+        "read:1:1:false",
+        "drop:1:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 2,
+      "drop": 3,
+      "trace": [
+        "read:0:1:false",
+        "read:1:1:false",
+        "drop:1:1:false",
+        "drop:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 0,
+      "drop": 0,
+      "inherited": true,
+      "catch_inner": false,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "drop:1:0:true",
+        "drop:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 0,
+      "drop": 1,
+      "inherited": true,
+      "catch_inner": false,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "drop:1:0:true",
+        "drop:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 0,
+      "drop": 2,
+      "inherited": true,
+      "catch_inner": false,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "drop:1:0:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 0,
+      "drop": 3,
+      "inherited": true,
+      "catch_inner": false,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "drop:1:0:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 1,
+      "drop": 0,
+      "inherited": true,
+      "catch_inner": false,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "read:1:1:true",
+        "drop:1:1:true",
+        "drop:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 1,
+      "drop": 1,
+      "inherited": true,
+      "catch_inner": false,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "read:1:1:true",
+        "drop:1:1:true",
+        "drop:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 1,
+      "drop": 2,
+      "inherited": true,
+      "catch_inner": false,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "read:1:1:true",
+        "drop:1:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 1,
+      "drop": 3,
+      "inherited": true,
+      "catch_inner": false,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "read:1:1:true",
+        "drop:1:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 2,
+      "drop": 1,
+      "inherited": true,
+      "catch_inner": false,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "read:1:1:true",
+        "drop:1:1:true",
+        "drop:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 2,
+      "drop": 2,
+      "inherited": true,
+      "catch_inner": false,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "read:1:1:true",
+        "drop:1:1:true",
+        "drop:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 2,
+      "drop": 3,
+      "inherited": true,
+      "catch_inner": false,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "read:1:1:true",
+        "drop:1:1:true",
+        "drop:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 0,
+      "drop": 1,
+      "inherited": true,
+      "catch_inner": true,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "drop:1:0:true",
+        "drop:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 0,
+      "drop": 2,
+      "inherited": true,
+      "catch_inner": true,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "drop:1:0:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 0,
+      "drop": 3,
+      "inherited": true,
+      "catch_inner": true,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "drop:1:0:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 1,
+      "drop": 1,
+      "inherited": true,
+      "catch_inner": true,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "read:1:1:true",
+        "drop:1:1:true",
+        "drop:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 1,
+      "drop": 2,
+      "inherited": true,
+      "catch_inner": true,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "read:1:1:true",
+        "drop:1:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 1,
+      "drop": 3,
+      "inherited": true,
+      "catch_inner": true,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "read:1:1:true",
+        "drop:1:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 2,
+      "drop": 3,
+      "inherited": true,
+      "catch_inner": true,
+      "trace": [
+        "outer-drop:true",
+        "read:0:1:true",
+        "read:1:1:true",
+        "drop:1:1:true",
+        "drop:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 0,
+      "drop": 0,
+      "processing": true,
+      "trace": [
+        "hook-enter:true",
+        "read:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 0,
+      "drop": 1,
+      "processing": true,
+      "trace": [
+        "hook-enter:true",
+        "read:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 0,
+      "drop": 2,
+      "processing": true,
+      "trace": [
+        "hook-enter:true",
+        "read:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 0,
+      "drop": 3,
+      "processing": true,
+      "trace": [
+        "hook-enter:true",
+        "read:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 1,
+      "drop": 0,
+      "processing": true,
+      "trace": [
+        "hook-enter:true",
+        "read:0:1:true",
+        "read:1:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 1,
+      "drop": 1,
+      "processing": true,
+      "trace": [
+        "hook-enter:true",
+        "read:0:1:true",
+        "read:1:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 1,
+      "drop": 2,
+      "processing": true,
+      "trace": [
+        "hook-enter:true",
+        "read:0:1:true",
+        "read:1:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 1,
+      "drop": 3,
+      "processing": true,
+      "trace": [
+        "hook-enter:true",
+        "read:0:1:true",
+        "read:1:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 2,
+      "drop": 1,
+      "processing": true,
+      "trace": [
+        "hook-enter:true",
+        "read:0:1:true",
+        "read:1:1:true",
+        "drop:1:1:true",
+        "drop:0:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 2,
+      "drop": 2,
+      "processing": true,
+      "trace": [
+        "hook-enter:true",
+        "read:0:1:true",
+        "read:1:1:true",
+        "drop:1:1:true"
+      ],
+      "abort": true
+    },
+    {
+      "read": 2,
+      "drop": 3,
+      "processing": true,
+      "trace": [
+        "hook-enter:true",
+        "read:0:1:true",
+        "read:1:1:true",
+        "drop:1:1:true"
+      ],
+      "abort": true
+    }
+  ],
+  "helpers": [
+    {
+      "path": "tools/port-rust-fingerprint/oracle.rs",
+      "sha256": "dff0bc2d785e54714b50a447128752d76c3c5dcb0a6bd24a42ef6056a8048883"
+    },
+    {
+      "path": "tools/port-rust-fingerprint/generate.py",
+      "sha256": "138bcd701a3bdc7b1320291ef81669f4af8586c7fec158c0887aa0a25323e80c"
+    },
+    {
+      "path": "tools/port-rust-fingerprint/witness/main.go",
+      "sha256": "ba6dcd8cb0ec3a8a9da67fdd28a8fa4708339b2a55da6fe10e050ecc9c6489f6"
+    },
+    {
+      "path": "tools/port-rust-fingerprint/reference-build/Cargo.lock",
+      "sha256": "2b7fe691f88cf16b5f2a82dc972ac424a81f1fcbe59c4e6764b73bb325105bdd"
+    },
+    {
+      "path": "tools/port-rust-fingerprint/reference-build/Cargo.toml",
+      "sha256": "38aa9bd2abbf494486d439b6dfae352978e6581edaa4cb4531bd5c3557bbf19f"
+    },
+    {
+      "path": "tools/port-rust-fingerprint/reference-build/README.md",
+      "sha256": "c73458fc749edc52743e9b67eefc06d658796ddae912a089544d2c9ae79d6803"
+    },
+    {
+      "path": "tools/port-rust-fingerprint/reference-build/lib.rs",
+      "sha256": "0d62819aa52bc60c1dd7dc3ee76031651dc9085a1071f4c124a4a2ffd7682c0d"
+    },
+    {
+      "path": "tools/port-rust-fingerprint/reference-build/prepare.py",
+      "sha256": "4d0e14a6eba43bbdf3cb3f45419d0b4d4a000d8aee6b1c1b18dd7df93a8bbd8b"
+    }
+  ],
+  "helper_dependencies": [
+    {
+      "path": "tools/port-rust-edition/reference-build/prepare.py",
+      "sha256": "686a2ce150ea86e39634a080152c2736d011ed05afe9aa31b9180a225e3f83b0"
+    },
+    {
+      "path": "tools/port-rust-edition/reference-build/rustc_serialize.Cargo.toml",
+      "sha256": "ea4dc5fc516dbb2f450b662e48620e031a4bad9347f67bc03cbf1e526ec277e2"
+    },
+    {
+      "path": "tools/port-rust-edition/reference-build/rustc_hashes.Cargo.toml",
+      "sha256": "e5b2cf8e8e318e9e604d25b09b4c6b439600bee59fb6cbbbceb67e6b2725a808"
+    }
+  ],
+  "source_test_go_target": "port/rust/compiler/rustc_data_structures/src/fingerprint/tests_test.go",
+  "go_owned_component_sha256": "fd3a1836bba6df3b63404a4167705abc55e080ae25809cffc2238842478454b6",
+  "go_tests": [
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint/tests_test.go",
+      "sha256": "d1b46a5bfcd8591f28eabbc2b449d828cfd07892604e77c9df12dcdba18b54fa"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint_test.go",
+      "sha256": "7bc936560316b1877a2b0a97944032627b836bab9e28c7c51f75920a819b100f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint_fallback_test.go",
+      "sha256": "46a1b3aace5907c70e5bbba03ffd8223bc55ceafde8fc83530f535cda73223ea"
+    }
+  ],
+  "raw_go_fallback": {
+    "isolated_cases": 8,
+    "source_timing": "Translated Rust panic sites must use Context.Panic.",
+    "boundary": "An escaping raw processing-mode Go panic aborts before component argument cleanup; normal-path Close has the same boundary guard.",
+    "host_timing": "Raw callback-local Go defers remain observable and cannot be undone; callback-local recovered panics do not reach the guard."
+  }
+}
