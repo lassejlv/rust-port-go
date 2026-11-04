@@ -1,0 +1,33 @@
+{
+  "source_sha256": "f2a1a2a0711be084507fa265f266b38b3090e23df2c6cadb728479f287eed117",
+  "target_arch": "x86_64",
+  "compile_only": false,
+  "events": {
+    "strings": [
+      "bytes:6161",
+      "u8:255",
+      "bytes:6262",
+      "u8:255"
+    ],
+    "slices": [
+      "usize:1",
+      "bytes:01000000",
+      "usize:2",
+      "bytes:0000000000000000",
+      "usize:1",
+      "bytes:00000000"
+    ],
+    "wide_slice": [
+      "usize:4",
+      "bytes:01000000000000000000000000000000",
+      "usize:0",
+      "bytes:",
+      "usize:0",
+      "bytes:"
+    ],
+    "isizes": [
+      "isize:-1",
+      "isize:1"
+    ]
+  }
+}

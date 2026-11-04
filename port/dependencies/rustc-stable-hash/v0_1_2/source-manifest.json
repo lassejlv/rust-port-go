@@ -1,0 +1,133 @@
+{
+  "crate": "rustc-stable-hash",
+  "version": "0.1.2",
+  "archive_sha256": "781442f29170c5c93b7185ad559492601acdc71d5bb0706f5868094f45cfcd08",
+  "revision": "bda19e8681a381715fc3f32ee95aa5fda0a7f5d0",
+  "archive_files": 17,
+  "rust_files": 6,
+  "rust_lines": 1441,
+  "rust_bytes": 50695,
+  "files": [
+    {
+      "path": ".cargo_vcs_info.json",
+      "bytes": 94,
+      "lines": 5,
+      "sha256": "a8f5d93aa91ceb8f07c05ac7e73dbd4137a0025ac5f4c9295e1e9fc1c92ea4ef",
+      "target": "upstream/.cargo_vcs_info.json"
+    },
+    {
+      "path": ".github/workflows/rust.yml",
+      "bytes": 2162,
+      "lines": 73,
+      "sha256": "7070a7ca1329f0a7d5b0aa2be23239eebef7d7c76042eef33f98f9999e60b793",
+      "target": "upstream/.github/workflows/rust.yml"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 8,
+      "lines": 1,
+      "sha256": "44c92e3a70ad3307b7056871c2bdb096d8bfa9373f5bf06a79bb6324a20ff2fb",
+      "target": "upstream/gitignore.source"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 977,
+      "lines": 26,
+      "sha256": "d655fa6c105851e32771d64a81578372f15822e3f5e0457d167888f516461c5e",
+      "target": "upstream/CHANGELOG.md"
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "bytes": 131,
+      "lines": 3,
+      "sha256": "3c4d1c4de2e6991695f5dc495f7530ecb188dfafdb1f47a1323ce7159987accd",
+      "target": "upstream/CODE_OF_CONDUCT.md"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 161,
+      "lines": 7,
+      "sha256": "052a4d160f37969a19e19c305c94ec9d1b7405ba25909153de80c7c216bc7359",
+      "target": "upstream/Cargo.lock"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 894,
+      "lines": 32,
+      "sha256": "1fc92d17c00c9ac3bc650ab1ff2db21cfb615a059b259e10df183adb2330207b",
+      "target": "upstream/Cargo.toml"
+    },
+    {
+      "path": "Cargo.toml.orig",
+      "bytes": 307,
+      "lines": 11,
+      "sha256": "74e5cba85e36c51c5d80b9845815ac63b650df8295152fe034cbe295c2738885",
+      "target": "upstream/Cargo.toml.orig"
+    },
+    {
+      "path": "LICENSE-APACHE",
+      "bytes": 9723,
+      "lines": 176,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "target": "LICENSE-APACHE"
+    },
+    {
+      "path": "LICENSE-MIT",
+      "bytes": 1023,
+      "lines": 23,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "target": "LICENSE-MIT"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1148,
+      "lines": 32,
+      "sha256": "89f8b8a1143f5f7bfdb4cb66e662e2b37c56508271674ff8b6762cb4b429d2a1",
+      "target": "upstream/README.md"
+    },
+    {
+      "path": "src/int_overflow.rs",
+      "bytes": 2197,
+      "lines": 81,
+      "sha256": "3a5e3ff4de386defc281622a3f59d3236d38fb42345392e94170dbfb7b226fc9",
+      "target": "src/int_overflow.go"
+    },
+    {
+      "path": "src/lib.rs",
+      "bytes": 842,
+      "lines": 35,
+      "sha256": "732f294d3218247ec05d4c97faebbe8216e0c79fb7c713fc795db40ebedbc5c2",
+      "target": "src/lib.go"
+    },
+    {
+      "path": "src/sip128.rs",
+      "bytes": 20585,
+      "lines": 551,
+      "sha256": "bb161847ce20d12f259f5e8a1be984cb4ddd4010c89836b928a4ab8708cf4e43",
+      "target": "src/sip128.go",
+      "adaptation": "MaybeUninit buffer bytes use initialized Go storage; the source never exposes their contents through Debug. No Rust ABI/inline-layout or pointer-copy UB is claimed."
+    },
+    {
+      "path": "src/sip128/tests.rs",
+      "bytes": 13681,
+      "lines": 320,
+      "sha256": "78bbe4215a0017cd83ccb83af636b93c9893a51a88da839eacfc2da2a06dcd0b",
+      "target": "tests/sip128_test.go; tests/sip128_vector_test.go; tests/sip128_arch_amd64_test.go; tests/sip128_arch_386_test.go; tests/sip128_arch_arm_test.go"
+    },
+    {
+      "path": "src/stable_hasher.rs",
+      "bytes": 8918,
+      "lines": 299,
+      "sha256": "9de0f4d669362dcc2b77d38b45760b285d3db8ed091d3e6a2d4a98cdfc1756b7",
+      "target": "src/stable_hasher.go; src/ownership.go",
+      "adaptation": "Rust associated types/generic owned parameters use explicit trait dictionaries and live ownership witnesses, retaining actual state cells and deterministic Drop/cleanup."
+    },
+    {
+      "path": "src/stable_hasher/tests.rs",
+      "bytes": 4472,
+      "lines": 155,
+      "sha256": "2a169b419aff453a34b0a3bab43a3aa792beb91c19bc07dd741abe5557df5376",
+      "target": "tests/stable_hasher_test.go"
+    }
+  ]
+}

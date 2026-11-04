@@ -46,6 +46,7 @@ jobs:
           python3 tools/port-inventory/inventory.py prepare
           python3 tools/port-inventory/inventory.py verify
           python3 -m unittest discover -s tools/port-inventory -p 'test_*.py'
+          python3 tools/test_executable_dispatch.py
       - name: Fetch locked source comparison dependencies
         run: |
           cargo fetch --locked --manifest-path tools/port-lexer-oracle/Cargo.toml
@@ -56,6 +57,10 @@ jobs:
           cargo fetch --locked --manifest-path tools/port-cargo-restricted-names/Cargo.toml
           cargo fetch --locked --manifest-path tools/port-rust-hashes/Cargo.toml
           cargo fetch --locked --manifest-path tools/port-lexer-debug/Cargo.toml
+          cargo fetch --locked --manifest-path tools/port-semver/oracle/Cargo.toml
+          cargo fetch --locked --manifest-path tools/port-semver/original-tests/Cargo.toml
+          cargo fetch --locked --manifest-path tools/port-cargo-semver/Cargo.toml
+          cargo fetch --locked --manifest-path tools/port-rust-stable-hash/oracle/Cargo.toml
         env:
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: 1.99.1
@@ -67,6 +72,7 @@ jobs:
           python3 -m unittest discover -s tools/port-rust-index-storage/oracle -p '*_test.py'
           python3 tools/port-rust-fingerprint/reference-build/prepare.py --fetch
           python3 tools/port-rust-span-encoding/fetch.py
+          go run ./tools/port-rust-interval -fetch-dependency -check
         env:
           FERRUGO_RUSTC: rustc
           FERRUGO_CARGO: cargo
@@ -113,7 +119,7 @@ jobs:
           python3 tools/port-rust-hashes/generate.py --check
           go run ./tools/port-rust-index-storage/oracle -check
           go test -tags ferrugo_rustc_nightly ./port/rust/compiler/rustc_index/src/interval
-          go run ./tools/port-rust-interval -fetch-dependency -check
+          go run ./tools/port-rust-interval -check
           go run ./tools/port-rust-interval/compat -check
           python3 tools/port-rust-span-encoding/generate.py -check
           python3 tools/port-rust-span-encoding/ambient-debug/generate.py -check
@@ -123,9 +129,23 @@ jobs:
           python3 -m unittest discover -s tools/port-lexer-debug -p 'test_*.py'
           go run ./tools/port-lexer-debug/char -check
           go run ./tools/port-lexer-debug/string -check
+          go run ./tools/port-semver -check
+          go run ./tools/port-cargo-semver -check
+          go run ./tools/port-rust-stable-hash -check
+          python3 tools/port-semver/original-tests/audit.py --check
+          python3 tools/port-semver/original-tests/run.py --offline
+          python3 tools/port-rust-stable-hash/original-tests/audit.py --check
+          python3 tools/port-rust-stable-hash/original-tests/run.py --offline
         env:
           FERRUGO_GO: go
           FERRUGO_RUSTC: rustc
           FERRUGO_CARGO: cargo
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: 1.99.1
+      - name: Verify dependency feature profiles
+        run: |
+          go test -race -tags semver_no_std ./port/dependencies/semver/v1_0_28/...
+          go test -race -tags semver_serde ./port/dependencies/semver/v1_0_28/...
+          go test -race -tags 'semver_no_std semver_serde' ./port/dependencies/semver/v1_0_28/...
+          go test -race -tags rustc_stable_hash_nightly ./port/dependencies/rustc-stable-hash/v0_1_2/...
+          go vet -tags 'semver_no_std semver_serde rustc_stable_hash_nightly' ./port/dependencies/...

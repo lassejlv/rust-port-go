@@ -1,0 +1,19 @@
+/// ```
+/// use rustc_stable_hash::hashers::{StableSipHasher128, SipHasher128Hash};
+/// use rustc_stable_hash::{StableHasher, FromStableHash};
+/// use std::hash::Hasher;
+///
+/// struct Hash128([u64; 2]);
+/// impl FromStableHash for Hash128 {
+///     type Hash = SipHasher128Hash;
+///
+///     fn from(SipHasher128Hash(hash): SipHasher128Hash) -> Hash128 {
+///         Hash128(hash)
+///     }
+/// }
+///
+/// let mut hasher = StableSipHasher128::new();
+/// hasher.write_usize(0xFA);
+///
+/// let hash: Hash128 = hasher.finish();
+/// ```

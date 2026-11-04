@@ -1,0 +1,29 @@
+/// ```
+/// use std::hash::Hasher;
+/// use rustc_stable_hash::ExtendedHasher;
+///
+/// struct BogusHasher(u128);
+///
+/// impl Hasher for BogusHasher {
+///     fn write(&mut self, a: &[u8]) {
+///         # self.0 = a.iter().fold(0u128, |acc, a| acc + (*a as u128)) + self.0;
+///         // ...
+///     }
+///
+///     fn finish(&self) -> u64 {
+///         self.0 as u64 // really bogus
+///     }
+/// }
+///
+/// impl ExtendedHasher for BogusHasher {
+///     type Hash = u128;
+///
+///     fn short_write<const LEN: usize>(&mut self, bytes: [u8; LEN]) {
+///         self.write(&bytes)
+///     }
+///
+///     fn finish(self) -> Self::Hash {
+///         self.0
+///     }
+/// }
+/// ```

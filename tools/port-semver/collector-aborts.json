@@ -1,0 +1,888 @@
+[
+  {
+    "request": {
+      "kind": "generic",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": 0,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": true,
+      "context": "normal",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=false",
+      "input-drop:panic=false",
+      "next:0:panic=false",
+      "iterator-drop:0:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "trusted",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": 0,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": true,
+      "context": "normal",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=false",
+      "input-drop:panic=false",
+      "hint:0:0:panic=false",
+      "iterator-drop:0:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "generic",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": true,
+      "drop_input": true,
+      "drop_iterator": false,
+      "context": "normal",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=false",
+      "input-drop:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "map",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": true,
+      "context": "normal",
+      "capacity": 8,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": 1
+    },
+    "class": "abort",
+    "events": [
+      "map:1:panic=false",
+      "mapper-drop:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "generic",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": 0,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": true,
+      "context": "inherited",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true",
+      "next:0:panic=true",
+      "iterator-drop:0:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "trusted",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": 0,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": true,
+      "context": "inherited",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true",
+      "hint:0:0:panic=true",
+      "iterator-drop:0:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "generic",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": true,
+      "drop_input": true,
+      "drop_iterator": false,
+      "context": "inherited",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "map",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": true,
+      "context": "inherited",
+      "capacity": 8,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": 1
+    },
+    "class": "abort",
+    "events": [
+      "map:1:panic=true",
+      "mapper-drop:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "generic",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": true,
+      "drop_input": false,
+      "drop_iterator": false,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "generic",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": true,
+      "drop_iterator": false,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "generic",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": true,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true",
+      "next:0:panic=true",
+      "hint:0:1:panic=true",
+      "next:1:panic=true",
+      "next:2:panic=true",
+      "iterator-drop:2:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "generic",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": 0,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": false,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true",
+      "next:0:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "generic",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": 0,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": false,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true",
+      "next:0:panic=true",
+      "hint:0:1:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "trusted",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": true,
+      "drop_input": false,
+      "drop_iterator": false,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "trusted",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": true,
+      "drop_iterator": false,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "trusted",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": true,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true",
+      "hint:0:0:panic=true",
+      "hint:1:0:panic=true",
+      "next:0:panic=true",
+      "next:1:panic=true",
+      "next:2:panic=true",
+      "iterator-drop:2:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "trusted",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": 0,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": false,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true",
+      "hint:0:0:panic=true",
+      "hint:1:0:panic=true",
+      "next:0:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "trusted",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": 0,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": false,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true",
+      "hint:0:0:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "each",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": true,
+      "drop_input": false,
+      "drop_iterator": false,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "each",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": true,
+      "drop_iterator": false,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "each",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": true,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true",
+      "hint:0:0:panic=true",
+      "hint:1:0:panic=true",
+      "for-each:panic=true",
+      "next:0:panic=true",
+      "next:1:panic=true",
+      "next:2:panic=true",
+      "iterator-drop:2:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "each",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": 0,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": false,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true",
+      "hint:0:0:panic=true",
+      "hint:1:0:panic=true",
+      "for-each:panic=true",
+      "next:0:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "each",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": 0,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": false,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true",
+      "hint:0:0:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "fold",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": true,
+      "drop_input": false,
+      "drop_iterator": false,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "fold",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": true,
+      "drop_iterator": false,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "fold",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": true,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true",
+      "hint:0:0:panic=true",
+      "hint:1:0:panic=true",
+      "fold:panic=true",
+      "next:0:panic=true",
+      "next:1:panic=true",
+      "next:2:panic=true",
+      "iterator-drop:2:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "fold",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": 0,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": false,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true",
+      "hint:0:0:panic=true",
+      "hint:1:0:panic=true",
+      "fold:panic=true",
+      "next:0:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "fold",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "remaining",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": 0,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": false,
+      "context": "processing",
+      "capacity": 0,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "into-iter:panic=true",
+      "input-drop:panic=true",
+      "hint:0:0:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "map",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": false,
+      "context": "processing",
+      "capacity": 8,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": 1
+    },
+    "class": "abort",
+    "events": [
+      "map:1:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "kind": "map",
+      "values": [
+        1,
+        2
+      ],
+      "hint": "",
+      "lower": 0,
+      "upper": null,
+      "panic_next": null,
+      "panic_hint": null,
+      "panic_into": false,
+      "drop_input": false,
+      "drop_iterator": true,
+      "context": "processing",
+      "capacity": 8,
+      "front": 0,
+      "back": 0,
+      "debug": true,
+      "panic_map": null
+    },
+    "class": "abort",
+    "events": [
+      "map:1:panic=true",
+      "map:2:panic=true",
+      "mapper-drop:panic=true"
+    ]
+  }
+]

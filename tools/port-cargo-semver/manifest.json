@@ -1,0 +1,72 @@
+{
+  "format": 1,
+  "revision": "24de4721844c7a4d839072bab6fb66d41c9bc1f4",
+  "sources": [
+    {
+      "path": "src/util/semver_ext.rs",
+      "git_blob": "39d0f5659d6e68115e4b5d07eea7a840b290297c",
+      "sha256": "ec29b287daf33cf7ce867a7e0981df607e7e84fa4bc2984c7f42f8c64468d3d0"
+    },
+    {
+      "path": "src/util/semver_eval_ext.rs",
+      "git_blob": "4cb09e9fb53d3f12212a0abcd712f2e11a1d181e",
+      "sha256": "49d93e6907b452ac732f559aeb4a96a7eca720c3a33240be7e23d47686bcd0c5"
+    },
+    {
+      "path": "Cargo.lock",
+      "git_blob": "8af3a6d2fbbc40a8c7aa0d97045eebc29c9a6253",
+      "sha256": "f394b1d1e68c7f7cd11261b1623493c3da407a88f0f50519a403c339b750b5c7"
+    }
+  ],
+  "registry_dependencies": [
+    {
+      "name": "semver",
+      "version": "1.0.28",
+      "checksum": "8a7852d02fc848982e0c167ef163aaff9cd91dc640ba85e263cb1ce46fae51cd"
+    }
+  ],
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "generation_go": "go1.27.3",
+  "generation_host": "linux/amd64",
+  "pointer_bits": 64,
+  "cases": 388620,
+  "profiles": {
+    "checked": 194310,
+    "wrapping": 194310
+  },
+  "case_kinds": {
+    "custom_traits": 448,
+    "matching": 193632,
+    "mutators_hash": 230
+  },
+  "original_tests": 11,
+  "formatting_cases": 4164,
+  "debug_writer_cases": 8668,
+  "debug_dispatch_cases": 8668,
+  "debug_state_cases": 8668,
+  "sha256": {
+    "Cargo.lock": "7c67da9960b97b372441b3780565a6009804fb3fd471369c2b8475f648d4c538",
+    "Cargo.toml": "aa10f3a4d4e952ec4195a4065f35461cb1714bf73d7fe84ca731f74337f0429a",
+    "checked_requests.raw": "69c935d83f29249f3de327f32137ca4e92dbd1573c523a21a49fa09ffdf1b8f1",
+    "checked_responses.raw": "d575c17287ef47a6e7dc6e854513a9522ec8ac3706a3fadb2c259aeeeb341927",
+    "format_oracle.rs": "6abe56713578652acc90927811152328a36522715ee5701dc0e7efeef491f33d",
+    "main.go": "05f49eed0d065b82fb6e69125526dde8f32743b6d9fc1cb986ca375e9bf2e04b",
+    "oracle.rs": "c8f063f94bd2d4c996d8898b86041e711305d3a19222eb4b5a213cbc0eaab0ff",
+    "testdata/semver_cases.bin.gz": "d5cb3dbf3160dceced53c9a23138e3d68b82b8d92be66f1244ba7aa5bc3f8cc2",
+    "testdata/semver_cases.bin.gz.raw": "5250e6d88fa2de9eddc5474b38bc8c090ac4671feaacea337379eb1e55905125",
+    "testdata/semver_debug_dispatch.tsv.gz": "aaab844070899d65a75462a17481645804d9721a7a009317078695633e854889",
+    "testdata/semver_debug_dispatch.tsv.gz.raw": "b412452d26e19307cfd1ed8fca742df59c3a92902b0323eac80ef9ccca251bf4",
+    "testdata/semver_debug_probes.tsv.gz": "7b43dc28ec912aa32005abd0d6b66d7c14ca56c7b3ab14fd71c18205adadd077",
+    "testdata/semver_debug_probes.tsv.gz.raw": "9fc532344199d9af6635584fbf04836ba0e806a60c772312205655c657709337",
+    "testdata/semver_debug_state.tsv.gz": "b194a3b6976dd371485da5ee9c6f6d1ef4dd3416e3c59f971ac14d85785ce452",
+    "testdata/semver_debug_state.tsv.gz.raw": "d64d930d3b7fb951cccfa74c7713298c0e6e43bb4337f4d76ea41b2d2e2757d9",
+    "testdata/semver_format_cases.bin.gz": "19228500face3bcc3293fc14d050d4b824beee993e3bc8aed1b149852b293f08",
+    "testdata/semver_format_cases.bin.gz.raw": "d12d0796397e0f65333e352ef920f286bb99215af0cf22180b432e5fcca1c86a",
+    "util/cargo_debug_dispatch.rs": "08d93632523a3904b29db896271ecb364d760662d68ee04255eab30eef3c0666",
+    "util/cargo_debug_probe.rs": "6d12a02e6a8ab81136d045a91c9ef4fc1c578c16bef8a40de9f8a28a25f762aa",
+    "util/cargo_debug_state.rs": "43d57f08b3f5dda488f89ab8ff73090cadd61f91ab49087a156fc43809562132",
+    "util/mod.rs": "8740c6bfce10071f5a1549fa109963b22ce1126478efacd91e958cf3380ba95f",
+    "wrapping_requests.raw": "fd492110089218e43ff60cd567fedd250c45030ad0a29b221db5dc6a14b2e46d",
+    "wrapping_responses.raw": "a180057f3cd75aad952a1daa8f6c0b2a2c6f2d81d841a0a82bbba75af882cdd2"
+  }
+}

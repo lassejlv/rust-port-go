@@ -1,0 +1,409 @@
+{
+  "crate": "rustc-stable-hash",
+  "version": "0.1.2",
+  "archive_sha256": "781442f29170c5c93b7185ad559492601acdc71d5bb0706f5868094f45cfcd08",
+  "source_test_files": 2,
+  "source_test_lines": 475,
+  "test_declarations": 17,
+  "native_x86_64_test_functions": 15,
+  "assertion_sites_all_cfg": 38,
+  "native_x86_64_static_assertion_sites": 34,
+  "runtime_string_occurrences": 11,
+  "signed_integer_occurrences_excluding_vector": 136,
+  "vector_rows": 64,
+  "vector_bytes_per_row": 16,
+  "vector_values": 1024,
+  "fill_buffer_type_order": [
+    "u8",
+    "u16",
+    "u32",
+    "u64",
+    "u128",
+    "usize",
+    "i8",
+    "i16",
+    "i32",
+    "i64",
+    "i128",
+    "isize"
+  ],
+  "complete_file_literal_counts": {
+    "src/sip128/tests.rs": {
+      "integers": 1126,
+      "strings": 10
+    },
+    "src/stable_hasher/tests.rs": {
+      "integers": 39,
+      "strings": 1
+    }
+  },
+  "files": [
+    {
+      "source": "src/sip128/tests.rs",
+      "sha256": "78bbe4215a0017cd83ccb83af636b93c9893a51a88da839eacfc2da2a06dcd0b"
+    },
+    {
+      "source": "src/stable_hasher/tests.rs",
+      "sha256": "2a169b419aff453a34b0a3bab43a3aa792beb91c19bc07dd741abe5557df5376"
+    }
+  ],
+  "declarations": [
+    {
+      "source": "src/sip128/tests.rs",
+      "source_line": 94,
+      "name": "test_siphash_1_3_test_vector",
+      "cfg_target_arch": null,
+      "target": "sip128_test.go",
+      "go_functions": [
+        "TestSip128_test_siphash_1_3_test_vector"
+      ],
+      "assertion_order": [
+        "assert_eq"
+      ],
+      "string_occurrences": 0,
+      "signed_integer_occurrences": 34
+    },
+    {
+      "source": "src/sip128/tests.rs",
+      "source_line": 128,
+      "name": "test_hash_usize",
+      "cfg_target_arch": "arm",
+      "target": "sip128_arch_arm_test.go",
+      "go_functions": [
+        "TestSip128_test_hash_usize"
+      ],
+      "assertion_order": [
+        "assert",
+        "assert_eq"
+      ],
+      "string_occurrences": 0,
+      "signed_integer_occurrences": 1
+    },
+    {
+      "source": "src/sip128/tests.rs",
+      "source_line": 135,
+      "name": "test_hash_usize",
+      "cfg_target_arch": "x86_64",
+      "target": "sip128_arch_amd64_test.go",
+      "go_functions": [
+        "TestSip128_test_hash_usize"
+      ],
+      "assertion_order": [
+        "assert_eq",
+        "assert"
+      ],
+      "string_occurrences": 0,
+      "signed_integer_occurrences": 1
+    },
+    {
+      "source": "src/sip128/tests.rs",
+      "source_line": 142,
+      "name": "test_hash_usize",
+      "cfg_target_arch": "x86",
+      "target": "sip128_arch_386_test.go",
+      "go_functions": [
+        "TestSip128_test_hash_usize"
+      ],
+      "assertion_order": [
+        "assert",
+        "assert_eq"
+      ],
+      "string_occurrences": 0,
+      "signed_integer_occurrences": 1
+    },
+    {
+      "source": "src/sip128/tests.rs",
+      "source_line": 150,
+      "name": "test_hash_idempotent",
+      "cfg_target_arch": null,
+      "target": "sip128_test.go",
+      "go_functions": [
+        "TestSip128_test_hash_idempotent"
+      ],
+      "assertion_order": [
+        "assert_eq",
+        "assert_eq"
+      ],
+      "string_occurrences": 0,
+      "signed_integer_occurrences": 2
+    },
+    {
+      "source": "src/sip128/tests.rs",
+      "source_line": 158,
+      "name": "test_hash_no_bytes_dropped_64",
+      "cfg_target_arch": null,
+      "target": "sip128_test.go",
+      "go_functions": [
+        "TestSip128_test_hash_no_bytes_dropped_64",
+        "zero_byte64"
+      ],
+      "assertion_order": [
+        "assert",
+        "assert",
+        "assert",
+        "assert",
+        "assert",
+        "assert",
+        "assert",
+        "assert",
+        "assert"
+      ],
+      "string_occurrences": 0,
+      "signed_integer_occurrences": 12
+    },
+    {
+      "source": "src/sip128/tests.rs",
+      "source_line": 177,
+      "name": "test_hash_no_bytes_dropped_32",
+      "cfg_target_arch": null,
+      "target": "sip128_test.go",
+      "go_functions": [
+        "TestSip128_test_hash_no_bytes_dropped_32",
+        "zero_byte32"
+      ],
+      "assertion_order": [
+        "assert",
+        "assert",
+        "assert",
+        "assert",
+        "assert"
+      ],
+      "string_occurrences": 0,
+      "signed_integer_occurrences": 8
+    },
+    {
+      "source": "src/sip128/tests.rs",
+      "source_line": 192,
+      "name": "test_hash_no_concat_alias",
+      "cfg_target_arch": null,
+      "target": "sip128_test.go",
+      "go_functions": [
+        "TestSip128_test_hash_no_concat_alias"
+      ],
+      "assertion_order": [
+        "assert",
+        "assert",
+        "assert",
+        "assert"
+      ],
+      "string_occurrences": 6,
+      "signed_integer_occurrences": 12
+    },
+    {
+      "source": "src/sip128/tests.rs",
+      "source_line": 209,
+      "name": "test_short_write_works",
+      "cfg_target_arch": null,
+      "target": "sip128_test.go",
+      "go_functions": [
+        "TestSip128_test_short_write_works"
+      ],
+      "assertion_order": [
+        "assert_eq"
+      ],
+      "string_occurrences": 4,
+      "signed_integer_occurrences": 16
+    },
+    {
+      "source": "src/sip128/tests.rs",
+      "source_line": 291,
+      "name": "test_fill_buffer",
+      "cfg_target_arch": null,
+      "target": "sip128_test.go",
+      "go_functions": [
+        "TestSip128_test_fill_buffer"
+      ],
+      "assertion_order": [],
+      "string_occurrences": 0,
+      "signed_integer_occurrences": 0
+    },
+    {
+      "source": "src/sip128/tests.rs",
+      "source_line": 308,
+      "name": "test_finish",
+      "cfg_target_arch": null,
+      "target": "sip128_test.go",
+      "go_functions": [
+        "TestSip128_test_finish"
+      ],
+      "assertion_order": [
+        "assert_eq"
+      ],
+      "string_occurrences": 0,
+      "signed_integer_occurrences": 4
+    },
+    {
+      "source": "src/stable_hasher/tests.rs",
+      "source_line": 24,
+      "name": "test_hash_integers",
+      "cfg_target_arch": null,
+      "target": "stable_hasher_test.go",
+      "go_functions": [
+        "TestStableHasher_test_hash_integers"
+      ],
+      "assertion_order": [
+        "assert_eq"
+      ],
+      "string_occurrences": 0,
+      "signed_integer_occurrences": 14
+    },
+    {
+      "source": "src/stable_hasher/tests.rs",
+      "source_line": 61,
+      "name": "test_hash_usize",
+      "cfg_target_arch": null,
+      "target": "stable_hasher_test.go",
+      "go_functions": [
+        "TestStableHasher_test_hash_usize"
+      ],
+      "assertion_order": [
+        "assert_eq"
+      ],
+      "string_occurrences": 0,
+      "signed_integer_occurrences": 3
+    },
+    {
+      "source": "src/stable_hasher/tests.rs",
+      "source_line": 75,
+      "name": "test_hash_isize",
+      "cfg_target_arch": null,
+      "target": "stable_hasher_test.go",
+      "go_functions": [
+        "TestStableHasher_test_hash_isize"
+      ],
+      "assertion_order": [
+        "assert_eq"
+      ],
+      "string_occurrences": 0,
+      "signed_integer_occurrences": 3
+    },
+    {
+      "source": "src/stable_hasher/tests.rs",
+      "source_line": 97,
+      "name": "test_isize_compression",
+      "cfg_target_arch": null,
+      "target": "stable_hasher_test.go",
+      "go_functions": [
+        "TestStableHasher_test_isize_compression"
+      ],
+      "assertion_order": [
+        "assert_ne"
+      ],
+      "string_occurrences": 1,
+      "signed_integer_occurrences": 11
+    },
+    {
+      "source": "src/stable_hasher/tests.rs",
+      "source_line": 116,
+      "name": "test_cloned_hasher_output",
+      "cfg_target_arch": null,
+      "target": "stable_hasher_test.go",
+      "go_functions": [
+        "TestStableHasher_test_cloned_hasher_output"
+      ],
+      "assertion_order": [
+        "assert_eq",
+        "assert_ne"
+      ],
+      "string_occurrences": 0,
+      "signed_integer_occurrences": 3
+    },
+    {
+      "source": "src/stable_hasher/tests.rs",
+      "source_line": 137,
+      "name": "test_hash_trait_finish",
+      "cfg_target_arch": null,
+      "target": "stable_hasher_test.go",
+      "go_functions": [
+        "TestStableHasher_test_hash_trait_finish"
+      ],
+      "assertion_order": [
+        "assert_eq",
+        "assert_eq"
+      ],
+      "string_occurrences": 0,
+      "signed_integer_occurrences": 4
+    }
+  ],
+  "doc_examples": [
+    {
+      "source": "src/stable_hasher.rs",
+      "source_line": 17,
+      "sha256": "ec0a669d52ca008a99d9e5c7c190b649eae4098af18288b5f4afb958ba07974d",
+      "target": "doc_examples_test.go",
+      "go_test": "TestDoc_ExtendedHasher",
+      "scope": "interface compile witness"
+    },
+    {
+      "source": "src/stable_hasher.rs",
+      "source_line": 71,
+      "sha256": "9d8d176cc8f1bd8feda37d032747e81813f2b701e3eb13d1b169a13a9ad6b52c",
+      "target": "doc_examples_test.go",
+      "go_test": "TestDoc_StableHasher",
+      "scope": "typed finish runtime example"
+    },
+    {
+      "source": "src/stable_hasher.rs",
+      "source_line": 100,
+      "sha256": "7678960fab0d9411d8667920d1f9be4d7d7ea211377b3b8493c80f5c50cef403",
+      "target": "doc_examples_test.go",
+      "go_test": "TestDoc_FromStableHash",
+      "scope": "interface compile witness"
+    }
+  ],
+  "targets": [
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/doc_examples_test.go",
+      "sha256": "c96ff556abf869da15f6d42227d21a979f2ddae36a8dc6d24351bd53a767a738"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/input_dispatch_test.go",
+      "sha256": "f75901944d925b82efd423fe981757aa3ffa52037412837c8d93c88ca392beb5"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/original_rust_test.go",
+      "sha256": "37776011190455eaca07eb0ef06bb0dfe5d98e6efcbba99f063e76f685d8b7ff"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/sip128_arch_386_test.go",
+      "sha256": "2e598e1c5ba9492fac794d1e92950a333da3d7131da60a7127a35ce3be935cea"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/sip128_arch_amd64_test.go",
+      "sha256": "41fdd50a00cbba36176a79ad3d48a3707824b68db216a45d02ba42b01fc39528"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/sip128_arch_arm_test.go",
+      "sha256": "a2d41fceb75e7891f8e585e8077253b8baf170d70795ffe3c99aa9a8f3230d6a"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/sip128_test.go",
+      "sha256": "531e326d178ea50cc2dd906c73fe3ea58383c5b8e9aed2c8c8873401b75e9731"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/sip128_vector_test.go",
+      "sha256": "2b0a35b0476205527bce44fde6029962bb156b65558ede49e5e3c2941aaa1074"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/stable_hasher_test.go",
+      "sha256": "7acf0cd6f61f5e8e0df8a7da4a95e6a28376e2a0501c58ab825586df2ad4cb8f"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/util_test.go",
+      "sha256": "c747adcb01be4cee08f63e9b81ebacaee1cbf3e373a818ea245f002ca3a99089"
+    }
+  ],
+  "language_adaptations": [
+    "Rust Hash inputs map to a closed test-input dispatcher; string sentinels/slice prefixes/bulk native i32 writes are verified by the retained compiler input-dispatch witness.",
+    "Tuple field selectors are members rather than numeric values; projection maps to the named Go wrapper/array.",
+    "u128 literals remain exact Go constants before low/high 64 decomposition; signed Int128 values are sign-extended.",
+    "Nested zero_byte helpers move immediately after their tests while retaining assertion source order.",
+    "Three duplicate architecture-gated declarations map to Go build-tag files; unexecuted targets have no runtime-validation claim.",
+    "The fill macro retains all 12 integer kinds, every fill offset and the original type/write invocation order.",
+    "Private pure TestHash conversion wraps FinishHash; public generic descriptors are compiled by the doc mappings.",
+    "The doc upper-shift-by64 expression maps to the explicit UInt128 upper limb.",
+    "Examples 1 and 3 remain interface compile witnesses without invented runtime assertions; Go diagnostics use testing instead of Rust's assertion runtime."
+  ],
+  "unit_literal_order": "Source literal value occurrences retain Go AST order, allowing additional representation syntax values; vector data has exact element order.",
+  "scope": "Test/doc-source preservation only; no implementation-file or whole-project completion credit."
+}

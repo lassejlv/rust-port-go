@@ -1,0 +1,562 @@
+[
+  {
+    "request": {
+      "Operation": "raw-clone",
+      "Mode": "normal",
+      "Context": "normal"
+    },
+    "code": 0,
+    "events": [
+      "raw-clone",
+      "raw-short",
+      "caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "raw-new",
+      "Mode": "normal",
+      "Context": "normal"
+    },
+    "code": 0,
+    "events": [
+      "raw-new",
+      "raw-short",
+      "caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "clone",
+      "Mode": "normal",
+      "Context": "normal"
+    },
+    "code": 0,
+    "events": [
+      "clone:source:9:panic=false",
+      "drop-h:old:2:panic=false",
+      "caught:false",
+      "finish64:clone:9:query=1",
+      "after:9",
+      "drop-h:clone:9:panic=false",
+      "drop-h:source:9:panic=false"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "clone",
+      "Mode": "drop",
+      "Context": "normal"
+    },
+    "code": 0,
+    "events": [
+      "clone:source:9:panic=false",
+      "drop-h:old:2:panic=false",
+      "caught:true",
+      "finish64:clone:9:query=1",
+      "after:9",
+      "drop-h:clone:9:panic=false",
+      "drop-h:source:9:panic=false"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "clone",
+      "Mode": "clone",
+      "Context": "normal"
+    },
+    "code": 0,
+    "events": [
+      "clone:source:9:panic=false",
+      "caught:true",
+      "finish64:old:2:query=1",
+      "after:2",
+      "drop-h:old:2:panic=false",
+      "drop-h:source:9:panic=false"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "normal",
+      "Context": "normal"
+    },
+    "code": 0,
+    "events": [
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=false",
+      "from:7",
+      "drop-r:7:panic=false",
+      "returned:7",
+      "drop-w:7:panic=false",
+      "caught:false"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "finish",
+      "Context": "normal"
+    },
+    "code": 0,
+    "events": [
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=true",
+      "caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "from",
+      "Context": "normal"
+    },
+    "code": 0,
+    "events": [
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=false",
+      "from:7",
+      "drop-r:7:panic=true",
+      "caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "h-drop",
+      "Context": "normal"
+    },
+    "code": 0,
+    "events": [
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=false",
+      "caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "r-drop",
+      "Context": "normal"
+    },
+    "code": 0,
+    "events": [
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=false",
+      "from:7",
+      "drop-r:7:panic=false",
+      "caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "finish-h-drop",
+      "Context": "normal"
+    },
+    "code": 134,
+    "events": [
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "from-r-drop",
+      "Context": "normal"
+    },
+    "code": 134,
+    "events": [
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=false",
+      "from:7",
+      "drop-r:7:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "raw-clone",
+      "Mode": "normal",
+      "Context": "inherited"
+    },
+    "code": 0,
+    "events": [
+      "inherited:panic=true",
+      "raw-clone",
+      "raw-short",
+      "caught:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "raw-new",
+      "Mode": "normal",
+      "Context": "inherited"
+    },
+    "code": 0,
+    "events": [
+      "inherited:panic=true",
+      "raw-new",
+      "raw-short",
+      "caught:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "clone",
+      "Mode": "normal",
+      "Context": "inherited"
+    },
+    "code": 0,
+    "events": [
+      "inherited:panic=true",
+      "clone:source:9:panic=true",
+      "drop-h:old:2:panic=true",
+      "caught:false",
+      "finish64:clone:9:query=1",
+      "after:9",
+      "drop-h:clone:9:panic=true",
+      "drop-h:source:9:panic=true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "clone",
+      "Mode": "drop",
+      "Context": "inherited"
+    },
+    "code": 0,
+    "events": [
+      "inherited:panic=true",
+      "clone:source:9:panic=true",
+      "drop-h:old:2:panic=true",
+      "caught:true",
+      "finish64:clone:9:query=1",
+      "after:9",
+      "drop-h:clone:9:panic=true",
+      "drop-h:source:9:panic=true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "clone",
+      "Mode": "clone",
+      "Context": "inherited"
+    },
+    "code": 0,
+    "events": [
+      "inherited:panic=true",
+      "clone:source:9:panic=true",
+      "caught:true",
+      "finish64:old:2:query=1",
+      "after:2",
+      "drop-h:old:2:panic=true",
+      "drop-h:source:9:panic=true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "normal",
+      "Context": "inherited"
+    },
+    "code": 0,
+    "events": [
+      "inherited:panic=true",
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=true",
+      "from:7",
+      "drop-r:7:panic=true",
+      "returned:7",
+      "drop-w:7:panic=true",
+      "caught:false",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "finish",
+      "Context": "inherited"
+    },
+    "code": 0,
+    "events": [
+      "inherited:panic=true",
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=true",
+      "caught:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "from",
+      "Context": "inherited"
+    },
+    "code": 0,
+    "events": [
+      "inherited:panic=true",
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=true",
+      "from:7",
+      "drop-r:7:panic=true",
+      "caught:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "h-drop",
+      "Context": "inherited"
+    },
+    "code": 0,
+    "events": [
+      "inherited:panic=true",
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=true",
+      "caught:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "r-drop",
+      "Context": "inherited"
+    },
+    "code": 0,
+    "events": [
+      "inherited:panic=true",
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=true",
+      "from:7",
+      "drop-r:7:panic=true",
+      "caught:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "finish-h-drop",
+      "Context": "inherited"
+    },
+    "code": 134,
+    "events": [
+      "inherited:panic=true",
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "from-r-drop",
+      "Context": "inherited"
+    },
+    "code": 134,
+    "events": [
+      "inherited:panic=true",
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=true",
+      "from:7",
+      "drop-r:7:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "raw-clone",
+      "Mode": "normal",
+      "Context": "processing"
+    },
+    "code": 134,
+    "events": [
+      "processing:panic=true",
+      "raw-clone",
+      "raw-short"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "raw-new",
+      "Mode": "normal",
+      "Context": "processing"
+    },
+    "code": 134,
+    "events": [
+      "processing:panic=true",
+      "raw-new",
+      "raw-short"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "clone",
+      "Mode": "normal",
+      "Context": "processing"
+    },
+    "code": 0,
+    "events": [
+      "processing:panic=true",
+      "clone:source:9:panic=true",
+      "drop-h:old:2:panic=true",
+      "caught:false",
+      "finish64:clone:9:query=1",
+      "after:9",
+      "drop-h:clone:9:panic=true",
+      "drop-h:source:9:panic=true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "clone",
+      "Mode": "drop",
+      "Context": "processing"
+    },
+    "code": 134,
+    "events": [
+      "processing:panic=true",
+      "clone:source:9:panic=true",
+      "drop-h:old:2:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "clone",
+      "Mode": "clone",
+      "Context": "processing"
+    },
+    "code": 134,
+    "events": [
+      "processing:panic=true",
+      "clone:source:9:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "normal",
+      "Context": "processing"
+    },
+    "code": 0,
+    "events": [
+      "processing:panic=true",
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=true",
+      "from:7",
+      "drop-r:7:panic=true",
+      "returned:7",
+      "drop-w:7:panic=true",
+      "caught:false",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "finish",
+      "Context": "processing"
+    },
+    "code": 134,
+    "events": [
+      "processing:panic=true",
+      "finish-owned:finish:7"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "from",
+      "Context": "processing"
+    },
+    "code": 134,
+    "events": [
+      "processing:panic=true",
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=true",
+      "from:7"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "h-drop",
+      "Context": "processing"
+    },
+    "code": 134,
+    "events": [
+      "processing:panic=true",
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "r-drop",
+      "Context": "processing"
+    },
+    "code": 134,
+    "events": [
+      "processing:panic=true",
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=true",
+      "from:7",
+      "drop-r:7:panic=true"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "finish-h-drop",
+      "Context": "processing"
+    },
+    "code": 134,
+    "events": [
+      "processing:panic=true",
+      "finish-owned:finish:7"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "finish",
+      "Mode": "from-r-drop",
+      "Context": "processing"
+    },
+    "code": 134,
+    "events": [
+      "processing:panic=true",
+      "finish-owned:finish:7",
+      "drop-h:finish:7:panic=true",
+      "from:7"
+    ]
+  },
+  {
+    "request": {
+      "Operation": "borrow",
+      "Mode": "normal",
+      "Context": "normal"
+    },
+    "code": 0,
+    "events": [
+      "default",
+      "write:default:[7, 0]",
+      "finish64:default:7:query=1",
+      "first:7",
+      "finish64:default:7:query=2",
+      "second:7",
+      "debug:default:pretty=false:width=None:fill= :plus=false",
+      "debug-output:H(7)",
+      "drop-h:default:7:panic=false"
+    ]
+  }
+]

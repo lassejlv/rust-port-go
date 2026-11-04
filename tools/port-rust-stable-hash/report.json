@@ -1,0 +1,130 @@
+{
+  "archive_sha256": "781442f29170c5c93b7185ad559492601acdc71d5bb0706f5868094f45cfcd08",
+  "crate": "rustc-stable-hash 0.1.2",
+  "dependencies": [
+    {
+      "name": "itoa",
+      "version": "1.0.18",
+      "checksum": "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682"
+    },
+    {
+      "name": "memchr",
+      "version": "2.8.0",
+      "checksum": "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79"
+    },
+    {
+      "name": "proc-macro2",
+      "version": "1.0.106",
+      "checksum": "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934"
+    },
+    {
+      "name": "quote",
+      "version": "1.0.45",
+      "checksum": "41f2619966050689382d2b44f664f4bc593e129785a36d6ee376ddf37259b924"
+    },
+    {
+      "name": "rustc-stable-hash",
+      "version": "0.1.2",
+      "checksum": "781442f29170c5c93b7185ad559492601acdc71d5bb0706f5868094f45cfcd08"
+    },
+    {
+      "name": "serde",
+      "version": "1.0.228",
+      "checksum": "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e"
+    },
+    {
+      "name": "serde_core",
+      "version": "1.0.228",
+      "checksum": "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad"
+    },
+    {
+      "name": "serde_derive",
+      "version": "1.0.228",
+      "checksum": "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79"
+    },
+    {
+      "name": "serde_json",
+      "version": "1.0.149",
+      "checksum": "83fc039473c5595ace860d8c4fafa220ff474b3fc6bfdb4293327f1a37e94d86"
+    },
+    {
+      "name": "syn",
+      "version": "2.0.117",
+      "checksum": "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99"
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.24",
+      "checksum": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75"
+    },
+    {
+      "name": "zmij",
+      "version": "1.0.21",
+      "checksum": "b8848ee67ecc8aedbaf3e4122217aff892639231befc6a1b58d29fff4c2cabaa"
+    }
+  ],
+  "fixtures_sha256": {
+    "arith_debugfalse_overflowfalse.jsonl.gz": "fa1e1235945bd9ebf6d1866f7594bf82de5e276c4dd81903b9f4f1b3936f51e8",
+    "arith_debugfalse_overflowtrue.jsonl.gz": "fa1e1235945bd9ebf6d1866f7594bf82de5e276c4dd81903b9f4f1b3936f51e8",
+    "arith_debugtrue_overflowfalse.jsonl.gz": "fa1e1235945bd9ebf6d1866f7594bf82de5e276c4dd81903b9f4f1b3936f51e8",
+    "arith_debugtrue_overflowtrue.jsonl.gz": "9a1c72a5250ea3d7c85f0675dad968557fb52d77157375b47ac8b060d5972fb0",
+    "format.jsonl.gz": "b91ae7f7f3825097569a70c91692b0dd76e523c9bf2da0d67f3dc48bfb742c7d",
+    "stream_debugfalse.jsonl.gz": "0b0dbe454da2943a0d817734c47d56608b4f3ba9247978a6190a7100aec9e608",
+    "stream_debugtrue.jsonl.gz": "394856d60e69446504dfd6bd18c12345bbf583dc44756f863e6b686bcce1f561",
+    "trace_nightlyfalse.jsonl.gz": "3aa5031bb72085e71641643792e8af18438cdcb78799f79e16e0028016fc7b89",
+    "trace_nightlytrue.jsonl.gz": "90c4b5eb081613e71c07ee81aeba6835a9f439066af670bcf6820eb4336ab080"
+  },
+  "format_records": 10594,
+  "generic_trace_streams": 8,
+  "native_profiles": [
+    {
+      "debug_assertions": false,
+      "nightly": false,
+      "overflow_checks": false
+    },
+    {
+      "debug_assertions": false,
+      "nightly": false,
+      "overflow_checks": true
+    },
+    {
+      "debug_assertions": true,
+      "nightly": false,
+      "overflow_checks": false
+    },
+    {
+      "debug_assertions": true,
+      "nightly": false,
+      "overflow_checks": true
+    },
+    {
+      "debug_assertions": false,
+      "nightly": true,
+      "overflow_checks": false
+    },
+    {
+      "debug_assertions": false,
+      "nightly": true,
+      "overflow_checks": true
+    },
+    {
+      "debug_assertions": true,
+      "nightly": true,
+      "overflow_checks": false
+    },
+    {
+      "debug_assertions": true,
+      "nightly": true,
+      "overflow_checks": true
+    }
+  ],
+  "original_tests_audit": "original-tests/audit.json",
+  "ownership_cases": 37,
+  "production_rust_fallback": false,
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "scope": "complete crate API through explicit trait/ownership witnesses; no Rust ABI or general standard-library source credit",
+  "source_files": 6,
+  "source_lines": 1441,
+  "status": "validated",
+  "stream_requests": 3742
+}

@@ -1,0 +1,34 @@
+[package]
+name = "semver"
+version = "1.0.28"
+edition = "2021"
+publish = false
+
+[lib]
+path = "original/src/lib.rs"
+
+[features]
+default = ["std"]
+std = []
+serde = ["dep:serde"]
+
+[dependencies]
+serde = { package = "serde_core", version = "=1.0.228", optional = true, default-features = false }
+
+[[test]]
+name = "test_autotrait"
+path = "original/tests/test_autotrait.rs"
+
+[[test]]
+name = "test_identifier"
+path = "original/tests/test_identifier.rs"
+
+[[test]]
+name = "test_version"
+path = "original/tests/test_version.rs"
+
+[[test]]
+name = "test_version_req"
+path = "original/tests/test_version_req.rs"
+
+[workspace]

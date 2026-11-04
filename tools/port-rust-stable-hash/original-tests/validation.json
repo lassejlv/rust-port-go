@@ -1,0 +1,999 @@
+{
+  "scope": "Complete original stable-hash test/doc preservation only; implementation and broad algorithm/ownership oracle owned by parent. No main Rust/Cargo inventory or implementation-source completion credit.",
+  "crate": {
+    "name": "rustc-stable-hash",
+    "version": "0.1.2",
+    "archive_sha256": "781442f29170c5c93b7185ad559492601acdc71d5bb0706f5868094f45cfcd08"
+  },
+  "coverage": {
+    "source_test_files": 2,
+    "source_test_lines": 475,
+    "test_declarations": 17,
+    "native_x86_64_test_functions": 15,
+    "assertion_sites_all_cfg": 38,
+    "native_x86_64_static_assertion_sites": 34,
+    "vector_values": 1024,
+    "fill_buffer_type_order": [
+      "u8",
+      "u16",
+      "u32",
+      "u64",
+      "u128",
+      "usize",
+      "i8",
+      "i16",
+      "i32",
+      "i64",
+      "i128",
+      "isize"
+    ],
+    "complete_file_literal_counts": {
+      "src/sip128/tests.rs": {
+        "integers": 1126,
+        "strings": 10
+      },
+      "src/stable_hasher/tests.rs": {
+        "integers": 39,
+        "strings": 1
+      }
+    }
+  },
+  "doc_examples": [
+    {
+      "source": "src/stable_hasher.rs",
+      "source_line": 17,
+      "sha256": "ec0a669d52ca008a99d9e5c7c190b649eae4098af18288b5f4afb958ba07974d",
+      "target": "doc_examples_test.go",
+      "go_test": "TestDoc_ExtendedHasher",
+      "scope": "interface compile witness"
+    },
+    {
+      "source": "src/stable_hasher.rs",
+      "source_line": 71,
+      "sha256": "9d8d176cc8f1bd8feda37d032747e81813f2b701e3eb13d1b169a13a9ad6b52c",
+      "target": "doc_examples_test.go",
+      "go_test": "TestDoc_StableHasher",
+      "scope": "typed finish runtime example"
+    },
+    {
+      "source": "src/stable_hasher.rs",
+      "source_line": 100,
+      "sha256": "7678960fab0d9411d8667920d1f9be4d7d7ea211377b3b8493c80f5c50cef403",
+      "target": "doc_examples_test.go",
+      "go_test": "TestDoc_FromStableHash",
+      "scope": "interface compile witness"
+    }
+  ],
+  "rust": {
+    "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+    "command": "python3 tools/port-rust-stable-hash/original-tests/run.py --offline",
+    "profiles": [
+      {
+        "name": "default-overflow-false-debug-false",
+        "nightly": false,
+        "overflow_checks": false,
+        "debug_assertions": false,
+        "target": "x86_64-unknown-linux-gnu",
+        "target_arch": "x86_64",
+        "tests": {
+          "passed": 15,
+          "names": [
+            "sip128::tests::test_fill_buffer",
+            "sip128::tests::test_finish",
+            "sip128::tests::test_hash_idempotent",
+            "sip128::tests::test_hash_no_bytes_dropped_32",
+            "sip128::tests::test_hash_no_bytes_dropped_64",
+            "sip128::tests::test_hash_no_concat_alias",
+            "sip128::tests::test_hash_usize",
+            "sip128::tests::test_short_write_works",
+            "sip128::tests::test_siphash_1_3_test_vector",
+            "stable_hasher::tests::test_cloned_hasher_output",
+            "stable_hasher::tests::test_hash_integers",
+            "stable_hasher::tests::test_hash_isize",
+            "stable_hasher::tests::test_hash_trait_finish",
+            "stable_hasher::tests::test_hash_usize",
+            "stable_hasher::tests::test_isize_compression"
+          ],
+          "stdout_sha256": "038a0fa23ed32d1aa1a3e510b5b6c14c105ac38054672e1df87898f54c37d8e0",
+          "stderr_sha256": "e7dbd20ba8284c53abaf8f383de2b5670f29742f4123f04cd330f82f8ef0b752"
+        },
+        "docs": {
+          "passed": 3,
+          "names": [
+            "src/stable_hasher.rs - stable_hasher::ExtendedHasher (line 17)",
+            "src/stable_hasher.rs - stable_hasher::FromStableHash (line 100)",
+            "src/stable_hasher.rs - stable_hasher::StableHasher (line 71)"
+          ],
+          "stdout_sha256": "22dd8e6160300437b1df6d8eee7353e69958da0b6be26d2d504ce16bac12f4d3",
+          "stderr_sha256": "228884536b455eb9b3d49c5006d0652adf5ecef2de6cbdacbc0ed7e4aacb0ec3"
+        }
+      },
+      {
+        "name": "default-overflow-false-debug-true",
+        "nightly": false,
+        "overflow_checks": false,
+        "debug_assertions": true,
+        "target": "x86_64-unknown-linux-gnu",
+        "target_arch": "x86_64",
+        "tests": {
+          "passed": 15,
+          "names": [
+            "sip128::tests::test_fill_buffer",
+            "sip128::tests::test_finish",
+            "sip128::tests::test_hash_idempotent",
+            "sip128::tests::test_hash_no_bytes_dropped_32",
+            "sip128::tests::test_hash_no_bytes_dropped_64",
+            "sip128::tests::test_hash_no_concat_alias",
+            "sip128::tests::test_hash_usize",
+            "sip128::tests::test_short_write_works",
+            "sip128::tests::test_siphash_1_3_test_vector",
+            "stable_hasher::tests::test_cloned_hasher_output",
+            "stable_hasher::tests::test_hash_integers",
+            "stable_hasher::tests::test_hash_isize",
+            "stable_hasher::tests::test_hash_trait_finish",
+            "stable_hasher::tests::test_hash_usize",
+            "stable_hasher::tests::test_isize_compression"
+          ],
+          "stdout_sha256": "8708f819b095df659f9d819cff318198a758ba626ac6f1190d1dc3ed2da8732f",
+          "stderr_sha256": "1e1ed073bd39c14e59fec2337b99c4ca4e334bae92df7a831bf45ae10494c534"
+        },
+        "docs": {
+          "passed": 3,
+          "names": [
+            "src/stable_hasher.rs - stable_hasher::ExtendedHasher (line 17)",
+            "src/stable_hasher.rs - stable_hasher::FromStableHash (line 100)",
+            "src/stable_hasher.rs - stable_hasher::StableHasher (line 71)"
+          ],
+          "stdout_sha256": "f7153b6e8363f4dbee006daf181c8ed216db82b22b61ada4529c8305c1e3dd5c",
+          "stderr_sha256": "8135df637c11f014898b386c36ee71a36c47b6beb48d3f71cb61fed34df36c3c"
+        }
+      },
+      {
+        "name": "default-overflow-true-debug-false",
+        "nightly": false,
+        "overflow_checks": true,
+        "debug_assertions": false,
+        "target": "x86_64-unknown-linux-gnu",
+        "target_arch": "x86_64",
+        "tests": {
+          "passed": 15,
+          "names": [
+            "sip128::tests::test_fill_buffer",
+            "sip128::tests::test_finish",
+            "sip128::tests::test_hash_idempotent",
+            "sip128::tests::test_hash_no_bytes_dropped_32",
+            "sip128::tests::test_hash_no_bytes_dropped_64",
+            "sip128::tests::test_hash_no_concat_alias",
+            "sip128::tests::test_hash_usize",
+            "sip128::tests::test_short_write_works",
+            "sip128::tests::test_siphash_1_3_test_vector",
+            "stable_hasher::tests::test_cloned_hasher_output",
+            "stable_hasher::tests::test_hash_integers",
+            "stable_hasher::tests::test_hash_isize",
+            "stable_hasher::tests::test_hash_trait_finish",
+            "stable_hasher::tests::test_hash_usize",
+            "stable_hasher::tests::test_isize_compression"
+          ],
+          "stdout_sha256": "8708f819b095df659f9d819cff318198a758ba626ac6f1190d1dc3ed2da8732f",
+          "stderr_sha256": "e2cb9c3909e6ede1c8cd02e337df6cf8867f403ade9a957e47ee575b2e099964"
+        },
+        "docs": {
+          "passed": 3,
+          "names": [
+            "src/stable_hasher.rs - stable_hasher::ExtendedHasher (line 17)",
+            "src/stable_hasher.rs - stable_hasher::FromStableHash (line 100)",
+            "src/stable_hasher.rs - stable_hasher::StableHasher (line 71)"
+          ],
+          "stdout_sha256": "557ebf9fcd80895b76352056e44c68a9fd3d7e2f29849b237c55b89ada920326",
+          "stderr_sha256": "228884536b455eb9b3d49c5006d0652adf5ecef2de6cbdacbc0ed7e4aacb0ec3"
+        }
+      },
+      {
+        "name": "default-overflow-true-debug-true",
+        "nightly": false,
+        "overflow_checks": true,
+        "debug_assertions": true,
+        "target": "x86_64-unknown-linux-gnu",
+        "target_arch": "x86_64",
+        "tests": {
+          "passed": 15,
+          "names": [
+            "sip128::tests::test_fill_buffer",
+            "sip128::tests::test_finish",
+            "sip128::tests::test_hash_idempotent",
+            "sip128::tests::test_hash_no_bytes_dropped_32",
+            "sip128::tests::test_hash_no_bytes_dropped_64",
+            "sip128::tests::test_hash_no_concat_alias",
+            "sip128::tests::test_hash_usize",
+            "sip128::tests::test_short_write_works",
+            "sip128::tests::test_siphash_1_3_test_vector",
+            "stable_hasher::tests::test_cloned_hasher_output",
+            "stable_hasher::tests::test_hash_integers",
+            "stable_hasher::tests::test_hash_isize",
+            "stable_hasher::tests::test_hash_trait_finish",
+            "stable_hasher::tests::test_hash_usize",
+            "stable_hasher::tests::test_isize_compression"
+          ],
+          "stdout_sha256": "8708f819b095df659f9d819cff318198a758ba626ac6f1190d1dc3ed2da8732f",
+          "stderr_sha256": "e51200c78ebc8ded2220777cd0014230df84213e2052930f9c048ce1b6314ee5"
+        },
+        "docs": {
+          "passed": 3,
+          "names": [
+            "src/stable_hasher.rs - stable_hasher::ExtendedHasher (line 17)",
+            "src/stable_hasher.rs - stable_hasher::FromStableHash (line 100)",
+            "src/stable_hasher.rs - stable_hasher::StableHasher (line 71)"
+          ],
+          "stdout_sha256": "b193ca6d61974249ceb2c1b35b61475c9aafc95c39e54bcbbee0266291519b16",
+          "stderr_sha256": "8135df637c11f014898b386c36ee71a36c47b6beb48d3f71cb61fed34df36c3c"
+        }
+      },
+      {
+        "name": "nightly-overflow-false-debug-false",
+        "nightly": true,
+        "overflow_checks": false,
+        "debug_assertions": false,
+        "target": "x86_64-unknown-linux-gnu",
+        "target_arch": "x86_64",
+        "tests": {
+          "passed": 15,
+          "names": [
+            "sip128::tests::test_fill_buffer",
+            "sip128::tests::test_finish",
+            "sip128::tests::test_hash_idempotent",
+            "sip128::tests::test_hash_no_bytes_dropped_32",
+            "sip128::tests::test_hash_no_bytes_dropped_64",
+            "sip128::tests::test_hash_no_concat_alias",
+            "sip128::tests::test_hash_usize",
+            "sip128::tests::test_short_write_works",
+            "sip128::tests::test_siphash_1_3_test_vector",
+            "stable_hasher::tests::test_cloned_hasher_output",
+            "stable_hasher::tests::test_hash_integers",
+            "stable_hasher::tests::test_hash_isize",
+            "stable_hasher::tests::test_hash_trait_finish",
+            "stable_hasher::tests::test_hash_usize",
+            "stable_hasher::tests::test_isize_compression"
+          ],
+          "stdout_sha256": "bdd4115f55de0eee8606497050f799c4295b912695cdc6e9dbf056709b828aaa",
+          "stderr_sha256": "04278d62c7c30daaf2a4253001cd72edebdc03a473148c6969d838956662e153"
+        },
+        "docs": {
+          "passed": 3,
+          "names": [
+            "src/stable_hasher.rs - stable_hasher::ExtendedHasher (line 17)",
+            "src/stable_hasher.rs - stable_hasher::FromStableHash (line 100)",
+            "src/stable_hasher.rs - stable_hasher::StableHasher (line 71)"
+          ],
+          "stdout_sha256": "3e8554fcbc523daf353f637bc6ef9c4991a46312ca8303726de1b696be66293e",
+          "stderr_sha256": "8135df637c11f014898b386c36ee71a36c47b6beb48d3f71cb61fed34df36c3c"
+        }
+      },
+      {
+        "name": "nightly-overflow-false-debug-true",
+        "nightly": true,
+        "overflow_checks": false,
+        "debug_assertions": true,
+        "target": "x86_64-unknown-linux-gnu",
+        "target_arch": "x86_64",
+        "tests": {
+          "passed": 15,
+          "names": [
+            "sip128::tests::test_fill_buffer",
+            "sip128::tests::test_finish",
+            "sip128::tests::test_hash_idempotent",
+            "sip128::tests::test_hash_no_bytes_dropped_32",
+            "sip128::tests::test_hash_no_bytes_dropped_64",
+            "sip128::tests::test_hash_no_concat_alias",
+            "sip128::tests::test_hash_usize",
+            "sip128::tests::test_short_write_works",
+            "sip128::tests::test_siphash_1_3_test_vector",
+            "stable_hasher::tests::test_cloned_hasher_output",
+            "stable_hasher::tests::test_hash_integers",
+            "stable_hasher::tests::test_hash_isize",
+            "stable_hasher::tests::test_hash_trait_finish",
+            "stable_hasher::tests::test_hash_usize",
+            "stable_hasher::tests::test_isize_compression"
+          ],
+          "stdout_sha256": "bdd4115f55de0eee8606497050f799c4295b912695cdc6e9dbf056709b828aaa",
+          "stderr_sha256": "9f9a27c946ee47ad0f769561f8110b7f5f10e3ad1b547051b7faadc1d6da7a43"
+        },
+        "docs": {
+          "passed": 3,
+          "names": [
+            "src/stable_hasher.rs - stable_hasher::ExtendedHasher (line 17)",
+            "src/stable_hasher.rs - stable_hasher::FromStableHash (line 100)",
+            "src/stable_hasher.rs - stable_hasher::StableHasher (line 71)"
+          ],
+          "stdout_sha256": "aaa76b9ba379a1fc32a9b0cee376e8cc49319c67a893ebcb17b114775e43780a",
+          "stderr_sha256": "8135df637c11f014898b386c36ee71a36c47b6beb48d3f71cb61fed34df36c3c"
+        }
+      },
+      {
+        "name": "nightly-overflow-true-debug-false",
+        "nightly": true,
+        "overflow_checks": true,
+        "debug_assertions": false,
+        "target": "x86_64-unknown-linux-gnu",
+        "target_arch": "x86_64",
+        "tests": {
+          "passed": 15,
+          "names": [
+            "sip128::tests::test_fill_buffer",
+            "sip128::tests::test_finish",
+            "sip128::tests::test_hash_idempotent",
+            "sip128::tests::test_hash_no_bytes_dropped_32",
+            "sip128::tests::test_hash_no_bytes_dropped_64",
+            "sip128::tests::test_hash_no_concat_alias",
+            "sip128::tests::test_hash_usize",
+            "sip128::tests::test_short_write_works",
+            "sip128::tests::test_siphash_1_3_test_vector",
+            "stable_hasher::tests::test_cloned_hasher_output",
+            "stable_hasher::tests::test_hash_integers",
+            "stable_hasher::tests::test_hash_isize",
+            "stable_hasher::tests::test_hash_trait_finish",
+            "stable_hasher::tests::test_hash_usize",
+            "stable_hasher::tests::test_isize_compression"
+          ],
+          "stdout_sha256": "bdd4115f55de0eee8606497050f799c4295b912695cdc6e9dbf056709b828aaa",
+          "stderr_sha256": "4a49b2abf2ea76721b60e53dbb6f757f3b2370e2138689221ee7d6a77abefbd0"
+        },
+        "docs": {
+          "passed": 3,
+          "names": [
+            "src/stable_hasher.rs - stable_hasher::ExtendedHasher (line 17)",
+            "src/stable_hasher.rs - stable_hasher::FromStableHash (line 100)",
+            "src/stable_hasher.rs - stable_hasher::StableHasher (line 71)"
+          ],
+          "stdout_sha256": "69d3111b7a235231318eb45bd04cde7b593e0988658430499a286672dc26598c",
+          "stderr_sha256": "228884536b455eb9b3d49c5006d0652adf5ecef2de6cbdacbc0ed7e4aacb0ec3"
+        }
+      },
+      {
+        "name": "nightly-overflow-true-debug-true",
+        "nightly": true,
+        "overflow_checks": true,
+        "debug_assertions": true,
+        "target": "x86_64-unknown-linux-gnu",
+        "target_arch": "x86_64",
+        "tests": {
+          "passed": 15,
+          "names": [
+            "sip128::tests::test_fill_buffer",
+            "sip128::tests::test_finish",
+            "sip128::tests::test_hash_idempotent",
+            "sip128::tests::test_hash_no_bytes_dropped_32",
+            "sip128::tests::test_hash_no_bytes_dropped_64",
+            "sip128::tests::test_hash_no_concat_alias",
+            "sip128::tests::test_hash_usize",
+            "sip128::tests::test_short_write_works",
+            "sip128::tests::test_siphash_1_3_test_vector",
+            "stable_hasher::tests::test_cloned_hasher_output",
+            "stable_hasher::tests::test_hash_integers",
+            "stable_hasher::tests::test_hash_isize",
+            "stable_hasher::tests::test_hash_trait_finish",
+            "stable_hasher::tests::test_hash_usize",
+            "stable_hasher::tests::test_isize_compression"
+          ],
+          "stdout_sha256": "bdd4115f55de0eee8606497050f799c4295b912695cdc6e9dbf056709b828aaa",
+          "stderr_sha256": "0e9d0beefc2d2e0bbc724de57e0cd38cd06a01046e6afed2214a4721c51fbecc"
+        },
+        "docs": {
+          "passed": 3,
+          "names": [
+            "src/stable_hasher.rs - stable_hasher::ExtendedHasher (line 17)",
+            "src/stable_hasher.rs - stable_hasher::FromStableHash (line 100)",
+            "src/stable_hasher.rs - stable_hasher::StableHasher (line 71)"
+          ],
+          "stdout_sha256": "03efdbfc13352a337f8d10003c399f8215ca19b78bc7929f7c627d1c1ea0acef",
+          "stderr_sha256": "228884536b455eb9b3d49c5006d0652adf5ecef2de6cbdacbc0ed7e4aacb0ec3"
+        }
+      }
+    ],
+    "source_archive_files": 17,
+    "source_files": [
+      {
+        "path": ".cargo_vcs_info.json",
+        "sha256": "a8f5d93aa91ceb8f07c05ac7e73dbd4137a0025ac5f4c9295e1e9fc1c92ea4ef",
+        "bytes": 94
+      },
+      {
+        "path": ".github/workflows/rust.yml",
+        "sha256": "7070a7ca1329f0a7d5b0aa2be23239eebef7d7c76042eef33f98f9999e60b793",
+        "bytes": 2162
+      },
+      {
+        "path": ".gitignore",
+        "sha256": "44c92e3a70ad3307b7056871c2bdb096d8bfa9373f5bf06a79bb6324a20ff2fb",
+        "bytes": 8
+      },
+      {
+        "path": "CHANGELOG.md",
+        "sha256": "d655fa6c105851e32771d64a81578372f15822e3f5e0457d167888f516461c5e",
+        "bytes": 977
+      },
+      {
+        "path": "CODE_OF_CONDUCT.md",
+        "sha256": "3c4d1c4de2e6991695f5dc495f7530ecb188dfafdb1f47a1323ce7159987accd",
+        "bytes": 131
+      },
+      {
+        "path": "Cargo.lock",
+        "sha256": "052a4d160f37969a19e19c305c94ec9d1b7405ba25909153de80c7c216bc7359",
+        "bytes": 161
+      },
+      {
+        "path": "Cargo.toml",
+        "sha256": "1fc92d17c00c9ac3bc650ab1ff2db21cfb615a059b259e10df183adb2330207b",
+        "bytes": 894
+      },
+      {
+        "path": "Cargo.toml.orig",
+        "sha256": "74e5cba85e36c51c5d80b9845815ac63b650df8295152fe034cbe295c2738885",
+        "bytes": 307
+      },
+      {
+        "path": "LICENSE-APACHE",
+        "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+        "bytes": 9723
+      },
+      {
+        "path": "LICENSE-MIT",
+        "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+        "bytes": 1023
+      },
+      {
+        "path": "README.md",
+        "sha256": "89f8b8a1143f5f7bfdb4cb66e662e2b37c56508271674ff8b6762cb4b429d2a1",
+        "bytes": 1148
+      },
+      {
+        "path": "src/int_overflow.rs",
+        "sha256": "3a5e3ff4de386defc281622a3f59d3236d38fb42345392e94170dbfb7b226fc9",
+        "bytes": 2197
+      },
+      {
+        "path": "src/lib.rs",
+        "sha256": "732f294d3218247ec05d4c97faebbe8216e0c79fb7c713fc795db40ebedbc5c2",
+        "bytes": 842
+      },
+      {
+        "path": "src/sip128.rs",
+        "sha256": "bb161847ce20d12f259f5e8a1be984cb4ddd4010c89836b928a4ab8708cf4e43",
+        "bytes": 20585
+      },
+      {
+        "path": "src/sip128/tests.rs",
+        "sha256": "78bbe4215a0017cd83ccb83af636b93c9893a51a88da839eacfc2da2a06dcd0b",
+        "bytes": 13681
+      },
+      {
+        "path": "src/stable_hasher.rs",
+        "sha256": "9de0f4d669362dcc2b77d38b45760b285d3db8ed091d3e6a2d4a98cdfc1756b7",
+        "bytes": 8918
+      },
+      {
+        "path": "src/stable_hasher/tests.rs",
+        "sha256": "2a169b419aff453a34b0a3bab43a3aa792beb91c19bc07dd741abe5557df5376",
+        "bytes": 4472
+      }
+    ],
+    "input_dispatch": {
+      "source_sha256": "f2a1a2a0711be084507fa265f266b38b3090e23df2c6cadb728479f287eed117",
+      "target_arch": "x86_64",
+      "compile_only": false,
+      "events": {
+        "strings": [
+          "bytes:6161",
+          "u8:255",
+          "bytes:6262",
+          "u8:255"
+        ],
+        "slices": [
+          "usize:1",
+          "bytes:01000000",
+          "usize:2",
+          "bytes:0000000000000000",
+          "usize:1",
+          "bytes:00000000"
+        ],
+        "wide_slice": [
+          "usize:4",
+          "bytes:01000000000000000000000000000000",
+          "usize:0",
+          "bytes:",
+          "usize:0",
+          "bytes:"
+        ],
+        "isizes": [
+          "isize:-1",
+          "isize:1"
+        ]
+      }
+    },
+    "body_or_manifest_adaptations": false,
+    "development_bootstrap": "RUSTC_BOOTSTRAP=1 for the source nightly feature"
+  },
+  "go": {
+    "compiler": "go version go1.23.12 linux/amd64",
+    "profiles": [
+      {
+        "name": "amd64-default-overflow-false-debug-false",
+        "goarch": "amd64",
+        "nightly": false,
+        "overflow_checks": false,
+        "debug_assertions": false,
+        "compile_only": false,
+        "unit_tests_passed": 15,
+        "unit_test_names": [
+          "TestSip128_test_hash_usize",
+          "TestSip128_test_siphash_1_3_test_vector",
+          "TestSip128_test_hash_idempotent",
+          "TestSip128_test_hash_no_bytes_dropped_64",
+          "TestSip128_test_hash_no_bytes_dropped_32",
+          "TestSip128_test_hash_no_concat_alias",
+          "TestSip128_test_short_write_works",
+          "TestSip128_test_fill_buffer",
+          "TestSip128_test_finish",
+          "TestStableHasher_test_hash_integers",
+          "TestStableHasher_test_hash_usize",
+          "TestStableHasher_test_hash_isize",
+          "TestStableHasher_test_isize_compression",
+          "TestStableHasher_test_cloned_hasher_output",
+          "TestStableHasher_test_hash_trait_finish"
+        ],
+        "doc_examples_passed": 3,
+        "doc_example_names": [
+          "TestDoc_ExtendedHasher",
+          "TestDoc_StableHasher",
+          "TestDoc_FromStableHash"
+        ],
+        "stdout_sha256": "5677860dbb7c3a30ed8685f859b3af62a331cc88bff5d24b3a7952140c7db43d",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "amd64-default-overflow-false-debug-true",
+        "goarch": "amd64",
+        "nightly": false,
+        "overflow_checks": false,
+        "debug_assertions": true,
+        "compile_only": false,
+        "unit_tests_passed": 15,
+        "unit_test_names": [
+          "TestSip128_test_hash_usize",
+          "TestSip128_test_siphash_1_3_test_vector",
+          "TestSip128_test_hash_idempotent",
+          "TestSip128_test_hash_no_bytes_dropped_64",
+          "TestSip128_test_hash_no_bytes_dropped_32",
+          "TestSip128_test_hash_no_concat_alias",
+          "TestSip128_test_short_write_works",
+          "TestSip128_test_fill_buffer",
+          "TestSip128_test_finish",
+          "TestStableHasher_test_hash_integers",
+          "TestStableHasher_test_hash_usize",
+          "TestStableHasher_test_hash_isize",
+          "TestStableHasher_test_isize_compression",
+          "TestStableHasher_test_cloned_hasher_output",
+          "TestStableHasher_test_hash_trait_finish"
+        ],
+        "doc_examples_passed": 3,
+        "doc_example_names": [
+          "TestDoc_ExtendedHasher",
+          "TestDoc_StableHasher",
+          "TestDoc_FromStableHash"
+        ],
+        "stdout_sha256": "eabac0d51b99e18f3106ad00d02d70ec7215d84434619abaf73cb6c5a081d58e",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "amd64-default-overflow-true-debug-false",
+        "goarch": "amd64",
+        "nightly": false,
+        "overflow_checks": true,
+        "debug_assertions": false,
+        "compile_only": false,
+        "unit_tests_passed": 15,
+        "unit_test_names": [
+          "TestSip128_test_hash_usize",
+          "TestSip128_test_siphash_1_3_test_vector",
+          "TestSip128_test_hash_idempotent",
+          "TestSip128_test_hash_no_bytes_dropped_64",
+          "TestSip128_test_hash_no_bytes_dropped_32",
+          "TestSip128_test_hash_no_concat_alias",
+          "TestSip128_test_short_write_works",
+          "TestSip128_test_fill_buffer",
+          "TestSip128_test_finish",
+          "TestStableHasher_test_hash_integers",
+          "TestStableHasher_test_hash_usize",
+          "TestStableHasher_test_hash_isize",
+          "TestStableHasher_test_isize_compression",
+          "TestStableHasher_test_cloned_hasher_output",
+          "TestStableHasher_test_hash_trait_finish"
+        ],
+        "doc_examples_passed": 3,
+        "doc_example_names": [
+          "TestDoc_ExtendedHasher",
+          "TestDoc_StableHasher",
+          "TestDoc_FromStableHash"
+        ],
+        "stdout_sha256": "a7684c85c798d48edeedbb329494ef154247d22ae632120cf0e87ad998c67906",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "amd64-default-overflow-true-debug-true",
+        "goarch": "amd64",
+        "nightly": false,
+        "overflow_checks": true,
+        "debug_assertions": true,
+        "compile_only": false,
+        "unit_tests_passed": 15,
+        "unit_test_names": [
+          "TestSip128_test_hash_usize",
+          "TestSip128_test_siphash_1_3_test_vector",
+          "TestSip128_test_hash_idempotent",
+          "TestSip128_test_hash_no_bytes_dropped_64",
+          "TestSip128_test_hash_no_bytes_dropped_32",
+          "TestSip128_test_hash_no_concat_alias",
+          "TestSip128_test_short_write_works",
+          "TestSip128_test_fill_buffer",
+          "TestSip128_test_finish",
+          "TestStableHasher_test_hash_integers",
+          "TestStableHasher_test_hash_usize",
+          "TestStableHasher_test_hash_isize",
+          "TestStableHasher_test_isize_compression",
+          "TestStableHasher_test_cloned_hasher_output",
+          "TestStableHasher_test_hash_trait_finish"
+        ],
+        "doc_examples_passed": 3,
+        "doc_example_names": [
+          "TestDoc_ExtendedHasher",
+          "TestDoc_StableHasher",
+          "TestDoc_FromStableHash"
+        ],
+        "stdout_sha256": "b97f66460fcecfc2114194f07ea5add82327af77c31d63a1577c5e84464e3b07",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "amd64-nightly-overflow-false-debug-false",
+        "goarch": "amd64",
+        "nightly": true,
+        "overflow_checks": false,
+        "debug_assertions": false,
+        "compile_only": false,
+        "unit_tests_passed": 15,
+        "unit_test_names": [
+          "TestSip128_test_hash_usize",
+          "TestSip128_test_siphash_1_3_test_vector",
+          "TestSip128_test_hash_idempotent",
+          "TestSip128_test_hash_no_bytes_dropped_64",
+          "TestSip128_test_hash_no_bytes_dropped_32",
+          "TestSip128_test_hash_no_concat_alias",
+          "TestSip128_test_short_write_works",
+          "TestSip128_test_fill_buffer",
+          "TestSip128_test_finish",
+          "TestStableHasher_test_hash_integers",
+          "TestStableHasher_test_hash_usize",
+          "TestStableHasher_test_hash_isize",
+          "TestStableHasher_test_isize_compression",
+          "TestStableHasher_test_cloned_hasher_output",
+          "TestStableHasher_test_hash_trait_finish"
+        ],
+        "doc_examples_passed": 3,
+        "doc_example_names": [
+          "TestDoc_ExtendedHasher",
+          "TestDoc_StableHasher",
+          "TestDoc_FromStableHash"
+        ],
+        "stdout_sha256": "05bbc995f01dcef87b05632f39882d90f523b7a724deed2c6b30749f8c10eca6",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "amd64-nightly-overflow-false-debug-true",
+        "goarch": "amd64",
+        "nightly": true,
+        "overflow_checks": false,
+        "debug_assertions": true,
+        "compile_only": false,
+        "unit_tests_passed": 15,
+        "unit_test_names": [
+          "TestSip128_test_hash_usize",
+          "TestSip128_test_siphash_1_3_test_vector",
+          "TestSip128_test_hash_idempotent",
+          "TestSip128_test_hash_no_bytes_dropped_64",
+          "TestSip128_test_hash_no_bytes_dropped_32",
+          "TestSip128_test_hash_no_concat_alias",
+          "TestSip128_test_short_write_works",
+          "TestSip128_test_fill_buffer",
+          "TestSip128_test_finish",
+          "TestStableHasher_test_hash_integers",
+          "TestStableHasher_test_hash_usize",
+          "TestStableHasher_test_hash_isize",
+          "TestStableHasher_test_isize_compression",
+          "TestStableHasher_test_cloned_hasher_output",
+          "TestStableHasher_test_hash_trait_finish"
+        ],
+        "doc_examples_passed": 3,
+        "doc_example_names": [
+          "TestDoc_ExtendedHasher",
+          "TestDoc_StableHasher",
+          "TestDoc_FromStableHash"
+        ],
+        "stdout_sha256": "686dd8c544287e43211b932e7ecfc5a3a595eeb2b3b8791e3932679886e8546c",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "amd64-nightly-overflow-true-debug-false",
+        "goarch": "amd64",
+        "nightly": true,
+        "overflow_checks": true,
+        "debug_assertions": false,
+        "compile_only": false,
+        "unit_tests_passed": 15,
+        "unit_test_names": [
+          "TestSip128_test_hash_usize",
+          "TestSip128_test_siphash_1_3_test_vector",
+          "TestSip128_test_hash_idempotent",
+          "TestSip128_test_hash_no_bytes_dropped_64",
+          "TestSip128_test_hash_no_bytes_dropped_32",
+          "TestSip128_test_hash_no_concat_alias",
+          "TestSip128_test_short_write_works",
+          "TestSip128_test_fill_buffer",
+          "TestSip128_test_finish",
+          "TestStableHasher_test_hash_integers",
+          "TestStableHasher_test_hash_usize",
+          "TestStableHasher_test_hash_isize",
+          "TestStableHasher_test_isize_compression",
+          "TestStableHasher_test_cloned_hasher_output",
+          "TestStableHasher_test_hash_trait_finish"
+        ],
+        "doc_examples_passed": 3,
+        "doc_example_names": [
+          "TestDoc_ExtendedHasher",
+          "TestDoc_StableHasher",
+          "TestDoc_FromStableHash"
+        ],
+        "stdout_sha256": "0ddfd0cbfc2d98377f96afa3b236a442b14c5255e37fe341919a69356cb367a7",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "amd64-nightly-overflow-true-debug-true",
+        "goarch": "amd64",
+        "nightly": true,
+        "overflow_checks": true,
+        "debug_assertions": true,
+        "compile_only": false,
+        "unit_tests_passed": 15,
+        "unit_test_names": [
+          "TestSip128_test_hash_usize",
+          "TestSip128_test_siphash_1_3_test_vector",
+          "TestSip128_test_hash_idempotent",
+          "TestSip128_test_hash_no_bytes_dropped_64",
+          "TestSip128_test_hash_no_bytes_dropped_32",
+          "TestSip128_test_hash_no_concat_alias",
+          "TestSip128_test_short_write_works",
+          "TestSip128_test_fill_buffer",
+          "TestSip128_test_finish",
+          "TestStableHasher_test_hash_integers",
+          "TestStableHasher_test_hash_usize",
+          "TestStableHasher_test_hash_isize",
+          "TestStableHasher_test_isize_compression",
+          "TestStableHasher_test_cloned_hasher_output",
+          "TestStableHasher_test_hash_trait_finish"
+        ],
+        "doc_examples_passed": 3,
+        "doc_example_names": [
+          "TestDoc_ExtendedHasher",
+          "TestDoc_StableHasher",
+          "TestDoc_FromStableHash"
+        ],
+        "stdout_sha256": "d47c310a8a39959096c5a9a7ad562814fa842408ed0c9190747eae22659c08d4",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "checks": [
+      {
+        "name": "amd64 default feature race",
+        "result": "passed"
+      },
+      {
+        "name": "amd64 nightly feature race",
+        "result": "passed"
+      },
+      {
+        "name": "vet tests and original-test Go audit helper",
+        "result": "passed"
+      },
+      {
+        "name": "opt-in unchanged Rust eight-profile integration",
+        "result": "passed"
+      },
+      {
+        "name": "Go1.23 eight-profile matrix with source unit/doc-name accounting",
+        "result": "passed"
+      },
+      {
+        "name": "source audit --check",
+        "result": "passed"
+      }
+    ]
+  },
+  "compile_only": {
+    "386": {
+      "feature_profiles": [
+        {
+          "name": "386-default",
+          "goarch": "386",
+          "nightly": false,
+          "overflow_checks": null,
+          "debug_assertions": null,
+          "compile_only": true,
+          "unit_tests_passed": 0,
+          "unit_test_names": [],
+          "doc_examples_passed": 0,
+          "doc_example_names": [],
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "386-nightly",
+          "goarch": "386",
+          "nightly": true,
+          "overflow_checks": null,
+          "debug_assertions": null,
+          "compile_only": true,
+          "unit_tests_passed": 0,
+          "unit_test_names": [],
+          "doc_examples_passed": 0,
+          "doc_example_names": [],
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "runtime_validated": false
+    },
+    "arm": {
+      "feature_profiles": [
+        {
+          "name": "arm-default",
+          "goarch": "arm",
+          "nightly": false,
+          "overflow_checks": null,
+          "debug_assertions": null,
+          "compile_only": true,
+          "unit_tests_passed": 0,
+          "unit_test_names": [],
+          "doc_examples_passed": 0,
+          "doc_example_names": [],
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "arm-nightly",
+          "goarch": "arm",
+          "nightly": true,
+          "overflow_checks": null,
+          "debug_assertions": null,
+          "compile_only": true,
+          "unit_tests_passed": 0,
+          "unit_test_names": [],
+          "doc_examples_passed": 0,
+          "doc_example_names": [],
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "runtime_validated": false
+    }
+  },
+  "auditor_negative_probes": {
+    "changed_signed_literal": "rejected",
+    "swapped_vector_elements": "rejected",
+    "changed_architecture_gate": "rejected"
+  },
+  "cache_selection": {
+    "fresh_CARGO_HOME_with_exact_archive": "passed",
+    "missing_selected_archive": "explicitly rejected"
+  },
+  "limitations": [
+    "The 2 source architecture variants inactive on x86_64 are retained and cross-compiled; no 386/ARM runtime validation or emulator claim.",
+    "The standard Hash test-input adapter covers original input families; its native compiler trace does not claim a complete std Hash port.",
+    "Doctest examples 1 and 3 are compile witnesses and have no original runtime assertions.",
+    "Go assertion diagnostics use testing while predicates, value literals, source declaration/assertion order and vector element order are preserved."
+  ],
+  "source_audit_sha256": "de047de1c4df03b9caeef0aaae9e409f2fdca2446aabe71e399d25730038cdd4",
+  "owned_helper_files": [
+    {
+      "path": "tools/port-rust-stable-hash/original-tests/README.md",
+      "sha256": "c81708f35f17053570e19fbb706445ddb64aaba97753d59c1aacbd091917f725"
+    },
+    {
+      "path": "tools/port-rust-stable-hash/original-tests/audit.go",
+      "sha256": "22ab433d2435b6c3c934ccd1b2d76fda71c6358b4d25fce6fe809dc5ad74800b"
+    },
+    {
+      "path": "tools/port-rust-stable-hash/original-tests/audit.json",
+      "sha256": "de047de1c4df03b9caeef0aaae9e409f2fdca2446aabe71e399d25730038cdd4"
+    },
+    {
+      "path": "tools/port-rust-stable-hash/original-tests/audit.py",
+      "sha256": "2843c96a8e76496526b733859f6663c9460434b9fd3eae52bf1a997aae4dce83"
+    },
+    {
+      "path": "tools/port-rust-stable-hash/original-tests/fixtures/doctests/stable_hasher_1.rs.txt",
+      "sha256": "ec0a669d52ca008a99d9e5c7c190b649eae4098af18288b5f4afb958ba07974d"
+    },
+    {
+      "path": "tools/port-rust-stable-hash/original-tests/fixtures/doctests/stable_hasher_2.rs.txt",
+      "sha256": "9d8d176cc8f1bd8feda37d032747e81813f2b701e3eb13d1b169a13a9ad6b52c"
+    },
+    {
+      "path": "tools/port-rust-stable-hash/original-tests/fixtures/doctests/stable_hasher_3.rs.txt",
+      "sha256": "7678960fab0d9411d8667920d1f9be4d7d7ea211377b3b8493c80f5c50cef403"
+    },
+    {
+      "path": "tools/port-rust-stable-hash/original-tests/fixtures/src/sip128/tests.rs",
+      "sha256": "78bbe4215a0017cd83ccb83af636b93c9893a51a88da839eacfc2da2a06dcd0b"
+    },
+    {
+      "path": "tools/port-rust-stable-hash/original-tests/fixtures/src/stable_hasher/tests.rs",
+      "sha256": "2a169b419aff453a34b0a3bab43a3aa792beb91c19bc07dd741abe5557df5376"
+    },
+    {
+      "path": "tools/port-rust-stable-hash/original-tests/go_profiles.py",
+      "sha256": "e9b4d947b44dbf6e30a5d3c1e89280fe7f958e986e50764a3017adc44fc78f53"
+    },
+    {
+      "path": "tools/port-rust-stable-hash/original-tests/input_dispatch.rs",
+      "sha256": "f2a1a2a0711be084507fa265f266b38b3090e23df2c6cadb728479f287eed117"
+    },
+    {
+      "path": "tools/port-rust-stable-hash/original-tests/run.py",
+      "sha256": "99086f73568a92ef8852992388fda973f92ddb13a0aed72216a6b7fd7ff78344"
+    }
+  ],
+  "owned_test_files": [
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/doc_examples_test.go",
+      "sha256": "c96ff556abf869da15f6d42227d21a979f2ddae36a8dc6d24351bd53a767a738"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/input_dispatch_test.go",
+      "sha256": "f75901944d925b82efd423fe981757aa3ffa52037412837c8d93c88ca392beb5"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/original_rust_test.go",
+      "sha256": "37776011190455eaca07eb0ef06bb0dfe5d98e6efcbba99f063e76f685d8b7ff"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/sip128_arch_386_test.go",
+      "sha256": "2e598e1c5ba9492fac794d1e92950a333da3d7131da60a7127a35ce3be935cea"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/sip128_arch_amd64_test.go",
+      "sha256": "41fdd50a00cbba36176a79ad3d48a3707824b68db216a45d02ba42b01fc39528"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/sip128_arch_arm_test.go",
+      "sha256": "a2d41fceb75e7891f8e585e8077253b8baf170d70795ffe3c99aa9a8f3230d6a"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/sip128_test.go",
+      "sha256": "531e326d178ea50cc2dd906c73fe3ea58383c5b8e9aed2c8c8873401b75e9731"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/sip128_vector_test.go",
+      "sha256": "2b0a35b0476205527bce44fde6029962bb156b65558ede49e5e3c2941aaa1074"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/stable_hasher_test.go",
+      "sha256": "7acf0cd6f61f5e8e0df8a7da4a95e6a28376e2a0501c58ab825586df2ad4cb8f"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/testdata/input_dispatch.json",
+      "sha256": "9123ad6ce54faf905fe52beba021dba03306b54734bf2c52cd7fab960170d928"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/tests/util_test.go",
+      "sha256": "c747adcb01be4cee08f63e9b81ebacaee1cbf3e373a818ea245f002ca3a99089"
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "scope": "Original semver test/support/benchmark preservation only; independent implementation oracle belongs to the parent tools/port-semver directory.",
+  "crate": {
+    "name": "semver",
+    "version": "1.0.28",
+    "sha256": "8a7852d02fc848982e0c167ef163aaff9cd91dc640ba85e263cb1ce46fae51cd"
+  },
+  "coverage": {
+    "source_test_files": 6,
+    "source_test_lines": 893,
+    "source_benchmark_files": 1,
+    "source_benchmark_lines": 21,
+    "original_test_functions": 34,
+    "original_assertion_macros": 71,
+    "mirrored_assertion_calls": 71,
+    "benchmark_workloads": 3
+  },
+  "source_audit": {
+    "command": "python3 tools/port-semver/original-tests/audit.py --check",
+    "result": "passed",
+    "audit_sha256": "5c5e57e6f09c163b07467eed20243a073b32c9b95f48c4d299fa62f72d354b3f",
+    "literal_occurrences": 528,
+    "integer_occurrences": 37
+  },
+  "go": {
+    "compiler": "go version go1.23.12 linux/amd64",
+    "runtime_arch": "amd64",
+    "checks": [
+      {
+        "profile": "default-race",
+        "command": "go test -race ./port/dependencies/semver/v1_0_28/tests ./port/dependencies/semver/v1_0_28/benches",
+        "result": "passed"
+      },
+      {
+        "profile": "no_std",
+        "command": "go test -tags semver_no_std ./port/dependencies/semver/v1_0_28/tests ./port/dependencies/semver/v1_0_28/benches",
+        "result": "passed"
+      },
+      {
+        "profile": "serde",
+        "command": "go test -tags semver_serde ./port/dependencies/semver/v1_0_28/tests ./port/dependencies/semver/v1_0_28/benches",
+        "result": "passed"
+      },
+      {
+        "profile": "no_std_serde",
+        "command": "go test -tags \"semver_no_std semver_serde\" ./port/dependencies/semver/v1_0_28/tests ./port/dependencies/semver/v1_0_28/benches",
+        "result": "passed"
+      },
+      {
+        "profile": "miri-workload-cap",
+        "command": "go test -tags \"semver_no_std semver_serde semver_miri\" ./port/dependencies/semver/v1_0_28/tests ./port/dependencies/semver/v1_0_28/benches",
+        "result": "passed"
+      },
+      {
+        "profile": "node",
+        "command": "go test -tags semver_node ./port/dependencies/semver/v1_0_28/tests",
+        "result": "passed"
+      },
+      {
+        "profile": "original-Rust-opt-in",
+        "command": "FERRUGO_RUN_SEMVER_ORIGINAL_TESTS=1 go test -run \"^TestOriginalRustProfiles$\" ./port/dependencies/semver/v1_0_28/tests",
+        "result": "passed"
+      },
+      {
+        "profile": "benchmark-inputs",
+        "command": "go test -run \"^$\" -bench BenchmarkParse -benchtime=1x ./port/dependencies/semver/v1_0_28/benches",
+        "result": "passed"
+      },
+      {
+        "profile": "vet",
+        "command": "go vet ./port/dependencies/semver/v1_0_28/tests ./port/dependencies/semver/v1_0_28/benches ./tools/port-semver/original-tests",
+        "result": "passed"
+      }
+    ]
+  },
+  "original_rust": {
+    "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+    "command": "python3 tools/port-semver/original-tests/run.py --offline --node",
+    "profiles": [
+      {
+        "name": "std",
+        "tests_passed": 34,
+        "doc_tests_passed": 4,
+        "doc_assertion_sites": 4
+      },
+      {
+        "name": "no_std",
+        "tests_passed": 34,
+        "doc_tests_passed": 4,
+        "doc_assertion_sites": 4
+      },
+      {
+        "name": "serde",
+        "tests_passed": 34,
+        "doc_tests_passed": 4,
+        "doc_assertion_sites": 4
+      },
+      {
+        "name": "no_std_serde",
+        "tests_passed": 34,
+        "doc_tests_passed": 4,
+        "doc_assertion_sites": 4
+      },
+      {
+        "name": "node",
+        "tests_passed": 34,
+        "doc_tests_passed": 4,
+        "doc_assertion_sites": 4
+      }
+    ],
+    "registry_dependencies": [
+      {
+        "name": "proc-macro2",
+        "version": "1.0.106",
+        "sha256": "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934",
+        "compiled_source_files": 33,
+        "compiled_source_tree_sha256": "af1ffb23081f61b21e41d43118d800aca7c726b1f575d332b1103f999980b75c"
+      },
+      {
+        "name": "quote",
+        "version": "1.0.45",
+        "sha256": "41f2619966050689382d2b44f664f4bc593e129785a36d6ee376ddf37259b924",
+        "compiled_source_files": 35,
+        "compiled_source_tree_sha256": "e31775761beea1bcba084cd0063189f5e63a094207256719eb2a3dd11decd7f6"
+      },
+      {
+        "name": "serde_core",
+        "version": "1.0.228",
+        "sha256": "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad",
+        "compiled_source_files": 27,
+        "compiled_source_tree_sha256": "59ec4e05acb26e11a27b6af1515277f218e99b5a1495c21ea4162edcf5e67c3f"
+      },
+      {
+        "name": "serde_derive",
+        "version": "1.0.228",
+        "sha256": "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79",
+        "compiled_source_files": 36,
+        "compiled_source_tree_sha256": "066677cb25ced74fcb50c8d236c86d4161e1dae6e58f8642968d3003f3741a7b"
+      },
+      {
+        "name": "syn",
+        "version": "2.0.117",
+        "sha256": "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99",
+        "compiled_source_files": 105,
+        "compiled_source_tree_sha256": "9815aa0115d9bad1dec590c0cece5e9b1fcbf1284c9f6d1639cd7bbfab87d3e5"
+      },
+      {
+        "name": "unicode-ident",
+        "version": "1.0.24",
+        "sha256": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+        "compiled_source_files": 26,
+        "compiled_source_tree_sha256": "251b416beac67d8c2159adff52cdfa65bfe98082855c65b739a809c1e4bdf1d9"
+      }
+    ],
+    "source_files": [
+      {
+        "path": "benches/parse.rs",
+        "sha256": "475fcb95202c0e5e4638f8b5f3d21b00f1897b98876bf91285c0982c2e9e6e1a"
+      },
+      {
+        "path": "tests/node/mod.rs",
+        "sha256": "73d6103aa122bf3283d3af16aaa08d302fd5ce50f52e9ead8d6be2d596d89487"
+      },
+      {
+        "path": "tests/test_autotrait.rs",
+        "sha256": "2631b78c9c63f1829c814fa88fcab0c5d77eb4e2d9c0c418d50c33e12a511e90"
+      },
+      {
+        "path": "tests/test_identifier.rs",
+        "sha256": "fba0428bf5c43c733d17ca30952822ed6e1af6de1e5ef11bd8fb46c6b10f65fd"
+      },
+      {
+        "path": "tests/test_version.rs",
+        "sha256": "bca3dccc0add95f657ebb1e37d9d7ff2235b5a151dafe1c8335a1190ea02af2e"
+      },
+      {
+        "path": "tests/test_version_req.rs",
+        "sha256": "7e82d3efff1b2c3161c62f25690bed87199c16b1ca2da3003d35b6ac252f537c"
+      },
+      {
+        "path": "tests/util/mod.rs",
+        "sha256": "89975b57637b872d75adea6be9a5c08d21fda6f6cf29b01180a2232c0a7d0296"
+      }
+    ]
+  },
+  "external_node": {
+    "semver_package_version": "7.8.5",
+    "result": "original and mirrored Node matcher profiles passed"
+  },
+  "cross_compile_386": {
+    "packages": [
+      "tests",
+      "benches"
+    ],
+    "goarch": "386",
+    "cgo_enabled": false,
+    "result": "both ELF32 test executables compiled successfully",
+    "runtime_result": "exec format error from this kernel; runtime behavior unvalidated"
+  },
+  "limitations": [
+    "Go read-only concurrency checks do not represent Rust Send+Sync trait checking; exact Rust compiler witness is retained and compiled unchanged.",
+    "Go calculate_hash tests repeatability with caller-owned deterministic hashing; the exact original DefaultHasher helper is separately retained and executed unchanged.",
+    "semver_miri applies the original workload cap only; no Miri execution is claimed.",
+    "Criterion orchestration is replaced by Go benchmark orchestration around all three exact parse workloads; no comparative performance claim."
+  ],
+  "helper_files": [
+    {
+      "path": "tools/port-semver/original-tests/Cargo.lock",
+      "sha256": "6a2adf594d6a25fd7d191ae0fa67ee3a976930caac76fb03ca4d999d951f5fd0"
+    },
+    {
+      "path": "tools/port-semver/original-tests/Cargo.toml",
+      "sha256": "9dfd517c814c6dc76a1d0e4009dd2b2504fe854ded346a7bbc5181efc2e4aaa3"
+    },
+    {
+      "path": "tools/port-semver/original-tests/README.md",
+      "sha256": "8ba76eb631b56779cbc16fdf6b6d312c11ebc89933ef875ce3e2debd27d0db8b"
+    },
+    {
+      "path": "tools/port-semver/original-tests/audit.go",
+      "sha256": "6784946622f24cc276c16d7405b066edac56079fcb131911f1cd344cc677a5e3"
+    },
+    {
+      "path": "tools/port-semver/original-tests/audit.json",
+      "sha256": "5c5e57e6f09c163b07467eed20243a073b32c9b95f48c4d299fa62f72d354b3f"
+    },
+    {
+      "path": "tools/port-semver/original-tests/audit.py",
+      "sha256": "bb3531aeec48ee5bcdc2a47da7a28da879a78ed773cdd8e767e2f9ff5dfb2b42"
+    },
+    {
+      "path": "tools/port-semver/original-tests/fixtures/tests/node/mod.rs",
+      "sha256": "73d6103aa122bf3283d3af16aaa08d302fd5ce50f52e9ead8d6be2d596d89487"
+    },
+    {
+      "path": "tools/port-semver/original-tests/fixtures/tests/test_autotrait.rs",
+      "sha256": "2631b78c9c63f1829c814fa88fcab0c5d77eb4e2d9c0c418d50c33e12a511e90"
+    },
+    {
+      "path": "tools/port-semver/original-tests/fixtures/tests/test_version_req.rs",
+      "sha256": "7e82d3efff1b2c3161c62f25690bed87199c16b1ca2da3003d35b6ac252f537c"
+    },
+    {
+      "path": "tools/port-semver/original-tests/mirror.py",
+      "sha256": "2c0813cddd6af1244b94ee422577850d16da879630ae2206666e3981743ad2ee"
+    },
+    {
+      "path": "tools/port-semver/original-tests/registry_source.py",
+      "sha256": "189f5020a8b2eef0a634690895cde09c022ae425acf49b91638ced7eddf2f3be"
+    },
+    {
+      "path": "tools/port-semver/original-tests/run.py",
+      "sha256": "1ca48c7298735a1c3a2977721c49c21e7b5447ea1c4dc274383fb5c6a473efef"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+[package]
+name = "ferrugo-cargo-semver-oracle"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[[bin]]
+name = "oracle"
+path = "oracle.rs"
+
+[[bin]]
+name = "format-oracle"
+path = "format_oracle.rs"
+
+[[bin]]
+name = "debug-oracle"
+path = "util/cargo_debug_probe.rs"
+
+[[bin]]
+name = "debug-dispatch-oracle"
+path = "util/cargo_debug_dispatch.rs"
+
+[[bin]]
+name = "debug-state-oracle"
+path = "util/cargo_debug_state.rs"
+
+[dependencies]
+semver = "=1.0.28"
+
+[workspace]

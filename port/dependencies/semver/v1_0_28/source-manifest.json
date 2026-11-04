@@ -1,0 +1,213 @@
+{
+  "Crate": "semver",
+  "Version": "1.0.28",
+  "ArchiveURL": "https://static.crates.io/crates/semver/semver-1.0.28.crate",
+  "ArchiveSHA256": "8a7852d02fc848982e0c167ef163aaff9cd91dc640ba85e263cb1ce46fae51cd",
+  "UpstreamRevision": "7625c7aa3f0e8ba21e099d1765bcebcb72aa8816",
+  "ArchiveFiles": 25,
+  "RustFiles": 15,
+  "RustLines": 3031,
+  "RustBytes": 98144,
+  "Files": [
+    {
+      "name": ".cargo_vcs_info.json",
+      "Bytes": 94,
+      "Lines": 5,
+      "SHA256": "ed44d9ebcfb59197f7c7ab17a5237570123f78de1023e1e723d9d721c1937826",
+      "Target": "upstream/.cargo_vcs_info.json",
+      "Adaptation": ""
+    },
+    {
+      "name": ".github/FUNDING.yml",
+      "Bytes": 16,
+      "Lines": 1,
+      "SHA256": "b017158736b3c9751a2d21edfce7fe61c8954e2fced8da8dd3013c2f3e295bd9",
+      "Target": "upstream/.github/FUNDING.yml",
+      "Adaptation": ""
+    },
+    {
+      "name": ".github/workflows/ci.yml",
+      "Bytes": 3940,
+      "Lines": 141,
+      "SHA256": "5aa1651149da215362590201e5697b5992265d96d7051821fe34624e788423ba",
+      "Target": "upstream/.github/workflows/ci.yml",
+      "Adaptation": ""
+    },
+    {
+      "name": ".gitignore",
+      "Bytes": 69,
+      "Lines": 5,
+      "SHA256": "6020eba569a4fb23aeccbbfdb1ec99de4e5963787390367a3f2c8e2c5541e9e7",
+      "Target": "upstream/gitignore.source",
+      "Adaptation": ""
+    },
+    {
+      "name": "Cargo.lock",
+      "Bytes": 11650,
+      "Lines": 450,
+      "SHA256": "2e99893bbd1c120131d5acde0a91945b63cb2ef9ba9ba8bbde200daea0035e4a",
+      "Target": "upstream/Cargo.lock",
+      "Adaptation": ""
+    },
+    {
+      "name": "Cargo.toml",
+      "Bytes": 2181,
+      "Lines": 93,
+      "SHA256": "cf7fb84578260eec81ce5af4bdb176ec590d45fdcb78f06710f0aa13e3078761",
+      "Target": "upstream/Cargo.toml",
+      "Adaptation": ""
+    },
+    {
+      "name": "Cargo.toml.orig",
+      "Bytes": 1261,
+      "Lines": 45,
+      "SHA256": "a3386a53d0ad50260a7424689ba2d983abd6c6b5bb09bda48b9fceb3032e8318",
+      "Target": "upstream/Cargo.toml.orig",
+      "Adaptation": ""
+    },
+    {
+      "name": "LICENSE-APACHE",
+      "Bytes": 9723,
+      "Lines": 176,
+      "SHA256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "Target": "LICENSE-APACHE",
+      "Adaptation": ""
+    },
+    {
+      "name": "LICENSE-MIT",
+      "Bytes": 1023,
+      "Lines": 23,
+      "SHA256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "Target": "LICENSE-MIT",
+      "Adaptation": ""
+    },
+    {
+      "name": "README.md",
+      "Bytes": 2931,
+      "Lines": 82,
+      "SHA256": "f1f736262db1f11353bca2fbdde906bfbb1d54e5eb7497dd110984f5eebb801e",
+      "Target": "upstream/README.md",
+      "Adaptation": ""
+    },
+    {
+      "name": "benches/parse.rs",
+      "Bytes": 716,
+      "Lines": 21,
+      "SHA256": "475fcb95202c0e5e4638f8b5f3d21b00f1897b98876bf91285c0982c2e9e6e1a",
+      "Target": "benches/parse_test.go",
+      "Adaptation": ""
+    },
+    {
+      "name": "src/display.rs",
+      "Bytes": 4603,
+      "Lines": 162,
+      "SHA256": "cfe08cb163fd5ba7fa024880a0809afb07f6e465891d8cefb716c693b13958d0",
+      "Target": "src/display.go; src/debug.go",
+      "Adaptation": ""
+    },
+    {
+      "name": "src/error.rs",
+      "Bytes": 4091,
+      "Lines": 126,
+      "SHA256": "d0311d2d3ec0c1c04f3067a59aed52bac57329e47801be67b09199d145c7f73e",
+      "Target": "src/error.go; src/error_std.go; src/error_no_std.go",
+      "Adaptation": ""
+    },
+    {
+      "name": "src/eval.rs",
+      "Bytes": 4139,
+      "Lines": 175,
+      "SHA256": "292eac9472c92db20fcd3a864c5598f55a2f5554008af8f704ff975fcf40dd74",
+      "Target": "src/eval.go",
+      "Adaptation": ""
+    },
+    {
+      "name": "src/identifier.rs",
+      "Bytes": 18143,
+      "Lines": 412,
+      "SHA256": "dc5d61282418a5eaefca7ebe37a5bcdd61da22a5191454d61ea1ef566004aa9e",
+      "Target": "src/identifier.go",
+      "Adaptation": "Private inline/heap/tagged-pointer allocation is immutable Go strings and GC; value operations retained, no Rust ABI/allocation timing contract."
+    },
+    {
+      "name": "src/impls.rs",
+      "Bytes": 4729,
+      "Lines": 160,
+      "SHA256": "30bac3940b9bab840dc59280832c9afbb342abf47c51740a1b83b43c1646c56b",
+      "Target": "src/impls.go",
+      "Adaptation": ""
+    },
+    {
+      "name": "src/lib.rs",
+      "Bytes": 21379,
+      "Lines": 569,
+      "SHA256": "e56f4d7c7774c45e61026fb0050955d67601c9ad18bdf93f8921d9898067c119",
+      "Target": "src/lib.go",
+      "Adaptation": ""
+    },
+    {
+      "name": "src/parse.rs",
+      "Bytes": 12187,
+      "Lines": 404,
+      "SHA256": "2d9cb28a72a813968c16da29a9690f8e53f1ce00727a1dbe67aec3ddb5ed59ed",
+      "Target": "src/parse.go",
+      "Adaptation": ""
+    },
+    {
+      "name": "src/serde.rs",
+      "Bytes": 2832,
+      "Lines": 109,
+      "SHA256": "e2a9b9dc3cd2cccc250eaffad049de418ef791bf8c4a34111a48f068353e0a37",
+      "Target": "src/serde.go; src/serde_disabled.go",
+      "Adaptation": ""
+    },
+    {
+      "name": "tests/node/mod.rs",
+      "Bytes": 1202,
+      "Lines": 43,
+      "SHA256": "73d6103aa122bf3283d3af16aaa08d302fd5ce50f52e9ead8d6be2d596d89487",
+      "Target": "tests/node_test.go; tests/node_native_test.go",
+      "Adaptation": ""
+    },
+    {
+      "name": "tests/test_autotrait.rs",
+      "Bytes": 422,
+      "Lines": 14,
+      "SHA256": "2631b78c9c63f1829c814fa88fcab0c5d77eb4e2d9c0c418d50c33e12a511e90",
+      "Target": "tests/test_autotrait_test.go",
+      "Adaptation": ""
+    },
+    {
+      "name": "tests/test_identifier.rs",
+      "Bytes": 1428,
+      "Lines": 51,
+      "SHA256": "fba0428bf5c43c733d17ca30952822ed6e1af6de1e5ef11bd8fb46c6b10f65fd",
+      "Target": "tests/test_identifier_test.go",
+      "Adaptation": ""
+    },
+    {
+      "name": "tests/test_version.rs",
+      "Bytes": 7413,
+      "Lines": 251,
+      "SHA256": "bca3dccc0add95f657ebb1e37d9d7ff2235b5a151dafe1c8335a1190ea02af2e",
+      "Target": "tests/test_version_test.go",
+      "Adaptation": ""
+    },
+    {
+      "name": "tests/test_version_req.rs",
+      "Bytes": 13632,
+      "Lines": 480,
+      "SHA256": "7e82d3efff1b2c3161c62f25690bed87199c16b1ca2da3003d35b6ac252f537c",
+      "Target": "tests/test_version_req_test.go",
+      "Adaptation": ""
+    },
+    {
+      "name": "tests/util/mod.rs",
+      "Bytes": 1228,
+      "Lines": 54,
+      "SHA256": "89975b57637b872d75adea6be9a5c08d21fda6f6cf29b01180a2232c0a7d0296",
+      "Target": "tests/util_test.go",
+      "Adaptation": ""
+    }
+  ]
+}

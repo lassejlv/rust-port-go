@@ -1,2 +1,4 @@
 # Preserve the pinned reference manifest verbatim, including its final blank line.
 tools/port-rust-span-encoding/upstream/rustc_index_macros/Cargo.toml -whitespace
+# This dependency README is retained byte-for-byte with its archive checksum.
+port/dependencies/rustc-stable-hash/v0_1_2/upstream/README.md -whitespace

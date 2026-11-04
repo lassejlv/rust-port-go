@@ -1,0 +1,192 @@
+{
+  "crate_sha256": "8a7852d02fc848982e0c167ef163aaff9cd91dc640ba85e263cb1ce46fae51cd",
+  "source_test_files": 6,
+  "source_test_lines": 893,
+  "source_benchmark_files": 1,
+  "source_benchmark_lines": 21,
+  "original_test_functions": 34,
+  "original_assertion_macros": 71,
+  "mirrored_assertion_calls": 71,
+  "benchmark_workloads": 3,
+  "files": [
+    {
+      "source": "tests/test_autotrait.rs",
+      "source_sha256": "2631b78c9c63f1829c814fa88fcab0c5d77eb4e2d9c0c418d50c33e12a511e90",
+      "source_lines": 14,
+      "target": "tests/test_autotrait_test.go",
+      "target_sha256": "3e62109c360dfd253fb23d825bc280af2c0b68942a6d3f29f14fa7258b2a877d",
+      "tests": [
+        "test"
+      ],
+      "go_tests": [
+        "TestAutotrait_test"
+      ],
+      "literal_occurrences": 0,
+      "integer_occurrences": 0,
+      "source_assertion_macros": 0,
+      "status": "mirrored runtime assertions plus retained Rust compiler witness"
+    },
+    {
+      "source": "tests/test_identifier.rs",
+      "source_sha256": "fba0428bf5c43c733d17ca30952822ed6e1af6de1e5ef11bd8fb46c6b10f65fd",
+      "source_lines": 51,
+      "target": "tests/test_identifier_test.go",
+      "target_sha256": "4cda8ba918865d93f095d89f4956424e51423e92aae627cd5eebf66ac24ab60a",
+      "tests": [
+        "test_new",
+        "test_eq",
+        "test_prerelease"
+      ],
+      "go_tests": [
+        "TestIdentifier_test_new",
+        "TestIdentifier_test_eq",
+        "TestIdentifier_test_prerelease"
+      ],
+      "literal_occurrences": 17,
+      "integer_occurrences": 4,
+      "source_assertion_macros": 12,
+      "status": "mirrored"
+    },
+    {
+      "source": "tests/test_version.rs",
+      "source_sha256": "bca3dccc0add95f657ebb1e37d9d7ff2235b5a151dafe1c8335a1190ea02af2e",
+      "source_lines": 251,
+      "target": "tests/test_version_test.go",
+      "target_sha256": "6530817821bb8c78812061eea7e2b5c95df94e4268a6fc9508231fc9b817ede9",
+      "tests": [
+        "test_parse",
+        "test_eq",
+        "test_ne",
+        "test_display",
+        "test_lt",
+        "test_le",
+        "test_gt",
+        "test_ge",
+        "test_spec_order",
+        "test_align"
+      ],
+      "go_tests": [
+        "TestVersion_test_parse",
+        "TestVersion_test_eq",
+        "TestVersion_test_ne",
+        "TestVersion_test_display",
+        "TestVersion_test_lt",
+        "TestVersion_test_le",
+        "TestVersion_test_gt",
+        "TestVersion_test_ge",
+        "TestVersion_test_spec_order",
+        "TestVersion_test_align"
+      ],
+      "literal_occurrences": 139,
+      "integer_occurrences": 33,
+      "source_assertion_macros": 49,
+      "status": "mirrored"
+    },
+    {
+      "source": "tests/test_version_req.rs",
+      "source_sha256": "7e82d3efff1b2c3161c62f25690bed87199c16b1ca2da3003d35b6ac252f537c",
+      "source_lines": 480,
+      "target": "tests/test_version_req_test.go",
+      "target_sha256": "36b092454b54238f8c98f6affd4c945b1f92184133bd551fd899b011c9fa1864",
+      "tests": [
+        "test_basic",
+        "test_default",
+        "test_exact",
+        "test_greater_than",
+        "test_less_than",
+        "test_multiple",
+        "test_whitespace_delimited_comparator_sets",
+        "test_tilde",
+        "test_caret",
+        "test_wildcard",
+        "test_logical_or",
+        "test_any",
+        "test_pre",
+        "test_parse",
+        "test_comparator_parse",
+        "test_cargo3202",
+        "test_digit_after_wildcard",
+        "test_eq_hash",
+        "test_leading_digit_in_pre_and_build",
+        "test_wildcard_and_another"
+      ],
+      "go_tests": [
+        "TestVersionReq_test_basic",
+        "TestVersionReq_test_default",
+        "TestVersionReq_test_exact",
+        "TestVersionReq_test_greater_than",
+        "TestVersionReq_test_less_than",
+        "TestVersionReq_test_multiple",
+        "TestVersionReq_test_whitespace_delimited_comparator_sets",
+        "TestVersionReq_test_tilde",
+        "TestVersionReq_test_caret",
+        "TestVersionReq_test_wildcard",
+        "TestVersionReq_test_logical_or",
+        "TestVersionReq_test_any",
+        "TestVersionReq_test_pre",
+        "TestVersionReq_test_parse",
+        "TestVersionReq_test_comparator_parse",
+        "TestVersionReq_test_cargo3202",
+        "TestVersionReq_test_digit_after_wildcard",
+        "TestVersionReq_test_eq_hash",
+        "TestVersionReq_test_leading_digit_in_pre_and_build",
+        "TestVersionReq_test_wildcard_and_another"
+      ],
+      "literal_occurrences": 358,
+      "integer_occurrences": 0,
+      "source_assertion_macros": 9,
+      "status": "mirrored"
+    },
+    {
+      "source": "tests/util/mod.rs",
+      "source_sha256": "89975b57637b872d75adea6be9a5c08d21fda6f6cf29b01180a2232c0a7d0296",
+      "source_lines": 54,
+      "target": "tests/util_test.go",
+      "target_sha256": "8cbe0d59375c39c90357689d5848abad11ad73490d6f1e8c0265be953213148c",
+      "tests": [],
+      "go_tests": [],
+      "literal_occurrences": 0,
+      "integer_occurrences": 0,
+      "source_assertion_macros": 1,
+      "status": "mirrored"
+    },
+    {
+      "source": "tests/node/mod.rs",
+      "source_sha256": "73d6103aa122bf3283d3af16aaa08d302fd5ce50f52e9ead8d6be2d596d89487",
+      "source_lines": 43,
+      "target": "tests/node_test.go",
+      "target_sha256": "7791fb5ddbf89f041b559f3c54461a38b605adfe9a97e3d1ac68ff2bee2fa108",
+      "tests": [],
+      "go_tests": [],
+      "literal_occurrences": 8,
+      "integer_occurrences": 0,
+      "source_assertion_macros": 0,
+      "status": "mirrored"
+    },
+    {
+      "source": "benches/parse.rs",
+      "source_sha256": "475fcb95202c0e5e4638f8b5f3d21b00f1897b98876bf91285c0982c2e9e6e1a",
+      "source_lines": 21,
+      "target": "benches/parse_test.go",
+      "target_sha256": "99db8cbbaf5bedc0568d5b15a94c4207288f3c20376b2d4ae79cc1b487330cff",
+      "tests": [],
+      "go_tests": [],
+      "literal_occurrences": 6,
+      "integer_occurrences": 0,
+      "source_assertion_macros": 0,
+      "status": "mirrored"
+    }
+  ],
+  "profiles": {
+    "default": "native matcher, full280length/5.6MB identifier tests",
+    "semver_no_std": "same assertions with std feature disabled",
+    "semver_serde": "same assertions with source serde feature enabled; serde implementation oracle belongs to the implementation owner",
+    "semver_node": "explicit external Node semver matcher; requested missing prerequisites fail",
+    "semver_miri": "original40iteration workload cap only; does not claim Miri execution",
+    "native_word_width": "amd64 runtime validated;386 cross-compiles, but current kernel rejects ELF32 with exec-format-error;32bit runtime is not validated"
+  },
+  "language_specific_witnesses": {
+    "send_sync": "Exact original Rust test_autotrait.rs compiled unchanged; Go adds read-only concurrent/race checks without claiming Rust trait-bound equivalence",
+    "default_hasher": "Exact original nested DefaultHasher helper retained/executed unchanged; Go repeats the same equality assertion through caller-owned deterministic hashing, with no concrete DefaultHasher port claim"
+  }
+}

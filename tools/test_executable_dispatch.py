@@ -24,6 +24,7 @@ class ExecutableDispatch(unittest.TestCase):
             ('tools/port-rust-parse-format/debug/generate.py', 'executable'),
             ('tools/port-rust-span-encoding/prepare.py', 'selected'),
             ('tools/port-rust-binary-search/owned/generate.py', 'owned'),
+            ('tools/port-rust-stable-hash/original-tests/run.py', 'plain'),
         ]
         with tempfile.TemporaryDirectory() as directory:
             folder = Path(directory)
@@ -39,7 +40,9 @@ class ExecutableDispatch(unittest.TestCase):
                         name = str(folder / command) if explicit else command
                         with self.subTest(tool=relative, command=command, explicit=explicit):
                             with patch.dict(os.environ, {'PATH': str(folder), 'FERRUGO_DISPATCH_TEST': name}):
-                                if selector == 'owned':
+                                if selector == 'plain':
+                                    selected = subject.executable(name)
+                                elif selector == 'owned':
                                     selected = subject.executable(name, ROOT)
                                 else:
                                     selected = getattr(subject, selector)('FERRUGO_DISPATCH_TEST', Path('absent'), command)
