@@ -27,14 +27,14 @@ func Build(sourcePath, outputPath string) error {
 			return fmt.Errorf("output refers to source file %s", sourcePath)
 		}
 	}
-	source, err := os.ReadFile(sourceAbs)
+	c, sources, err := analyzeFile(sourceAbs)
 	if err != nil {
-		return fmt.Errorf("read source: %w", err)
+		return err
 	}
-	code, err := EmitC(string(source))
-	if err != nil {
-		return fmt.Errorf("%s:%w", sourcePath, err)
+	if err = protectSources(outputAbs, sources); err != nil {
+		return err
 	}
+	code := emitChecked(c)
 	cc := os.Getenv("CC")
 	if cc == "" {
 		cc = "cc"

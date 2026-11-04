@@ -57,7 +57,11 @@ func configuredRustc(t *testing.T) string {
 
 func fixtures(t *testing.T, category string) []string {
 	t.Helper()
-	paths, err := filepath.Glob(filepath.Join("..", "..", "testdata", "conformance", category, "*.rs"))
+	pattern := "*.rs"
+	if category == "modules" || category == "module-fail" {
+		pattern = filepath.Join("*", "main.rs")
+	}
+	paths, err := filepath.Glob(filepath.Join("..", "..", "testdata", "conformance", category, pattern))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -132,55 +136,39 @@ func TestConformance(t *testing.T) {
 	// Bound subprocess concurrency independently of go test -parallel. This keeps
 	// the optional rustc run modest on small development and CI machines.
 	slots := make(chan struct{}, 4)
-	for _, source := range fixtures(t, "run") {
-		name := strings.TrimSuffix(filepath.Base(source), ".rs")
-		t.Run("run/"+name, func(t *testing.T) {
-			t.Parallel()
-			slots <- struct{}{}
-			defer func() { <-slots }()
-			prefix := strings.TrimSuffix(source, ".rs")
-			want := read(t, prefix+".stdout")
-			status := 0
-			if data, err := os.ReadFile(prefix + ".status"); err == nil {
-				value, parseErr := strconv.Atoi(strings.TrimSpace(string(data)))
-				if parseErr != nil || value < 0 || value > 255 {
-					t.Fatalf("invalid status golden %q", data)
-				}
-				status = value
-			} else if !os.IsNotExist(err) {
-				t.Fatal(err)
-			}
-			dir := t.TempDir()
-			ferrugoOutput := filepath.Join(dir, "ferrugo-program")
-			if err := compiler.Build(source, ferrugoOutput); err != nil {
-				t.Fatalf("Ferrugo compile: %v", err)
-			}
-			actual := run(t, ferrugoOutput)
-			expect(t, "Ferrugo", actual, want, status)
-			if rustc != "" {
-				rustOutput := filepath.Join(dir, "rustc-program")
-				if diagnostics, err := compileRust(t, rustc, source, rustOutput); err != nil {
-					t.Fatalf("rustc rejected run fixture: %v\n%s", err, diagnostics)
-				}
-				reference := run(t, rustOutput)
-				expect(t, "rustc", reference, want, status)
-				expect(t, "Ferrugo versus rustc", actual, reference.stdout, reference.status)
-			}
-		})
-	}
-	for _, category := range []string{"compile-fail", "unsupported"} {
+
+	for _, category := range []string{"run", "modules"} {
 		for _, source := range fixtures(t, category) {
 			name := strings.TrimSuffix(filepath.Base(source), ".rs")
+			prefix := strings.TrimSuffix(source, ".rs")
+			if category == "modules" {
+				name = filepath.Base(filepath.Dir(source))
+				prefix = filepath.Join(filepath.Dir(source), "output")
+			}
 			t.Run(category+"/"+name, func(t *testing.T) {
 				t.Parallel()
 				slots <- struct{}{}
 				defer func() { <-slots }()
-				if err := compiler.Check(string(read(t, source))); err == nil {
+				runFixture(t, rustc, source, prefix)
+			})
+		}
+	}
+	for _, category := range []string{"compile-fail", "module-fail", "unsupported"} {
+		for _, source := range fixtures(t, category) {
+			name := strings.TrimSuffix(filepath.Base(source), ".rs")
+			if category == "module-fail" {
+				name = filepath.Base(filepath.Dir(source))
+			}
+			t.Run(category+"/"+name, func(t *testing.T) {
+				t.Parallel()
+				slots <- struct{}{}
+				defer func() { <-slots }()
+				if err := compiler.CheckFile(source); err == nil {
 					t.Fatalf("Ferrugo accepted %s fixture", category)
 				}
 				if rustc != "" {
 					diagnostics, err := compileRust(t, rustc, source, filepath.Join(t.TempDir(), "rustc-program"))
-					if category == "compile-fail" {
+					if category != "unsupported" {
 						if err == nil {
 							t.Fatal("rustc accepted invalid-Rust fixture")
 						}
@@ -194,5 +182,38 @@ func TestConformance(t *testing.T) {
 				}
 			})
 		}
+	}
+}
+
+// A multi-file fixture uses main.rs and sibling supporting files. Both compilers
+// receive the original root, so their own loaders discover the same file tree.
+func runFixture(t *testing.T, rustc, source, prefix string) {
+	t.Helper()
+	want := read(t, prefix+".stdout")
+	status := 0
+	if data, err := os.ReadFile(prefix + ".status"); err == nil {
+		value, parseErr := strconv.Atoi(strings.TrimSpace(string(data)))
+		if parseErr != nil || value < 0 || value > 255 {
+			t.Fatalf("invalid status golden %q", data)
+		}
+		status = value
+	} else if !os.IsNotExist(err) {
+		t.Fatal(err)
+	}
+	dir := t.TempDir()
+	ferrugoOutput := filepath.Join(dir, "ferrugo-program")
+	if err := compiler.Build(source, ferrugoOutput); err != nil {
+		t.Fatalf("Ferrugo compile: %v", err)
+	}
+	actual := run(t, ferrugoOutput)
+	expect(t, "Ferrugo", actual, want, status)
+	if rustc != "" {
+		rustOutput := filepath.Join(dir, "rustc-program")
+		if diagnostics, err := compileRust(t, rustc, source, rustOutput); err != nil {
+			t.Fatalf("rustc rejected run fixture: %v\n%s", err, diagnostics)
+		}
+		reference := run(t, rustOutput)
+		expect(t, "rustc", reference, want, status)
+		expect(t, "Ferrugo versus rustc", actual, reference.stdout, reference.status)
 	}
 }

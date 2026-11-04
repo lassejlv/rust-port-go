@@ -1,10 +1,6 @@
 // A bootstrap program compiled by Ferrugo without rustc or upstream Cargo.
-fn fib(n: i64) -> i64 {
-    if n < 2 {
-        return n;
-    }
-    fib(n - 1) + fib(n - 2)
-}
+mod math;
+use math::fib;
 
 fn main() {
     println!("Hello, Ferrugo!");

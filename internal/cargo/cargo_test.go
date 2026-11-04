@@ -264,3 +264,37 @@ func TestCleanRefusesSymlinkArtifactAndInvalidMarker(t *testing.T) {
 		})
 	}
 }
+
+func TestExternalModuleCheckAndRun(t *testing.T) {
+	if _, err := exec.LookPath("cc"); err != nil {
+		t.Skip("C compiler unavailable")
+	}
+	root := filepath.Join(t.TempDir(), "modular")
+	if code, _, stderr := runCommand("new", root); code != 0 {
+		t.Fatalf("new: %s", stderr)
+	}
+	mainPath := filepath.Join(root, "src", "main.rs")
+	if err := os.WriteFile(mainPath, []byte("mod arithmetic;\nuse crate::arithmetic::double as twice;\nfn main() { println!(\"{}\", twice(21)); }\n"), 0644); err != nil {
+		t.Fatal(err)
+	}
+	modulePath := filepath.Join(root, "src", "arithmetic.rs")
+	if err := os.WriteFile(modulePath, []byte("pub fn double(n: i32) -> i32 { n * 2 }\n"), 0644); err != nil {
+		t.Fatal(err)
+	}
+	manifest := filepath.Join(root, "Cargo.toml")
+	if code, stdout, stderr := runCommand("check", "--manifest-path", manifest); code != 0 || stdout != "" {
+		t.Fatalf("check module package: code=%d stdout=%q stderr=%s", code, stdout, stderr)
+	}
+	if _, err := os.Stat(filepath.Join(root, "target")); !os.IsNotExist(err) {
+		t.Fatal("module check created build artifacts")
+	}
+	if code, stdout, stderr := runCommand("run", "--manifest-path", manifest); code != 0 || stdout != "42\n" {
+		t.Fatalf("run module package: code=%d stdout=%q stderr=%s", code, stdout, stderr)
+	}
+	if err := os.WriteFile(modulePath, []byte("pub fn double(n: i32) -> i32 { true }\n"), 0644); err != nil {
+		t.Fatal(err)
+	}
+	if code, _, stderr := runCommand("check", "--manifest-path", manifest); code == 0 || !strings.Contains(stderr, "arithmetic.rs") {
+		t.Fatalf("check did not report imported-file error: code=%d stderr=%s", code, stderr)
+	}
+}

@@ -1,6 +1,9 @@
 package syntax
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type parser struct {
 	tokens  []token
@@ -16,15 +19,127 @@ func Parse(source string) (*Program, error) {
 		return nil, err
 	}
 	p := &parser{tokens: tokens, grouped: make(map[*Expr]bool)}
+	return p.items("eof")
+}
+
+// items parses the item-only namespace of a crate or inline module. Function
+// bodies use block(), so namespace items are never silently hoisted from them.
+func (p *parser) items(end string) (*Program, error) {
 	program := &Program{}
-	for !p.at("eof") {
-		f, err := p.function()
-		if err != nil {
-			return nil, err
+	for !p.at(end) {
+		start := p.current()
+		if p.at("eof") {
+			return nil, sourceError(start.span, "expected %s, found end of input", end)
 		}
-		program.Functions = append(program.Functions, f)
+		public := p.take("pub")
+		if public && p.at("(") {
+			return nil, sourceError(p.current().span, "restricted visibility is not supported")
+		}
+		switch {
+		case p.at("fn"):
+			f, err := p.function()
+			if err != nil {
+				return nil, err
+			}
+			f.Public = public
+			f.Span = start.span
+			program.Functions = append(program.Functions, f)
+		case p.take("mod"):
+			name, err := p.identifier()
+			if err != nil {
+				return nil, err
+			}
+			module := &Module{Name: name.text, Public: public, Span: start.span}
+			if p.take(";") {
+				module.External = true
+			} else {
+				if _, err := p.expect("{"); err != nil {
+					return nil, err
+				}
+				module.Program, err = p.items("}")
+				if err != nil {
+					return nil, err
+				}
+				if _, err := p.expect("}"); err != nil {
+					return nil, err
+				}
+			}
+			program.Modules = append(program.Modules, module)
+		case p.take("use"):
+			_, path, err := p.path()
+			if err != nil {
+				return nil, err
+			}
+			item := Import{Path: path, Public: public, Span: start.span}
+			if p.take("as") {
+				alias, err := p.identifier()
+				if err != nil {
+					return nil, err
+				}
+				item.Alias = alias.text
+			}
+			segments := strings.Split(item.Path, "::")
+			last := segments[len(segments)-1]
+			if item.Alias == "" && (last == "crate" || last == "self" || last == "super") {
+				return nil, sourceError(start.span, "imports of crate/self/super must have an explicit alias")
+			}
+			if _, err := p.expect(";"); err != nil {
+				return nil, err
+			}
+			program.Imports = append(program.Imports, item)
+		default:
+			return nil, sourceError(p.current().span, "expected fn, mod, or use item, found %s", describe(p.current()))
+		}
 	}
 	return program, nil
+}
+
+// path keeps source spelling for resolution. Keywords may lead a path, with
+// repeated super segments allowed only before the first ordinary identifier.
+func (p *parser) path() (token, string, error) {
+	start := p.current()
+	if p.at("{") {
+		return token{}, "", sourceError(start.span, "group imports are not supported")
+	}
+	if p.at("*") {
+		return token{}, "", sourceError(start.span, "glob imports are not supported")
+	}
+	if p.at("::") {
+		return token{}, "", sourceError(start.span, "absolute paths are not supported")
+	}
+	var first token
+	var err error
+	if p.at("crate") || p.at("self") || p.at("super") {
+		first = p.current()
+		p.index++
+	} else {
+		first, err = p.identifier()
+		if err != nil {
+			return token{}, "", err
+		}
+	}
+	parts := []string{first.text}
+	superPrefix := first.text == "super"
+	for p.take("::") {
+		if p.at("{") {
+			return token{}, "", sourceError(p.current().span, "group imports are not supported")
+		}
+		if p.at("*") {
+			return token{}, "", sourceError(p.current().span, "glob imports are not supported")
+		}
+		if superPrefix && p.at("super") {
+			parts = append(parts, p.current().text)
+			p.index++
+			continue
+		}
+		segment, err := p.identifier()
+		if err != nil {
+			return token{}, "", sourceError(p.current().span, "expected path segment, found %s", describe(p.current()))
+		}
+		parts = append(parts, segment.text)
+		superPrefix = false
+	}
+	return start, strings.Join(parts, "::"), nil
 }
 
 func (p *parser) current() token { return p.tokens[p.index] }
@@ -253,6 +368,8 @@ func (p *parser) statement() (Stmt, bool, error) {
 	case p.take("continue"):
 		s.Kind = "continue"
 		_, err = p.expect(";")
+	case p.at("fn") || p.at("mod") || p.at("use") || p.at("pub"):
+		return s, true, sourceError(start.span, "function-local items and imports are not supported")
 	default:
 		return s, false, nil
 	}
@@ -364,12 +481,15 @@ func (p *parser) prefix() (*Expr, error) {
 	if p.take("true") || p.take("false") {
 		return &Expr{Kind: "bool", Text: t.text, Span: t.span}, nil
 	}
-	name, err := p.identifier()
+	name, path, err := p.path()
 	if err != nil {
 		return nil, err
 	}
-	e := &Expr{Kind: "name", Text: name.text, Span: name.span}
+	e := &Expr{Kind: "name", Text: path, Span: name.span}
 	macro := p.take("!")
+	if macro && strings.Contains(path, "::") {
+		return nil, sourceError(name.span, "qualified macros are not supported")
+	}
 	if macro || p.at("(") {
 		if _, err = p.expect("("); err != nil {
 			return nil, err

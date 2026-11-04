@@ -86,33 +86,26 @@ func run(args []string, stdout, stderr io.Writer) int {
 		return fail(fmt.Errorf("-o - is supported only with --emit=c"))
 	}
 	if check || emit {
-		data, err := os.ReadFile(input)
-		if err != nil {
-			return fail(err)
-		}
 		if check {
-			if err = compiler.Check(string(data)); err != nil {
-				return fail(fmt.Errorf("%s:%w", input, err))
-			}
-			return 0
-		}
-		code, err := compiler.EmitC(string(data))
-		if err != nil {
-			return fail(fmt.Errorf("%s:%w", input, err))
-		}
-		if output == "-" {
-			if _, err = io.WriteString(stdout, code); err != nil {
+			if err := compiler.CheckFile(input); err != nil {
 				return fail(err)
 			}
 			return 0
 		}
-		if output == "" {
-			output = base(input) + ".c"
+		if output != "-" {
+			if output == "" {
+				output = base(input) + ".c"
+			}
+			if err := compiler.WriteC(input, output); err != nil {
+				return fail(err)
+			}
+			return 0
 		}
-		if sameFile(input, output) {
-			return fail(fmt.Errorf("output would overwrite source file %s", input))
+		code, err := compiler.EmitCFile(input)
+		if err != nil {
+			return fail(err)
 		}
-		if err = os.WriteFile(output, []byte(code), 0644); err != nil {
+		if _, err = io.WriteString(stdout, code); err != nil {
 			return fail(err)
 		}
 		return 0
@@ -128,20 +121,4 @@ func run(args []string, stdout, stderr io.Writer) int {
 func base(path string) string {
 	name := filepath.Base(path)
 	return strings.TrimSuffix(name, filepath.Ext(name))
-}
-func sameFile(a, b string) bool {
-	aa, err := filepath.Abs(a)
-	if err != nil {
-		return true
-	}
-	bb, err := filepath.Abs(b)
-	if err != nil {
-		return true
-	}
-	if aa == bb {
-		return true
-	}
-	ai, ae := os.Stat(a)
-	bi, be := os.Stat(b)
-	return ae == nil && be == nil && os.SameFile(ai, bi)
 }

@@ -38,7 +38,7 @@ Set `CC` to a C compiler executable if needed. `make GO=/path/to/go build` selec
 ## Architecture
 
 ```text
-Rust source → Go lexer/parser → Go type checker → C11 → system C compiler → executable
+Rust files → Go lexer/parser + module loader → Go resolver/type checker → C11 → C compiler → executable
 Cargo.toml → Go manifest/project commands ────────────┘
 ```
 

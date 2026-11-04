@@ -41,6 +41,14 @@ func analyze(source string) (*checked, error) {
 	if err != nil {
 		return nil, err
 	}
+	return analyzeProgram(program)
+}
+
+func analyzeProgram(program *syntax.Program) (*checked, error) {
+	program, err := resolveModules(program)
+	if err != nil {
+		return nil, err
+	}
 	c := &checker{bottom: make(map[*syntax.Expr]bool), checked: &checked{
 		program: program,
 		types:   make(map[*syntax.Expr]string), names: make(map[*syntax.Expr]string),
@@ -104,7 +112,11 @@ func analyze(source string) (*checked, error) {
 }
 
 func fail(pos syntax.Span, format string, args ...any) error {
-	return fmt.Errorf("%d:%d: %s", pos.Line, pos.Column, fmt.Sprintf(format, args...))
+	prefix := ""
+	if pos.File != "" {
+		prefix = pos.File + ":"
+	}
+	return fmt.Errorf("%s%d:%d: %s", prefix, pos.Line, pos.Column, fmt.Sprintf(format, args...))
 }
 func supportedType(t string) bool {
 	return t == "i32" || t == "i64" || t == "bool" || t == "&str" || t == "()"
@@ -331,10 +343,12 @@ func (c *checker) expr(e *syntax.Expr, expected string) (string, error) {
 			return "", err
 		}
 	case "call":
-		if _, ok := c.lookup(e.Text); ok {
-			return "", fail(e.Span, "%q is a variable and cannot be called", e.Text)
+		if !strings.Contains(e.Text, "::") {
+			if _, ok := c.lookup(e.Text); ok {
+				return "", fail(e.Span, "%q is a variable and cannot be called", e.Text)
+			}
 		}
-		f, ok := c.funcs[e.Text]
+		f, ok := c.funcs[callTarget(e)]
 		if !ok {
 			return "", fail(e.Span, "unknown function %q", e.Text)
 		}
@@ -370,6 +384,13 @@ func (c *checker) expr(e *syntax.Expr, expected string) (string, error) {
 	}
 	c.types[e] = typ
 	return typ, nil
+}
+
+func callTarget(e *syntax.Expr) string {
+	if e.Target != "" {
+		return e.Target
+	}
+	return e.Text
 }
 
 func (c *checker) binary(e *syntax.Expr, expected string) (string, error) {
@@ -463,7 +484,7 @@ func (c *checker) hint(e *syntax.Expr) string {
 	case "bool":
 		return "bool"
 	case "call":
-		if f, ok := c.funcs[e.Text]; ok {
+		if f, ok := c.funcs[callTarget(e)]; ok {
 			return f.ReturnType
 		}
 	case "unary":

@@ -4,7 +4,8 @@ Ferrugo 0.1.0 implements the subset below. It is not yet compatible with complet
 
 ## Accepted language
 
-- A single source file containing `fn` items; a required `fn main()` with unit return.
+- A binary crate with nested inline/external `mod` items and `fn` items; a required unit-returning, zero-argument `main` entrypoint, declared at the root or imported there.
+- Public/private functions and modules, relative and `self`/`super`/`crate` qualified calls, simple `use` aliases for functions/modules, and source-file diagnostics. External modules use `name.rs` or `name/mod.rs`; ambiguous/missing files and cycles reject.
 - Valid UTF-8 source, ASCII identifiers, line comments, nested block comments, source line/column errors.
 - Types `i32`, `i64`, `bool`, `&str`; `()` return types and unit expressions.
 - Parameters with explicit types; explicitly typed function returns, default unit returns.
@@ -22,7 +23,9 @@ The C11 backend generates native executables using libc. Operands and arguments 
 
 ## Known limits
 
-There is no ownership/borrow checker yet: the accepted subset has copyable scalar values and static string literals only. There are no references beyond literal-backed `&str`, heap allocation, user-defined types, modules/imports, traits, generics, closures, patterns, arrays/slices, enums, structs, statics, const evaluation, async, unsafe, FFI, inline assembly, procedural or declarative macros, attributes, conditional compilation, standard library APIs, argument/input APIs, incremental compilation or Rust ABI support.
+There is no ownership/borrow checker yet: the accepted subset has copyable scalar values and static string literals only. There are no references beyond literal-backed `&str`, heap allocation, user-defined types, traits, generics, closures, patterns, arrays/slices, enums, structs, statics, const evaluation, async, unsafe, FFI, inline assembly, procedural or declarative macros, attributes, conditional compilation, standard library APIs, argument/input APIs, incremental compilation or Rust ABI support.
+
+Public reexports, restricted visibility, grouped/glob/absolute imports, local module/import items, and shared function/module/import names in one namespace remain unsupported. Module nesting is bounded to 256 levels. Source-string compiler APIs support inline modules only; file-based APIs load external declarations.
 
 Unit-valued bindings/parameters, integer bitwise operations, non-ASCII identifiers, raw/byte strings and general format specifications are unsupported. Return/break/continue require semicolons. `&str` returns require exactly one `&str` parameter under Rust lifetime elision; explicit lifetime syntax is unsupported. Inference is local and intentionally more restrictive than Rust inference across later statements. Compile-time constant-overflow linting is not implemented; arithmetic overflow is checked at runtime. Edition declarations do not select complete edition-specific grammars.
 

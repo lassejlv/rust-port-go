@@ -120,7 +120,7 @@ func TestRejectUnsupportedAndMalformedSyntax(t *testing.T) {
 		{"fn main() { let x: usize = 1; }", "unsupported type"},
 		{"fn main() { let x; }", "expected ="},
 		{"fn main() { for x in y {} }", "expected identifier"},
-		{"pub fn main() {}", "expected fn"},
+		{"pub const VALUE: i32 = 1;", "expected fn"},
 		{"fn true() {}", "expected identifier"},
 		{"fn main(mut x: i32) {}", "expected identifier"},
 		{"fn main() { let _ = 1; }", "expected identifier"},
@@ -154,7 +154,7 @@ func TestErrorLocationAfterNestedComment(t *testing.T) {
 }
 
 func FuzzParse(f *testing.F) {
-	for _, seed := range []string{"", "fn main() {}", "fn main() { println!(\"hello\"); }", "/* nested /* comments */ */", "fn f(n:i64)->i64 { n+1 }", "fn f(n:i32)->i32 { if n < 0 { 0 } else { {n+1} } }", "fn main() { let x = (); { (); } () }", "fn main(){print!(\"a\r\nb\");}", "//\xff\nfn main(){}"} {
+	for _, seed := range []string{"", "fn main() {}", "fn main() { println!(\"hello\"); }", "/* nested /* comments */ */", "fn f(n:i64)->i64 { n+1 }", "fn f(n:i32)->i32 { if n < 0 { 0 } else { {n+1} } }", "fn main() { let x = (); { (); } () }", "fn main(){print!(\"a\r\nb\");}", "//\xff\nfn main(){}", "pub mod child { pub fn value() -> i32 { 1 } } use crate::child::value as alias; fn main() { alias(); }", "mod external; mod child { use super::super as ancestor; }"} {
 		f.Add(seed)
 	}
 	f.Fuzz(func(t *testing.T, source string) { _, _ = Parse(source) })
@@ -458,5 +458,157 @@ func TestInvalidUTF8RejectedAcrossWholeSource(t *testing.T) {
 	// The encoded replacement character is valid UTF-8, unlike an invalid byte.
 	if _, err := Parse("//é🦀�\nfn main() { print!(\"�\"); }"); err != nil {
 		t.Fatal(err)
+	}
+}
+
+func TestModuleAndImportItems(t *testing.T) {
+	source := `use crate::arithmetic::sum as add;
+pub use self::arithmetic as exported;
+pub mod arithmetic {
+ use super::helper as base;
+ pub fn sum(n: i32) -> i32 { base(n) + 1 }
+ mod nested {
+  use super::super::helper;
+  pub fn value() -> i32 { super::sum(crate::helper(1)) }
+ }
+ mod external;
+}
+pub fn main() { println!("{}", add(2)); }
+fn helper(n:i32) -> i32 { n }
+`
+	p, err := Parse(source)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(p.Functions) != 2 || len(p.Modules) != 1 || len(p.Imports) != 2 {
+		t.Fatalf("root item counts = %#v", p)
+	}
+	if got := p.Imports[0]; got.Path != "crate::arithmetic::sum" || got.Alias != "add" || got.Public {
+		t.Fatalf("import = %#v", got)
+	}
+	if got := p.Imports[1]; got.Path != "self::arithmetic" || got.Alias != "exported" || !got.Public {
+		t.Fatalf("public import = %#v", got)
+	}
+	module := p.Modules[0]
+	if module.Name != "arithmetic" || !module.Public || module.External || module.Program == nil {
+		t.Fatalf("module = %#v", module)
+	}
+	if len(module.Program.Functions) != 1 || len(module.Program.Modules) != 2 || len(module.Program.Imports) != 1 {
+		t.Fatal("inline module contents missing")
+	}
+	if !module.Program.Functions[0].Public || module.Program.Imports[0].Alias != "base" {
+		t.Fatal("module function visibility or alias missing")
+	}
+	nested := module.Program.Modules[0]
+	if nested.Name != "nested" || nested.Public || nested.External || nested.Program.Imports[0].Path != "super::super::helper" || nested.Program.Imports[0].Alias != "" {
+		t.Fatalf("nested module = %#v", nested)
+	}
+	call := nested.Program.Functions[0].Body.Tail
+	if call.Kind != "call" || call.Text != "super::sum" || call.Args[0].Text != "crate::helper" || call.Target != "" {
+		t.Fatalf("qualified call = %#v", call)
+	}
+	external := module.Program.Modules[1]
+	if external.Name != "external" || !external.External || external.Public || external.Program != nil {
+		t.Fatalf("external module = %#v", external)
+	}
+	if !p.Functions[0].Public || p.Functions[1].Public {
+		t.Fatal("function visibility is wrong")
+	}
+}
+
+func TestQualifiedNameAndCallPaths(t *testing.T) {
+	paths := []string{"value", "module::value", "crate::module::value", "self::value", "super::value", "super::super::value", "super::super::module::value"}
+	for _, path := range paths {
+		t.Run(path, func(t *testing.T) {
+			p, err := Parse("fn main() { let value = " + path + "; " + path + "(); }")
+			if err != nil {
+				t.Fatal(err)
+			}
+			statements := p.Functions[0].Body.Statements
+			if statements[0].Expr.Kind != "name" || statements[0].Expr.Text != path || statements[1].Expr.Kind != "call" || statements[1].Expr.Text != path {
+				t.Fatal("qualified expression lost source path")
+			}
+		})
+	}
+}
+
+func TestRootNamespaceAliasesAndExternalModuleVisibility(t *testing.T) {
+	p, err := Parse(`use crate as root; mod child { use self as local; use super as parent; use super::super as ancestor; } pub mod external; fn main() {}`)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if p.Imports[0].Path != "crate" || p.Imports[0].Alias != "root" {
+		t.Fatal("crate namespace alias missing")
+	}
+	if len(p.Modules[0].Program.Imports) != 3 {
+		t.Fatal("relative namespace aliases missing")
+	}
+	if !p.Modules[1].External || !p.Modules[1].Public || p.Modules[1].Program != nil {
+		t.Fatal("public external module shape wrong")
+	}
+}
+
+func TestNamespaceSourceSpans(t *testing.T) {
+	source := "\n  pub mod outer {\n    use super::helper as alias;\n    pub fn function() { crate::helper(); }\n  }\n  fn main() {}"
+	p, err := Parse(source)
+	if err != nil {
+		t.Fatal(err)
+	}
+	module := p.Modules[0]
+	if module.Span.Line != 2 || module.Span.Column != 3 || module.Span.Offset != strings.Index(source, "pub mod") || module.Span.File != "" {
+		t.Fatalf("module span=%#v", module.Span)
+	}
+	item := module.Program.Imports[0]
+	if item.Span.Line != 3 || item.Span.Column != 5 || item.Span.Offset != strings.Index(source, "use super") {
+		t.Fatalf("import span=%#v", item.Span)
+	}
+	function := module.Program.Functions[0]
+	if function.Span.Line != 4 || function.Span.Column != 5 || function.Span.Offset != strings.Index(source, "pub fn") {
+		t.Fatalf("public function span=%#v", function.Span)
+	}
+	call := function.Body.Statements[0].Expr
+	if call.Span.Line != 4 || call.Span.Column != 25 || call.Span.Offset != strings.Index(source, "crate::helper") {
+		t.Fatalf("qualified call span=%#v", call.Span)
+	}
+	if got := sourceError(Span{Line: 2, Column: 3, File: "module.rs"}, "example").Error(); got != "module.rs:2:3: example" {
+		t.Fatalf("filename error=%q", got)
+	}
+}
+
+func TestRejectUnsupportedNamespaceSyntax(t *testing.T) {
+	cases := []struct{ source, want string }{
+		{`pub(crate) fn main() {}`, "restricted visibility"},
+		{`pub(super) mod child {}`, "restricted visibility"},
+		{`pub(in crate) fn main() {}`, "restricted visibility"},
+		{`use crate::module::*; fn main() {}`, "glob imports"},
+		{`use crate::module::{a,b}; fn main() {}`, "group imports"},
+		{`use {a,b}; fn main() {}`, "group imports"},
+		{`use ::external::value; fn main() {}`, "absolute paths"},
+		{`use crate; fn main() {}`, "explicit alias"},
+		{`use self; fn main() {}`, "explicit alias"},
+		{`mod child { use super; } fn main() {}`, "explicit alias"},
+		{`use module::value as _; fn main() {}`, "expected identifier"},
+		{`use module::value as self; fn main() {}`, "expected identifier"},
+		{`use module::value fn main() {}`, "expected ;"},
+		{`mod child fn main() {}`, "expected {"},
+		{`mod child { fn value() {}`, "expected }"},
+		{`fn main() { use crate::helper; }`, "function-local"},
+		{`fn main() { mod child {} }`, "function-local"},
+		{`fn main() { fn nested() {} }`, "function-local"},
+		{`fn main() { module::super::value(); }`, "expected path segment"},
+		{`fn main() { crate::self::value(); }`, "expected path segment"},
+		{`fn main() { self::crate::value(); }`, "expected path segment"},
+		{`fn main() { super::module::super::value(); }`, "expected path segment"},
+		{`fn main() { crate::module::; }`, "expected path segment"},
+		{`fn main() { ::module::value(); }`, "absolute paths"},
+		{`fn main() { module::println!("hi"); }`, "qualified macros"},
+	}
+	for _, tc := range cases {
+		t.Run(tc.source, func(t *testing.T) {
+			_, err := Parse(tc.source)
+			if err == nil || !strings.Contains(err.Error(), tc.want) {
+				t.Fatalf("error=%v, want %q", err, tc.want)
+			}
+		})
 	}
 }

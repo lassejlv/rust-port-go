@@ -1,0 +1,1 @@
+pub fn twice(n: i32) -> i32 { n * 2 }

@@ -46,3 +46,16 @@ The initial executable-bootstrap goal is achieved. The overall compiler/Cargo po
 - Verified hosted Linux/macOS CI, including rustc comparisons, for checkpoint 3: https://github.com/lassejlv/rust-port-go/actions/runs/41828174561.
 
 The full port remains incomplete. Current compatibility and the remaining scope are documented separately; successful bootstrap checks do not establish Rust ecosystem compatibility.
+
+## 2026-11-04 — checkpoint 5: multi-file modules
+
+- Added inline/external modules, public/private visibility, qualified calls and simple function/module import aliases.
+- Added canonical name resolution with `crate`, `self`, repeated `super`, import-chain and privacy checks while preserving lexical variable shadowing.
+- Added a crate file loader for both `name.rs` and `name/mod.rs`, including nested inline/external bases, ambiguity/missing-file errors and physical file-cycle checks.
+- Unified CLI/Cargo checks, native builds and C emission around file-based crate analysis. Output protection includes all participating module sources and hard-link/symlink aliases.
+- Preserved original source filenames and positions in diagnostics.
+- Supported root `main` aliases through an independent compiler-generated wrapper after review against rustc.
+- Added eight multi-file success cases and nine rejection cases; all 47 committed conformance cases pass against rustc 1.99.1. Resolver cases and loader/CLI/Cargo regression tests pass.
+- Passed the full local race suite and vet; updated the Cargo example to import Fibonacci from a second source file.
+
+The multi-file goal is implemented locally; hosted CI will validate the pushed checkpoint. Named structures and field access are the next language milestone. The complete compiler and Cargo port remains the overall goal.

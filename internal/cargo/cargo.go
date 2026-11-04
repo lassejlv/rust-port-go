@@ -123,11 +123,7 @@ func Run(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
 	}
 	source := filepath.Join(m.Root, "src", "main.rs")
 	if command == "check" {
-		data, err := os.ReadFile(source)
-		if err != nil {
-			return fail(err)
-		}
-		if err := compiler.Check(string(data)); err != nil {
+		if err := compiler.CheckFile(source); err != nil {
 			return fail(err)
 		}
 		fmt.Fprintf(stderr, "Checked %s v%s\n", m.Name, m.Version)

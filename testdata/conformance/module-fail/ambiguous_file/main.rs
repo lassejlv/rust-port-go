@@ -1,0 +1,2 @@
+mod conflict;
+fn main() {}

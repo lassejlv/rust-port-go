@@ -61,7 +61,7 @@ func lex(src string) ([]token, error) {
 			continue
 		}
 		matched := false
-		for _, op := range []string{"->", "==", "!=", "<=", ">=", "&&", "||", "+=", "-=", "*=", "/=", "%="} {
+		for _, op := range []string{"::", "->", "==", "!=", "<=", ">=", "&&", "||", "+=", "-=", "*=", "/=", "%="} {
 			if strings.HasPrefix(src[l.offset:], op) {
 				l.advance()
 				l.advance()
@@ -303,5 +303,9 @@ func validateInteger(text string) error {
 }
 
 func sourceError(span Span, format string, args ...any) error {
-	return fmt.Errorf("%d:%d: %s", span.Line, span.Column, fmt.Sprintf(format, args...))
+	location := fmt.Sprintf("%d:%d", span.Line, span.Column)
+	if span.File != "" {
+		location = span.File + ":" + location
+	}
+	return fmt.Errorf("%s: %s", location, fmt.Sprintf(format, args...))
 }

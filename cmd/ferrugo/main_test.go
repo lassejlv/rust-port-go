@@ -43,3 +43,38 @@ func TestDriver(t *testing.T) {
 		t.Fatal("source changed", err)
 	}
 }
+
+func TestDriverLoadsModulesForCheckAndEmission(t *testing.T) {
+	dir := t.TempDir()
+	source := filepath.Join(dir, "main.rs")
+	module := filepath.Join(dir, "math.rs")
+	if err := os.WriteFile(source, []byte(`mod math; fn main(){println!("{}",math::answer());}`), 0600); err != nil {
+		t.Fatal(err)
+	}
+	original := `pub fn answer()->i32{42}`
+	if err := os.WriteFile(module, []byte(original), 0600); err != nil {
+		t.Fatal(err)
+	}
+	for _, tt := range []struct {
+		name   string
+		args   []string
+		status int
+		want   string
+	}{
+		{"check", []string{"--check", source}, 0, ""},
+		{"emit stdout", []string{"--emit=c", source, "-o", "-"}, 0, "int main(void)"},
+		{"protect module", []string{"--emit=c", source, "-o", module}, 1, ""},
+	} {
+		t.Run(tt.name, func(t *testing.T) {
+			var out, errs bytes.Buffer
+			status := run(tt.args, &out, &errs)
+			if status != tt.status || !strings.Contains(out.String(), tt.want) {
+				t.Fatalf("status=%d stdout=%q stderr=%q", status, out.String(), errs.String())
+			}
+		})
+	}
+	data, err := os.ReadFile(module)
+	if err != nil || string(data) != original {
+		t.Fatal("module source changed", err)
+	}
+}

@@ -15,6 +15,10 @@ func EmitC(source string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+	return emitChecked(c), nil
+}
+
+func emitChecked(c *checked) string {
 	g := &generator{checked: c}
 	g.WriteString(runtimeC)
 	for _, f := range c.program.Functions {
@@ -25,7 +29,7 @@ func EmitC(source string) (string, error) {
 		g.block(f.Body, true, f.ReturnType)
 	}
 	g.line("int main(void) { %s(); return 0; }", c.fnNames[c.funcs["main"]])
-	return g.String(), nil
+	return g.String()
 }
 
 type generator struct {
