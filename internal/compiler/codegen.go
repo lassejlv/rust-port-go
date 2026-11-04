@@ -500,38 +500,22 @@ func (g *generator) macro(e *syntax.Expr) string {
 		g.line("if (!(%s)) fr_panic(\"assertion failed at line %d\");", condition, e.Span.Line)
 		return ""
 	}
-	if len(e.Args) == 0 {
-		g.line("fputc('\\n', stdout);")
-		return ""
+	plan, ok := g.checked.formats[e]
+	if !ok {
+		panic("compiler: missing checked format plan")
 	}
-	args := make([]string, len(e.Args)-1)
-	for i, a := range e.Args[1:] {
+	args := make([]string, plan.arguments)
+	for i := range args {
+		a := e.Args[i+1]
 		args[i] = g.expr(a)
 		if g.checked.diverges[a] {
 			return ""
 		}
 	}
-	var literal strings.Builder
-	flush := func() {
-		if literal.Len() > 0 {
-			g.line("fr_write(%s);", cString(literal.String()))
-			literal.Reset()
-		}
-	}
-	format := e.Args[0].Text
-	index := 0
-	for i := 0; i < len(format); i++ {
-		switch {
-		case format[i] == '{' && format[i+1] == '{':
-			literal.WriteByte('{')
-			i++
-		case format[i] == '}' && format[i+1] == '}':
-			literal.WriteByte('}')
-			i++
-		case format[i] == '{':
-			flush()
-			arg := e.Args[index+1]
-			value := args[index]
+	for _, piece := range plan.pieces {
+		if piece.isArgument {
+			arg := e.Args[piece.argument+1]
+			value := args[piece.argument]
 			typ := g.checked.types[arg]
 			if info, ok := integerInfo(typ); ok {
 				g.line("printf(\"%%\" %s, %s);", info.PrintMacro, value)
@@ -543,14 +527,11 @@ func (g *generator) macro(e *syntax.Expr) string {
 					g.line("fr_write(%s);", value)
 				}
 			}
-			index++
-			i++
-		default:
-			literal.WriteByte(format[i])
+		} else if piece.literal != "" {
+			g.line("fr_write(%s);", cString(piece.literal))
 		}
 	}
-	flush()
-	if e.Text == "println" {
+	if plan.newline {
 		g.line("fputc('\\n', stdout);")
 	}
 	return ""

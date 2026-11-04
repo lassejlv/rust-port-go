@@ -1,9 +1,12 @@
 package syntax
 
 import (
+	"fmt"
+	"sort"
 	"strings"
 	"unicode/utf8"
 
+	literalescaper "github.com/lassejlv/rust-port-go/port/dependencies/rustc-literal-escaper/v0_0_8/src"
 	rustclexer "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_lexer/src"
 )
 
@@ -69,14 +72,14 @@ func lexRawSource(src string) ([]token, error) {
 			case rustclexer.Str:
 				// Limit decoding to the raw token's body. Malformed escapes must
 				// never consume a following token while searching for a delimiter.
-				decoder := *l
-				decoder.src = src[:begin+int(raw.Kind.SuffixStart)]
-				value, err := decoder.stringLiteral()
+				literalEnd := begin + int(raw.Kind.SuffixStart)
+				value, err := decodeNormalString(*l, literalEnd, raw.Kind.Literal.Terminated)
 				if err != nil {
 					return nil, err
 				}
 				if raw.Kind.SuffixStart != raw.Len {
-					return nil, sourceError(decoder.pos(), "string literal suffixes are not supported")
+					suffixPosition := literalPositionAt(*l, literalEnd)
+					return nil, sourceError(suffixPosition.pos(), "string literal suffixes are not supported")
 				}
 				out = append(out, token{kind: "string", text: value, span: start})
 			case rustclexer.Float:
@@ -123,4 +126,131 @@ func rawCompoundPunctuation(rest string) string {
 		}
 	}
 	return ""
+}
+
+// normalizedLiteral keeps byte offsets into the original body. For every CRLF
+// pair its normalized LF byte marks one removed byte; boundaries after that LF
+// shift by one. Unpaired CR bytes remain for the escaper to diagnose or to skip
+// as ASCII continuation whitespace, following Rust's behavior.
+type normalizedLiteral struct {
+	text string
+	crlf []int
+}
+
+func normalizeLiteralCRLF(body string) normalizedLiteral {
+	if !strings.Contains(body, "\r\n") {
+		return normalizedLiteral{text: body}
+	}
+	var text strings.Builder
+	text.Grow(len(body))
+	var crlf []int
+	for offset := 0; offset < len(body); offset++ {
+		if body[offset] == '\r' && offset+1 < len(body) && body[offset+1] == '\n' {
+			crlf = append(crlf, text.Len())
+			text.WriteByte('\n')
+			offset++
+		} else {
+			text.WriteByte(body[offset])
+		}
+	}
+	return normalizedLiteral{text: text.String(), crlf: crlf}
+}
+
+func (literal normalizedLiteral) sourceOffset(offset int) int {
+	return offset + sort.SearchInts(literal.crlf, offset)
+}
+
+// Literal errors retain the complete original byte/scalar range internally.
+// The bootstrap diagnostic still prints its existing start line and column.
+type literalEscapeError struct {
+	kind       literalescaper.EscapeError
+	start, end Span
+	message    string
+}
+
+func (failure *literalEscapeError) Error() string {
+	return sourceError(failure.start, "%s", failure.message).Error()
+}
+
+func literalPositionAt(position lexer, offset int) lexer {
+	for position.offset < offset {
+		position.advance()
+	}
+	return position
+}
+
+func decodeNormalString(position lexer, literalEnd int, terminated bool) (string, error) {
+	start := position.pos()
+	bodyStart, bodyEnd := position.offset+1, literalEnd
+	if terminated {
+		bodyEnd-- // The raw lexer has already identified the closing quote.
+	}
+	body := normalizeLiteralCRLF(position.src[bodyStart:bodyEnd])
+	var value strings.Builder
+	var failure *literalEscapeError
+	literalescaper.UnescapeStr(body.text, func(span literalescaper.Range, result literalescaper.Result[rune]) {
+		if failure != nil {
+			return
+		}
+		if result.IsOK() {
+			value.WriteRune(result.Value)
+			return
+		}
+		if !result.Error.IsFatal() {
+			// The bootstrap compiler does not yet expose a warning channel.
+			return
+		}
+		errorStart := literalPositionAt(position, bodyStart+body.sourceOffset(span.Start))
+		errorEnd := literalPositionAt(errorStart, bodyStart+body.sourceOffset(span.End))
+		failure = &literalEscapeError{
+			kind:  result.Error,
+			start: errorStart.pos(), end: errorEnd.pos(),
+			message: literalEscapeMessage(result.Error, body.text[span.Start:span.End]),
+		}
+	})
+	if failure != nil {
+		if !terminated && failure.kind == literalescaper.LoneSlash {
+			return "", sourceError(start, "unterminated string literal")
+		}
+		return "", failure
+	}
+	if !terminated {
+		return "", sourceError(start, "unterminated string literal")
+	}
+	return value.String(), nil
+}
+
+// Keep the frontend's diagnostic vocabulary while the complete source port
+// decides escape validity, consumption, continuation handling and scalar values.
+func literalEscapeMessage(kind literalescaper.EscapeError, spelling string) string {
+	switch kind {
+	case literalescaper.LoneSlash:
+		return "unterminated string literal"
+	case literalescaper.InvalidEscape:
+		escaped, _ := utf8.DecodeRuneInString(strings.TrimPrefix(spelling, "\\"))
+		if escaped == '\r' {
+			return "bare CR is not a valid string escape"
+		}
+		return fmt.Sprintf("unsupported string escape \\%c", escaped)
+	case literalescaper.BareCarriageReturn:
+		return "bare CR is not allowed in a string; use \\r"
+	case literalescaper.TooShortHexEscape:
+		return "expected two hexadecimal digits after \\x"
+	case literalescaper.InvalidCharInHexEscape, literalescaper.OutOfRangeHexEscape:
+		return "\\x escape must be an ASCII byte"
+	case literalescaper.NoBraceInUnicodeEscape:
+		return "expected { after \\u"
+	case literalescaper.UnclosedUnicodeEscape:
+		return "unterminated Unicode escape"
+	case literalescaper.LeadingUnderscoreUnicodeEscape:
+		return "invalid Unicode escape: first character must be a hexadecimal digit"
+	case literalescaper.InvalidCharInUnicodeEscape, literalescaper.EmptyUnicodeEscape,
+		literalescaper.OverlongUnicodeEscape, literalescaper.LoneSurrogateUnicodeEscape,
+		literalescaper.OutOfRangeUnicodeEscape:
+		return "invalid Unicode escape"
+	case literalescaper.EscapeOnlyChar:
+		return "unescaped quote in string literal"
+	default:
+		return "invalid string escape"
+	}
 }

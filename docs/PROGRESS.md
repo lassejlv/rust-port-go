@@ -164,3 +164,15 @@ These six completed source files begin the direct port. The broader compiler, st
 - Original-source, minimum-Go, race, vet, reproducibility and cross-version fixture checks pass. Hosted CI now rebuilds the new utility references; the preceding source-port and Linux jobs passed, while the macOS runner remained queued.
 
 Fifteen source files now have recorded port/validation evidence. This does not complete their containing compiler crate or production Rust compatibility. The complete format-string parser and its literal-escaping dependency are next.
+
+## 2026-11-04 — checkpoint 15: full format parser and literal escaping
+
+- Ported the complete 1,042-line format/assembly/diagnostic string parser and its complete 607-line test file. All 28 translated tests preserve original inputs, expectations and byte spans; an independent source/Go literal audit is retained.
+- Matched 4,684 original-source requests and 57,824 complete state observations, including errors/suggestions, derived Debug, lookaheads, unfused iteration, public state mutations and checked/wrapping panic recovery. The unchanged parser and lexer tests all pass in the reference workspace.
+- Ported the entire locked `rustc-literal-escaper 0.0.8` dependency, all nine tests and 27 benchmark workloads. Its separate manifest accounts for all 14 archive files and preserves licenses. Retained cases and exhaustive scalar checks validate values, errors, warning severity, ranges and public enum constructors.
+- Replaced manual normal-string decoding with the complete escaping component, preserving CRLF normalization, original byte/scalar error ranges, NUL and explicit frontend boundaries.
+- Replaced duplicate print-format scans with the complete format parser and a shared checked plan. The supported macro profile remains bare sequential `{}` and escaped braces; the emitter evaluates arguments once in source order and consumes that plan.
+- Ported Cargo's complete package/registry/profile/feature/path-base name validation and sanitization file. All eight functions, exact errors and Unicode 17 behavior match 32,779 original requests and every scalar. This is a Cargo component port; bootstrap manifest feature boundaries remain explicit.
+- Actual Go 1.23 source/reference, race, vet, fuzz and reproducibility checks pass. The 150 language and 16 Cargo comparisons continue to pass. The preceding checkpoint's Linux, macOS and upstream-reference jobs are green at `1e6d540`.
+
+Eighteen top-level upstream source files have evidence, with the three dependency source/test/benchmark files tracked separately. Production Rust compilation remains unfinished. Work continues on complete typed storage and intervals for hygiene/parser capture, followed by the span/session runtime, while Cargo source ports continue in parallel.

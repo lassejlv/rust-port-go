@@ -1,0 +1,14 @@
+{
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "unicode": [
+    17,
+    0,
+    0
+  ],
+  "scalar_values": 1112064,
+  "escaped_unicode_ranges": 911,
+  "non_initial_string_escape_ranges": 911,
+  "oracle_source_sha256": "93d7fc0499035196ff4e43f4fcf27e86b9d094df45f26166bb08f2a7d43b0f4e",
+  "raw_sha256": "04b87ce09a2edb924a955f906413aa7119104487be9fc207c902db1b09ddba15",
+  "compressed_sha256": "a7d59efaecffdfaf48ef20830286f2a7ccf1a8340695d3df8279607171a63851"
+}

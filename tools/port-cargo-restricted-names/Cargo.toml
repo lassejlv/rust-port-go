@@ -1,0 +1,18 @@
+[package]
+name = "ferrugo-restricted-names-oracle"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[[bin]]
+name = "oracle"
+path = "oracle.rs"
+
+[dependencies]
+thiserror = "=2.0.18"
+unicode-ident = "=1.0.24"
+proc-macro2 = "=1.0.106"
+quote = "=1.0.46"
+syn = "=2.0.118"
+
+[workspace]

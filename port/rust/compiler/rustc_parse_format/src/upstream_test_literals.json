@@ -1,0 +1,1126 @@
+{
+  "source_path": "compiler/rustc_parse_format/src/tests.rs",
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_git_blob": "a2e03a514fa5fcc8304933ef59e02aa4400c4181",
+  "source_sha256": "8ad525beb126768ecdb887c4b4a2774db4e419aa4c4f7677b8a545c7405fc531",
+  "source_lines": 607,
+  "source_bytes": 16799,
+  "tests": [
+    {
+      "rust_name": "simple",
+      "go_name": "TestUpstreamSimple",
+      "source_line": 35,
+      "source_end_line": 43,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "61736466"
+        },
+        {
+          "kind": "string",
+          "bytes": "61736466"
+        },
+        {
+          "kind": "string",
+          "bytes": "617b7b62"
+        },
+        {
+          "kind": "string",
+          "bytes": "61"
+        },
+        {
+          "kind": "string",
+          "bytes": "7b62"
+        },
+        {
+          "kind": "string",
+          "bytes": "617d7d62"
+        },
+        {
+          "kind": "string",
+          "bytes": "61"
+        },
+        {
+          "kind": "string",
+          "bytes": "7d62"
+        },
+        {
+          "kind": "string",
+          "bytes": "617d7d"
+        },
+        {
+          "kind": "string",
+          "bytes": "61"
+        },
+        {
+          "kind": "string",
+          "bytes": "7d"
+        },
+        {
+          "kind": "string",
+          "bytes": "7d7d"
+        },
+        {
+          "kind": "string",
+          "bytes": "7d"
+        },
+        {
+          "kind": "string",
+          "bytes": "5c7d7d"
+        },
+        {
+          "kind": "string",
+          "bytes": "5c"
+        },
+        {
+          "kind": "string",
+          "bytes": "7d"
+        }
+      ]
+    },
+    {
+      "rust_name": "invalid01",
+      "go_name": "TestUpstreamInvalid01",
+      "source_line": 44,
+      "source_end_line": 47,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b"
+        }
+      ]
+    },
+    {
+      "rust_name": "invalid02",
+      "go_name": "TestUpstreamInvalid02",
+      "source_line": 48,
+      "source_end_line": 51,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7d"
+        }
+      ]
+    },
+    {
+      "rust_name": "invalid04",
+      "go_name": "TestUpstreamInvalid04",
+      "source_line": 52,
+      "source_end_line": 55,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b33617d"
+        }
+      ]
+    },
+    {
+      "rust_name": "invalid05",
+      "go_name": "TestUpstreamInvalid05",
+      "source_line": 56,
+      "source_end_line": 59,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b3a7c7d"
+        }
+      ]
+    },
+    {
+      "rust_name": "invalid06",
+      "go_name": "TestUpstreamInvalid06",
+      "source_line": 60,
+      "source_end_line": 63,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b3a3e3e3e7d"
+        }
+      ]
+    },
+    {
+      "rust_name": "invalid_position",
+      "go_name": "TestUpstreamInvalidPosition",
+      "source_line": 65,
+      "source_end_line": 68,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b31383434363734343037333730393535313631367d"
+        }
+      ]
+    },
+    {
+      "rust_name": "invalid_width",
+      "go_name": "TestUpstreamInvalidWidth",
+      "source_line": 70,
+      "source_end_line": 73,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b3a31383434363734343037333730393535313631367d"
+        }
+      ]
+    },
+    {
+      "rust_name": "invalid_precision",
+      "go_name": "TestUpstreamInvalidPrecision",
+      "source_line": 75,
+      "source_end_line": 78,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b3a2e31383434363734343037333730393535313631367d"
+        }
+      ]
+    },
+    {
+      "rust_name": "format_empty",
+      "go_name": "TestUpstreamFormatEmpty",
+      "source_line": 80,
+      "source_end_line": 90,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b7d"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        }
+      ]
+    },
+    {
+      "rust_name": "format_tab_empty",
+      "go_name": "TestUpstreamFormatTabEmpty",
+      "source_line": 91,
+      "source_end_line": 107,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "225c747b7d22"
+        },
+        {
+          "kind": "string",
+          "bytes": "097b7d"
+        },
+        {
+          "kind": "string",
+          "bytes": "09"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "number",
+          "bytes": "4"
+        },
+        {
+          "kind": "number",
+          "bytes": "4"
+        }
+      ]
+    },
+    {
+      "rust_name": "format_open_brace_tab",
+      "go_name": "TestUpstreamFormatOpenBraceTab",
+      "source_line": 108,
+      "source_end_line": 115,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "227b5c7422"
+        },
+        {
+          "kind": "string",
+          "bytes": "7b09"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "number",
+          "bytes": "4"
+        },
+        {
+          "kind": "number",
+          "bytes": "4"
+        }
+      ]
+    },
+    {
+      "rust_name": "format_position",
+      "go_name": "TestUpstreamFormatPosition",
+      "source_line": 116,
+      "source_end_line": 126,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b337d"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        }
+      ]
+    },
+    {
+      "rust_name": "format_position_nothing_else",
+      "go_name": "TestUpstreamFormatPositionNothingElse",
+      "source_line": 127,
+      "source_end_line": 137,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b333a7d"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        }
+      ]
+    },
+    {
+      "rust_name": "format_named",
+      "go_name": "TestUpstreamFormatNamed",
+      "source_line": 138,
+      "source_end_line": 148,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b6e616d657d"
+        },
+        {
+          "kind": "string",
+          "bytes": "6e616d65"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "6"
+        }
+      ]
+    },
+    {
+      "rust_name": "format_named_space_nothing",
+      "go_name": "TestUpstreamFormatNamedSpaceNothing",
+      "source_line": 149,
+      "source_end_line": 167,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b6e616d657d207b7d"
+        },
+        {
+          "kind": "string",
+          "bytes": "6e616d65"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "6"
+        },
+        {
+          "kind": "string",
+          "bytes": "20"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "number",
+          "bytes": "9"
+        },
+        {
+          "kind": "number",
+          "bytes": "9"
+        }
+      ]
+    },
+    {
+      "rust_name": "format_raw",
+      "go_name": "TestUpstreamFormatRaw",
+      "source_line": 168,
+      "source_end_line": 184,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "722322617373657274696f6e20606c656674207b6f707d20726967687460206661696c65642223"
+        },
+        {
+          "kind": "string",
+          "bytes": "617373657274696f6e20606c656674207b6f707d20726967687460206661696c6564"
+        },
+        {
+          "kind": "number",
+          "bytes": "1"
+        },
+        {
+          "kind": "string",
+          "bytes": "617373657274696f6e20606c65667420"
+        },
+        {
+          "kind": "string",
+          "bytes": "6f70"
+        },
+        {
+          "kind": "number",
+          "bytes": "20"
+        },
+        {
+          "kind": "number",
+          "bytes": "22"
+        },
+        {
+          "kind": "string",
+          "bytes": "20726967687460206661696c6564"
+        }
+      ]
+    },
+    {
+      "rust_name": "format_type",
+      "go_name": "TestUpstreamFormatType",
+      "source_line": 185,
+      "source_end_line": 209,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b333a787d"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "string",
+          "bytes": "78"
+        }
+      ]
+    },
+    {
+      "rust_name": "format_align_fill",
+      "go_name": "TestUpstreamFormatAlignFill",
+      "source_line": 210,
+      "source_end_line": 278,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b333a3e7d"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "string",
+          "bytes": ""
+        },
+        {
+          "kind": "string",
+          "bytes": "7b333a303c7d"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "char",
+          "bytes": "30"
+        },
+        {
+          "kind": "number",
+          "bytes": "4"
+        },
+        {
+          "kind": "number",
+          "bytes": "5"
+        },
+        {
+          "kind": "string",
+          "bytes": ""
+        },
+        {
+          "kind": "string",
+          "bytes": "7b333a2a3c616263647d"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "char",
+          "bytes": "2a"
+        },
+        {
+          "kind": "number",
+          "bytes": "4"
+        },
+        {
+          "kind": "number",
+          "bytes": "5"
+        },
+        {
+          "kind": "string",
+          "bytes": "61626364"
+        },
+        {
+          "kind": "number",
+          "bytes": "6"
+        },
+        {
+          "kind": "number",
+          "bytes": "10"
+        }
+      ]
+    },
+    {
+      "rust_name": "format_counts",
+      "go_name": "TestUpstreamFormatCounts",
+      "source_line": 279,
+      "source_end_line": 435,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b3a3130787d"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "10"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "number",
+          "bytes": "5"
+        },
+        {
+          "kind": "string",
+          "bytes": "78"
+        },
+        {
+          "kind": "string",
+          "bytes": "7b3a3130242e3130787d"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "10"
+        },
+        {
+          "kind": "number",
+          "bytes": "6"
+        },
+        {
+          "kind": "number",
+          "bytes": "9"
+        },
+        {
+          "kind": "number",
+          "bytes": "10"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "number",
+          "bytes": "6"
+        },
+        {
+          "kind": "string",
+          "bytes": "78"
+        },
+        {
+          "kind": "string",
+          "bytes": "7b313a30242e3130787d"
+        },
+        {
+          "kind": "number",
+          "bytes": "1"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "number",
+          "bytes": "10"
+        },
+        {
+          "kind": "number",
+          "bytes": "6"
+        },
+        {
+          "kind": "number",
+          "bytes": "9"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "number",
+          "bytes": "4"
+        },
+        {
+          "kind": "number",
+          "bytes": "6"
+        },
+        {
+          "kind": "string",
+          "bytes": "78"
+        },
+        {
+          "kind": "string",
+          "bytes": "7b3a2e2a787d"
+        },
+        {
+          "kind": "number",
+          "bytes": "1"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "number",
+          "bytes": "5"
+        },
+        {
+          "kind": "string",
+          "bytes": "78"
+        },
+        {
+          "kind": "string",
+          "bytes": "7b3a2e313024787d"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "10"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "number",
+          "bytes": "7"
+        },
+        {
+          "kind": "string",
+          "bytes": "78"
+        },
+        {
+          "kind": "string",
+          "bytes": "7b3a61242e62243f7d"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "string",
+          "bytes": "62"
+        },
+        {
+          "kind": "number",
+          "bytes": "6"
+        },
+        {
+          "kind": "number",
+          "bytes": "7"
+        },
+        {
+          "kind": "number",
+          "bytes": "5"
+        },
+        {
+          "kind": "number",
+          "bytes": "8"
+        },
+        {
+          "kind": "string",
+          "bytes": "61"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "number",
+          "bytes": "4"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "number",
+          "bytes": "5"
+        },
+        {
+          "kind": "string",
+          "bytes": "3f"
+        },
+        {
+          "kind": "string",
+          "bytes": "7b3a2e347d"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "4"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "number",
+          "bytes": "5"
+        },
+        {
+          "kind": "string",
+          "bytes": ""
+        }
+      ]
+    },
+    {
+      "rust_name": "format_flags",
+      "go_name": "TestUpstreamFormatFlags",
+      "source_line": 436,
+      "source_end_line": 482,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b3a2d7d"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "string",
+          "bytes": ""
+        },
+        {
+          "kind": "string",
+          "bytes": "7b3a2b237d"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "string",
+          "bytes": ""
+        }
+      ]
+    },
+    {
+      "rust_name": "format_mixture",
+      "go_name": "TestUpstreamFormatMixture",
+      "source_line": 483,
+      "source_end_line": 511,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "61626364207b333a787d20656667"
+        },
+        {
+          "kind": "string",
+          "bytes": "6162636420"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "number",
+          "bytes": "7"
+        },
+        {
+          "kind": "number",
+          "bytes": "8"
+        },
+        {
+          "kind": "string",
+          "bytes": "78"
+        },
+        {
+          "kind": "string",
+          "bytes": "20656667"
+        }
+      ]
+    },
+    {
+      "rust_name": "format_whitespace",
+      "go_name": "TestUpstreamFormatWhitespace",
+      "source_line": 512,
+      "source_end_line": 530,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b207d"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        },
+        {
+          "kind": "string",
+          "bytes": "7b20207d"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "4"
+        }
+      ]
+    },
+    {
+      "rust_name": "asm_linespans",
+      "go_name": "TestUpstreamAsmLinespans",
+      "source_line": 531,
+      "source_end_line": 546,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "72220a20202020202020202e696e74656c5f73796e746178206e6f7072656669780a20202020202020206e6f7022"
+        },
+        {
+          "kind": "string",
+          "bytes": "0a20202020202020202e696e74656c5f73796e746178206e6f7072656669780a20202020202020206e6f70"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "string",
+          "bytes": "0a20202020202020202e696e74656c5f73796e746178206e6f7072656669780a20202020202020206e6f70"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "11"
+        },
+        {
+          "kind": "number",
+          "bytes": "33"
+        },
+        {
+          "kind": "number",
+          "bytes": "42"
+        },
+        {
+          "kind": "number",
+          "bytes": "45"
+        }
+      ]
+    },
+    {
+      "rust_name": "asm_concat",
+      "go_name": "TestUpstreamAsmConcat",
+      "source_line": 547,
+      "source_end_line": 555,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "636f6e636174212822696e76616c6964222c20225f222c2022696e737472756374696f6e2229"
+        },
+        {
+          "kind": "string",
+          "bytes": "696e76616c69645f696e737472756374696f6e"
+        }
+      ]
+    },
+    {
+      "rust_name": "diagnostic_format_flags",
+      "go_name": "TestUpstreamDiagnosticFormatFlags",
+      "source_line": 557,
+      "source_end_line": 576,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b7468696e673a626c61687d"
+        },
+        {
+          "kind": "string",
+          "bytes": "7468696e67"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "7"
+        },
+        {
+          "kind": "string",
+          "bytes": "626c6168"
+        },
+        {
+          "kind": "number",
+          "bytes": "7"
+        },
+        {
+          "kind": "number",
+          "bytes": "12"
+        }
+      ]
+    },
+    {
+      "rust_name": "diagnostic_format_mod",
+      "go_name": "TestUpstreamDiagnosticFormatMod",
+      "source_line": 578,
+      "source_end_line": 597,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b7468696e673a2b7d"
+        },
+        {
+          "kind": "string",
+          "bytes": "7468696e67"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "7"
+        },
+        {
+          "kind": "string",
+          "bytes": "2b"
+        },
+        {
+          "kind": "number",
+          "bytes": "7"
+        },
+        {
+          "kind": "number",
+          "bytes": "9"
+        }
+      ]
+    },
+    {
+      "rust_name": "format_plus_sign_missing_colon_error",
+      "go_name": "TestUpstreamFormatPlusSignMissingColonError",
+      "source_line": 598,
+      "source_end_line": 607,
+      "literals": [
+        {
+          "kind": "string",
+          "bytes": "7b2b7d"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "string",
+          "bytes": "602b60207369676e20666c6167206d7573742061707065617220616674657220603a60"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "string",
+          "bytes": "657870656374656420603a60206265666f726520602b60207369676e20666c6167"
+        },
+        {
+          "kind": "number",
+          "bytes": "0"
+        },
+        {
+          "kind": "number",
+          "bytes": "2"
+        },
+        {
+          "kind": "number",
+          "bytes": "3"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+[package]
+name = "rustc_parse_format"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+rustc-literal-escaper = "=0.0.8"
+rustc_lexer = { path = "../rustc_lexer" }
+
+[target.'cfg(target_pointer_width = "64")'.dev-dependencies]
+rustc_index = { path = "../rustc_index" }

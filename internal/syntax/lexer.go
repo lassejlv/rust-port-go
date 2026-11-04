@@ -2,7 +2,6 @@ package syntax
 
 import (
 	"fmt"
-	"strconv"
 	"strings"
 	"unicode/utf8"
 )
@@ -35,102 +34,6 @@ func (l *lexer) advance() {
 	_, n := utf8.DecodeRuneInString(l.src[l.offset:])
 	l.offset += n
 }
-func (l *lexer) stringLiteral() (string, error) {
-	start := l.pos()
-	l.advance()
-	var value strings.Builder
-	for l.offset < len(l.src) {
-		c := l.src[l.offset]
-		if c == '"' {
-			l.advance()
-			return value.String(), nil
-		}
-		if c == '\r' {
-			position := l.pos()
-			l.advance()
-			if l.offset == len(l.src) || l.src[l.offset] != '\n' {
-				return "", sourceError(position, "bare CR is not allowed in a string; use \\r")
-			}
-			l.advance()
-			value.WriteByte('\n')
-			continue
-		}
-		if c != '\\' {
-			r, n := utf8.DecodeRuneInString(l.src[l.offset:])
-			if r == utf8.RuneError && n == 1 {
-				return "", sourceError(l.pos(), "invalid UTF-8 in string")
-			}
-			value.WriteRune(r)
-			l.advance()
-			continue
-		}
-		escape := l.pos()
-		l.advance()
-		if l.offset == len(l.src) {
-			break
-		}
-		c = l.src[l.offset]
-		l.advance()
-		switch c {
-		case 'n':
-			value.WriteByte('\n')
-		case 'r':
-			value.WriteByte('\r')
-		case 't':
-			value.WriteByte('\t')
-		case '0':
-			value.WriteByte(0)
-		case '\\', '"', '\'':
-			value.WriteByte(c)
-		case '\r':
-			if l.offset == len(l.src) || l.src[l.offset] != '\n' {
-				return "", sourceError(escape, "bare CR is not a valid string escape")
-			}
-			l.advance()
-			fallthrough
-		case '\n':
-			for l.offset < len(l.src) && strings.ContainsRune(" \t\r\n", rune(l.src[l.offset])) {
-				l.advance()
-			}
-		case 'x':
-			if l.offset+2 > len(l.src) {
-				return "", sourceError(escape, "expected two hexadecimal digits after \\x")
-			}
-			n, err := strconv.ParseUint(l.src[l.offset:l.offset+2], 16, 8)
-			if err != nil || n > 0x7f {
-				return "", sourceError(escape, "\\x escape must be an ASCII byte")
-			}
-			value.WriteByte(byte(n))
-			l.advance()
-			l.advance()
-		case 'u':
-			if l.offset >= len(l.src) || l.src[l.offset] != '{' {
-				return "", sourceError(escape, "expected { after \\u")
-			}
-			l.advance()
-			begin := l.offset
-			if begin < len(l.src) && !hexDigit(l.src[begin]) {
-				return "", sourceError(escape, "invalid Unicode escape: first character must be a hexadecimal digit")
-			}
-			for l.offset < len(l.src) && l.src[l.offset] != '}' {
-				l.advance()
-			}
-			if l.offset == len(l.src) {
-				return "", sourceError(escape, "unterminated Unicode escape")
-			}
-			digits := strings.ReplaceAll(l.src[begin:l.offset], "_", "")
-			n, err := strconv.ParseUint(digits, 16, 32)
-			if err != nil || len(digits) > 6 || !utf8.ValidRune(rune(n)) {
-				return "", sourceError(escape, "invalid Unicode escape")
-			}
-			value.WriteRune(rune(n))
-			l.advance()
-		default:
-			return "", sourceError(escape, "unsupported string escape \\%c", c)
-		}
-	}
-	return "", sourceError(start, "unterminated string literal")
-}
 
 // Check all source bytes before tokenization, including skipped comments. The
 // temporary cursor preserves original byte offsets and counts Unicode columns.
@@ -147,10 +50,6 @@ func validateSourceUTF8(src string) error {
 		l.advance()
 	}
 	return nil
-}
-
-func hexDigit(c byte) bool {
-	return c >= '0' && c <= '9' || c >= 'a' && c <= 'f' || c >= 'A' && c <= 'F'
 }
 
 // Numeric range checking is deferred until type inference, allowing signed

@@ -51,6 +51,9 @@ jobs:
           cargo fetch --locked --manifest-path tools/port-lexer-oracle/Cargo.toml
           cargo fetch --locked --manifest-path tools/port-lexer-unicode/oracle/Cargo.toml
           cargo fetch --locked --manifest-path tools/port-cargo-graph/Cargo.toml
+          cargo fetch --locked --manifest-path tools/port-rust-parse-format/Cargo.toml
+          cargo fetch --locked --manifest-path tools/port-literal-escaper/oracle/Cargo.toml
+          cargo fetch --locked --manifest-path tools/port-cargo-restricted-names/Cargo.toml
         env:
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: 1.99.1
@@ -61,6 +64,7 @@ jobs:
           FERRUGO_QUEUE_ORACLE: '1'
           FERRUGO_REGENERATE_UNICODE_ORACLE: '1'
           FERRUGO_REGENERATE_CORE_UNICODE_ORACLE: '1'
+          FERRUGO_REGENERATE_LITERAL_ESCAPER_ORACLE: '1'
           FERRUGO_RUSTC: rustc
           FERRUGO_CARGO: cargo
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
@@ -81,6 +85,11 @@ jobs:
           go run ./tools/port-rust-thousands -check
           go test -tags ferrugo_rustc_nightly ./port/rust/compiler/rustc_index/src
           go run -tags ferrugo_rustc_nightly ./tools/port-rust-index -check
+          go run ./tools/port-rust-parse-format -check
+          go run ./tools/port-rust-parse-format/char-unicode -check
+          go run ./tools/port-cargo-restricted-names -check
         env:
           FERRUGO_RUSTC: rustc
+          FERRUGO_CARGO: cargo
+          CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: 1.99.1

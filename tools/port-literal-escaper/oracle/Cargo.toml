@@ -1,0 +1,10 @@
+[package]
+name = "ferrugo-literal-escaper-oracle"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+rustc-literal-escaper = "=0.0.8"
+
+[workspace]

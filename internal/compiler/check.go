@@ -25,6 +25,7 @@ type checked struct {
 	typeOrder   []string
 	zeroSized   map[string]bool
 	forTypes    map[*syntax.Stmt]string
+	formats     map[*syntax.Expr]formatPlan
 }
 
 type binding struct {
@@ -68,6 +69,7 @@ func analyzeProgramMode(program *syntax.Program, requireMain bool) (*checked, er
 		funcs: make(map[string]*syntax.Function), calls: make(map[*syntax.Expr]string),
 		fnNames: make(map[*syntax.Function]string), diverges: make(map[*syntax.Expr]bool),
 		structs: make(map[string]*syntax.Struct), assignTypes: make(map[*syntax.Stmt]string), arrays: make(map[string]arraySpec), zeroSized: make(map[string]bool), forTypes: make(map[*syntax.Stmt]string),
+		formats: make(map[*syntax.Expr]formatPlan),
 	}}
 	if err := c.collectStructs(); err != nil {
 		return nil, err
@@ -828,6 +830,7 @@ func (c *checker) macro(e *syntax.Expr) error {
 	}
 	if len(e.Args) == 0 {
 		if name == "println" {
+			c.formats[e] = formatPlan{newline: true}
 			return nil
 		}
 		return fail(e.Span, "print! requires a literal format string")
@@ -838,31 +841,12 @@ func (c *checker) macro(e *syntax.Expr) error {
 	if _, err := c.expr(e.Args[0], "&str"); err != nil {
 		return err
 	}
-	format := e.Args[0].Text
-	count := 0
-	for i := 0; i < len(format); i++ {
-		switch format[i] {
-		case '{':
-			if i+1 < len(format) && format[i+1] == '{' {
-				i++
-				continue
-			}
-			if i+1 < len(format) && format[i+1] == '}' {
-				count++
-				i++
-				continue
-			}
-			return fail(e.Args[0].Span, "only {} format placeholders and escaped braces are supported")
-		case '}':
-			if i+1 < len(format) && format[i+1] == '}' {
-				i++
-				continue
-			}
-			return fail(e.Args[0].Span, "unmatched } in format string")
-		}
+	plan, err := planFormat(e.Args[0].Text)
+	if err != nil {
+		return fail(e.Args[0].Span, "%s", err)
 	}
-	if count != len(e.Args)-1 {
-		return fail(e.Span, "format expects %d arguments, got %d", count, len(e.Args)-1)
+	if plan.arguments != len(e.Args)-1 {
+		return fail(e.Span, "format expects %d arguments, got %d", plan.arguments, len(e.Args)-1)
 	}
 	for _, arg := range e.Args[1:] {
 		typ, err := c.expr(arg, "")
@@ -880,5 +864,7 @@ func (c *checker) macro(e *syntax.Expr) error {
 		}
 
 	}
+	plan.newline = name == "println"
+	c.formats[e] = plan
 	return nil
 }

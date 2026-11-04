@@ -13,7 +13,7 @@ Ferrugo 0.1.0 implements the bootstrap subset below. It is not yet compatible wi
 - Record values in locals, function parameters/results and branches, field reads, and field assignments rooted in mutable locals; type and field privacy is checked.
 - Owned fixed-size Copy arrays: `[T; N]`, lists/repeats, nested arrays/records, function values, `usize` indexing, mutable indexed places and array `.len()`. Lengths are unsuffixed/usize literals up to 65536; elements are supported integers, bool, Copy records or nested arrays. Repeat operands evaluate once even when N is zero.
 - Decimal/binary/octal/hexadecimal integers, underscores, optional supported integer suffixes, signed minima; unsuffixed integers default to `i32` with limited contextual inference.
-- UTF-8 string literals and common escapes, including embedded NUL. CRLF source text in strings normalizes to LF; escaped CRLF line continuations are supported. Strings carry lengths at runtime.
+- UTF-8 string literals decoded by the complete pinned literal-escaper port, including embedded NUL. CRLF source text in strings normalizes to LF; escaped CRLF line continuations are supported and diagnostic ranges retain original source offsets. Nonfatal continuation warnings are not yet displayed. Strings carry lengths at runtime.
 - `let`, optional type annotations, `mut`, lexical shadowing and nested scopes.
 - `=`, `+=`, `-=`, `*=`, `/=`, `%=`, `&=`, `|=`, `^=`, `<<=`, `>>=` assignments to mutable locals or supported record places.
 - Integer `+ - * / %`, signed unary `-`, bitwise `! & | ^`, shifts `<< >>`, and comparisons. Boolean `! && || == != & | ^`; string `== !=`. Shift counts may use any supported integer type.
@@ -22,7 +22,7 @@ Ferrugo 0.1.0 implements the bootstrap subset below. It is not yet compatible wi
 - `if`/`else if`/`else`, `while`, `break`, `continue`, `return` and nested block statements.
 - `for` over bounded integer ranges (`start..end`, `start..=end`) and owned Copy arrays. Bounds/array expressions evaluate once; array iteration uses a snapshot. Binding patterns are a name, `mut name`, or `_`; inclusive maximum endpoints do not overflow.
 - Value-producing `if`/`else` and block expressions, function tails, and unit expressions. Branch results must agree; no-else `if` expressions require unit. Expression statements without a semicolon require unit.
-- `print!`/`println!` with literal formats, sequential `{}` placeholders and `{{`/`}}` escaped braces; `println!()`; `assert!(boolean)`.
+- `print!`/`println!` with literal formats, sequential `{}` placeholders and `{{`/`}}` escaped braces; `println!()`; `assert!(boolean)`. The complete source-ported format parser validates syntax, then a frontend adapter enforces this formatting subset. Code generation consumes the checked plan.
 
 Replacing the implicit standard prelude with an external dependency named `std` is unsupported.
 

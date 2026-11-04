@@ -1,0 +1,192 @@
+{
+  "format": 1,
+  "name": "rustc-literal-escaper",
+  "version": "0.0.8",
+  "registry": "https://crates.io",
+  "url": "https://static.crates.io/crates/rustc-literal-escaper/rustc-literal-escaper-0.0.8.crate",
+  "crate_sha256": "bfe6f213fb658c8fb95baabd5420393438cf5a98d707f5dd701d9197c705f71e",
+  "source_revision": "ccd015ab0b388fb5e1c0c1085307aedd8210c7c8",
+  "license": "Apache-2.0 OR MIT",
+  "files": [
+    {
+      "path": ".cargo_vcs_info.json",
+      "sha256": "4482d8840c36f4a0f077a2f52831a3cb615379af9a685bf44f0223c2f2e902c4",
+      "bytes": 94,
+      "lines": 5,
+      "role": "upstream-metadata",
+      "target": "provenance/.cargo_vcs_info.json",
+      "status": "retained",
+      "target_sha256": "4482d8840c36f4a0f077a2f52831a3cb615379af9a685bf44f0223c2f2e902c4",
+      "evidence": "Verbatim upstream metadata retained; not counted as an implementation port"
+    },
+    {
+      "path": ".github/workflows/CI.yml",
+      "sha256": "c97ec1c94b98e38874bb78f0e070172c076b405a39c64d9f6e9f8065273e00f7",
+      "bytes": 880,
+      "lines": 37,
+      "role": "upstream-metadata",
+      "target": "provenance/.github/workflows/CI.yml",
+      "status": "retained",
+      "target_sha256": "c97ec1c94b98e38874bb78f0e070172c076b405a39c64d9f6e9f8065273e00f7",
+      "evidence": "Verbatim upstream metadata retained; not counted as an implementation port"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "b53ee26e6ff1da219b0563333a76d2c9ec19eec713d6ee54e11a1edacb0e9f3d",
+      "bytes": 8,
+      "lines": 1,
+      "role": "upstream-metadata",
+      "target": "provenance/.gitignore",
+      "status": "retained",
+      "target_sha256": "b53ee26e6ff1da219b0563333a76d2c9ec19eec713d6ee54e11a1edacb0e9f3d",
+      "evidence": "Verbatim upstream metadata retained; not counted as an implementation port"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "b365bcb6001fd87573d53dd2c244ae7dcb150493b858fe888305926332a9e31d",
+      "bytes": 692,
+      "lines": 24,
+      "role": "upstream-metadata",
+      "target": "provenance/CHANGELOG.md",
+      "status": "retained",
+      "target_sha256": "b365bcb6001fd87573d53dd2c244ae7dcb150493b858fe888305926332a9e31d",
+      "evidence": "Verbatim upstream metadata retained; not counted as an implementation port"
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "sha256": "3c4d1c4de2e6991695f5dc495f7530ecb188dfafdb1f47a1323ce7159987accd",
+      "bytes": 131,
+      "lines": 3,
+      "role": "upstream-metadata",
+      "target": "provenance/CODE_OF_CONDUCT.md",
+      "status": "retained",
+      "target_sha256": "3c4d1c4de2e6991695f5dc495f7530ecb188dfafdb1f47a1323ce7159987accd",
+      "evidence": "Verbatim upstream metadata retained; not counted as an implementation port"
+    },
+    {
+      "path": "Cargo.lock",
+      "sha256": "c9db45e4236589a56f6787112e74024575fe00fd4d99dbe1ded7e741b6692f03",
+      "bytes": 421,
+      "lines": 16,
+      "role": "upstream-metadata",
+      "target": "provenance/Cargo.lock",
+      "status": "retained",
+      "target_sha256": "c9db45e4236589a56f6787112e74024575fe00fd4d99dbe1ded7e741b6692f03",
+      "evidence": "Verbatim upstream metadata retained; not counted as an implementation port"
+    },
+    {
+      "path": "Cargo.toml",
+      "sha256": "42864d0d78afe687857242cd08b274a381d2b0d24f7d0ddb5fd44ec116365335",
+      "bytes": 1137,
+      "lines": 46,
+      "role": "upstream-metadata",
+      "target": "provenance/Cargo.toml",
+      "status": "retained",
+      "target_sha256": "42864d0d78afe687857242cd08b274a381d2b0d24f7d0ddb5fd44ec116365335",
+      "evidence": "Verbatim upstream metadata retained; not counted as an implementation port"
+    },
+    {
+      "path": "Cargo.toml.orig",
+      "sha256": "d73bd04bccd55591347b977a551aaa574ceb89c8e5b2e0ee535b6e1cc7e12060",
+      "bytes": 410,
+      "lines": 14,
+      "role": "upstream-metadata",
+      "target": "provenance/Cargo.toml.orig",
+      "status": "retained",
+      "target_sha256": "d73bd04bccd55591347b977a551aaa574ceb89c8e5b2e0ee535b6e1cc7e12060",
+      "evidence": "Verbatim upstream metadata retained; not counted as an implementation port"
+    },
+    {
+      "path": "LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "bytes": 9723,
+      "lines": 176,
+      "role": "license",
+      "target": "LICENSE-APACHE",
+      "status": "retained",
+      "target_sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "evidence": "Verbatim bytes from checksum-verified official crate archive"
+    },
+    {
+      "path": "LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "bytes": 1023,
+      "lines": 23,
+      "role": "license",
+      "target": "LICENSE-MIT",
+      "status": "retained",
+      "target_sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "evidence": "Verbatim bytes from checksum-verified official crate archive"
+    },
+    {
+      "path": "README.md",
+      "sha256": "7f324c67032a5fc4d61e623db16ca8f7f36a0420417c7a1a3c08a197d40e875e",
+      "bytes": 114,
+      "lines": 3,
+      "role": "upstream-metadata",
+      "target": "provenance/README.md",
+      "status": "retained",
+      "target_sha256": "7f324c67032a5fc4d61e623db16ca8f7f36a0420417c7a1a3c08a197d40e875e",
+      "evidence": "Verbatim upstream metadata retained; not counted as an implementation port"
+    },
+    {
+      "path": "benches/benches.rs",
+      "sha256": "59e3d343c52d846ba60f6e2146e665c2b5a1c97abec87bdc0c7dd921c7b84f23",
+      "bytes": 11545,
+      "lines": 420,
+      "role": "benchmarks",
+      "target": "benches/benches_test.go",
+      "status": "ported",
+      "target_sha256": "02715a35d7d2c3c372a0ba143dbec415d6968d36c61082179b54fe9bf86a4adf",
+      "evidence": "All 27 original benchmark workloads have Go benchmarks and checked single-run tests"
+    },
+    {
+      "path": "src/lib.rs",
+      "sha256": "d79e2b634a4d25f44258c2a8afd854e1f87c967716fb564603feb89246c0f722",
+      "bytes": 21694,
+      "lines": 687,
+      "role": "implementation",
+      "target": "src/lib.go",
+      "status": "ported",
+      "target_sha256": "41b48f681339fed84a9fc99600501a6cef16c9a7f921cbde64f97cbc66cfeb1b",
+      "evidence": "Unchanged Rust implementation oracle: all 16 public operations/modes, all 23 errors, seeded/adversarial spans, complete scalar direct/Unicode/continuation traces, direct public MixedUnit variants and normalized conversions; only private CheckRaw/Unescape traits are specialized"
+    },
+    {
+      "path": "tests/test.rs",
+      "sha256": "e189d355ad3c533eae02385bba906769815f45f9df3add13ab1c08622120c468",
+      "bytes": 10707,
+      "lines": 314,
+      "role": "tests",
+      "target": "tests/test_test.go",
+      "status": "ported",
+      "target_sha256": "0b06accbaa8e79b034c04e42472e908870cda4436a32f5307669c8f86c3b05ed",
+      "evidence": "All 9 original Rust tests execute unchanged and all 9 mirrored Go tests are retained"
+    }
+  ],
+  "upstream_tests": 9,
+  "upstream_tests_passed": true,
+  "ported_benchmark_workloads": 27,
+  "oracle_shim_sha256": "a51f29495813ab8c036169e12c44c87edac2d8523f40fadfda32d3ea6daa7ccf",
+  "oracle_encoding": "FERRUGOE; metadata length u32 LE + metadata; case count u32 LE; each case: operation u8, UTF8 input length u32 LE + input, response length u32 LE + response; response: event count u32 LE, then {start u32 LE,end u32 LE,kind u8,value u32 LE}; kind0=EscapeError,1=char,2=byte,3=MixedUnit::Char,4=MixedUnit::HighByte,5=NonZero\u003cchar\u003e; scalar trace uses these same responses for direct operations0..7, Unicode escapes0..4, continuations2..4 for every valid scalar",
+  "golden_cases": 121536,
+  "golden_sha256": "96002d17419fa7c680cb5636ec67b5b8f0cc8d578715258043285423981d797d",
+  "golden_gzip_sha256": "09ce7de619807aa577f112d28f8af89a734f74021537cc94312979cea8736342",
+  "metadata_hex": "0101010101010101010101010101010101010101010000000000016201000100010162010162010163010163",
+  "mixed_constructors_hex": "0401000000030100000003010000000000010104410000000341000000034100000000000101047f000000037f000000037f000000000001010480000000048000000003800000000100000104ff00000004ff00000003ff00000001000001",
+  "mixed_constructor_values": [
+    1,
+    65,
+    127,
+    128,
+    255
+  ],
+  "mixed_constructor_encoding": "for each byte: direct HighByte, normalized From\u003cNonZero\u003cu8\u003e\u003e, direct Char; each encoded as {kind u8,value u32 LE}; then equality flags direct==normalized,direct==Char,normalized==Char,direct==direct",
+  "private_trait_specializations": [
+    "CheckRaw",
+    "Unescape"
+  ],
+  "scalar_values": 1112064,
+  "scalar_operations_per_value": 16,
+  "scalar_trace_sha256": "3d37900f0331e0071d790a7335984975df4b15fb62403d1355822213b1a26263",
+  "scalar_trace_bytes": 302482110
+}
