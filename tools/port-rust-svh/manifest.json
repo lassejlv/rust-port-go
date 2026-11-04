@@ -1,0 +1,282 @@
+{
+  "complete": true,
+  "scope": "Complete unchanged Svh source: construction/projection/copy/equality, raw+typed Hash/hash_slice, exact/ref/wrapped Unhasher in both assertion profiles, actual codec/stable hash and full mutable formatter. Fingerprint trait callback protocols are composed without another owned argument or cleanup boundary. No surrounding compiler/std/dependency completion credit.",
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_version": "1.101.0",
+  "nightly_date": "2026-11-04",
+  "compiler_commit": "708c94ef093ecc42fb8851e17d8383d999727abc",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+  "unicode_version": [
+    18,
+    0,
+    0
+  ],
+  "source_git_blob": "0b80c655d8a5aa83edeb91767e02867c1fd0c2ca",
+  "source_sha256": "965564da038751280b30f041161aeece8311754e4688b9aa7593e6c79f810586",
+  "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "assertion_profiles": [
+    {
+      "debug_assertions": false,
+      "overflow_checks": true,
+      "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+      "cases": 2448
+    },
+    {
+      "debug_assertions": true,
+      "overflow_checks": true,
+      "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+      "cases": 2448
+    }
+  ],
+  "records": 57540,
+  "formatter_baselines": 1184,
+  "writer_failure_cuts": 50508,
+  "raw_sha256": "76bbb4d3a7b212bf1842355554dd276faaac639943bae2ca777fa99b7b067817",
+  "fixture_sha256": "5c7738a06c751eb49a792ba989c15a3117c9a963d3977ed2f65752ea112d432f",
+  "formats": [
+    {
+      "pattern": "{}",
+      "debug": false,
+      "options": {
+        "Fill": 32
+      }
+    },
+    {
+      "pattern": "{:36}",
+      "debug": false,
+      "options": {
+        "Fill": 32,
+        "HasWidth": true,
+        "Width": 36
+      }
+    },
+    {
+      "pattern": "{:>36}",
+      "debug": false,
+      "options": {
+        "Fill": 32,
+        "HasWidth": true,
+        "Width": 36,
+        "Align": 2
+      }
+    },
+    {
+      "pattern": "{:*^36}",
+      "debug": false,
+      "options": {
+        "Fill": 42,
+        "HasWidth": true,
+        "Width": 36,
+        "Align": 3
+      }
+    },
+    {
+      "pattern": "{:.0}",
+      "debug": false,
+      "options": {
+        "Fill": 32,
+        "HasPrecision": true,
+        "Precision": 0
+      }
+    },
+    {
+      "pattern": "{:.5}",
+      "debug": false,
+      "options": {
+        "Fill": 32,
+        "HasPrecision": true,
+        "Precision": 5
+      }
+    },
+    {
+      "pattern": "{:+#036.5}",
+      "debug": false,
+      "options": {
+        "Fill": 32,
+        "SignPlus": true,
+        "Alternate": true,
+        "ZeroPad": true,
+        "HasWidth": true,
+        "Width": 36,
+        "HasPrecision": true,
+        "Precision": 5
+      }
+    },
+    {
+      "pattern": "{:\ud83e\udd80^36}",
+      "debug": false,
+      "options": {
+        "Fill": 129408,
+        "HasWidth": true,
+        "Width": 36,
+        "Align": 3
+      }
+    },
+    {
+      "pattern": "{:\u0000^36}",
+      "debug": false,
+      "options": {
+        "Fill": 0,
+        "HasWidth": true,
+        "Width": 36,
+        "Align": 3
+      }
+    },
+    {
+      "pattern": "{:?}",
+      "debug": true,
+      "options": {
+        "Fill": 32
+      }
+    },
+    {
+      "pattern": "{:#?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "Alternate": true
+      }
+    },
+    {
+      "pattern": "{:>36?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "HasWidth": true,
+        "Width": 36,
+        "Align": 2
+      }
+    },
+    {
+      "pattern": "{:*^36?}",
+      "debug": true,
+      "options": {
+        "Fill": 42,
+        "HasWidth": true,
+        "Width": 36,
+        "Align": 3
+      }
+    },
+    {
+      "pattern": "{:+?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "SignPlus": true
+      }
+    },
+    {
+      "pattern": "{:036?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "HasWidth": true,
+        "Width": 36,
+        "ZeroPad": true
+      }
+    },
+    {
+      "pattern": "{:x?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "DebugLowerHex": true
+      }
+    },
+    {
+      "pattern": "{:#x?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "DebugLowerHex": true,
+        "Alternate": true
+      }
+    },
+    {
+      "pattern": "{:#X?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "DebugUpperHex": true,
+        "Alternate": true
+      }
+    },
+    {
+      "pattern": "{:+#036x?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "SignPlus": true,
+        "Alternate": true,
+        "ZeroPad": true,
+        "HasWidth": true,
+        "Width": 36,
+        "DebugLowerHex": true
+      }
+    },
+    {
+      "pattern": "{:\ud83e\udd80^36?}",
+      "debug": true,
+      "options": {
+        "Fill": 129408,
+        "HasWidth": true,
+        "Width": 36,
+        "Align": 3
+      }
+    },
+    {
+      "pattern": "{:\u0000^36?}",
+      "debug": true,
+      "options": {
+        "Fill": 0,
+        "HasWidth": true,
+        "Width": 36,
+        "Align": 3
+      }
+    },
+    {
+      "pattern": "{:.0?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "HasPrecision": true,
+        "Precision": 0
+      }
+    },
+    {
+      "pattern": "{:.5?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "HasPrecision": true,
+        "Precision": 5
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "tools/port-rust-svh/generate.py",
+      "sha256": "c89dca3bd94e1fd79b6ea7ad46752917d8af3b32f7010de66046a0932d0609e3"
+    },
+    {
+      "path": "tools/port-rust-svh/oracle.rs",
+      "sha256": "966bf89e97d935f6f61414c1e5a24c31980aad041421ff2e08b14540edaf40bc"
+    },
+    {
+      "path": "tools/port-rust-symbol/native_profile.py",
+      "sha256": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/svh.go",
+      "sha256": "a3f2085963bd692e1a691c2bbc52294f336bb5318ceecb96a071470e0771b6ca"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint_format_primary.go",
+      "sha256": "6302b7f83eb029c973c06624e2ceb23a836943732994bad134dfe3ed253c2fa9"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/svh_oracle_test.go",
+      "sha256": "6cf2a0f797d876a42992d817116c0a812586f1502af7b172a357db1f363a5316"
+    }
+  ]
+}

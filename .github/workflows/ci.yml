@@ -203,3 +203,11 @@ jobs:
           FERRUGO_GO: go
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: nightly-2026-11-04
+      - name: Compare complete strict-version-hash module
+        run: python3 tools/port-rust-svh/generate.py --check
+        env:
+          FERRUGO_RUSTC: rustc
+          FERRUGO_RUSTDOC: rustdoc
+          FERRUGO_CARGO: cargo
+          CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
+          RUSTUP_TOOLCHAIN: nightly-2026-11-04

@@ -282,3 +282,12 @@ The ledger now records 29 completed top-level files. Cargo graph's persistent-co
 - The isolated minimum-Go snapshot passes affected-package race checks and vet. Every retained backing/native sort/Unord proof regenerates successfully, with five source/tool integrity tests. Hosted validation now runs both SDK references alongside the complete original compiler graph.
 
 The source ledger remains at 29 completed top-level files. These dependencies unblock larger complete compiler-file ports; neither supporting hash-table/sort code nor partial unordered collections gains whole upstream source-file credit.
+
+## 2026-11-04 — checkpoint 25: complete strict crate-version hash
+
+- Ported the full Svh module used to identify changed or mismatched crate versions: construction/projection, fixed32-digit hex text, Copy/Clone/equality, full Hash/default hash_slice, actual codec/stable-hash delegation and mutable fallible Debug/Display. There is no added ordering trait or hash-calculation algorithm.
+- The complete unchanged compiler crate matches57,540 native records, including50,508 exact formatter failure cuts. Both character/string writers,23 format patterns, reused formatter state and the neutral Fingerprint Debug entrypoint match. Direct and concrete-state dictionary hashing retain default raw writes, typed overrides and exact/reference/wrapped Unhasher behavior in both assertion configurations.
+- Independent source/API review found no gaps. The isolated actual Go1.23 snapshot passes affected-package race tests and vet; fresh original-source preparation/regeneration and source inventory verification pass. Existing Fingerprint/hash fixtures remain unchanged.
+- Checkpoints23 and24 passed all hosted Linux, macOS, upstream and native-reference jobs. Shared span/source-map work remains under integration, including an explicitly scoped ordinary-panic/hook protocol and separate resume-unwind behavior; Cargo graph, hygiene/codecs and collection work continue in parallel.
+
+Thirty top-level source files now have completion evidence. The caching view and other larger span files have retained local native comparisons but receive no premature completion record. Production Rust compilation remains unfinished.
