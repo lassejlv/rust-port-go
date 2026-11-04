@@ -59,3 +59,9 @@ The full port remains incomplete. Current compatibility and the remaining scope 
 - Passed the full local race suite and vet; updated the Cargo example to import Fibonacci from a second source file.
 
 The multi-file goal is implemented locally; hosted CI will validate the pushed checkpoint. Named structures and field access are the next language milestone. The complete compiler and Cargo port remains the overall goal.
+
+## 2026-11-04 — checkpoint 6: consistent C output paths
+
+- Fixed a reviewed path mismatch in C-file emission: source protection checked a normalized output path while publication used the original spelling. A symlink followed by `..` could otherwise target a loaded module source.
+- C emission now uses one normalized absolute output path for protection, temporary-file creation and publication.
+- Added a regression that reproduces the symlink/parent traversal case and verifies source bytes are preserved; focused C-emission tests pass.

@@ -202,6 +202,11 @@ func protectSources(outputPath string, sources []string) error {
 
 // WriteC emits C atomically while protecting every source file in the crate.
 func WriteC(sourcePath, outputPath string) error {
+	outputAbs, err := filepath.Abs(outputPath)
+	if err != nil {
+		return err
+	}
+	outputPath = outputAbs
 	c, sources, err := analyzeFile(sourcePath)
 	if err != nil {
 		return err
