@@ -21,66 +21,7 @@ func lex(src string) ([]token, error) {
 	if err := validateSourceUTF8(src); err != nil {
 		return nil, err
 	}
-	l := &lexer{src: src, line: 1, column: 1}
-	var out []token
-	for {
-		if err := l.space(); err != nil {
-			return nil, err
-		}
-		start := l.pos()
-		if l.offset == len(src) {
-			return append(out, token{kind: "eof", span: start}), nil
-		}
-		c := src[l.offset]
-		if identStart(c) {
-			begin := l.offset
-			for l.offset < len(src) && identContinue(src[l.offset]) {
-				l.advance()
-			}
-			out = append(out, token{kind: "ident", text: src[begin:l.offset], span: start})
-			continue
-		}
-		if c >= '0' && c <= '9' {
-			begin := l.offset
-			for l.offset < len(src) && identContinue(src[l.offset]) {
-				l.advance()
-			}
-			spelling := src[begin:l.offset]
-			if err := validateInteger(spelling); err != nil {
-				return nil, sourceError(start, "%v", err)
-			}
-			out = append(out, token{kind: "int", text: spelling, span: start})
-			continue
-		}
-		if c == '"' {
-			value, err := l.stringLiteral()
-			if err != nil {
-				return nil, err
-			}
-			out = append(out, token{kind: "string", text: value, span: start})
-			continue
-		}
-		matched := false
-		for _, op := range []string{"<<=", ">>=", "..=", "..", "::", "->", "==", "!=", "<=", ">=", "&&", "||", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<", ">>"} {
-			if strings.HasPrefix(src[l.offset:], op) {
-				for range op {
-					l.advance()
-				}
-				out = append(out, token{kind: op, text: op, span: start})
-				matched = true
-				break
-			}
-		}
-		if matched {
-			continue
-		}
-		if strings.ContainsRune("(){}[]#.;,:+-*/%=<>!&|^", rune(c)) {
-			l.advance()
-			out = append(out, token{kind: string(c), text: string(c), span: start})
-			continue
-		}
-		return nil, sourceError(start, "unsupported character %q", c)
-	}
+	return lexRawSource(src)
 }
 
 func (l *lexer) pos() Span { return Span{Offset: l.offset, Line: l.line, Column: l.column} }
@@ -94,47 +35,6 @@ func (l *lexer) advance() {
 	_, n := utf8.DecodeRuneInString(l.src[l.offset:])
 	l.offset += n
 }
-func (l *lexer) space() error {
-	for l.offset < len(l.src) {
-		switch l.src[l.offset] {
-		case ' ', '\t', '\r', '\n':
-			l.advance()
-			continue
-		}
-		if strings.HasPrefix(l.src[l.offset:], "//") {
-			for l.offset < len(l.src) && l.src[l.offset] != '\n' {
-				l.advance()
-			}
-			continue
-		}
-		if strings.HasPrefix(l.src[l.offset:], "/*") {
-			start := l.pos()
-			l.advance()
-			l.advance()
-			depth := 1
-			for depth > 0 {
-				if l.offset == len(l.src) {
-					return sourceError(start, "unterminated block comment")
-				}
-				if strings.HasPrefix(l.src[l.offset:], "/*") {
-					depth++
-					l.advance()
-					l.advance()
-				} else if strings.HasPrefix(l.src[l.offset:], "*/") {
-					depth--
-					l.advance()
-					l.advance()
-				} else {
-					l.advance()
-				}
-			}
-			continue
-		}
-		break
-	}
-	return nil
-}
-
 func (l *lexer) stringLiteral() (string, error) {
 	start := l.pos()
 	l.advance()
@@ -252,9 +152,6 @@ func validateSourceUTF8(src string) error {
 func hexDigit(c byte) bool {
 	return c >= '0' && c <= '9' || c >= 'a' && c <= 'f' || c >= 'A' && c <= 'F'
 }
-
-func identStart(c byte) bool    { return c == '_' || c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' }
-func identContinue(c byte) bool { return identStart(c) || c >= '0' && c <= '9' }
 
 // Numeric range checking is deferred until type inference, allowing signed
 // minima and giving the checker responsibility for all supported integer widths.

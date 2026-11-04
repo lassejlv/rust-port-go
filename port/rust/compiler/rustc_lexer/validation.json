@@ -1,0 +1,54 @@
+{
+  "format": 1,
+  "upstream_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "sources": {
+    "compiler/rustc_lexer/src/lib.rs": {
+      "git_blob": "0aa57e75889fa2d81deb1ec8bf5480b1c930fff1",
+      "sha256": "fb7f451aae9d46a171e5599635483b27613a4067d107edd9caf89d79a32ceadf"
+    },
+    "compiler/rustc_lexer/src/tests.rs": {
+      "git_blob": "a7357ba38c8e4484da814ef3c22bf33b75bdbeb2",
+      "sha256": "90516c7444d6102ab1fceae40cf260cf473ec6542bc372d8bf9d6033eaf507da"
+    }
+  },
+  "host": "linux/amd64",
+  "go": "1.27.3",
+  "minimum_go_verified": "1.23.12",
+  "rustc": "1.99.1 (58cf8f9c3 2026-10-13)",
+  "original_rust_tests_passed": 17,
+  "translated_upstream_tests_passed": 17,
+  "committed_original_oracle_cases": 231,
+  "corpus_sha256": "fe1291332d9b632590bfd1db8d7f7aa82aa7bfb56468af4ff2f43bdf8c035a41",
+  "token_variants_covered": 43,
+  "literal_variants_covered": 10,
+  "seeded_utf8_cases": 6000,
+  "raw_string_stress_cases": 1024,
+  "guarded_string_stress_cases": 1024,
+  "frontmatter_stress_cases": 1024,
+  "initial_hydrated_source_comparison": {
+    "files": 548,
+    "bytes": 4704893,
+    "scope": "All hydrated Rust/Cargo reference and Ferrugo Rust files; sparse caches do not contain every upstream blob"
+  },
+  "unicode_version": [17, 0, 0],
+  "unicode_scalar_values_compared": 1112064,
+  "commands": [
+    "FERRUGO_LEXER_ORACLE=1 FERRUGO_REGENERATE_UNICODE_ORACLE=1 FERRUGO_RUSTC=<original-rustc> FERRUGO_CARGO=<original-cargo> go test -race -count=1 ./...",
+    "go vet ./...",
+    "python3 -m unittest discover -s tools/port-inventory -p 'test_*.py'",
+    "python3 tools/port-inventory/inventory.py verify"
+  ],
+  "results": "All listed checks passed; original-source comparisons reported no mismatches",
+  "compression_portability": "Generators retain an existing valid compressed reference only when its full decompressed bytes equal the newly generated original-oracle bytes; manifest hashes still verify the retained stream. Regeneration passes under Go 1.23.12 and 1.27.3.",
+  "evidence": [
+    "tools/port-lexer-oracle/README.md",
+    "tools/port-lexer-oracle/manifest.json",
+    "port/rust/compiler/rustc_lexer/unicode_manifest.json"
+  ],
+  "limitations": [
+    "This validates the low-level lexer, not production Rust compilation",
+    "Frontend parser/backend support remains the documented bootstrap subset",
+    "Raw error Unicode debug-character display is not the structured comparison contract",
+    "Go validation above ran on Linux; hosted checks are tracked separately"
+  ]
+}

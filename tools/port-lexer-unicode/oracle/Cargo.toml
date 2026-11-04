@@ -1,0 +1,11 @@
+[package]
+name = "ferrugo-lexer-unicode-oracle"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+unicode-ident = "=1.0.24"
+unicode-properties = { version = "=0.1.4", default-features = false, features = ["emoji"] }
+
+[workspace]

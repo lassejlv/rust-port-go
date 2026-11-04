@@ -1,0 +1,25 @@
+{
+  "format": 1,
+  "cargo_revision": "24de4721844c7a4d839072bab6fb66d41c9bc1f4",
+  "source_path": "src/util/edit_distance.rs",
+  "source_git_blob": "e67259956fc26a53b1be30efb371161249dfff8a",
+  "source_sha256": "073eb1a086cd2d2e74d1d8ce98b87013a8756f0187313ea1b7340b63184c6407",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "unicode_version": [
+    17,
+    0,
+    0
+  ],
+  "scalar_values": 1112064,
+  "lowercase_mappings": 1488,
+  "sigma_cased_ranges": 151,
+  "case_ignorable_ranges": 464,
+  "distance_cases": 18853,
+  "suggestion_cases": 1005,
+  "oracle_source_sha256": "ea441409265b64716cfe0710f4e98e2030e17db7cb394d963868b8b33661d5e4",
+  "unicode_oracle_sha256": "e828a17177e1ac296a7e6873b3ce362a2371a2c5549464eeee9464334da9bb0e",
+  "unicode_fixture_sha256": "9d502da3959bdb8f3d7418f2ca968b9f22c19576ea6d397f66e6758f2dc67d07",
+  "case_oracle_sha256": "5637060f88cf8386180aca5486cbc58d39f1e8c9ee5701d8409c89800d9166be",
+  "case_fixture_sha256": "a539e2d7bc8816b57a444136567d59996100854ac40df011af69543c5a6b1d09",
+  "tables_sha256": "4f820da83183e0402df7f027516b70c0a04fa76413d71eca636700e09ad94209"
+}

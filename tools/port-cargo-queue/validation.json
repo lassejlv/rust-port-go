@@ -1,0 +1,45 @@
+{
+  "checks": [
+    {
+      "args": [
+        "test",
+        "-race",
+        "./port/cargo/src/util",
+        "-run",
+        "TestQueue",
+        "-count=10",
+        "-timeout=90s"
+      ],
+      "output": "ok  \tgithub.com/lassejlv/rust-port-go/port/cargo/src/util\t13.931s\n"
+    },
+    {
+      "args": [
+        "vet",
+        "./port/cargo/src/util"
+      ],
+      "output": ""
+    }
+  ],
+  "go": "go version go1.27.3 linux/amd64",
+  "host": "linux/amd64",
+  "oracle_operations": 100000,
+  "oracle_output_bytes": 788925,
+  "oracle_output_sha256": "be4b0b6b4c875ad91df3049919aa65d537382d883fdbd8b3080988267cff54a1",
+  "oracle_status": "exact match",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "skips": [],
+  "source_path": "src/util/queue.rs",
+  "source_sha256": "f1ca01db50fd9b0534af5b6b1160b6e47de86b4770ef59191a54346ede72eb2a",
+  "timeout_reacquisition": {
+    "go_test": "TestQueueTimeoutReacquisitionChecksPredicateFirst directly exercises Go Queue.Pop with a registered waiter, timer expiry while holding its mutex, and item insertion before releasing the mutex; requires 37. This controlled race is Go-only.",
+    "rust_reference": "Direct unchanged Queue::pop operations cover queued items with a zero timeout; the original method uses std Condvar::wait_timeout_while predicate rechecking. No forced Rust mutex-reacquisition interleaving is claimed."
+  },
+  "trace_bounds": [
+    "0",
+    "1",
+    "2",
+    "17",
+    "usize::MAX"
+  ],
+  "upstream_revision": "24de4721844c7a4d839072bab6fb66d41c9bc1f4"
+}

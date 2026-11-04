@@ -6,7 +6,7 @@ Ferrugo 0.1.0 implements the bootstrap subset below. It is not yet compatible wi
 
 - A binary crate with nested inline/external `mod` items and `fn` items; a required unit-returning, zero-argument `main` entrypoint, declared at the root or imported there.
 - Public/private functions and modules, relative and `self`/`super`/`crate` qualified calls, simple `use` aliases for functions/modules, and source-file diagnostics. External modules use `name.rs` or `name/mod.rs`; ambiguous/missing files and cycles reject.
-- Valid UTF-8 source, ASCII identifiers, line comments, nested block comments, source line/column errors.
+- Valid UTF-8 source, Rust Pattern_White_Space, ASCII identifiers, line comments, nested block comments, source line/column errors. Source boundaries come from the complete source-ported low-level lexer; the frontend adapter rejects token kinds outside this subset. Doc comments are skipped; documentation/attribute expansion is not implemented.
 - Signed `i8`, `i16`, `i32`, `i64`, `isize` and unsigned `u8`, `u16`, `u32`, `u64`, `usize`; `bool`, `&str`, `()` return types and unit expressions. Pointer integers use the host pointer width.
 - Parameters with explicit types; explicitly typed function returns, default unit returns.
 - Brace-style named records deriving exactly `Copy` and `Clone`, with supported integer/boolean or nested Copy-record fields; named type paths and simple type imports. Constructors support named/shorthand fields and preserve written evaluation order.

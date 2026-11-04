@@ -1,0 +1,81 @@
+{
+  "format": 1,
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "unicode_version": [
+    17,
+    0,
+    0
+  ],
+  "scalar_values": 1112064,
+  "code_points": 1114112,
+  "oracle_flag_bits": "bit 0 = XID_Start; bit 1 = XID_Continue; bit 2 = UnicodeEmoji::is_emoji_char; one byte per code point; surrogates = 0",
+  "oracle_flags_sha256": "7a1c58a60003d5a08bc88ed92480c96b89ea1cddcab905f9fb8be7ba377146df",
+  "oracle_gzip_sha256": "8f0b9899786df440d3cd9bd885022339a8d1afd1f0e4eec60a62c73dd85d7c0e",
+  "oracle_rust_source_sha256": "b90f3c8fdc2c3b26bbd52232720f05fa6423e98addad9d21d778bad517806934",
+  "oracle_cargo_lock_sha256": "1d95ecd90dd971c7e213dc5fedd80b95923d92dfd97c1674e3d6b2cc598848c7",
+  "range_hash_encoding": "consecutive inclusive ranges, each lower then upper bound as little-endian uint32",
+  "classes": [
+    {
+      "name": "XID_Start",
+      "scalar_count": 145893,
+      "range_count": 691,
+      "ranges_sha256": "356b7ade70198e145fc6b7748ec4c3a9ed7af567c477fd455ee250bcdcbcf644"
+    },
+    {
+      "name": "XID_Continue",
+      "scalar_count": 149221,
+      "range_count": 806,
+      "ranges_sha256": "8662863b47cb5c2f072954e209cce1e5f596ed223abf45faf6119de326d1378e"
+    },
+    {
+      "name": "Emoji",
+      "scalar_count": 1438,
+      "range_count": 151,
+      "ranges_sha256": "6a4a065d91c507908938a966fc2731acbe87d908ffb81f07d591787ce8bca9aa"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "unicode-ident",
+      "version": "1.0.24",
+      "crate_sha256": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+      "url": "https://static.crates.io/crates/unicode-ident/unicode-ident-1.0.24.crate",
+      "license": "(MIT OR Apache-2.0) AND Unicode-3.0",
+      "notices": [
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        },
+        {
+          "file": "LICENSE-UNICODE",
+          "sha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1"
+        }
+      ]
+    },
+    {
+      "name": "unicode-properties",
+      "version": "0.1.4",
+      "crate_sha256": "7df058c713841ad818f1dc5d3fd88063241cc61f49f5fbea4b951e8cf5a8d71d",
+      "url": "https://static.crates.io/crates/unicode-properties/unicode-properties-0.1.4.crate",
+      "license": "MIT/Apache-2.0",
+      "notices": [
+        {
+          "file": "COPYRIGHT",
+          "sha256": "23860c2a7b5d96b21569afedf033469bab9fe14a1b24a35068b8641c578ce24d"
+        },
+        {
+          "file": "LICENSE-APACHE",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "file": "LICENSE-MIT",
+          "sha256": "7b63ecd5f1902af1b63729947373683c32745c16a10e8e6292e2e2dcd7e90ae0"
+        }
+      ]
+    }
+  ]
+}

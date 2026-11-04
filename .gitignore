@@ -2,3 +2,5 @@
 /.toolchain/
 **/target/
 *.out
+**/__pycache__/
+*.pyc

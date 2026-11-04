@@ -1,0 +1,1625 @@
+{
+  "schema": 1,
+  "revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_blob": "0aa57e75889fa2d81deb1ec8bf5480b1c930fff1",
+  "generated_by": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "cases": [
+    {
+      "name": "empty/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "",
+      "expected": ""
+    },
+    {
+      "name": "empty/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "",
+      "expected": ""
+    },
+    {
+      "name": "punctuation/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": ";,.(){}[]@#~?:$=!\u003c\u003e-\u0026|+*/^%\\`",
+      "expected": "Token { kind: Semi, len: 1 }\nToken { kind: Comma, len: 1 }\nToken { kind: Dot, len: 1 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }\nToken { kind: OpenBracket, len: 1 }\nToken { kind: CloseBracket, len: 1 }\nToken { kind: At, len: 1 }\nToken { kind: Pound, len: 1 }\nToken { kind: Tilde, len: 1 }\nToken { kind: Question, len: 1 }\nToken { kind: Colon, len: 1 }\nToken { kind: Dollar, len: 1 }\nToken { kind: Eq, len: 1 }\nToken { kind: Bang, len: 1 }\nToken { kind: Lt, len: 1 }\nToken { kind: Gt, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: And, len: 1 }\nToken { kind: Or, len: 1 }\nToken { kind: Plus, len: 1 }\nToken { kind: Star, len: 1 }\nToken { kind: Slash, len: 1 }\nToken { kind: Caret, len: 1 }\nToken { kind: Percent, len: 1 }\nToken { kind: Unknown, len: 1 }\nToken { kind: Unknown, len: 1 }"
+    },
+    {
+      "name": "punctuation/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": ";,.(){}[]@#~?:$=!\u003c\u003e-\u0026|+*/^%\\`",
+      "expected": "Token { kind: Semi, len: 1 }\nToken { kind: Comma, len: 1 }\nToken { kind: Dot, len: 1 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }\nToken { kind: OpenBracket, len: 1 }\nToken { kind: CloseBracket, len: 1 }\nToken { kind: At, len: 1 }\nToken { kind: Pound, len: 1 }\nToken { kind: Tilde, len: 1 }\nToken { kind: Question, len: 1 }\nToken { kind: Colon, len: 1 }\nToken { kind: Dollar, len: 1 }\nToken { kind: Eq, len: 1 }\nToken { kind: Bang, len: 1 }\nToken { kind: Lt, len: 1 }\nToken { kind: Gt, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: And, len: 1 }\nToken { kind: Or, len: 1 }\nToken { kind: Plus, len: 1 }\nToken { kind: Star, len: 1 }\nToken { kind: Slash, len: 1 }\nToken { kind: Caret, len: 1 }\nToken { kind: Percent, len: 1 }\nToken { kind: Unknown, len: 1 }\nToken { kind: Unknown, len: 1 }"
+    },
+    {
+      "name": "comments/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "// normal\n/// outer\n//! inner\n//// plain\n/**/ /**doc*/ /*!inner*/ /***plain*/ /*nested/*inside*/end*/ /*open",
+      "expected": "Token { kind: LineComment { doc_style: None }, len: 9 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: LineComment { doc_style: Some(Outer) }, len: 9 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: LineComment { doc_style: Some(Inner) }, len: 9 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: LineComment { doc_style: None }, len: 10 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: BlockComment { doc_style: None, terminated: true }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: BlockComment { doc_style: Some(Outer), terminated: true }, len: 8 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: BlockComment { doc_style: Some(Inner), terminated: true }, len: 10 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: BlockComment { doc_style: None, terminated: true }, len: 11 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: BlockComment { doc_style: None, terminated: true }, len: 23 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: BlockComment { doc_style: None, terminated: false }, len: 6 }"
+    },
+    {
+      "name": "comments/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "// normal\n/// outer\n//! inner\n//// plain\n/**/ /**doc*/ /*!inner*/ /***plain*/ /*nested/*inside*/end*/ /*open",
+      "expected": "Token { kind: LineComment { doc_style: None }, len: 9 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: LineComment { doc_style: Some(Outer) }, len: 9 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: LineComment { doc_style: Some(Inner) }, len: 9 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: LineComment { doc_style: None }, len: 10 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: BlockComment { doc_style: None, terminated: true }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: BlockComment { doc_style: Some(Outer), terminated: true }, len: 8 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: BlockComment { doc_style: Some(Inner), terminated: true }, len: 10 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: BlockComment { doc_style: None, terminated: true }, len: 11 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: BlockComment { doc_style: None, terminated: true }, len: 23 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: BlockComment { doc_style: None, terminated: false }, len: 6 }"
+    },
+    {
+      "name": "identifiers/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "fn r#fn k#fn r#_ k#_ r#9 k#9 abc# abc\" x' e🦀 abc😀‍😀 é 中 λ _ á ́a 𞛀",
+      "expected": "Token { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: RawIdent, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: ForcedKeywordIdent, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: RawIdent, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: ForcedKeywordIdent, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: RawStr { n_hashes: None }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: UnknownPrefix, len: 1 }\nToken { kind: Pound, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: UnknownPrefix, len: 3 }\nToken { kind: Pound, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: UnknownPrefix, len: 3 }\nToken { kind: Literal { kind: Str { terminated: false }, suffix_start: 50 }, len: 50 }"
+    },
+    {
+      "name": "identifiers/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "fn r#fn k#fn r#_ k#_ r#9 k#9 abc# abc\" x' e🦀 abc😀‍😀 é 中 λ _ á ́a 𞛀",
+      "expected": "Token { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: RawIdent, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: ForcedKeywordIdent, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: RawIdent, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: ForcedKeywordIdent, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: RawStr { n_hashes: None }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: UnknownPrefix, len: 1 }\nToken { kind: Pound, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: UnknownPrefix, len: 3 }\nToken { kind: Pound, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: UnknownPrefix, len: 3 }\nToken { kind: Literal { kind: Str { terminated: false }, suffix_start: 50 }, len: 50 }"
+    },
+    {
+      "name": "numbers/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "0 123 1_2_ 0x 0x_ 0xff_u8 0o9 0b102 0b_ 1f32 1. 1.0 1..2 1...2 1.foo 1.e3 1.2e+ 1e- 1e_2 1e+3 0x1.2 0b1e2 1é",
+      "expected": "Token { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 4 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Hexadecimal, empty_int: true }, suffix_start: 2 }, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Hexadecimal, empty_int: true }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Hexadecimal, empty_int: false }, suffix_start: 5 }, len: 7 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Octal, empty_int: false }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Binary, empty_int: false }, suffix_start: 5 }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Binary, empty_int: true }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Float { base: Decimal, empty_exponent: false }, suffix_start: 2 }, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Float { base: Decimal, empty_exponent: false }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Dot, len: 1 }\nToken { kind: Dot, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Dot, len: 1 }\nToken { kind: Dot, len: 1 }\nToken { kind: Dot, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Dot, len: 1 }\nToken { kind: Ident, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Dot, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Float { base: Decimal, empty_exponent: true }, suffix_start: 5 }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Float { base: Decimal, empty_exponent: true }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Float { base: Decimal, empty_exponent: false }, suffix_start: 4 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Float { base: Decimal, empty_exponent: false }, suffix_start: 4 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Float { base: Hexadecimal, empty_exponent: false }, suffix_start: 5 }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Float { base: Binary, empty_exponent: false }, suffix_start: 5 }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 3 }"
+    },
+    {
+      "name": "numbers/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "0 123 1_2_ 0x 0x_ 0xff_u8 0o9 0b102 0b_ 1f32 1. 1.0 1..2 1...2 1.foo 1.e3 1.2e+ 1e- 1e_2 1e+3 0x1.2 0b1e2 1é",
+      "expected": "Token { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 4 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Hexadecimal, empty_int: true }, suffix_start: 2 }, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Hexadecimal, empty_int: true }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Hexadecimal, empty_int: false }, suffix_start: 5 }, len: 7 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Octal, empty_int: false }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Binary, empty_int: false }, suffix_start: 5 }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Binary, empty_int: true }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Float { base: Decimal, empty_exponent: false }, suffix_start: 2 }, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Float { base: Decimal, empty_exponent: false }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Dot, len: 1 }\nToken { kind: Dot, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Dot, len: 1 }\nToken { kind: Dot, len: 1 }\nToken { kind: Dot, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Dot, len: 1 }\nToken { kind: Ident, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Dot, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Float { base: Decimal, empty_exponent: true }, suffix_start: 5 }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Float { base: Decimal, empty_exponent: true }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Float { base: Decimal, empty_exponent: false }, suffix_start: 4 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Float { base: Decimal, empty_exponent: false }, suffix_start: 4 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Float { base: Hexadecimal, empty_exponent: false }, suffix_start: 5 }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Float { base: Binary, empty_exponent: false }, suffix_start: 5 }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Int { base: Decimal, empty_int: false }, suffix_start: 1 }, len: 3 }"
+    },
+    {
+      "name": "characters/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "'a' ' ' '\\n' '\\\\' '\\'' ''' 'abc' 'abc '0 '0abc '😀 'a😀 'r#fn 'abc# '\n\" 'x/ /*comment*/ '\n'",
+      "expected": "Token { kind: Literal { kind: Char { terminated: true }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Char { terminated: true }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Char { terminated: true }, suffix_start: 4 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Char { terminated: true }, suffix_start: 4 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Char { terminated: true }, suffix_start: 4 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Char { terminated: true }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Char { terminated: true }, suffix_start: 5 }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Lifetime { starts_with_number: false }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Lifetime { starts_with_number: true }, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Lifetime { starts_with_number: true }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Lifetime { starts_with_number: true }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Lifetime { starts_with_number: true }, len: 6 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: RawLifetime, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: UnknownPrefixLifetime, len: 4 }\nToken { kind: Pound, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Char { terminated: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Str { terminated: false }, suffix_start: 21 }, len: 21 }"
+    },
+    {
+      "name": "characters/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "'a' ' ' '\\n' '\\\\' '\\'' ''' 'abc' 'abc '0 '0abc '😀 'a😀 'r#fn 'abc# '\n\" 'x/ /*comment*/ '\n'",
+      "expected": "Token { kind: Literal { kind: Char { terminated: true }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Char { terminated: true }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Char { terminated: true }, suffix_start: 4 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Char { terminated: true }, suffix_start: 4 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Char { terminated: true }, suffix_start: 4 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Char { terminated: true }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Char { terminated: true }, suffix_start: 5 }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Lifetime { starts_with_number: false }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Lifetime { starts_with_number: true }, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Lifetime { starts_with_number: true }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Lifetime { starts_with_number: true }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Lifetime { starts_with_number: true }, len: 6 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: RawLifetime, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: UnknownPrefixLifetime, len: 4 }\nToken { kind: Pound, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Char { terminated: false }, suffix_start: 1 }, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Str { terminated: false }, suffix_start: 21 }, len: 21 }"
+    },
+    {
+      "name": "strings/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "\"\" \"hello\"suffix b\"bytes\"_ c\"c\"suffix b'a'suffix \"\\\\\" \"\\\"\" \"a\u0000b\" \"line\r\nnext\" \"unterminated",
+      "expected": "Token { kind: Literal { kind: Str { terminated: true }, suffix_start: 2 }, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Str { terminated: true }, suffix_start: 7 }, len: 13 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: ByteStr { terminated: true }, suffix_start: 8 }, len: 9 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: CStr { terminated: true }, suffix_start: 4 }, len: 10 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Byte { terminated: true }, suffix_start: 4 }, len: 10 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Str { terminated: true }, suffix_start: 4 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Str { terminated: true }, suffix_start: 4 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Str { terminated: true }, suffix_start: 5 }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Str { terminated: true }, suffix_start: 12 }, len: 12 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Str { terminated: false }, suffix_start: 13 }, len: 13 }"
+    },
+    {
+      "name": "strings/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "\"\" \"hello\"suffix b\"bytes\"_ c\"c\"suffix b'a'suffix \"\\\\\" \"\\\"\" \"a\u0000b\" \"line\r\nnext\" \"unterminated",
+      "expected": "Token { kind: Literal { kind: Str { terminated: true }, suffix_start: 2 }, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Str { terminated: true }, suffix_start: 7 }, len: 13 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: ByteStr { terminated: true }, suffix_start: 8 }, len: 9 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: CStr { terminated: true }, suffix_start: 4 }, len: 10 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Byte { terminated: true }, suffix_start: 4 }, len: 10 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Str { terminated: true }, suffix_start: 4 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Str { terminated: true }, suffix_start: 4 }, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Str { terminated: true }, suffix_start: 5 }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Str { terminated: true }, suffix_start: 12 }, len: 12 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: Str { terminated: false }, suffix_start: 13 }, len: 13 }"
+    },
+    {
+      "name": "raws/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "r\"raw\"suffix r#\"one\"# br##\"two\"##suffix cr\"c\" r#bad r##\"missing\"#",
+      "expected": "Token { kind: Literal { kind: RawStr { n_hashes: Some(0) }, suffix_start: 6 }, len: 12 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: RawStr { n_hashes: Some(1) }, suffix_start: 8 }, len: 8 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: RawByteStr { n_hashes: Some(2) }, suffix_start: 11 }, len: 17 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: RawCStr { n_hashes: Some(0) }, suffix_start: 5 }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: RawIdent, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: RawStr { n_hashes: None }, suffix_start: 13 }, len: 13 }"
+    },
+    {
+      "name": "raws/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "r\"raw\"suffix r#\"one\"# br##\"two\"##suffix cr\"c\" r#bad r##\"missing\"#",
+      "expected": "Token { kind: Literal { kind: RawStr { n_hashes: Some(0) }, suffix_start: 6 }, len: 12 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: RawStr { n_hashes: Some(1) }, suffix_start: 8 }, len: 8 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: RawByteStr { n_hashes: Some(2) }, suffix_start: 11 }, len: 17 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: RawCStr { n_hashes: Some(0) }, suffix_start: 5 }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: RawIdent, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Literal { kind: RawStr { n_hashes: None }, suffix_start: 13 }, len: 13 }"
+    },
+    {
+      "name": "guarded/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "#\"a\"# ##\"b\"# ###\"c\"####suffix ## ##a #\"unterminated",
+      "expected": "Token { kind: GuardedStrPrefix, len: 2 }\nToken { kind: UnknownPrefix, len: 1 }\nToken { kind: Literal { kind: Str { terminated: true }, suffix_start: 6 }, len: 7 }\nToken { kind: Literal { kind: Str { terminated: true }, suffix_start: 7 }, len: 8 }\nToken { kind: Literal { kind: Str { terminated: true }, suffix_start: 21 }, len: 33 }"
+    },
+    {
+      "name": "guarded/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "#\"a\"# ##\"b\"# ###\"c\"####suffix ## ##a #\"unterminated",
+      "expected": "Token { kind: GuardedStrPrefix, len: 2 }\nToken { kind: UnknownPrefix, len: 1 }\nToken { kind: Literal { kind: Str { terminated: true }, suffix_start: 6 }, len: 7 }\nToken { kind: Literal { kind: Str { terminated: true }, suffix_start: 7 }, len: 8 }\nToken { kind: Literal { kind: Str { terminated: true }, suffix_start: 21 }, len: 33 }"
+    },
+    {
+      "name": "whitespace/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "\t\n\u000b\f\r ‎‏\u2028\u2029 ​\u0000",
+      "expected": "Token { kind: Whitespace, len: 20 }\nToken { kind: Unknown, len: 2 }\nToken { kind: Unknown, len: 3 }\nToken { kind: Unknown, len: 1 }"
+    },
+    {
+      "name": "whitespace/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "\t\n\u000b\f\r ‎‏\u2028\u2029 ​\u0000",
+      "expected": "Token { kind: Whitespace, len: 20 }\nToken { kind: Unknown, len: 2 }\nToken { kind: Unknown, len: 3 }\nToken { kind: Unknown, len: 1 }"
+    },
+    {
+      "name": "frontmatter/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "---cargo\n[dependencies]\nfoo=\"1\"\n---\nfn main(){}",
+      "expected": "Token { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Ident, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: OpenBracket, len: 1 }\nToken { kind: Ident, len: 12 }\nToken { kind: CloseBracket, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 3 }\nToken { kind: Eq, len: 1 }\nToken { kind: Literal { kind: Str { terminated: true }, suffix_start: 3 }, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "---cargo\n[dependencies]\nfoo=\"1\"\n---\nfn main(){}",
+      "expected": "Token { kind: Frontmatter { has_invalid_preceding_whitespace: false, invalid_infostring: false }, len: 35 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_no_end/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "---cargo\nwhatever\nuse a;\nfn main(){}",
+      "expected": "Token { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Ident, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 8 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 1 }\nToken { kind: Semi, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_no_end/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "---cargo\nwhatever\nuse a;\nfn main(){}",
+      "expected": "Token { kind: Frontmatter { has_invalid_preceding_whitespace: false, invalid_infostring: false }, len: 17 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 1 }\nToken { kind: Semi, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_near_end/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "----cargo\ninside\n---\nfn main(){}",
+      "expected": "Token { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Ident, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 6 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_near_end/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "----cargo\ninside\n---\nfn main(){}",
+      "expected": "Token { kind: Frontmatter { has_invalid_preceding_whitespace: false, invalid_infostring: false }, len: 20 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_invalid_ws/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": " \t---cargo\ninside\n---\nfn main(){}",
+      "expected": "Token { kind: Whitespace, len: 2 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Ident, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 6 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_invalid_ws/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": " \t---cargo\ninside\n---\nfn main(){}",
+      "expected": "Token { kind: Frontmatter { has_invalid_preceding_whitespace: true, invalid_infostring: false }, len: 21 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_invalid_info/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "--- !!!\ninside\n---\nfn main(){}",
+      "expected": "Token { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Bang, len: 1 }\nToken { kind: Bang, len: 1 }\nToken { kind: Bang, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 6 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_invalid_info/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "--- !!!\ninside\n---\nfn main(){}",
+      "expected": "Token { kind: Frontmatter { has_invalid_preceding_whitespace: false, invalid_infostring: true }, len: 18 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_tabs/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "---\tcargo.toml \t\ninside\n---tail\nfn main(){}",
+      "expected": "Token { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 5 }\nToken { kind: Dot, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: Whitespace, len: 3 }\nToken { kind: Ident, len: 6 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_tabs/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "---\tcargo.toml \t\ninside\n---tail\nfn main(){}",
+      "expected": "Token { kind: Frontmatter { has_invalid_preceding_whitespace: false, invalid_infostring: false }, len: 31 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_inline_fence/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "---cargo\nhello---middle\n   ---\nfn main(){}",
+      "expected": "Token { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Ident, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 5 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Ident, len: 6 }\nToken { kind: Whitespace, len: 4 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_inline_fence/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "---cargo\nhello---middle\n   ---\nfn main(){}",
+      "expected": "Token { kind: Frontmatter { has_invalid_preceding_whitespace: false, invalid_infostring: false }, len: 30 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_marker/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "---cargo\nno end\n#![feature(a)]\nfn main(){}",
+      "expected": "Token { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Ident, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Pound, len: 1 }\nToken { kind: Bang, len: 1 }\nToken { kind: OpenBracket, len: 1 }\nToken { kind: Ident, len: 7 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: Ident, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: CloseBracket, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_marker/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "---cargo\nno end\n#![feature(a)]\nfn main(){}",
+      "expected": "Token { kind: Frontmatter { has_invalid_preceding_whitespace: false, invalid_infostring: false }, len: 15 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Pound, len: 1 }\nToken { kind: Bang, len: 1 }\nToken { kind: OpenBracket, len: 1 }\nToken { kind: Ident, len: 7 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: Ident, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: CloseBracket, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_doc/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "---cargo\nno end\n//! docs\nfn main(){}",
+      "expected": "Token { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Ident, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 3 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: LineComment { doc_style: Some(Inner) }, len: 8 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_doc/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "---cargo\nno end\n//! docs\nfn main(){}",
+      "expected": "Token { kind: Frontmatter { has_invalid_preceding_whitespace: false, invalid_infostring: false }, len: 15 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: LineComment { doc_style: Some(Inner) }, len: 8 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_only/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "---",
+      "expected": "Token { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }"
+    },
+    {
+      "name": "frontmatter_only/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "---",
+      "expected": "Token { kind: Frontmatter { has_invalid_preceding_whitespace: false, invalid_infostring: true }, len: 3 }"
+    },
+    {
+      "name": "frontmatter_eof/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "---cargo\n",
+      "expected": "Token { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Ident, len: 5 }\nToken { kind: Whitespace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_eof/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "---cargo\n",
+      "expected": "Token { kind: Frontmatter { has_invalid_preceding_whitespace: false, invalid_infostring: false }, len: 9 }"
+    },
+    {
+      "name": "frontmatter_crlf/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "---cargo\r\nname=x\r\n---\r\nfn main(){}",
+      "expected": "Token { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Ident, len: 5 }\nToken { kind: Whitespace, len: 2 }\nToken { kind: Ident, len: 4 }\nToken { kind: Eq, len: 1 }\nToken { kind: Ident, len: 1 }\nToken { kind: Whitespace, len: 2 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Whitespace, len: 2 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "frontmatter_crlf/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "---cargo\r\nname=x\r\n---\r\nfn main(){}",
+      "expected": "Token { kind: Frontmatter { has_invalid_preceding_whitespace: false, invalid_infostring: true }, len: 22 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "shebang_doc/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "#!/bin/rust\n---cargo\n---\nfn main(){}",
+      "expected": "Token { kind: Pound, len: 1 }\nToken { kind: Bang, len: 1 }\nToken { kind: Slash, len: 1 }\nToken { kind: Ident, len: 3 }\nToken { kind: Slash, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Ident, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "shebang_doc/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "#!/bin/rust\n---cargo\n---\nfn main(){}",
+      "expected": "Token { kind: Pound, len: 1 }\nToken { kind: Bang, len: 1 }\nToken { kind: Slash, len: 1 }\nToken { kind: Ident, len: 3 }\nToken { kind: Slash, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Ident, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Minus, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: CloseBrace, len: 1 }"
+    },
+    {
+      "name": "smoke/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "/* source */ fn main(){println!(r#\"zebra\"#);} // end\n",
+      "expected": "Token { kind: BlockComment { doc_style: None, terminated: true }, len: 12 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: Ident, len: 7 }\nToken { kind: Bang, len: 1 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: Literal { kind: RawStr { n_hashes: Some(1) }, suffix_start: 10 }, len: 10 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: Semi, len: 1 }\nToken { kind: CloseBrace, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: LineComment { doc_style: None }, len: 6 }\nToken { kind: Whitespace, len: 1 }"
+    },
+    {
+      "name": "smoke/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "/* source */ fn main(){println!(r#\"zebra\"#);} // end\n",
+      "expected": "Token { kind: BlockComment { doc_style: None, terminated: true }, len: 12 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 2 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Ident, len: 4 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: OpenBrace, len: 1 }\nToken { kind: Ident, len: 7 }\nToken { kind: Bang, len: 1 }\nToken { kind: OpenParen, len: 1 }\nToken { kind: Literal { kind: RawStr { n_hashes: Some(1) }, suffix_start: 10 }, len: 10 }\nToken { kind: CloseParen, len: 1 }\nToken { kind: Semi, len: 1 }\nToken { kind: CloseBrace, len: 1 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: LineComment { doc_style: None }, len: 6 }\nToken { kind: Whitespace, len: 1 }"
+    },
+    {
+      "name": "shebang/00",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "",
+      "expected": "none"
+    },
+    {
+      "name": "shebang/01",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "#!",
+      "expected": "2"
+    },
+    {
+      "name": "shebang/02",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "#!\r",
+      "expected": "3"
+    },
+    {
+      "name": "shebang/03",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "#!\n",
+      "expected": "2"
+    },
+    {
+      "name": "shebang/04",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "#!\r\nnext",
+      "expected": "2"
+    },
+    {
+      "name": "shebang/05",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "#!/bin/sh\nfn main(){}",
+      "expected": "9"
+    },
+    {
+      "name": "shebang/06",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "#![a]",
+      "expected": "none"
+    },
+    {
+      "name": "shebang/07",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "#! /*comment*/ [a]",
+      "expected": "none"
+    },
+    {
+      "name": "shebang/08",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "#! /*unterminated",
+      "expected": "17"
+    },
+    {
+      "name": "shebang/09",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "#! //x\n[a]",
+      "expected": "none"
+    },
+    {
+      "name": "shebang/10",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "#! ///docs\n[a]",
+      "expected": "10"
+    },
+    {
+      "name": "shebang/11",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "#! //!docs\n[a]",
+      "expected": "10"
+    },
+    {
+      "name": "shebang/12",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "#!‎[a]",
+      "expected": "none"
+    },
+    {
+      "name": "shebang/13",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "#! [a]",
+      "expected": "7"
+    },
+    {
+      "name": "shebang/14",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "#!\u0000[a]",
+      "expected": "6"
+    },
+    {
+      "name": "shebang/15",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "﻿#!/bin/sh",
+      "expected": "none"
+    },
+    {
+      "name": "shebang/16",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "\n#!/bin/sh",
+      "expected": "none"
+    },
+    {
+      "name": "shebang/17",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "#! /*a\nb*/ /bin/sh",
+      "expected": "6"
+    },
+    {
+      "name": "shebang/18",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "#!\r\n[a]",
+      "expected": "none"
+    },
+    {
+      "name": "shebang/19",
+      "operation": "shebang",
+      "argument": 0,
+      "input": "#!\r/bin/sh\n",
+      "expected": "10"
+    },
+    {
+      "name": "raw/r/00",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r\"abc\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/r/01",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r\"abc",
+      "expected": "no_terminator:0:0:none"
+    },
+    {
+      "name": "raw/r/02",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r\"",
+      "expected": "no_terminator:0:0:none"
+    },
+    {
+      "name": "raw/r/03",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r\"\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/r/04",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r##\"abc\"#",
+      "expected": "no_terminator:2:1:8"
+    },
+    {
+      "name": "raw/r/05",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r###\"ab\"#cd\"##ef",
+      "expected": "no_terminator:3:2:12"
+    },
+    {
+      "name": "raw/r/06",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r##~\"bad\"##",
+      "expected": "invalid_starter:126"
+    },
+    {
+      "name": "raw/r/07",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r#😀",
+      "expected": "invalid_starter:128512"
+    },
+    {
+      "name": "raw/r/08",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r#\u0000",
+      "expected": "invalid_starter:0"
+    },
+    {
+      "name": "raw/r/09",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r#",
+      "expected": "invalid_starter:0"
+    },
+    {
+      "name": "raw/r/10",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r##\"é\"#",
+      "expected": "no_terminator:2:1:7"
+    },
+    {
+      "name": "raw/r/11",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r##\"🦀\"#",
+      "expected": "no_terminator:2:1:9"
+    },
+    {
+      "name": "raw/r/12",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r##\"\"#\"##suffix",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/r/13",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r##\"\"###",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/r/14",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r\"a\u0000b\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/r/15",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r\"line\r\nnext\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/r/hashes-0",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r\"abc\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/r/missing-0",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r\"abc\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/r/hashes-1",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r#\"abc\"#",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/r/missing-1",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r#\"abc\"",
+      "expected": "no_terminator:1:0:none"
+    },
+    {
+      "name": "raw/r/hashes-2",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r##\"abc\"##",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/r/missing-2",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r##\"abc\"#",
+      "expected": "no_terminator:2:1:8"
+    },
+    {
+      "name": "raw/r/hashes-254",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r##############################################################################################################################################################################################################################################################\"abc\"##############################################################################################################################################################################################################################################################",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/r/missing-254",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r##############################################################################################################################################################################################################################################################\"abc\"#############################################################################################################################################################################################################################################################",
+      "expected": "no_terminator:254:253:260"
+    },
+    {
+      "name": "raw/r/hashes-255",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r###############################################################################################################################################################################################################################################################\"abc\"###############################################################################################################################################################################################################################################################",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/r/missing-255",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r###############################################################################################################################################################################################################################################################\"abc\"##############################################################################################################################################################################################################################################################",
+      "expected": "no_terminator:255:254:261"
+    },
+    {
+      "name": "raw/r/hashes-256",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r################################################################################################################################################################################################################################################################\"abc\"################################################################################################################################################################################################################################################################",
+      "expected": "too_many:256"
+    },
+    {
+      "name": "raw/r/missing-256",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r################################################################################################################################################################################################################################################################\"abc\"###############################################################################################################################################################################################################################################################",
+      "expected": "no_terminator:256:255:262"
+    },
+    {
+      "name": "raw/r/hashes-257",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r#################################################################################################################################################################################################################################################################\"abc\"#################################################################################################################################################################################################################################################################",
+      "expected": "too_many:257"
+    },
+    {
+      "name": "raw/r/missing-257",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r#################################################################################################################################################################################################################################################################\"abc\"################################################################################################################################################################################################################################################################",
+      "expected": "no_terminator:257:256:263"
+    },
+    {
+      "name": "raw/r/hashes-300",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r############################################################################################################################################################################################################################################################################################################\"abc\"############################################################################################################################################################################################################################################################################################################",
+      "expected": "too_many:300"
+    },
+    {
+      "name": "raw/r/missing-300",
+      "operation": "raw",
+      "argument": 1,
+      "input": "r############################################################################################################################################################################################################################################################################################################\"abc\"###########################################################################################################################################################################################################################################################################################################",
+      "expected": "no_terminator:300:299:306"
+    },
+    {
+      "name": "raw/br/00",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br\"abc\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/br/01",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br\"abc",
+      "expected": "no_terminator:0:0:none"
+    },
+    {
+      "name": "raw/br/02",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br\"",
+      "expected": "no_terminator:0:0:none"
+    },
+    {
+      "name": "raw/br/03",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br\"\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/br/04",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br##\"abc\"#",
+      "expected": "no_terminator:2:1:9"
+    },
+    {
+      "name": "raw/br/05",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br###\"ab\"#cd\"##ef",
+      "expected": "no_terminator:3:2:13"
+    },
+    {
+      "name": "raw/br/06",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br##~\"bad\"##",
+      "expected": "invalid_starter:126"
+    },
+    {
+      "name": "raw/br/07",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br#😀",
+      "expected": "invalid_starter:128512"
+    },
+    {
+      "name": "raw/br/08",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br#\u0000",
+      "expected": "invalid_starter:0"
+    },
+    {
+      "name": "raw/br/09",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br#",
+      "expected": "invalid_starter:0"
+    },
+    {
+      "name": "raw/br/10",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br##\"é\"#",
+      "expected": "no_terminator:2:1:8"
+    },
+    {
+      "name": "raw/br/11",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br##\"🦀\"#",
+      "expected": "no_terminator:2:1:10"
+    },
+    {
+      "name": "raw/br/12",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br##\"\"#\"##suffix",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/br/13",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br##\"\"###",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/br/14",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br\"a\u0000b\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/br/15",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br\"line\r\nnext\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/br/hashes-0",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br\"abc\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/br/missing-0",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br\"abc\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/br/hashes-1",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br#\"abc\"#",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/br/missing-1",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br#\"abc\"",
+      "expected": "no_terminator:1:0:none"
+    },
+    {
+      "name": "raw/br/hashes-2",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br##\"abc\"##",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/br/missing-2",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br##\"abc\"#",
+      "expected": "no_terminator:2:1:9"
+    },
+    {
+      "name": "raw/br/hashes-254",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br##############################################################################################################################################################################################################################################################\"abc\"##############################################################################################################################################################################################################################################################",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/br/missing-254",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br##############################################################################################################################################################################################################################################################\"abc\"#############################################################################################################################################################################################################################################################",
+      "expected": "no_terminator:254:253:261"
+    },
+    {
+      "name": "raw/br/hashes-255",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br###############################################################################################################################################################################################################################################################\"abc\"###############################################################################################################################################################################################################################################################",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/br/missing-255",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br###############################################################################################################################################################################################################################################################\"abc\"##############################################################################################################################################################################################################################################################",
+      "expected": "no_terminator:255:254:262"
+    },
+    {
+      "name": "raw/br/hashes-256",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br################################################################################################################################################################################################################################################################\"abc\"################################################################################################################################################################################################################################################################",
+      "expected": "too_many:256"
+    },
+    {
+      "name": "raw/br/missing-256",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br################################################################################################################################################################################################################################################################\"abc\"###############################################################################################################################################################################################################################################################",
+      "expected": "no_terminator:256:255:263"
+    },
+    {
+      "name": "raw/br/hashes-257",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br#################################################################################################################################################################################################################################################################\"abc\"#################################################################################################################################################################################################################################################################",
+      "expected": "too_many:257"
+    },
+    {
+      "name": "raw/br/missing-257",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br#################################################################################################################################################################################################################################################################\"abc\"################################################################################################################################################################################################################################################################",
+      "expected": "no_terminator:257:256:264"
+    },
+    {
+      "name": "raw/br/hashes-300",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br############################################################################################################################################################################################################################################################################################################\"abc\"############################################################################################################################################################################################################################################################################################################",
+      "expected": "too_many:300"
+    },
+    {
+      "name": "raw/br/missing-300",
+      "operation": "raw",
+      "argument": 2,
+      "input": "br############################################################################################################################################################################################################################################################################################################\"abc\"###########################################################################################################################################################################################################################################################################################################",
+      "expected": "no_terminator:300:299:307"
+    },
+    {
+      "name": "raw/cr/00",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr\"abc\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/cr/01",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr\"abc",
+      "expected": "no_terminator:0:0:none"
+    },
+    {
+      "name": "raw/cr/02",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr\"",
+      "expected": "no_terminator:0:0:none"
+    },
+    {
+      "name": "raw/cr/03",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr\"\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/cr/04",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr##\"abc\"#",
+      "expected": "no_terminator:2:1:9"
+    },
+    {
+      "name": "raw/cr/05",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr###\"ab\"#cd\"##ef",
+      "expected": "no_terminator:3:2:13"
+    },
+    {
+      "name": "raw/cr/06",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr##~\"bad\"##",
+      "expected": "invalid_starter:126"
+    },
+    {
+      "name": "raw/cr/07",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr#😀",
+      "expected": "invalid_starter:128512"
+    },
+    {
+      "name": "raw/cr/08",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr#\u0000",
+      "expected": "invalid_starter:0"
+    },
+    {
+      "name": "raw/cr/09",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr#",
+      "expected": "invalid_starter:0"
+    },
+    {
+      "name": "raw/cr/10",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr##\"é\"#",
+      "expected": "no_terminator:2:1:8"
+    },
+    {
+      "name": "raw/cr/11",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr##\"🦀\"#",
+      "expected": "no_terminator:2:1:10"
+    },
+    {
+      "name": "raw/cr/12",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr##\"\"#\"##suffix",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/cr/13",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr##\"\"###",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/cr/14",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr\"a\u0000b\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/cr/15",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr\"line\r\nnext\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/cr/hashes-0",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr\"abc\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/cr/missing-0",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr\"abc\"",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/cr/hashes-1",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr#\"abc\"#",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/cr/missing-1",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr#\"abc\"",
+      "expected": "no_terminator:1:0:none"
+    },
+    {
+      "name": "raw/cr/hashes-2",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr##\"abc\"##",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/cr/missing-2",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr##\"abc\"#",
+      "expected": "no_terminator:2:1:9"
+    },
+    {
+      "name": "raw/cr/hashes-254",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr##############################################################################################################################################################################################################################################################\"abc\"##############################################################################################################################################################################################################################################################",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/cr/missing-254",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr##############################################################################################################################################################################################################################################################\"abc\"#############################################################################################################################################################################################################################################################",
+      "expected": "no_terminator:254:253:261"
+    },
+    {
+      "name": "raw/cr/hashes-255",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr###############################################################################################################################################################################################################################################################\"abc\"###############################################################################################################################################################################################################################################################",
+      "expected": "ok"
+    },
+    {
+      "name": "raw/cr/missing-255",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr###############################################################################################################################################################################################################################################################\"abc\"##############################################################################################################################################################################################################################################################",
+      "expected": "no_terminator:255:254:262"
+    },
+    {
+      "name": "raw/cr/hashes-256",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr################################################################################################################################################################################################################################################################\"abc\"################################################################################################################################################################################################################################################################",
+      "expected": "too_many:256"
+    },
+    {
+      "name": "raw/cr/missing-256",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr################################################################################################################################################################################################################################################################\"abc\"###############################################################################################################################################################################################################################################################",
+      "expected": "no_terminator:256:255:263"
+    },
+    {
+      "name": "raw/cr/hashes-257",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr#################################################################################################################################################################################################################################################################\"abc\"#################################################################################################################################################################################################################################################################",
+      "expected": "too_many:257"
+    },
+    {
+      "name": "raw/cr/missing-257",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr#################################################################################################################################################################################################################################################################\"abc\"################################################################################################################################################################################################################################################################",
+      "expected": "no_terminator:257:256:264"
+    },
+    {
+      "name": "raw/cr/hashes-300",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr############################################################################################################################################################################################################################################################################################################\"abc\"############################################################################################################################################################################################################################################################################################################",
+      "expected": "too_many:300"
+    },
+    {
+      "name": "raw/cr/missing-300",
+      "operation": "raw",
+      "argument": 2,
+      "input": "cr############################################################################################################################################################################################################################################################################################################\"abc\"###########################################################################################################################################################################################################################################################################################################",
+      "expected": "no_terminator:300:299:307"
+    },
+    {
+      "name": "guarded/00",
+      "operation": "guarded",
+      "argument": 0,
+      "input": "",
+      "expected": "none:0,0,0,true,0,0,"
+    },
+    {
+      "name": "guarded/01",
+      "operation": "guarded",
+      "argument": 0,
+      "input": "#",
+      "expected": "none:0,0,0,true,1,35,"
+    },
+    {
+      "name": "guarded/02",
+      "operation": "guarded",
+      "argument": 0,
+      "input": "##",
+      "expected": "none:0,0,0,true,2,35,"
+    },
+    {
+      "name": "guarded/03",
+      "operation": "guarded",
+      "argument": 0,
+      "input": "####a",
+      "expected": "none:97,0,0,false,4,35,61"
+    },
+    {
+      "name": "guarded/04",
+      "operation": "guarded",
+      "argument": 0,
+      "input": "abc",
+      "expected": "none:97,98,99,false,0,0,616263"
+    },
+    {
+      "name": "guarded/05",
+      "operation": "guarded",
+      "argument": 0,
+      "input": "\"\"",
+      "expected": "some:0:true:2:0,0,0,true,0,34,"
+    },
+    {
+      "name": "guarded/06",
+      "operation": "guarded",
+      "argument": 0,
+      "input": "\"hi\"suffix",
+      "expected": "some:0:true:10:0,0,0,true,0,120,"
+    },
+    {
+      "name": "guarded/07",
+      "operation": "guarded",
+      "argument": 0,
+      "input": "#\"hi\"#",
+      "expected": "some:1:true:6:0,0,0,true,0,35,"
+    },
+    {
+      "name": "guarded/08",
+      "operation": "guarded",
+      "argument": 0,
+      "input": "##\"hi\"#",
+      "expected": "some:2:true:7:0,0,0,true,0,35,"
+    },
+    {
+      "name": "guarded/09",
+      "operation": "guarded",
+      "argument": 0,
+      "input": "###\"hi\"####suffix",
+      "expected": "some:3:true:10:35,115,117,false,0,35,23737566666978"
+    },
+    {
+      "name": "guarded/10",
+      "operation": "guarded",
+      "argument": 0,
+      "input": "#\"hi",
+      "expected": "some:1:false:4:0,0,0,true,0,105,"
+    },
+    {
+      "name": "guarded/11",
+      "operation": "guarded",
+      "argument": 0,
+      "input": "#\"a\\\"b\"#tail",
+      "expected": "some:1:true:12:0,0,0,true,0,108,"
+    },
+    {
+      "name": "guarded/12",
+      "operation": "guarded",
+      "argument": 0,
+      "input": "##\"🦀\u0000é\"#x",
+      "expected": "some:2:true:13:0,0,0,true,0,120,"
+    },
+    {
+      "name": "guarded/13",
+      "operation": "guarded",
+      "argument": 0,
+      "input": "#\"line\nnext\"#",
+      "expected": "some:1:true:13:0,0,0,true,0,35,"
+    },
+    {
+      "name": "guarded/14",
+      "operation": "guarded",
+      "argument": 0,
+      "input": "##\"a\\\\\"##",
+      "expected": "some:2:true:9:0,0,0,true,0,35,"
+    },
+    {
+      "name": "guarded/15",
+      "operation": "guarded",
+      "argument": 0,
+      "input": "############################################################################################################################################################################################################################################################################################################\"x\"#############################################################################################################################################################################################################################################################################################################",
+      "expected": "some:300:true:603:35,0,0,false,0,35,23"
+    },
+    {
+      "name": "properties/00",
+      "operation": "properties",
+      "argument": 0,
+      "input": "",
+      "expected": "ident:false"
+    },
+    {
+      "name": "properties/01",
+      "operation": "properties",
+      "argument": 0,
+      "input": "a",
+      "expected": "ident:true\n97:false:false:true:true"
+    },
+    {
+      "name": "properties/02",
+      "operation": "properties",
+      "argument": 0,
+      "input": "_",
+      "expected": "ident:true\n95:false:false:true:true"
+    },
+    {
+      "name": "properties/03",
+      "operation": "properties",
+      "argument": 0,
+      "input": "a1",
+      "expected": "ident:true\n97:false:false:true:true\n49:false:false:false:true"
+    },
+    {
+      "name": "properties/04",
+      "operation": "properties",
+      "argument": 0,
+      "input": "1a",
+      "expected": "ident:false\n49:false:false:false:true\n97:false:false:true:true"
+    },
+    {
+      "name": "properties/05",
+      "operation": "properties",
+      "argument": 0,
+      "input": "é中λ",
+      "expected": "ident:true\n233:false:false:true:true\n20013:false:false:true:true\n955:false:false:true:true"
+    },
+    {
+      "name": "properties/06",
+      "operation": "properties",
+      "argument": 0,
+      "input": "á",
+      "expected": "ident:true\n97:false:false:true:true\n769:false:false:false:true"
+    },
+    {
+      "name": "properties/07",
+      "operation": "properties",
+      "argument": 0,
+      "input": "́a",
+      "expected": "ident:false\n769:false:false:false:true\n97:false:false:true:true"
+    },
+    {
+      "name": "properties/08",
+      "operation": "properties",
+      "argument": 0,
+      "input": "😀",
+      "expected": "ident:false\n128512:false:false:false:false"
+    },
+    {
+      "name": "properties/09",
+      "operation": "properties",
+      "argument": 0,
+      "input": "a😀",
+      "expected": "ident:false\n97:false:false:true:true\n128512:false:false:false:false"
+    },
+    {
+      "name": "properties/10",
+      "operation": "properties",
+      "argument": 0,
+      "input": "𞛀",
+      "expected": "ident:true\n124608:false:false:true:true"
+    },
+    {
+      "name": "properties/11",
+      "operation": "properties",
+      "argument": 0,
+      "input": "\u0000",
+      "expected": "ident:false\n0:false:false:false:false"
+    },
+    {
+      "name": "properties/12",
+      "operation": "properties",
+      "argument": 0,
+      "input": "\t\n\u000b\f\r ‎‏\u2028\u2029 ​\u0000",
+      "expected": "ident:false\n9:true:true:false:false\n10:true:false:false:false\n11:true:false:false:false\n12:true:false:false:false\n13:true:false:false:false\n32:true:true:false:false\n133:true:false:false:false\n8206:true:false:false:false\n8207:true:false:false:false\n8232:true:false:false:false\n8233:true:false:false:false\n160:false:false:false:false\n8203:false:false:false:false\n0:false:false:false:false"
+    },
+    {
+      "name": "cursor/00/0",
+      "operation": "cursor",
+      "argument": 0,
+      "input": "",
+      "expected": "initial:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,"
+    },
+    {
+      "name": "cursor/00/1",
+      "operation": "cursor",
+      "argument": 1,
+      "input": "",
+      "expected": "initial:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\nr:reset:0,0,0,true,0,0,\ni:ident:0,0,0,true,0,0,\nw:whitespace:0,0,0,true,0,0,\nn:0:0,0,0,true,0,0,\nq:quote:0,0,0,true,0,0,\nl:newline:0,0,0,true,0,0,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\nr:reset:0,0,0,true,0,0,\ni:ident:0,0,0,true,0,0,\nw:whitespace:0,0,0,true,0,0,\nn:0:0,0,0,true,0,0,\nq:quote:0,0,0,true,0,0,\nl:newline:0,0,0,true,0,0,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\ne:end:0,0,0,true,0,0,"
+    },
+    {
+      "name": "cursor/00/2",
+      "operation": "cursor",
+      "argument": 2,
+      "input": "",
+      "expected": "initial:0,0,0,true,0,0,\nn:0:0,0,0,true,0,0,\nr:reset:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\ni:ident:0,0,0,true,0,0,\nw:whitespace:0,0,0,true,0,0,\nq:quote:0,0,0,true,0,0,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,0,\nl:newline:0,0,0,true,0,0,\nn:0:0,0,0,true,0,0,\nr:reset:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\ni:ident:0,0,0,true,0,0,\nw:whitespace:0,0,0,true,0,0,\nq:quote:0,0,0,true,0,0,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,0,\nl:newline:0,0,0,true,0,0,\ne:end:0,0,0,true,0,0,"
+    },
+    {
+      "name": "cursor/01/0",
+      "operation": "cursor",
+      "argument": 0,
+      "input": "a",
+      "expected": "initial:97,0,0,false,0,0,61\nb:97:0,0,0,true,1,97,\nb:none:0,0,0,true,1,97,\nb:none:0,0,0,true,1,97,"
+    },
+    {
+      "name": "cursor/01/1",
+      "operation": "cursor",
+      "argument": 1,
+      "input": "a",
+      "expected": "initial:97,0,0,false,0,0,61\nb:97:0,0,0,true,1,97,\nr:reset:0,0,0,true,0,97,\ni:ident:0,0,0,true,0,97,\nw:whitespace:0,0,0,true,0,97,\nn:0:0,0,0,true,0,97,\nq:quote:0,0,0,true,0,97,\nl:newline:0,0,0,true,0,97,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,97,\nb:none:0,0,0,true,0,97,\nr:reset:0,0,0,true,0,97,\ni:ident:0,0,0,true,0,97,\nw:whitespace:0,0,0,true,0,97,\nn:0:0,0,0,true,0,97,\nq:quote:0,0,0,true,0,97,\nl:newline:0,0,0,true,0,97,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,97,\nb:none:0,0,0,true,0,97,\ne:end:0,0,0,true,0,97,"
+    },
+    {
+      "name": "cursor/01/2",
+      "operation": "cursor",
+      "argument": 2,
+      "input": "a",
+      "expected": "initial:97,0,0,false,0,0,61\nn:1:0,0,0,true,1,0,\nr:reset:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\ni:ident:0,0,0,true,0,0,\nw:whitespace:0,0,0,true,0,0,\nq:quote:0,0,0,true,0,0,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,0,\nl:newline:0,0,0,true,0,0,\nn:0:0,0,0,true,0,0,\nr:reset:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\ni:ident:0,0,0,true,0,0,\nw:whitespace:0,0,0,true,0,0,\nq:quote:0,0,0,true,0,0,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,0,\nl:newline:0,0,0,true,0,0,\ne:end:0,0,0,true,0,0,"
+    },
+    {
+      "name": "cursor/02/0",
+      "operation": "cursor",
+      "argument": 0,
+      "input": "é",
+      "expected": "initial:233,0,0,false,0,0,c3a9\nb:233:0,0,0,true,2,233,\nb:none:0,0,0,true,2,233,\nb:none:0,0,0,true,2,233,"
+    },
+    {
+      "name": "cursor/02/1",
+      "operation": "cursor",
+      "argument": 1,
+      "input": "é",
+      "expected": "initial:233,0,0,false,0,0,c3a9\nb:233:0,0,0,true,2,233,\nr:reset:0,0,0,true,0,233,\ni:ident:0,0,0,true,0,233,\nw:whitespace:0,0,0,true,0,233,\nn:0:0,0,0,true,0,233,\nq:quote:0,0,0,true,0,233,\nl:newline:0,0,0,true,0,233,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,233,\nb:none:0,0,0,true,0,233,\nr:reset:0,0,0,true,0,233,\ni:ident:0,0,0,true,0,233,\nw:whitespace:0,0,0,true,0,233,\nn:0:0,0,0,true,0,233,\nq:quote:0,0,0,true,0,233,\nl:newline:0,0,0,true,0,233,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,233,\nb:none:0,0,0,true,0,233,\ne:end:0,0,0,true,0,233,"
+    },
+    {
+      "name": "cursor/02/2",
+      "operation": "cursor",
+      "argument": 2,
+      "input": "é",
+      "expected": "initial:233,0,0,false,0,0,c3a9\nn:2:0,0,0,true,2,0,\nr:reset:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\ni:ident:0,0,0,true,0,0,\nw:whitespace:0,0,0,true,0,0,\nq:quote:0,0,0,true,0,0,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,0,\nl:newline:0,0,0,true,0,0,\nn:0:0,0,0,true,0,0,\nr:reset:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\ni:ident:0,0,0,true,0,0,\nw:whitespace:0,0,0,true,0,0,\nq:quote:0,0,0,true,0,0,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,0,\nl:newline:0,0,0,true,0,0,\ne:end:0,0,0,true,0,0,"
+    },
+    {
+      "name": "cursor/03/0",
+      "operation": "cursor",
+      "argument": 0,
+      "input": "🦀",
+      "expected": "initial:129408,0,0,false,0,0,f09fa680\nb:129408:0,0,0,true,4,129408,\nb:none:0,0,0,true,4,129408,\nb:none:0,0,0,true,4,129408,"
+    },
+    {
+      "name": "cursor/03/1",
+      "operation": "cursor",
+      "argument": 1,
+      "input": "🦀",
+      "expected": "initial:129408,0,0,false,0,0,f09fa680\nb:129408:0,0,0,true,4,129408,\nr:reset:0,0,0,true,0,129408,\ni:ident:0,0,0,true,0,129408,\nw:whitespace:0,0,0,true,0,129408,\nn:0:0,0,0,true,0,129408,\nq:quote:0,0,0,true,0,129408,\nl:newline:0,0,0,true,0,129408,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,129408,\nb:none:0,0,0,true,0,129408,\nr:reset:0,0,0,true,0,129408,\ni:ident:0,0,0,true,0,129408,\nw:whitespace:0,0,0,true,0,129408,\nn:0:0,0,0,true,0,129408,\nq:quote:0,0,0,true,0,129408,\nl:newline:0,0,0,true,0,129408,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,129408,\nb:none:0,0,0,true,0,129408,\ne:end:0,0,0,true,0,129408,"
+    },
+    {
+      "name": "cursor/03/2",
+      "operation": "cursor",
+      "argument": 2,
+      "input": "🦀",
+      "expected": "initial:129408,0,0,false,0,0,f09fa680\nn:4:0,0,0,true,4,0,\nr:reset:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\ni:ident:0,0,0,true,0,0,\nw:whitespace:0,0,0,true,0,0,\nq:quote:0,0,0,true,0,0,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,0,\nl:newline:0,0,0,true,0,0,\nn:0:0,0,0,true,0,0,\nr:reset:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\ni:ident:0,0,0,true,0,0,\nw:whitespace:0,0,0,true,0,0,\nq:quote:0,0,0,true,0,0,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,0,\nl:newline:0,0,0,true,0,0,\ne:end:0,0,0,true,0,0,"
+    },
+    {
+      "name": "cursor/04/0",
+      "operation": "cursor",
+      "argument": 0,
+      "input": "\u0000",
+      "expected": "initial:0,0,0,false,0,0,00\nb:0:0,0,0,true,1,0,\nb:none:0,0,0,true,1,0,\nb:none:0,0,0,true,1,0,"
+    },
+    {
+      "name": "cursor/04/1",
+      "operation": "cursor",
+      "argument": 1,
+      "input": "\u0000",
+      "expected": "initial:0,0,0,false,0,0,00\nb:0:0,0,0,true,1,0,\nr:reset:0,0,0,true,0,0,\ni:ident:0,0,0,true,0,0,\nw:whitespace:0,0,0,true,0,0,\nn:0:0,0,0,true,0,0,\nq:quote:0,0,0,true,0,0,\nl:newline:0,0,0,true,0,0,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\nr:reset:0,0,0,true,0,0,\ni:ident:0,0,0,true,0,0,\nw:whitespace:0,0,0,true,0,0,\nn:0:0,0,0,true,0,0,\nq:quote:0,0,0,true,0,0,\nl:newline:0,0,0,true,0,0,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\ne:end:0,0,0,true,0,0,"
+    },
+    {
+      "name": "cursor/04/2",
+      "operation": "cursor",
+      "argument": 2,
+      "input": "\u0000",
+      "expected": "initial:0,0,0,false,0,0,00\nn:1:0,0,0,true,1,0,\nr:reset:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\ni:ident:0,0,0,true,0,0,\nw:whitespace:0,0,0,true,0,0,\nq:quote:0,0,0,true,0,0,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,0,\nl:newline:0,0,0,true,0,0,\nn:0:0,0,0,true,0,0,\nr:reset:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\nb:none:0,0,0,true,0,0,\ni:ident:0,0,0,true,0,0,\nw:whitespace:0,0,0,true,0,0,\nq:quote:0,0,0,true,0,0,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,0,\nl:newline:0,0,0,true,0,0,\ne:end:0,0,0,true,0,0,"
+    },
+    {
+      "name": "cursor/05/0",
+      "operation": "cursor",
+      "argument": 0,
+      "input": "a\u0000é🦀\"tail\nnext",
+      "expected": "initial:97,0,233,false,0,0,6100c3a9f09fa680227461696c0a6e657874\nb:97:0,233,129408,false,1,97,00c3a9f09fa680227461696c0a6e657874\nb:0:233,129408,34,false,2,0,c3a9f09fa680227461696c0a6e657874\nb:233:129408,34,116,false,4,233,f09fa680227461696c0a6e657874\nb:129408:34,116,97,false,8,129408,227461696c0a6e657874\nb:34:116,97,105,false,9,34,7461696c0a6e657874\nb:116:97,105,108,false,10,116,61696c0a6e657874\nb:97:105,108,10,false,11,97,696c0a6e657874\nb:105:108,10,110,false,12,105,6c0a6e657874\nb:108:10,110,101,false,13,108,0a6e657874\nb:10:110,101,120,false,14,10,6e657874\nb:110:101,120,116,false,15,110,657874\nb:101:120,116,0,false,16,101,7874\nb:120:116,0,0,false,17,120,74\nb:116:0,0,0,true,18,116,\nb:none:0,0,0,true,18,116,\nb:none:0,0,0,true,18,116,"
+    },
+    {
+      "name": "cursor/05/1",
+      "operation": "cursor",
+      "argument": 1,
+      "input": "a\u0000é🦀\"tail\nnext",
+      "expected": "initial:97,0,233,false,0,0,6100c3a9f09fa680227461696c0a6e657874\nb:97:0,233,129408,false,1,97,00c3a9f09fa680227461696c0a6e657874\nr:reset:0,233,129408,false,0,97,00c3a9f09fa680227461696c0a6e657874\ni:ident:0,233,129408,false,0,97,00c3a9f09fa680227461696c0a6e657874\nw:whitespace:0,233,129408,false,0,97,00c3a9f09fa680227461696c0a6e657874\nn:1:233,129408,34,false,1,97,c3a9f09fa680227461696c0a6e657874\nq:quote:34,116,97,false,7,97,227461696c0a6e657874\nl:newline:10,110,101,false,12,97,0a6e657874\na:Token { kind: Whitespace, len: 13 }:110,101,120,false,0,10,6e657874\nb:110:101,120,116,false,1,110,657874\nr:reset:101,120,116,false,0,110,657874\ni:ident:0,0,0,true,3,116,\nw:whitespace:0,0,0,true,3,116,\nn:0:0,0,0,true,3,116,\nq:quote:0,0,0,true,3,116,\nl:newline:0,0,0,true,3,116,\na:Token { kind: Eof, len: 0 }:0,0,0,true,3,116,\nb:none:0,0,0,true,3,116,\ne:end:0,0,0,true,3,116,"
+    },
+    {
+      "name": "cursor/05/2",
+      "operation": "cursor",
+      "argument": 2,
+      "input": "a\u0000é🦀\"tail\nnext",
+      "expected": "initial:97,0,233,false,0,0,6100c3a9f09fa680227461696c0a6e657874\nn:1:0,233,129408,false,1,0,00c3a9f09fa680227461696c0a6e657874\nr:reset:0,233,129408,false,0,0,00c3a9f09fa680227461696c0a6e657874\nb:0:233,129408,34,false,1,0,c3a9f09fa680227461696c0a6e657874\nb:233:129408,34,116,false,3,233,f09fa680227461696c0a6e657874\ni:ident:129408,34,116,false,3,233,f09fa680227461696c0a6e657874\nw:whitespace:129408,34,116,false,3,233,f09fa680227461696c0a6e657874\nq:quote:34,116,97,false,7,233,227461696c0a6e657874\na:Token { kind: Literal { kind: Str { terminated: false }, suffix_start: 17 }, len: 17 }:0,0,0,true,0,116,\nl:newline:0,0,0,true,0,116,\nn:0:0,0,0,true,0,116,\nr:reset:0,0,0,true,0,116,\nb:none:0,0,0,true,0,116,\nb:none:0,0,0,true,0,116,\ni:ident:0,0,0,true,0,116,\nw:whitespace:0,0,0,true,0,116,\nq:quote:0,0,0,true,0,116,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,116,\nl:newline:0,0,0,true,0,116,\ne:end:0,0,0,true,0,116,"
+    },
+    {
+      "name": "cursor/06/0",
+      "operation": "cursor",
+      "argument": 0,
+      "input": " abc \t\"quote\"\nend",
+      "expected": "initial:32,97,98,false,0,0,2061626320092271756f7465220a656e64\nb:32:97,98,99,false,1,32,61626320092271756f7465220a656e64\nb:97:98,99,32,false,2,97,626320092271756f7465220a656e64\nb:98:99,32,9,false,3,98,6320092271756f7465220a656e64\nb:99:32,9,34,false,4,99,20092271756f7465220a656e64\nb:32:9,34,113,false,5,32,092271756f7465220a656e64\nb:9:34,113,117,false,6,9,2271756f7465220a656e64\nb:34:113,117,111,false,7,34,71756f7465220a656e64\nb:113:117,111,116,false,8,113,756f7465220a656e64\nb:117:111,116,101,false,9,117,6f7465220a656e64\nb:111:116,101,34,false,10,111,7465220a656e64\nb:116:101,34,10,false,11,116,65220a656e64\nb:101:34,10,101,false,12,101,220a656e64\nb:34:10,101,110,false,13,34,0a656e64\nb:10:101,110,100,false,14,10,656e64\nb:101:110,100,0,false,15,101,6e64\nb:110:100,0,0,false,16,110,64\nb:100:0,0,0,true,17,100,\nb:none:0,0,0,true,17,100,\nb:none:0,0,0,true,17,100,"
+    },
+    {
+      "name": "cursor/06/1",
+      "operation": "cursor",
+      "argument": 1,
+      "input": " abc \t\"quote\"\nend",
+      "expected": "initial:32,97,98,false,0,0,2061626320092271756f7465220a656e64\nb:32:97,98,99,false,1,32,61626320092271756f7465220a656e64\nr:reset:97,98,99,false,0,32,61626320092271756f7465220a656e64\ni:ident:32,9,34,false,3,99,20092271756f7465220a656e64\nw:whitespace:34,113,117,false,5,9,2271756f7465220a656e64\nn:1:113,117,111,false,6,9,71756f7465220a656e64\nq:quote:34,10,101,false,11,9,220a656e64\nl:newline:10,101,110,false,12,9,0a656e64\na:Token { kind: Whitespace, len: 13 }:101,110,100,false,0,10,656e64\nb:101:110,100,0,false,1,101,6e64\nr:reset:110,100,0,false,0,101,6e64\ni:ident:0,0,0,true,2,100,\nw:whitespace:0,0,0,true,2,100,\nn:0:0,0,0,true,2,100,\nq:quote:0,0,0,true,2,100,\nl:newline:0,0,0,true,2,100,\na:Token { kind: Eof, len: 0 }:0,0,0,true,2,100,\nb:none:0,0,0,true,2,100,\ne:end:0,0,0,true,2,100,"
+    },
+    {
+      "name": "cursor/06/2",
+      "operation": "cursor",
+      "argument": 2,
+      "input": " abc \t\"quote\"\nend",
+      "expected": "initial:32,97,98,false,0,0,2061626320092271756f7465220a656e64\nn:1:97,98,99,false,1,0,61626320092271756f7465220a656e64\nr:reset:97,98,99,false,0,0,61626320092271756f7465220a656e64\nb:97:98,99,32,false,1,97,626320092271756f7465220a656e64\nb:98:99,32,9,false,2,98,6320092271756f7465220a656e64\ni:ident:32,9,34,false,3,99,20092271756f7465220a656e64\nw:whitespace:34,113,117,false,5,9,2271756f7465220a656e64\nq:quote:34,113,117,false,5,9,2271756f7465220a656e64\na:Token { kind: Literal { kind: Str { terminated: true }, suffix_start: 12 }, len: 12 }:10,101,110,false,0,34,0a656e64\nl:newline:10,101,110,false,0,34,0a656e64\nn:1:101,110,100,false,1,34,656e64\nr:reset:101,110,100,false,0,34,656e64\nb:101:110,100,0,false,1,101,6e64\nb:110:100,0,0,false,2,110,64\ni:ident:0,0,0,true,3,100,\nw:whitespace:0,0,0,true,3,100,\nq:quote:0,0,0,true,3,100,\na:Token { kind: Eof, len: 0 }:0,0,0,true,3,100,\nl:newline:0,0,0,true,3,100,\ne:end:0,0,0,true,3,100,"
+    },
+    {
+      "name": "cursor/07/0",
+      "operation": "cursor",
+      "argument": 0,
+      "input": "é中λ_á \"x\"\n",
+      "expected": "initial:233,20013,955,false,0,0,c3a9e4b8adcebb5f61cc81202278220a\nb:233:20013,955,95,false,2,233,e4b8adcebb5f61cc81202278220a\nb:20013:955,95,97,false,5,20013,cebb5f61cc81202278220a\nb:955:95,97,769,false,7,955,5f61cc81202278220a\nb:95:97,769,32,false,8,95,61cc81202278220a\nb:97:769,32,34,false,9,97,cc81202278220a\nb:769:32,34,120,false,11,769,202278220a\nb:32:34,120,34,false,12,32,2278220a\nb:34:120,34,10,false,13,34,78220a\nb:120:34,10,0,false,14,120,220a\nb:34:10,0,0,false,15,34,0a\nb:10:0,0,0,true,16,10,\nb:none:0,0,0,true,16,10,\nb:none:0,0,0,true,16,10,"
+    },
+    {
+      "name": "cursor/07/1",
+      "operation": "cursor",
+      "argument": 1,
+      "input": "é中λ_á \"x\"\n",
+      "expected": "initial:233,20013,955,false,0,0,c3a9e4b8adcebb5f61cc81202278220a\nb:233:20013,955,95,false,2,233,e4b8adcebb5f61cc81202278220a\nr:reset:20013,955,95,false,0,233,e4b8adcebb5f61cc81202278220a\ni:ident:32,34,120,false,9,769,202278220a\nw:whitespace:34,120,34,false,10,32,2278220a\nn:1:120,34,10,false,11,32,78220a\nq:quote:34,10,0,false,12,32,220a\nl:newline:10,0,0,false,13,32,0a\na:Token { kind: Whitespace, len: 14 }:0,0,0,true,0,10,\nb:none:0,0,0,true,0,10,\nr:reset:0,0,0,true,0,10,\ni:ident:0,0,0,true,0,10,\nw:whitespace:0,0,0,true,0,10,\nn:0:0,0,0,true,0,10,\nq:quote:0,0,0,true,0,10,\nl:newline:0,0,0,true,0,10,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,10,\nb:none:0,0,0,true,0,10,\ne:end:0,0,0,true,0,10,"
+    },
+    {
+      "name": "cursor/07/2",
+      "operation": "cursor",
+      "argument": 2,
+      "input": "é中λ_á \"x\"\n",
+      "expected": "initial:233,20013,955,false,0,0,c3a9e4b8adcebb5f61cc81202278220a\nn:2:20013,955,95,false,2,0,e4b8adcebb5f61cc81202278220a\nr:reset:20013,955,95,false,0,0,e4b8adcebb5f61cc81202278220a\nb:20013:955,95,97,false,3,20013,cebb5f61cc81202278220a\nb:955:95,97,769,false,5,955,5f61cc81202278220a\ni:ident:32,34,120,false,9,769,202278220a\nw:whitespace:34,120,34,false,10,32,2278220a\nq:quote:34,120,34,false,10,32,2278220a\na:Token { kind: Literal { kind: Str { terminated: true }, suffix_start: 13 }, len: 13 }:10,0,0,false,0,34,0a\nl:newline:10,0,0,false,0,34,0a\nn:1:0,0,0,true,1,34,\nr:reset:0,0,0,true,0,34,\nb:none:0,0,0,true,0,34,\nb:none:0,0,0,true,0,34,\ni:ident:0,0,0,true,0,34,\nw:whitespace:0,0,0,true,0,34,\nq:quote:0,0,0,true,0,34,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,34,\nl:newline:0,0,0,true,0,34,\ne:end:0,0,0,true,0,34,"
+    },
+    {
+      "name": "cursor/08/0",
+      "operation": "cursor",
+      "argument": 0,
+      "input": "\"str\"tail",
+      "expected": "initial:34,115,116,false,0,0,22737472227461696c\nb:34:115,116,114,false,1,34,737472227461696c\nb:115:116,114,34,false,2,115,7472227461696c\nb:116:114,34,116,false,3,116,72227461696c\nb:114:34,116,97,false,4,114,227461696c\nb:34:116,97,105,false,5,34,7461696c\nb:116:97,105,108,false,6,116,61696c\nb:97:105,108,0,false,7,97,696c\nb:105:108,0,0,false,8,105,6c\nb:108:0,0,0,true,9,108,\nb:none:0,0,0,true,9,108,\nb:none:0,0,0,true,9,108,"
+    },
+    {
+      "name": "cursor/08/1",
+      "operation": "cursor",
+      "argument": 1,
+      "input": "\"str\"tail",
+      "expected": "initial:34,115,116,false,0,0,22737472227461696c\nb:34:115,116,114,false,1,34,737472227461696c\nr:reset:115,116,114,false,0,34,737472227461696c\ni:ident:34,116,97,false,3,114,227461696c\nw:whitespace:34,116,97,false,3,114,227461696c\nn:1:116,97,105,false,4,114,7461696c\nq:quote:0,0,0,true,8,114,\nl:newline:0,0,0,true,8,114,\na:Token { kind: Eof, len: 0 }:0,0,0,true,8,114,\nb:none:0,0,0,true,8,114,\nr:reset:0,0,0,true,0,114,\ni:ident:0,0,0,true,0,114,\nw:whitespace:0,0,0,true,0,114,\nn:0:0,0,0,true,0,114,\nq:quote:0,0,0,true,0,114,\nl:newline:0,0,0,true,0,114,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,114,\nb:none:0,0,0,true,0,114,\ne:end:0,0,0,true,0,114,"
+    },
+    {
+      "name": "cursor/08/2",
+      "operation": "cursor",
+      "argument": 2,
+      "input": "\"str\"tail",
+      "expected": "initial:34,115,116,false,0,0,22737472227461696c\nn:1:115,116,114,false,1,0,737472227461696c\nr:reset:115,116,114,false,0,0,737472227461696c\nb:115:116,114,34,false,1,115,7472227461696c\nb:116:114,34,116,false,2,116,72227461696c\ni:ident:34,116,97,false,3,114,227461696c\nw:whitespace:34,116,97,false,3,114,227461696c\nq:quote:34,116,97,false,3,114,227461696c\na:Token { kind: Literal { kind: Str { terminated: false }, suffix_start: 8 }, len: 8 }:0,0,0,true,0,108,\nl:newline:0,0,0,true,0,108,\nn:0:0,0,0,true,0,108,\nr:reset:0,0,0,true,0,108,\nb:none:0,0,0,true,0,108,\nb:none:0,0,0,true,0,108,\ni:ident:0,0,0,true,0,108,\nw:whitespace:0,0,0,true,0,108,\nq:quote:0,0,0,true,0,108,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,108,\nl:newline:0,0,0,true,0,108,\ne:end:0,0,0,true,0,108,"
+    },
+    {
+      "name": "cursor/09/0",
+      "operation": "cursor",
+      "argument": 0,
+      "input": "/*nested*/ foo",
+      "expected": "initial:47,42,110,false,0,0,2f2a6e65737465642a2f20666f6f\nb:47:42,110,101,false,1,47,2a6e65737465642a2f20666f6f\nb:42:110,101,115,false,2,42,6e65737465642a2f20666f6f\nb:110:101,115,116,false,3,110,65737465642a2f20666f6f\nb:101:115,116,101,false,4,101,737465642a2f20666f6f\nb:115:116,101,100,false,5,115,7465642a2f20666f6f\nb:116:101,100,42,false,6,116,65642a2f20666f6f\nb:101:100,42,47,false,7,101,642a2f20666f6f\nb:100:42,47,32,false,8,100,2a2f20666f6f\nb:42:47,32,102,false,9,42,2f20666f6f\nb:47:32,102,111,false,10,47,20666f6f\nb:32:102,111,111,false,11,32,666f6f\nb:102:111,111,0,false,12,102,6f6f\nb:111:111,0,0,false,13,111,6f\nb:111:0,0,0,true,14,111,\nb:none:0,0,0,true,14,111,\nb:none:0,0,0,true,14,111,"
+    },
+    {
+      "name": "cursor/09/1",
+      "operation": "cursor",
+      "argument": 1,
+      "input": "/*nested*/ foo",
+      "expected": "initial:47,42,110,false,0,0,2f2a6e65737465642a2f20666f6f\nb:47:42,110,101,false,1,47,2a6e65737465642a2f20666f6f\nr:reset:42,110,101,false,0,47,2a6e65737465642a2f20666f6f\ni:ident:42,110,101,false,0,47,2a6e65737465642a2f20666f6f\nw:whitespace:42,110,101,false,0,47,2a6e65737465642a2f20666f6f\nn:1:110,101,115,false,1,47,6e65737465642a2f20666f6f\nq:quote:0,0,0,true,13,47,\nl:newline:0,0,0,true,13,47,\na:Token { kind: Eof, len: 0 }:0,0,0,true,13,47,\nb:none:0,0,0,true,13,47,\nr:reset:0,0,0,true,0,47,\ni:ident:0,0,0,true,0,47,\nw:whitespace:0,0,0,true,0,47,\nn:0:0,0,0,true,0,47,\nq:quote:0,0,0,true,0,47,\nl:newline:0,0,0,true,0,47,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,47,\nb:none:0,0,0,true,0,47,\ne:end:0,0,0,true,0,47,"
+    },
+    {
+      "name": "cursor/09/2",
+      "operation": "cursor",
+      "argument": 2,
+      "input": "/*nested*/ foo",
+      "expected": "initial:47,42,110,false,0,0,2f2a6e65737465642a2f20666f6f\nn:1:42,110,101,false,1,0,2a6e65737465642a2f20666f6f\nr:reset:42,110,101,false,0,0,2a6e65737465642a2f20666f6f\nb:42:110,101,115,false,1,42,6e65737465642a2f20666f6f\nb:110:101,115,116,false,2,110,65737465642a2f20666f6f\ni:ident:42,47,32,false,7,100,2a2f20666f6f\nw:whitespace:42,47,32,false,7,100,2a2f20666f6f\nq:quote:0,0,0,true,13,100,\na:Token { kind: Eof, len: 0 }:0,0,0,true,13,100,\nl:newline:0,0,0,true,13,100,\nn:0:0,0,0,true,13,100,\nr:reset:0,0,0,true,0,100,\nb:none:0,0,0,true,0,100,\nb:none:0,0,0,true,0,100,\ni:ident:0,0,0,true,0,100,\nw:whitespace:0,0,0,true,0,100,\nq:quote:0,0,0,true,0,100,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,100,\nl:newline:0,0,0,true,0,100,\ne:end:0,0,0,true,0,100,"
+    },
+    {
+      "name": "cursor/10/0",
+      "operation": "cursor",
+      "argument": 0,
+      "input": "\r\n‎\"x\"",
+      "expected": "initial:13,10,8206,false,0,0,0d0ae2808e227822\nb:13:10,8206,34,false,1,13,0ae2808e227822\nb:10:8206,34,120,false,2,10,e2808e227822\nb:8206:34,120,34,false,5,8206,227822\nb:34:120,34,0,false,6,34,7822\nb:120:34,0,0,false,7,120,22\nb:34:0,0,0,true,8,34,\nb:none:0,0,0,true,8,34,\nb:none:0,0,0,true,8,34,"
+    },
+    {
+      "name": "cursor/10/1",
+      "operation": "cursor",
+      "argument": 1,
+      "input": "\r\n‎\"x\"",
+      "expected": "initial:13,10,8206,false,0,0,0d0ae2808e227822\nb:13:10,8206,34,false,1,13,0ae2808e227822\nr:reset:10,8206,34,false,0,13,0ae2808e227822\ni:ident:10,8206,34,false,0,13,0ae2808e227822\nw:whitespace:34,120,34,false,4,8206,227822\nn:1:120,34,0,false,5,8206,7822\nq:quote:34,0,0,false,6,8206,22\nl:newline:0,0,0,true,7,8206,\na:Token { kind: Eof, len: 0 }:0,0,0,true,7,8206,\nb:none:0,0,0,true,7,8206,\nr:reset:0,0,0,true,0,8206,\ni:ident:0,0,0,true,0,8206,\nw:whitespace:0,0,0,true,0,8206,\nn:0:0,0,0,true,0,8206,\nq:quote:0,0,0,true,0,8206,\nl:newline:0,0,0,true,0,8206,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,8206,\nb:none:0,0,0,true,0,8206,\ne:end:0,0,0,true,0,8206,"
+    },
+    {
+      "name": "cursor/10/2",
+      "operation": "cursor",
+      "argument": 2,
+      "input": "\r\n‎\"x\"",
+      "expected": "initial:13,10,8206,false,0,0,0d0ae2808e227822\nn:1:10,8206,34,false,1,0,0ae2808e227822\nr:reset:10,8206,34,false,0,0,0ae2808e227822\nb:10:8206,34,120,false,1,10,e2808e227822\nb:8206:34,120,34,false,4,8206,227822\ni:ident:34,120,34,false,4,8206,227822\nw:whitespace:34,120,34,false,4,8206,227822\nq:quote:34,120,34,false,4,8206,227822\na:Token { kind: Literal { kind: Str { terminated: true }, suffix_start: 7 }, len: 7 }:0,0,0,true,0,34,\nl:newline:0,0,0,true,0,34,\nn:0:0,0,0,true,0,34,\nr:reset:0,0,0,true,0,34,\nb:none:0,0,0,true,0,34,\nb:none:0,0,0,true,0,34,\ni:ident:0,0,0,true,0,34,\nw:whitespace:0,0,0,true,0,34,\nq:quote:0,0,0,true,0,34,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,34,\nl:newline:0,0,0,true,0,34,\ne:end:0,0,0,true,0,34,"
+    },
+    {
+      "name": "cursor/11/0",
+      "operation": "cursor",
+      "argument": 0,
+      "input": "r#\"raw\"#suffix",
+      "expected": "initial:114,35,34,false,0,0,7223227261772223737566666978\nb:114:35,34,114,false,1,114,23227261772223737566666978\nb:35:34,114,97,false,2,35,227261772223737566666978\nb:34:114,97,119,false,3,34,7261772223737566666978\nb:114:97,119,34,false,4,114,61772223737566666978\nb:97:119,34,35,false,5,97,772223737566666978\nb:119:34,35,115,false,6,119,2223737566666978\nb:34:35,115,117,false,7,34,23737566666978\nb:35:115,117,102,false,8,35,737566666978\nb:115:117,102,102,false,9,115,7566666978\nb:117:102,102,105,false,10,117,66666978\nb:102:102,105,120,false,11,102,666978\nb:102:105,120,0,false,12,102,6978\nb:105:120,0,0,false,13,105,78\nb:120:0,0,0,true,14,120,\nb:none:0,0,0,true,14,120,\nb:none:0,0,0,true,14,120,"
+    },
+    {
+      "name": "cursor/11/1",
+      "operation": "cursor",
+      "argument": 1,
+      "input": "r#\"raw\"#suffix",
+      "expected": "initial:114,35,34,false,0,0,7223227261772223737566666978\nb:114:35,34,114,false,1,114,23227261772223737566666978\nr:reset:35,34,114,false,0,114,23227261772223737566666978\ni:ident:35,34,114,false,0,114,23227261772223737566666978\nw:whitespace:35,34,114,false,0,114,23227261772223737566666978\nn:1:34,114,97,false,1,114,227261772223737566666978\nq:quote:34,114,97,false,1,114,227261772223737566666978\nl:newline:0,0,0,true,13,114,\na:Token { kind: Eof, len: 0 }:0,0,0,true,13,114,\nb:none:0,0,0,true,13,114,\nr:reset:0,0,0,true,0,114,\ni:ident:0,0,0,true,0,114,\nw:whitespace:0,0,0,true,0,114,\nn:0:0,0,0,true,0,114,\nq:quote:0,0,0,true,0,114,\nl:newline:0,0,0,true,0,114,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,114,\nb:none:0,0,0,true,0,114,\ne:end:0,0,0,true,0,114,"
+    },
+    {
+      "name": "cursor/11/2",
+      "operation": "cursor",
+      "argument": 2,
+      "input": "r#\"raw\"#suffix",
+      "expected": "initial:114,35,34,false,0,0,7223227261772223737566666978\nn:1:35,34,114,false,1,0,23227261772223737566666978\nr:reset:35,34,114,false,0,0,23227261772223737566666978\nb:35:34,114,97,false,1,35,227261772223737566666978\nb:34:114,97,119,false,2,34,7261772223737566666978\ni:ident:34,35,115,false,5,119,2223737566666978\nw:whitespace:34,35,115,false,5,119,2223737566666978\nq:quote:34,35,115,false,5,119,2223737566666978\na:Token { kind: Literal { kind: Str { terminated: false }, suffix_start: 13 }, len: 13 }:0,0,0,true,0,120,\nl:newline:0,0,0,true,0,120,\nn:0:0,0,0,true,0,120,\nr:reset:0,0,0,true,0,120,\nb:none:0,0,0,true,0,120,\nb:none:0,0,0,true,0,120,\ni:ident:0,0,0,true,0,120,\nw:whitespace:0,0,0,true,0,120,\nq:quote:0,0,0,true,0,120,\na:Token { kind: Eof, len: 0 }:0,0,0,true,0,120,\nl:newline:0,0,0,true,0,120,\ne:end:0,0,0,true,0,120,"
+    },
+    {
+      "name": "invalid_ident/slice",
+      "operation": "tokens",
+      "argument": 0,
+      "input": "🦀 a😀 😀‍😀 _😀 中😀 '😀 'a😀\n",
+      "expected": "Token { kind: InvalidIdent, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: InvalidIdent, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: InvalidIdent, len: 11 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: InvalidIdent, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: InvalidIdent, len: 7 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Lifetime { starts_with_number: true }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Lifetime { starts_with_number: true }, len: 6 }\nToken { kind: Whitespace, len: 1 }"
+    },
+    {
+      "name": "invalid_ident/document",
+      "operation": "tokens",
+      "argument": 1,
+      "input": "🦀 a😀 😀‍😀 _😀 中😀 '😀 'a😀\n",
+      "expected": "Token { kind: InvalidIdent, len: 4 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: InvalidIdent, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: InvalidIdent, len: 11 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: InvalidIdent, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: InvalidIdent, len: 7 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Lifetime { starts_with_number: true }, len: 5 }\nToken { kind: Whitespace, len: 1 }\nToken { kind: Lifetime { starts_with_number: true }, len: 6 }\nToken { kind: Whitespace, len: 1 }"
+    }
+  ]
+}

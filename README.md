@@ -1,8 +1,8 @@
 # Ferrugo
 
-**A Rust compiler and Cargo reimplementation in Go.**
+**A file-for-file Rust compiler and Cargo port to Go, in progress.**
 
-Ferrugo's long-term goal is to compile Rust projects with a compiler and package manager implemented in Go. This repository starts that effort with an independent, deliberately bounded bootstrap compiler. It is **not a complete port of rustc or Cargo** and cannot compile the upstream compiler or arbitrary crates.
+Ferrugo's goal is a complete file-for-file Go port of rustc and Cargo that compiles production Rust. The repository currently contains an independent, bounded bootstrap compiler and the start of direct upstream source ports. It is **not a complete port of rustc or Cargo** and cannot compile the upstream compiler or arbitrary crates.
 
 ## First goal
 
@@ -10,7 +10,7 @@ Compile and run a small, typed Rust binary without invoking `rustc` or upstream 
 
 The executable bootstrap works. The full port remains in progress. See [supported behavior and limits](docs/COMPATIBILITY.md), [Cargo commands](docs/CARGO.md), [the roadmap](docs/ROADMAP.md), and [progress log](docs/PROGRESS.md), and [upstream scope](docs/UPSTREAM.md).
 
-Current goal: [fixed-size Copy arrays](docs/GOALS.md), following the implemented module, Copy-record, local Cargo dependency, integer and cast milestones.
+Current goal: [complete upstream source-file ports](docs/GOALS.md), with exact source provenance and comparisons against the originals. The first ports cover the low-level lexer, core Unicode data and three Cargo utilities; the lexer now drives frontend scanning. The [file map](port-status.json) and [porting criteria](docs/PORTING.md) track the remaining scope. The bootstrap includes modules, Copy records/arrays, local Cargo dependencies, integer casts and bounded for loops.
 
 ## Build and try it
 
@@ -52,4 +52,4 @@ The C backend is a bootstrap strategy. It does not provide Rust's ownership mode
 - [rust-lang/rust](https://github.com/rust-lang/rust): compiler, libraries, bootstrap, and conformance tests.
 - [rust-lang/cargo](https://github.com/rust-lang/cargo): package manager, dependency resolution, registry protocols, and project commands.
 
-Ferrugo is an independent project and is not affiliated with the Rust project. Upstream source and test material retain their original licenses and attribution. New implementation code is MIT licensed; see [LICENSE](LICENSE).
+Ferrugo is an independent project and is not affiliated with the Rust project. Upstream source ports and test material retain their original licenses and attribution under [port/rust](port/rust/LICENSE-MIT) and [port/cargo](port/cargo/LICENSE-MIT). Independent implementation code is MIT licensed; see [LICENSE](LICENSE).

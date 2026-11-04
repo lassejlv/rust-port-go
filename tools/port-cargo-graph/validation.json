@@ -1,0 +1,102 @@
+{
+  "format": 1,
+  "cargo_revision": "24de4721844c7a4d839072bab6fb66d41c9bc1f4",
+  "source_path": "src/util/graph.rs",
+  "source_git_blob": "74cdc51a0c36f21ce64f291540be571c05b12d63",
+  "source_sha256": "238123cc4c8300921008db5bcec1bbdf0946a023e0acafe9997e6917b5fada51",
+  "source_lines": 303,
+  "source_bytes": 8926,
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "go": "go version go1.27.3 linux/amd64",
+  "host": "linux/amd64",
+  "oracle_dependencies": [
+    {
+      "name": "bitmaps",
+      "version": "2.1.0",
+      "crate_sha256": "031043d04099746d8db04daf1fa424b2bc8bd69d92b25962dcde24da39ab64a2"
+    },
+    {
+      "name": "im-rc",
+      "version": "15.1.0",
+      "crate_sha256": "af1955a75fa080c677d3972822ec4bad316169ab1cfc6c257a942c2265dbe5fe"
+    },
+    {
+      "name": "rand_core",
+      "version": "0.6.4",
+      "crate_sha256": "ec0be4795e2f6a28069bec0b5ff3e2ac9bafc99e6a9a7dc3547996c5c816922c"
+    },
+    {
+      "name": "rand_xoshiro",
+      "version": "0.6.0",
+      "crate_sha256": "6f97cdb2a36ed4183de61b2f824cc45c9f1037f28afe0a322e9fff4c108b5aaa"
+    },
+    {
+      "name": "sized-chunks",
+      "version": "0.6.5",
+      "crate_sha256": "16d69225bde7a69b235da73377861095455d298f2b970996eec25ddbb42b3d1e"
+    },
+    {
+      "name": "typenum",
+      "version": "1.20.1",
+      "crate_sha256": "b6f5e870be6c3b371b77fe0ee0bafb859fa4964b4404c27de1d380043c4dda20"
+    },
+    {
+      "name": "version_check",
+      "version": "0.9.5",
+      "crate_sha256": "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a"
+    }
+  ],
+  "upstream_tests_per_profile": 3,
+  "cases_per_profile": 1416,
+  "case_input_sha256": "457dc7863308521b88cdc44c33364b3bf711ba1d5c0eb0b3a16a5c662622c4a9",
+  "profiles": [
+    "debug (debug_assertions=true)",
+    "release (debug_assertions=false)"
+  ],
+  "original_source_outputs": {
+    "debug_stderr": {
+      "sha256": "1726a617d79a8a951f85370a2d82a07a7292a107b09963ca47216a823987eabc",
+      "bytes": 415426
+    },
+    "debug_stdout": {
+      "sha256": "5cec3b3ad2912686f56ae5ce32d8d5b6388a0a6bef54b974d127617aab0626bd",
+      "bytes": 2695238,
+      "panic_results": {
+        "missing_node": 428,
+        "other": 0,
+        "path_edge": 1783,
+        "path_end": 1688
+      }
+    },
+    "release_stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "release_stdout": {
+      "sha256": "b2ab7bd39bf76d543478c0088d0a1145ccfae92b19c67268c45db6ed9bddf556",
+      "bytes": 2697956,
+      "panic_results": {
+        "missing_node": 428,
+        "other": 0,
+        "path_edge": 0,
+        "path_end": 0
+      }
+    }
+  },
+  "evidence_sha256": {
+    "port/cargo/src/util/graph.go": "be71c0f6896f16bab40aa26d0cc1dd00de0f84ef882c1082a4b122e4e87ed637",
+    "port/cargo/src/util/graph_test.go": "090f77ba424a1c6971223ebec8dafa983f8a0ac6ee2fdded8ec1792d4988b63d",
+    "port/cargo/src/util/testdata/graph_cases.json.gz": "2dd0e6cd25f8eaa9708e878208e42b9d59640df2ef62873bf48098b65d9ed839",
+    "tools/port-cargo-graph/Cargo.lock": "0411c64d7bbab5c036742bfdb79f456aad36e58dd5bc01872547d7d656fc572a",
+    "tools/port-cargo-graph/Cargo.toml": "ee10dfede39e0dc48850343273bb2c2cdf2ffd98b36ca0beb0355ea58ca9a65d",
+    "tools/port-cargo-graph/main.go": "84c7b63baf80944d57707305a2a9f826927e76719c67aaa05bc8159504272b13",
+    "tools/port-cargo-graph/oracle.rs": "95d83a79338f651127cbdc659ee1febb08abd77c2436ef573f4870bbb10ea87a"
+  },
+  "commands": [
+    "GOCACHE=/tmp/ferrugo-go-cache .toolchain/go/bin/go run ./tools/port-cargo-graph",
+    "GOCACHE=/tmp/ferrugo-go-cache .toolchain/go/bin/go run ./tools/port-cargo-graph -check",
+    "GOCACHE=/tmp/ferrugo-go-cache .toolchain/go/bin/go test ./port/cargo/src/util -run '^TestGraph' -count=1"
+  ],
+  "storage_adapter": "im_rc::OrdMap is replaced by Go maps traversed through comparator-sorted keys; Clone eagerly creates independent adjacency/edge storage with supplied Clone adapters. Debug assertions are enabled by default; DisableDebugAssertions selects release behavior.",
+  "skips": []
+}

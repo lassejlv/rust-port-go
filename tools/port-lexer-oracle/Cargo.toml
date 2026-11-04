@@ -1,0 +1,20 @@
+[package]
+name = "ferrugo-rustc-lexer-oracle"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[[bin]]
+name = "ferrugo-rustc-lexer-oracle"
+path = "main.rs"
+
+# Exact versions resolved by the pinned upstream Rust Cargo.lock.
+[dependencies]
+memchr = "=2.8.0"
+unicode-ident = "=1.0.24"
+unicode-properties = { version = "=0.1.4", default-features = false, features = ["emoji"] }
+
+[dev-dependencies]
+expect-test = "=1.5.1"
+
+[workspace]

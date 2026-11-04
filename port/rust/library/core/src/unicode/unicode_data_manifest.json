@@ -1,0 +1,277 @@
+{
+  "format": 1,
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_path": "library/core/src/unicode/unicode_data.rs",
+  "source_blob": "84414a72df88c4718d040cb93777d7a4b265e8d4",
+  "source_sha256": "a7cd0ad1cfe2840e2ca5d95b5798dcfe508917024d31a23d5f56b459d3b14bd7",
+  "source_lines": 1786,
+  "unicode_version": [
+    18,
+    0,
+    0
+  ],
+  "scalar_values": 1112064,
+  "predicates": [
+    "AlphabeticLookup",
+    "CaseIgnorableLookup",
+    "CFLookup",
+    "CNPlanes03Lookup",
+    "DefaultIgnorableCodePointLookup",
+    "GraphemeExtendLookup",
+    "LowercaseLookup",
+    "LTLookup",
+    "NLookup",
+    "UppercaseLookup",
+    "WhiteSpaceLookup",
+    "XIDContinueLookup",
+    "XIDStartLookup"
+  ],
+  "conversions": [
+    "ToLower",
+    "ToUpper",
+    "ToTitle",
+    "ToCasefold"
+  ],
+  "oracle_encoding": "FERRUGOC header, version [u8;4], scalar count u32 LE; each scalar in ascending order excluding surrogates: predicate flags u16 LE, changed-conversion mask u8, then [u32 LE;3] for each changed conversion; unchanged conversion is [input,0,0]; predicates are non-ASCII only",
+  "oracle_shim_sha256": "5610847b0517febb8cfaeb27935a10834c270c386407c6e6878c7091dd1d446f",
+  "oracle_sha256": "57be1433a1a89c3552b8eff9e8ad1699da7a4c3f7ed8610f9058c313b7640e62",
+  "fixture_gzip_sha256": "04debfcd5e7bd5a981eeccb7d22eb3cee06a4a28213d1d320cf4fba07b5d567d",
+  "go_file_sha256": "a223e91f91b7a38659cb71cb7f0adfa588c40e8a6dee47859ddc7cc9a60baa59",
+  "license": "Unicode-3.0",
+  "copyright": "1991-2024 Unicode, Inc.",
+  "license_sha256": "f5062c9a188d81dfe66b56db4182dcf9e4b17c0d9b0d311a8e20b3a1b075c443",
+  "reuse_annotation": "path = \"library/core/src/unicode/unicode_data.rs\"\nprecedence = \"override\"\nSPDX-FileCopyrightText = \"1991-2024 Unicode, Inc.\"\nSPDX-License-Identifier = \"Unicode-3.0\"",
+  "tables": [
+    {
+      "module": "alphabetic",
+      "rust_name": "SHORT_OFFSET_RUNS",
+      "go_name": "alphabeticShortOffsetRuns",
+      "entries": 54,
+      "source_definition_sha256": "a9e4be485c7bc08f8b6e8dfd7844dbdcb1689cec2df6fb24453e6bece080a829"
+    },
+    {
+      "module": "alphabetic",
+      "rust_name": "OFFSETS",
+      "go_name": "alphabeticOffsets",
+      "entries": 1547,
+      "source_definition_sha256": "888058950d85332341c2bf67211a18a4bffe99dc400c346c50864b736af8ac82"
+    },
+    {
+      "module": "case_ignorable",
+      "rust_name": "SHORT_OFFSET_RUNS",
+      "go_name": "caseIgnorableShortOffsetRuns",
+      "entries": 36,
+      "source_definition_sha256": "3c34a935849abda300a4ced65a099e73a16e48f94681a937b7e2f8a2180b68b3"
+    },
+    {
+      "module": "case_ignorable",
+      "rust_name": "OFFSETS",
+      "go_name": "caseIgnorableOffsets",
+      "entries": 927,
+      "source_definition_sha256": "daace90a17c89d43a30af47dc53a6f0cca7ea918125a45d23f267f39e5ac95d2"
+    },
+    {
+      "module": "cf",
+      "rust_name": "SHORT_OFFSET_RUNS",
+      "go_name": "cfShortOffsetRuns",
+      "entries": 11,
+      "source_definition_sha256": "e191979a2ae8db81b13a4e73f466c37e30aea7c267d2cce094ed57111dd04fd5"
+    },
+    {
+      "module": "cf",
+      "rust_name": "OFFSETS",
+      "go_name": "cfOffsets",
+      "entries": 43,
+      "source_definition_sha256": "db69f8e44fbc63a5b743c916e863c346251cee0fdd24b203e4732d5d29b03bae"
+    },
+    {
+      "module": "cn_planes_0_3",
+      "rust_name": "SHORT_OFFSET_RUNS",
+      "go_name": "cnPlanes03ShortOffsetRuns",
+      "entries": 60,
+      "source_definition_sha256": "5c42399d43585c89396fcaf60c64103ed2db506966fe325de6c01bb44f8bf15d"
+    },
+    {
+      "module": "cn_planes_0_3",
+      "rust_name": "OFFSETS",
+      "go_name": "cnPlanes03Offsets",
+      "entries": 1461,
+      "source_definition_sha256": "c08b45373dd615c05234146bb7370a45a2cc36f945cf8680c422a0603ee52ed1"
+    },
+    {
+      "module": "default_ignorable_code_point",
+      "rust_name": "SHORT_OFFSET_RUNS",
+      "go_name": "defaultIgnorableCodePointShortOffsetRuns",
+      "entries": 12,
+      "source_definition_sha256": "1b136a458464fb1850c54787350108d6e57770e093792f90d923dc991cb12d29"
+    },
+    {
+      "module": "default_ignorable_code_point",
+      "rust_name": "OFFSETS",
+      "go_name": "defaultIgnorableCodePointOffsets",
+      "entries": 35,
+      "source_definition_sha256": "1a7c603de7a9f022520d76e451dc28adbc307fd8c45cf13d684a54a09cac6f09"
+    },
+    {
+      "module": "grapheme_extend",
+      "rust_name": "SHORT_OFFSET_RUNS",
+      "go_name": "graphemeExtendShortOffsetRuns",
+      "entries": 33,
+      "source_definition_sha256": "ac2afd2995d17785bc8159c9503a755c66999ee2148e177883fe5aeab982b991"
+    },
+    {
+      "module": "grapheme_extend",
+      "rust_name": "OFFSETS",
+      "go_name": "graphemeExtendOffsets",
+      "entries": 779,
+      "source_definition_sha256": "ac75bc2ff0791b3656db15dc36dabd7fe6a1b97c3a3a9bb9492ae2c0f7806b1e"
+    },
+    {
+      "module": "lowercase",
+      "rust_name": "BITSET_CHUNKS_MAP",
+      "go_name": "lowercaseBitsetChunksMap",
+      "entries": 123,
+      "source_definition_sha256": "d7be34e526235285aa6d6ca2c73f31866a43f7f00f692efb645d13bb3112fa12"
+    },
+    {
+      "module": "lowercase",
+      "rust_name": "BITSET_INDEX_CHUNKS",
+      "go_name": "lowercaseBitsetIndexChunks",
+      "entries": 20,
+      "source_definition_sha256": "d982c7659e0fddf29b8d07a0de809ed264942a3e228b8cc09e002729e56c00ae"
+    },
+    {
+      "module": "lowercase",
+      "rust_name": "BITSET_CANONICAL",
+      "go_name": "lowercaseBitsetCanonical",
+      "entries": 62,
+      "source_definition_sha256": "0a35d1995be5ca0cbd7e56e7bd329552c4ca933f515ea613e23722e0de4ff494"
+    },
+    {
+      "module": "lowercase",
+      "rust_name": "BITSET_MAPPING",
+      "go_name": "lowercaseBitsetMapping",
+      "entries": 21,
+      "source_definition_sha256": "ebc306a7fd7052aea47f30f7b7c7782245d97c275952a972708002751cae0ef4"
+    },
+    {
+      "module": "lt",
+      "rust_name": "SHORT_OFFSET_RUNS",
+      "go_name": "ltShortOffsetRuns",
+      "entries": 3,
+      "source_definition_sha256": "6569d8096aafcdc3dcdc6cdd7afe7dd00f935d4656b014b69e536ca1cbb3616d"
+    },
+    {
+      "module": "lt",
+      "rust_name": "OFFSETS",
+      "go_name": "ltOffsets",
+      "entries": 21,
+      "source_definition_sha256": "4aaa8f5b017e5746f3b650b6b9a4a5a42f576d7aed433eeecf35a3f33a7756f9"
+    },
+    {
+      "module": "n",
+      "rust_name": "SHORT_OFFSET_RUNS",
+      "go_name": "nShortOffsetRuns",
+      "entries": 44,
+      "source_definition_sha256": "3b9b6d56bf5a37023377693f8e4326d632b5702f6901d4044892dee2caa054af"
+    },
+    {
+      "module": "n",
+      "rust_name": "OFFSETS",
+      "go_name": "nOffsets",
+      "entries": 295,
+      "source_definition_sha256": "30c25eeae9505c2af63c8666501a2292259c1b443f7e8abf4980daa1c67134d0"
+    },
+    {
+      "module": "uppercase",
+      "rust_name": "BITSET_CHUNKS_MAP",
+      "go_name": "uppercaseBitsetChunksMap",
+      "entries": 125,
+      "source_definition_sha256": "f5b8a83875206b2a7cb7a3ae01172fd5c40b24ec63ba7390bce9a5b89fb66b1a"
+    },
+    {
+      "module": "uppercase",
+      "rust_name": "BITSET_INDEX_CHUNKS",
+      "go_name": "uppercaseBitsetIndexChunks",
+      "entries": 19,
+      "source_definition_sha256": "cb58efb6cb3825332cd76aabb6bc5c866a7b7bbf2e66032c1882ed58060b630b"
+    },
+    {
+      "module": "uppercase",
+      "rust_name": "BITSET_CANONICAL",
+      "go_name": "uppercaseBitsetCanonical",
+      "entries": 46,
+      "source_definition_sha256": "0c18f7de74731cb45c72fa5847b667b723d44a2c22f425b207c784aab37c4e5f"
+    },
+    {
+      "module": "uppercase",
+      "rust_name": "BITSET_MAPPING",
+      "go_name": "uppercaseBitsetMapping",
+      "entries": 25,
+      "source_definition_sha256": "282b7aa02fd4dcf4d7af49ece55dc4442f8ee72f9c3e51f891083161af2e8f76"
+    },
+    {
+      "module": "white_space",
+      "rust_name": "WHITESPACE_MAP",
+      "go_name": "whiteSpaceWhitespaceMap",
+      "entries": 256,
+      "source_definition_sha256": "d4a8e6105f2b49ba942f390d4669e2aa4ee8899aa4d26ffad95fe00f15664090"
+    },
+    {
+      "module": "xid_continue",
+      "rust_name": "SHORT_OFFSET_RUNS",
+      "go_name": "xidContinueShortOffsetRuns",
+      "entries": 56,
+      "source_definition_sha256": "4da8300a09cd4a95c276e02d2e638d789f0bf5d87fa6b9dd0f20953147086462"
+    },
+    {
+      "module": "xid_continue",
+      "rust_name": "OFFSETS",
+      "go_name": "xidContinueOffsets",
+      "entries": 1635,
+      "source_definition_sha256": "1e445c9000e3f01744f008659d72b81e0124103f022928447d72b14b5dce8989"
+    },
+    {
+      "module": "xid_start",
+      "rust_name": "SHORT_OFFSET_RUNS",
+      "go_name": "xidStartShortOffsetRuns",
+      "entries": 51,
+      "source_definition_sha256": "63848a84a4572ad615e248abf39464b90a129c731117f6599e3fa9a28b937401"
+    },
+    {
+      "module": "xid_start",
+      "rust_name": "OFFSETS",
+      "go_name": "xidStartOffsets",
+      "entries": 1401,
+      "source_definition_sha256": "00ef1d053f03e1238e5c97c605ec13be3e2a21153e6004a6c9a037c793a248f1"
+    },
+    {
+      "module": "conversions",
+      "rust_name": "LOWERCASE_LUT",
+      "go_name": "lowercaseLUT",
+      "entries": 2,
+      "source_definition_sha256": "991618ca443b0d7e021000c79d0adb58392b8b8615916372562482398e7aa8b4"
+    },
+    {
+      "module": "conversions",
+      "rust_name": "UPPERCASE_LUT",
+      "go_name": "uppercaseLUT",
+      "entries": 2,
+      "source_definition_sha256": "d073a585e5db0156fbe643a6859b6fd8e28a11405b152d86cb5635cdf1b29fe1"
+    },
+    {
+      "module": "conversions",
+      "rust_name": "TITLECASE_LUT",
+      "go_name": "titlecaseLUT",
+      "entries": 2,
+      "source_definition_sha256": "77f2b9250c7fa217474d2fa76b531ad58aa386b92a9c527deb4a91cc73305973"
+    },
+    {
+      "module": "conversions",
+      "rust_name": "CASEFOLD_LUT",
+      "go_name": "casefoldLUT",
+      "entries": 2,
+      "source_definition_sha256": "4f589c3e14e0edccb94dbdb95ba86c2ce58d309269d25453ed22e42e60d98ca5"
+    }
+  ]
+}

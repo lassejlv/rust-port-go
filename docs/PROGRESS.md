@@ -137,3 +137,17 @@ Lengths are literal-only and bounded to 65536; general const evaluation, slices/
 - Added 16 fixtures. All 150 language cases pass against original rustc, and the Cargo demo now indexes its array with a for loop.
 
 The next goal is complete upstream file ports with a per-file inventory and reproducible upstream comparisons. The current bootstrap cannot compile production Rust; completing the compiler, standard libraries and Cargo remains required.
+
+## 2026-11-04 — checkpoint 13: complete source-file ports and provenance
+
+- Inventoried all 67,326 top-level entries in the pinned Rust/Cargo Git trees: 40,930 Rust files, 26,383 support/build files and 13 explicitly unexpanded gitlinks. Every file has a destination and source object identity. Compiler test inputs remain Rust programs; executable harness implementations map to Go tests.
+- Ported the complete low-level lexer implementation and its complete test file. All 17 upstream Rust tests and their Go counterparts pass; 231 retained original-generated cases cover all token and literal variants. Live comparisons also cover seeded UTF-8/helper stress and hydrated source files.
+- Generated lexer Unicode tables from exact locked dependencies and compared every Unicode scalar. The source-ported cursor now drives the bootstrap frontend's source scanning through an explicit adapter.
+- Ported Cargo's complete edit-distance file, including generic suggestions, scalar comparisons, transpositions, Unicode lowercase expansions and contextual final sigma. The Rust 1.99.1/Unicode 17 standard-library profile is explicit and separate from pinned core's Unicode 18.
+- Ported Cargo's complete concurrent queue file, including bounded/unbounded producers, timed consumers, drains and the full Rust duration range. Original-source operation traces, controlled timeout interleavings and race tests pass.
+- Ported Cargo's complete graph file with sorted traversal, path/cycle behavior, debug assertions and explicit Go trait/storage adapters. All three upstream tests and 1,416 graph cases match original debug and release builds within the documented logical graph contract.
+- Ported pinned core's complete Unicode 18 generated data file, retaining all 33 compressed tables and algorithms. Every scalar matches the unchanged original for all 13 predicates and all four exact three-slot case conversions.
+- Added source-specific provenance/validation reports and a hosted job that fetches exact references and compares Go ports with the unchanged originals. Full local race tests, vet, compiler/Cargo comparisons and inventory tests pass.
+- Verified the minimum Go 1.23 toolchain and fixed executable lookup, machine-specific report metadata and cross-version gzip regeneration differences before pushing. Removed a scheduling-dependent Rust queue test probe; the direct upstream operation comparisons and controlled Go concurrency regression remain.
+
+These six completed source files begin the direct port. The broader compiler, standard libraries, Cargo integration and production compatibility gates remain unfinished. Work continues with the compiler's binary-search and base-encoding utilities.
