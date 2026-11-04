@@ -30,3 +30,4 @@ jobs:
         env:
           FERRUGO_RUSTC: rustc
           FERRUGO_CARGO: cargo
+          RUSTUP_TOOLCHAIN: 1.99.1

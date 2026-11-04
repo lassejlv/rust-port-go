@@ -1,6 +1,8 @@
 package compiler
 
 import (
+	"fmt"
+	"math/big"
 	"strings"
 	"testing"
 
@@ -269,5 +271,112 @@ func TestCrossCrateStructPrivacyAndIdentity(t *testing.T) {
 	root := checkerCrate(t, "", `fn main(){right::read(left::make());}`, map[string]*syntax.Program{"left": left, "right": right})
 	if _, err := analyzeProgram(root); err == nil || !strings.Contains(err.Error(), "expected struct:@crate2::Value, found struct:@crate1::Value") {
 		t.Fatalf("separate library type identities unified: %v", err)
+	}
+}
+
+func TestIntegerMetadataAndLiteralBounds(t *testing.T) {
+	for _, name := range integerSuffixes {
+		t.Run(name, func(t *testing.T) {
+			info, ok := integerInfo(name)
+			if !ok || info.Bits <= 0 || info.CType == "" || info.PrintMacro == "" {
+				t.Fatalf("bad integer metadata for %s: %#v", name, info)
+			}
+			if (name == "isize" || name == "usize") && info.Bits != pointerBits {
+				t.Fatal("pointer integer width differs from host")
+			}
+			limit := new(big.Int).Lsh(big.NewInt(1), uint(info.Bits))
+			minimum := big.NewInt(0)
+			if info.Signed {
+				limit.Rsh(limit, 1)
+				minimum.Neg(new(big.Int).Set(limit))
+			}
+			maximum := new(big.Int).Sub(limit, big.NewInt(1))
+			for _, value := range []*big.Int{minimum, maximum} {
+				source := fmt.Sprintf("fn main(){let value:%s=%s%s;println!(\"{}\",value);}", name, value.String(), name)
+				if err := Check(source); err != nil {
+					t.Fatalf("boundary %s: %v", source, err)
+				}
+			}
+			tooBig := new(big.Int).Add(maximum, big.NewInt(1))
+			if err := Check(fmt.Sprintf("fn main(){let value=%s%s;}", tooBig.String(), name)); err == nil || !strings.Contains(err.Error(), "out of range") {
+				t.Fatalf("out of range %s accepted: %v", name, err)
+			}
+			if info.Signed {
+				tooSmall := new(big.Int).Sub(minimum, big.NewInt(1))
+				if err := Check(fmt.Sprintf("fn main(){let value=%s%s;}", tooSmall.String(), name)); err == nil || !strings.Contains(err.Error(), "out of range") {
+					t.Fatalf("negative overflow %s accepted: %v", name, err)
+				}
+			} else if err := Check(fmt.Sprintf("fn main(){let value=-0%s;}", name)); err == nil || !strings.Contains(err.Error(), "unsigned") {
+				t.Fatalf("unsigned negation %s accepted: %v", name, err)
+			}
+		})
+	}
+	for _, name := range []string{"i128", "u128", "f64", "bool"} {
+		if _, ok := integerInfo(name); ok {
+			t.Fatalf("unsupported integer metadata %q", name)
+		}
+	}
+}
+
+func TestCheckIntegerAndBitOperations(t *testing.T) {
+	cases := []struct{ name, source string }{
+		{"narrow arithmetic", `fn add(a:i8,b:i8)->i8{a+b}fn main(){let a:i16=-32768;let b=add(4,5);println!("{} {}",a,b);}`},
+		{"unsigned extrema and bases", `fn main(){let a=255u8;let b=0xffffu16;let c=0xffff_ffffu32;let d=18446744073709551615u64;println!("{} {} {} {}",a,b,c,d);}`},
+		{"bitwise integers", `fn mask(a:u16)->u16{!a&0xffu16|2u16^3u16}fn main(){println!("{} {}",mask(9),!3i8);}`},
+		{"bitwise booleans", `fn main(){let mut b=true;b&=false;b|=true;b^=false;println!("{} {} {} {}",b,true&false,true|false,true^false);}`},
+		{"independent shift types", `fn main(){let a:u8=1<<2i64;let b=1i8<<1u64;let c=4u64>>1u8;let d:isize=2<<1usize;println!("{} {} {} {}",a,b,c,d);}`},
+		{"integer compound operators", `fn main(){let mut a=15u8;a&=7;a|=8;a^=3;a<<=1u64;a>>=1i8;a+=1;a-=1;a*=1;a/=1;a%=15;println!("{}",a);}`},
+		{"integer record fields", `#[derive(Copy,Clone)]struct Bits{n:u8,flag:bool}fn main(){let mut b=Bits{n:15,flag:true};b.n&=7;b.n<<=1usize;b.n>>=1i16;b.flag^=true;println!("{} {}",b.n,b.flag);}`},
+		{"pointer nominal values", `fn id(n:usize)->usize{n}fn signed(n:isize)->isize{n}fn main(){println!("{} {}",id(12),signed(-12));}`},
+	}
+	for _, tt := range cases {
+		t.Run(tt.name, func(t *testing.T) {
+			if err := Check(tt.source); err != nil {
+				t.Fatal(err)
+			}
+		})
+	}
+}
+
+func TestCheckRejectsIntegerOperatorMismatches(t *testing.T) {
+	cases := []struct{ name, source, want string }{
+		{"mixed widths", `fn main(){let a=1u8+2u16;}`, "expected u8, found u16"},
+		{"mixed signs", `fn main(){let a=1i8+2u8;}`, "expected i8, found u8"},
+		{"isize nominal", `fn main(){let a:isize=1i64;}`, "expected isize, found i64"},
+		{"usize nominal", `fn main(){let a:usize=1u64;}`, "expected usize, found u64"},
+		{"unsigned unary negation variable", `fn main(){let a=1u8;let b=-a;}`, "unsigned"},
+		{"bitwise mixed types", `fn main(){let a=true&1;}`, "expected bool"},
+		{"bitwise string", `fn main(){let a="a"|"b";}`, "matching integers or booleans"},
+		{"shift bool lhs", `fn main(){let a=true<<1;}`, "must be integers"},
+		{"shift bool rhs", `fn main(){let a=1u8<<true;}`, "must be integers"},
+		{"arithmetic compound bool", `fn main(){let mut a=true;a+=false;}`, "requires an integer"},
+		{"shift compound bool lhs", `fn main(){let mut a=true;a<<=1;}`, "requires an integer"},
+		{"shift compound bool rhs", `fn main(){let mut a=1u8;a<<=true;}`, "shift count must be an integer"},
+		{"field bitwise mismatch", `#[derive(Copy,Clone)]struct Bits{n:u8}fn main(){let mut a=Bits{n:1};a.n|=2u16;}`, "expected u8, found u16"},
+	}
+	for _, tt := range cases {
+		t.Run(tt.name, func(t *testing.T) {
+			err := Check(tt.source)
+			if err == nil || !strings.Contains(err.Error(), tt.want) {
+				t.Fatalf("got %v,want %q", err, tt.want)
+			}
+		})
+	}
+}
+
+func TestShiftAndAssignmentMetadataPreservesOperandTypes(t *testing.T) {
+	c, err := analyze(`#[derive(Copy,Clone)]struct Bits{n:u8}fn main(){let inferred=1<<2u64;let mut a=1u8;a<<=2i16;let mut b=Bits{n:1};b.n>>=1usize;}`)
+	if err != nil {
+		t.Fatal(err)
+	}
+	stmts := c.funcs["main"].Body.Statements
+	if c.types[stmts[0].Expr] != "i32" || c.types[stmts[0].Expr.Right] != "u64" {
+		t.Fatal("shift count changed inferred left type")
+	}
+	if c.assignTypes[&stmts[2]] != "u8" || c.types[stmts[2].Expr] != "i16" {
+		t.Fatal("simple shift assignment lost distinct LHS/RHS types")
+	}
+	if c.assignTypes[&stmts[4]] != "u8" || c.types[stmts[4].Expr] != "usize" {
+		t.Fatal("field shift assignment lost distinct LHS/RHS types")
 	}
 }

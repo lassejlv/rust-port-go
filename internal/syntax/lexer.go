@@ -61,10 +61,11 @@ func lex(src string) ([]token, error) {
 			continue
 		}
 		matched := false
-		for _, op := range []string{"..", "::", "->", "==", "!=", "<=", ">=", "&&", "||", "+=", "-=", "*=", "/=", "%="} {
+		for _, op := range []string{"<<=", ">>=", "..", "::", "->", "==", "!=", "<=", ">=", "&&", "||", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<", ">>"} {
 			if strings.HasPrefix(src[l.offset:], op) {
-				l.advance()
-				l.advance()
+				for range op {
+					l.advance()
+				}
 				out = append(out, token{kind: op, text: op, span: start})
 				matched = true
 				break
@@ -73,7 +74,7 @@ func lex(src string) ([]token, error) {
 		if matched {
 			continue
 		}
-		if strings.ContainsRune("(){}[]#.;,:+-*/%=<>!&", rune(c)) {
+		if strings.ContainsRune("(){}[]#.;,:+-*/%=<>!&|^", rune(c)) {
 			l.advance()
 			out = append(out, token{kind: string(c), text: string(c), span: start})
 			continue
@@ -255,13 +256,15 @@ func hexDigit(c byte) bool {
 func identStart(c byte) bool    { return c == '_' || c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' }
 func identContinue(c byte) bool { return identStart(c) || c >= '0' && c <= '9' }
 
-// Numeric range checking is deferred until type inference, allowing -2147483648.
+// Numeric range checking is deferred until type inference, allowing signed
+// minima and giving the checker responsibility for all supported integer widths.
 func validateInteger(text string) error {
 	digits := text
-	if strings.HasSuffix(digits, "i32") {
-		digits = strings.TrimSuffix(digits, "i32")
-	} else if strings.HasSuffix(digits, "i64") {
-		digits = strings.TrimSuffix(digits, "i64")
+	for _, suffix := range []string{"i8", "i16", "i32", "i64", "isize", "u8", "u16", "u32", "u64", "usize"} {
+		if strings.HasSuffix(digits, suffix) {
+			digits = strings.TrimSuffix(digits, suffix)
+			break
+		}
 	}
 	base := 10
 	if len(digits) >= 2 {
@@ -292,7 +295,7 @@ func validateInteger(text string) error {
 			n = int(c-'A') + 10
 		}
 		if n < 0 || n >= base {
-			return fmt.Errorf("invalid or unsupported integer literal %q (supported suffixes: i32, i64)", text)
+			return fmt.Errorf("invalid or unsupported integer literal %q (supported suffixes: i8, i16, i32, i64, isize, u8, u16, u32, u64, usize)", text)
 		}
 		count++
 	}

@@ -92,3 +92,15 @@ General ownership, borrowing, generic traits, move-only records, enums and stand
 - Explicitly rejected replacing the standard prelude through an external `std` dependency. Full edition-specific imports/prelude behavior remains unimplemented.
 
 This milestone links supported local library code into one bootstrap C executable. It does not emit Rust rlibs, implement Rust ABI compatibility, or complete registry/feature/version/workspace resolution. The overall port remains in progress.
+
+## 2026-11-04 — checkpoint 9: integer widths and bit operations
+
+- Added signed i8/i16/i32/i64/isize and unsigned u8/u16/u32/u64/usize, preserving nominal distinctions even when host widths agree.
+- Added exact literal bounds, signed minima, unsigned formatting, integer complement/bitwise operations, boolean eager bit operations, shifts and compound assignments on locals/record fields.
+- Shift RHS types are independent of LHS types; counts outside the LHS width (including negatives) panic with status 101. Left shifts truncate bits and signed right shifts sign-extend.
+- Added C runtime helpers that check overflow before arithmetic and avoid undefined signed shifts/conversions through unsigned bit containers and memcpy.
+- Added 25 numeric fixtures; all 93 language cases pass against rustc. Existing 16 package fixtures continue to pass against original Cargo offline.
+- Direct C runtime tests exhaust valid i8/u8 arithmetic pairs, cover shift boundaries and verify 105 panic modes; normal and UBSan runs pass.
+- Independent review matched 2,703 numeric outputs and 60 runtime trap cases with rustc; optimized emitted C also passed UBSan.
+- Host pointer width is checked against the C compiler target. i128/u128, floats, chars, casts and cross-target selection remain further work.
+- Pinned the comparison step's Rustup toolchain environment so copied Cargo fixtures use the selected version outside the repository directory.

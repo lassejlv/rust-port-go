@@ -500,7 +500,7 @@ func (p *parser) statementExpression() (*Expr, error) {
 }
 
 func isAssignment(kind string) bool {
-	return kind == "=" || kind == "+=" || kind == "-=" || kind == "*=" || kind == "/=" || kind == "%="
+	return kind == "=" || kind == "+=" || kind == "-=" || kind == "*=" || kind == "/=" || kind == "%=" || kind == "&=" || kind == "|=" || kind == "^=" || kind == "<<=" || kind == ">>="
 }
 
 func (p *parser) statement() (Stmt, bool, error) {
@@ -591,7 +591,16 @@ func (p *parser) ifExpression(start token) (*Expr, error) {
 	return e, nil
 }
 
-var precedence = map[string]int{"||": 1, "&&": 2, "==": 3, "!=": 3, "<": 4, "<=": 4, ">": 4, ">=": 4, "+": 5, "-": 5, "*": 6, "/": 6, "%": 6}
+var precedence = map[string]int{
+	"||": 1, "&&": 2,
+	"==": 3, "!=": 3, "<": 3, "<=": 3, ">": 3, ">=": 3,
+	"|": 4, "^": 5, "&": 6, "<<": 7, ">>": 7,
+	"+": 8, "-": 8, "*": 9, "/": 9, "%": 9,
+}
+
+func comparisonOperator(op string) bool {
+	return op == "==" || op == "!=" || op == "<" || op == "<=" || op == ">" || op == ">="
+}
 
 func (p *parser) expression(min int) (*Expr, error) {
 	left, err := p.prefix()
@@ -608,9 +617,8 @@ func (p *parser) expressionRest(left *Expr, min int) (*Expr, error) {
 		if prec < min {
 			break
 		}
-		if prec == 3 || prec == 4 {
-			previous := precedence[left.Op]
-			if left.Kind == "binary" && (previous == 3 || previous == 4) && !p.grouped[left] {
+		if comparisonOperator(op.kind) {
+			if left.Kind == "binary" && comparisonOperator(left.Op) && !p.grouped[left] {
 				return nil, sourceError(op.span, "comparison operators cannot be chained")
 			}
 		}
@@ -619,9 +627,8 @@ func (p *parser) expressionRest(left *Expr, min int) (*Expr, error) {
 		if err != nil {
 			return nil, err
 		}
-		if prec == 3 || prec == 4 {
-			next := precedence[right.Op]
-			if right.Kind == "binary" && (next == 3 || next == 4) && !p.grouped[right] {
+		if comparisonOperator(op.kind) {
+			if right.Kind == "binary" && comparisonOperator(right.Op) && !p.grouped[right] {
 				return nil, sourceError(op.span, "comparison operators cannot be chained")
 			}
 		}
@@ -633,7 +640,7 @@ func (p *parser) expressionRest(left *Expr, min int) (*Expr, error) {
 func (p *parser) prefix() (*Expr, error) {
 	t := p.current()
 	if p.take("-") || p.take("!") {
-		rhs, err := p.expression(7)
+		rhs, err := p.expression(10)
 		if err != nil {
 			return nil, err
 		}

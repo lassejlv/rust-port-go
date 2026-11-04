@@ -109,7 +109,7 @@ func TestRejectUnsupportedAndMalformedSyntax(t *testing.T) {
 		{"fn main() { let x = ; }", "expected identifier"},
 		{"fn main() { let x = 1 }", "expected ;"},
 		{"fn main() { let x = 1.0; }", "floating-point"},
-		{"fn main() { let x = 1u32; }", "integer literal"},
+		{"fn main() { let x = 1u128; }", "integer literal"},
 		{"fn main() { let x = 0b2; }", "integer literal"},
 		{"fn main() { let x = 1i64i32; }", "integer literal"},
 		{"fn main() { let x = 0x; }", "has no digits"},
@@ -158,6 +158,8 @@ func FuzzParse(f *testing.F) {
 	}
 	f.Add(`#[derive(Copy, Clone)] struct P {x:i32} fn main(){let mut p=P{x:1};p.x+=2;}`)
 	f.Add(`#[derive(Clone,Copy,)] pub struct Empty {} fn main(){if check(Empty{}) {}}`)
+	f.Add(`fn main(){let mut x=255u8;x>>=1isize;x^=3u8;let y=!x&7|2<<1+1;}`)
+	f.Add(`fn main(){let result=true|false&&false;let wide=18446744073709551615u64;}`)
 	f.Fuzz(func(t *testing.T, source string) { _, _ = Parse(source) })
 }
 
@@ -807,6 +809,126 @@ func TestUnsupportedStructureForms(t *testing.T) {
 			_, err := Parse(tc.source)
 			if err == nil || !strings.Contains(err.Error(), tc.want) {
 				t.Fatalf("error=%v, want %q", err, tc.want)
+			}
+		})
+	}
+}
+
+func TestAllSupportedIntegerSuffixesAndTypeSpellings(t *testing.T) {
+	for _, typ := range []string{"i8", "i16", "i32", "i64", "isize", "u8", "u16", "u32", "u64", "usize"} {
+		for _, literal := range []string{"17" + typ, "0xff_" + typ, "0o17" + typ, "0b1010_" + typ} {
+			t.Run(literal, func(t *testing.T) {
+				p, err := Parse("fn identity(value:" + typ + ")->" + typ + " {value} fn main(){let number:" + typ + "=" + literal + ";}")
+				if err != nil {
+					t.Fatal(err)
+				}
+				if p.Functions[0].Params[0].Type != typ || p.Functions[0].ReturnType != typ {
+					t.Fatal("integer type spelling changed")
+				}
+				binding := p.Functions[1].Body.Statements[0]
+				if binding.Type != typ || binding.Expr.Kind != "int" || binding.Expr.Text != literal {
+					t.Fatal("integer suffix spelling changed")
+				}
+			})
+		}
+	}
+}
+
+func TestIntegerLexerDefersAllRangeAndSignednessChecks(t *testing.T) {
+	for _, literal := range []string{"256u8", "128i8", "65536u16", "18446744073709551616u64", "340282366920938463463374607431768211456usize", "-1u8", "-9223372036854775808i64"} {
+		t.Run(literal, func(t *testing.T) {
+			if _, err := Parse("fn main(){let number=" + literal + ";}"); err != nil {
+				t.Fatalf("lexing performed a semantic range check: %v", err)
+			}
+		})
+	}
+}
+
+func TestMalformedAndUnsupportedIntegerSuffixes(t *testing.T) {
+	for _, literal := range []string{"1i128", "1u128", "1i8u8", "1usizei16", "1u32u16", "1U8", "0b102u8", "0xgu16", "0x_u8", "0o9isize", "1isiz", "1f64"} {
+		t.Run(literal, func(t *testing.T) {
+			_, err := Parse("fn main(){let number=" + literal + ";}")
+			if err == nil || !strings.Contains(err.Error(), "integer literal") {
+				t.Fatalf("error=%v, want invalid integer literal", err)
+			}
+		})
+	}
+}
+
+func operatorTree(e *Expr) string {
+	if e.Kind == "binary" {
+		return "(" + e.Op + " " + operatorTree(e.Left) + " " + operatorTree(e.Right) + ")"
+	}
+	if e.Kind == "unary" {
+		return "(" + e.Op + " " + operatorTree(e.Right) + ")"
+	}
+	return e.Text
+}
+
+func TestRustBitwiseShiftAndComparisonPrecedence(t *testing.T) {
+	cases := []struct{ expression, want string }{
+		{`a | b ^ c & d << e + f * g`, `(| a (^ b (& c (<< d (+ e (* f g))))))`},
+		{`a == b | c ^ d & e << f + g * h`, `(== a (| b (^ c (& d (<< e (+ f (* g h)))))))`},
+		{`a << b + c`, `(<< a (+ b c))`},
+		{`a + b << c`, `(<< (+ a b) c)`},
+		{`a << b << c`, `(<< (<< a b) c)`},
+		{`a << b < c >> d`, `(< (<< a b) (>> c d))`},
+		{`a & b == c | d`, `(== (& a b) (| c d))`},
+		{`a | b && c ^ d || e`, `(|| (&& (| a b) (^ c d)) e)`},
+		{`!a & b`, `(& (! a) b)`},
+		{`-a << b * c`, `(<< (- a) (* b c))`},
+		{`(a < b) == c`, `(== (< a b) c)`},
+		{`a == (b < c)`, `(== a (< b c))`},
+		{`(a < b) == (c < d)`, `(== (< a b) (< c d))`},
+	}
+	for _, tc := range cases {
+		t.Run(tc.expression, func(t *testing.T) {
+			p, err := Parse("fn main(){let result=" + tc.expression + ";}")
+			if err != nil {
+				t.Fatal(err)
+			}
+			if got := operatorTree(p.Functions[0].Body.Statements[0].Expr); got != tc.want {
+				t.Fatalf("tree=%s, want %s", got, tc.want)
+			}
+		})
+	}
+	for _, expression := range []string{`a < b == c`, `a == b < c`, `a >= b != c`, `((a < b < c))`, `a < (b | c) < d`, `a << b < c == d`} {
+		t.Run(expression, func(t *testing.T) {
+			_, err := Parse("fn main(){let result=" + expression + ";}")
+			if err == nil || !strings.Contains(err.Error(), "cannot be chained") {
+				t.Fatalf("comparison chain error=%v", err)
+			}
+		})
+	}
+}
+
+func TestBooleanBitwiseOperatorsStayDistinctFromShortCircuit(t *testing.T) {
+	p, err := Parse(`fn main(){let a=false&marker();let b=true|marker();let c=true^marker();let d=false&&marker();let e=true||marker();}`)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for index, op := range []string{"&", "|", "^", "&&", "||"} {
+		e := p.Functions[0].Body.Statements[index].Expr
+		if e.Op != op || e.Right.Kind != "call" || e.Right.Text != "marker" {
+			t.Fatalf("operator %s parsed incorrectly", op)
+		}
+	}
+}
+
+func TestShiftAndBitwiseCompoundAssignments(t *testing.T) {
+	for _, op := range []string{"<<=", ">>=", "&=", "|=", "^="} {
+		t.Run(op, func(t *testing.T) {
+			source := "fn main(){number" + op + "1u8;record.value" + op + "2u16;}"
+			p, err := Parse(source)
+			if err != nil {
+				t.Fatal(err)
+			}
+			statements := p.Functions[0].Body.Statements
+			if len(statements) != 2 || statements[0].Kind != "assign" || statements[0].Name != "number" || statements[0].Op != op || statements[0].Expr.Text != "1u8" || statements[0].Expr.Span.Offset != strings.Index(source, "1u8") {
+				t.Fatal("longest-match variable compound assignment broken")
+			}
+			if statements[1].Kind != "assign" || statements[1].Name != "" || statements[1].Target == nil || statements[1].Target.Kind != "field" || statements[1].Target.Text != "value" || statements[1].Op != op || statements[1].Expr.Text != "2u16" {
+				t.Fatal("field compound assignment broken")
 			}
 		})
 	}

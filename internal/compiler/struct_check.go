@@ -202,13 +202,7 @@ func (c *checker) fieldAssignment(s *syntax.Stmt) (bool, error) {
 	if !root.mutable {
 		return false, fail(s.Span, "field assignment requires a mutable local variable")
 	}
-	if s.Op != "=" && s.Op != "+=" && s.Op != "-=" && s.Op != "*=" && s.Op != "/=" && s.Op != "%=" {
-		return false, fail(s.Span, "unsupported assignment operator %q", s.Op)
-	}
-	if s.Op != "=" && !integerType(typ) {
-		return false, fail(s.Span, "compound assignment requires an integer field")
-	}
-	if _, err := c.expr(s.Expr, typ); err != nil {
+	if err := c.assignmentRHS(s, typ); err != nil {
 		return false, err
 	}
 	return !c.diverges[s.Expr], nil

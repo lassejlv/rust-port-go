@@ -440,6 +440,9 @@ func (r *moduleResolver) rewriteExpr(scope *moduleScope, e *syntax.Expr) error {
 // resolving the same parsed syntax tree again remains stable and private paths
 // never bypass visibility just because a previous pass populated their key.
 func (r *moduleResolver) resolveType(scope *moduleScope, name string, span syntax.Span) (string, error) {
+	if integerType(name) {
+		return name, nil
+	}
 	switch name {
 	case "", "i32", "i64", "bool", "&str", "()":
 		return name, nil

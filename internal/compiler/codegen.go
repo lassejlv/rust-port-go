@@ -22,6 +22,7 @@ func EmitC(source string) (string, error) {
 func emitChecked(c *checked) string {
 	g := &generator{checked: c}
 	g.WriteString(runtimeC)
+	g.line("_Static_assert(sizeof(uintptr_t) * CHAR_BIT == %d, \"Ferrugo host and C target pointer widths differ\");", pointerBits)
 	g.structDefinitions()
 	for _, f := range c.program.Functions {
 		g.line("%s;", g.signature(f))
@@ -46,6 +47,9 @@ func (g *generator) line(format string, args ...any) {
 	g.WriteByte('\n')
 }
 func cType(t string) string {
+	if info, ok := integerInfo(t); ok {
+		return info.CType
+	}
 	if strings.HasPrefix(t, "struct:") {
 		return "fr_struct_" + hex.EncodeToString([]byte(strings.TrimPrefix(t, "struct:")))
 	}
@@ -175,7 +179,7 @@ func (g *generator) statement(s *syntax.Stmt) {
 			return
 		}
 		if s.Op != "=" {
-			value = g.arithmetic(strings.TrimSuffix(s.Op, "="), g.checked.types[s.Expr], name, value)
+			value = g.arithmetic(strings.TrimSuffix(s.Op, "="), g.checked.assignTypes[s], name, value)
 		}
 		g.line("%s = %s;", name, value)
 	case "expr":
@@ -224,6 +228,16 @@ func (g *generator) statement(s *syntax.Stmt) {
 	}
 }
 func (g *generator) arithmetic(op, t, a, b string) string {
+	if op == "&" || op == "|" || op == "^" {
+		return fmt.Sprintf("(%s %s %s)", a, op, b)
+	}
+	if op == "<<" || op == ">>" {
+		name := "shl"
+		if op == ">>" {
+			name = "shr"
+		}
+		return fmt.Sprintf("fr_%s_%s(%s, (uint64_t)(%s))", name, t, a, b)
+	}
 	name := map[string]string{"+": "add", "-": "sub", "*": "mul", "/": "div", "%": "rem"}[op]
 	return fmt.Sprintf("fr_%s_%s(%s, %s)", name, t, a, b)
 }
@@ -288,7 +302,10 @@ func (g *generator) expr(e *syntax.Expr) string {
 			return ""
 		}
 		if e.Op == "!" {
-			return g.temp(t, "!("+a+")")
+			if t == "bool" {
+				return g.temp(t, "!("+a+")")
+			}
+			return g.temp(t, "~("+a+")")
 		}
 		return g.temp(t, fmt.Sprintf("fr_neg_%s(%s)", t, a))
 	case "binary":
@@ -316,7 +333,7 @@ func (g *generator) expr(e *syntax.Expr) string {
 		if g.checked.diverges[e.Right] {
 			return ""
 		}
-		if strings.Contains("+-*/%", e.Op) {
+		if strings.Contains("+-*/%", e.Op) || e.Op == "<<" || e.Op == ">>" {
 			return g.temp(t, g.arithmetic(e.Op, t, a, b))
 		}
 		if g.checked.types[e.Left] == "&str" {
@@ -347,19 +364,34 @@ func (g *generator) expr(e *syntax.Expr) string {
 	panic("unchecked expression: " + e.Kind)
 }
 func integerC(n *big.Int, t string) string {
-	bits := 32
-	if t == "i64" {
-		bits = 64
+	info, ok := integerInfo(t)
+	if !ok {
+		panic("unchecked integer type: " + t)
 	}
-	min := new(big.Int).Neg(new(big.Int).Lsh(big.NewInt(1), uint(bits-1)))
-	if n.Cmp(min) == 0 {
-		return fmt.Sprintf("INT%d_MIN", bits)
+	if info.Signed {
+		min := new(big.Int).Neg(new(big.Int).Lsh(big.NewInt(1), uint(info.Bits-1)))
+		if n.Cmp(min) == 0 {
+			if t == "isize" {
+				return "INTPTR_MIN"
+			}
+			return fmt.Sprintf("INT%d_MIN", info.Bits)
+		}
 	}
+	prefix := "UINT"
+	if info.Signed {
+		prefix = "INT"
+	}
+	digits := new(big.Int).Abs(n).String()
+	value := fmt.Sprintf("%s%d_C(%s)", prefix, info.Bits, digits)
 	if n.Sign() < 0 {
-		return fmt.Sprintf("(-INT%d_C(%s))", bits, new(big.Int).Abs(n).String())
+		value = "(-" + value + ")"
 	}
-	return fmt.Sprintf("INT%d_C(%s)", bits, n.String())
+	if t == "isize" || t == "usize" {
+		value = "((" + info.CType + ")(" + value + "))"
+	}
+	return value
 }
+
 func cString(s string) string {
 	// Octal byte escapes avoid C's variable-length hex escapes and preserve UTF-8/NUL.
 	var b strings.Builder
@@ -411,15 +443,16 @@ func (g *generator) macro(e *syntax.Expr) string {
 			flush()
 			arg := e.Args[index+1]
 			value := args[index]
-			switch g.checked.types[arg] {
-			case "i32":
-				g.line("printf(\"%%\" PRId32, %s);", value)
-			case "i64":
-				g.line("printf(\"%%\" PRId64, %s);", value)
-			case "bool":
-				g.line("fputs(%s ? \"true\" : \"false\", stdout);", value)
-			case "&str":
-				g.line("fr_write(%s);", value)
+			typ := g.checked.types[arg]
+			if info, ok := integerInfo(typ); ok {
+				g.line("printf(\"%%\" %s, %s);", info.PrintMacro, value)
+			} else {
+				switch typ {
+				case "bool":
+					g.line("fputs(%s ? \"true\" : \"false\", stdout);", value)
+				case "&str":
+					g.line("fr_write(%s);", value)
+				}
 			}
 			index++
 			i++

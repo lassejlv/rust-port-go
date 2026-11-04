@@ -7,15 +7,15 @@ Ferrugo 0.1.0 implements the subset below. It is not yet compatible with complet
 - A binary crate with nested inline/external `mod` items and `fn` items; a required unit-returning, zero-argument `main` entrypoint, declared at the root or imported there.
 - Public/private functions and modules, relative and `self`/`super`/`crate` qualified calls, simple `use` aliases for functions/modules, and source-file diagnostics. External modules use `name.rs` or `name/mod.rs`; ambiguous/missing files and cycles reject.
 - Valid UTF-8 source, ASCII identifiers, line comments, nested block comments, source line/column errors.
-- Types `i32`, `i64`, `bool`, `&str`; `()` return types and unit expressions.
+- Signed `i8`, `i16`, `i32`, `i64`, `isize` and unsigned `u8`, `u16`, `u32`, `u64`, `usize`; `bool`, `&str`, `()` return types and unit expressions. Pointer integers use the host pointer width.
 - Parameters with explicit types; explicitly typed function returns, default unit returns.
-- Brace-style named records deriving exactly `Copy` and `Clone`, with `i32`/`i64`/`bool` or nested Copy-record fields; named type paths and simple type imports. Constructors support named/shorthand fields and preserve written evaluation order.
+- Brace-style named records deriving exactly `Copy` and `Clone`, with supported integer/boolean or nested Copy-record fields; named type paths and simple type imports. Constructors support named/shorthand fields and preserve written evaluation order.
 - Record values in locals, function parameters/results and branches, field reads, and field assignments rooted in mutable locals; type and field privacy is checked.
-- Decimal/binary/octal/hexadecimal integers, underscores, optional `i32`/`i64` suffixes, signed minima; unsuffixed integers default to `i32` with limited contextual inference.
+- Decimal/binary/octal/hexadecimal integers, underscores, optional supported integer suffixes, signed minima; unsuffixed integers default to `i32` with limited contextual inference.
 - UTF-8 string literals and common escapes, including embedded NUL. CRLF source text in strings normalizes to LF; escaped CRLF line continuations are supported. Strings carry lengths at runtime.
 - `let`, optional type annotations, `mut`, lexical shadowing and nested scopes.
-- `=`, `+=`, `-=`, `*=`, `/=`, `%=` assignments to mutable locals.
-- Integer `+ - * / %`, unary `-`; integer comparisons; boolean `! && || == !=`; string `== !=`.
+- `=`, `+=`, `-=`, `*=`, `/=`, `%=`, `&=`, `|=`, `^=`, `<<=`, `>>=` assignments to mutable locals or supported record places.
+- Integer `+ - * / %`, signed unary `-`, bitwise `! & | ^`, shifts `<< >>`, and comparisons. Boolean `! && || == != & | ^`; string `== !=`. Shift counts may use any supported integer type.
 - Parentheses, typed function calls, forward calls and recursion.
 - `if`/`else if`/`else`, `while`, `break`, `continue`, `return` and nested block statements.
 - Value-producing `if`/`else` and block expressions, function tails, and unit expressions. Branch results must agree; no-else `if` expressions require unit. Expression statements without a semicolon require unit.
@@ -25,7 +25,7 @@ Replacing the implicit standard prelude with an external dependency named `std` 
 
 Local Cargo path dependencies are supported as separate library crate roots with isolated `crate`/`super` paths, extern bindings and nominal record identities. Library-only packages can be checked; supported binary graphs link together through the bootstrap backend. `ferrugo --check --crate-type=lib` checks a standalone library source tree.
 
-The C11 backend generates native executables using libc. Operands and arguments evaluate left to right; `&&`/`||` short-circuit; signed integer overflow, division/remainder by zero and failed assertions exit with status 101. These runtime checks apply in both output profiles. Generated programs do not need Go or Rust installed.
+The C11 backend generates native executables using libc. Operands and arguments evaluate left to right; `&&`/`||` short-circuit; integer overflow, invalid shift counts, division/remainder by zero and failed assertions exit with status 101. These runtime checks apply in both output profiles. Signed right shifts sign-extend, and left shifts discard shifted-out bits; boolean bitwise operations evaluate both operands. Generated code rejects a C target pointer width that differs from the Go compiler host. Generated programs do not need Go or Rust installed.
 
 ## Known limits
 
@@ -35,7 +35,7 @@ Move-only/plain structs, tuple/unit struct declarations, generic records, method
 
 Public reexports, restricted visibility, grouped/glob/absolute imports, local module/import items, shared function/module/import/record names in one namespace, and shadowing primitive types with record declarations or record import aliases remain unsupported. Module nesting is bounded to 256 levels. Source-string compiler APIs support inline modules only; file-based APIs load external declarations.
 
-Unit-valued bindings/parameters, integer bitwise operations, non-ASCII identifiers, raw/byte strings and general format specifications are unsupported. Return/break/continue require semicolons. `&str` returns require exactly one `&str` parameter under Rust lifetime elision; explicit lifetime syntax is unsupported. Inference is local and intentionally more restrictive than Rust inference across later statements. Compile-time constant-overflow linting is not implemented; arithmetic overflow is checked at runtime. Edition declarations do not select complete edition-specific grammars.
+Unit-valued bindings/parameters, `i128`/`u128`, floating-point and character types, non-ASCII identifiers, raw/byte strings and general format specifications are unsupported. Return/break/continue require semicolons. `&str` returns require exactly one `&str` parameter under Rust lifetime elision; explicit lifetime syntax is unsupported. Inference is local and intentionally more restrictive than Rust inference across later statements. Compile-time constant-overflow linting is not implemented; arithmetic overflow is checked at runtime. Edition declarations do not select complete edition-specific grammars.
 
 Diagnostics have source locations but do not reproduce rustc error codes, wording or recovery. Successful C emission does not establish cross-target or ABI compatibility. Local validation is on Linux using GCC; CI also exercises macOS. The backend uses the host C compiler and has no cross-compilation support yet.
 

@@ -2,7 +2,7 @@
 
 The overall goal remains a complete Rust compiler and Cargo implementation in Go. No bootstrap milestone completes that project.
 
-## Active goal: local Cargo library dependencies
+## Implemented milestone: local Cargo library dependencies
 
 Build and run a binary package whose supported Rust code depends on local library-only packages through `path` dependencies, including renamed and transitive dependencies and a shared dependency diamond.
 
@@ -16,6 +16,14 @@ Acceptance criteria:
 - Compare committed package fixtures with original Cargo offline, pass local checks, push on `main`, and verify hosted CI.
 
 This milestone links supported library code into a bootstrap C executable. Rust rlib/ABI artifacts, registry/git dependencies, feature/version resolution, lockfiles and workspaces remain later Cargo work.
+
+This implementation is pushed in checkpoint 8; local comparison and race checks pass, and hosted CI is pending for that checkpoint.
+
+## Active goal: host integer semantics
+
+Compile signed and unsigned integers through 64 bits plus isize/usize, with exact bounds, bitwise operations, shifts, compound assignments and checked runtime failures. Compare supported numeric behavior with rustc and validate generated C for undefined behavior, then push and verify CI.
+
+The next expression milestone is integer casts, followed by fixed-size arrays and usize indexing.
 
 ## Implemented milestones
 

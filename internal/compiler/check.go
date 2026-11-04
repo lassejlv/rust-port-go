@@ -20,6 +20,7 @@ type checked struct {
 	diverges    map[*syntax.Expr]bool
 	structs     map[string]*syntax.Struct
 	structOrder []string
+	assignTypes map[*syntax.Stmt]string
 }
 
 type binding struct {
@@ -62,7 +63,7 @@ func analyzeProgramMode(program *syntax.Program, requireMain bool) (*checked, er
 		decls: make(map[*syntax.Stmt]string), params: make(map[*syntax.Function][]string),
 		funcs: make(map[string]*syntax.Function), calls: make(map[*syntax.Expr]string),
 		fnNames: make(map[*syntax.Function]string), diverges: make(map[*syntax.Expr]bool),
-		structs: make(map[string]*syntax.Struct),
+		structs: make(map[string]*syntax.Struct), assignTypes: make(map[*syntax.Stmt]string),
 	}}
 	if err := c.collectStructs(); err != nil {
 		return nil, err
@@ -133,9 +134,9 @@ func fail(pos syntax.Span, format string, args ...any) error {
 	return fmt.Errorf("%s%d:%d: %s", prefix, pos.Line, pos.Column, fmt.Sprintf(format, args...))
 }
 func supportedType(t string) bool {
-	return t == "i32" || t == "i64" || t == "bool" || t == "&str" || t == "()"
+	return integerType(t) || t == "bool" || t == "&str" || t == "()"
 }
-func integerType(t string) bool { return t == "i32" || t == "i64" }
+func integerType(t string) bool { _, ok := integerInfo(t); return ok }
 func (c *checker) newVariable() string {
 	c.nextVariable++
 	return fmt.Sprintf("fr_v%d", c.nextVariable)
@@ -221,13 +222,7 @@ func (c *checker) statement(s *syntax.Stmt) (bool, error) {
 		if !b.mutable {
 			return false, fail(s.Span, "cannot assign to immutable variable %q", s.Name)
 		}
-		if s.Op != "=" && s.Op != "+=" && s.Op != "-=" && s.Op != "*=" && s.Op != "/=" && s.Op != "%=" {
-			return false, fail(s.Span, "unsupported assignment operator %q", s.Op)
-		}
-		if s.Op != "=" && !integerType(b.typ) {
-			return false, fail(s.Span, "compound assignment requires an integer")
-		}
-		if _, err := c.expr(s.Expr, b.typ); err != nil {
+		if err := c.assignmentRHS(s, b.typ); err != nil {
 			return false, err
 		}
 		c.decls[s] = b.cname
@@ -352,15 +347,30 @@ func (c *checker) expr(e *syntax.Expr, expected string) (string, error) {
 			if c.bottom[e.Right] {
 				return "", fail(e.Span, "value-less divergent operands are unsupported for unary -")
 			}
-			if !integerType(typ) {
+			info, ok := integerInfo(typ)
+			if !ok {
 				return "", fail(e.Span, "unary - requires an integer")
 			}
+			if !info.Signed {
+				return "", fail(e.Span, "cannot apply unary - to unsigned integer %s", typ)
+			}
 		case "!":
-			// Integer bitwise ! is intentionally outside the bootstrap subset.
-			if _, err := c.expr(e.Right, "bool"); err != nil {
+			context := expected
+			if context != "bool" && !integerType(context) {
+				context = c.hint(e.Right)
+			}
+			if context == "" {
+				context = "i32"
+			}
+			var err error
+			typ, err = c.expr(e.Right, context)
+			if err != nil {
 				return "", err
 			}
-			typ = "bool"
+			if typ != "bool" && !integerType(typ) {
+				return "", fail(e.Span, "unary ! requires a boolean or integer")
+			}
+
 		default:
 			return "", fail(e.Span, "unsupported unary operator %q", e.Op)
 		}
@@ -439,17 +449,19 @@ func (c *checker) binary(e *syntax.Expr, expected string) (string, error) {
 		c.diverges[e] = c.diverges[e.Left]
 		return "bool", nil
 	}
+	shift := e.Op == "<<" || e.Op == ">>"
+	bitwise := e.Op == "&" || e.Op == "|" || e.Op == "^"
 	compare := e.Op == "==" || e.Op == "!=" || e.Op == "<" || e.Op == "<=" || e.Op == ">" || e.Op == ">="
-	if !compare && e.Op != "+" && e.Op != "-" && e.Op != "*" && e.Op != "/" && e.Op != "%" {
+	if !shift && !bitwise && !compare && e.Op != "+" && e.Op != "-" && e.Op != "*" && e.Op != "/" && e.Op != "%" {
 		return "", fail(e.Span, "unsupported binary operator %q", e.Op)
 	}
 	context := ""
-	if !compare && integerType(expected) {
+	if !compare && (integerType(expected) || (bitwise && expected == "bool")) {
 		context = expected
 	}
 	if context == "" {
 		context = c.hint(e.Left)
-		if context == "" {
+		if context == "" && !shift {
 			context = c.hint(e.Right)
 		}
 	}
@@ -460,18 +472,27 @@ func (c *checker) binary(e *syntax.Expr, expected string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	right, err := c.expr(e.Right, left)
+	rightContext := left
+	if shift {
+		rightContext = ""
+	}
+	right, err := c.expr(e.Right, rightContext)
 	if err != nil {
 		return "", err
 	}
-	// Rust resolves these operators through traits. Coercing an operand that
-	// has no value to the other operand's type would accept invalid Rust (for
-	// example 1i32 + { return; }). Full never-type trait inference is outside
-	// this bootstrap; typed unreachable tails remain ordinary typed operands.
+	// Never-type trait inference is outside the bootstrap. A typed but unreachable
+	// operand remains supported, while a value-less block cannot acquire an
+	// arbitrary operator type through a coercion here.
 	if c.bottom[e.Left] || c.bottom[e.Right] {
 		return "", fail(e.Span, "value-less divergent operands are unsupported for %s", e.Op)
 	}
 	c.diverges[e] = c.diverges[e.Left] || c.diverges[e.Right]
+	if shift {
+		if !integerType(left) || !integerType(right) {
+			return "", fail(e.Span, "shift operands must be integers")
+		}
+		return left, nil
+	}
 	if left != right {
 		return "", fail(e.Span, "operands have different types")
 	}
@@ -481,10 +502,52 @@ func (c *checker) binary(e *syntax.Expr, expected string) (string, error) {
 		}
 		return "bool", nil
 	}
+	if bitwise {
+		if !integerType(left) && left != "bool" {
+			return "", fail(e.Span, "bitwise operators require matching integers or booleans")
+		}
+		return left, nil
+	}
 	if !integerType(left) {
 		return "", fail(e.Span, "arithmetic requires integers")
 	}
 	return left, nil
+}
+
+func (c *checker) assignmentRHS(s *syntax.Stmt, left string) error {
+	c.assignTypes[s] = left
+	switch s.Op {
+	case "=":
+		_, err := c.expr(s.Expr, left)
+		return err
+	case "<<=", ">>=":
+		if !integerType(left) {
+			return fail(s.Span, "shift assignment requires an integer")
+		}
+		right, err := c.expr(s.Expr, "")
+		if err != nil {
+			return err
+		}
+		if !integerType(right) {
+			return fail(s.Span, "shift count must be an integer")
+		}
+		if c.bottom[s.Expr] {
+			return fail(s.Span, "value-less divergent shift counts are unsupported")
+		}
+		return nil
+	case "&=", "|=", "^=":
+		if !integerType(left) && left != "bool" {
+			return fail(s.Span, "bitwise assignment requires an integer or boolean")
+		}
+	case "+=", "-=", "*=", "/=", "%=":
+		if !integerType(left) {
+			return fail(s.Span, "compound assignment requires an integer")
+		}
+	default:
+		return fail(s.Span, "unsupported assignment operator %q", s.Op)
+	}
+	_, err := c.expr(s.Expr, left)
+	return err
 }
 
 // hint finds a fixed operand type without committing unsuffixed literals to i32.
@@ -535,6 +598,9 @@ func (c *checker) hint(e *syntax.Expr) string {
 	case "unary":
 		return c.hint(e.Right)
 	case "binary":
+		if e.Op == "<<" || e.Op == ">>" {
+			return c.hint(e.Left)
+		}
 		if e.Op == "==" || e.Op == "!=" || e.Op == "<" || e.Op == "<=" || e.Op == ">" || e.Op == ">=" || e.Op == "&&" || e.Op == "||" {
 			return "bool"
 		}
@@ -636,15 +702,20 @@ func (c *checker) integer(e *syntax.Expr, expected string, negative bool) (strin
 	if typ == "" {
 		typ = "i32"
 	}
+	info, _ := integerInfo(typ)
 	if negative {
+		if !info.Signed {
+			return "", fail(e.Span, "cannot apply unary - to unsigned integer %s", typ)
+		}
 		value.Neg(value)
 	}
-	bits := uint(32)
-	if typ == "i64" {
-		bits = 64
+	width := uint(info.Bits)
+	min := big.NewInt(0)
+	limit := new(big.Int).Lsh(big.NewInt(1), width)
+	if info.Signed {
+		limit.Rsh(limit, 1)
+		min.Neg(new(big.Int).Set(limit))
 	}
-	limit := new(big.Int).Lsh(big.NewInt(1), bits-1)
-	min := new(big.Int).Neg(new(big.Int).Set(limit))
 	max := new(big.Int).Sub(limit, big.NewInt(1))
 	if value.Cmp(min) < 0 || value.Cmp(max) > 0 {
 		return "", fail(e.Span, "integer literal is out of range for %s", typ)
@@ -656,7 +727,7 @@ func (c *checker) integer(e *syntax.Expr, expected string, negative bool) (strin
 // parseInteger decodes bootstrap Rust integer syntax without applying a sign.
 func parseInteger(text string) (*big.Int, string, error) {
 	suffix := ""
-	for _, s := range []string{"i32", "i64"} {
+	for _, s := range integerSuffixes {
 		if strings.HasSuffix(text, s) {
 			suffix = s
 			text = strings.TrimSuffix(text, s)
