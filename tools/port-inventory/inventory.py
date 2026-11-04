@@ -122,7 +122,13 @@ def prepare(root):
         commands = [
             ["git", "-C", str(cache), "fetch", "--no-tags", "--depth=1", "--filter=blob:none", "origin", pins[name]["revision"]],
             ["git", "-C", str(cache), "sparse-checkout", "init", "--cone"],
-            ["git", "-C", str(cache), "sparse-checkout", "set"] + (["compiler/rustc_lexer", "compiler/rustc_parse_format", "compiler/rustc_data_structures", "compiler/rustc_index", "library/core/src/unicode", "LICENSES"] if name == "rust" else ["src", "crates"]),
+            ["git", "-C", str(cache), "sparse-checkout", "set"] + ([
+                "compiler/rustc_lexer", "compiler/rustc_parse_format",
+                "compiler/rustc_data_structures", "compiler/rustc_index",
+                "compiler/rustc_span", "compiler/rustc_macros",
+                "compiler/rustc_serialize", "compiler/rustc_hashes",
+                "library/core/src/unicode", "LICENSES",
+            ] if name == "rust" else ["src", "crates"]),
             ["git", "-C", str(cache), "checkout", "-B", "main", "FETCH_HEAD"],
         ]
         for command in commands:

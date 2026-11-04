@@ -57,6 +57,13 @@ jobs:
         env:
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: 1.99.1
+      - name: Prepare original edition derives and codecs
+        run: python3 tools/port-rust-edition/reference-build/prepare.py --fetch --validate
+        env:
+          FERRUGO_RUSTC: rustc
+          FERRUGO_CARGO: cargo
+          CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
+          RUSTUP_TOOLCHAIN: 1.99.1
       - name: Compare source ports with the originals
         run: go test -count=1 -v ./port/...
         env:
@@ -88,6 +95,7 @@ jobs:
           go run ./tools/port-rust-parse-format -check
           go run ./tools/port-rust-parse-format/char-unicode -check
           go run ./tools/port-cargo-restricted-names -check
+          go run ./tools/port-rust-edition -check
         env:
           FERRUGO_RUSTC: rustc
           FERRUGO_CARGO: cargo

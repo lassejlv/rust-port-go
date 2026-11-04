@@ -176,3 +176,13 @@ Fifteen source files now have recorded port/validation evidence. This does not c
 - Actual Go 1.23 source/reference, race, vet, fuzz and reproducibility checks pass. The 150 language and 16 Cargo comparisons continue to pass. The preceding checkpoint's Linux, macOS and upstream-reference jobs are green at `1e6d540`.
 
 Eighteen top-level upstream source files have evidence, with the three dependency source/test/benchmark files tracked separately. Production Rust compilation remains unfinished. Work continues on complete typed storage and intervals for hygiene/parser capture, followed by the span/session runtime, while Cargo source ports continue in parallel.
+
+## 2026-11-04 — checkpoint 16: complete edition metadata
+
+- Ported the complete edition module, including all five editions, predicates, names, parsing, ordering, formatting and derived hashing/serialization contracts.
+- Compared 3,220 original-runtime records. These cover every edition pair, formatting options and writer failures, 645 stateful hash comparisons, every decoder byte tag and 2,070 parsing cases.
+- Built the unchanged edition file with the original derive macros, real memory codecs and real standard/stable hashers. Bounded unused reference interfaces fail if reached; their audited call count is zero. These reference interfaces receive no source-port credit.
+- Verified all 31 locked dependency archives and 920 expanded registry files actually used by the reference. Five isolated checks confirm that changed, missing, extra and symlinked sources fail verification.
+- Added the edition reference to hosted validation and expanded pinned source preparation for the compiler runtime. Minimum-Go comparison, race tests, vet and cross-version fixture checks pass. The preceding checkpoint passed Linux, macOS and upstream-reference jobs at `b053c86`.
+
+Nineteen top-level source files now have recorded evidence. The typed storage/interval block and complete semver dependency/Cargo extensions remain under implementation and review; their uncommitted presence grants no completion credit. Work on span encoding and shared hash types has begun. The compiler still cannot compile production Rust.

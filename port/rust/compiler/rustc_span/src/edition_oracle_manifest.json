@@ -1,0 +1,313 @@
+{
+  "case_counts": {
+    "compare": 25,
+    "constants": 1,
+    "decode": 393,
+    "format": 75,
+    "hash": 645,
+    "parse": 2070,
+    "unused-interface-calls": 1,
+    "variant": 5,
+    "writer": 5
+  },
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+  "development_reference_only": true,
+  "expanded_source_sha256": "90cbc08099aacf03f7b87f90e7196693b40cc8330f446fa1b97ffa092d8f0e83",
+  "fixture_sha256": "a5f236483e40eded9f9e1fef265186aedf39dc1f285626ddd663d06eb20f8699",
+  "format": 1,
+  "hash_validation": "Each request replays operations emitted by the actual Go Hash/StableHash adapters into real Rust hashers and compares their stateful digests with the original derived impls; the production Go code never invokes Rust or hardcodes digests.",
+  "oracle_raw_sha256": "edd2d86c9da83d430139bb0cfbab46c801dc091718a528a48ba723173a93fbd4",
+  "oracle_source_sha256": "c61121bef26d1d891fa38c332434a6681de2caeb73deef214a28c7b7f9a10e14",
+  "pinned_source_version": "1.101.0",
+  "reference_dependency_port_credit": false,
+  "reference_helper_sha256": {
+    "Cargo.lock": "c581c4e6799b6da9646dbf6c9303c09818130e6f3ee6f61d83a894541dcdc6a1",
+    "Cargo.toml": "b45c8277b0b7718ef37b5271d24b8af30fbae126e6dbf6e65b49246677071333",
+    "audit.rs": "f5f4ddbaf56bbc52d581411d1e4a88fa7c56ccc928ee2404e1fa6ab330d7651c",
+    "data_structures_lib.rs": "16605b99fb9ed81e02456e42de18dde34d4b2116097bc51bacc4c5d0f5c0a78e",
+    "lib.rs": "a169a361b7a8bd5f1b11f0527028dacef149d8b9c32af410a9b5154ad7d272ec",
+    "main.rs": "d1387e3de6b4f36c1dc62fab8722748009a3759cda4986c9514fe2c8ec8b4108",
+    "prepare.py": "686a2ce150ea86e39634a080152c2736d011ed05afe9aa31b9180a225e3f83b0",
+    "rustc_data_structures.Cargo.toml": "9216b7c0f453fbaa4ced1d5b6bb6e5b39785e63032a0f2d8e8ed98c4f32f07e1",
+    "rustc_hashes.Cargo.toml": "e5b2cf8e8e318e9e604d25b09b4c6b439600bee59fb6cbbbceb67e6b2725a808",
+    "rustc_macros.Cargo.toml": "3232e6584194703388fb5db232089fb10d378b99abcf6d3762ca74423a58f519",
+    "rustc_serialize.Cargo.toml": "ea4dc5fc516dbb2f450b662e48620e031a4bad9347f67bc03cbf1e526ec277e2",
+    "rustc_span.Cargo.toml": "5bf93a7684940d6a8fd03fb98663e52b68940f8340f91585bfb107646a8d4642",
+    "span_lib.rs": "dd67503f9a082421daf7eb5f7eb7cc3aeca464bf8c47bfb328411fd80ea84a95",
+    "test_registry_source.py": "ddb42b8cd102647b7d46b0d0deeb95bb9fd1e0755e1d1fb6d582369e85d2c799"
+  },
+  "reference_registry_dependencies": [
+    {
+      "name": "displaydoc",
+      "version": "0.2.5",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "97369cbbc041bc366949bc74d34658d6cda5621039731c6310521892a3a20ae0",
+      "compiled_source_files": 39,
+      "compiled_source_tree_sha256": "1077e42994c00c5b25d83e17ba1464321010cd9b1de119073524e3311482375e"
+    },
+    {
+      "name": "equivalent",
+      "version": "1.0.2",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "877a4ace8713b0bcf2a4e7eec82529c029f1d0619886d18145fea96c3ffe5c0f",
+      "compiled_source_files": 10,
+      "compiled_source_tree_sha256": "fb700687badc6ceb65c40182c729952e0954afcf62a05468c1954e8acfd241b3"
+    },
+    {
+      "name": "fluent-bundle",
+      "version": "0.16.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "01203cb8918f5711e73891b347816d932046f95f54207710bda99beaeb423bf4",
+      "compiled_source_files": 29,
+      "compiled_source_tree_sha256": "078259ccb2184406c0bdcaabb2037152f8831bea14ad60c906980347714e06a9"
+    },
+    {
+      "name": "fluent-langneg",
+      "version": "0.13.1",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "7eebbe59450baee8282d71676f3bfed5689aeab00b27545e83e5f14b1195e8b0",
+      "compiled_source_files": 10,
+      "compiled_source_tree_sha256": "117fc8b4313a285f9c984f2e97522425e4e6f7b7abe0ef54923cbe6311a85073"
+    },
+    {
+      "name": "fluent-syntax",
+      "version": "0.12.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "54f0d287c53ffd184d04d8677f590f4ac5379785529e5e08b1c8083acdd5c198",
+      "compiled_source_files": 27,
+      "compiled_source_tree_sha256": "ec9ef6c75c7337311cf7177d9045eb7e0637df77c23089b170f29d25f8acbafd"
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.17.1",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a",
+      "compiled_source_files": 50,
+      "compiled_source_tree_sha256": "bb7c75ab3fa03892e4f001bc2b861b51cb370559fdc583a30d78ea17a8248582"
+    },
+    {
+      "name": "indexmap",
+      "version": "2.14.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "d466e9454f08e4a911e14806c24e16fba1b4c121d1ea474396f396069cf949d9",
+      "compiled_source_files": 42,
+      "compiled_source_tree_sha256": "ee0c75e324cbbd4b81962cbc69a7b32b1f7ab2974fa4a96452d5284e2a8c06d8"
+    },
+    {
+      "name": "intl-memoizer",
+      "version": "0.5.3",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "310da2e345f5eb861e7a07ee182262e94975051db9e4223e909ba90f392f163f",
+      "compiled_source_files": 9,
+      "compiled_source_tree_sha256": "1dd6cba296fc9878f6c40c8f8d39440506e731df94c76fa748dbafe2636a47c7"
+    },
+    {
+      "name": "intl_pluralrules",
+      "version": "7.0.2",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "078ea7b7c29a2b4df841a7f6ac8775ff6074020c6776d48491ce2268e068f972",
+      "compiled_source_files": 8,
+      "compiled_source_tree_sha256": "47653b08a60123b92dddcf5dc1f90b4959f7dad614b47f97ad909cbf64ff3be1"
+    },
+    {
+      "name": "memchr",
+      "version": "2.8.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79",
+      "compiled_source_files": 57,
+      "compiled_source_tree_sha256": "e0f78b1ddb8e52cb6994f47a5944a911d594dca1b838310ca880e51fda6d3b53"
+    },
+    {
+      "name": "proc-macro2",
+      "version": "1.0.106",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934",
+      "compiled_source_files": 33,
+      "compiled_source_tree_sha256": "af1ffb23081f61b21e41d43118d800aca7c726b1f575d332b1103f999980b75c"
+    },
+    {
+      "name": "quote",
+      "version": "1.0.45",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "41f2619966050689382d2b44f664f4bc593e129785a36d6ee376ddf37259b924",
+      "compiled_source_files": 35,
+      "compiled_source_tree_sha256": "e31775761beea1bcba084cd0063189f5e63a094207256719eb2a3dd11decd7f6"
+    },
+    {
+      "name": "rustc-hash",
+      "version": "2.1.1",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d",
+      "compiled_source_files": 14,
+      "compiled_source_tree_sha256": "4bebec492ad9225f73cf65a0b730b246f3ab08d41c966d543f32e17d212a806a"
+    },
+    {
+      "name": "rustc-stable-hash",
+      "version": "0.1.2",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "781442f29170c5c93b7185ad559492601acdc71d5bb0706f5868094f45cfcd08",
+      "compiled_source_files": 17,
+      "compiled_source_tree_sha256": "1414a6a2040951f51bdff3dd8d54ad5c46ced2ff5602bc97eb28a6829a7c4005"
+    },
+    {
+      "name": "self_cell",
+      "version": "1.2.1",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "16c2f82143577edb4921b71ede051dac62ca3c16084e918bf7b40c96ae10eb33",
+      "compiled_source_files": 7,
+      "compiled_source_tree_sha256": "98498350712c33beeda3d41cf4aeb727528ca95cee469c0379384c17f2037106"
+    },
+    {
+      "name": "serde",
+      "version": "1.0.228",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e",
+      "compiled_source_files": 33,
+      "compiled_source_tree_sha256": "84aa564b37cfe747b393b3c59c6c738b5b084abafc8f0174507c5b5ad27fb632"
+    },
+    {
+      "name": "serde_core",
+      "version": "1.0.228",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad",
+      "compiled_source_files": 27,
+      "compiled_source_tree_sha256": "59ec4e05acb26e11a27b6af1515277f218e99b5a1495c21ea4162edcf5e67c3f"
+    },
+    {
+      "name": "serde_derive",
+      "version": "1.0.228",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79",
+      "compiled_source_files": 36,
+      "compiled_source_tree_sha256": "066677cb25ced74fcb50c8d236c86d4161e1dae6e58f8642968d3003f3741a7b"
+    },
+    {
+      "name": "smallvec",
+      "version": "1.15.1",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03",
+      "compiled_source_files": 19,
+      "compiled_source_tree_sha256": "2ade7b56ec3bf0d6df7ce61815fc63ddfe48d2d00bf1ba916342f636e1e8b9d4"
+    },
+    {
+      "name": "syn",
+      "version": "2.0.117",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99",
+      "compiled_source_files": 105,
+      "compiled_source_tree_sha256": "9815aa0115d9bad1dec590c0cece5e9b1fcbf1284c9f6d1639cd7bbfab87d3e5"
+    },
+    {
+      "name": "synstructure",
+      "version": "0.13.2",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "728a70f3dbaf5bab7f0c4b1ac8d7ae5ea60a4b5549c8a5914361c99147a709d2",
+      "compiled_source_files": 8,
+      "compiled_source_tree_sha256": "3f92939b7c5e08d9ed4404589b6d39c43d813a67b06c2ff8ccec1cb093e90820"
+    },
+    {
+      "name": "thin-vec",
+      "version": "0.2.21",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "d6a4b9ba8738cb4a4f399d37e266becfd475e75eb73425b87a05a2f2039ba63e",
+      "compiled_source_files": 11,
+      "compiled_source_tree_sha256": "4f14cd9449ac0ddbc4244dbe13a7460300d889e8f16cd9cb39b575967369bf60"
+    },
+    {
+      "name": "thiserror",
+      "version": "2.0.17",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "f63587ca0f12b72a0600bcba1d40081f830876000bb46dd2337a3051618f4fc8",
+      "compiled_source_files": 105,
+      "compiled_source_tree_sha256": "055e1a3d606b97e6352940b7e52feae993293bc8d167e6d66cdf19e9c0be7b03"
+    },
+    {
+      "name": "thiserror-impl",
+      "version": "2.0.17",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "3ff15c8ecd7de3849db632e14d18d2571fa09dfc5ed93479bc4485c7a517c913",
+      "compiled_source_files": 17,
+      "compiled_source_tree_sha256": "885277f2ece1df86d033367260f12e285cf9d68fa68ef02fb145eef044f99456"
+    },
+    {
+      "name": "tinystr",
+      "version": "0.8.4",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "b1e27c91459209c2986af3dcf603a5a74a4368754ce37414f59acc971167f643",
+      "compiled_source_files": 22,
+      "compiled_source_tree_sha256": "145d945cb1b94aa2a8254e7ec72b00617b235d07452e1c50cd8acd2ba508ead9"
+    },
+    {
+      "name": "type-map",
+      "version": "0.5.1",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "cb30dbbd9036155e74adad6812e9898d03ec374946234fbcebd5dfc7b9187b90",
+      "compiled_source_files": 8,
+      "compiled_source_tree_sha256": "f80fab9eb218c0c0d426b302ea2df861eb34dc1487cddb2054bfa301e1a45ed2"
+    },
+    {
+      "name": "unic-langid",
+      "version": "0.9.6",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "a28ba52c9b05311f4f6e62d5d9d46f094bd6e84cb8df7b3ef952748d752a7d05",
+      "compiled_source_files": 9,
+      "compiled_source_tree_sha256": "fe3e7047c563e87344e37fe14355e0ffd782a44097bf10e847a3ed4f465dbf6f"
+    },
+    {
+      "name": "unic-langid-impl",
+      "version": "0.9.6",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "dce1bf08044d4b7a94028c93786f8566047edc11110595914de93362559bc658",
+      "compiled_source_files": 31,
+      "compiled_source_tree_sha256": "93c3ca0772cfd7aecf8ba0b4bbe85f30cfb0b05aa38f9ecb742f58a01aaa7da9"
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.24",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+      "compiled_source_files": 26,
+      "compiled_source_tree_sha256": "251b416beac67d8c2159adff52cdfa65bfe98082855c65b739a809c1e4bdf1d9"
+    },
+    {
+      "name": "zerofrom",
+      "version": "0.1.6",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "50cc42e0333e05660c3587f3bf9d0478688e15d870fab3346451ce7f8c9fbea5",
+      "compiled_source_files": 9,
+      "compiled_source_tree_sha256": "f0a7e558ee943838a48cf6ac7809dcb4cfd503326f8457f2e21570762c99ce69"
+    },
+    {
+      "name": "zerovec",
+      "version": "0.11.7",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "sha256": "94b5c6b5976d66c1d703c4fd17d3f5e43c8cedaacf604961b171adc7130896d8",
+      "compiled_source_files": 67,
+      "compiled_source_tree_sha256": "159902e98edfc856858475ffd5981d37043a0f63e960c8d5620de84c3af3d5ef"
+    }
+  ],
+  "reference_scope": "Complete unchanged Edition and actual macros/codec/hash algorithms; exact relevant traits/primitive implementation; only unused interface types are opaque fail-fast sentinels. Not a full rustc_span/rustc_data_structures or compiler ABI build.",
+  "reference_source_provenance_sha256": "9f713191b42a19a5b102ee186f58bd3a37cd23c17e895ab171bc5aadddbf2206",
+  "request_sha256": "07e029deb21ae7bdcee6a571c43f6f166bba372b94a78f501cfc26aa00c72830",
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "rustc_bootstrap": "1",
+  "rustflags": "-Zcrate-attr=feature(never_type)",
+  "source_git_blob": "d4f3f0e208e34401cf6d02af5a8606a3980a0171",
+  "source_path": "compiler/rustc_span/src/edition.rs",
+  "source_sha256": "a1dd82ce1a5b22b27e3360bcf8bd606fd4fa6669f6de6305536d6436d63ac7ae",
+  "used_method_audit": {
+    "encode": [
+      "emit_u8"
+    ],
+    "decode_valid_and_invalid": [
+      "read_u8"
+    ],
+    "std_hash": [
+      "write_isize"
+    ],
+    "stable_hash": [
+      "u8 StableHash -\u003e std Hash -\u003e actual StableSipHasher"
+    ],
+    "unused_interfaces_called": 0
+  }
+}

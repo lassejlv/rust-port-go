@@ -1,0 +1,17 @@
+[package]
+name = "rustc_macros"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[lib]
+proc-macro = true
+
+[dependencies]
+fluent-bundle = "=0.16.0"
+fluent-syntax = "=0.12.0"
+indexmap = "=2.14.0"
+proc-macro2 = "=1.0.106"
+quote = "=1.0.45"
+syn = { version = "=2.0.117", features = ["full"] }
+synstructure = "=0.13.2"

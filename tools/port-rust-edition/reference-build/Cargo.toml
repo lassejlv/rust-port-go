@@ -1,0 +1,23 @@
+[package]
+name = "edition_reference"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[lib]
+path = "wrapper/lib.rs"
+
+[[bin]]
+name = "edition-reference-proof"
+path = "wrapper/main.rs"
+
+[dependencies]
+rustc_span = { path = "crates/rustc_span" }
+rustc_data_structures = { path = "crates/rustc_data_structures" }
+rustc_serialize = { path = "crates/rustc_serialize" }
+rustc_hashes = { path = "crates/rustc_hashes" }
+
+[workspace]
+resolver = "3"
+members = ["crates/rustc_macros", "crates/rustc_serialize", "crates/rustc_hashes", "crates/rustc_span", "crates/rustc_data_structures"]
+default-members = ["."]
