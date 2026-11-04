@@ -1,6 +1,7 @@
 package cargo
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -128,5 +129,73 @@ func TestSemanticVersions(t *testing.T) {
 		if validVersion(version) {
 			t.Errorf("invalid version accepted: %s", version)
 		}
+	}
+}
+
+// These syntax cases were cross-checked with Python 3 tomllib. Keep this test
+// dependency-free: the oracle is used during development, not at test runtime.
+func TestManifestRejectsInvalidTOMLText(t *testing.T) {
+	base := "[package]\nname = \"demo\"\nversion = \"0.1.0\"\n"
+	reject := func(name, source string) {
+		t.Helper()
+		t.Run(name, func(t *testing.T) {
+			if _, err := readManifest(manifestFixture(t, source)); err == nil {
+				t.Fatal("accepted TOML-invalid source")
+			}
+		})
+	}
+	controls := make([]byte, 0, 33)
+	for c := byte(0); c < 32; c++ {
+		controls = append(controls, c)
+	}
+	controls = append(controls, 0x7f)
+	for _, c := range controls {
+		if c != '\t' {
+			reject(fmt.Sprintf("literal/control_U%04X", c), base+"description = 'a"+string(c)+"b'\n")
+			reject(fmt.Sprintf("basic/control_U%04X", c), base+"description = \"a"+string(c)+"b\"\n")
+		}
+		if c != '\t' && c != '\n' {
+			reject(fmt.Sprintf("comment/control_U%04X", c), base+"# before"+string(c)+"after\n")
+		}
+	}
+	for _, space := range []rune{'\u00a0', '\u0085', '\u1680', '\u2003', '\u2028', '\u2029', '\u202f', '\u205f', '\u3000'} {
+		reject(fmt.Sprintf("non_TOML_whitespace/U%04X_before_table", space), string(space)+base)
+		reject(fmt.Sprintf("non_TOML_whitespace/U%04X_in_key", space), base+"description"+string(space)+"=\"x\"\n")
+		reject(fmt.Sprintf("non_TOML_whitespace/U%04X_after_value", space), base+"description=\"x\""+string(space)+"\n")
+		reject(fmt.Sprintf("non_TOML_whitespace/U%04X_blank_line", space), base+string(space)+"\n")
+	}
+	reject("lone_CR_at_EOF", base+"# comment\r")
+	reject("lone_CR_line_endings", strings.ReplaceAll(base, "\n", "\r"))
+	for name, invalid := range map[string]string{
+		"invalid_leading_byte": "\xff",
+		"overlong_sequence":    "\xc0\xaf",
+		"surrogate_encoding":   "\xed\xa0\x80",
+		"truncated_sequence":   "\xc3",
+		"invalid_continuation": "\xe2\x28\xa1",
+	} {
+		reject("invalid_UTF8/literal/"+name, base+"description='a"+invalid+"b'\n")
+		reject("invalid_UTF8/basic/"+name, base+"description=\"a"+invalid+"b\"\n")
+		reject("invalid_UTF8/comment/"+name, base+"# a"+invalid+"b\n")
+	}
+}
+
+func TestManifestAcceptsValidTOMLText(t *testing.T) {
+	base := "[package]\nname = \"demo\"\nversion = \"0.1.0\"\n"
+	cases := map[string]string{
+		"literal_tab":     base + "description='a\tb'\n",
+		"basic_tab":       base + "description=\"a\tb\"\n",
+		"escaped_NUL":     base + "description=\"a\\u0000b\"\n",
+		"escaped_DEL":     base + "description=\"a\\u007Fb\"\n",
+		"CRLF":            strings.ReplaceAll(base, "\n", "\r\n"),
+		"basic_Unicode":   base + "description=\"hé🦀\u2028\"\n",
+		"literal_Unicode": base + "description='hé🦀\u2028'\n",
+		"comment_Unicode": base + "# hé🦀\u0085\n",
+	}
+	for name, source := range cases {
+		t.Run(name, func(t *testing.T) {
+			if _, err := readManifest(manifestFixture(t, source)); err != nil {
+				t.Fatalf("rejected supported valid TOML: %v", err)
+			}
+		})
 	}
 }

@@ -154,7 +154,7 @@ func TestErrorLocationAfterNestedComment(t *testing.T) {
 }
 
 func FuzzParse(f *testing.F) {
-	for _, seed := range []string{"", "fn main() {}", "fn main() { println!(\"hello\"); }", "/* nested /* comments */ */", "fn f(n:i64)->i64 { n+1 }", "fn f(n:i32)->i32 { if n < 0 { 0 } else { {n+1} } }", "fn main() { let x = (); { (); } () }"} {
+	for _, seed := range []string{"", "fn main() {}", "fn main() { println!(\"hello\"); }", "/* nested /* comments */ */", "fn f(n:i64)->i64 { n+1 }", "fn f(n:i32)->i32 { if n < 0 { 0 } else { {n+1} } }", "fn main() { let x = (); { (); } () }", "fn main(){print!(\"a\r\nb\");}", "//\xff\nfn main(){}"} {
 		f.Add(seed)
 	}
 	f.Fuzz(func(t *testing.T, source string) { _, _ = Parse(source) })
@@ -362,5 +362,101 @@ func TestPostfixFeaturesRemainExplicitlyUnsupported(t *testing.T) {
 				t.Fatal("unsupported postfix expression accepted")
 			}
 		})
+	}
+}
+
+func TestCRLFStringNormalizationAndContinuation(t *testing.T) {
+	cases := []struct{ name, literal, want string }{
+		{"raw CRLF", "\"first\r\nsecond\"", "first\nsecond"},
+		{"mixed raw line endings", "\"a\r\nb\nc\r\nd\"", "a\nb\nc\nd"},
+		{"CRLF continuation", "\"a\\\r\n  \tb\"", "ab"},
+		{"LF continuation", "\"a\\\n  b\"", "ab"},
+		{"continuation skips bare CR whitespace", "\"a\\\n \r b\"", "ab"},
+		{"continuation skips CRLF whitespace", "\"a\\\r\n \r\n b\"", "ab"},
+		{"escaped CR preserved", `"a\rb"`, "a\rb"},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			p, err := Parse("fn main() { print!(" + tc.literal + "); }")
+			if err != nil {
+				t.Fatal(err)
+			}
+			got := p.Functions[0].Body.Statements[0].Expr.Args[0].Text
+			if got != tc.want {
+				t.Fatalf("decoded string=%q, want %q", got, tc.want)
+			}
+		})
+	}
+}
+
+func TestRawAndEscapedBareCRRejected(t *testing.T) {
+	for _, source := range []string{
+		"fn main() { print!(\"a\rb\"); }",
+		"fn main() { print!(\"a\\\rb\"); }",
+		"fn main() { print!(\"a\r\r\nb\"); }",
+	} {
+		t.Run(source, func(t *testing.T) {
+			_, err := Parse(source)
+			if err == nil || !strings.Contains(err.Error(), "bare CR") {
+				t.Fatalf("error=%v, want bare CR error", err)
+			}
+		})
+	}
+}
+
+func TestCRLFNormalizationPreservesSourceLocations(t *testing.T) {
+	source := "fn main() {\r\n  println!(\"first\r\nsecond\");\r\n  println!(\"end\");\r\n}"
+	p, err := Parse(source)
+	if err != nil {
+		t.Fatal(err)
+	}
+	e := p.Functions[0].Body.Statements[1].Expr
+	if e.Span.Line != 4 || e.Span.Column != 3 || e.Span.Offset != strings.Index(source, `println!("end")`) {
+		t.Fatalf("span after normalized string=%#v", e.Span)
+	}
+}
+
+func TestUnicodeEscapeUnderscoreRules(t *testing.T) {
+	for _, escape := range []string{`\u{41_}`, `\u{41__________}`, `\u{4__1}`, `\u{0_0_0_0_4_1}`} {
+		t.Run(escape, func(t *testing.T) {
+			p, err := Parse(`fn main() { print!("` + escape + `"); }`)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if got := p.Functions[0].Body.Statements[0].Expr.Args[0].Text; got != "A" {
+				t.Fatalf("decoded Unicode escape=%q", got)
+			}
+		})
+	}
+	for _, escape := range []string{`\u{_41}`, `\u{__41}`, `\u{}`, `\u{_}`, `\u{0000041}`, `\u{+41}`} {
+		t.Run(escape, func(t *testing.T) {
+			_, err := Parse(`fn main() { print!("` + escape + `"); }`)
+			if err == nil || !strings.Contains(err.Error(), "Unicode escape") {
+				t.Fatalf("error=%v, want Unicode escape error", err)
+			}
+		})
+	}
+}
+
+func TestInvalidUTF8RejectedAcrossWholeSource(t *testing.T) {
+	cases := []struct{ name, source, position string }{
+		{"first byte", "\xfffn main() {}", "1:1:"},
+		{"line comment", "//é🦀\xff\nfn main() {}", "1:5:"},
+		{"block comment", "/*é\n  \xff*/\nfn main() {}", "2:3:"},
+		{"CRLF comment", "// valid\r\n//\xff\r\nfn main() {}", "2:3:"},
+		{"string", "fn main() { print!(\"\xff\"); }", "1:21:"},
+		{"truncated rune", "fn main() {} //\xe2\x82", "1:16:"},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			_, err := Parse(tc.source)
+			if err == nil || !strings.Contains(err.Error(), "invalid UTF-8 in source") || !strings.HasPrefix(err.Error(), tc.position) {
+				t.Fatalf("error=%v, want %s invalid UTF-8 in source", err, tc.position)
+			}
+		})
+	}
+	// The encoded replacement character is valid UTF-8, unlike an invalid byte.
+	if _, err := Parse("//é🦀�\nfn main() { print!(\"�\"); }"); err != nil {
+		t.Fatal(err)
 	}
 }

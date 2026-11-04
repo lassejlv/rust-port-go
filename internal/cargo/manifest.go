@@ -2,12 +2,14 @@ package cargo
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"os"
 	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
+	"unicode/utf8"
 )
 
 // Manifest is the deliberately small Cargo manifest understood by the bootstrap.
@@ -104,7 +106,7 @@ func stripComment(s string) (string, error) {
 			}
 		} else {
 			if c == '#' {
-				return strings.TrimSpace(s[:i]), nil
+				return strings.Trim(s[:i], " \t"), nil
 			}
 			if c == '"' || c == '\'' {
 				quote = c
@@ -114,11 +116,11 @@ func stripComment(s string) (string, error) {
 	if quote != 0 {
 		return "", fmt.Errorf("unterminated or multiline string (only single-line strings are supported)")
 	}
-	return strings.TrimSpace(s), nil
+	return strings.Trim(s, " \t"), nil
 }
 
 func tomlString(s string) (string, error) {
-	s = strings.TrimSpace(s)
+	s = strings.Trim(s, " \t")
 	if len(s) < 2 {
 		return "", fmt.Errorf("expected a quoted string")
 	}
@@ -145,6 +147,37 @@ func tomlString(s string) (string, error) {
 	return v, nil
 }
 
+// manifestLine preserves physical line endings. bufio.ScanLines drops a trailing
+// CR even at EOF, which would hide a TOML-invalid standalone carriage return.
+func manifestLine(data []byte, atEOF bool) (int, []byte, error) {
+	if i := bytes.IndexByte(data, '\n'); i >= 0 {
+		return i + 1, data[:i+1], nil
+	}
+	if atEOF && len(data) > 0 {
+		return len(data), data, nil
+	}
+	return 0, nil, nil
+}
+
+// Validate raw source before stripping comments or decoding escapes. Escaped
+// controls such as \u0000 are valid TOML string content and remain allowed.
+func validateManifestLine(line string) error {
+	if !utf8.ValidString(line) {
+		return fmt.Errorf("manifest must contain valid UTF-8")
+	}
+	for i := 0; i < len(line); i++ {
+		c := line[i]
+		if c == '\r' {
+			if i+1 >= len(line) || line[i+1] != '\n' {
+				return fmt.Errorf("carriage return must be followed by line feed")
+			}
+		} else if c != '\t' && c != '\n' && (c < 0x20 || c == 0x7f) {
+			return fmt.Errorf("raw control character U+%04X is not allowed in TOML", c)
+		}
+	}
+	return nil
+}
+
 func readManifest(path string) (*Manifest, error) {
 	f, err := os.Open(path)
 	if err != nil {
@@ -153,6 +186,7 @@ func readManifest(path string) (*Manifest, error) {
 	defer f.Close()
 	m := &Manifest{Path: path, Root: filepath.Dir(path), Edition: "2015"}
 	scan := bufio.NewScanner(f)
+	scan.Split(manifestLine)
 	seen := map[string]bool{}
 	table := ""
 	packageSeen := false
@@ -162,7 +196,12 @@ func readManifest(path string) (*Manifest, error) {
 		fail := func(format string, args ...any) (*Manifest, error) {
 			return nil, fmt.Errorf("%s:%d: %s", path, line, fmt.Sprintf(format, args...))
 		}
-		raw, err := stripComment(scan.Text())
+		text := scan.Text()
+		if err := validateManifestLine(text); err != nil {
+			return fail("%v", err)
+		}
+		text = strings.TrimSuffix(strings.TrimSuffix(text, "\n"), "\r")
+		raw, err := stripComment(text)
 		if err != nil {
 			return fail("%v", err)
 		}
@@ -187,8 +226,8 @@ func readManifest(path string) (*Manifest, error) {
 		if !ok {
 			return fail("expected key = value")
 		}
-		key = strings.TrimSpace(key)
-		value = strings.TrimSpace(value)
+		key = strings.Trim(key, " \t")
+		value = strings.Trim(value, " \t")
 		if seen[key] {
 			return fail("duplicate package key %q", key)
 		}

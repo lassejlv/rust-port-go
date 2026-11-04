@@ -34,3 +34,15 @@ Remaining scope is listed in ROADMAP.md and COMPATIBILITY.md. This is an executa
 - Pinned the inspected Rust/Cargo source revisions and recorded a component inventory. No upstream component is fully ported.
 
 The initial executable-bootstrap goal is achieved. The overall compiler/Cargo port is still incomplete; ownership, traits/generics, user-defined types, modules, standard libraries, crate linking and dependency resolution remain substantial next work.
+
+## 2026-11-04 — checkpoint 4: review corrections
+
+- Independent review found no backend mismatch across 102 additional evaluation-order programs compared with rustc.
+- Corrected CRLF normalization and escaped line continuations in Rust strings while retaining original source offsets.
+- Rejected leading underscores in Unicode escapes, bare carriage returns in strings and invalid UTF-8 anywhere in source, including comments.
+- Tightened the manifest parser to reject invalid UTF-8, raw controls, lone carriage returns and non-TOML whitespace before comment removal or escape decoding.
+- Added source/string regressions and 156 manifest syntax cases checked against Python's TOML/UTF-8 parsers.
+- Passed the full local race-enabled suite with rustc differential comparisons and vet after these corrections.
+- Verified hosted Linux/macOS CI, including rustc comparisons, for checkpoint 3: https://github.com/lassejlv/rust-port-go/actions/runs/41828174561.
+
+The full port remains incomplete. Current compatibility and the remaining scope are documented separately; successful bootstrap checks do not establish Rust ecosystem compatibility.

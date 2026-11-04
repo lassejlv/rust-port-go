@@ -5,11 +5,11 @@ Ferrugo 0.1.0 implements the subset below. It is not yet compatible with complet
 ## Accepted language
 
 - A single source file containing `fn` items; a required `fn main()` with unit return.
-- ASCII identifiers, line comments, nested block comments, source line/column errors.
+- Valid UTF-8 source, ASCII identifiers, line comments, nested block comments, source line/column errors.
 - Types `i32`, `i64`, `bool`, `&str`; `()` return types and unit expressions.
 - Parameters with explicit types; explicitly typed function returns, default unit returns.
 - Decimal/binary/octal/hexadecimal integers, underscores, optional `i32`/`i64` suffixes, signed minima; unsuffixed integers default to `i32` with limited contextual inference.
-- UTF-8 string literals and common escapes, including embedded NUL. Strings carry lengths at runtime.
+- UTF-8 string literals and common escapes, including embedded NUL. CRLF source text in strings normalizes to LF; escaped CRLF line continuations are supported. Strings carry lengths at runtime.
 - `let`, optional type annotations, `mut`, lexical shadowing and nested scopes.
 - `=`, `+=`, `-=`, `*=`, `/=`, `%=` assignments to mutable locals.
 - Integer `+ - * / %`, unary `-`; integer comparisons; boolean `! && || == !=`; string `== !=`.

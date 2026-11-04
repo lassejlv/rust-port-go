@@ -18,6 +18,9 @@ type lexer struct {
 }
 
 func lex(src string) ([]token, error) {
+	if err := validateSourceUTF8(src); err != nil {
+		return nil, err
+	}
 	l := &lexer{src: src, line: 1, column: 1}
 	var out []token
 	for {
@@ -141,6 +144,16 @@ func (l *lexer) stringLiteral() (string, error) {
 			l.advance()
 			return value.String(), nil
 		}
+		if c == '\r' {
+			position := l.pos()
+			l.advance()
+			if l.offset == len(l.src) || l.src[l.offset] != '\n' {
+				return "", sourceError(position, "bare CR is not allowed in a string; use \\r")
+			}
+			l.advance()
+			value.WriteByte('\n')
+			continue
+		}
 		if c != '\\' {
 			r, n := utf8.DecodeRuneInString(l.src[l.offset:])
 			if r == utf8.RuneError && n == 1 {
@@ -168,6 +181,12 @@ func (l *lexer) stringLiteral() (string, error) {
 			value.WriteByte(0)
 		case '\\', '"', '\'':
 			value.WriteByte(c)
+		case '\r':
+			if l.offset == len(l.src) || l.src[l.offset] != '\n' {
+				return "", sourceError(escape, "bare CR is not a valid string escape")
+			}
+			l.advance()
+			fallthrough
 		case '\n':
 			for l.offset < len(l.src) && strings.ContainsRune(" \t\r\n", rune(l.src[l.offset])) {
 				l.advance()
@@ -189,6 +208,9 @@ func (l *lexer) stringLiteral() (string, error) {
 			}
 			l.advance()
 			begin := l.offset
+			if begin < len(l.src) && !hexDigit(l.src[begin]) {
+				return "", sourceError(escape, "invalid Unicode escape: first character must be a hexadecimal digit")
+			}
 			for l.offset < len(l.src) && l.src[l.offset] != '}' {
 				l.advance()
 			}
@@ -207,6 +229,27 @@ func (l *lexer) stringLiteral() (string, error) {
 		}
 	}
 	return "", sourceError(start, "unterminated string literal")
+}
+
+// Check all source bytes before tokenization, including skipped comments. The
+// temporary cursor preserves original byte offsets and counts Unicode columns.
+func validateSourceUTF8(src string) error {
+	if utf8.ValidString(src) {
+		return nil
+	}
+	l := &lexer{src: src, line: 1, column: 1}
+	for l.offset < len(src) {
+		r, size := utf8.DecodeRuneInString(src[l.offset:])
+		if r == utf8.RuneError && size == 1 {
+			return sourceError(l.pos(), "invalid UTF-8 in source")
+		}
+		l.advance()
+	}
+	return nil
+}
+
+func hexDigit(c byte) bool {
+	return c >= '0' && c <= '9' || c >= 'a' && c <= 'f' || c >= 'A' && c <= 'F'
 }
 
 func identStart(c byte) bool    { return c == '_' || c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' }

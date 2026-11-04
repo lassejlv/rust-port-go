@@ -418,3 +418,20 @@ fn main() {
 		})
 	}
 }
+
+func TestNativeCRLFStringSemantics(t *testing.T) {
+	cases := []struct{ name, source, want string }{
+		{"actual CRLF normalized", "fn main() {\r\n println!(\"left\r\nright\");\r\n}\r\n", "left\nright\n"},
+		{"actual CRLF continuation", "fn main() { print!(\"a\\\r\n  b\"); println!(\"c\"); }", "abc\n"},
+		{"explicit CR escape retained", `fn main() { print!("a\rb"); }`, "a\rb"},
+		{"Unicode trailing underscores", `fn main() { print!("\u{4_1_}"); }`, "A"},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			result := runNative(t, tc.source)
+			if result.status != 0 || result.stderr != "" || result.stdout != tc.want {
+				t.Fatalf("status=%d stdout=%q stderr=%q; want stdout=%q", result.status, result.stdout, result.stderr, tc.want)
+			}
+		})
+	}
+}
