@@ -79,7 +79,6 @@ jobs:
           go run ./tools/port-rust-binary-search -check
           go run ./tools/port-rust-union-find -check
           go run ./tools/port-rust-thousands -check
-          go run ./tools/port-rust-index -check
           go test -tags ferrugo_rustc_nightly ./port/rust/compiler/rustc_index/src
           go run -tags ferrugo_rustc_nightly ./tools/port-rust-index -check
         env:
