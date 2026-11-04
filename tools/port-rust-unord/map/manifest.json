@@ -1,0 +1,29 @@
+{
+  "scope": "Partial genuine UnordMap foundation and actual read-items/filter/map/collect path; generic higher iterator/sort/codec/stablehash contracts remain pending and receive no wholefile credit",
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "unicode": [
+    18,
+    0,
+    0
+  ],
+  "cases": 2000,
+  "original_unord": {
+    "path": "compiler/rustc_data_structures/src/unord.rs",
+    "blob": "42dbe37db7951fb619afc11054ad20952e7a5098",
+    "sha256": "5b40df5f08b9cd2ec1f7806f76937b623f2de60d3de31dae12c009bee5509e99",
+    "bytes": 23193
+  },
+  "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "raw_sha256": "c13c296001314f6a83a1c02352194b213f8af7e48854b88ddc5c7918d28f2573",
+  "fixture_sha256": "7a6f5aedb8104b437cfc854449c21003cd7b005d27b6c56fc56ecb858f306eec",
+  "oracle_sha256": "b1189a28b7c12ef6d0289d72bb21240cbf87b7b73c592ca13e95426ee43713db",
+  "generator_sha256": "295ec5706008bf07cea8fe12c5515b1fb638a6e8467e576015d31fea02f9b334",
+  "reference_tools": {
+    "prepare.py": "4517eedb69d9ab873639d3c15a802e8371ee33dbf2a684c968073e3f547af442",
+    "verify.py": "413283a6dc0933d03ddf9600321a1af5d93e0be4c36da3b51e82b8a9d3529d79",
+    "sources.json": "b5b283946d0f2094e2ee6b7da6cb00c3601cecc02954afea3f91b42492b024bb",
+    "Cargo.lock": "754f658b67c5a3fd3296ae0f4e3cfcfd60dca900f3552de06895a0c2a7617c7a",
+    "toolchain.json": "39583ec2969fe1c845ef0cf36e4b85a5160147675c1350cee77ff9a689342b5c"
+  }
+}

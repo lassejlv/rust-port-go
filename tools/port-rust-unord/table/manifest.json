@@ -1,0 +1,38 @@
+{
+  "scope": "Scoped actual std FxHashMap supporting table proof; Unord wholefile completion remains pending",
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "profiles": [
+    {
+      "name": "rust1.99",
+      "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+      "operations": 96000,
+      "raw_output_sha256": "bed858ded4bbddc0e8a085bca4fc776192c98b0609b7ff6144041ac4743deb52",
+      "blocks_sha256": "964351181e35d725e4bc7a9746930b514152aab3ccef249da70e29938def1bf3",
+      "hashbrown_version": "0.17.1",
+      "features": [
+        "default",
+        "std"
+      ]
+    },
+    {
+      "name": "rust1.101",
+      "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+      "operations": 96000,
+      "raw_output_sha256": "bed858ded4bbddc0e8a085bca4fc776192c98b0609b7ff6144041ac4743deb52",
+      "blocks_sha256": "964351181e35d725e4bc7a9746930b514152aab3ccef249da70e29938def1bf3",
+      "hashbrown_version": "0.17.1",
+      "features": [
+        "default",
+        "std"
+      ]
+    }
+  ],
+  "blocks": 1500,
+  "operations_per_block": 64,
+  "fixture_sha256": "74b2854f38bcfc02806816f6fae12ae98ee0e7e6c0e7220f562a1135197635d0",
+  "fixture_raw_sha256": "964351181e35d725e4bc7a9746930b514152aab3ccef249da70e29938def1bf3",
+  "rustc_hash_archive_sha256": "357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d",
+  "rustc_hash_version": "2.1.1",
+  "oracle_sha256": "37c3b7a266ec3122877ca36ce96fa2dcb38b9cf3f856477ccdc4184cdb129044",
+  "generator_sha256": "6cc5408b7e7624993b2c16a75c56d726f6d9bc294d194a2c73f3f8d0e083de70"
+}

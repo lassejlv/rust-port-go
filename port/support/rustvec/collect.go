@@ -33,6 +33,10 @@ type IteratorOps[S, T any] struct {
 	TrustedLength bool
 	ForEach       func(*Owned[S], func(T))
 	FoldUnit      func(*Owned[S], func(T))
+	// MapToUnit witnesses the selected monomorphized Iterator::map constructor
+	// for Map<I, the zero-sized |key| (key, ()) closure>. Nil means the actual
+	// trait default. The returned owner is the I field of the returned Map.
+	MapToUnit func(*Owned[S], UnitMapping[T]) *Owned[S]
 	// VecFromIterator witnesses the concrete iterator type's monomorphized std
 	// collection specialization (e.g. in-place collection). It is not a Rust
 	// user override. Nil is lawful only for the generic/trusted source strategy.
@@ -48,6 +52,8 @@ type iteratorCell[T any] struct {
 	hint    func(Context) Hint
 	close   func(Context)
 	each    func(Context, func(T))
+	fold    func(Context, func(T))
+	mapUnit func(Context, ElementOps[T])
 	trusted bool
 	builtin *VecIntoIter[T]
 	collect func(Config, ElementOps[T]) []T
@@ -98,6 +104,35 @@ func NewIteratorFromOwned[S, T any](state *Owned[S], ops IteratorOps[S, T]) Iter
 			}
 			consume(value)
 		}
+	}
+	// Keep fold independent: an adapter's for_each may delegate to the input's
+	// fold while deliberately bypassing its separately overridden for_each.
+	cell.fold = func(context Context, consume func(T)) {
+		arg := state.MoveWithContext(context)
+		defer cleanupOwned(arg, context)
+		if ops.FoldUnit != nil {
+			ops.FoldUnit(arg, consume)
+			return
+		}
+		for {
+			value, ok := ops.Next(Ref[S]{arg.Borrow(), context})
+			if !ok {
+				return
+			}
+			consume(value)
+		}
+	}
+	cell.mapUnit = func(context Context, elementOps ElementOps[T]) {
+		arg := state.MoveWithContext(context)
+		defer cleanupOwned(arg, context)
+		result := arg
+		if ops.MapToUnit != nil {
+			result = ops.MapToUnit(arg, UnitMapping[T]{context: context, ops: elementOps})
+		}
+		if result == nil || !result.IsLive() {
+			context.Panic("rustvec: map constructor returned consumed receiver state")
+		}
+		state = result.MoveWithContext(context)
 	}
 	if ops.VecFromIterator != nil {
 		cell.collect = func(config Config, elementOps ElementOps[T]) []T {
@@ -423,6 +458,17 @@ func (it *VecIntoIter[T]) IntoIterator() IntoIterator[T] {
 	cell.next = func(Context) (T, bool) { return it.Next() }
 	cell.hint = func(Context) Hint { n := uint(it.back - it.front); return Hint{n, n, true} }
 	cell.close = it.CloseWithContext
+	cell.fold = func(context Context, consume func(T)) {
+		defer closeBuiltinFold(it, context)
+		for {
+			value, ok := it.Next()
+			if !ok {
+				return
+			}
+			consume(value)
+		}
+	}
+	cell.each = cell.fold
 	return FromIterator(Iterator[T]{cell})
 }
 func (it *VecIntoIter[T]) take(config Config) []T {

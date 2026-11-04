@@ -1,0 +1,25 @@
+{
+  "scope": "Actual std Map/Set/Entry/OccupiedError Debug fallible C/S writes, every write error, formatter state and reuse; scoped support only",
+  "profiles": [
+    {
+      "name": "rust1.99",
+      "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+      "cases": 43160,
+      "raw_sha256": "54ac8fae91440381096ad36c224a432d46d339d4d28daa2a37c0b02b2981beaf"
+    },
+    {
+      "name": "rust1.101",
+      "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+      "cases": 43160,
+      "raw_sha256": "54ac8fae91440381096ad36c224a432d46d339d4d28daa2a37c0b02b2981beaf"
+    }
+  ],
+  "cases": 43160,
+  "raw_sha256": "54ac8fae91440381096ad36c224a432d46d339d4d28daa2a37c0b02b2981beaf",
+  "fixture_sha256": "c1d2ae8753dd870a130d475db57ed816470e6a01dd7e5568570ddd308f40f567",
+  "requests_sha256": "49c1d5947e5202a09d24c35cc59be380d0a9c61839db1f169e9d6aa85d40f95b",
+  "archive_sha256": "357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d",
+  "oracle_sha256": "8b81c1ee15e8f660b89742106ae1ab25982e7023b084c268565e04bf14787218",
+  "generator_sha256": "1ec8eae7b8e54c2a9be02479faf89679fc2e713a9ac195e545047e44d6ba1c18",
+  "support_generator_sha256": "6cc5408b7e7624993b2c16a75c56d726f6d9bc294d194a2c73f3f8d0e083de70"
+}

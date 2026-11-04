@@ -1,0 +1,24 @@
+{
+  "scope": "Used rustc-hash2.1.1 std-only hasher operations under actual64-bit compiler profiles; no fullcrate credit",
+  "profiles": [
+    {
+      "name": "rust1.99",
+      "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+      "cases": 5548,
+      "raw_sha256": "baed29d750e7a8bfcf8aa3c14223f0e21e0ee803876b447ceef93c83d929b1dc"
+    },
+    {
+      "name": "rust1.101",
+      "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+      "cases": 5548,
+      "raw_sha256": "baed29d750e7a8bfcf8aa3c14223f0e21e0ee803876b447ceef93c83d929b1dc"
+    }
+  ],
+  "cases": 5548,
+  "raw_sha256": "baed29d750e7a8bfcf8aa3c14223f0e21e0ee803876b447ceef93c83d929b1dc",
+  "fixture_sha256": "370402603a32c78686ba7a5d1f56a60c0dee5b2e153f2bbcdbbfbd1a6c5c4ae2",
+  "archive_sha256": "357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d",
+  "oracle_sha256": "24384aeb02bb681e1e0c2abeffce7684123b0d566cfdc5dfcee93772b3120e3d",
+  "generator_sha256": "32a699941f369e1f662ec0be4428024b34d903edbc0a5a735a6476c10e1aee30",
+  "support_generator_sha256": "6cc5408b7e7624993b2c16a75c56d726f6d9bc294d194a2c73f3f8d0e083de70"
+}

@@ -1,0 +1,47 @@
+{
+  "scope": "Read-only source audit matching the actual official SDK used by the original stable-sort reference. No standard-library completion credit.",
+  "official_archive_url": "https://static.rust-lang.org/dist/2026-11-04/rust-src-nightly.tar.xz",
+  "official_archive_sha256": "d99600cbf56d2db40112095e99e138f9e2f30002ef2774d288dc525e28a1357c",
+  "files": [
+    {
+      "path": "library/core/src/slice/sort/shared/mod.rs",
+      "bytes": 1548,
+      "sha256": "fa9eec2901bafba25c9c1e1684df76dbb1f86e0bbd04f18f3e67cee54dcdfcc8"
+    },
+    {
+      "path": "library/core/src/slice/sort/shared/pivot.rs",
+      "bytes": 3585,
+      "sha256": "a9c3f207678555dc1c03e50fa73bf8de7d459844039de4d0bd8892a0e4f1317b"
+    },
+    {
+      "path": "library/core/src/slice/sort/shared/smallsort.rs",
+      "bytes": 32343,
+      "sha256": "480d10a3ad88477d1d620361f238cebf9861381e6c0210fb26ba2f1d3d3576cf"
+    },
+    {
+      "path": "library/core/src/slice/sort/stable/mod.rs",
+      "bytes": 7112,
+      "sha256": "3f2b2d8543a1cb91c9352e041bed49949a31cbd4b1030ec1a82cca1304cb22d3"
+    },
+    {
+      "path": "library/core/src/slice/sort/stable/drift.rs",
+      "bytes": 12456,
+      "sha256": "5992b53abed257aa1c2dc2bb811d6a525294471e7a98d434f161d376100bf9c9"
+    },
+    {
+      "path": "library/core/src/slice/sort/stable/quicksort.rs",
+      "bytes": 10561,
+      "sha256": "89efcde0e6f416c1e08728960bdfff1f9750b0a35a598254702f4d91f9cc1e2b"
+    },
+    {
+      "path": "library/core/src/slice/sort/stable/merge.rs",
+      "bytes": 5654,
+      "sha256": "d98c59ba9932ff64ce5dca62bf28433ddfa9b604c7b3e4c226f29b673f8b00c0"
+    },
+    {
+      "path": "library/alloc/src/slice.rs",
+      "bytes": 35548,
+      "sha256": "085b18c8f564ecdb4575bf50b387ddbbf52b37bf9985cb0bc3899db49ab24778"
+    }
+  ]
+}

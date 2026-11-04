@@ -1,0 +1,97 @@
+{
+  "scope": "Scoped actual std1.101 normal stable-sort dependency, not standard-library source-file completion; hashes commit to every comparison, post-panic slot and destructor event",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+  "target": "x86_64-unknown-linux-gnu",
+  "sdk_libraries": {
+    "libstd-530112f2fd58de10.rlib": "8fdbba1c8e59d13f0382407bce5800f9a75ecb49b4d0fdb4bcb616284bb354a1",
+    "libcore-7832d2fe4fa07f06.rlib": "4fb8e711916ca10f1a349a8d5cde7ed17cd968d4b71833f10d9c799b2ab3f645",
+    "liballoc-6e37827f505ea391.rlib": "d4d0c141c89ab81f1a6e5b8b17e6296d5acd8208480b62ad63f563628dfb93ba"
+  },
+  "source_audit_sha256": "0fe45cc7c9619b35bd18db45e0224debfca37e5240463dfe9a2a28c362450caf",
+  "cases": 98720,
+  "callbacks": 7978963,
+  "panics": 89414,
+  "types": [
+    [
+      "0",
+      "16",
+      "8",
+      "true",
+      "true"
+    ],
+    [
+      "1",
+      "24",
+      "8",
+      "true",
+      "true"
+    ],
+    [
+      "2",
+      "64",
+      "8",
+      "true",
+      "true"
+    ],
+    [
+      "3",
+      "256",
+      "8",
+      "true",
+      "true"
+    ],
+    [
+      "4",
+      "24",
+      "8",
+      "false",
+      "false"
+    ],
+    [
+      "5",
+      "8",
+      "8",
+      "true",
+      "true"
+    ],
+    [
+      "6",
+      "16",
+      "8",
+      "true",
+      "true"
+    ],
+    [
+      "7",
+      "16",
+      "8",
+      "true",
+      "false"
+    ],
+    [
+      "8",
+      "4096",
+      "8",
+      "true",
+      "true"
+    ],
+    [
+      "9",
+      "0",
+      "1",
+      "true",
+      "true"
+    ]
+  ],
+  "native_raw_sha256": "5b037d885a8aa4948382390f275334dfab789caac6d605f624ecf5c50ba5c8a9",
+  "fixture_sha256": "165036b565a27fd2e6741c6647e328d81a336f6e638cd2fcc37ba6a4e1be9120",
+  "fixture_raw_sha256": "761e13cd3ea3d525dde66937465768463d6fca37a4e3ebd11404c4bcfd018f4a",
+  "oracle_sha256": "32c69b2d717d8fcf3ecf4cb282100383bdff4166638a26deb5e13f62405db2a9",
+  "generator_sha256": "d82aaaaf1c7849c1418345f61e617fa68c3445470cddbd859f0906fc39f5363c",
+  "go_sources": {
+    "stable.go": "8808eec8995671f7f1c5a73a79b2734d1c5dd84d121d55923252dc5dc84ff3eb",
+    "shared.go": "edcdda1f8d42c7db175fc9578baa804e425bae700aef723f53f51d96ab556c91",
+    "merge.go": "b5344aaab99fd601572766762d7705da7b392f63af225083307a9cced9c1f475",
+    "drift.go": "20fb5c73a0d4574799451cc06db2bf2dab27b363dcd577ebac61f6c6f1afe5fa"
+  }
+}

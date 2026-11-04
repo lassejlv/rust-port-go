@@ -272,3 +272,13 @@ The source ledger remains at 28 completed top-level files. This checkpoint close
 - The isolated minimum-Go snapshot passes the full race suite and vet, including the Rust/Cargo fixture comparisons. Fresh Base-N formatter/ownership regeneration and original source tests pass; hosted validation now runs both new contract generators.
 
 The ledger now records 29 completed top-level files. Cargo graph's persistent-container/generic contracts remain reopened. Full compiler sessions, symbols, source files, hygiene, definition IDs, source maps and their required sorting/container dependencies continue in parallel. Production Rust compilation remains unfinished.
+
+## 2026-11-04 — checkpoint 24: verified collection and sorting support
+
+- Added the actual hash-table behavior required by compiler unordered collections: probing/deleted buckets, growth and in-place rehash, source layouts, Entry variants, borrowed cells, clone rollback and owned cleanup. Two independent SDK profiles match 96,000 table operations, 1,098 owned-trait cases, 864 process cases per profile, 43,160 formatter cases and the scalar/layout/hash/default-dispatch proofs.
+- Added Rust's normal stable-sort strategy with its source layout/Copy/Freeze metadata, small-sort selection, scratch sizes and panic hole restoration. The original SDK matches 98,720 requests and 7,978,963 comparison events, including 89,414 caught panics, final slot state, pointer equality and destructor order. Go storage supplies allocations; no Rust ABI or allocator contract is claimed.
+- Added genuine partial UnordMap/Set foundations and their borrowed queries, traits and commutative stable hashing. The complete unchanged compiler graph matches 7,662 operation/format/hash records. Higher iterator algebra, conversion, sorting and codec methods remain under construction, so `unord.rs` receives no full-file credit.
+- Closed the supporting iterator distinction between Map's `for_each` and Set's mapped `fold`, including constructor overrides and owned values. The previous semver collector evidence remains unchanged. The scoped stable-hash context bridge now supplies the real backing hasher without a dependency cycle; its source file remains partial.
+- The isolated minimum-Go snapshot passes affected-package race checks and vet. Every retained backing/native sort/Unord proof regenerates successfully, with five source/tool integrity tests. Hosted validation now runs both SDK references alongside the complete original compiler graph.
+
+The source ledger remains at 29 completed top-level files. These dependencies unblock larger complete compiler-file ports; neither supporting hash-table/sort code nor partial unordered collections gains whole upstream source-file credit.

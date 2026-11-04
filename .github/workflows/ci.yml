@@ -163,8 +163,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23.x'
+          cache: false
       - name: Install matching dated nightly
-        run: rustup toolchain install nightly-2026-11-04 --profile minimal
+        run: |
+          rustup toolchain install nightly-2026-11-04 --profile minimal
+          rustup toolchain install 1.99.1 --profile minimal
+          python3 - <<'PY'
+          import os, subprocess
+          with open(os.environ['GITHUB_ENV'], 'a') as output:
+              for variable, toolchain in [('FERRUGO_RUSTC', '1.99.1'), ('FERRUGO_RUSTC_NIGHTLY', 'nightly-2026-11-04')]:
+                  binary = subprocess.check_output(['rustup', 'which', '--toolchain', toolchain, 'rustc'], text=True).strip()
+                  output.write(variable + '=' + binary + '\n')
+          PY
       - name: Prepare exact upstream source cache
         run: python3 tools/port-inventory/inventory.py prepare
       - name: Verify reference input and executable guards
@@ -177,5 +190,16 @@ jobs:
           FERRUGO_RUSTC: rustc
           FERRUGO_RUSTDOC: rustdoc
           FERRUGO_CARGO: cargo
+          CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
+          RUSTUP_TOOLCHAIN: nightly-2026-11-04
+      - name: Verify hash-table and sorting support against actual SDKs
+        run: |
+          python3 tools/port-rust-unord/table/check.py
+          python3 tools/port-rust-unord/sort/generate.py --check
+          python3 tools/port-rust-unord/map/generate.py --skip-prepare --check
+          python3 tools/port-rust-unord/traits/generate.py --skip-prepare --check
+          python3 -m unittest discover -s tools/port-rust-unord/table -p 'test_*.py'
+        env:
+          FERRUGO_GO: go
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: nightly-2026-11-04

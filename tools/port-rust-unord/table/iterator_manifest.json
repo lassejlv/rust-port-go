@@ -1,0 +1,25 @@
+{
+  "scope": "Actual std Map/Set Extend/FromIterator: custom for_each versus fold, next default, builtin VecIntoIter, map-constructor override invoking its fixed Fn, complete owned input/iterator/item cleanup and partial state; supporting scope only",
+  "profiles": [
+    {
+      "name": "rust1.99",
+      "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+      "cases": 1494,
+      "raw_sha256": "052e53077413bf4a587dfc7603d03578031fec92e5d8d2ec03dce0f30da0e6a5"
+    },
+    {
+      "name": "rust1.101",
+      "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+      "cases": 1494,
+      "raw_sha256": "052e53077413bf4a587dfc7603d03578031fec92e5d8d2ec03dce0f30da0e6a5"
+    }
+  ],
+  "cases": 1494,
+  "raw_sha256": "052e53077413bf4a587dfc7603d03578031fec92e5d8d2ec03dce0f30da0e6a5",
+  "fixture_sha256": "3c378ffccec355f0cdb1ff965acb5561fc507ea93d76e63fdd64341f39317c63",
+  "requests_sha256": "707150c48204471f0de6516db6be7cbc6cc1a6cdbff9f14a10beb79c1de6f233",
+  "archive_sha256": "357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d",
+  "oracle_sha256": "6f019253c10281a57e26ee48c9da1bfbca4bafab9e9e88cbb373561890dede4b",
+  "generator_sha256": "c3a2bf06273ffa15a7311d23d121d5a79cdda2782d1cddfc1184b304374dd3ec",
+  "support_generator_sha256": "6cc5408b7e7624993b2c16a75c56d726f6d9bc294d194a2c73f3f8d0e083de70"
+}

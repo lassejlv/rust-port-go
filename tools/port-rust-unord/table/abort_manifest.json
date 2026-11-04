@@ -1,0 +1,27 @@
+{
+  "scope": "Actual std process abort prefixes: in-progress panic-hook failures and escaping second panics. Aborted responses contain no fabricated postmortem state. Scoped support only; no std/Unord wholefile completion credit.",
+  "profiles": [
+    {
+      "name": "rust1.99",
+      "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+      "cases": 864,
+      "aborts": 837,
+      "raw_sha256": "be6871b12c25c4da3626bde61150c25df52e65fc4f07b7a549a45d5d5eeca56d"
+    },
+    {
+      "name": "rust1.101",
+      "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+      "cases": 864,
+      "aborts": 837,
+      "raw_sha256": "be6871b12c25c4da3626bde61150c25df52e65fc4f07b7a549a45d5d5eeca56d"
+    }
+  ],
+  "cases": 864,
+  "fixture_sha256": "6da679b89dce877c78359f5f9fca27b4007030235cec08930907476a6b0f7e25",
+  "raw_sha256": "be6871b12c25c4da3626bde61150c25df52e65fc4f07b7a549a45d5d5eeca56d",
+  "rustc_hash_archive_sha256": "357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d",
+  "oracle_sha256": "aa7065890320d7b6f07feb6d5be07de8b82a6328c34ca87b55f11bb88bf96b37",
+  "generator_sha256": "9f2081e9f2d1a5286ee082a647eada470244b2cb1379fcb84847e8222cb0ceaf",
+  "owned_generator_sha256": "56dd83057197d1409b53e1d04942f9132309acdaaee57255687d4ef76cc27019",
+  "support_generator_sha256": "6cc5408b7e7624993b2c16a75c56d726f6d9bc294d194a2c73f3f8d0e083de70"
+}

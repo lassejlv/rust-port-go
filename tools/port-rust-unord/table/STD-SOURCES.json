@@ -1,0 +1,369 @@
+{
+  "scope": "Read-only source audit of official source archives corresponding to recorded native compilers; no std/hashbrown source completion credit",
+  "profiles": [
+    {
+      "profile": "rust1.99",
+      "official_source_archive_url": "https://static.rust-lang.org/dist/2026-10-15/rust-src-1.99.1.tar.xz",
+      "official_source_archive_sha256": "e485a88c45db546b73571df7bebfcb4454ba4fb552c492e25fc5b00eeb5bf22d",
+      "files": [
+        {
+          "path": "library/alloc/src/vec/into_iter.rs",
+          "bytes": 23019,
+          "sha256": "c1bae1157f99b9540f53c8be44928a5b095296095ef87ee048d5d21a0e93ddce"
+        },
+        {
+          "path": "library/core/src/fmt/builders.rs",
+          "bytes": 39887,
+          "sha256": "5fac503588c2a5acab4b3cb06dcad0d66c2808aef2a2704349cb205155bacf7e"
+        },
+        {
+          "path": "library/core/src/hash/mod.rs",
+          "bytes": 31675,
+          "sha256": "3670a47bcf646bbcc69e1f70131df6c0093f12b0602be614ac828266f19e2a1f"
+        },
+        {
+          "path": "library/core/src/iter/adapters/map.rs",
+          "bytes": 6425,
+          "sha256": "f1e47647ac44777030c282423e3aefb810629dfedca161cef56cff8ef74a03ad"
+        },
+        {
+          "path": "library/core/src/iter/traits/iterator.rs",
+          "bytes": 144065,
+          "sha256": "73b8d516443f0e73a1b1f59c94215e2dd5b6d2ec482c91f245b61e21edac46fb"
+        },
+        {
+          "path": "library/std/src/collections/hash/map.rs",
+          "bytes": 95130,
+          "sha256": "1c4722af99116914c3b164e253668e951515cbf4ef38e3c6fb77d1edc8f0ec63"
+        },
+        {
+          "path": "library/std/src/collections/hash/set.rs",
+          "bytes": 74125,
+          "sha256": "16ed8c7dc84c338b71350e0c5b9b01948aad0c0a44a5d4969a3822756893c1f2"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/alloc.rs",
+          "bytes": 3401,
+          "sha256": "7ffdd9a84787cb1f93b31184c32733649324faf500bcc3012197ee91353c9ac7"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/control/bitmask.rs",
+          "bytes": 3896,
+          "sha256": "5aaa52db03d2d17fe85fed67aa2bdc4ea376a0bf0e18010576e794b502d44689"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/control/group/generic.rs",
+          "bytes": 5700,
+          "sha256": "5d244fc9f9cd05ab8b92954452b43d8c321452d0dfa8816c2b1ce539fbb3270b"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/control/group/lsx.rs",
+          "bytes": 4214,
+          "sha256": "2b27cf856196f1e1a34ff91f3a70da711d94d13bb68d669478063748889cdd94"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/control/group/mod.rs",
+          "bytes": 1776,
+          "sha256": "32150c3ac5bd4197ce122fea5b45ec1047c1e5227a4ba940aef6ceab2c00f54b"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/control/group/neon.rs",
+          "bytes": 4088,
+          "sha256": "bd8366684d86f456b9880940bbc72d7aabfb642d88a7bdd90de66ef7f643fae5"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/control/group/sse2.rs",
+          "bytes": 4875,
+          "sha256": "53d7d09c72332232b4562aa7dfabf18e5f57c5009a672b2cfac7193ef468b349"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/control/mod.rs",
+          "bytes": 161,
+          "sha256": "83fede19e9c5a26fd2c7372e6cf92547d32ade4cd69fde8a0eaaeb1be6ddc2ba"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/control/tag.rs",
+          "bytes": 2668,
+          "sha256": "691dc7aa8d720e6df59a82ac11d66c72802ffffc684620c8ff29523352aefd13"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/external_trait_impls/mod.rs",
+          "bytes": 85,
+          "sha256": "d69528827794524cfd9acbeacc1ac4f6131e3c7574311e6d919f818f65fbff07"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/external_trait_impls/rayon/helpers.rs",
+          "bytes": 493,
+          "sha256": "1d882a124ffbdfd168796dcc3767205cb578d0643fdd91b768efea340fbdc9ec"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/external_trait_impls/rayon/map.rs",
+          "bytes": 20738,
+          "sha256": "2819b0e7bb77594710a0173d2a7bda318350096f79d0e0e3be4e92c616d38f69"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/external_trait_impls/rayon/mod.rs",
+          "bytes": 95,
+          "sha256": "126edc882501dddd25e442d9236508b5b386eb8c0a9f5d654f2dd081086c1616"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/external_trait_impls/rayon/raw.rs",
+          "bytes": 6844,
+          "sha256": "518dcab0a1399b91411a7b93ed8b8e02543d5404cfc45e67b891ddc811e487b7"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/external_trait_impls/rayon/set.rs",
+          "bytes": 18122,
+          "sha256": "f58a884cb2d74ecb6e165d4f63710199db8b4c4e9935e355e258ae7eb9d76fa8"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/external_trait_impls/rayon/table.rs",
+          "bytes": 7184,
+          "sha256": "6703ed24b69510b74a6777388d6fe303f8838c740c809ea4ce5e9c87aec088df"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/external_trait_impls/serde.rs",
+          "bytes": 6651,
+          "sha256": "cbb5f60e0b093730a340e6133b0b5f5842ba6398a454acdabd635ae75c1d8010"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/hasher.rs",
+          "bytes": 1981,
+          "sha256": "939bc4f8c9e2d7e7ace266a8c121360ab4b44ad0540cdee06951e0197d96bc3c"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/lib.rs",
+          "bytes": 5578,
+          "sha256": "23de74f311e3584574b39041df306b0cbb9ecb700ed33fba1e02ba9d26f70a23"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/macros.rs",
+          "bytes": 2183,
+          "sha256": "4c949a8c44e457c4f04f0b55d5c1e0214b52a6ed2951f265af0113b0d2adb015"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/map.rs",
+          "bytes": 216071,
+          "sha256": "b79497ce537ffc5ed4f8f3399434b9216c01e7927fdc434fee190e9e9ce2abb0"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/raw.rs",
+          "bytes": 197141,
+          "sha256": "0c8ad353ba95817e72b0a8fea48fa2599099ea3def374f254ab6402a9c468d22"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/raw_entry.rs",
+          "bytes": 57075,
+          "sha256": "6393317a9818e2a9121b76d53083cd5ce358bc63e2702e17b9c138914d6842ee"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/rustc_entry.rs",
+          "bytes": 18598,
+          "sha256": "35212ecf4d0195954aa6ecc6c0b8e99a8628dffb4fb101fa67d3d7a31a52b837"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/scopeguard.rs",
+          "bytes": 1398,
+          "sha256": "aa557686a2090eee1da25e960a4461d3750725065a4a1266b80a2eadfec38b2a"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/set.rs",
+          "bytes": 88194,
+          "sha256": "71485eb08e622a7aeb1978817233f0e9c75f4daec87d2d6fa6eba6e0aaf80f2f"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/table.rs",
+          "bytes": 100960,
+          "sha256": "9d37739758f9df08d23c3ab792d29547b04bfd29b08900407a0d2b8ecd26cda9"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/util.rs",
+          "bytes": 806,
+          "sha256": "02546d6e681f833405b8a15ef9bc8d3e80b1ef3bce65caf70d8e16cbadf4a410"
+        }
+      ]
+    },
+    {
+      "profile": "rust1.101",
+      "official_source_archive_url": "https://static.rust-lang.org/dist/2026-11-04/rust-src-nightly.tar.xz",
+      "official_source_archive_sha256": "d99600cbf56d2db40112095e99e138f9e2f30002ef2774d288dc525e28a1357c",
+      "files": [
+        {
+          "path": "library/alloc/src/vec/into_iter.rs",
+          "bytes": 24625,
+          "sha256": "0e50d0bb5fad15e5ba9ccb6dd1ed3f2a3bd0fae80163d6d424e35ef6ceb4fe00"
+        },
+        {
+          "path": "library/core/src/fmt/builders.rs",
+          "bytes": 44785,
+          "sha256": "352b2c4a6f3e4de9cfdd349e0abeb9a5f7655481116c55ae9be1576ead83106c"
+        },
+        {
+          "path": "library/core/src/hash/mod.rs",
+          "bytes": 31747,
+          "sha256": "ec297c553647a9f520750478ca76253f306eebac6ae0aadc1313d0a437368d07"
+        },
+        {
+          "path": "library/core/src/iter/adapters/map.rs",
+          "bytes": 6481,
+          "sha256": "43edceb9d52c0c0da4ecabf3f761081672f2c929aa2aada78686504c16bb68ef"
+        },
+        {
+          "path": "library/core/src/iter/traits/iterator.rs",
+          "bytes": 145781,
+          "sha256": "19ba83b0c54b49fc054b164c574f0acf93850250d632f916774d48d73ad5c5e1"
+        },
+        {
+          "path": "library/std/src/collections/hash/map.rs",
+          "bytes": 95658,
+          "sha256": "e4685a821cf7f655cceafd274bff40f1c66e0d4cd7a90281e5a1351ffd1a8add"
+        },
+        {
+          "path": "library/std/src/collections/hash/set.rs",
+          "bytes": 74590,
+          "sha256": "485cf4323c9205d54348162fb7862f8174cfe90679795681b74a3581a064fd0b"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/alloc.rs",
+          "bytes": 3401,
+          "sha256": "7ffdd9a84787cb1f93b31184c32733649324faf500bcc3012197ee91353c9ac7"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/control/bitmask.rs",
+          "bytes": 3896,
+          "sha256": "5aaa52db03d2d17fe85fed67aa2bdc4ea376a0bf0e18010576e794b502d44689"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/control/group/generic.rs",
+          "bytes": 5700,
+          "sha256": "5d244fc9f9cd05ab8b92954452b43d8c321452d0dfa8816c2b1ce539fbb3270b"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/control/group/lsx.rs",
+          "bytes": 4214,
+          "sha256": "2b27cf856196f1e1a34ff91f3a70da711d94d13bb68d669478063748889cdd94"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/control/group/mod.rs",
+          "bytes": 1776,
+          "sha256": "32150c3ac5bd4197ce122fea5b45ec1047c1e5227a4ba940aef6ceab2c00f54b"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/control/group/neon.rs",
+          "bytes": 4088,
+          "sha256": "bd8366684d86f456b9880940bbc72d7aabfb642d88a7bdd90de66ef7f643fae5"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/control/group/sse2.rs",
+          "bytes": 4875,
+          "sha256": "53d7d09c72332232b4562aa7dfabf18e5f57c5009a672b2cfac7193ef468b349"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/control/mod.rs",
+          "bytes": 161,
+          "sha256": "83fede19e9c5a26fd2c7372e6cf92547d32ade4cd69fde8a0eaaeb1be6ddc2ba"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/control/tag.rs",
+          "bytes": 2668,
+          "sha256": "691dc7aa8d720e6df59a82ac11d66c72802ffffc684620c8ff29523352aefd13"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/external_trait_impls/mod.rs",
+          "bytes": 85,
+          "sha256": "d69528827794524cfd9acbeacc1ac4f6131e3c7574311e6d919f818f65fbff07"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/external_trait_impls/rayon/helpers.rs",
+          "bytes": 493,
+          "sha256": "1d882a124ffbdfd168796dcc3767205cb578d0643fdd91b768efea340fbdc9ec"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/external_trait_impls/rayon/map.rs",
+          "bytes": 20738,
+          "sha256": "2819b0e7bb77594710a0173d2a7bda318350096f79d0e0e3be4e92c616d38f69"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/external_trait_impls/rayon/mod.rs",
+          "bytes": 95,
+          "sha256": "126edc882501dddd25e442d9236508b5b386eb8c0a9f5d654f2dd081086c1616"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/external_trait_impls/rayon/raw.rs",
+          "bytes": 6844,
+          "sha256": "518dcab0a1399b91411a7b93ed8b8e02543d5404cfc45e67b891ddc811e487b7"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/external_trait_impls/rayon/set.rs",
+          "bytes": 18122,
+          "sha256": "f58a884cb2d74ecb6e165d4f63710199db8b4c4e9935e355e258ae7eb9d76fa8"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/external_trait_impls/rayon/table.rs",
+          "bytes": 7184,
+          "sha256": "6703ed24b69510b74a6777388d6fe303f8838c740c809ea4ce5e9c87aec088df"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/external_trait_impls/serde.rs",
+          "bytes": 6651,
+          "sha256": "cbb5f60e0b093730a340e6133b0b5f5842ba6398a454acdabd635ae75c1d8010"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/hasher.rs",
+          "bytes": 1981,
+          "sha256": "939bc4f8c9e2d7e7ace266a8c121360ab4b44ad0540cdee06951e0197d96bc3c"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/lib.rs",
+          "bytes": 5578,
+          "sha256": "23de74f311e3584574b39041df306b0cbb9ecb700ed33fba1e02ba9d26f70a23"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/macros.rs",
+          "bytes": 2183,
+          "sha256": "4c949a8c44e457c4f04f0b55d5c1e0214b52a6ed2951f265af0113b0d2adb015"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/map.rs",
+          "bytes": 216071,
+          "sha256": "b79497ce537ffc5ed4f8f3399434b9216c01e7927fdc434fee190e9e9ce2abb0"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/raw.rs",
+          "bytes": 197141,
+          "sha256": "0c8ad353ba95817e72b0a8fea48fa2599099ea3def374f254ab6402a9c468d22"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/raw_entry.rs",
+          "bytes": 57075,
+          "sha256": "6393317a9818e2a9121b76d53083cd5ce358bc63e2702e17b9c138914d6842ee"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/rustc_entry.rs",
+          "bytes": 18598,
+          "sha256": "35212ecf4d0195954aa6ecc6c0b8e99a8628dffb4fb101fa67d3d7a31a52b837"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/scopeguard.rs",
+          "bytes": 1398,
+          "sha256": "aa557686a2090eee1da25e960a4461d3750725065a4a1266b80a2eadfec38b2a"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/set.rs",
+          "bytes": 88194,
+          "sha256": "71485eb08e622a7aeb1978817233f0e9c75f4daec87d2d6fa6eba6e0aaf80f2f"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/table.rs",
+          "bytes": 100960,
+          "sha256": "9d37739758f9df08d23c3ab792d29547b04bfd29b08900407a0d2b8ecd26cda9"
+        },
+        {
+          "path": "library/vendor/hashbrown-0.17.1/src/util.rs",
+          "bytes": 806,
+          "sha256": "02546d6e681f833405b8a15ef9bc8d3e80b1ef3bce65caf70d8e16cbadf4a410"
+        }
+      ]
+    }
+  ]
+}
