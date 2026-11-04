@@ -1,0 +1,127 @@
+{
+  "crate": "unicode-width",
+  "version": "0.2.2",
+  "archive_sha256": "b4ac048d71ede7ee76d585517add45da530660ef4390e49b098733c6e897f254",
+  "revision": "9d98411769fe13c7c18cab0b3fbbab29ba8350ea",
+  "unicode_version": [
+    17,
+    0,
+    0
+  ],
+  "scope": "Only UnicodeWidthChar::width for char, default cjk-enabled crate profile. No whole source file, UnicodeWidthStr, CJK width, tests or benchmark completion credit.",
+  "scalar_values": 1112064,
+  "ranges": 522,
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+  "files": [
+    {
+      "path": ".cargo_vcs_info.json",
+      "bytes": 94,
+      "lines": 5,
+      "sha256": "2b3ffdf5745bce739a2d8c7c277074ec5f1753df8323746cc012ca2c2fe2d0b0",
+      "scope": "archive member"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 70,
+      "lines": 6,
+      "sha256": "e9027beb32f3585907ae93f64fffc0c006a532ebacb3d1309986c22c17534468",
+      "scope": "archive member"
+    },
+    {
+      "path": "COPYRIGHT",
+      "bytes": 321,
+      "lines": 7,
+      "sha256": "23860c2a7b5d96b21569afedf033469bab9fe14a1b24a35068b8641c578ce24d",
+      "scope": "archive member"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 648,
+      "lines": 23,
+      "sha256": "45226010138cfb5b7eae51e9557dcf91a2e7ad67d4edd4c771798c1100e82a13",
+      "scope": "archive member"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 1681,
+      "lines": 77,
+      "sha256": "dbf0a72e293238d87afd46f58ba597408f40c86e372a1d0b271c89fb4c3639c4",
+      "scope": "archive member"
+    },
+    {
+      "path": "Cargo.toml.orig",
+      "bytes": 953,
+      "lines": 40,
+      "sha256": "89226314e939630cee63bbcaadb4710c9809e57a3117853fb8d443f0641563f1",
+      "scope": "archive member"
+    },
+    {
+      "path": "LICENSE-APACHE",
+      "bytes": 10847,
+      "lines": 201,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "scope": "archive member"
+    },
+    {
+      "path": "LICENSE-MIT",
+      "bytes": 1071,
+      "lines": 25,
+      "sha256": "7b63ecd5f1902af1b63729947373683c32745c16a10e8e6292e2e2dcd7e90ae0",
+      "scope": "archive member"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2755,
+      "lines": 70,
+      "sha256": "dfa01289d67d1c12e44bb4d388501f2c58e386a3a34cac52b558957c7a25dae9",
+      "scope": "archive member"
+    },
+    {
+      "path": "benches/benches.rs",
+      "bytes": 3196,
+      "lines": 114,
+      "sha256": "066d361583f911883791fd313c02556a2faf2854470dbbae328a6513ae035bb6",
+      "scope": "unported source"
+    },
+    {
+      "path": "scripts/unicode.py",
+      "bytes": 81780,
+      "lines": 2250,
+      "sha256": "c0d9718de758d5729cef3def36cf9fa2c853b53cffd28fc2471ae694db04ba77",
+      "scope": "archive member"
+    },
+    {
+      "path": "src/lib.rs",
+      "bytes": 14583,
+      "lines": 259,
+      "sha256": "be8917e1a821806c0ce7a392564c72731a5f7d02155429a37b08571ad246a0bf",
+      "scope": "unported source"
+    },
+    {
+      "path": "src/tables.rs",
+      "bytes": 1563226,
+      "lines": 22869,
+      "sha256": "4c3e673da24634c269562ca4d3652b494542c78cafe56da69d23df9178adffd4",
+      "scope": "unported source"
+    },
+    {
+      "path": "tests/emoji-test.txt",
+      "bytes": 669326,
+      "lines": 5518,
+      "sha256": "1d8a944f88d7952f7ef7c5167fef3c67995bcae24543949710231b03a201acda",
+      "scope": "archive member"
+    },
+    {
+      "path": "tests/tests.rs",
+      "bytes": 21728,
+      "lines": 678,
+      "sha256": "10c40454f79c2b66ea99d2924df62c8afc3e13fb8cea835883d3c458b8076204",
+      "scope": "unported source"
+    }
+  ],
+  "response_sha256": "9cf0de448977e6d39bbcb782c3c03b0d3912fe23f76280212cecdeb8e8870c54",
+  "fixture_sha256": "5ae75543acf5a70e44df0286f8613ad16b09a6e8bf5ea26a2323e9b08d5f74fd",
+  "table_sha256": "0889c075bab8932be575ffc21e501d5ca899ae58657ab44a9537f36c4977fe25",
+  "generator_sha256": "06da79ca597aafa80a48e4ce64acdc0183303822096c3a735fbd8ca4ff5d67ac",
+  "oracle_sha256": "4807be14ff52fe06f2a989f06da38e0820532a7078b2d07ee33c19d04e05e85d"
+}

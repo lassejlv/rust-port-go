@@ -1,0 +1,483 @@
+{
+  "crate": "blake3",
+  "version": "1.8.2",
+  "archive_sha256": "3888aaa89e4b2a40fca9848e400f6a658a5a3978de7be858e209cafa8be9a4a0",
+  "status": "partial",
+  "scope": "Only unkeyed NewHasher/Update/nonconsuming Finalize/Hash operations; portable scalar execution. No complete source-file or crate credit.",
+  "files": [
+    {
+      "path": ".cargo/config.toml",
+      "bytes": 43,
+      "sha256": "d2ee74a7f6fb14e176d103139f5b327cfe0ba80a0c7e232e106d4f5e34ffaa8c",
+      "status": "unported"
+    },
+    {
+      "path": ".cargo_vcs_info.json",
+      "bytes": 94,
+      "sha256": "7894c00ae736974024f739babc8f07e0fe4579fe917c9d19e45e8f8635b47981",
+      "status": "retained"
+    },
+    {
+      "path": ".git-blame-ignore-revs",
+      "bytes": 76,
+      "sha256": "44ba66af5bc8972edf0bfcfaea1d8eac408a0fc0f3a151a5f314ae487eaca059",
+      "status": "unported"
+    },
+    {
+      "path": ".github/workflows/build_b3sum.py",
+      "bytes": 1146,
+      "sha256": "92a71b05b250751d2dc30c8b19b96902df554ec74fb4420ad601e8225ef2ff6e",
+      "status": "unported"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 20418,
+      "sha256": "af46f7f9faa63f434930b36c0e25d5b711347e3a33636c47e94c124bcddc2a5e",
+      "status": "unported"
+    },
+    {
+      "path": ".github/workflows/tag.yml",
+      "bytes": 1347,
+      "sha256": "44a274fd29e03b915a2e1024c51f560344bca684f1e1e5471c98ebc1ca778a29",
+      "status": "unported"
+    },
+    {
+      "path": ".github/workflows/upload_github_release_asset.py",
+      "bytes": 2350,
+      "sha256": "4e3cec6aa141b7baec6a5ad476c4d996cf91cdcf91b3ebc286116d345d452001",
+      "status": "unported"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 18,
+      "sha256": "944bf600c6230664922a011cbca026699969f2f89f6c7ff689835836ccd7b1de",
+      "status": "unported"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "bytes": 1168,
+      "sha256": "8b645b49f5c95f12c07786c3a6e665b8ae0986c5910dd1e2b9c70e4f353de4de",
+      "status": "unported"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 15536,
+      "sha256": "66ec59eb5a4f822ab9aedb53c3e75b45981b87aa589bc6d7d0fd3a035e2b4800",
+      "status": "unported"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 2499,
+      "sha256": "aeadc0f6b8df9bc88ea038352584beb3dba55f81b1532cc55630039d00bb6898",
+      "status": "retained"
+    },
+    {
+      "path": "Cargo.toml.orig",
+      "bytes": 6151,
+      "sha256": "f7b35f2c9d60fa6a95337ba2c31752f1d44c68c2839a705c8808090d548dc8b6",
+      "status": "retained"
+    },
+    {
+      "path": "LICENSE_A2",
+      "bytes": 11361,
+      "sha256": "00fcc7a934ddbc9ece2a7cc063ac788e284b703b1d705ccbba72d462aa97921e",
+      "status": "retained"
+    },
+    {
+      "path": "LICENSE_A2LLVM",
+      "bytes": 12267,
+      "sha256": "a5695f57ea0c221e0e8b7d784ff774c35e88c3d3270353646a925880bb3492cc",
+      "status": "retained"
+    },
+    {
+      "path": "LICENSE_CC0",
+      "bytes": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "status": "retained"
+    },
+    {
+      "path": "README.md",
+      "bytes": 9233,
+      "sha256": "5062d006aa9b587c0ff1d0fe1582476d8deb0ba1e2194c673720ed83ad29b274",
+      "status": "retained"
+    },
+    {
+      "path": "benches/bench.rs",
+      "bytes": 14056,
+      "sha256": "481097bdd39ac7e3c9090292b070cb4bc8ad751e94137ebff59554fc76dbf33e",
+      "status": "unported"
+    },
+    {
+      "path": "build.rs",
+      "bytes": 13228,
+      "sha256": "de3a140cdde0373b5990655be3a81913574f806f7159d26bf30e47bba4edbdb0",
+      "status": "unported"
+    },
+    {
+      "path": "c/.gitignore",
+      "bytes": 61,
+      "sha256": "71c88750b9972deacea7d28da5c4de15e5db6b616290d5d6433ed825498257d6",
+      "status": "unported"
+    },
+    {
+      "path": "c/CMakeLists.txt",
+      "bytes": 14471,
+      "sha256": "fd629c07501f7622094cfb7afc4bcc1128ac3f9e35c3c9f21a352f5cd54f61c7",
+      "status": "unported"
+    },
+    {
+      "path": "c/CMakePresets.json",
+      "bytes": 1848,
+      "sha256": "1054adaed060f07b901c777c63bdfe5fc5098415be4a6e75e960b0dc1669e16d",
+      "status": "unported"
+    },
+    {
+      "path": "c/Makefile.testing",
+      "bytes": 2057,
+      "sha256": "3bf2742a8b114d8a02b77f7a937c2ef90f8f23bc3454b2e4240cb13e6d23f484",
+      "status": "unported"
+    },
+    {
+      "path": "c/README.md",
+      "bytes": 13646,
+      "sha256": "73bea639287160d3ccecb78c44d3aea915a922a0cae3794cf0dcd26c3be47dcf",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3-config.cmake.in",
+      "bytes": 277,
+      "sha256": "a7eee43353356b179082bd4ebf93b0e080bf9224e54c42fe55ff82456d70f866",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3.c",
+      "bytes": 28913,
+      "sha256": "0cd1d6aa002ac44cbf0b0cff5d3f23df3fd190fdc25dfc6d7f3de2afeffba5bd",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3.h",
+      "bytes": 2901,
+      "sha256": "ca1e562d173c264c19b2a89d179f5fa94000966b6b8f4182b6682e136a8cbfdf",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_avx2.c",
+      "bytes": 12452,
+      "sha256": "8b3516a8e42d981a9868ef670b1698f6d10207283086bd810b11cdaac1aca8f1",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_avx2_x86-64_unix.S",
+      "bytes": 66050,
+      "sha256": "a2d95519fd9845cf80252110e21a93124e81c03da836eaac0bca0537be4f8324",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_avx2_x86-64_windows_gnu.S",
+      "bytes": 66735,
+      "sha256": "c5b5e561f8fbbd252492a52f9a09da8e9e99a6ecccb88e2d1bfa2ebc7961f425",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_avx2_x86-64_windows_msvc.asm",
+      "bytes": 65948,
+      "sha256": "2aad514ac8fb748accc8c0c0426606c91e6d404cff9c8499b2052e8108cbf67a",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_avx512.c",
+      "bytes": 54592,
+      "sha256": "46653e718211d883e56d5caa9ded6d9450f2f5b44ebfa81372b3c0be538e9e3c",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_avx512_x86-64_unix.S",
+      "bytes": 161672,
+      "sha256": "c641987dd82fabed59d527f1a3413c4a2ff3df919af6d13ff2788c95e4035c0d",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_avx512_x86-64_windows_gnu.S",
+      "bytes": 91003,
+      "sha256": "b5c94f9201ab86dc1d5170b43aea440fe2a7cdbe2bec03fa1efd7c16dde1ddfb",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_avx512_x86-64_windows_msvc.asm",
+      "bytes": 91605,
+      "sha256": "10a46aee705ad10a41db286c56030e3aa2456d293272029f6e5a71b218d4aac3",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_dispatch.c",
+      "bytes": 9165,
+      "sha256": "a6cef5c497d95c8f7fcde6e1a8e140637f3260b31e911319e69cf5069459b635",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_impl.h",
+      "bytes": 12030,
+      "sha256": "65cf3597897090e8ded5968e3c26304a65b0091e8fabfa434c3d1a5eef29cb17",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_neon.c",
+      "bytes": 13833,
+      "sha256": "766c91fac5262292cb723d4512ca1652a43f3f7f80a5fedce71533dd7047ede3",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_portable.c",
+      "bytes": 5889,
+      "sha256": "2bc25b0dad67b4329d0b49cfa075ab2b0d04e424addbddc4e9c389c52a192524",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_sse2.c",
+      "bytes": 21005,
+      "sha256": "51194fff1b0e9cb79f4db6fc148a3b34f683ca6ec3a260d66166e0f7d5b7012e",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_sse2_x86-64_unix.S",
+      "bytes": 68858,
+      "sha256": "94baa998f4114bf57b99e1791a21e9f0bcdc4bd5803864eb30a2477440b7380c",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_sse2_x86-64_windows_gnu.S",
+      "bytes": 71202,
+      "sha256": "cf719d08059efee4bafecea32ef8fba46ed1f41f60782461f5047046c5e405ec",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_sse2_x86-64_windows_msvc.asm",
+      "bytes": 70982,
+      "sha256": "27bf95d5611dca1530f85106748208a6d7a68f9a4f7f61670aa680bcc9a5e436",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_sse41.c",
+      "bytes": 20813,
+      "sha256": "1f38e2ca58aa59af094f492f1326957b423d7a25e32daaae159fcc1966949f58",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_sse41_x86-64_unix.S",
+      "bytes": 61143,
+      "sha256": "135048e4a81a6f9e86960b115141874a55954dbfd2cd1e8e9818837b46b498ad",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_sse41_x86-64_windows_gnu.S",
+      "bytes": 63459,
+      "sha256": "f41da21f411bbf3920feb9e5e34e3fcc66274b02edb930882eeae2d0aba74a08",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_sse41_x86-64_windows_msvc.asm",
+      "bytes": 63194,
+      "sha256": "c3e218899b6b52e22c1d552392bf972e7ac513addc2c247635cf60325dc39724",
+      "status": "unported"
+    },
+    {
+      "path": "c/blake3_tbb.cpp",
+      "bytes": 1301,
+      "sha256": "56a9fc1145c496121bb2acea3234a8e85a727126132137575e3f3f854177b1f0",
+      "status": "unported"
+    },
+    {
+      "path": "c/cmake/BLAKE3/ContinuousIntegration.cmake",
+      "bytes": 7715,
+      "sha256": "1553e2d51f502679de223b2b562b9186c899799a187e1d6ba8068f4adf581602",
+      "status": "unported"
+    },
+    {
+      "path": "c/cmake/BLAKE3/Examples.cmake",
+      "bytes": 350,
+      "sha256": "f879dca6211bb103c38a087a1033e1afe0ae0db00fccc1d3deb2a1245ecc1530",
+      "status": "unported"
+    },
+    {
+      "path": "c/cmake/BLAKE3/Testing.cmake",
+      "bytes": 70,
+      "sha256": "d8bb8e837d0ef948709b5cb45ae80063bd5eae9fa871e14a22e836bb360de8a5",
+      "status": "unported"
+    },
+    {
+      "path": "c/dependencies/CMakeLists.txt",
+      "bytes": 53,
+      "sha256": "5850e33eb8962314d4b7621fea6229639462ae55b8eea5202a3d4ce7f110d714",
+      "status": "unported"
+    },
+    {
+      "path": "c/dependencies/tbb/CMakeLists.txt",
+      "bytes": 655,
+      "sha256": "dd6d47ca1463f91d2a556550c4c8b78f76869d8ddb2aae1b133b71f39fefc3ce",
+      "status": "unported"
+    },
+    {
+      "path": "c/example.c",
+      "bytes": 868,
+      "sha256": "280e37e4afa96a97d1cf31411bb6d956352f561d2d10893f413eb2cdfa003121",
+      "status": "unported"
+    },
+    {
+      "path": "c/example_tbb.c",
+      "bytes": 1625,
+      "sha256": "a9fd204dab2bb4a1470a6062ac5a04d58a68821610246057b237c63bdb1e3ad6",
+      "status": "unported"
+    },
+    {
+      "path": "c/libblake3.pc.in",
+      "bytes": 348,
+      "sha256": "b5d87cb9afe2e0909ed81c5f89cde6f1070708ce05e9399e6812e2094a8db89b",
+      "status": "unported"
+    },
+    {
+      "path": "c/main.c",
+      "bytes": 4043,
+      "sha256": "2638e68647ba36dcacf9dbdb4d87d53a94356c34ee8ee41f32030b25418bebea",
+      "status": "unported"
+    },
+    {
+      "path": "c/test.py",
+      "bytes": 3654,
+      "sha256": "3b466433c2022d821cdc784687bb7e9927e41e8064a6815f6ae16d8b0279ed41",
+      "status": "unported"
+    },
+    {
+      "path": "media/B3.svg",
+      "bytes": 3918,
+      "sha256": "6f9f3f06cdd21332b95a7ad385edcda60dcb4913366ae4b5840fed00804636d8",
+      "status": "unported"
+    },
+    {
+      "path": "media/BLAKE3.svg",
+      "bytes": 6794,
+      "sha256": "450ea30ba934c0430cc1d05db4dd4185b8464bc1d7d68cfd0532ce95917ccf9c",
+      "status": "unported"
+    },
+    {
+      "path": "media/speed.svg",
+      "bytes": 46869,
+      "sha256": "bfcc3fc3df66440e5e6b37f69fc3d940fc721efd9d814cdb828d2156551fa376",
+      "status": "unported"
+    },
+    {
+      "path": "src/ffi_avx2.rs",
+      "bytes": 1662,
+      "sha256": "43c531a15cdf39a593ce8e25cb6fd1e4089ff9d28be457b43d7e805a5029b39d",
+      "status": "unported"
+    },
+    {
+      "path": "src/ffi_avx512.rs",
+      "bytes": 4089,
+      "sha256": "b535553863b21ea1dbe84357192562467df6dc1d65408b0963f90173c55c0d53",
+      "status": "unported"
+    },
+    {
+      "path": "src/ffi_neon.rs",
+      "bytes": 2195,
+      "sha256": "7b486901785dcb63267ffcc63fbc174e98519605741889d88238770067223625",
+      "status": "unported"
+    },
+    {
+      "path": "src/ffi_sse2.rs",
+      "bytes": 3055,
+      "sha256": "03c5dc366ffafed5e2e4b01976ace762a9245a52ad8a4294d0e2e9eb8749e4b8",
+      "status": "unported"
+    },
+    {
+      "path": "src/ffi_sse41.rs",
+      "bytes": 3069,
+      "sha256": "ede49ab0774fd502a50fb2e0c6f8e3528863d619833a359d50942c68dae2a661",
+      "status": "unported"
+    },
+    {
+      "path": "src/guts.rs",
+      "bytes": 1507,
+      "sha256": "b26a4fa3e64760206de4faccb48ad8fa4f2b21537751227c1a891e8bef44ef9a",
+      "status": "unported"
+    },
+    {
+      "path": "src/hazmat.rs",
+      "bytes": 28970,
+      "sha256": "904134d693096dc2f6c11e7beafc4e9f8f882976af716afee8c728e53d07c259",
+      "status": "unported"
+    },
+    {
+      "path": "src/io.rs",
+      "bytes": 3244,
+      "sha256": "abd80d1d507f8706b92e6f734369c587c4980319f0b4360f4524e4fa8574f3da",
+      "status": "unported"
+    },
+    {
+      "path": "src/join.rs",
+      "bytes": 2926,
+      "sha256": "3ef4082a598d222db3877eae0e4c6fc8d1c9434068031d91ba303dbbe5f5ef5e",
+      "status": "unported"
+    },
+    {
+      "path": "src/lib.rs",
+      "bytes": 73008,
+      "sha256": "8ef2e590de22aaa1b561cad34351d738958679b59acd167ba9612dc0afb82ff1",
+      "status": "partial"
+    },
+    {
+      "path": "src/platform.rs",
+      "bytes": 19692,
+      "sha256": "102ae9d60912f5147f3f6fde5e1fa44b889f5f30d8af1cb8eec02bd143adaca9",
+      "status": "partial"
+    },
+    {
+      "path": "src/portable.rs",
+      "bytes": 5417,
+      "sha256": "59a1c66492af606105c51fb2f59acf0d3a79e99f614bb46cc02878987f9c9e2c",
+      "status": "partial"
+    },
+    {
+      "path": "src/rust_avx2.rs",
+      "bytes": 15795,
+      "sha256": "f85870a5d82f3a5729d07ccbd55795c7355840bb72bf0ab698b358d2fb37b7ff",
+      "status": "unported"
+    },
+    {
+      "path": "src/rust_sse2.rs",
+      "bytes": 24883,
+      "sha256": "5c59be0da760d4af046ba89a19e20b0da7144889ab54fb6bc73093b8d313402b",
+      "status": "unported"
+    },
+    {
+      "path": "src/rust_sse41.rs",
+      "bytes": 24583,
+      "sha256": "8562affa311c085cb06c91bda8837b48ac12c607cc91791f3f7800582462cc82",
+      "status": "unported"
+    },
+    {
+      "path": "src/test.rs",
+      "bytes": 36585,
+      "sha256": "8a4f1af9f6c544137d3325d9f3a9bd763c12fc88132f80fe836450619021a9aa",
+      "status": "unported"
+    },
+    {
+      "path": "src/traits.rs",
+      "bytes": 7165,
+      "sha256": "78fbbe2255e102947a803040a1ce5956db8538732e1a2f7a2e9cf0bd71d73057",
+      "status": "unported"
+    },
+    {
+      "path": "src/wasm32_simd.rs",
+      "bytes": 24845,
+      "sha256": "452a3ad80821ed48bda18dd5d21951391b829097823abb4fc6bdf8a6fbf02b4c",
+      "status": "unported"
+    },
+    {
+      "path": "tools/release.md",
+      "bytes": 688,
+      "sha256": "02d13864150e3eda64925864d69874fce8c6f9d64863f4128aa972141d1bd405",
+      "status": "unported"
+    }
+  ]
+}

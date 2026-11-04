@@ -192,17 +192,17 @@
   "implementation_support_sha256": {
     "port/dependencies/rustc-literal-escaper/v0_0_8/src/callback_owned.go": "4732d602d876a49509edb97ac0a4b6d3464075490813a01f4f74e00473df04df",
     "port/dependencies/rustc-literal-escaper/v0_0_8/src/debug_format.go": "1259910573c6b38fa003dc9e867dd2f18394c41271fa40789dfd0103302792bb",
-    "port/support/rustfmt/builders.go": "b7ea0ab46481e747191a2a60bdda94306d353d8ea040d0ad1a0755db2395f99f",
+    "port/support/rustfmt/builders.go": "03285fd7319e9d661e67c83c19a84bc4f8d7825c8d6ecbf425a39423107022df",
     "port/support/rustfmt/char_debug.go": "ee693582aab3bd317cb9ef124f86dbc9b8852b3c46adbd99ba6880fb9cb2e891",
     "port/support/rustfmt/char_debug_tables.go": "c6924f94132671c791c7b8ce8f6b80e03186d1a1f835e73e8ed1da19cef7cd28",
     "port/support/rustfmt/formatter.go": "fcc8fab6ee2e0d198f59b6f4dedb52ccd084caaaec0f8b25a5d2cc70f6b422a0"
   },
   "contract_evidence_sha256": {
-    "tools/port-literal-contracts/debug-manifest.json": "b1d52e00c32039f4b5392b60e49ba7dc90edb3316eaebea5c8366eed581cb6fc",
+    "tools/port-literal-contracts/debug-manifest.json": "6c21bb7d3b5750caba6d00aa65f5b0aa98b37bbd8ef35c95eb2961ad067acad5",
     "tools/port-literal-contracts/debug.tsv.gz": "cce2e94b8794ab34d040f96a63883b6bd7fa259ad2ccaff1dfbad7b67fd6c5da",
-    "tools/port-literal-contracts/owned-manifest.json": "10a712ceca769ed655f73a7939804996aa6b4426914c84f1998f25642b674cc2",
+    "tools/port-literal-contracts/owned-manifest.json": "ba248741a0408c6d762f549e4e7831cbb4a462839ea5d9c0b3e495837c142a64",
     "tools/port-literal-contracts/owned.tsv.gz": "2c8827a5e1fd1ba93a983bb4733ae131160a30fa4891511e03e063f18b662f42",
-    "tools/port-literal-contracts/processing-manifest.json": "ee9d6c679a4192daa5c25dfa46c7ebf3b252fbf809f36380166bbf830fe25e1b",
+    "tools/port-literal-contracts/processing-manifest.json": "42063669fa84ae70ffdb76b4cdb7e3358c8501fbb581e517e8016f738fd7cff5",
     "tools/port-literal-contracts/processing.tsv.gz": "5c28facc4d328716f9f250e64eeca814b9fd3d6ae0e76bad35f67e024789324d"
   }
 }

@@ -26,7 +26,7 @@ jobs:
           rustup toolchain install 1.99.1 --profile minimal
           rustup override set 1.99.1
       - name: Compare conformance fixtures with rustc
-        run: go test -count=1 -v ./internal/compiler ./internal/conformance ./internal/cargoconformance
+        run: go test -p 1 -parallel 2 -count=1 -v ./internal/compiler ./internal/conformance ./internal/cargoconformance
         env:
           FERRUGO_RUSTC: rustc
           FERRUGO_CARGO: cargo
@@ -61,6 +61,8 @@ jobs:
           cargo fetch --locked --manifest-path tools/port-semver/original-tests/Cargo.toml
           cargo fetch --locked --manifest-path tools/port-cargo-semver/Cargo.toml
           cargo fetch --locked --manifest-path tools/port-rust-stable-hash/oracle/Cargo.toml
+          cargo fetch --locked --manifest-path tools/port-blake3-scalar/Cargo.toml
+          cargo fetch --locked --manifest-path tools/port-unicode-width-scalar/Cargo.toml
         env:
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: 1.99.1
@@ -136,6 +138,9 @@ jobs:
           python3 tools/port-semver/original-tests/run.py --offline
           python3 tools/port-rust-stable-hash/original-tests/audit.py --check
           python3 tools/port-rust-stable-hash/original-tests/run.py --offline
+          python3 tools/port-blake3-scalar/generate.py --check
+          python3 tools/port-unicode-width-scalar/generate.py --check
+          python3 port/support/rustfmt/testdata/non_exhaustive_generate.py --check
         env:
           FERRUGO_GO: go
           FERRUGO_RUSTC: rustc
@@ -149,3 +154,23 @@ jobs:
           go test -race -tags 'semver_no_std semver_serde' ./port/dependencies/semver/v1_0_28/...
           go test -race -tags rustc_stable_hash_nightly ./port/dependencies/rustc-stable-hash/v0_1_2/...
           go vet -tags 'semver_no_std semver_serde rustc_stable_hash_nightly' ./port/dependencies/...
+  span-reference:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install matching dated nightly
+        run: rustup toolchain install nightly-2026-11-04 --profile minimal
+      - name: Prepare exact upstream source cache
+        run: python3 tools/port-inventory/inventory.py prepare
+      - name: Verify reference input and executable guards
+        run: |
+          python3 tools/test_executable_dispatch.py
+          python3 -m unittest discover -s tools/port-rust-span-reference -p 'test_*.py'
+      - name: Build unchanged span crate and run all original tests
+        run: python3 tools/port-rust-span-reference/prepare.py --fetch-source --fetch-deps
+        env:
+          FERRUGO_RUSTC: rustc
+          FERRUGO_RUSTDOC: rustdoc
+          FERRUGO_CARGO: cargo
+          CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
+          RUSTUP_TOOLCHAIN: nightly-2026-11-04

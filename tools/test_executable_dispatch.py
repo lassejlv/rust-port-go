@@ -3,6 +3,7 @@ import importlib.util
 import os
 from pathlib import Path
 import subprocess
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -13,7 +14,12 @@ ROOT = Path(__file__).resolve().parents[1]
 def load(relative):
     spec = importlib.util.spec_from_file_location('dispatch_subject', ROOT / relative)
     module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    original_path = sys.path[:]
+    try:
+        sys.path.insert(0, str((ROOT / relative).parent))
+        spec.loader.exec_module(module)
+    finally:
+        sys.path[:] = original_path
     return module
 
 
@@ -25,22 +31,25 @@ class ExecutableDispatch(unittest.TestCase):
             ('tools/port-rust-span-encoding/prepare.py', 'selected'),
             ('tools/port-rust-binary-search/owned/generate.py', 'owned'),
             ('tools/port-rust-stable-hash/original-tests/run.py', 'plain'),
+            ('tools/port-rust-span-reference/prepare.py', 'span-reference'),
         ]
         with tempfile.TemporaryDirectory() as directory:
             folder = Path(directory)
             mux = folder / 'multiplexer'
             mux.write_text('#!/bin/sh\nprintf "%s" "${0##*/}"\n')
             mux.chmod(0o755)
-            for command in ['rustc', 'cargo', 'go']:
+            for command in ['rustc', 'rustdoc', 'cargo', 'go']:
                 (folder / command).symlink_to(mux.name)
             for relative, selector in subjects:
                 subject = load(relative)
-                for command in ['rustc', 'cargo', 'go']:
+                for command in ['rustc', 'rustdoc', 'cargo', 'go']:
                     for explicit in [False, True]:
                         name = str(folder / command) if explicit else command
                         with self.subTest(tool=relative, command=command, explicit=explicit):
                             with patch.dict(os.environ, {'PATH': str(folder), 'FERRUGO_DISPATCH_TEST': name}):
-                                if selector == 'plain':
+                                if selector == 'span-reference':
+                                    selected = subject.executable(name, 'FERRUGO_DISPATCH_TEST', Path('absent'))
+                                elif selector == 'plain':
                                     selected = subject.executable(name)
                                 elif selector == 'owned':
                                     selected = subject.executable(name, ROOT)

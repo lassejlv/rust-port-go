@@ -152,6 +152,21 @@ func (b *StructBuilder) Finish() error {
 	}
 	return b.err
 }
+
+// FinishNonExhaustive is DebugStruct::finish_non_exhaustive. The marker is a
+// separate fallible write, and pretty output uses a fresh PadAdapter before
+// writing the closing brace through the original formatter.
+func (b *StructBuilder) FinishNonExhaustive() error {
+	if b.count == 0 {
+		b.text(b.writer, " { .. }")
+	} else if b.pretty {
+		b.text(NewIndentWriter(b.writer), "..\n")
+		b.text(b.writer, "}")
+	} else {
+		b.text(b.writer, ", .. }")
+	}
+	return b.err
+}
 func WriteStruct(writer io.Writer, name string, pretty bool, fields []Field) error {
 	b := BeginStruct(writer, name, pretty)
 	for _, field := range fields {

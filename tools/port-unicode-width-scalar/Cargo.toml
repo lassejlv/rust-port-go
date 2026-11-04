@@ -1,0 +1,14 @@
+[package]
+name = "ferrugo-unicode-width-scalar-oracle"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+unicode-width = "=0.2.2"
+
+[[bin]]
+name = "scalar-oracle"
+path = "oracle.rs"
+
+[workspace]

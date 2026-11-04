@@ -1,0 +1,76 @@
+{
+  "format": 1,
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_scope": "partial-dependency-used-operations",
+  "requests": 6040,
+  "max_input": 2097152,
+  "request_sha256": "dc47be03c80b3db57aa751f5405d93b065e6566647bc69c6286b863e472c1de0",
+  "raw_sha256": "e84607ce0ddd68e7d7e1f21d2789b72e235c5721b8bf07ff581fd09d0031a797",
+  "fixture_sha256": "c181c74b8bb3a96ff9118850c3e6c3ebd89d5a54d121e6c6c4147de94eb037d4",
+  "inputs_sha256": {
+    "tools/port-blake3-scalar/Cargo.toml": "1602a5299bb6c094cf2216589d7afa1c967f0d213786124d7a9d5e49629a04ee",
+    "tools/port-blake3-scalar/Cargo.lock": "7191c9fb8e2c59e6b1a8ae951f6e43224bbca1547b5937849f46975c4d16bea3",
+    "tools/port-blake3-scalar/oracle.rs": "d37e3ce2a02547e815ed87f1ac7a1c90db5acff2217ddf911683c1585a5e780f",
+    "tools/port-blake3-scalar/generate.py": "ee07ab4d4be6f6143c43108e9cac72612d1ecc075e5729a6495e455fd192b83a",
+    "port/dependencies/blake3/v1_8_2/src/hash.go": "898557dd7eb9feecc759557276c5699153a8bc4b023a010d79e6e8797359959e"
+  },
+  "dependencies": [
+    {
+      "name": "arrayref",
+      "version": "0.3.9",
+      "sha256": "76a2e8124351fda1ef8aaaa3bbd7ebbcb486bbcd4225aca0aa0d84bb2db8fecb",
+      "compiled_source_files": 13,
+      "compiled_source_tree_sha256": "98860a5f8a98abb706bc34e7f0e6431aba0b4fb911cb4bcb284afd0f8b64d388"
+    },
+    {
+      "name": "arrayvec",
+      "version": "0.7.6",
+      "sha256": "7c02d123df017efcdfbd739ef81735b36c5ba83ec3c59c80a9d7ecc718f92e50",
+      "compiled_source_files": 21,
+      "compiled_source_tree_sha256": "aba8568cbb8a899973c66f037a02f466cc88f36a6517606c88bb2a435897150b"
+    },
+    {
+      "name": "blake3",
+      "version": "1.8.2",
+      "sha256": "3888aaa89e4b2a40fca9848e400f6a658a5a3978de7be858e209cafa8be9a4a0",
+      "compiled_source_files": 79,
+      "compiled_source_tree_sha256": "2a700f68bd10fcf49411a1cd081f63a6f19587845c12dd1b3e54a70c358d6c6e"
+    },
+    {
+      "name": "cc",
+      "version": "1.4.3",
+      "sha256": "509591b7bcd67f4ef775afad7662703b4935daaa6ec0e5605cfb1090b32a2b6d",
+      "compiled_source_files": 28,
+      "compiled_source_tree_sha256": "be2a6085c9433bb555fe2e98b11fa5c90a992b7fe1a24dc782f4721c2338a890"
+    },
+    {
+      "name": "cfg-if",
+      "version": "1.0.4",
+      "sha256": "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801",
+      "compiled_source_files": 14,
+      "compiled_source_tree_sha256": "b1313ed41dbd1ab676fb9798b6e7700fd12090ab749964d07b6cc51360c7380c"
+    },
+    {
+      "name": "constant_time_eq",
+      "version": "0.3.1",
+      "sha256": "7c74b8349d32d297c9134b8c88677813a227df8f779daa29bfc29c183fe3dca6",
+      "compiled_source_files": 13,
+      "compiled_source_tree_sha256": "053cf1762ae94c15c400238c79349aa80db8b1ced753fd50fb7a154e9f4c4afe"
+    },
+    {
+      "name": "find-msvc-tools",
+      "version": "0.1.11",
+      "sha256": "d45db016d36b838f563236e9193d0ee6ce38f3f68b6c94e914b4929c96bbb890",
+      "compiled_source_files": 18,
+      "compiled_source_tree_sha256": "ae63202da089ca7f057e80031bebc1cb59c561483b53a3fdd7b2c2bf9840c78c"
+    },
+    {
+      "name": "shlex",
+      "version": "2.0.1",
+      "sha256": "f8fadd59c855ef2080decdef8ff161eb6661b86933c9d82e5ba29dc602a55aba",
+      "compiled_source_files": 13,
+      "compiled_source_tree_sha256": "91003d30fc9cc130f5474cf79a62a6412b694153e717882ee1404d73fa488b0c"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "scope": "Scoped Rust1.99.1 DebugStruct::finish_non_exhaustive supporting contract; no std-file completion credit",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "cases": 20992,
+  "requests_sha256": "ac6eb44163c03231ed1f461d8dc7c5426369805294f99a16f34bd9308f4f61ee",
+  "raw_sha256": "8c5a3fdc1ee5b2ca9df2f6cd04ba682b0b4e279e2460a36968de115ab3bdfd7d",
+  "fixture_sha256": "503ac2c2327f20e13f009c96fb800b13695900f4cf57e46489e249fe652b5e43",
+  "source_sha256": "139047328d0362598e67dc110bbdd44a1cb7ba7182fb79f50dccb165bde839c0",
+  "generator_sha256": "3b09d475b1011013cdc74b26003b5ea0aca4354203e76d8a5d1d3e3409686587"
+}
