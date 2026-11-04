@@ -54,6 +54,7 @@ jobs:
           cargo fetch --locked --manifest-path tools/port-rust-parse-format/Cargo.toml
           cargo fetch --locked --manifest-path tools/port-literal-escaper/oracle/Cargo.toml
           cargo fetch --locked --manifest-path tools/port-cargo-restricted-names/Cargo.toml
+          cargo fetch --locked --manifest-path tools/port-rust-hashes/Cargo.toml
         env:
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: 1.99.1
@@ -96,6 +97,7 @@ jobs:
           go run ./tools/port-rust-parse-format/char-unicode -check
           go run ./tools/port-cargo-restricted-names -check
           go run ./tools/port-rust-edition -check
+          python3 tools/port-rust-hashes/generate.py --check
         env:
           FERRUGO_RUSTC: rustc
           FERRUGO_CARGO: cargo

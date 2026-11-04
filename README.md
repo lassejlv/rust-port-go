@@ -10,7 +10,7 @@ Compile and run a small, typed Rust binary without invoking `rustc` or upstream 
 
 The executable bootstrap works. The full port remains in progress. See [supported behavior and limits](docs/COMPATIBILITY.md), [Cargo commands](docs/CARGO.md), [the roadmap](docs/ROADMAP.md), and [progress log](docs/PROGRESS.md), and [upstream scope](docs/UPSTREAM.md).
 
-Current goal: [complete upstream source-file ports](docs/GOALS.md), with exact source provenance and comparisons against the originals. Completed files cover the low-level lexer, format parser, literal escaping, core Unicode data, compiler utilities, edition metadata and Cargo utilities. Source ports drive frontend scanning, string decoding and checked print plans. The [file map](port-status.json) and [porting criteria](docs/PORTING.md) track the remaining scope. The bootstrap includes modules, Copy records/arrays, local Cargo dependencies, integer casts and bounded for loops.
+Current goal: [complete upstream source-file ports](docs/GOALS.md), with exact source provenance and comparisons against the originals. Source ports cover the lexer, format parser, literal escaping, core Unicode data, compiler utilities, edition/hash metadata and Cargo utilities. Ports drive frontend scanning, string decoding and checked print plans. The [file map](port-status.json), [porting criteria](docs/PORTING.md) and [contract review](docs/SOURCE-CONTRACT-AUDIT.md) distinguish completed files from remaining work. The bootstrap includes modules, Copy records/arrays, local Cargo dependencies, integer casts and bounded for loops.
 
 ## Build and try it
 

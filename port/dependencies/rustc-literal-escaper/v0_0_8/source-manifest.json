@@ -147,9 +147,9 @@
       "lines": 687,
       "role": "implementation",
       "target": "src/lib.go",
-      "status": "ported",
+      "status": "partial",
       "target_sha256": "41b48f681339fed84a9fc99600501a6cef16c9a7f921cbde64f97cbc66cfeb1b",
-      "evidence": "Unchanged Rust implementation oracle: all 16 public operations/modes, all 23 errors, seeded/adversarial spans, complete scalar direct/Unicode/continuation traces, direct public MixedUnit variants and normalized conversions; only private CheckRaw/Unescape traits are specialized"
+      "evidence": "Algorithms validated against unchanged Rust for all public modes/errors, complete scalar traces and MixedUnit constructors; full mutable Debug formatter and owned callback destruction contracts remain under completion review"
     },
     {
       "path": "tests/test.rs",

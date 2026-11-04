@@ -1,6 +1,12 @@
 # base-N validation
 
-Validated whole-file mappings, at Rust commit `2d20b42b883dcfc014f3c2c56081eeb6091c2179`:
+The implementation's whole-file completion record has been reopened: the full
+Display/writer contract and owned generic conversion behavior remain under
+review. The comparisons below validate the implemented numeric operations and
+source tests, not completion of the remaining contracts. See
+`docs/SOURCE-CONTRACT-AUDIT.md` at the repository root.
+
+Original-source mappings, at Rust commit `2d20b42b883dcfc014f3c2c56081eeb6091c2179`:
 
 - `compiler/rustc_data_structures/src/base_n.rs` → `port/rust/compiler/rustc_data_structures/src/base_n.go`; Git blob `0c3d7613d4f1ff69a31c4458bd571074bbd5c618`.
 - `compiler/rustc_data_structures/src/base_n/tests.rs` → `port/rust/compiler/rustc_data_structures/src/base_n/tests_test.go`; Git blob `148d8dde02af1b12433fa87509a742d1e59c3421`.
@@ -35,4 +41,4 @@ GOCACHE=/tmp/ferrugo-go-cache .toolchain/go/bin/go vet ./port/rust/compiler/rust
 GOCACHE=/tmp/ferrugo-go-cache GOARCH=386 .toolchain/go/bin/go test -c -o /tmp/ferrugo-base-n-386.test ./port/rust/compiler/rustc_data_structures/src/base_n
 ```
 
-These results validate the complete base-N module and its complete test module for the stated profile. The production implementation imports only `math/bits`; Rust and the reference fixture are used exclusively for validation.
+These results validate the stated base-N operations and its complete test module for the stated profile. The production implementation imports only `math/bits`; Rust and the reference fixture are used exclusively for validation.

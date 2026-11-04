@@ -186,3 +186,12 @@ Eighteen top-level upstream source files have evidence, with the three dependenc
 - Added the edition reference to hosted validation and expanded pinned source preparation for the compiler runtime. Minimum-Go comparison, race tests, vet and cross-version fixture checks pass. The preceding checkpoint passed Linux, macOS and upstream-reference jobs at `b053c86`.
 
 Nineteen top-level source files now have recorded evidence. The typed storage/interval block and complete semver dependency/Cargo extensions remain under implementation and review; their uncommitted presence grants no completion credit. Work on span encoding and shared hash types has begun. The compiler still cannot compile production Rust.
+
+## 2026-11-04 — checkpoint 17: fixed-width hash types and completion corrections
+
+- Ported the complete compiler hash-value module: 64/128-bit values, wrapping arithmetic, conversions, cloning, ordering, typed hashing and delegated Debug/LowerHex behavior. Independent review and the actual minimum Go race/vet checks pass.
+- Matched 8,635 original-source requests and 85,483 records. Formatting checks include every writer-failure position, independent character writes, empty writes and formatter state after errors. The unsigned primitive formatter is scoped supporting code, not a standard-library file completion claim.
+- Reopened six earlier source records after review found incomplete formatter or generic runtime adapters. Their algorithm evidence remains; the [contract review](SOURCE-CONTRACT-AUDIT.md) identifies the missing work. The literal-escaping dependency implementation is similarly marked partial until its formatter and owned-callback contracts close.
+- Updated hosted reference checks for the hash module. The preceding edition checkpoint passed all hosted jobs at `048b316`.
+
+The current ledger has fourteen validated top-level files. Completion counts now reflect the reopened contracts instead of retaining premature full-file credit. Typed storage/intervals, semver/Cargo versions and the span runtime continue in parallel; production Rust remains the overall unfinished goal.

@@ -1,0 +1,209 @@
+{
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_path": "compiler/rustc_hashes/src/lib.rs",
+  "source_git_blob": "c8f3057dac5fc26da8c243f95d8a978ee8cc00b7",
+  "source_sha256": "ecb7777ffca8e89ad7056cc864771983a3eb4384049d739fbd5b562ed2d53850",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "host": "x86_64-unknown-linux-gnu",
+  "source_version": "1.101.0",
+  "profile": "Linux x86-64; original unsigned std::fmt and typed Hasher delegation",
+  "dependency": {
+    "name": "rustc-stable-hash",
+    "version": "0.1.2",
+    "sha256": "781442f29170c5c93b7185ad559492601acdc71d5bb0706f5868094f45cfcd08",
+    "compiled_source_files": 17,
+    "compiled_source_tree_sha256": "1414a6a2040951f51bdff3dd8d54ad5c46ced2ff5602bc97eb28a6829a7c4005"
+  },
+  "wrapper_sha256": "aecddf3e3e9c9930a081dc0b80631bec7ee07b40599fa875fc178a9ccdeef598",
+  "generator_sha256": "8c3ac2efab09f92d5ed2255a6f8fba05d1b9388abfd8c5e3f44e8c0ac39af9bf",
+  "extraction_verifier_sha256": "686a2ce150ea86e39634a080152c2736d011ed05afe9aa31b9180a225e3f83b0",
+  "cargo_manifest_sha256": "8999132f8c955936b11038ecea04cf5e336243fd970362950573b406404ca21e",
+  "cargo_lock_sha256": "004818c6b87b801330d1e295bb39afe5a6adc5b1eb63b03d92d2be775bbd3efe",
+  "formats": [
+    {
+      "Pattern": "{:?}",
+      "Options": {},
+      "LowerHex": false
+    },
+    {
+      "Pattern": "{:#?}",
+      "Options": {
+        "Alternate": true
+      },
+      "LowerHex": false
+    },
+    {
+      "Pattern": "{:>24?}",
+      "Options": {
+        "Width": 24,
+        "Alignment": 2
+      },
+      "LowerHex": false
+    },
+    {
+      "Pattern": "{:<24?}",
+      "Options": {
+        "Width": 24,
+        "Alignment": 1
+      },
+      "LowerHex": false
+    },
+    {
+      "Pattern": "{:^24?}",
+      "Options": {
+        "Width": 24,
+        "Alignment": 3
+      },
+      "LowerHex": false
+    },
+    {
+      "Pattern": "{:+?}",
+      "Options": {
+        "Plus": true
+      },
+      "LowerHex": false
+    },
+    {
+      "Pattern": "{:024?}",
+      "Options": {
+        "Width": 24,
+        "ZeroPad": true
+      },
+      "LowerHex": false
+    },
+    {
+      "Pattern": "{:+024?}",
+      "Options": {
+        "Width": 24,
+        "Plus": true,
+        "ZeroPad": true
+      },
+      "LowerHex": false
+    },
+    {
+      "Pattern": "{:x?}",
+      "Options": {
+        "DebugRadix": 1
+      },
+      "LowerHex": false
+    },
+    {
+      "Pattern": "{:#x?}",
+      "Options": {
+        "DebugRadix": 1,
+        "Alternate": true
+      },
+      "LowerHex": false
+    },
+    {
+      "Pattern": "{:X?}",
+      "Options": {
+        "DebugRadix": 2
+      },
+      "LowerHex": false
+    },
+    {
+      "Pattern": "{:#X?}",
+      "Options": {
+        "DebugRadix": 2,
+        "Alternate": true
+      },
+      "LowerHex": false
+    },
+    {
+      "Pattern": "{:*^48x?}",
+      "Options": {
+        "Width": 48,
+        "Alignment": 3,
+        "Fill": 42,
+        "DebugRadix": 1
+      },
+      "LowerHex": false
+    },
+    {
+      "Pattern": "{:.3?}",
+      "Options": {},
+      "LowerHex": false
+    },
+    {
+      "Pattern": "{:x}",
+      "Options": {},
+      "LowerHex": true
+    },
+    {
+      "Pattern": "{:#x}",
+      "Options": {
+        "Alternate": true
+      },
+      "LowerHex": true
+    },
+    {
+      "Pattern": "{:+#048x}",
+      "Options": {
+        "Plus": true,
+        "Alternate": true,
+        "Width": 48,
+        "ZeroPad": true
+      },
+      "LowerHex": true
+    },
+    {
+      "Pattern": "{:>48x}",
+      "Options": {
+        "Width": 48,
+        "Alignment": 2
+      },
+      "LowerHex": true
+    },
+    {
+      "Pattern": "{:<#48x}",
+      "Options": {
+        "Width": 48,
+        "Alignment": 1,
+        "Alternate": true
+      },
+      "LowerHex": true
+    },
+    {
+      "Pattern": "{:🦀^48x}",
+      "Options": {
+        "Width": 48,
+        "Alignment": 3,
+        "Fill": 129408
+      },
+      "LowerHex": true
+    },
+    {
+      "Pattern": "{:\u0000^24x}",
+      "Options": {
+        "Width": 24,
+        "Alignment": 3,
+        "Fill": 0,
+        "FillSet": true
+      },
+      "LowerHex": true
+    },
+    {
+      "Pattern": "{:-#24x}",
+      "Options": {
+        "Width": 24,
+        "Alternate": true
+      },
+      "LowerHex": true
+    },
+    {
+      "Pattern": "{:<048x}",
+      "Options": {
+        "Width": 48,
+        "Alignment": 1,
+        "ZeroPad": true
+      },
+      "LowerHex": true
+    }
+  ],
+  "requests": 8635,
+  "records": 85483,
+  "request_sha256": "ecc0855dd7060c93577dd374432685791d8f4570d90e43181c4b9deb6683e548",
+  "raw_sha256": "606bfe2e0bebae2df3381c457c916cb363b398fa6587f3ca6e4835df33b862ec",
+  "fixture_sha256": "d1e0e10844cc54bfa307b1bd3e556c423daf5660339ae1558d8dbb0be2d0b39c"
+}

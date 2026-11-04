@@ -265,8 +265,8 @@ func run(opts options) error {
 		case "src/lib.rs":
 			entry.Role = "implementation"
 			entry.Target = "src/lib.go"
-			entry.Status = "ported"
-			entry.Evidence = "Unchanged Rust implementation oracle: all 16 public operations/modes, all 23 errors, seeded/adversarial spans, complete scalar direct/Unicode/continuation traces, direct public MixedUnit variants and normalized conversions; only private CheckRaw/Unescape traits are specialized"
+			entry.Status = "partial"
+			entry.Evidence = "Algorithms validated against unchanged Rust for all public modes/errors, complete scalar traces and MixedUnit constructors; full mutable Debug formatter and owned callback destruction contracts remain under completion review"
 		case "tests/test.rs":
 			entry.Role = "tests"
 			entry.Target = "tests/test_test.go"

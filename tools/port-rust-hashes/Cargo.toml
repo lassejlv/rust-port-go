@@ -1,0 +1,14 @@
+[package]
+name = "ferrugo-rust-hashes-oracle"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[[bin]]
+name = "oracle"
+path = "oracle.rs"
+
+[dependencies]
+rustc-stable-hash = "=0.1.2"
+
+[workspace]
