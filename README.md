@@ -10,7 +10,7 @@ Compile and run a small, typed Rust binary without invoking `rustc` or upstream 
 
 The executable bootstrap works. The full port remains in progress. See [supported behavior and limits](docs/COMPATIBILITY.md), [Cargo commands](docs/CARGO.md), [the roadmap](docs/ROADMAP.md), and [progress log](docs/PROGRESS.md), and [upstream scope](docs/UPSTREAM.md).
 
-Current goal: [host integer semantics](docs/GOALS.md), following the implemented module, Copy-record and local Cargo dependency milestones.
+Current goal: [integer casts](docs/GOALS.md), following the implemented module, Copy-record, local Cargo dependency and host integer milestones.
 
 ## Build and try it
 

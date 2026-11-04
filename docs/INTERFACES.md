@@ -51,3 +51,11 @@ Checker owns integer.go metadata: `type intSpec struct {Bits int; Signed bool; C
 Syntax owns integer suffix validation, longest-match shift/compound tokens, standard Rust bitwise/shift precedence and unary binding. AST operator strings remain literal spellings. Named type parsing already accepts the new integer names; coordinator updates resolver primitive fast path to integerType.
 
 Runtime agent owns runtime.go C helpers fr_{add,sub,mul,div,rem,neg}_TYPE, no neg for unsigned, and fr_{shl,shr}_TYPE(T value,uint64_t count). Signed helpers use checked arithmetic; unsigned helpers check against UINTN_MAX. Shift helpers operate through uint64_t unsigned bits, narrow to exact unsigned width, memcpy to signed results and fill sign bits explicitly on right shifts; no undefined C signed shifts or overflow. Coordinator owns codegen cType/literal/format/operator lowering and uses assignTypes for compound targets.
+
+## Integer cast milestone
+
+Add `as` casts between all supported integer types and from bool to a supported integer. Narrowing/sign changes use Rust truncation/sign-extension semantics with no overflow panic. General coercion casts, floats/chars/references/enum casts and `_` targets remain outside this milestone.
+
+AST Expr.Kind="cast": Left operand, Text original target type path, Target resolved target type key. Syntax gives `as` binding above multiplication and below unary, left-associative chains; preserve actual Rust cast/less-than/left-shift parsing restrictions (use rustc oracle). Resolver sets Target through resolveType and keeps source spelling; loader already stamps Left/span.
+
+Checker validates target is integer and source is integer or bool (no numeric-to-bool), records target result type/hint and operand divergence without inventing never-type coercions. It may retain documented local/default inference limits for unsuffixed cast operands. Coordinator owns backend: evaluate operand once, convert to uint64 bits, narrow to unsigned destination type and memcpy into signed destinations. This preserves defined C behavior for unsigned maxima, negative values and narrowing. Unary/compound/expression evaluation order remains unchanged. No runtime trap is introduced by a supported cast.

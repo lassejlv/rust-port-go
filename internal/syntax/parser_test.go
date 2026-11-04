@@ -160,6 +160,8 @@ func FuzzParse(f *testing.F) {
 	f.Add(`#[derive(Clone,Copy,)] pub struct Empty {} fn main(){if check(Empty{}) {}}`)
 	f.Add(`fn main(){let mut x=255u8;x>>=1isize;x^=3u8;let y=!x&7|2<<1+1;}`)
 	f.Add(`fn main(){let result=true|false&&false;let wide=18446744073709551615u64;}`)
+	f.Add(`fn main(){let a=-1i16 as u8 as u64;let b=(a as u16)<<1u8;}`)
+	f.Add(`fn main(){if !true as u8 == 0 {let value=257u16 as (u8);}}`)
 	f.Fuzz(func(t *testing.T, source string) { _, _ = Parse(source) })
 }
 
@@ -856,6 +858,12 @@ func TestMalformedAndUnsupportedIntegerSuffixes(t *testing.T) {
 }
 
 func operatorTree(e *Expr) string {
+	if e.Kind == "cast" {
+		return "(as " + operatorTree(e.Left) + " " + e.Text + ")"
+	}
+	if e.Kind == "field" {
+		return "(field " + operatorTree(e.Left) + " " + e.Text + ")"
+	}
 	if e.Kind == "binary" {
 		return "(" + e.Op + " " + operatorTree(e.Left) + " " + operatorTree(e.Right) + ")"
 	}
@@ -929,6 +937,136 @@ func TestShiftAndBitwiseCompoundAssignments(t *testing.T) {
 			}
 			if statements[1].Kind != "assign" || statements[1].Name != "" || statements[1].Target == nil || statements[1].Target.Kind != "field" || statements[1].Target.Text != "value" || statements[1].Op != op || statements[1].Expr.Text != "2u16" {
 				t.Fatal("field compound assignment broken")
+			}
+		})
+	}
+}
+
+func TestCastPrecedenceAndAssociativity(t *testing.T) {
+	cases := []struct{ expression, want string }{
+		{`-1 as u8`, `(as (- 1) u8)`},
+		{`!flag as u8`, `(as (! flag) u8)`},
+		{`!(flag as u8)`, `(! (as flag u8))`},
+		{`-(value as i16) as u8`, `(as (- (as value i16)) u8)`},
+		{`a + b as u16 * c`, `(+ a (* (as b u16) c))`},
+		{`a as u16 * b`, `(* (as a u16) b)`},
+		{`a * b as u16`, `(* a (as b u16))`},
+		{`a as u8 as u16`, `(as (as a u8) u16)`},
+		{`a << b as u8`, `(<< a (as b u8))`},
+		{`(a as u8) << b`, `(<< (as a u8) b)`},
+		{`a as (u8) << b`, `(<< (as a u8) b)`},
+		{`(a as u8) < b`, `(< (as a u8) b)`},
+		{`a as (u8) < b`, `(< (as a u8) b)`},
+		{`a as u8 + b < c`, `(< (+ (as a u8) b) c)`},
+		{`a as u8 <= b`, `(<= (as a u8) b)`},
+		{`a as u8 > b`, `(> (as a u8) b)`},
+		{`a as u8 >= b`, `(>= (as a u8) b)`},
+		{`a as u8 >> b`, `(>> (as a u8) b)`},
+		{`a as u8 == b`, `(== (as a u8) b)`},
+		{`point.value as crate::Target`, `(as (field point value) crate::Target)`},
+		{`point.value as (crate::Target) as u64`, `(as (as (field point value) crate::Target) u64)`},
+	}
+	for _, tc := range cases {
+		t.Run(tc.expression, func(t *testing.T) {
+			p, err := Parse("fn main(){let result=" + tc.expression + ";}")
+			if err != nil {
+				t.Fatal(err)
+			}
+			if got := operatorTree(p.Functions[0].Body.Statements[0].Expr); got != tc.want {
+				t.Fatalf("tree=%s, want %s", got, tc.want)
+			}
+		})
+	}
+}
+
+func TestCastTargetsAndSourceLocations(t *testing.T) {
+	source := "fn main() {\n  let n = point.value as super::super::Target;\n}"
+	p, err := Parse(source)
+	if err != nil {
+		t.Fatal(err)
+	}
+	cast := p.Functions[0].Body.Statements[0].Expr
+	if cast.Kind != "cast" || cast.Text != "super::super::Target" || cast.Target != "" || cast.Left.Kind != "field" || cast.Left.Text != "value" {
+		t.Fatalf("cast expression=%#v", cast)
+	}
+	if cast.Span.Line != 2 || cast.Span.Column != 11 || cast.Span.Offset != strings.Index(source, "point.value") || cast.Span != cast.Left.Span {
+		t.Fatalf("cast span=%#v", cast.Span)
+	}
+	// Semantic cast validity belongs to the checker; syntax preserves type paths.
+	for _, target := range []string{"u8", "i16", "usize", "crate::Record", "self::Type", "super::Alias", "bool", "()", "&str", "((u8))"} {
+		t.Run(target, func(t *testing.T) {
+			if _, err := Parse("fn main(){let value=source as " + target + ";}"); err != nil {
+				t.Fatal(err)
+			}
+		})
+	}
+}
+
+func TestCastConditionAndBlockContexts(t *testing.T) {
+	for _, source := range []string{
+		`fn main(){if !true as u8 == 0 {}}`,
+		`fn main(){while flag as u8 != 0 {}}`,
+		`fn main(){if (value as u8) < 2 {}}`,
+		`fn main(){if value as (u8) < 2 {}}`,
+		`fn main(){if (Point{x:1}).x as u8 == 1 {}}`,
+		`fn main(){let value=if flag {1} else {2} as u8;}`,
+		`fn main(){let value={1} as u8;}`,
+		`fn main(){(if flag {1} else {2}) as u8;}`,
+		`fn main(){({1}) as u8;}`,
+		`fn main(){println!("{}",-1i16 as u8);}`,
+	} {
+		t.Run(source, func(t *testing.T) {
+			if _, err := Parse(source); err != nil {
+				t.Fatalf("valid cast context rejected: %v", err)
+			}
+		})
+	}
+}
+
+func TestCastLessThanAndLeftShiftRestrictions(t *testing.T) {
+	for _, expression := range []string{
+		`value as u8 < other`, `value as u8 << count`,
+		`(value as u8 < other)`, `(value as u8 << count)`,
+		`(value as u8) as u16 < other`, `value as u8 as u16 << count`,
+		`value as crate::Target < other`, `value as crate::Target << count`,
+	} {
+		t.Run(expression, func(t *testing.T) {
+			if _, err := Parse("fn main(){let result=" + expression + ";}"); err == nil {
+				t.Fatal("Rust-invalid cast angle ambiguity accepted")
+			}
+		})
+	}
+	for _, source := range []string{
+		`fn main(){if value as u8 < other {}}`,
+		`fn main(){while value as u8 < other {}}`,
+		`fn main(){{1} as u8;}`,
+		`fn main(){if flag {1} else {2} as u8;}`,
+		`fn main(){value as u8.field;}`,
+		`fn main(){value as u8(1);}`,
+	} {
+		t.Run(source, func(t *testing.T) {
+			if _, err := Parse(source); err == nil {
+				t.Fatal("Rust-invalid cast continuation accepted")
+			}
+		})
+	}
+}
+
+func TestCastMissingAndUnsupportedSyntaxTargets(t *testing.T) {
+	for _, source := range []string{
+		`fn main(){let value=1 as;}`,
+		`fn main(){let value=1 as}`,
+		`fn main(){let value=1 as`,
+		`fn main(){let value=1 as _;}`,
+		`fn main(){let value=1 as (_);}`,
+		`fn main(){let value=1 as true;}`,
+		`fn main(){let value=1 as (u8,u16);}`,
+		`fn main(){let value=1 as Vec<u8>;}`,
+		`fn main(){let value=1 as *const u8;}`,
+	} {
+		t.Run(source, func(t *testing.T) {
+			if _, err := Parse(source); err == nil {
+				t.Fatal("invalid or unsupported cast target accepted")
 			}
 		})
 	}

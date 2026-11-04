@@ -104,3 +104,13 @@ This milestone links supported local library code into one bootstrap C executabl
 - Independent review matched 2,703 numeric outputs and 60 runtime trap cases with rustc; optimized emitted C also passed UBSan.
 - Host pointer width is checked against the C compiler target. i128/u128, floats, chars, casts and cross-target selection remain further work.
 - Pinned the comparison step's Rustup toolchain environment so copied Cargo fixtures use the selected version outside the repository directory.
+
+## 2026-11-04 — checkpoint 10: integer casts
+
+- Added `as` parsing, target name resolution and type checking across all supported integer pairs and from bool to integer.
+- Generated casts evaluate once, truncate unsigned bits and transfer signed bit patterns with memcpy, preserving Rust narrowing and sign extension without undefined C conversions.
+- Matched Rust's source inference boundaries: direct literals/unary/block tails may receive a cast expectation, while binary/conditional expressions establish their own source types.
+- Conservatively require annotations/suffixes for casts from initially defaulted integer locals rather than silently treating Rust target-directed locals as i32.
+- Added 19 cast fixtures and inference regressions; all 112 language cases pass against rustc. Existing 16 Cargo package cases continue to pass offline.
+- Independent review matched 1,420 fixed-source cast outputs and 31 inference/grammar reproductions; optimized emitted C passed UBSan.
+- Full local tests and vet pass. General coercion/float/char/reference casts and full global inference remain further work; fixed-size arrays are the next language milestone.

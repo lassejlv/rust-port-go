@@ -75,7 +75,7 @@ type Block struct {
 
 // Stmt.Kind: let, assign, expr, return, if, while, break, continue, block.
 // assign uses Target for a field place, otherwise Name; Expr is the RHS.
-// For assign, Name is the target and Op is =, +=, -=, *=, /= or %=.
+// Assignment Op preserves =, arithmetic, bitwise, or shift compound spelling.
 // For legacy if/while, Expr is the condition and Body is the body. Else is optional.
 // An expr statement with Type="()" has no semicolon and must evaluate to unit.
 type Stmt struct {
@@ -87,9 +87,10 @@ type Stmt struct {
 	Span                 Span
 }
 
-// Expr.Kind: int, bool, string, unit, name, unary, binary, call, macro, if, block, struct, field.
+// Expr.Kind: int, bool, string, unit, name, unary, binary, call, macro, if, block, struct, field, cast.
 // struct uses Text source type path, Target canonical type, and ordered Fields.
 // field uses Left receiver and Text field name.
+// cast uses Left operand, Text source target type, and Target resolved type.
 // Text holds literal spelling (decoded for string), identifier or callee path.
 // Qualified name/call paths retain their :: separators, including crate/self/super.
 // Target optionally holds a resolver-selected canonical function; Text stays source spelling.

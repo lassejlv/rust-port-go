@@ -482,3 +482,72 @@ func TestResolveExternGraphRejectsCyclesAndIdentityConflicts(t *testing.T) {
 		}
 	})
 }
+
+func TestResolveCastTargetsKeepSourceSpelling(t *testing.T) {
+	source := `
+mod records{#[derive(Copy,Clone)]pub struct Point{pub x:i32}}
+use records::Point as P;
+fn value()->i32{5}
+fn main(){let a=value() as u8;let b=true as usize;let c=1 as P;}
+`
+	program, err := syntax.Parse(source)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for attempt := 0; attempt < 2; attempt++ {
+		flat, err := resolveModules(program)
+		if err != nil {
+			t.Fatal(err)
+		}
+		statements := flat.Functions[1].Body.Statements
+		for i, want := range []struct{ text, target string }{{"u8", "u8"}, {"usize", "usize"}, {"P", "struct:records::Point"}} {
+			cast := statements[i].Expr
+			if cast.Kind != "cast" || cast.Text != want.text || cast.Target != want.target {
+				t.Fatalf("cast%d kind=%s source=%s target=%s", i, cast.Kind, cast.Text, cast.Target)
+			}
+		}
+		if statements[0].Expr.Left.Target != "value" {
+			t.Fatal("cast operand call was not resolved")
+		}
+	}
+}
+
+func TestResolveCastNamedTypesRespectPrivacy(t *testing.T) {
+	cases := []struct{ name, source, want string }{
+		{"private type", `mod records{#[derive(Copy,Clone)]struct Point{pub x:i32}}fn main(){let x=1 as records::Point;}`, "private"},
+		{"private import alias", `mod records{#[derive(Copy,Clone)]struct Point{pub x:i32}}use records::Point as P;fn main(){let x=1 as P;}`, "private"},
+		{"unknown type", `fn main(){let x=1 as Absent;}`, "unresolved module path"},
+		{"module target", `mod records{}fn main(){let x=1 as records;}`, "not a structure type"},
+		{"function target", `fn value(){}fn main(){let x=1 as value;}`, "not a structure type"},
+		{"primitive structure alias", `mod records{#[derive(Copy,Clone)]pub struct Point{pub x:i32}}use records::Point as u8;fn main(){let x=1 as u8;}`, "shadowing primitive type"},
+	}
+	for _, tt := range cases {
+		t.Run(tt.name, func(t *testing.T) {
+			program, err := syntax.Parse(tt.source)
+			if err != nil {
+				t.Fatal(err)
+			}
+			_, err = resolveModules(program)
+			if err == nil || !strings.Contains(err.Error(), tt.want) {
+				t.Fatalf("got %v, want %s", err, tt.want)
+			}
+		})
+	}
+}
+
+func TestResolveCastTargetsAcrossCrateAliases(t *testing.T) {
+	dependency := parseResolverCrate(t, `#[derive(Copy,Clone)]pub struct Point{pub x:i32}`, "@crate1")
+	root := parseResolverCrate(t, `use dep::Point as P;fn main(){let x=1 as dep::Point;let y=2 as P;}`, "")
+	root.Externs = map[string]*syntax.Program{"dep": dependency}
+	for attempt := 0; attempt < 2; attempt++ {
+		flat, err := resolveModules(root)
+		if err != nil {
+			t.Fatal(err)
+		}
+		for _, statement := range flat.Functions[0].Body.Statements {
+			if statement.Expr.Target != "struct:@crate1::Point" {
+				t.Fatalf("cast target=%q", statement.Expr.Target)
+			}
+		}
+	}
+}

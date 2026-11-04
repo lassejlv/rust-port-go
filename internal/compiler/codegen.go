@@ -244,6 +244,28 @@ func (g *generator) arithmetic(op, t, a, b string) string {
 func (g *generator) expr(e *syntax.Expr) string {
 	t := g.checked.types[e]
 	switch e.Kind {
+	case "cast":
+		value := g.expr(e.Left)
+		if g.checked.diverges[e.Left] {
+			return ""
+		}
+		if g.checked.types[e.Left] == t {
+			return value
+		}
+		bits := g.temp("u64", "(uint64_t)("+value+")")
+		info, ok := integerInfo(t)
+		if !ok {
+			panic("unchecked cast target: " + t)
+		}
+		if !info.Signed {
+			return g.temp(t, "("+info.CType+")("+bits+")")
+		}
+		unsigned := "u" + strings.TrimPrefix(t, "i")
+		unsignedInfo, _ := integerInfo(unsigned)
+		narrowed := g.temp(unsigned, "("+unsignedInfo.CType+")("+bits+")")
+		result := g.resultTarget(e)
+		g.line("memcpy(&%s, &%s, sizeof(%s));", result, narrowed, result)
+		return result
 	case "field":
 		value := g.expr(e.Left)
 		if g.checked.diverges[e.Left] {

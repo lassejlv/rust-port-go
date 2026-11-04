@@ -382,6 +382,13 @@ func (r *moduleResolver) rewriteExpr(scope *moduleScope, e *syntax.Expr) error {
 	if e == nil {
 		return nil
 	}
+	if e.Kind == "cast" {
+		target, err := r.resolveType(scope, e.Text, e.Span)
+		if err != nil {
+			return err
+		}
+		e.Target = target
+	}
 	if e.Kind == "struct" {
 		item, err := r.path(scope, e.Text, e.Span)
 		if err != nil {

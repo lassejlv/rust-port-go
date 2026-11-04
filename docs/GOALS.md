@@ -19,11 +19,17 @@ This milestone links supported library code into a bootstrap C executable. Rust 
 
 This implementation is pushed in checkpoint 8; local comparison and race checks pass, and hosted CI is pending for that checkpoint.
 
-## Active goal: host integer semantics
+## Implemented milestone: host integer semantics
 
 Compile signed and unsigned integers through 64 bits plus isize/usize, with exact bounds, bitwise operations, shifts, compound assignments and checked runtime failures. Compare supported numeric behavior with rustc and validate generated C for undefined behavior, then push and verify CI.
 
-The next expression milestone is integer casts, followed by fixed-size arrays and usize indexing.
+The integer implementation is pushed in checkpoint 9 and passed hosted Linux/macOS CI.
+
+## Active goal: integer casts
+
+Compile `as` casts across supported integer widths and from bool to integer with Rust narrowing/sign-extension rules, evaluation order and literal inference boundaries. Compare the expanded fixtures against rustc and validate optimized generated C, then push and verify CI.
+
+The next language goal is fixed-size Copy arrays, usize indexing, bounds checks and array length access.
 
 ## Implemented milestones
 

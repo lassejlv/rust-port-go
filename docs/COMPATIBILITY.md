@@ -17,6 +17,7 @@ Ferrugo 0.1.0 implements the subset below. It is not yet compatible with complet
 - `=`, `+=`, `-=`, `*=`, `/=`, `%=`, `&=`, `|=`, `^=`, `<<=`, `>>=` assignments to mutable locals or supported record places.
 - Integer `+ - * / %`, signed unary `-`, bitwise `! & | ^`, shifts `<< >>`, and comparisons. Boolean `! && || == != & | ^`; string `== !=`. Shift counts may use any supported integer type.
 - Parentheses, typed function calls, forward calls and recursion.
+- `as` conversions between supported integer types and from bool to a supported integer, with Rust truncation/sign-extension and no cast overflow panic. Literal expectations follow Rust cast expression boundaries.
 - `if`/`else if`/`else`, `while`, `break`, `continue`, `return` and nested block statements.
 - Value-producing `if`/`else` and block expressions, function tails, and unit expressions. Branch results must agree; no-else `if` expressions require unit. Expression statements without a semicolon require unit.
 - `print!`/`println!` with literal formats, sequential `{}` placeholders and `{{`/`}}` escaped braces; `println!()`; `assert!(boolean)`.
@@ -35,7 +36,7 @@ Move-only/plain structs, tuple/unit struct declarations, generic records, method
 
 Public reexports, restricted visibility, grouped/glob/absolute imports, local module/import items, shared function/module/import/record names in one namespace, and shadowing primitive types with record declarations or record import aliases remain unsupported. Module nesting is bounded to 256 levels. Source-string compiler APIs support inline modules only; file-based APIs load external declarations.
 
-Unit-valued bindings/parameters, `i128`/`u128`, floating-point and character types, non-ASCII identifiers, raw/byte strings and general format specifications are unsupported. Return/break/continue require semicolons. `&str` returns require exactly one `&str` parameter under Rust lifetime elision; explicit lifetime syntax is unsupported. Inference is local and intentionally more restrictive than Rust inference across later statements. Compile-time constant-overflow linting is not implemented; arithmetic overflow is checked at runtime. Edition declarations do not select complete edition-specific grammars.
+Unit-valued bindings/parameters, `i128`/`u128`, floating-point and character types, non-ASCII identifiers, raw/byte strings and general format specifications are unsupported. Return/break/continue require semicolons. `&str` returns require exactly one `&str` parameter under Rust lifetime elision; explicit lifetime syntax is unsupported. Inference is local and intentionally more restrictive than Rust inference across later statements. Casts from initially unconstrained integer locals, including aliases, require a source annotation or literal suffix; general coercion/float/char/reference casts remain unsupported. Compile-time constant-overflow linting is not implemented; arithmetic overflow is checked at runtime. Edition declarations do not select complete edition-specific grammars.
 
 Diagnostics have source locations but do not reproduce rustc error codes, wording or recovery. Successful C emission does not establish cross-target or ABI compatibility. Local validation is on Linux using GCC; CI also exercises macOS. The backend uses the host C compiler and has no cross-compilation support yet.
 

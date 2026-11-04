@@ -391,10 +391,17 @@ func (p *parser) function() (*Function, error) {
 func (p *parser) typeName() (string, error) {
 	start := p.current()
 	if p.take("(") {
+		if p.take(")") {
+			return "()", nil
+		}
+		typ, err := p.typeName()
+		if err != nil {
+			return "", err
+		}
 		if _, err := p.expect(")"); err != nil {
 			return "", err
 		}
-		return "()", nil
+		return typ, nil
 	}
 	if p.take("&") {
 		if _, err := p.expect("str"); err != nil {
@@ -598,6 +605,8 @@ var precedence = map[string]int{
 	"+": 8, "-": 8, "*": 9, "/": 9, "%": 9,
 }
 
+const castPrecedence = 10
+
 func comparisonOperator(op string) bool {
 	return op == "==" || op == "!=" || op == "<" || op == "<=" || op == ">" || op == ">="
 }
@@ -612,6 +621,26 @@ func (p *parser) expression(min int) (*Expr, error) {
 
 func (p *parser) expressionRest(left *Expr, min int) (*Expr, error) {
 	for {
+		if p.at("as") {
+			if castPrecedence < min {
+				break
+			}
+			operator := p.current()
+			p.index++
+			if p.at("_") {
+				return nil, sourceError(p.current().span, "inferred cast targets are not supported")
+			}
+			groupedType := p.at("(")
+			target, err := p.typeName()
+			if err != nil {
+				return nil, err
+			}
+			if !groupedType && (p.at("<") || p.at("<<")) {
+				return nil, sourceError(operator.span, "casts followed by < or << require parentheses around the cast or target type")
+			}
+			left = &Expr{Kind: "cast", Left: left, Text: target, Span: left.Span}
+			continue
+		}
 		op := p.current()
 		prec := precedence[op.kind]
 		if prec < min {
@@ -640,7 +669,7 @@ func (p *parser) expressionRest(left *Expr, min int) (*Expr, error) {
 func (p *parser) prefix() (*Expr, error) {
 	t := p.current()
 	if p.take("-") || p.take("!") {
-		rhs, err := p.expression(10)
+		rhs, err := p.expression(castPrecedence + 1)
 		if err != nil {
 			return nil, err
 		}
