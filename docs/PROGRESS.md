@@ -127,3 +127,13 @@ This milestone links supported local library code into one bootstrap C executabl
 - Updated the two-library Cargo demo to use an array of returned records and usize indexing. Local race tests, vet and both demos pass.
 
 Lengths are literal-only and bounded to 65536; general const evaluation, slices/borrowing, reference/string/unit elements, iteration traits and Rust layout/ABI introspection remain future work.
+
+## 2026-11-04 — checkpoint 12: bounded for loops
+
+- Added bounded exclusive/inclusive integer ranges and owned Copy-array loops with name, mutable-name and wildcard bindings.
+- Preserved left-to-right, once-only bound evaluation, array snapshot semantics, zero-sized item effects, nested break/continue and scoped bindings. Inclusive maximum endpoints skip increment after the last item, including on continue.
+- Matched Rust's unit-valued for-statement checking even when a header expression diverges.
+- Removed the conservative defaulted-local cast rejection after direct rustc comparisons confirmed that local paths are cast inference barriers; direct expression inference boundaries remain checked.
+- Added 16 fixtures. All 150 language cases pass against original rustc, and the Cargo demo now indexes its array with a for loop.
+
+The next goal is complete upstream file ports with a per-file inventory and reproducible upstream comparisons. The current bootstrap cannot compile production Rust; completing the compiler, standard libraries and Cargo remains required.

@@ -61,7 +61,7 @@ func lex(src string) ([]token, error) {
 			continue
 		}
 		matched := false
-		for _, op := range []string{"<<=", ">>=", "..", "::", "->", "==", "!=", "<=", ">=", "&&", "||", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<", ">>"} {
+		for _, op := range []string{"<<=", ">>=", "..=", "..", "::", "->", "==", "!=", "<=", ">=", "&&", "||", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<", ">>"} {
 			if strings.HasPrefix(src[l.offset:], op) {
 				for range op {
 					l.advance()

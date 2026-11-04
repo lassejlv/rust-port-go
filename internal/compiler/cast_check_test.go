@@ -57,7 +57,7 @@ func TestCastLiteralSourceInference(t *testing.T) {
 	}
 }
 
-func TestFixedCastSourcesAndDefaultedBindingRestriction(t *testing.T) {
+func TestCastSourcesUseStatementTypes(t *testing.T) {
 	for _, source := range []string{
 		`fn main(){let n:i32=300;let value=n as u8;}`,
 		`fn main(){let n=300i32;let alias=n;let value=alias as u8;}`,
@@ -78,9 +78,11 @@ func TestFixedCastSourcesAndDefaultedBindingRestriction(t *testing.T) {
 		`fn main(){let n=300;let result=(n+1) as u8;}`,
 		`fn main(){let n=300;let result=({n}) as u8;}`,
 		`fn main(){let n=300;let result=(n<<2u64) as u8;}`,
+		`fn main(){let result=({let n=256;n}) as u8;}`,
+		`fn main(){let n=256;let result=!n as u8;}`,
 	} {
-		if err := Check(source); err == nil || !strings.Contains(err.Error(), "explicit source type or literal suffix") {
-			t.Fatalf("defaulted cast %s: %v", source, err)
+		if err := Check(source); err != nil {
+			t.Fatalf("statement-inferred cast %s: %v", source, err)
 		}
 	}
 }
@@ -97,6 +99,7 @@ func TestCastRejectsUnsupportedSourcesAndTargets(t *testing.T) {
 		{`#[derive(Copy,Clone)]struct Value{n:i32}fn main(){let n=Value{n:1} as u8;}`, "cast source"},
 		{`fn main(){let n=({return;}) as i32;}`, "divergent cast sources"},
 		{`fn main(){let n:u8=1i32 as i16;}`, "expected u8, found i16"},
+		{`fn main(){let n=18446744073709551615;let result=n as u64;}`, "out of range for i32"},
 	}
 	for _, tt := range cases {
 		err := Check(tt.source)

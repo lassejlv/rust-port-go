@@ -24,22 +24,21 @@ type checked struct {
 	arrays      map[string]arraySpec
 	typeOrder   []string
 	zeroSized   map[string]bool
+	forTypes    map[*syntax.Stmt]string
 }
 
 type binding struct {
 	typ, cname string
 	mutable    bool
-	defaulted  bool
 }
 type checker struct {
 	*checked
-	scopes            []map[string]binding
-	nextVariable      int
-	returnType        string
-	loopDepth         int
-	bottom            map[*syntax.Expr]bool
-	currentModule     string
-	defaultedBindings map[string]bool
+	scopes        []map[string]binding
+	nextVariable  int
+	returnType    string
+	loopDepth     int
+	bottom        map[*syntax.Expr]bool
+	currentModule string
 }
 
 // Check validates the complete bootstrap binary crate without producing files.
@@ -62,13 +61,13 @@ func analyzeProgramMode(program *syntax.Program, requireMain bool) (*checked, er
 	if err != nil {
 		return nil, err
 	}
-	c := &checker{bottom: make(map[*syntax.Expr]bool), defaultedBindings: make(map[string]bool), checked: &checked{
+	c := &checker{bottom: make(map[*syntax.Expr]bool), checked: &checked{
 		program: program,
 		types:   make(map[*syntax.Expr]string), names: make(map[*syntax.Expr]string),
 		decls: make(map[*syntax.Stmt]string), params: make(map[*syntax.Function][]string),
 		funcs: make(map[string]*syntax.Function), calls: make(map[*syntax.Expr]string),
 		fnNames: make(map[*syntax.Function]string), diverges: make(map[*syntax.Expr]bool),
-		structs: make(map[string]*syntax.Struct), assignTypes: make(map[*syntax.Stmt]string), arrays: make(map[string]arraySpec), zeroSized: make(map[string]bool),
+		structs: make(map[string]*syntax.Struct), assignTypes: make(map[*syntax.Stmt]string), arrays: make(map[string]arraySpec), zeroSized: make(map[string]bool), forTypes: make(map[*syntax.Stmt]string),
 	}}
 	if err := c.collectStructs(); err != nil {
 		return nil, err
@@ -217,9 +216,7 @@ func (c *checker) statement(s *syntax.Stmt) (bool, error) {
 		}
 		name := c.newVariable()
 		c.decls[s] = name
-		defaulted := s.Type == "" && integerType(t) && !c.fixedCastSource(s.Expr)
-		c.defaultedBindings[name] = defaulted
-		c.scopes[len(c.scopes)-1][s.Name] = binding{typ: t, cname: name, mutable: s.Mutable, defaulted: defaulted}
+		c.scopes[len(c.scopes)-1][s.Name] = binding{typ: t, cname: name, mutable: s.Mutable}
 		return !c.diverges[s.Expr], nil
 	case "assign":
 		if s.Target != nil {
@@ -267,6 +264,8 @@ func (c *checker) statement(s *syntax.Stmt) (bool, error) {
 			}
 		}
 		return left || right, nil
+	case "for":
+		return c.forStatement(s)
 	case "while":
 		if _, err := c.expr(s.Expr, "bool"); err != nil {
 			return false, err

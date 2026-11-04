@@ -118,7 +118,6 @@ func TestRejectUnsupportedAndMalformedSyntax(t *testing.T) {
 		{"fn main() { let x = true == true == true; }", "cannot be chained"},
 		{"fn main() { let x = true == 1 < 2; }", "cannot be chained"},
 		{"fn main() { let x; }", "expected ="},
-		{"fn main() { for x in y {} }", "expected identifier"},
 		{"pub const VALUE: i32 = 1;", "expected fn"},
 		{"fn true() {}", "expected identifier"},
 		{"fn main(mut x: i32) {}", "expected identifier"},
@@ -164,6 +163,8 @@ func FuzzParse(f *testing.F) {
 	f.Add(`fn main(){if !true as u8 == 0 {let value=257u16 as (u8);}}`)
 	f.Add(`fn main(){let mut a:[u8;3]=[1,2,3];a[0]+=a.len() as u8;}`)
 	f.Add(`fn main(){let a=[[1u8;0usize];2];let x=a[0].len();}`)
+	f.Add(`fn main(){for mut i in (0u8..=3u8){i+=1;continue;}for _ in [1,2]{break;}}`)
+	f.Add(`fn main(){for n in 0..({3}){for x in [[1u8;2];2]{let y=x[n as usize];}}}`)
 	f.Fuzz(func(t *testing.T, source string) { _, _ = Parse(source) })
 }
 
@@ -859,6 +860,9 @@ func TestMalformedAndUnsupportedIntegerSuffixes(t *testing.T) {
 }
 
 func operatorTree(e *Expr) string {
+	if e.Kind == "range" {
+		return "(" + e.Op + " " + operatorTree(e.Left) + " " + operatorTree(e.Right) + ")"
+	}
 	if e.Kind == "if" {
 		body, otherwise := "()", "()"
 		if e.Body != nil && e.Body.Tail != nil {
@@ -1297,12 +1301,149 @@ func TestRejectArraySyntaxOutsideLiteralLengthSubset(t *testing.T) {
 		{`fn main(){let a=[..other];}`, "range syntax"},
 		{`fn main(){let a=[1..2];}`, "range syntax"},
 		{`fn main(){let a=values[..];}`, "slices and ranges"},
-		{`fn main(){let a=values[1..2];}`, "slices and ranges"},
-		{`fn main(){let a=values[1..];}`, "slices and ranges"},
+		{`fn main(){let a=values[1..2];}`, "range"},
+		{`fn main(){let a=values[1..];}`, "range"},
 		{`fn main(){let a=values[];}`, "indexing requires"},
 		{`fn main(){let a=values[0,1];}`, "expected ]"},
 		{`fn main(){let a=values.len(1);}`, "takes no arguments"},
 		{`fn main(){let a=values.iter();}`, "methods and callable"},
+	}
+	for _, tc := range cases {
+		t.Run(tc.source, func(t *testing.T) {
+			_, err := Parse(tc.source)
+			if err == nil || !strings.Contains(err.Error(), tc.want) {
+				t.Fatalf("error=%v, want %q", err, tc.want)
+			}
+		})
+	}
+}
+
+func TestBuiltinForRangePatternsAndNestedControls(t *testing.T) {
+	p, err := Parse(`fn main(){
+ for outer in 0..2 {
+  for mut inner in [1,2] {
+   while true { if inner==1 {continue;} break; }
+   inner+=1;
+   if inner>2 {break;}
+  }
+ }
+ for _ in make() {continue;}
+}`)
+	if err != nil {
+		t.Fatal(err)
+	}
+	statements := p.Functions[0].Body.Statements
+	outer := statements[0]
+	if outer.Kind != "for" || outer.Name != "outer" || outer.Mutable || outer.Expr.Kind != "range" || outer.Expr.Op != ".." || outer.Expr.Left.Text != "0" || outer.Expr.Right.Text != "2" {
+		t.Fatalf("range for=%#v", outer)
+	}
+	inner := outer.Body.Statements[0]
+	if inner.Kind != "for" || inner.Name != "inner" || !inner.Mutable || inner.Expr.Kind != "array" || inner.Body.Statements[0].Kind != "while" || inner.Body.Statements[1].Kind != "assign" {
+		t.Fatalf("nested mutable array for=%#v", inner)
+	}
+	wildcard := statements[1]
+	if wildcard.Kind != "for" || wildcard.Name != "_" || wildcard.Mutable || wildcard.Expr.Kind != "call" || wildcard.Body.Statements[0].Kind != "continue" {
+		t.Fatalf("wildcard for=%#v", wildcard)
+	}
+}
+
+func TestForRangeBoundPrecedenceCastsAndGrouping(t *testing.T) {
+	cases := []struct{ header, want string }{
+		{`1+2..3*4`, `(.. (+ 1 2) (* 3 4))`},
+		{`start as u8..end as u8`, `(.. (as start u8) (as end u8))`},
+		{`0..=limit-1`, `(..= 0 (- limit 1))`},
+		{`a<<1..b>>1`, `(.. (<< a 1) (>> b 1))`},
+		{`(1 as u8)..=(3 as u8)`, `(..= (as 1 u8) (as 3 u8))`},
+		{`(0..=3)`, `(..= 0 3)`},
+		{`((0)..(3))`, `(.. 0 3)`},
+		{`(a)+b..end`, `(.. (+ a b) end)`},
+		{`0..3 as usize`, `(.. 0 (as 3 usize))`},
+	}
+	for _, tc := range cases {
+		t.Run(tc.header, func(t *testing.T) {
+			p, err := Parse("fn main(){for i in " + tc.header + " {}}")
+			if err != nil {
+				t.Fatal(err)
+			}
+			if got := operatorTree(p.Functions[0].Body.Statements[0].Expr); got != tc.want {
+				t.Fatalf("range tree=%s, want %s", got, tc.want)
+			}
+		})
+	}
+}
+
+func TestForHeaderArrayAndConstructorContexts(t *testing.T) {
+	for _, header := range []string{
+		`values`, `(values)`, `(values)[0]`, `[Point{x:1}]`,
+		`(Holder{items:[Point{x:1}]}).items`, `{[Point{x:1}]}`,
+		`if flag {[Point{x:1}]} else {[Point{x:2}]}`,
+		`0..({3})`, `(0..{3})`, `({0}..{3})`, `{0}..3`,
+		`0..if flag {3} else {4}`, `0..bound(Point{x:3})`,
+	} {
+		t.Run(header, func(t *testing.T) {
+			if _, err := Parse("fn main(){for item in " + header + " {}}"); err != nil {
+				t.Fatalf("supported for header rejected: %v", err)
+			}
+		})
+	}
+	for _, source := range []string{
+		`fn main(){for p in Holder{items:[1]}.items {}}`,
+		`fn main(){for i in 0..Holder{value:3}.value {}}`,
+	} {
+		t.Run(source, func(t *testing.T) {
+			if _, err := Parse(source); err == nil {
+				t.Fatal("bare struct literal in for header accepted")
+			}
+		})
+	}
+}
+
+func TestForLoopAndRangeSourceSpans(t *testing.T) {
+	source := "fn main(){\n  for mut item in 1u8..=limit as u8 {\n    continue;\n  }\n}"
+	p, err := Parse(source)
+	if err != nil {
+		t.Fatal(err)
+	}
+	loop := p.Functions[0].Body.Statements[0]
+	if loop.Span.Line != 2 || loop.Span.Column != 3 || loop.Span.Offset != strings.Index(source, "for mut") {
+		t.Fatalf("for statement span=%#v", loop.Span)
+	}
+	interval := loop.Expr
+	if interval.Op != "..=" || interval.Span.Offset != strings.Index(source, "1u8") || interval.Span != interval.Left.Span || interval.Right.Span.Offset != strings.Index(source, "limit") {
+		t.Fatal("range endpoint source spans lost")
+	}
+	if loop.Body.Span.Offset != strings.Index(source, "{\n    continue") || loop.Body.Statements[0].Span.Line != 3 {
+		t.Fatal("for body spans lost")
+	}
+}
+
+func TestUnsupportedForPatternsAndRangeValues(t *testing.T) {
+	cases := []struct{ source, want string }{
+		{`fn main(){for mut _ in [1] {}}`, "wildcard _ cannot be mutable"},
+		{`fn main(){for (a,b) in values {}}`, "patterns support only"},
+		{`fn main(){for &item in values {}}`, "patterns support only"},
+		{`fn main(){for ref item in values {}}`, "patterns support only"},
+		{`fn main(){for Point{x} in values {}}`, "expected in"},
+		{`fn main(){for item:u8 in values {}}`, "expected in"},
+		{`fn main(){for item values {}}`, "expected in"},
+		{`fn main(){for _ in [1] {let value=_;}}`, "expected identifier"},
+		{`fn main(){let _=1;}`, "expected identifier"},
+		{`fn main(){for item in &values {}}`, "borrows"},
+		{`fn main(){for item in values.iter() {}}`, "methods and callable"},
+		{`fn main(){for item in ..3 {}}`, "both start and end"},
+		{`fn main(){for item in ..=3 {}}`, "both start and end"},
+		{`fn main(){for item in 0.. {}}`, "end bound"},
+		{`fn main(){for item in 0..= {}}`, "end bound"},
+		{`fn main(){for item in (0..) {}}`, "end bound"},
+		{`fn main(){for item in 0..1..2 {}}`, "chained range"},
+		{`fn main(){for item in 0..1..=2 {}}`, "chained range"},
+		{`fn main(){let interval=0..3;}`, "direct bounded for"},
+		{`fn main(){let interval=(0..=3);}`, "direct bounded for"},
+		{`fn main(){let interval=..3;}`, "open ranges"},
+		{`fn main(){for item in make(0..3) {}}`, "direct bounded for"},
+		{`fn main(){for item in [0..3] {}}`, "direct bounded for"},
+		{`fn main(){for item in {0..3} {}}`, "direct bounded for"},
+		{`fn main(){'label: for item in [1] {break;}}`, "unsupported character"},
 	}
 	for _, tc := range cases {
 		t.Run(tc.source, func(t *testing.T) {

@@ -10,6 +10,7 @@ type parser struct {
 	index           int
 	grouped         map[*Expr]bool
 	noStructLiteral bool
+	rangeBoundary   bool
 }
 
 // Parse parses the explicitly supported bootstrap Rust language. Unsupported
@@ -202,7 +203,7 @@ func (p *parser) structLiteral(e *Expr) (*Expr, error) {
 	p.index++ // opening brace, already inspected by atom
 	e.Kind = "struct"
 	for !p.at("}") {
-		if p.at("..") {
+		if p.rangeOperator() {
 			return nil, sourceError(p.current().span, "struct update syntax is not supported")
 		}
 		field, err := p.identifier()
@@ -230,7 +231,7 @@ func (p *parser) structLiteral(e *Expr) (*Expr, error) {
 func (p *parser) postfix(e *Expr, allowIndex bool) (*Expr, error) {
 	for {
 		if allowIndex && p.take("[") {
-			if p.at("..") {
+			if p.rangeOperator() {
 				return nil, sourceError(p.current().span, "slices and ranges are not supported")
 			}
 			if p.at("]") {
@@ -240,7 +241,7 @@ func (p *parser) postfix(e *Expr, allowIndex bool) (*Expr, error) {
 			if err != nil {
 				return nil, err
 			}
-			if p.at("..") {
+			if p.rangeOperator() {
 				return nil, sourceError(p.current().span, "slices and ranges are not supported")
 			}
 			if _, err := p.expect("]"); err != nil {
@@ -296,7 +297,7 @@ func (p *parser) arrayLiteral(start token) (*Expr, error) {
 	if p.take("]") {
 		return array, nil
 	}
-	if p.at("..") {
+	if p.rangeOperator() {
 		return nil, sourceError(p.current().span, "array spread and range syntax are not supported")
 	}
 	first, err := p.fullExpression(1)
@@ -325,7 +326,7 @@ func (p *parser) arrayLiteral(start token) (*Expr, error) {
 		}
 		array.Args = append(array.Args, value)
 	}
-	if p.at("..") {
+	if p.rangeOperator() {
 		return nil, sourceError(p.current().span, "array spread and range syntax are not supported")
 	}
 	if _, err := p.expect("]"); err != nil {
@@ -335,9 +336,9 @@ func (p *parser) arrayLiteral(start token) (*Expr, error) {
 }
 
 func (p *parser) fullExpression(min int) (*Expr, error) {
-	previous := p.noStructLiteral
-	p.noStructLiteral = false
-	defer func() { p.noStructLiteral = previous }()
+	previous, previousRange := p.noStructLiteral, p.rangeBoundary
+	p.noStructLiteral, p.rangeBoundary = false, false
+	defer func() { p.noStructLiteral, p.rangeBoundary = previous, previousRange }()
 	return p.expression(min)
 }
 
@@ -537,9 +538,9 @@ func (p *parser) typeName() (string, error) {
 }
 
 func (p *parser) block() (*Block, error) {
-	previous := p.noStructLiteral
-	p.noStructLiteral = false
-	defer func() { p.noStructLiteral = previous }()
+	previous, previousRange := p.noStructLiteral, p.rangeBoundary
+	p.noStructLiteral, p.rangeBoundary = false, false
+	defer func() { p.noStructLiteral, p.rangeBoundary = previous, previousRange }()
 	start, err := p.expect("{")
 	if err != nil {
 		return nil, err
@@ -665,6 +666,29 @@ func (p *parser) statement() (Stmt, bool, error) {
 			}
 		}
 		_, err = p.expect(";")
+	case p.take("for"):
+		s.Kind = "for"
+		s.Mutable = p.take("mut")
+		if p.take("_") {
+			if s.Mutable {
+				return s, true, sourceError(start.span, "mut must be followed by a named binding; wildcard _ cannot be mutable")
+			}
+			s.Name = "_"
+		} else {
+			name, patternErr := p.identifier()
+			if patternErr != nil {
+				return s, true, sourceError(p.current().span, "for patterns support only a name, mut name, or _")
+			}
+			s.Name = name.text
+		}
+		if _, err = p.expect("in"); err != nil {
+			return s, true, err
+		}
+		s.Expr, err = p.forIterable(true)
+		if err != nil {
+			return s, true, err
+		}
+		s.Body, err = p.block()
 	case p.take("while"):
 		s.Kind = "while"
 		s.Expr, err = p.condition()
@@ -684,6 +708,41 @@ func (p *parser) statement() (Stmt, bool, error) {
 		return s, false, nil
 	}
 	return s, true, err
+}
+
+func (p *parser) rangeOperator() bool { return p.at("..") || p.at("..=") }
+
+func (p *parser) forBound(restrictStruct bool) (*Expr, error) {
+	previousRange, previousStruct := p.rangeBoundary, p.noStructLiteral
+	p.rangeBoundary, p.noStructLiteral = true, restrictStruct
+	defer func() { p.rangeBoundary, p.noStructLiteral = previousRange, previousStruct }()
+	return p.expression(1)
+}
+
+func (p *parser) forIterable(restrictStruct bool) (*Expr, error) {
+	if p.rangeOperator() {
+		return nil, sourceError(p.current().span, "for ranges require both start and end bounds; open ranges are not supported")
+	}
+	start, err := p.forBound(restrictStruct)
+	if err != nil {
+		return nil, err
+	}
+	if !p.rangeOperator() {
+		return start, nil
+	}
+	operator := p.current()
+	p.index++
+	if (restrictStruct && p.at("{")) || p.at("}") || p.at(")") || p.at(";") || p.at("eof") {
+		return nil, sourceError(p.current().span, "for ranges require an end bound; open ranges are not supported")
+	}
+	end, err := p.forBound(restrictStruct)
+	if err != nil {
+		return nil, err
+	}
+	if p.rangeOperator() {
+		return nil, sourceError(p.current().span, "chained range bounds are not supported")
+	}
+	return &Expr{Kind: "range", Left: start, Right: end, Op: operator.kind, Span: start.Span}, nil
 }
 
 func (p *parser) ifExpression(start token) (*Expr, error) {
@@ -739,6 +798,12 @@ func (p *parser) expression(min int) (*Expr, error) {
 
 func (p *parser) expressionRest(left *Expr, min int) (*Expr, error) {
 	for {
+		if p.rangeOperator() {
+			if p.rangeBoundary {
+				break
+			}
+			return nil, sourceError(p.current().span, "range syntax is supported only as direct bounded for headers")
+		}
 		if p.at("as") {
 			if castPrecedence < min {
 				break
@@ -802,6 +867,9 @@ func (p *parser) prefix() (*Expr, error) {
 
 func (p *parser) atom() (*Expr, error) {
 	t := p.current()
+	if p.rangeOperator() {
+		return nil, sourceError(t.span, "open ranges are not supported; for ranges require start and end bounds")
+	}
 	if p.at("&") || p.at("&&") {
 		return nil, sourceError(t.span, "references, borrows and slices are not supported")
 	}
@@ -822,7 +890,13 @@ func (p *parser) atom() (*Expr, error) {
 		if p.take(")") {
 			return &Expr{Kind: "unit", Span: t.span}, nil
 		}
-		e, err := p.fullExpression(1)
+		var e *Expr
+		var err error
+		if p.rangeBoundary {
+			e, err = p.forIterable(false)
+		} else {
+			e, err = p.fullExpression(1)
+		}
 		if err != nil {
 			return nil, err
 		}

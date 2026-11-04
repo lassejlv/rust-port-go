@@ -1,6 +1,12 @@
 # Project goals
 
-The overall goal remains a complete Rust compiler and Cargo implementation in Go. No bootstrap milestone completes that project.
+The overall goal is a complete file-for-file Go port of the pinned Rust compiler and Cargo sources that compiles production Rust. No bootstrap milestone completes that project.
+
+## Active goal: complete upstream source-file ports
+
+Map every pinned upstream file and required submodule, preserve source provenance and licenses, and port complete implementation files with their tests. Rust programs used as compiler test inputs stay Rust fixtures. Start with the entire `compiler/rustc_lexer/src/lib.rs` and Cargo's `src/util/edit_distance.rs`, validate them against the original source, then integrate validated components into the compiler/package manager.
+
+Each completed file must have a recorded source revision and blob identity, a Go counterpart, all behavior implemented, and reproducible comparison evidence. The bootstrap does not count as a file-for-file port. Production readiness requires the complete frontend, ownership/borrow checking, traits/generics, lowering/code generation, standard libraries, crate/ABI/metadata support, and Cargo's registry, lockfile, feature and workspace behavior, tested against upstream suites and representative production crates.
 
 ## Implemented milestone: local Cargo library dependencies
 
@@ -31,9 +37,15 @@ Compile `as` casts across supported integer widths and from bool to integer with
 
 The cast implementation is pushed in checkpoint 10. Local comparisons and race tests pass; hosted CI is tracked in the progress log.
 
-## Active goal: fixed-size Copy arrays
+## Implemented milestone: fixed-size Copy arrays
 
 Compile owned Copy-array types, literals/repeats, function values, indexing/mutation and length access. Preserve index place semantics, side effects and bounds panics, and handle zero-sized values without inflating storage. Compare the expanded fixtures with rustc and review generated C under UBSan, then push and verify CI.
+
+This implementation is pushed in checkpoint 11. Local checks pass; hosted CI is tracked in the progress log.
+
+## Implemented milestone: bounded for loops
+
+Compile bounded integer ranges and owned Copy-array iteration with exact once-only header evaluation, scoped mutable/immutable bindings, nested break/continue and inclusive integer maxima. All 150 language conformance cases match original rustc. This finishes the bootstrap work already underway before the full-file port goal was made explicit.
 
 ## Implemented milestones
 

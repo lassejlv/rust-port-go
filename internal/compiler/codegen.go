@@ -248,6 +248,8 @@ func (g *generator) statement(s *syntax.Stmt) {
 			g.line("else")
 			g.block(s.Else, false, "()")
 		}
+	case "for":
+		g.forStatement(s)
 	case "while":
 		g.line("while (true) {")
 		g.indent++
