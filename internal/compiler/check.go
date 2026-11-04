@@ -48,7 +48,11 @@ func analyze(source string) (*checked, error) {
 }
 
 func analyzeProgram(program *syntax.Program) (*checked, error) {
-	program, err := resolveModules(program)
+	return analyzeProgramMode(program, true)
+}
+
+func analyzeProgramMode(program *syntax.Program, requireMain bool) (*checked, error) {
+	program, err := resolveModulesMode(program, requireMain)
 	if err != nil {
 		return nil, err
 	}
@@ -89,12 +93,14 @@ func analyzeProgram(program *syntax.Program) (*checked, error) {
 		c.funcs[f.Name] = f
 		c.fnNames[f] = fmt.Sprintf("fr_fn%d", i)
 	}
-	main, exists := c.funcs["main"]
-	if !exists {
-		return nil, fmt.Errorf("1:1: missing main function")
-	}
-	if len(main.Params) != 0 || main.ReturnType != "()" {
-		return nil, fail(main.Span, "main must have no parameters and return ()")
+	if requireMain {
+		main, exists := c.funcs["main"]
+		if !exists {
+			return nil, fmt.Errorf("1:1: missing main function")
+		}
+		if len(main.Params) != 0 || main.ReturnType != "()" {
+			return nil, fail(main.Span, "main must have no parameters and return ()")
+		}
 	}
 	for _, f := range program.Functions {
 		c.scopes = []map[string]binding{{}}

@@ -78,3 +78,17 @@ The multi-file goal is implemented locally; hosted CI will validate the pushed c
 - Updated the multi-file Cargo demo to return Fibonacci results in records. Local full race tests, vet and the demo pass.
 
 General ownership, borrowing, generic traits, move-only records, enums and standard libraries are still required for the overall port. The next Cargo milestone is local library crates and path dependency graphs.
+
+## 2026-11-04 — checkpoint 8: local library crate graphs
+
+- Added separate crate roots and extern preludes, transitive/renamed local library dependencies, shared diamond type identity, and library checking without a main entrypoint.
+- Extended the bounded Cargo manifest parser with inline path/package dependency tables, single binary/library root discovery, graph cycles/name checks and `new/init --lib`.
+- Added `CheckCrate`/`BuildCrate` graph APIs and standalone library checks; the compiler CLI accepts `--check --crate-type=lib`.
+- Kept dependency crates isolated: `crate`/`self`/`super` resolve inside their own crate, private items stay private, and only the selected binary needs main.
+- Added explicit package identity for distinct packages sharing a source file, preserved logical source/manifest symlink directories, and guarded all dependency source files against output replacement.
+- Added 16 committed package fixtures checked against original Cargo 1.99.1 offline, plus native compiler graph tests compared with real rustc rlibs. Existing 68 language/module/record fixtures continue to pass.
+- Added a runnable example with two local library crates and a renamed dependency; it prints `fib(10) = 55 through two local library crates`.
+- Local race-enabled tests, Go vet, both demos and Rust/Cargo differential runs pass. Hosted CI now includes compiler graph and original-Cargo package comparisons.
+- Explicitly rejected replacing the standard prelude through an external `std` dependency. Full edition-specific imports/prelude behavior remains unimplemented.
+
+This milestone links supported local library code into one bootstrap C executable. It does not emit Rust rlibs, implement Rust ABI compatibility, or complete registry/feature/version/workspace resolution. The overall port remains in progress.

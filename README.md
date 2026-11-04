@@ -10,6 +10,8 @@ Compile and run a small, typed Rust binary without invoking `rustc` or upstream 
 
 The executable bootstrap works. The full port remains in progress. See [supported behavior and limits](docs/COMPATIBILITY.md), [Cargo commands](docs/CARGO.md), [the roadmap](docs/ROADMAP.md), and [progress log](docs/PROGRESS.md), and [upstream scope](docs/UPSTREAM.md).
 
+Current goal: [local Cargo library dependencies](docs/GOALS.md), following the implemented module and Copy-record milestones.
+
 ## Build and try it
 
 Install Go 1.23 or newer and a C11 compiler (`cc`, GCC, or Clang). The Go implementation uses only the standard library.
@@ -17,13 +19,14 @@ Install Go 1.23 or newer and a C11 compiler (`cc`, GCC, or Clang). The Go implem
 ```sh
 make build
 ./bin/ferrugo-cargo run --manifest-path examples/hello/Cargo.toml
+./bin/ferrugo-cargo run --manifest-path examples/local-packages/app/Cargo.toml
 ./bin/ferrugo --check examples/hello/src/main.rs
 ./bin/ferrugo examples/hello/src/main.rs -o /tmp/hello-ferrugo
 /tmp/hello-ferrugo
 ./bin/ferrugo --emit=c examples/hello/src/main.rs -o /tmp/hello-ferrugo.c
 make check
 # Optional: compare the committed fixtures with an installed rustc
-FERRUGO_RUSTC=rustc go test -count=1 ./internal/conformance
+FERRUGO_RUSTC=rustc FERRUGO_CARGO=cargo go test -count=1 ./internal/compiler ./internal/conformance ./internal/cargoconformance
 ```
 
 To start a package:
@@ -39,7 +42,7 @@ Set `CC` to a C compiler executable if needed. `make GO=/path/to/go build` selec
 
 ```text
 Rust files → Go lexer/parser + module loader → Go resolver/type checker → C11 → C compiler → executable
-Cargo.toml → Go manifest/project commands ────────────┘
+Cargo.toml → Go manifest/dependency-graph commands ────────────┘
 ```
 
 The C backend is a bootstrap strategy. It does not provide Rust's ownership model, ABI, standard library, or full language semantics. Unsupported constructs must produce an error; delegating compilation to rustc is not an implementation strategy.

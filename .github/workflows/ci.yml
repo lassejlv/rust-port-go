@@ -26,6 +26,7 @@ jobs:
           rustup toolchain install 1.99.1 --profile minimal
           rustup override set 1.99.1
       - name: Compare conformance fixtures with rustc
-        run: go test -count=1 -v ./internal/conformance
+        run: go test -count=1 -v ./internal/compiler ./internal/conformance ./internal/cargoconformance
         env:
           FERRUGO_RUSTC: rustc
+          FERRUGO_CARGO: cargo

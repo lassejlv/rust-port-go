@@ -1,6 +1,7 @@
 package compiler
 
 import (
+	"sort"
 	"strings"
 
 	"github.com/lassejlv/rust-port-go/internal/syntax"
@@ -13,6 +14,9 @@ type moduleScope struct {
 	path    string
 	program *syntax.Program
 	items   map[string]*moduleItem
+	crate   *moduleScope
+	externs map[string]*moduleScope
+	public  bool
 }
 
 type moduleItem struct {
@@ -30,22 +34,31 @@ type moduleItem struct {
 }
 
 type moduleResolver struct {
-	root   *moduleScope
-	scopes []*moduleScope
-	active map[*syntax.Program]bool
-	types  map[string]*moduleItem
+	scopes      []*moduleScope
+	active      map[*syntax.Program]bool
+	types       map[string]*moduleItem
+	crateRoots  map[*syntax.Program]*moduleScope
+	crateActive map[*syntax.Program]bool
+	identities  map[string]*syntax.Program
 }
 
 // resolveModules flattens module items while keeping source call spelling in
 // Expr.Text. Expr.Target carries the canonical callee, so an imported function
 // never bypasses lexical variable shadowing in the type checker.
 func resolveModules(program *syntax.Program) (*syntax.Program, error) {
-	r := &moduleResolver{active: make(map[*syntax.Program]bool), types: make(map[string]*moduleItem)}
-	root, err := r.collect(program, nil, "")
+	return resolveModulesMode(program, true)
+}
+
+func resolveModulesMode(program *syntax.Program, requireMain bool) (*syntax.Program, error) {
+	r := &moduleResolver{
+		active: make(map[*syntax.Program]bool), types: make(map[string]*moduleItem),
+		crateRoots: make(map[*syntax.Program]*moduleScope), crateActive: make(map[*syntax.Program]bool),
+		identities: make(map[string]*syntax.Program),
+	}
+	root, err := r.collectCrate(program)
 	if err != nil {
 		return nil, err
 	}
-	r.root = root
 	for _, scope := range r.scopes {
 		for i := range scope.program.Imports {
 			decl := &scope.program.Imports[i]
@@ -93,7 +106,7 @@ func resolveModules(program *syntax.Program) (*syntax.Program, error) {
 			functions[copyFunction.Name] = &copyFunction
 		}
 	}
-	if item := root.items["main"]; item != nil && item.importDecl != nil && item.target != nil && item.target.function != nil {
+	if item := root.items["main"]; requireMain && item != nil && item.importDecl != nil && item.target != nil && item.target.function != nil {
 		// Rust permits the crate entrypoint to be a function brought into scope
 		// by use. A fresh wrapper preserves the resolved target's identity and
 		// avoids checking/emitting the same body under two function identities.
@@ -124,6 +137,49 @@ func importName(decl *syntax.Import) string {
 	return parts[len(parts)-1]
 }
 
+// collectCrate interns a dependency Program once, so a diamond or multiple
+// extern aliases preserve one function/record identity instead of flattening
+// copies. Crate roots deliberately have no parent: super and private visibility
+// can never cross the dependency boundary.
+func (r *moduleResolver) collectCrate(program *syntax.Program) (*moduleScope, error) {
+	if program == nil {
+		return nil, fail(syntax.Span{Line: 1, Column: 1}, "missing crate syntax")
+	}
+	if r.crateActive[program] {
+		return nil, fail(syntax.Span{Line: 1, Column: 1}, "cyclic crate dependency graph")
+	}
+	if root := r.crateRoots[program]; root != nil {
+		return root, nil
+	}
+	if prior := r.identities[program.CrateID]; prior != nil && prior != program {
+		return nil, fail(syntax.Span{Line: 1, Column: 1}, "conflicting crate identity %q", program.CrateID)
+	}
+	r.identities[program.CrateID] = program
+	r.crateActive[program] = true
+	defer delete(r.crateActive, program)
+	root, err := r.collect(program, nil, program.CrateID)
+	if err != nil {
+		return nil, err
+	}
+	r.crateRoots[program] = root
+	names := make([]string, 0, len(program.Externs))
+	for name := range program.Externs {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+	for _, name := range names {
+		if name == "" || name == "crate" || name == "self" || name == "super" || strings.Contains(name, "::") {
+			return nil, fail(syntax.Span{Line: 1, Column: 1}, "invalid extern crate name %q", name)
+		}
+		external, err := r.collectCrate(program.Externs[name])
+		if err != nil {
+			return nil, err
+		}
+		root.externs[name] = external
+	}
+	return root, nil
+}
+
 func (r *moduleResolver) collect(program *syntax.Program, parent *moduleScope, path string) (*moduleScope, error) {
 	if program == nil {
 		return nil, fail(syntax.Span{Line: 1, Column: 1}, "missing module syntax")
@@ -134,6 +190,12 @@ func (r *moduleResolver) collect(program *syntax.Program, parent *moduleScope, p
 	r.active[program] = true
 	defer delete(r.active, program)
 	scope := &moduleScope{parent: parent, path: path, program: program, items: make(map[string]*moduleItem)}
+	if parent == nil {
+		scope.crate = scope
+		scope.externs = make(map[string]*moduleScope)
+	} else {
+		scope.crate = parent.crate
+	}
 	r.scopes = append(r.scopes, scope)
 	add := func(item *moduleItem) error {
 		if prior, exists := scope.items[item.name]; exists {
@@ -176,6 +238,7 @@ func (r *moduleResolver) collect(program *syntax.Program, parent *moduleScope, p
 			return nil, err
 		}
 		item.module = child
+		child.public = m.Public
 	}
 	for i := range program.Imports {
 		decl := &program.Imports[i]
@@ -228,14 +291,18 @@ func (r *moduleResolver) resolveImport(item *moduleItem) (*moduleItem, error) {
 func (r *moduleResolver) path(requester *moduleScope, path string, span syntax.Span) (*moduleItem, error) {
 	parts := strings.Split(path, "::")
 	scope := requester
+	explicitRoot := false
 	if len(parts) > 0 {
 		switch parts[0] {
 		case "crate":
-			scope = r.root
+			explicitRoot = true
+			scope = requester.crate
 			parts = parts[1:]
 		case "self":
+			explicitRoot = true
 			parts = parts[1:]
 		case "super":
+			explicitRoot = true
 			for len(parts) > 0 && parts[0] == "super" {
 				if scope.parent == nil {
 					return nil, fail(span, "super path escapes the crate root")
@@ -257,6 +324,12 @@ func (r *moduleResolver) path(requester *moduleScope, path string, span syntax.S
 		}
 		var exists bool
 		item, exists = scope.items[part]
+		if !exists && i == 0 && !explicitRoot {
+			if external := requester.crate.externs[part]; external != nil {
+				item = &moduleItem{name: part, owner: requester.crate, public: true, module: external}
+				exists = true
+			}
+		}
 		if !exists {
 			return nil, fail(span, "unresolved module path %q", path)
 		}
@@ -371,15 +444,23 @@ func (r *moduleResolver) resolveType(scope *moduleScope, name string, span synta
 	case "", "i32", "i64", "bool", "&str", "()":
 		return name, nil
 	}
-	path := name
 	if strings.HasPrefix(name, "struct:") {
 		canonical := strings.TrimPrefix(name, "struct:")
-		if r.types[canonical] == nil {
+		item := r.types[canonical]
+		if item == nil {
 			return "", fail(span, "unknown structure type %q", canonical)
 		}
-		path = "crate::" + canonical
+		if !item.public && !descendant(scope, item.owner) {
+			return "", fail(span, "type %q is private", canonical)
+		}
+		for owner := item.owner; owner.parent != nil; owner = owner.parent {
+			if !owner.public && !descendant(scope, owner.parent) {
+				return "", fail(span, "module containing type %q is private", canonical)
+			}
+		}
+		return name, nil
 	}
-	item, err := r.path(scope, path, span)
+	item, err := r.path(scope, name, span)
 	if err != nil {
 		return "", err
 	}

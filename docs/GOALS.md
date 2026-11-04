@@ -1,24 +1,28 @@
 # Project goals
 
-The overall goal remains a complete Rust compiler and Cargo implementation in Go. The executable bootstrap was the first milestone, and does not complete that project.
+The overall goal remains a complete Rust compiler and Cargo implementation in Go. No bootstrap milestone completes that project.
 
-## Implemented milestone: multi-file Rust packages
+## Active goal: local Cargo library dependencies
 
-Compile and run one binary package with nested inline and external modules, qualified function calls, simple `use` aliases and visibility checks, through both `ferrugo` and `ferrugo-cargo`.
+Build and run a binary package whose supported Rust code depends on local library-only packages through `path` dependencies, including renamed and transitive dependencies and a shared dependency diamond.
 
 Acceptance criteria:
 
-- Resolve `name.rs` and `name/mod.rs`, including modules nested inside inline declarations.
-- Resolve local, `self`, `super` and `crate` paths and simple function/module aliases.
-- Enforce item privacy and reject duplicate definitions, missing/ambiguous files, unresolved imports and cycles.
-- Keep source filenames in diagnostics and protect every participating source file from output replacement.
-- Make check, native builds and C emission use the same crate loading and analysis path.
-- Compare committed positive and rejection cases against rustc, pass CI, and push the implementation to `main`.
+- Parse the documented local dependency manifest subset and reject unsupported sources/settings.
+- Preserve separate crate roots, external names, nominal type identity and visibility.
+- Check libraries without a main entrypoint; require main only for the selected binary.
+- Detect graph cycles, missing/mismatched packages and conflicting aliases/identities.
+- Preserve source bytes and the logical source/manifest directory when symlink leaves are involved.
+- Compare committed package fixtures with original Cargo offline, pass local checks, push on `main`, and verify hosted CI.
 
-The module implementation is pushed in checkpoint 5, with a reviewed output-path correction in checkpoint 6. Local differential/race checks pass; their hosted CI runs are queued.
+This milestone links supported library code into a bootstrap C executable. Rust rlib/ABI artifacts, registry/git dependencies, feature/version resolution, lockfiles and workspaces remain later Cargo work.
 
-## Active goal: named Copy records
+## Implemented milestones
 
-Compile and run brace-style records deriving Copy and Clone with primitive/nested fields, field access/mutation, typed function parameters/results and module/type-import privacy. Validate constructor evaluation order, copies, nested field writes and invalid-program rejection against rustc, then push the implementation and verify CI.
+- Executable bootstrap: source parsing/type checking, native output, and single-package Cargo-style commands.
+- Multi-file modules: nested inline/external modules, qualified calls, aliases and privacy; pushed in checkpoint 5 with reviewed output-path correction in checkpoint 6.
+- Named Copy records: typed fields, copies, construction/mutation, function values and module visibility; pushed in checkpoint 7.
 
-Move-only records and borrowing are deliberately deferred until their ownership analysis is implemented. Cargo's next major work includes local library crates and path dependency graphs before registry resolution. Ownership, borrowing, generic trait selection, standard libraries and complete upstream conformance remain required for the overall goal.
+The module and Copy-record checkpoints passed hosted Linux/macOS CI with rustc comparisons. The [progress log](PROGRESS.md) records the exact implemented boundaries and checks.
+
+Ownership, borrowing, generic trait selection, move-only values, enums, standard libraries and complete upstream conformance remain required for the overall compiler port.

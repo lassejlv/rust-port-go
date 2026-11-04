@@ -20,10 +20,10 @@ const help = `ferrugo-cargo 0.1.0 — Ferrugo's bootstrap package builder
 Usage: ferrugo-cargo <command> [options]
 
 Commands:
-  new <path>      Create a binary package in a new directory
-  init [path]     Create a binary package in an existing directory
-  build          Compile src/main.rs to target/debug/<name>
-  check          Parse and type-check src/main.rs without producing a binary
+  new <path>      Create a binary or library package in a new directory
+  init [path]     Create a binary or library package in an existing directory
+  build          Compile a binary and local path libraries
+  check          Check a binary or library dependency graph without artifacts
   run [-- args]   Build and run the binary, forwarding arguments and streams
   clean          Remove only artifacts created by Ferrugo
   version        Print version
@@ -34,14 +34,17 @@ Options:
   --release                     Use target/release (build/run; same backend)
   --name <name>                 Set the package name (new/init)
   --bin                         Create a binary package (new/init; default)
+  --lib                         Create a library package (new/init)
   --vcs none                    Skip version control setup (new/init; default)
 
-This bootstrap supports one local binary package, no dependencies, and a strict
-Cargo.toml subset. It does not invoke rustc or the upstream Cargo executable.
+This bootstrap supports one binary or library crate root per package and local
+library-only path dependencies with a strict Cargo.toml subset. It does not invoke rustc or the upstream Cargo executable.
 `
 
 type options struct {
 	manifest, name     string
+	library            bool
+	kindSet            bool
 	release            bool
 	paths, programArgs []string
 }
@@ -103,7 +106,11 @@ func Run(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
 		if err := createPackage(command, opts); err != nil {
 			return fail(err)
 		}
-		fmt.Fprintln(stderr, "Created Ferrugo binary package")
+		kind := "binary"
+		if opts.library {
+			kind = "library"
+		}
+		fmt.Fprintf(stderr, "Created Ferrugo %s package\n", kind)
 		return 0
 	}
 	path, err := findManifest(opts.manifest)
@@ -121,15 +128,22 @@ func Run(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
 		fmt.Fprintln(stderr, "Removed Ferrugo build artifacts")
 		return 0
 	}
-	source := filepath.Join(m.Root, "src", "main.rs")
+	graph, err := loadPackageGraph(path)
+	if err != nil {
+		return fail(err)
+	}
+	m = graph.Manifest
 	if command == "check" {
-		if err := compiler.CheckFile(source); err != nil {
+		if err := compiler.CheckCrate(graph.Crate, m.Library); err != nil {
 			return fail(err)
 		}
 		fmt.Fprintf(stderr, "Checked %s v%s\n", m.Name, m.Version)
 		return 0
 	}
-	output, err := build(m, source, opts.release, stderr)
+	if m.Library {
+		return fail(fmt.Errorf("%s is unsupported for a library-only package: native/Rust library artifacts are not implemented; use check", command))
+	}
+	output, err := build(m, graph.Crate, opts.release, stderr)
 	if err != nil {
 		return fail(err)
 	}
@@ -216,10 +230,16 @@ func parseOptions(command string, args []string) (options, error) {
 			if o.name == "" {
 				return o, fmt.Errorf("--name requires a value")
 			}
-		case arg == "--bin":
+		case arg == "--bin" || arg == "--lib":
 			if !creating {
-				return o, fmt.Errorf("--bin is only supported by new and init")
+				return o, fmt.Errorf("%s is only supported by new and init", arg)
 			}
+			library := arg == "--lib"
+			if o.kindSet && o.library != library {
+				return o, fmt.Errorf("--bin and --lib cannot be combined")
+			}
+			o.kindSet = true
+			o.library = library
 		case arg == "--vcs":
 			if !creating {
 				return o, fmt.Errorf("--vcs is only supported by new and init")
@@ -301,7 +321,13 @@ func createPackage(command string, o options) error {
 	if err := writeExclusive(manifestPath, manifest); err != nil {
 		return err
 	}
-	if err := writeExclusive(filepath.Join(src, "main.rs"), "fn main() {\n    println!(\"Hello, Ferrugo!\");\n}\n"); err != nil {
+	sourceName := "main.rs"
+	template := "fn main() {\n    println!(\"Hello, Ferrugo!\");\n}\n"
+	if o.library {
+		sourceName = "lib.rs"
+		template = "pub fn add(left: i32, right: i32) -> i32 {\n    left + right\n}\n"
+	}
+	if err := writeExclusive(filepath.Join(src, sourceName), template); err != nil {
 		// This path was exclusively created by this operation. Existing source files
 		// are never removed, even if another process creates one during initialization.
 		_ = os.Remove(manifestPath)
@@ -345,7 +371,7 @@ func artifactPaths(m *Manifest, profile string) (string, string) {
 
 func marker(m *Manifest) string { return "ferrugo artifact v1\n" + m.Name + "\n" }
 
-func build(m *Manifest, source string, release bool, stderr io.Writer) (string, error) {
+func build(m *Manifest, crate *compiler.Crate, release bool, stderr io.Writer) (string, error) {
 	profile := "debug"
 	if release {
 		profile = "release"
@@ -374,19 +400,10 @@ func build(m *Manifest, source string, release bool, stderr io.Writer) (string, 
 		return "", err
 	}
 	fmt.Fprintf(stderr, "Compiling %s v%s\n", m.Name, m.Version)
-	temp, err := os.CreateTemp(filepath.Dir(output), ".ferrugo-build-*")
-	if err != nil {
-		return "", err
-	}
-	temporary := temp.Name()
-	if err := temp.Close(); err != nil {
-		return "", err
-	}
-	defer os.Remove(temporary)
-	if err := compiler.Build(source, temporary); err != nil {
-		return "", err
-	}
-	if err := os.Rename(temporary, output); err != nil {
+	// BuildCrate checks the final destination against every crate/module source
+	// and publishes atomically. Passing an intermediate output here would hide
+	// source aliases at the actual destination from that protection.
+	if err := compiler.BuildCrate(crate, output); err != nil {
 		return "", err
 	}
 	if err := os.WriteFile(owned, []byte(marker(m)), 0644); err != nil {

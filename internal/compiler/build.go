@@ -11,30 +11,10 @@ import (
 // Build compiles a Rust source file to a native executable using the C11 backend.
 // CC may select one compiler executable; shell command strings are never evaluated.
 func Build(sourcePath, outputPath string) error {
-	sourceAbs, err := filepath.Abs(sourcePath)
-	if err != nil {
-		return err
-	}
-	outputAbs, err := filepath.Abs(outputPath)
-	if err != nil {
-		return err
-	}
-	if sourceAbs == outputAbs {
-		return fmt.Errorf("output would overwrite source file %s", sourcePath)
-	}
-	if a, err := os.Stat(sourceAbs); err == nil {
-		if b, err := os.Stat(outputAbs); err == nil && os.SameFile(a, b) {
-			return fmt.Errorf("output refers to source file %s", sourcePath)
-		}
-	}
-	c, sources, err := analyzeFile(sourceAbs)
-	if err != nil {
-		return err
-	}
-	if err = protectSources(outputAbs, sources); err != nil {
-		return err
-	}
-	code := emitChecked(c)
+	return BuildCrate(&Crate{Root: sourcePath}, outputPath)
+}
+
+func buildNative(code, outputAbs string) error {
 	cc := os.Getenv("CC")
 	if cc == "" {
 		cc = "cc"

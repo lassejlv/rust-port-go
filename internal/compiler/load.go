@@ -24,15 +24,7 @@ func EmitCFile(sourcePath string) (string, error) {
 }
 
 func analyzeFile(sourcePath string) (*checked, []string, error) {
-	program, sources, err := loadCrate(sourcePath)
-	if err != nil {
-		return nil, nil, err
-	}
-	c, err := analyzeProgram(program)
-	if err != nil {
-		return nil, nil, fmt.Errorf("crate %s: %w", sourcePath, err)
-	}
-	return c, sources, nil
+	return analyzeCrate(&Crate{Root: sourcePath}, true)
 }
 
 type moduleLoader struct {

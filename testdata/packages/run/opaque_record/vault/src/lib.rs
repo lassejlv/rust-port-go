@@ -1,0 +1,1 @@
+mod inner{#[derive(Copy,Clone)]pub struct Token{value:i32}pub fn make()->Token{Token{value:42}}pub fn read(token:Token)->i32{token.value}}pub fn make()->inner::Token{inner::make()}pub fn read(token:inner::Token)->i32{inner::read(token)}

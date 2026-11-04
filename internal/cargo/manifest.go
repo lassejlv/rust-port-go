@@ -15,11 +15,22 @@ import (
 // Manifest is the deliberately small Cargo manifest understood by the bootstrap.
 // All other tables and compilation settings produce an error.
 type Manifest struct {
-	Path    string
-	Root    string
+	Path         string
+	Root         string
+	Name         string
+	Version      string
+	Edition      string
+	Source       string
+	Library      bool
+	Dependencies []Dependency
+}
+
+// Dependency describes a local path entry before graph resolution.
+type Dependency struct {
 	Name    string
-	Version string
-	Edition string
+	Alias   string
+	Path    string
+	Package string
 }
 
 var packageName = regexp.MustCompile(`^[A-Za-z_][A-Za-z0-9_-]*$`)
@@ -178,6 +189,81 @@ func validateManifestLine(line string) error {
 	return nil
 }
 
+// dependencyTable parses the supported single-line inline-table subset. Commas
+// inside quoted paths are data; nested tables, dotted keys and non-string values
+// are deliberately outside this bootstrap contract.
+func dependencyTable(name, text string) (Dependency, error) {
+	d := Dependency{Name: name, Alias: strings.ReplaceAll(name, "-", "_")}
+	if !validName(d.Alias) || d.Alias == "_" {
+		return d, fmt.Errorf("invalid Rust dependency alias %q", d.Alias)
+	}
+	text = strings.Trim(text, " \t")
+	if len(text) < 2 || text[0] != '{' || text[len(text)-1] != '}' {
+		return d, fmt.Errorf("dependency %q requires an inline table with path and optional package", name)
+	}
+	body := text[1 : len(text)-1]
+	var fields []string
+	start := 0
+	var quote byte
+	escaped := false
+	for i := 0; i < len(body); i++ {
+		c := body[i]
+		if quote != 0 {
+			if quote == '"' && escaped {
+				escaped = false
+				continue
+			}
+			if quote == '"' && c == '\\' {
+				escaped = true
+				continue
+			}
+			if c == quote {
+				quote = 0
+			}
+		} else if c == '"' || c == '\'' {
+			quote = c
+		} else if c == ',' {
+			fields = append(fields, body[start:i])
+			start = i + 1
+		}
+	}
+	if quote != 0 {
+		return d, fmt.Errorf("unterminated dependency string")
+	}
+	fields = append(fields, body[start:])
+	seen := map[string]bool{}
+	for _, field := range fields {
+		key, value, ok := strings.Cut(field, "=")
+		key = strings.Trim(key, " \t")
+		if !ok || key == "" {
+			return d, fmt.Errorf("dependency inline table requires key = value entries without trailing comma")
+		}
+		if seen[key] {
+			return d, fmt.Errorf("duplicate dependency key %q", key)
+		}
+		seen[key] = true
+		if key != "path" && key != "package" {
+			return d, fmt.Errorf("unsupported dependency key %q; only path and package are supported", key)
+		}
+		decoded, err := tomlString(value)
+		if err != nil {
+			return d, fmt.Errorf("dependency %s: %w", key, err)
+		}
+		if key == "path" {
+			d.Path = decoded
+		} else {
+			d.Package = decoded
+		}
+	}
+	if d.Path == "" {
+		return d, fmt.Errorf("dependency %q requires a nonempty path", name)
+	}
+	if seen["package"] && !validName(d.Package) {
+		return d, fmt.Errorf("invalid dependency package name %q", d.Package)
+	}
+	return d, nil
+}
+
 func readManifest(path string) (*Manifest, error) {
 	f, err := os.Open(path)
 	if err != nil {
@@ -188,8 +274,9 @@ func readManifest(path string) (*Manifest, error) {
 	scan := bufio.NewScanner(f)
 	scan.Split(manifestLine)
 	seen := map[string]bool{}
+	tables := map[string]bool{}
+	aliases := map[string]bool{}
 	table := ""
-	packageSeen := false
 	line := 0
 	for scan.Scan() {
 		line++
@@ -209,18 +296,22 @@ func readManifest(path string) (*Manifest, error) {
 			continue
 		}
 		if strings.HasPrefix(raw, "[") {
-			if raw != "[package]" {
-				return fail("unsupported table %q; Ferrugo supports one binary package with no dependencies", raw)
+			switch raw {
+			case "[package]":
+				table = "package"
+			case "[dependencies]":
+				table = "dependencies"
+			default:
+				return fail("unsupported table %q; only package and local path dependencies are supported", raw)
 			}
-			if packageSeen {
-				return fail("duplicate [package] table")
+			if tables[table] {
+				return fail("duplicate [%s] table", table)
 			}
-			packageSeen = true
-			table = "package"
+			tables[table] = true
 			continue
 		}
-		if table != "package" {
-			return fail("expected [package] table")
+		if table == "" {
+			return fail("expected [package] or [dependencies] table")
 		}
 		key, value, ok := strings.Cut(raw, "=")
 		if !ok {
@@ -228,10 +319,23 @@ func readManifest(path string) (*Manifest, error) {
 		}
 		key = strings.Trim(key, " \t")
 		value = strings.Trim(value, " \t")
-		if seen[key] {
-			return fail("duplicate package key %q", key)
+		scoped := table + "." + key
+		if seen[scoped] {
+			return fail("duplicate %s key %q", table, key)
 		}
-		seen[key] = true
+		seen[scoped] = true
+		if table == "dependencies" {
+			d, err := dependencyTable(key, value)
+			if err != nil {
+				return fail("%v", err)
+			}
+			if aliases[d.Alias] {
+				return fail("duplicate normalized dependency alias %q", d.Alias)
+			}
+			aliases[d.Alias] = true
+			m.Dependencies = append(m.Dependencies, d)
+			continue
+		}
 		switch key {
 		case "name", "version", "edition", "description", "license", "repository", "homepage", "documentation", "readme":
 			v, err := tomlString(value)
@@ -253,7 +357,7 @@ func readManifest(path string) (*Manifest, error) {
 	if err := scan.Err(); err != nil {
 		return nil, fmt.Errorf("read manifest: %w", err)
 	}
-	if !packageSeen {
+	if !tables["package"] {
 		return nil, fmt.Errorf("%s: missing [package] table", path)
 	}
 	if !validName(m.Name) {
@@ -267,17 +371,33 @@ func readManifest(path string) (*Manifest, error) {
 	default:
 		return nil, fmt.Errorf("%s: unsupported Rust edition %q", path, m.Edition)
 	}
-	for _, name := range []string{"build.rs", "src/lib.rs", "src/bin"} {
+	for _, name := range []string{"build.rs", "src/bin"} {
 		if _, err := os.Lstat(filepath.Join(m.Root, filepath.FromSlash(name))); err == nil {
-			return nil, fmt.Errorf("%s: unsupported target %s; only src/main.rs is supported", path, name)
+			return nil, fmt.Errorf("%s: unsupported target %s", path, name)
 		} else if !os.IsNotExist(err) {
 			return nil, err
 		}
 	}
-	if info, err := os.Stat(filepath.Join(m.Root, "src", "main.rs")); err != nil {
-		return nil, fmt.Errorf("binary source src/main.rs: %w", err)
-	} else if !info.Mode().IsRegular() {
-		return nil, fmt.Errorf("src/main.rs must be a regular file")
+	for _, name := range []string{"main.rs", "lib.rs"} {
+		source := filepath.Join(m.Root, "src", name)
+		info, err := os.Stat(source)
+		if os.IsNotExist(err) {
+			continue
+		}
+		if err != nil {
+			return nil, fmt.Errorf("crate source %s: %w", name, err)
+		}
+		if !info.Mode().IsRegular() {
+			return nil, fmt.Errorf("%s must be a regular file", source)
+		}
+		if m.Source != "" {
+			return nil, fmt.Errorf("%s: unsupported dual binary/library targets; choose src/main.rs or src/lib.rs", path)
+		}
+		m.Source = source
+		m.Library = name == "lib.rs"
+	}
+	if m.Source == "" {
+		return nil, fmt.Errorf("%s: expected one crate root at src/main.rs or src/lib.rs", path)
 	}
 	return m, nil
 }

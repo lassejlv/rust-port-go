@@ -16,6 +16,7 @@ check:
 
 demo: build
 	./bin/ferrugo-cargo run --manifest-path examples/hello/Cargo.toml
+	./bin/ferrugo-cargo run --manifest-path examples/local-packages/app/Cargo.toml
 
 clean:
 	rm -f bin/ferrugo bin/ferrugo-cargo

@@ -44,20 +44,20 @@ description = "a # within a string and \"quote\"" # outside
 func TestManifestRejectsUnsupportedOrInvalidInput(t *testing.T) {
 	base := "[package]\nname = \"demo\"\nversion = \"0.1.0\"\n"
 	cases := map[string]string{
-		"dependencies":    base + "[dependencies]\n",
-		"workspace":       base + "[workspace]\n",
-		"build script":    base + "build = \"custom.rs\"\n",
-		"duplicate key":   base + "name = \"other\"\n",
-		"duplicate table": base + "[package]\n",
-		"unknown setting": base + "autobins = false\n",
-		"custom binary":   base + "[[bin]]\n",
-		"array metadata":  base + "authors = [\"A\"]\n",
-		"edition":         base + "edition = \"2099\"\n",
-		"bad escape":      base + "description = \"bad\\x41\"\n",
-		"multiline":       base + "description = \"\"\"multiple\nlines\"\"\"\n",
-		"missing version": "[package]\nname = \"demo\"\n",
-		"bad name":        "[package]\nname = \"../../escape\"\nversion = \"0.1.0\"\n",
-		"reserved name":   "[package]\nname = \"fn\"\nversion = \"0.1.0\"\n",
+		"registry dependency": base + "[dependencies]\nserde = \"1\"\n",
+		"workspace":           base + "[workspace]\n",
+		"build script":        base + "build = \"custom.rs\"\n",
+		"duplicate key":       base + "name = \"other\"\n",
+		"duplicate table":     base + "[package]\n",
+		"unknown setting":     base + "autobins = false\n",
+		"custom binary":       base + "[[bin]]\n",
+		"array metadata":      base + "authors = [\"A\"]\n",
+		"edition":             base + "edition = \"2099\"\n",
+		"bad escape":          base + "description = \"bad\\x41\"\n",
+		"multiline":           base + "description = \"\"\"multiple\nlines\"\"\"\n",
+		"missing version":     "[package]\nname = \"demo\"\n",
+		"bad name":            "[package]\nname = \"../../escape\"\nversion = \"0.1.0\"\n",
+		"reserved name":       "[package]\nname = \"fn\"\nversion = \"0.1.0\"\n",
 	}
 	for name, source := range cases {
 		t.Run(name, func(t *testing.T) {
@@ -69,7 +69,7 @@ func TestManifestRejectsUnsupportedOrInvalidInput(t *testing.T) {
 }
 
 func TestManifestRejectsAutomaticUnsupportedTargets(t *testing.T) {
-	for _, target := range []string{"build.rs", "src/lib.rs", "src/bin"} {
+	for _, target := range []string{"build.rs", "src/bin"} {
 		t.Run(target, func(t *testing.T) {
 			path := manifestFixture(t, "[package]\nname = \"demo\"\nversion = \"0.1.0\"\n")
 			if err := os.WriteFile(filepath.Join(filepath.Dir(path), filepath.FromSlash(target)), []byte(""), 0644); err != nil {
@@ -197,5 +197,87 @@ func TestManifestAcceptsValidTOMLText(t *testing.T) {
 				t.Fatalf("rejected supported valid TOML: %v", err)
 			}
 		})
+	}
+}
+
+func TestManifestLocalPathDependencies(t *testing.T) {
+	path := manifestFixture(t, "[dependencies]\nmath-lib = { path = '../math, with spaces' }\nrenamed = { package = \"helper\", path = \"../a#b\" } # comment\n[package]\nname = \"demo\"\nversion = \"0.1.0\"\n")
+	m, err := readManifest(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(m.Dependencies) != 2 {
+		t.Fatalf("wrong dependencies: %+v", m.Dependencies)
+	}
+	first, second := m.Dependencies[0], m.Dependencies[1]
+	if first.Name != "math-lib" || first.Alias != "math_lib" || first.Path != "../math, with spaces" || first.Package != "" {
+		t.Fatalf("wrong first dependency: %+v", first)
+	}
+	if second.Alias != "renamed" || second.Package != "helper" || second.Path != "../a#b" {
+		t.Fatalf("wrong renamed dependency: %+v", second)
+	}
+}
+
+func TestManifestRejectsUnsupportedDependencyForms(t *testing.T) {
+	base := "[package]\nname=\"demo\"\nversion=\"0.1.0\"\n[dependencies]\n"
+	cases := map[string]string{
+		"registry":             "dep = \"1\"",
+		"version":              "dep = { path = \"../dep\", version = \"1\" }",
+		"git":                  "dep = { git = \"https://example.test/repo\" }",
+		"features":             "dep = { path = \"../dep\", features = [\"x\"] }",
+		"optional":             "dep = { path = \"../dep\", optional = true }",
+		"default features":     "dep = { path = \"../dep\", default-features = false }",
+		"empty":                "dep = {}",
+		"empty path":           "dep = { path = \"\" }",
+		"missing path":         "dep = { package = \"other\" }",
+		"non-string path":      "dep = { path = false }",
+		"duplicate path":       "dep = { path = \"a\", path = \"b\" }",
+		"trailing comma":       "dep = { path = \"a\", }",
+		"normalized collision": "foo-bar = { path = \"a\" }\nfoo_bar = { path = \"b\" }",
+		"reserved alias":       "type = { path = \"a\" }",
+		"wildcard alias":       "_ = { path = \"a\" }",
+		"dotted alias":         "dep.child = { path = \"a\" }",
+		"quoted alias":         "\"dep\" = { path = \"a\" }",
+		"bad package":          "dep = { path = \"a\", package = \"../escape\" }",
+		"table dependency":     "[dependencies.dep]\npath = \"../dep\"",
+	}
+	for name, entry := range cases {
+		t.Run(name, func(t *testing.T) {
+			if _, err := readManifest(manifestFixture(t, base+entry+"\n")); err == nil {
+				t.Fatal("unsupported dependency accepted")
+			}
+		})
+	}
+}
+
+func TestManifestSelectsOneRootKind(t *testing.T) {
+	path := manifestFixture(t, "[package]\nname=\"demo\"\nversion=\"0.1.0\"\n")
+	root := filepath.Dir(path)
+	mainSource := filepath.Join(root, "src", "main.rs")
+	librarySource := filepath.Join(root, "src", "lib.rs")
+	if err := os.Rename(mainSource, librarySource); err != nil {
+		t.Fatal(err)
+	}
+	m, err := readManifest(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !m.Library || m.Source != librarySource {
+		t.Fatalf("wrong library target: %+v", m)
+	}
+	if err := os.WriteFile(mainSource, []byte("fn main() {}"), 0644); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := readManifest(path); err == nil || !strings.Contains(err.Error(), "dual") {
+		t.Fatalf("dual targets accepted: %v", err)
+	}
+	if err := os.Remove(mainSource); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Remove(librarySource); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := readManifest(path); err == nil || !strings.Contains(err.Error(), "crate root") {
+		t.Fatalf("missing target accepted: %v", err)
 	}
 }

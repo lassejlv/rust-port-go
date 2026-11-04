@@ -78,3 +78,30 @@ func TestDriverLoadsModulesForCheckAndEmission(t *testing.T) {
 		t.Fatal("module source changed", err)
 	}
 }
+
+func TestDriverLibraryChecking(t *testing.T) {
+	dir := t.TempDir()
+	source := filepath.Join(dir, "lib.rs")
+	if err := os.WriteFile(source, []byte(`pub fn add(a:i32,b:i32)->i32{a+b} fn main(n:i32)->i32{n}`), 0600); err != nil {
+		t.Fatal(err)
+	}
+	for _, tt := range []struct {
+		name   string
+		args   []string
+		status int
+		want   string
+	}{
+		{"check lib", []string{"--check", "--crate-type=lib", source}, 0, ""},
+		{"check binary entrypoint", []string{"--check", source}, 1, "main must"},
+		{"library artifacts unsupported", []string{"--crate-type=lib", source}, 1, "library output artifacts"},
+		{"wrong kind", []string{"--check", "--crate-type", "rlib", source}, 1, "only bin or lib"},
+	} {
+		t.Run(tt.name, func(t *testing.T) {
+			var out, errs bytes.Buffer
+			status := run(tt.args, &out, &errs)
+			if status != tt.status || !strings.Contains(errs.String(), tt.want) {
+				t.Fatalf("status=%d out=%q errors=%q", status, out.String(), errs.String())
+			}
+		})
+	}
+}

@@ -304,3 +304,181 @@ func TestResolveAllowsPrimitiveNamedFunctionAndModuleAliases(t *testing.T) {
 		})
 	}
 }
+
+func parseResolverCrate(t *testing.T, source, id string) *syntax.Program {
+	t.Helper()
+	program, err := syntax.Parse(source)
+	if err != nil {
+		t.Fatal(err)
+	}
+	program.CrateID = id
+	return program
+}
+
+func TestResolveExternCrateRootsAndNestedPrelude(t *testing.T) {
+	library := parseResolverCrate(t, `fn hidden()->i32{41}pub fn answer()->i32{crate::hidden()+1}pub mod nested{pub fn read()->i32{super::answer()}}`, "@crate1")
+	root := parseResolverCrate(t, `mod local{pub fn value()->i32{numbers::nested::read()}}fn main(){println!("{}",local::value());}`, "")
+	root.Externs = map[string]*syntax.Program{"numbers": library}
+	flat, err := resolveModules(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	functions := make(map[string]*syntax.Function)
+	for _, f := range flat.Functions {
+		functions[f.Name] = f
+	}
+	if functions["local::value"].Body.Tail.Target != "@crate1::nested::read" {
+		t.Fatal("nested app module did not inherit extern prelude")
+	}
+	if functions["@crate1::answer"].Body.Tail.Left.Target != "@crate1::hidden" {
+		t.Fatal("crate path escaped library root")
+	}
+	if functions["@crate1::nested::read"].Body.Tail.Target != "@crate1::answer" {
+		t.Fatal("super path used wrong crate root")
+	}
+	if _, err := analyzeProgram(root); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestResolveSharedExternDiamondKeepsStructureIdentity(t *testing.T) {
+	shared := parseResolverCrate(t, `#[derive(Copy,Clone)]pub struct Point{pub x:i32}pub fn make(x:i32)->Point{Point{x}}`, "@crate3")
+	left := parseResolverCrate(t, `pub fn make()->common::Point{common::make(7)}`, "@crate1")
+	right := parseResolverCrate(t, `pub fn take(p:renamed::Point)->i32{p.x}`, "@crate2")
+	left.Externs = map[string]*syntax.Program{"common": shared}
+	right.Externs = map[string]*syntax.Program{"renamed": shared}
+	root := parseResolverCrate(t, `fn main(){let p:points::Point=left::make();println!("{}",right::take(p));}`, "")
+	root.Externs = map[string]*syntax.Program{"left": left, "right": right, "points": shared, "also_points": shared}
+	for attempt := 0; attempt < 2; attempt++ {
+		flat, err := resolveModules(root)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if len(flat.Structs) != 1 || flat.Structs[0].Name != "@crate3::Point" {
+			t.Fatalf("shared structures duplicated: %#v", flat.Structs)
+		}
+		count := 0
+		for _, f := range flat.Functions {
+			if f.Name == "@crate3::make" {
+				count++
+			}
+		}
+		if count != 1 {
+			t.Fatalf("shared function emitted %d times", count)
+		}
+		for _, f := range flat.Functions {
+			if f.Name == "@crate1::make" && f.ReturnType != "struct:@crate3::Point" {
+				t.Fatalf("left return=%s", f.ReturnType)
+			}
+			if f.Name == "@crate2::take" && f.Params[0].Type != "struct:@crate3::Point" {
+				t.Fatalf("right parameter=%s", f.Params[0].Type)
+			}
+		}
+		if _, err := analyzeProgram(root); err != nil {
+			t.Fatal(err)
+		}
+	}
+}
+
+func TestResolveExternNamesAreShadowedByLocalModules(t *testing.T) {
+	library := parseResolverCrate(t, `pub fn value()->i32{2}`, "@crate1")
+	root := parseResolverCrate(t, `mod dep{pub fn value()->i32{1}}fn main(){println!("{}",dep::value());}`, "")
+	root.Externs = map[string]*syntax.Program{"dep": library}
+	flat, err := resolveModules(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	call := flat.Functions[0].Body.Statements[0].Expr.Args[1]
+	if call.Target != "dep::value" {
+		t.Fatalf("local module did not shadow extern: %s", call.Target)
+	}
+}
+
+func TestResolveExternCrateIsolationAndPrivacy(t *testing.T) {
+	cases := []struct{ name, root, library, want string }{
+		{"private root function", `fn main(){dep::hidden();}`, `fn hidden(){}`, "private"},
+		{"private root type", `fn take(p:dep::Hidden){}fn main(){}`, `#[derive(Copy,Clone)]struct Hidden{pub x:i32}`, "private"},
+		{"private nested module", `fn main(){dep::hidden::run();}`, `mod hidden{pub fn run(){}}`, "private"},
+		{"explicit crate does not use extern", `fn main(){crate::dep::run();}`, `pub fn run(){}`, "unresolved module path"},
+		{"explicit self does not use extern", `fn main(){self::dep::run();}`, `pub fn run(){}`, "unresolved module path"},
+		{"library crate root separate", `pub fn app_only(){}fn main(){}`, `pub fn run(){crate::app_only();}`, "unresolved module path"},
+		{"library bare calls separate", `pub fn app_only(){}fn main(){}`, `pub fn run(){app_only();}`, "unknown function"},
+		{"super cannot escape dependency", `pub fn app_only(){}fn main(){}`, `pub fn run(){super::app_only();}`, "escapes the crate root"},
+	}
+	for _, tt := range cases {
+		t.Run(tt.name, func(t *testing.T) {
+			root := parseResolverCrate(t, tt.root, "")
+			dep := parseResolverCrate(t, tt.library, "@crate1")
+			root.Externs = map[string]*syntax.Program{"dep": dep}
+			_, err := analyzeProgram(root)
+			if err == nil || !strings.Contains(err.Error(), tt.want) {
+				t.Fatalf("got %v, want %q", err, tt.want)
+			}
+		})
+	}
+}
+
+func TestResolveExternTransitivePreludeIsNotAppPrelude(t *testing.T) {
+	shared := parseResolverCrate(t, `pub fn run(){}`, "@crate2")
+	dependency := parseResolverCrate(t, `pub fn run(){inner::run();}`, "@crate1")
+	dependency.Externs = map[string]*syntax.Program{"inner": shared}
+	root := parseResolverCrate(t, `fn main(){inner::run();}`, "")
+	root.Externs = map[string]*syntax.Program{"outer": dependency}
+	if _, err := analyzeProgram(root); err == nil || !strings.Contains(err.Error(), "unresolved module path") {
+		t.Fatalf("transitive extern leaked: %v", err)
+	}
+}
+
+func TestResolveExternMainWrappersOnlyForSelectedBinaryRoot(t *testing.T) {
+	dependency := parseResolverCrate(t, `pub fn run(){}use self::run as main;`, "@crate1")
+	root := parseResolverCrate(t, `fn main(){dep::run();}`, "")
+	root.Externs = map[string]*syntax.Program{"dep": dependency}
+	flat, err := resolveModules(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, f := range flat.Functions {
+		if f.Name == "@crate1::main" {
+			t.Fatal("library imported main received synthetic entrypoint")
+		}
+	}
+	libraryRoot := parseResolverCrate(t, `pub fn run(){}use self::run as main;`, "")
+	flat, err = resolveModulesMode(libraryRoot, false)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(flat.Functions) != 1 || flat.Functions[0].Name != "run" {
+		t.Fatal("library root received imported main wrapper")
+	}
+	selectedRoot := parseResolverCrate(t, `use dep::run as main;`, "")
+	selectedRoot.Externs = map[string]*syntax.Program{"dep": dependency}
+	flat, err = resolveModules(selectedRoot)
+	if err != nil {
+		t.Fatal(err)
+	}
+	main := flat.Functions[len(flat.Functions)-1]
+	if main.Name != "main" || main.Body.Tail.Target != "@crate1::run" {
+		t.Fatalf("wrong imported external entry: %#v", main)
+	}
+}
+
+func TestResolveExternGraphRejectsCyclesAndIdentityConflicts(t *testing.T) {
+	t.Run("cycle", func(t *testing.T) {
+		root := parseResolverCrate(t, `fn main(){}`, "")
+		dep := parseResolverCrate(t, `pub fn run(){}`, "@crate1")
+		root.Externs = map[string]*syntax.Program{"dep": dep}
+		dep.Externs = map[string]*syntax.Program{"back": root}
+		if _, err := resolveModules(root); err == nil || !strings.Contains(err.Error(), "cyclic crate") {
+			t.Fatal(err)
+		}
+	})
+	t.Run("identity", func(t *testing.T) {
+		root := parseResolverCrate(t, `fn main(){}`, "")
+		left := parseResolverCrate(t, `pub fn left(){}`, "@crate1")
+		right := parseResolverCrate(t, `pub fn right(){}`, "@crate1")
+		root.Externs = map[string]*syntax.Program{"left": left, "right": right}
+		if _, err := resolveModules(root); err == nil || !strings.Contains(err.Error(), "conflicting crate identity") {
+			t.Fatal(err)
+		}
+	})
+}

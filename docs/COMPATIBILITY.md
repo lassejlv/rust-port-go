@@ -21,6 +21,10 @@ Ferrugo 0.1.0 implements the subset below. It is not yet compatible with complet
 - Value-producing `if`/`else` and block expressions, function tails, and unit expressions. Branch results must agree; no-else `if` expressions require unit. Expression statements without a semicolon require unit.
 - `print!`/`println!` with literal formats, sequential `{}` placeholders and `{{`/`}}` escaped braces; `println!()`; `assert!(boolean)`.
 
+Replacing the implicit standard prelude with an external dependency named `std` is unsupported.
+
+Local Cargo path dependencies are supported as separate library crate roots with isolated `crate`/`super` paths, extern bindings and nominal record identities. Library-only packages can be checked; supported binary graphs link together through the bootstrap backend. `ferrugo --check --crate-type=lib` checks a standalone library source tree.
+
 The C11 backend generates native executables using libc. Operands and arguments evaluate left to right; `&&`/`||` short-circuit; signed integer overflow, division/remainder by zero and failed assertions exit with status 101. These runtime checks apply in both output profiles. Generated programs do not need Go or Rust installed.
 
 ## Known limits

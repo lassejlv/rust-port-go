@@ -1,0 +1,7 @@
+[package]
+name = "package-crosscrate-parent"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+helper = { path = "../helper" }

@@ -17,6 +17,7 @@ const help = `ferrugo 0.1.0 — Rust in Go, one tested step at a time
 Usage: ferrugo [options] <source.rs>
 
   --check          Parse and type-check without generating files
+  --crate-type=lib Check a library instead of a binary (requires --check)
   --emit=c         Emit C11 source instead of an executable
   -o <path>        Output path (use - for C source on stdout)
   --version, -V    Show version
@@ -38,6 +39,8 @@ func run(args []string, stdout, stderr io.Writer) int {
 	}
 	var input, output string
 	check, emit := false, false
+	crateType := "bin"
+	typeSeen := false
 	for i := 0; i < len(args); i++ {
 		arg := args[i]
 		switch arg {
@@ -49,6 +52,23 @@ func run(args []string, stdout, stderr io.Writer) int {
 			return 0
 		case "--check":
 			check = true
+		case "--crate-type", "--crate-type=lib", "--crate-type=bin":
+			if typeSeen {
+				return fail(fmt.Errorf("duplicate --crate-type"))
+			}
+			typeSeen = true
+			if arg == "--crate-type" {
+				if i+1 >= len(args) {
+					return fail(fmt.Errorf("--crate-type requires bin or lib"))
+				}
+				i++
+				crateType = args[i]
+			} else {
+				crateType = strings.TrimPrefix(arg, "--crate-type=")
+			}
+			if crateType != "bin" && crateType != "lib" {
+				return fail(fmt.Errorf("--crate-type supports only bin or lib"))
+			}
 		case "--emit=c":
 			emit = true
 		case "--emit":
@@ -79,6 +99,9 @@ func run(args []string, stdout, stderr io.Writer) int {
 	if input == "" {
 		return fail(fmt.Errorf("source file required"))
 	}
+	if crateType == "lib" && !check {
+		return fail(fmt.Errorf("library output artifacts are unsupported; use --crate-type=lib with --check"))
+	}
 	if check && (emit || output != "") {
 		return fail(fmt.Errorf("--check cannot be combined with output options"))
 	}
@@ -87,7 +110,13 @@ func run(args []string, stdout, stderr io.Writer) int {
 	}
 	if check || emit {
 		if check {
-			if err := compiler.CheckFile(input); err != nil {
+			var err error
+			if crateType == "lib" {
+				err = compiler.CheckLibraryFile(input)
+			} else {
+				err = compiler.CheckFile(input)
+			}
+			if err != nil {
 				return fail(err)
 			}
 			return 0

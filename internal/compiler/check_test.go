@@ -3,6 +3,8 @@ package compiler
 import (
 	"strings"
 	"testing"
+
+	"github.com/lassejlv/rust-port-go/internal/syntax"
 )
 
 func TestCheckAcceptedCrates(t *testing.T) {
@@ -119,5 +121,153 @@ func TestCheckErrorsIncludeSourceLocation(t *testing.T) {
 	err := Check("fn main() {\n  let a: bool = 1;\n}")
 	if err == nil || !strings.Contains(err.Error(), "2:") {
 		t.Fatalf("missing line location: %v", err)
+	}
+}
+
+func TestLibraryAnalysisDoesNotRequireEntrypoint(t *testing.T) {
+	cases := []string{
+		``,
+		`pub fn value()->i32{42}`,
+		`pub fn main(x:i32)->i32{x+1}`,
+		`#[derive(Copy,Clone)]pub struct Value{pub x:i32}pub fn value()->Value{Value{x:42}}`,
+	}
+	for _, source := range cases {
+		program, err := syntax.Parse(source)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if _, err := analyzeProgramMode(program, false); err != nil {
+			t.Fatalf("library %q: %v", source, err)
+		}
+	}
+}
+
+func TestLibraryAnalysisStillChecksBodiesAndLayouts(t *testing.T) {
+	cases := []struct{ source, want string }{
+		{`pub fn value()->i32{unknown()}`, "unknown function"},
+		{`pub fn value()->i32{true}`, "expected i32"},
+		{`#[derive(Copy,Clone)]struct Loop{next:Loop}`, "recursive by-value"},
+		{`pub fn main(x:())->i32{1}`, "unsupported parameter"},
+	}
+	for _, tt := range cases {
+		program, err := syntax.Parse(tt.source)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if _, err := analyzeProgramMode(program, false); err == nil || !strings.Contains(err.Error(), tt.want) {
+			t.Fatalf("got %v, want %q", err, tt.want)
+		}
+	}
+}
+
+func TestBinaryAnalysisRetainsEntrypointRequirement(t *testing.T) {
+	program, err := syntax.Parse(`pub fn value()->i32{42}`)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := analyzeProgramMode(program, true); err == nil || !strings.Contains(err.Error(), "missing main") {
+		t.Fatalf("got %v", err)
+	}
+}
+
+func TestModulePrivacyKeepsCrateRootsSeparate(t *testing.T) {
+	cases := []struct {
+		owner, current string
+		want           bool
+	}{
+		{"", "", true}, {"", "child::nested", true}, {"", "@crate1", false}, {"", "@crate1::nested", false},
+		{"@crate1", "@crate1", true}, {"@crate1", "@crate1::nested", true}, {"@crate1", "@crate10", false},
+		{"@crate1::a", "@crate1::a::child", true}, {"@crate1::a", "@crate1::b", false}, {"@crate1", "", false},
+	}
+	for _, tt := range cases {
+		if got := moduleContains(tt.owner, tt.current); got != tt.want {
+			t.Fatalf("owner=%q current=%q got %v", tt.owner, tt.current, got)
+		}
+	}
+	c := &checker{checked: &checked{structs: map[string]*syntax.Struct{
+		"struct:Private":          {Name: "Private"},
+		"struct:Public":           {Name: "Public", Public: true},
+		"struct:@crate1::Private": {Name: "@crate1::Private"},
+	}}, currentModule: "@crate1"}
+	span := syntax.Span{Line: 1, Column: 1}
+	if err := c.visibleType("struct:Private", span); err == nil {
+		t.Fatal("external crate accessed selected root's private type")
+	}
+	if err := c.visibleType("struct:Public", span); err != nil {
+		t.Fatal(err)
+	}
+	c.currentModule = ""
+	if err := c.visibleType("struct:@crate1::Private", span); err == nil {
+		t.Fatal("selected root accessed dependency's private type")
+	}
+}
+
+func checkerCrate(t *testing.T, id, source string, externs map[string]*syntax.Program) *syntax.Program {
+	t.Helper()
+	program, err := syntax.Parse(source)
+	if err != nil {
+		t.Fatal(err)
+	}
+	program.CrateID, program.Externs = id, externs
+	return program
+}
+
+func TestDependencyMainIsAnOrdinaryLibraryFunction(t *testing.T) {
+	library := checkerCrate(t, "@crate1", `pub fn main(n:i32)->i32{n+1}`, nil)
+	root := checkerCrate(t, "", `fn main(){println!("{}",math::main(4));}`, map[string]*syntax.Program{"math": library})
+	c, err := analyzeProgram(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if c.funcs["main"] == nil || c.funcs["@crate1::main"] == nil || len(c.funcs["@crate1::main"].Params) != 1 {
+		t.Fatal("dependency main collided with selected binary main")
+	}
+	root = checkerCrate(t, "", `pub fn value()->i32{math::main(4)}`, map[string]*syntax.Program{"math": library})
+	if _, err := analyzeProgramMode(root, false); err != nil {
+		t.Fatalf("library root depending on ordinary main: %v", err)
+	}
+}
+
+func TestDependencyMainCannotSatisfyBinaryEntrypoint(t *testing.T) {
+	library := checkerCrate(t, "@crate1", `pub fn main(){}`, nil)
+	root := checkerCrate(t, "", `pub fn value()->i32{42}`, map[string]*syntax.Program{"math": library})
+	if _, err := analyzeProgram(root); err == nil || !strings.Contains(err.Error(), "missing main") {
+		t.Fatalf("got %v", err)
+	}
+}
+
+func TestSharedDependencyStructIdentity(t *testing.T) {
+	common := checkerCrate(t, "@crate3", `#[derive(Copy,Clone)]pub struct Value{pub n:i32}pub fn make(n:i32)->Value{Value{n}}`, nil)
+	left := checkerCrate(t, "@crate1", `pub fn make()->common::Value{common::make(10)}`, map[string]*syntax.Program{"common": common})
+	right := checkerCrate(t, "@crate2", `pub fn read(value:renamed::Value)->i32{value.n}`, map[string]*syntax.Program{"renamed": common})
+	root := checkerCrate(t, "", `fn main(){println!("{}",right::read(left::make()));}`, map[string]*syntax.Program{"left": left, "right": right})
+	c, err := analyzeProgram(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(c.structs) != 1 || c.structs["struct:@crate3::Value"] == nil {
+		t.Fatalf("shared library type identity lost: %v", c.structs)
+	}
+}
+
+func TestCrossCrateStructPrivacyAndIdentity(t *testing.T) {
+	cases := []struct{ name, library, root, want string }{
+		{"private returned type", `#[derive(Copy,Clone)]struct Hidden{pub n:i32}pub fn make()->Hidden{Hidden{n:1}}`, `fn main(){dep::make();}`, "type \"@crate1::Hidden\" is private"},
+		{"private field", `#[derive(Copy,Clone)]pub struct Value{n:i32}pub fn make()->Value{Value{n:1}}`, `fn main(){println!("{}",dep::make().n);}`, "field \"n\" of struct \"@crate1::Value\" is private"},
+	}
+	for _, tt := range cases {
+		t.Run(tt.name, func(t *testing.T) {
+			library := checkerCrate(t, "@crate1", tt.library, nil)
+			root := checkerCrate(t, "", tt.root, map[string]*syntax.Program{"dep": library})
+			if _, err := analyzeProgram(root); err == nil || !strings.Contains(err.Error(), tt.want) {
+				t.Fatalf("got %v,want %q", err, tt.want)
+			}
+		})
+	}
+	left := checkerCrate(t, "@crate1", `#[derive(Copy,Clone)]pub struct Value{pub n:i32}pub fn make()->Value{Value{n:1}}`, nil)
+	right := checkerCrate(t, "@crate2", `#[derive(Copy,Clone)]pub struct Value{pub n:i32}pub fn read(value:Value)->i32{value.n}`, nil)
+	root := checkerCrate(t, "", `fn main(){right::read(left::make());}`, map[string]*syntax.Program{"left": left, "right": right})
+	if _, err := analyzeProgram(root); err == nil || !strings.Contains(err.Error(), "expected struct:@crate2::Value, found struct:@crate1::Value") {
+		t.Fatalf("separate library type identities unified: %v", err)
 	}
 }

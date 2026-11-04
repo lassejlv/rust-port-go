@@ -17,7 +17,12 @@ func itemModule(canonical string) string {
 }
 
 func moduleContains(owner, current string) bool {
-	return owner == "" || current == owner || strings.HasPrefix(current, owner+"::")
+	// An empty owner denotes the selected crate's root, not the root of
+	// another crate flattened under an inaccessible @crateN prefix.
+	if owner == "" {
+		return !strings.HasPrefix(current, "@")
+	}
+	return current == owner || strings.HasPrefix(current, owner+"::")
 }
 
 func (c *checker) supportedType(typ string) bool {

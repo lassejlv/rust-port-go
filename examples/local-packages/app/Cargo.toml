@@ -1,0 +1,7 @@
+[package]
+name = "ferrugo-package-demo"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+numbers = { path = "../numbers", package = "ferrugo-numbers" }

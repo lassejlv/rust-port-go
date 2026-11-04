@@ -62,7 +62,7 @@ func TestNewAndInitPreserveExistingFiles(t *testing.T) {
 }
 
 func TestCLIRejectsUnknownArguments(t *testing.T) {
-	for _, args := range [][]string{{"publish"}, {"build", "--locked"}, {"new"}, {"new", "a", "b"}, {"init", "--lib"}, {"run", "arg"}, {"build", "--manifest-path"}, {"new", "x", "--name", "fn"}, {"new", "x", "--vcs", "git"}} {
+	for _, args := range [][]string{{"publish"}, {"build", "--locked"}, {"new"}, {"new", "a", "b"}, {"init", "--lib", "--bin"}, {"run", "arg"}, {"build", "--manifest-path"}, {"new", "x", "--name", "fn"}, {"new", "x", "--vcs", "git"}} {
 		if code, _, stderr := runCommand(args...); code == 0 || !strings.Contains(stderr, "error:") {
 			t.Fatalf("%v: expected CLI error, got %d %s", args, code, stderr)
 		}

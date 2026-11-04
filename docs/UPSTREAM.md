@@ -20,9 +20,9 @@ The machine-readable [inventory](upstream-inventory.json) records directory name
 | Standard library and runtime | library/core, library/alloc, library/std | Unimplemented; scalar/string helpers use libc |
 | Metadata, incremental and queries | rustc_metadata, rustc_incremental, rustc_query_impl | Unimplemented |
 | Diagnostics and tooling | rustc_errors, rustc_error_codes, rustc_driver | Minimal CLI diagnostics; no error-code compatibility |
-| Cargo project commands | src/ops, src/workspace, src/compiler | Partial single-binary local build/check/run/new/init/clean |
-| Cargo configuration and sources | src/config, src/sources, src/context | Strict local manifest subset only |
-| Cargo resolution | src/resolver | Dependencies, features and lockfiles unimplemented |
+| Cargo project commands | src/ops, src/workspace, src/compiler | Local binary build/run, binary/library checks, new/init and clean; library artifact output unimplemented |
+| Cargo configuration and sources | src/config, src/sources, src/context | Strict local manifest/path dependency subset; separate local crate roots |
+| Cargo resolution | src/resolver | Local path graph/cycle/type identity support; registries, versions/features and lockfiles unimplemented |
 
 The upstream Rust tree also includes its bootstrap system, libraries, tools and test suites; `compiler/` alone does not represent the whole repository. Cargo's ancillary crates, integration tests, registry protocols and documentation likewise add scope beyond its main source directories. Full compatibility needs the broader validation described in [ROADMAP.md](ROADMAP.md).
 

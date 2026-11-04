@@ -108,7 +108,9 @@
     "commit": "58cf8f9c3",
     "target": "x86_64-unknown-linux-gnu",
     "edition": "2021",
-    "overflow_checks": true
+    "overflow_checks": true,
+    "cargo": "1.99.1",
+    "cargo_commit": "5f94df478"
   },
   "note": "Inventory records reference scope, not port completion. No compiler crate is fully ported. Current implementation is an independently written bootstrap subset."
 }

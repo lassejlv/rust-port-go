@@ -8,6 +8,9 @@ type Span struct {
 }
 
 type Program struct {
+	// Compiler-loaded crate metadata; parser leaves these fields empty.
+	CrateID   string
+	Externs   map[string]*Program
 	Functions []*Function
 	Modules   []*Module
 	Imports   []Import
