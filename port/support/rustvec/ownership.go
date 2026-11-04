@@ -45,14 +45,24 @@ func (o *Owned[T]) Context() DropContext {
 	}
 	return o.context
 }
+
+// Context is a guard snapshot for the explicitly entered operation, not a
+// lookup of the current calling scope. Full source callsites pass their current
+// context to MoveWithContext/DropWithContext. Normal-context conveniences must
+// not retain an earlier borrowed runtime scope when a handle escapes an op.
+func (o *Owned[T]) convenienceContext() DropContext {
+	context := o.Context()
+	context.Runtime = nil
+	return context
+}
 func (o *Owned[T]) Take() T         { o.check(); o.cell.live = false; return o.cell.value }
-func (o *Owned[T]) Move() *Owned[T] { return o.MoveWithContext(o.Context()) }
+func (o *Owned[T]) Move() *Owned[T] { return o.MoveWithContext(o.convenienceContext()) }
 func (o *Owned[T]) MoveWithContext(context DropContext) *Owned[T] {
 	o.check()
 	o.cell.generation++
 	return &Owned[T]{cell: o.cell, generation: o.cell.generation, context: context}
 }
-func (o *Owned[T]) Drop() { o.DropWithContext(o.Context()) }
+func (o *Owned[T]) Drop() { o.DropWithContext(o.convenienceContext()) }
 func (o *Owned[T]) DropWithContext(context DropContext) {
 	if !o.IsLive() {
 		return
@@ -103,4 +113,15 @@ func callOwned[A, B any](arg *Owned[A], context DropContext, call func(*Owned[A]
 		context.Panic("rustvec: callback returned a consumed or nil owned result")
 	}
 	return result
+}
+
+// ConsumeValue invokes a static source operation on an owned argument. The
+// callback borrows operation metadata; it is not an additional owned closure.
+// It can move/take the argument to model source moves. Any remaining value is
+// destroyed before the prepared result is returned, including unwind cleanup.
+// A prepared result is not destroyed if argument cleanup panics, as in Rust.
+func ConsumeValue[A, B any](arg *Owned[A], context DropContext, call func(*Owned[A]) B) B {
+	arg = arg.MoveWithContext(context)
+	defer cleanupOwned(arg, context)
+	return call(arg)
 }

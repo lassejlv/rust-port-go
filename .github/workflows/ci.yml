@@ -106,6 +106,8 @@ jobs:
       - name: Verify compiler utility references
         run: |
           go run ./tools/port-rust-base-n -check
+          python3 tools/port-rust-base-n/contracts/generate.py --check
+          python3 tools/port-rust-base-n/contracts/owned_generate.py --check
           go run ./tools/port-rust-binary-search -check
           python3 tools/port-rust-binary-search/owned/generate.py --check
           go run ./tools/port-rust-union-find -check

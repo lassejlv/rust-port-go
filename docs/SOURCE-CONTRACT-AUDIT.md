@@ -6,16 +6,21 @@ text is insufficient when a caller can supply other formatter options, a
 fallible writer, independent character writes or owned callback state.
 
 Review of the typed-storage block and follow-up API review exposed gaps in
-seven earlier implementation records. Two remain reopened as `unported`,
+seven earlier implementation records. One remains reopened as `unported`,
 retaining all existing port and comparison evidence. Union-find's gaps closed
 in checkpoint 18; lexer, binary search, format parser and restricted names
-close in checkpoint 19. The reopened status means full-file work remains; it does
+close in checkpoint 19; Base-N closes in checkpoint 23. The reopened status means full-file work remains; it does
 not remove the implemented algorithms or their tests.
 
 | Upstream file | Remaining contract |
 | --- | --- |
-| Rust `compiler/rustc_data_structures/src/base_n.rs` | Display formatter/writer and owned generic conversion behavior |
 | Cargo `src/util/graph.rs` | Borrowed Display/Debug writer dispatch and remaining generic persistent-container observations |
+
+Base-N now consumes arbitrary owned `Self`, dispatches independent method
+overrides, completes conversion/destruction before static length calculation,
+and returns actual borrowed buffer views. Its 26,752 full formatter records
+and 16,656 ownership records cover all four arithmetic/assertion profiles,
+including 8,952 native abort observations. Existing numeric evidence is retained.
 
 Union-find now exposes full mutable Debug formatting on actual parent cells
 and a primary snapshot API returning the validated `IndexVec<Key, Key>`, with

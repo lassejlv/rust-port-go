@@ -262,3 +262,13 @@ The ledger remains at 28 completed top-level files. Full session/source-file/sym
 - Checkpoint 21 passed all four hosted jobs: Linux, macOS, upstream source comparisons and the complete original-span reference. Full source-map/symbol/hygiene/definition-ID and owned Base-N contracts continue in the shared working tree.
 
 The source ledger remains at 28 completed top-level files. This checkpoint closes additional trait entrypoints without claiming another complete source file. Production Rust compilation remains unfinished.
+
+## 2026-11-04 — checkpoint 23: full Base-N contract restoration
+
+- Completed the full Base-N file: arbitrary owned generic conversion, independently overridden ordinary/fixed methods, static associated length, exact checked/wrapping arithmetic, actual borrowed buffer views and full fallible Display formatting. The former copied-value/string APIs remain conveniences.
+- The unchanged source matches 26,752 formatter records and 16,656 ownership records across four independent profiles, including 8,952 native abort observations. Complete caller-supplied destructors preserve actual-cell mutation, field/local cleanup order, moving/forgetting/storing values and later fresh runtime scopes. Both original Rust tests pass in every profile; earlier numeric/failure fixtures remain byte-identical.
+- Added a neutral consuming-operation guard and explicit borrowed runtime metadata. No-context ownership conveniences release earlier scope metadata; contextual operations use the caller's current scope. The runtime support gains no standard-library file credit.
+- Regenerated all twelve lexer/literal contract scopes and the literal dependency's full scalar proof against the isolated snapshot. Existing compressed fixture bytes remain unchanged; helper bindings reflect the runtime metadata addition.
+- The isolated minimum-Go snapshot passes the full race suite and vet, including the Rust/Cargo fixture comparisons. Fresh Base-N formatter/ownership regeneration and original source tests pass; hosted validation now runs both new contract generators.
+
+The ledger now records 29 completed top-level files. Cargo graph's persistent-container/generic contracts remain reopened. Full compiler sessions, symbols, source files, hygiene, definition IDs, source maps and their required sorting/container dependencies continue in parallel. Production Rust compilation remains unfinished.

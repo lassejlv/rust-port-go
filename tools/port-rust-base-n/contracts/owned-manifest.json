@@ -1,0 +1,67 @@
+{
+  "format": 1,
+  "revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_git_blob": "0c3d7613d4f1ff69a31c4458bd571074bbd5c618",
+  "source_sha256": "090d62952cb4515c9de66489d6ce0e0f3cd5c3becd7e8e2c2bf39d119d4f9890",
+  "original_tests_sha256": "e4a58e24148ca8120d30d974fc4084ab08e0aa9ea2fd1d4b1101eb21c9155cde",
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "pointer_bits": 64,
+  "profiles": [
+    {
+      "name": "d0o0",
+      "debug_assertions": false,
+      "overflow_checks": false,
+      "records": 4164,
+      "aborted": 2238,
+      "original_tests_passed": 2
+    },
+    {
+      "name": "d0o1",
+      "debug_assertions": false,
+      "overflow_checks": true,
+      "records": 4164,
+      "aborted": 2238,
+      "original_tests_passed": 2
+    },
+    {
+      "name": "d1o0",
+      "debug_assertions": true,
+      "overflow_checks": false,
+      "records": 4164,
+      "aborted": 2238,
+      "original_tests_passed": 2
+    },
+    {
+      "name": "d1o1",
+      "debug_assertions": true,
+      "overflow_checks": true,
+      "records": 4164,
+      "aborted": 2238,
+      "original_tests_passed": 2
+    }
+  ],
+  "records": 16656,
+  "request_sha256": "17d2fa83e12298ef9c38ad46786191050967d90dace5eae694dcb2cc0b6e6015",
+  "raw_sha256": "5188213502742ab0ba0d68ee0a753a1baf09255cf46a5371492787d6440f1d2c",
+  "fixture_sha256": "d399f784386fb7c4d7ae8c18c3a8f1f26756ae16d83185cc2ff8a7209b891f3b",
+  "retained_fixtures": {
+    "tools/port-rust-base-n/testdata/oracle.tsv.gz": "98c322602c43542644357be7b7c727c9e8f3904cbda75e117e06ad4d9485e65d",
+    "port/rust/compiler/rustc_data_structures/src/testdata/base_n_formats.tsv.gz": "1bbcae68d43132928a820165954b10008fd2619e720960c16595f7c44a7ff843"
+  },
+  "bindings": {
+    "tools/port-rust-base-n/contracts/owned_oracle.rs": "b10ff1afa6cba1ba82915e5b6ced7452b93b11005e36ad2de4f59d9f083f40fe",
+    "tools/port-rust-base-n/contracts/owned_generate.py": "c980271b4e5bd3870398adc5af4a6427e59ccaf07a2d064a0a6effb6944d348f",
+    "port/rust/compiler/rustc_data_structures/src/base_n.go": "ede8ad0cc0386411edfa318381d4b9991dc10439046c7dadeeef73ec16f5c220",
+    "port/rust/compiler/rustc_data_structures/src/base_n_owned.go": "6aa7cd2ca92cf7cb5a255dda094017c660846bc2eaa24df30faaba5fc00c46ee",
+    "port/rust/compiler/rustc_data_structures/src/base_n_owned_contract_test.go": "eb7931c29e437ab3133bdef241f1429f3c5497f66b3fe1b1bc45444f19fb3ebb",
+    "port/support/rustvec/ownership.go": "81b279308c046f4df73b17460015c88c13de7f86ff6dbe7341f49e46f24b818f",
+    "port/support/rustfmt/formatter.go": "06a378f7cf4ad9825740ce7615b36511ac33a7a11b0b9a6683a3aa31678acebf"
+  },
+  "scope": "Complete unchanged base_n.rs, actual non-Copy argument and field Drop glue; independent Into/ToBaseN overrides, static width, borrowed buffer identity, ambient/caught/escaping/hook panic states. std 1.99 comparison profile; no Rust ABI/layout claim.",
+  "bounds": {
+    "native_observation_seconds": 3,
+    "native_stdout_bytes": 65536,
+    "native_stderr_bytes": 65536
+  },
+  "excluded": "Primitive encoded_len base one (or u32 cast-to-one): maximum never decreases; no finite runtime claim. 32-bit runtime is not executable on this host."
+}

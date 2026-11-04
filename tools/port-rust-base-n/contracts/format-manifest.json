@@ -1,0 +1,40 @@
+{
+  "format": 1,
+  "revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_git_blob": "0c3d7613d4f1ff69a31c4458bd571074bbd5c618",
+  "source_sha256": "090d62952cb4515c9de66489d6ce0e0f3cd5c3becd7e8e2c2bf39d119d4f9890",
+  "original_tests_sha256": "e4a58e24148ca8120d30d974fc4084ab08e0aa9ea2fd1d4b1101eb21c9155cde",
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "profiles": [
+    {
+      "name": "d0o0",
+      "debug_assertions": false,
+      "overflow_checks": false,
+      "original_tests_passed": 2
+    },
+    {
+      "name": "d0o1",
+      "debug_assertions": false,
+      "overflow_checks": true,
+      "original_tests_passed": 2
+    },
+    {
+      "name": "d1o0",
+      "debug_assertions": true,
+      "overflow_checks": false,
+      "original_tests_passed": 2
+    },
+    {
+      "name": "d1o1",
+      "debug_assertions": true,
+      "overflow_checks": true,
+      "original_tests_passed": 2
+    }
+  ],
+  "records": 26752,
+  "raw_sha256": "1e7cd1cc70b6d5803f17c0674423ba655f546ff89f6c95aa6bb9d47ebdd2f9e7",
+  "fixture_sha256": "1bbcae68d43132928a820165954b10008fd2619e720960c16595f7c44a7ff843",
+  "oracle_sha256": "65cb38aa73a82b35af0a3f0766a4dc6aa2510c5976e2da73adbece46d8cd3f8a",
+  "generator_sha256": "dc4d01212aa480758c8183c1cc9a11b0650f73d81a6da2c1ac241f60afc985f4",
+  "scope": "Unchanged whole BaseN source; actual Display flags, borrowed buffer identity, all selected write failures and mutable formatter state. Owned conversion evidence is separate."
+}

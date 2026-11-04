@@ -27,7 +27,8 @@ type BaseNU128 struct {
 type BaseNU32 uint32
 type BaseNU64 uint64
 
-// BaseNValue corresponds to Rust's ToBaseN: Into<u128> extension point.
+// BaseNValue is the trivial-drop normal-context convenience for Rust's
+// ToBaseN: Into<u128> extension point. BaseNTrait is the primary owned API.
 // BaseNEncodedLen describes the maximum encoded width of the implementing type;
 // as with Rust's associated function, it should not depend on the value.
 //
@@ -50,11 +51,13 @@ func (BaseNU128) BaseNEncodedLen(b uint) uint {
 }
 
 // BaseNString is the fixed-capacity representation returned by base-N encoding.
-// String and AsRef expose the initialized ASCII suffix, corresponding to Rust's
-// Deref<Target = str>, AsRef<str> and Display implementations. Obtain values
-// through the encoding functions; Rust has no public zero-value constructor.
+// Pointer-receiver Deref/AsRefBorrowed borrow this object's initialized ASCII
+// suffix; WriteDisplayFormatter preserves the source Formatter contract.
+// String/AsRef return independent strings for ordinary Go callers. Obtain values
+// through encoding functions; Rust has no public zero-value constructor. Keep a
+// borrowed object in place and do not overwrite it until all its borrows end.
 type BaseNString struct {
-	start int
+	start uint
 	buf   [128]byte
 }
 
@@ -98,7 +101,7 @@ func BaseNToBase128(n BaseNU128, base uint) BaseNString {
 			break
 		}
 	}
-	encoded.start = index
+	encoded.start = uint(index)
 	return encoded
 }
 
@@ -171,6 +174,6 @@ func baseNWithLength(encoded BaseNString, width uint) BaseNString {
 		// before the returned value is dereferenced or displayed.
 		panic("base_n: encoded length exceeds the 128-byte buffer")
 	}
-	encoded.start = len(encoded.buf) - int(width)
+	encoded.start = uint(len(encoded.buf)) - width
 	return encoded
 }

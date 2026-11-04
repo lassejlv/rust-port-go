@@ -31,7 +31,7 @@
     "port/support/rustfmt/char_debug.go": "ee693582aab3bd317cb9ef124f86dbc9b8852b3c46adbd99ba6880fb9cb2e891",
     "port/support/rustfmt/char_debug_tables.go": "c6924f94132671c791c7b8ce8f6b80e03186d1a1f835e73e8ed1da19cef7cd28",
     "port/support/rustfmt/char_debug_test.go": "e8ed700fcd5b796b8efd021531a6318eb2acf370a518d96ae62bc920cea08e09",
-    "port/support/rustfmt/formatter.go": "fcc8fab6ee2e0d198f59b6f4dedb52ccd084caaaec0f8b25a5d2cc70f6b422a0",
+    "port/support/rustfmt/formatter.go": "06a378f7cf4ad9825740ce7615b36511ac33a7a11b0b9a6683a3aa31678acebf",
     "port/support/rustfmt/string_debug_test.go": "17176d415a3e757d422c26a701710b845c9f5ed6f2e82632c90177ac48408865",
     "tools/port-lexer-debug/Cargo.lock": "2bbe9bd05a3e4812c97f2b04d9ddc503d83e1bae84602a51aae109ea660be012",
     "tools/port-lexer-debug/Cargo.toml": "1bc7d19b8ce1d635c7cdb5282790abac27a2e6c464df570b48d00bfde7bf3937",

@@ -35,7 +35,16 @@ func DefaultOptions() Options { return Options{Fill: ' '} }
 // Context carries explicit ambient Rust panic state, without global Go panic
 // interception. Component-owned cleanup guards distinguish a locally escaping
 // second panic from an ambient panic that a source caller can still catch.
-type Context struct{ Unwinding, ProcessingPanic bool }
+// RuntimeMetadata is an opaque borrowed ambient-runtime witness. It has no
+// owned destructor or semantic Clone; copying Context preserves this pointer.
+// The pointer keeps Context comparable even when the borrowed payload is not.
+// Component adapters can carry caller-local tracing/session metadata without a
+// dependency from this neutral formatter onto compiler/runtime packages.
+type RuntimeMetadata struct{ Value any }
+type Context struct {
+	Unwinding, ProcessingPanic bool
+	Runtime                    *RuntimeMetadata `json:"-"`
+}
 
 func (c Context) Panicking() bool { return c.Unwinding || c.ProcessingPanic }
 func (c Context) Panic(value any) {
