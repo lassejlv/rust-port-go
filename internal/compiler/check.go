@@ -9,15 +9,17 @@ import (
 )
 
 type checked struct {
-	program  *syntax.Program
-	types    map[*syntax.Expr]string
-	names    map[*syntax.Expr]string
-	decls    map[*syntax.Stmt]string
-	params   map[*syntax.Function][]string
-	funcs    map[string]*syntax.Function
-	calls    map[*syntax.Expr]string
-	fnNames  map[*syntax.Function]string
-	diverges map[*syntax.Expr]bool
+	program     *syntax.Program
+	types       map[*syntax.Expr]string
+	names       map[*syntax.Expr]string
+	decls       map[*syntax.Stmt]string
+	params      map[*syntax.Function][]string
+	funcs       map[string]*syntax.Function
+	calls       map[*syntax.Expr]string
+	fnNames     map[*syntax.Function]string
+	diverges    map[*syntax.Expr]bool
+	structs     map[string]*syntax.Struct
+	structOrder []string
 }
 
 type binding struct {
@@ -26,11 +28,12 @@ type binding struct {
 }
 type checker struct {
 	*checked
-	scopes       []map[string]binding
-	nextVariable int
-	returnType   string
-	loopDepth    int
-	bottom       map[*syntax.Expr]bool
+	scopes        []map[string]binding
+	nextVariable  int
+	returnType    string
+	loopDepth     int
+	bottom        map[*syntax.Expr]bool
+	currentModule string
 }
 
 // Check validates the complete bootstrap binary crate without producing files.
@@ -55,16 +58,20 @@ func analyzeProgram(program *syntax.Program) (*checked, error) {
 		decls: make(map[*syntax.Stmt]string), params: make(map[*syntax.Function][]string),
 		funcs: make(map[string]*syntax.Function), calls: make(map[*syntax.Expr]string),
 		fnNames: make(map[*syntax.Function]string), diverges: make(map[*syntax.Expr]bool),
+		structs: make(map[string]*syntax.Struct),
 	}}
+	if err := c.collectStructs(); err != nil {
+		return nil, err
+	}
 	for i, f := range program.Functions {
 		if _, exists := c.funcs[f.Name]; exists {
 			return nil, fail(f.Span, "duplicate function %q", f.Name)
 		}
-		if !supportedType(f.ReturnType) {
+		if !c.supportedType(f.ReturnType) {
 			return nil, fail(f.Span, "unsupported return type %q", f.ReturnType)
 		}
 		for _, p := range f.Params {
-			if !supportedType(p.Type) || p.Type == "()" {
+			if !c.supportedType(p.Type) || p.Type == "()" {
 				return nil, fail(p.Span, "unsupported parameter type %q", p.Type)
 			}
 		}
@@ -92,6 +99,7 @@ func analyzeProgram(program *syntax.Program) (*checked, error) {
 	for _, f := range program.Functions {
 		c.scopes = []map[string]binding{{}}
 		c.returnType, c.loopDepth = f.ReturnType, 0
+		c.currentModule = itemModule(f.Name)
 		for _, p := range f.Params {
 			if _, exists := c.scopes[0][p.Name]; exists {
 				return nil, fail(p.Span, "duplicate parameter %q", p.Name)
@@ -182,7 +190,7 @@ func (c *checker) statement(s *syntax.Stmt) (bool, error) {
 		if s.Expr == nil {
 			return false, fail(s.Span, "let bindings require an initializer in this bootstrap")
 		}
-		if s.Type != "" && !supportedType(s.Type) {
+		if s.Type != "" && !c.supportedType(s.Type) {
 			return false, fail(s.Span, "unsupported type %q", s.Type)
 		}
 		t, err := c.expr(s.Expr, s.Type)
@@ -197,6 +205,9 @@ func (c *checker) statement(s *syntax.Stmt) (bool, error) {
 		c.scopes[len(c.scopes)-1][s.Name] = binding{typ: t, cname: name, mutable: s.Mutable}
 		return !c.diverges[s.Expr], nil
 	case "assign":
+		if s.Target != nil {
+			return c.fieldAssignment(s)
+		}
 		b, ok := c.lookup(s.Name)
 		if !ok {
 			return false, fail(s.Span, "unknown variable %q", s.Name)
@@ -280,6 +291,18 @@ func (c *checker) expr(e *syntax.Expr, expected string) (string, error) {
 		if err != nil {
 			return "", err
 		}
+	case "struct":
+		var err error
+		typ, err = c.structLiteral(e)
+		if err != nil {
+			return "", err
+		}
+	case "field":
+		var err error
+		typ, err = c.fieldExpression(e)
+		if err != nil {
+			return "", err
+		}
 	case "unit":
 		typ = "()"
 	case "block":
@@ -355,7 +378,13 @@ func (c *checker) expr(e *syntax.Expr, expected string) (string, error) {
 		if len(e.Args) != len(f.Params) {
 			return "", fail(e.Span, "function %q expects %d arguments, got %d", e.Text, len(f.Params), len(e.Args))
 		}
+		if err := c.visibleType(f.ReturnType, e.Span); err != nil {
+			return "", err
+		}
 		for i, arg := range e.Args {
+			if err := c.visibleType(f.Params[i].Type, e.Span); err != nil {
+				return "", err
+			}
 			if _, err := c.expr(arg, f.Params[i].Type); err != nil {
 				return "", err
 			}
@@ -458,6 +487,16 @@ func (c *checker) hint(e *syntax.Expr) string {
 		return ""
 	}
 	switch e.Kind {
+	case "struct":
+		return e.Target
+	case "field":
+		if s := c.structs[c.hint(e.Left)]; s != nil {
+			for _, field := range s.Fields {
+				if field.Name == e.Text {
+					return field.Type
+				}
+			}
+		}
 	case "name":
 		if b, ok := c.lookup(e.Text); ok {
 			return b.typ
@@ -698,6 +737,10 @@ func (c *checker) macro(e *syntax.Expr) error {
 		if typ == "()" {
 			return fail(arg.Span, "unit values cannot be formatted")
 		}
+		if structType(typ) {
+			return fail(arg.Span, "struct values cannot be formatted without a Display implementation")
+		}
+
 	}
 	return nil
 }

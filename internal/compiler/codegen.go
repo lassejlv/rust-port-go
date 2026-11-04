@@ -1,6 +1,7 @@
 package compiler
 
 import (
+	"encoding/hex"
 	"fmt"
 	"math/big"
 	"strings"
@@ -21,6 +22,7 @@ func EmitC(source string) (string, error) {
 func emitChecked(c *checked) string {
 	g := &generator{checked: c}
 	g.WriteString(runtimeC)
+	g.structDefinitions()
 	for _, f := range c.program.Functions {
 		g.line("%s;", g.signature(f))
 	}
@@ -44,6 +46,9 @@ func (g *generator) line(format string, args ...any) {
 	g.WriteByte('\n')
 }
 func cType(t string) string {
+	if strings.HasPrefix(t, "struct:") {
+		return "fr_struct_" + hex.EncodeToString([]byte(strings.TrimPrefix(t, "struct:")))
+	}
 	switch t {
 	case "i32":
 		return "int32_t"
@@ -57,6 +62,35 @@ func cType(t string) string {
 		return "void"
 	}
 	panic("unchecked type: " + t)
+}
+func cField(name string) string { return "fr_field_" + name }
+func (g *generator) structDefinitions() {
+	for _, key := range g.checked.structOrder {
+		name := cType(key)
+		g.line("typedef struct %s %s;", name, name)
+	}
+	for _, key := range g.checked.structOrder {
+		structure := g.checked.structs[key]
+		g.line("struct %s {", cType(key))
+		g.indent++
+		if len(structure.Fields) == 0 {
+			g.line("unsigned char fr_empty;")
+		}
+		for _, field := range structure.Fields {
+			g.line("%s %s;", cType(field.Type), cField(field.Name))
+		}
+		g.indent--
+		g.line("};")
+	}
+}
+func (g *generator) place(e *syntax.Expr) string {
+	if e.Kind == "name" {
+		return g.checked.names[e]
+	}
+	if e.Kind == "field" {
+		return "(" + g.place(e.Left) + ")." + cField(e.Text)
+	}
+	panic("unchecked assignment place: " + e.Kind)
 }
 func (g *generator) signature(f *syntax.Function) string {
 	var params []string
@@ -134,6 +168,9 @@ func (g *generator) statement(s *syntax.Stmt) {
 	case "assign":
 		value := g.expr(s.Expr)
 		name := g.checked.decls[s]
+		if s.Target != nil {
+			name = g.place(s.Target)
+		}
 		if g.checked.diverges[s.Expr] {
 			return
 		}
@@ -193,6 +230,25 @@ func (g *generator) arithmetic(op, t, a, b string) string {
 func (g *generator) expr(e *syntax.Expr) string {
 	t := g.checked.types[e]
 	switch e.Kind {
+	case "field":
+		value := g.expr(e.Left)
+		if g.checked.diverges[e.Left] {
+			return ""
+		}
+		return g.temp(t, "("+value+")."+cField(e.Text))
+	case "struct":
+		fields := make([]string, 0, len(e.Fields))
+		for _, field := range e.Fields {
+			value := g.expr(field.Value)
+			if g.checked.diverges[field.Value] {
+				return ""
+			}
+			fields = append(fields, "."+cField(field.Name)+" = "+value)
+		}
+		if len(fields) == 0 {
+			fields = append(fields, ".fr_empty = 0")
+		}
+		return g.temp(t, "("+cType(t)+"){"+strings.Join(fields, ", ")+"}")
 	case "unit":
 		return ""
 	case "block":

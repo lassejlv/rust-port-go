@@ -135,3 +135,172 @@ func TestImportedMainHasIndependentWrapperBody(t *testing.T) {
 		t.Fatalf("native entrypoint result: %#v", result)
 	}
 }
+
+func TestResolveStructureTypesAcrossModulesAndAliases(t *testing.T) {
+	source := `
+mod geometry {
+ #[derive(Copy, Clone)] pub struct Point {pub x:i32}
+ pub fn identity(p:Point)->Point{p}
+}
+use geometry::Point as P;
+use geometry as geo;
+fn pass(p:P)->geo::Point {let q:P=p; q}
+fn main(){let p:P=P{x:4}; println!("{}",pass(p).x);}
+`
+	program, err := syntax.Parse(source)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for attempt := 0; attempt < 2; attempt++ {
+		flat, err := resolveModules(program)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if len(flat.Structs) != 1 || flat.Structs[0].Name != "geometry::Point" {
+			t.Fatalf("structures=%#v", flat.Structs)
+		}
+		pass := flat.Functions[0]
+		if pass.Name != "pass" || pass.Params[0].Type != "struct:geometry::Point" || pass.ReturnType != "struct:geometry::Point" {
+			t.Fatalf("resolved signature=%#v", pass)
+		}
+		if pass.Body.Statements[0].Type != "struct:geometry::Point" {
+			t.Fatal("let type not canonical")
+		}
+		main := flat.Functions[1]
+		constructor := main.Body.Statements[0].Expr
+		if constructor.Text != "P" || constructor.Target != "struct:geometry::Point" {
+			t.Fatalf("constructor source=%q target=%q", constructor.Text, constructor.Target)
+		}
+		if program.Functions[0].Params[0].Type != "P" || program.Functions[0].ReturnType != "geo::Point" {
+			t.Fatal("resolver mutated source function signature")
+		}
+		if program.Modules[0].Program.Structs[0].Name != "Point" {
+			t.Fatal("resolver mutated source structure name")
+		}
+	}
+}
+
+func TestResolveStructureFieldTypesAndExpressions(t *testing.T) {
+	source := `
+#[derive(Clone,Copy)] struct Outer {inner:m::Inner}
+mod m {#[derive(Copy,Clone)] pub struct Inner {pub value:i64}}
+fn main(){let mut p=Outer{inner:m::Inner{value:4}}; p.inner.value += 2; println!("{}",p.inner.value);}
+`
+	program, err := syntax.Parse(source)
+	if err != nil {
+		t.Fatal(err)
+	}
+	flat, err := resolveModules(program)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(flat.Structs) != 2 || flat.Structs[0].Fields[0].Type != "struct:m::Inner" {
+		t.Fatalf("wrong field type: %#v", flat.Structs)
+	}
+	if program.Structs[0].Fields[0].Type != "m::Inner" {
+		t.Fatal("resolver mutated source structure fields")
+	}
+	outer := flat.Functions[0].Body.Statements[0].Expr
+	if outer.Target != "struct:Outer" || outer.Fields[0].Value.Target != "struct:m::Inner" {
+		t.Fatal("nested constructor was not resolved")
+	}
+	place := flat.Functions[0].Body.Statements[1].Target
+	if place == nil || place.Kind != "field" || place.Left.Kind != "field" || place.Left.Left.Text != "p" {
+		t.Fatalf("field place=%#v", place)
+	}
+}
+
+func TestResolveStructureAcceptedPaths(t *testing.T) {
+	cases := []string{
+		`mod a{#[derive(Copy,Clone)]pub struct S{pub x:i32}}use a::S as First;use self::First as S;fn main(){let p:S=S{x:1};println!("{}",p.x);}`,
+		`#[derive(Copy,Clone)]struct Point{x:i32}fn main(){let Point=2;let p=Point{x:Point};println!("{}",p.x);}`,
+		`mod a{#[derive(Copy,Clone)]struct Private{x:i32}mod b{pub fn call()->i32{let p:super::Private=super::Private{x:3};p.x}}pub fn call()->i32{b::call()}}fn main(){println!("{}",a::call());}`,
+		`mod a{#[derive(Copy,Clone)]struct Private{x:i32}pub fn make()->Private{Private{x:1}}}fn main(){}`,
+	}
+	for i, source := range cases {
+		program, err := syntax.Parse(source)
+		if err != nil {
+			t.Fatalf("case%d parse: %v", i, err)
+		}
+		if _, err := resolveModules(program); err != nil {
+			t.Fatalf("case%d resolve: %v", i, err)
+		}
+	}
+}
+
+func TestResolveStructureRejectsInvalidTypes(t *testing.T) {
+	cases := []struct{ name, source, want string }{
+		{"private constructor", `mod a{#[derive(Copy,Clone)]struct S{pub x:i32}}fn main(){let p=a::S{x:1};}`, "private"},
+		{"private signature type", `mod a{#[derive(Copy,Clone)]struct S{pub x:i32}}fn use_it(p:a::S){}fn main(){}`, "private"},
+		{"private import", `mod a{#[derive(Copy,Clone)]struct S{pub x:i32}}use a::S;fn main(){}`, "private"},
+		{"unknown annotation", `fn main(){let p:Absent=1;}`, "unresolved module path"},
+		{"function type", `fn f(){}fn use_it(p:f){}fn main(){}`, "not a structure type"},
+		{"module type", `mod a{}fn use_it(p:a){}fn main(){}`, "not a structure type"},
+		{"function constructor", `fn f(){}fn main(){let p=f{};}`, "not a structure type"},
+		{"shared item namespace", `#[derive(Copy,Clone)]struct S{x:i32}fn S(){}fn main(){}`, "shared function/module/import/structure"},
+		{"duplicate structures", `#[derive(Copy,Clone)]struct S{x:i32}#[derive(Copy,Clone)]struct S{x:i32}fn main(){}`, "duplicate structure"},
+		{"primitive shadow", `#[derive(Copy,Clone)]struct i32{x:bool}fn main(){}`, "shadowing primitive type"},
+		{"unknown field type", `#[derive(Copy,Clone)]struct S{x:Absent}fn main(){}`, "unresolved module path"},
+	}
+	for _, tt := range cases {
+		t.Run(tt.name, func(t *testing.T) {
+			program, err := syntax.Parse(tt.source)
+			if err != nil {
+				t.Fatal(err)
+			}
+			_, err = resolveModules(program)
+			if err == nil || !strings.Contains(err.Error(), tt.want) {
+				t.Fatalf("got %v, want %q", err, tt.want)
+			}
+		})
+	}
+}
+
+func TestResolveImportedMainRetainsResolvedStructureSignature(t *testing.T) {
+	program, err := syntax.Parse(`mod a{#[derive(Copy,Clone)]pub struct S{pub x:i32}pub fn make()->S{S{x:1}}}use a::make as main;`)
+	if err != nil {
+		t.Fatal(err)
+	}
+	flat, err := resolveModules(program)
+	if err != nil {
+		t.Fatal(err)
+	}
+	entry := flat.Functions[len(flat.Functions)-1]
+	if entry.Name != "main" || entry.ReturnType != "struct:a::S" {
+		t.Fatalf("entry signature=%#v", entry)
+	}
+}
+
+func TestResolveRejectsStructureAliasesShadowingPrimitiveTypes(t *testing.T) {
+	cases := []struct{ name, source string }{
+		{"direct i32", `mod a{#[derive(Copy,Clone)]pub struct P{pub x:i32}}use a::P as i32;fn f(x:i32)->i32{x+1}fn main(){println!("{}",f(2));}`},
+		{"direct bool", `mod a{#[derive(Copy,Clone)]pub struct P{pub x:i32}}use a::P as bool;fn f(x:bool)->bool{!x}fn main(){println!("{}",f(false));}`},
+		{"chained bool", `mod a{#[derive(Copy,Clone)]pub struct P{pub x:i32}}use a::P as Alias;use Alias as bool;fn f(x:bool)->bool{!x}fn main(){println!("{}",f(false));}`},
+		{"chained i64", `mod a{#[derive(Copy,Clone)]pub struct P{pub x:i32}}use a::P as First;use self::First as Second;use Second as i64;fn f(x:i64)->i64{x+1}fn main(){println!("{}",f(2));}`},
+	}
+	for _, tt := range cases {
+		t.Run(tt.name, func(t *testing.T) {
+			err := Check(tt.source)
+			if err == nil || !strings.Contains(err.Error(), "shadowing primitive type") || !strings.Contains(err.Error(), "structure alias") {
+				t.Fatalf("got %v", err)
+			}
+		})
+	}
+}
+
+func TestResolveAllowsPrimitiveNamedFunctionAndModuleAliases(t *testing.T) {
+	cases := []struct{ name, source, want string }{
+		{"function i32", `mod a{pub fn value()->i32{2}}use a::value as i32;fn f(x:i32)->i32{x+1}fn main(){println!("{} {}",f(2),i32());}`, "3 2\n"},
+		{"module i32", `mod a{pub fn value()->i32{2}}use a as i32;fn f(x:i32)->i32{x+1}fn main(){println!("{} {}",f(2),i32::value());}`, "3 2\n"},
+		{"function bool", `mod a{pub fn value()->bool{true}}use a::value as bool;fn f(x:bool)->bool{!x}fn main(){println!("{} {}",f(false),bool());}`, "true true\n"},
+		{"module bool", `mod a{pub fn value()->bool{true}}use a as bool;fn f(x:bool)->bool{!x}fn main(){println!("{} {}",f(false),bool::value());}`, "true true\n"},
+	}
+	for _, tt := range cases {
+		t.Run(tt.name, func(t *testing.T) {
+			result := runNative(t, tt.source)
+			if result.status != 0 || result.stdout != tt.want {
+				t.Fatalf("status=%d stdout=%q stderr=%q", result.status, result.stdout, result.stderr)
+			}
+		})
+	}
+}

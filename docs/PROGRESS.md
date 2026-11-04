@@ -65,3 +65,16 @@ The multi-file goal is implemented locally; hosted CI will validate the pushed c
 - Fixed a reviewed path mismatch in C-file emission: source protection checked a normalized output path while publication used the original spelling. A symlink followed by `..` could otherwise target a loaded module source.
 - C emission now uses one normalized absolute output path for protection, temporary-file creation and publication.
 - Added a regression that reproduces the symlink/parent traversal case and verifies source bytes are preserved; focused C-emission tests pass.
+
+## 2026-11-04 — checkpoint 7: typed Copy records
+
+- Added named record declarations deriving Copy and Clone, primitive/nested field types, constructors with shorthand fields, projections and mutable local field assignments.
+- Resolved record types and import aliases across modules into canonical type identities while preserving source type spelling in parsed signatures.
+- Added typed function parameters/results and branch values containing records, field/type privacy checks, and cycle detection for impossible recursive by-value layouts.
+- Added topologically ordered C record definitions, collision-free record identifiers, by-value copies and constructor evaluation in written field order.
+- Preserved mutable assignment places instead of mutating temporary copies; RHS evaluation precedes field writes.
+- Added 21 fixtures; all 68 committed conformance cases pass against rustc 1.99.1, including construction/copies/mutation/order/privacy failures and documented unsupported move-only records.
+- Independent review found and corrected primitive-name record import shadowing; function/module aliases named like primitive types remain allowed.
+- Updated the multi-file Cargo demo to return Fibonacci results in records. Local full race tests, vet and the demo pass.
+
+General ownership, borrowing, generic traits, move-only records, enums and standard libraries are still required for the overall port. The next Cargo milestone is local library crates and path dependency graphs.

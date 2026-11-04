@@ -61,7 +61,7 @@ func lex(src string) ([]token, error) {
 			continue
 		}
 		matched := false
-		for _, op := range []string{"::", "->", "==", "!=", "<=", ">=", "&&", "||", "+=", "-=", "*=", "/=", "%="} {
+		for _, op := range []string{"..", "::", "->", "==", "!=", "<=", ">=", "&&", "||", "+=", "-=", "*=", "/=", "%="} {
 			if strings.HasPrefix(src[l.offset:], op) {
 				l.advance()
 				l.advance()
@@ -73,7 +73,7 @@ func lex(src string) ([]token, error) {
 		if matched {
 			continue
 		}
-		if strings.ContainsRune("(){};,:+-*/%=<>!&", rune(c)) {
+		if strings.ContainsRune("(){}[]#.;,:+-*/%=<>!&", rune(c)) {
 			l.advance()
 			out = append(out, token{kind: string(c), text: string(c), span: start})
 			continue

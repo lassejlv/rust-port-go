@@ -124,6 +124,12 @@ func (l *moduleLoader) modules(program *syntax.Program, base string, depth int) 
 }
 
 func stampProgram(program *syntax.Program, file string) {
+	for _, structure := range program.Structs {
+		structure.Span.File = file
+		for i := range structure.Fields {
+			structure.Fields[i].Span.File = file
+		}
+	}
 	for _, function := range program.Functions {
 		function.Span.File = file
 		for i := range function.Params {
@@ -150,6 +156,7 @@ func stampBlock(block *syntax.Block, file string) {
 		statement := &block.Statements[i]
 		statement.Span.File = file
 		stampExpr(statement.Expr, file)
+		stampExpr(statement.Target, file)
 		stampBlock(statement.Body, file)
 		stampBlock(statement.Else, file)
 	}
@@ -160,6 +167,10 @@ func stampExpr(expression *syntax.Expr, file string) {
 		return
 	}
 	expression.Span.File = file
+	for i := range expression.Fields {
+		expression.Fields[i].Span.File = file
+		stampExpr(expression.Fields[i].Value, file)
+	}
 	stampExpr(expression.Left, file)
 	stampExpr(expression.Right, file)
 	for _, argument := range expression.Args {

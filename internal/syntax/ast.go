@@ -11,6 +11,29 @@ type Program struct {
 	Functions []*Function
 	Modules   []*Module
 	Imports   []Import
+	Structs   []*Struct
+}
+
+// Struct is a named Copy record. Only the supported Copy+Clone derive pair
+// sets Copy; move-only and other struct shapes are outside this milestone.
+type Struct struct {
+	Name         string
+	Public, Copy bool
+	Fields       []StructField
+	Span         Span
+}
+
+type StructField struct {
+	Name, Type string
+	Public     bool
+	Span       Span
+}
+
+// FieldValue preserves constructor evaluation order, including shorthand fields.
+type FieldValue struct {
+	Name  string
+	Value *Expr
+	Span  Span
 }
 
 // Module declares an inline module (Program set) or an external source file.
@@ -48,18 +71,22 @@ type Block struct {
 }
 
 // Stmt.Kind: let, assign, expr, return, if, while, break, continue, block.
+// assign uses Target for a field place, otherwise Name; Expr is the RHS.
 // For assign, Name is the target and Op is =, +=, -=, *=, /= or %=.
 // For legacy if/while, Expr is the condition and Body is the body. Else is optional.
 // An expr statement with Type="()" has no semicolon and must evaluate to unit.
 type Stmt struct {
 	Kind, Name, Type, Op string
+	Target               *Expr
 	Mutable              bool
 	Expr                 *Expr
 	Body, Else           *Block
 	Span                 Span
 }
 
-// Expr.Kind: int, bool, string, unit, name, unary, binary, call, macro, if, block.
+// Expr.Kind: int, bool, string, unit, name, unary, binary, call, macro, if, block, struct, field.
+// struct uses Text source type path, Target canonical type, and ordered Fields.
+// field uses Left receiver and Text field name.
 // Text holds literal spelling (decoded for string), identifier or callee path.
 // Qualified name/call paths retain their :: separators, including crate/self/super.
 // Target optionally holds a resolver-selected canonical function; Text stays source spelling.
@@ -70,6 +97,7 @@ type Expr struct {
 	Target         string
 	Left, Right    *Expr
 	Args           []*Expr
+	Fields         []FieldValue
 	Body, Else     *Block
 	Span           Span
 }

@@ -108,7 +108,7 @@ func TestRejectUnsupportedAndMalformedSyntax(t *testing.T) {
 	cases := []struct{ source, message string }{
 		{"fn main() { let x = ; }", "expected identifier"},
 		{"fn main() { let x = 1 }", "expected ;"},
-		{"fn main() { let x = 1.0; }", "unsupported character"},
+		{"fn main() { let x = 1.0; }", "floating-point"},
 		{"fn main() { let x = 1u32; }", "integer literal"},
 		{"fn main() { let x = 0b2; }", "integer literal"},
 		{"fn main() { let x = 1i64i32; }", "integer literal"},
@@ -117,7 +117,6 @@ func TestRejectUnsupportedAndMalformedSyntax(t *testing.T) {
 		{"fn main() { let x = 1 < 2 < 3; }", "cannot be chained"},
 		{"fn main() { let x = true == true == true; }", "cannot be chained"},
 		{"fn main() { let x = true == 1 < 2; }", "cannot be chained"},
-		{"fn main() { let x: usize = 1; }", "unsupported type"},
 		{"fn main() { let x; }", "expected ="},
 		{"fn main() { for x in y {} }", "expected identifier"},
 		{"pub const VALUE: i32 = 1;", "expected fn"},
@@ -157,6 +156,8 @@ func FuzzParse(f *testing.F) {
 	for _, seed := range []string{"", "fn main() {}", "fn main() { println!(\"hello\"); }", "/* nested /* comments */ */", "fn f(n:i64)->i64 { n+1 }", "fn f(n:i32)->i32 { if n < 0 { 0 } else { {n+1} } }", "fn main() { let x = (); { (); } () }", "fn main(){print!(\"a\r\nb\");}", "//\xff\nfn main(){}", "pub mod child { pub fn value() -> i32 { 1 } } use crate::child::value as alias; fn main() { alias(); }", "mod external; mod child { use super::super as ancestor; }"} {
 		f.Add(seed)
 	}
+	f.Add(`#[derive(Copy, Clone)] struct P {x:i32} fn main(){let mut p=P{x:1};p.x+=2;}`)
+	f.Add(`#[derive(Clone,Copy,)] pub struct Empty {} fn main(){if check(Empty{}) {}}`)
 	f.Fuzz(func(t *testing.T, source string) { _, _ = Parse(source) })
 }
 
@@ -602,6 +603,204 @@ func TestRejectUnsupportedNamespaceSyntax(t *testing.T) {
 		{`fn main() { crate::module::; }`, "expected path segment"},
 		{`fn main() { ::module::value(); }`, "absolute paths"},
 		{`fn main() { module::println!("hi"); }`, "qualified macros"},
+	}
+	for _, tc := range cases {
+		t.Run(tc.source, func(t *testing.T) {
+			_, err := Parse(tc.source)
+			if err == nil || !strings.Contains(err.Error(), tc.want) {
+				t.Fatalf("error=%v, want %q", err, tc.want)
+			}
+		})
+	}
+}
+
+func TestCopyStructDeclarationsAndNamedTypes(t *testing.T) {
+	p, err := Parse(`
+#[derive(Clone, Copy,)]
+pub struct Point { pub x:i32, y:i64, }
+mod geometry {
+ #[derive(Copy,Clone)] pub struct Shape { pub point:crate::Point, flag:bool }
+}
+#[derive(Copy, Clone)] struct Empty {}
+fn identity(point:crate::Point) -> self::Point { let result:Point=point; result }
+fn main() {}
+`)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(p.Structs) != 2 || len(p.Modules[0].Program.Structs) != 1 {
+		t.Fatal("struct declarations missing")
+	}
+	point := p.Structs[0]
+	if point.Name != "Point" || !point.Public || !point.Copy || len(point.Fields) != 2 || point.Fields[0].Name != "x" || point.Fields[0].Type != "i32" || !point.Fields[0].Public || point.Fields[1].Public {
+		t.Fatalf("point declaration=%#v", point)
+	}
+	shape := p.Modules[0].Program.Structs[0]
+	if shape.Name != "Shape" || !shape.Copy || !shape.Public || shape.Fields[0].Type != "crate::Point" || shape.Fields[1].Type != "bool" {
+		t.Fatalf("shape declaration=%#v", shape)
+	}
+	if len(p.Structs[1].Fields) != 0 || !p.Structs[1].Copy {
+		t.Fatal("empty record struct missing")
+	}
+	function := p.Functions[0]
+	if function.Params[0].Type != "crate::Point" || function.ReturnType != "self::Point" || function.Body.Statements[0].Type != "Point" {
+		t.Fatal("named type paths not preserved")
+	}
+}
+
+func TestStructLiteralsShorthandAndFieldAssignments(t *testing.T) {
+	p, err := Parse(`
+#[derive(Copy,Clone)] struct Point {x:i32,y:i32}
+#[derive(Copy,Clone)] struct Outer {point:Point}
+fn main() {
+ let x=1;
+ let mut outer=Outer { point:crate::Point { y:2,x, }, };
+ let value=outer.point.x;
+ outer.point.x += { 3 };
+ outer.point.y = Point { x:4, y:5 }.x;
+}
+`)
+	if err != nil {
+		t.Fatal(err)
+	}
+	statements := p.Functions[0].Body.Statements
+	outer := statements[1].Expr
+	if outer.Kind != "struct" || outer.Text != "Outer" || outer.Target != "" || len(outer.Fields) != 1 {
+		t.Fatalf("outer constructor=%#v", outer)
+	}
+	point := outer.Fields[0].Value
+	if point.Kind != "struct" || point.Text != "crate::Point" || len(point.Fields) != 2 || point.Fields[0].Name != "y" || point.Fields[1].Name != "x" {
+		t.Fatal("constructor source field order lost")
+	}
+	if shorthand := point.Fields[1].Value; shorthand.Kind != "name" || shorthand.Text != "x" {
+		t.Fatal("shorthand field not expanded to name expression")
+	}
+	projection := statements[2].Expr
+	if projection.Kind != "field" || projection.Text != "x" || projection.Left.Kind != "field" || projection.Left.Text != "point" || projection.Left.Left.Text != "outer" {
+		t.Fatal("nested projection shape wrong")
+	}
+	assignment := statements[3]
+	if assignment.Kind != "assign" || assignment.Name != "" || assignment.Op != "+=" || assignment.Target == nil || assignment.Target.Text != "x" || assignment.Expr.Kind != "block" {
+		t.Fatalf("field compound assignment=%#v", assignment)
+	}
+	assignment = statements[4]
+	if assignment.Kind != "assign" || assignment.Target.Text != "y" || assignment.Expr.Kind != "field" || assignment.Expr.Left.Kind != "struct" {
+		t.Fatal("field assignment RHS constructor projection missing")
+	}
+}
+
+func TestFieldPostfixOnAllValueReceiverShapes(t *testing.T) {
+	for _, expression := range []string{
+		`value.field`, `make().field`, `(value).field`, `({value}).field`,
+		`Point { x:1 }.x`, `(if true {value} else {value}).field`,
+		`if true {value} else {value}.field`, `{value}.field`,
+	} {
+		t.Run(expression, func(t *testing.T) {
+			p, err := Parse("fn main() { let result=" + expression + "; }")
+			if err != nil {
+				t.Fatal(err)
+			}
+			e := p.Functions[0].Body.Statements[0].Expr
+			if e.Kind != "field" || e.Left == nil {
+				t.Fatalf("field expression=%#v", e)
+			}
+		})
+	}
+	for _, source := range []string{
+		`fn main() { {value}.field + 1; }`,
+		`fn main() { if true {value} else {value}.field + 1; }`,
+	} {
+		p, err := Parse(source)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if p.Functions[0].Body.Statements[0].Expr.Op != "+" {
+			t.Fatal("dotted block expression lost binary continuation")
+		}
+	}
+}
+
+func TestConditionStructLiteralRestrictions(t *testing.T) {
+	for _, source := range []string{
+		`fn main() { if flag {} }`,
+		`fn main() { while flag {} }`,
+		`fn main() { if point.flag {} }`,
+		`fn main() { if (Point { flag:true }).flag {} }`,
+		`fn main() { while (Point { flag:true }.flag) {} }`,
+		`fn main() { if test(Point {flag:true}) {} }`,
+		`fn main() { while test(Point {flag:true}) {} }`,
+		`fn main() { if {Point {flag:true}.flag} {} }`,
+		`fn main() { if flag && test(Point {flag:true}) {} }`,
+		`fn main() { if true { let p=Point {flag:true}; } }`,
+	} {
+		t.Run(source, func(t *testing.T) {
+			if _, err := Parse(source); err != nil {
+				t.Fatalf("valid condition syntax rejected: %v", err)
+			}
+		})
+	}
+	for _, source := range []string{
+		`fn main() { if Point {flag:true}.flag {} }`,
+		`fn main() { while Point {flag:true}.flag {} }`,
+		`fn main() { if flag && Point {flag:true}.flag {} }`,
+		`fn main() { if !Point {flag:true}.flag {} }`,
+	} {
+		t.Run(source, func(t *testing.T) {
+			if _, err := Parse(source); err == nil {
+				t.Fatal("ungrouped condition constructor accepted")
+			}
+		})
+	}
+}
+
+func TestStructSourceSpans(t *testing.T) {
+	source := "\n #[derive(Copy,Clone)]\n pub struct Point {\n  pub x:i32,\n }\n fn main() { let x=1; let p=Point{x}; p.x=2; }"
+	p, err := Parse(source)
+	if err != nil {
+		t.Fatal(err)
+	}
+	declaration := p.Structs[0]
+	if declaration.Span.Line != 2 || declaration.Span.Column != 2 || declaration.Span.Offset != strings.Index(source, "#[derive") {
+		t.Fatalf("struct span=%#v", declaration.Span)
+	}
+	field := declaration.Fields[0]
+	if field.Span.Line != 4 || field.Span.Column != 3 || field.Span.Offset != strings.Index(source, "pub x") {
+		t.Fatalf("field declaration span=%#v", field.Span)
+	}
+	literal := p.Functions[0].Body.Statements[1].Expr
+	if literal.Span.Offset != strings.Index(source, "Point{x}") || literal.Fields[0].Span.Offset != strings.Index(source, "{x}")+1 || literal.Fields[0].Value.Span != literal.Fields[0].Span {
+		t.Fatal("constructor or shorthand span lost")
+	}
+	assignment := p.Functions[0].Body.Statements[2]
+	if assignment.Target.Span.Offset != strings.Index(source, "p.x=2") || assignment.Span != assignment.Target.Span {
+		t.Fatal("assignment field span lost")
+	}
+}
+
+func TestUnsupportedStructureForms(t *testing.T) {
+	cases := []struct{ source, want string }{
+		{`struct Point{x:i32} fn main(){}`, "require #[derive(Copy, Clone)]"},
+		{`#[derive(Copy)] struct Point{x:i32} fn main(){}`, "both Copy and Clone"},
+		{`#[derive(Clone)] struct Point{x:i32} fn main(){}`, "both Copy and Clone"},
+		{`#[derive(Copy,Clone,Debug)] struct Point{x:i32} fn main(){}`, "exactly once"},
+		{`#[derive(Copy,Copy,Clone)] struct Point{x:i32} fn main(){}`, "exactly once"},
+		{`#[repr(C)] struct Point{x:i32} fn main(){}`, "only #[derive"},
+		{`#[derive(Copy,Clone)] #[repr(C)] struct Point{x:i32} fn main(){}`, "multiple attributes"},
+		{`#[derive(Copy,Clone)] fn main(){}`, "only supported on named structs"},
+		{`#[derive(Copy,Clone)] struct Point(i32); fn main(){}`, "tuple and unit structs"},
+		{`#[derive(Copy,Clone)] struct Point; fn main(){}`, "tuple and unit structs"},
+		{`#[derive(Copy,Clone)] struct Point<T>{x:T} fn main(){}`, "generic structs"},
+		{`#[derive(Copy,Clone)] struct Point{pub(crate) x:i32} fn main(){}`, "restricted field visibility"},
+		{`#[derive(Copy,Clone)] struct Point{x:Vec<i32>} fn main(){}`, "generic type arguments"},
+		{`#[derive(Copy,Clone)] struct Point{x:i32 y:i32} fn main(){}`, "expected }"},
+		{`fn main(){let point=Point{x:1,..old};}`, "struct update"},
+		{`fn main(){let point=Point{..old};}`, "struct update"},
+		{`fn main(){let point=Point{x:1 y:2};}`, "expected }"},
+		{`fn main(){let point=Point{x:};}`, "expected identifier"},
+		{`fn main(){point.method();}`, "methods and callable fields"},
+		{`fn main(){point.0;}`, "tuple fields"},
+		{`fn main(){struct Point{x:i32}}`, "function-local"},
+		{`fn main(){#[derive(Copy,Clone)] struct Point{x:i32}}`, "function-local"},
 	}
 	for _, tc := range cases {
 		t.Run(tc.source, func(t *testing.T) {

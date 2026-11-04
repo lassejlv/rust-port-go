@@ -6,9 +6,10 @@ import (
 )
 
 type parser struct {
-	tokens  []token
-	index   int
-	grouped map[*Expr]bool
+	tokens          []token
+	index           int
+	grouped         map[*Expr]bool
+	noStructLiteral bool
 }
 
 // Parse parses the explicitly supported bootstrap Rust language. Unsupported
@@ -31,11 +32,33 @@ func (p *parser) items(end string) (*Program, error) {
 		if p.at("eof") {
 			return nil, sourceError(start.span, "expected %s, found end of input", end)
 		}
+		derived := false
+		if p.at("#") {
+			if err := p.copyDerive(); err != nil {
+				return nil, err
+			}
+			derived = true
+			if p.at("#") {
+				return nil, sourceError(p.current().span, "multiple attributes are not supported")
+			}
+		}
 		public := p.take("pub")
 		if public && p.at("(") {
 			return nil, sourceError(p.current().span, "restricted visibility is not supported")
 		}
+		if derived && !p.at("struct") {
+			return nil, sourceError(start.span, "Copy/Clone derive is only supported on named structs")
+		}
 		switch {
+		case p.take("struct"):
+			if !derived {
+				return nil, sourceError(start.span, "structs require #[derive(Copy, Clone)] in this bootstrap")
+			}
+			declaration, err := p.structDeclaration(start, public)
+			if err != nil {
+				return nil, err
+			}
+			program.Structs = append(program.Structs, declaration)
 		case p.at("fn"):
 			f, err := p.function()
 			if err != nil {
@@ -88,10 +111,151 @@ func (p *parser) items(end string) (*Program, error) {
 			}
 			program.Imports = append(program.Imports, item)
 		default:
-			return nil, sourceError(p.current().span, "expected fn, mod, or use item, found %s", describe(p.current()))
+			return nil, sourceError(p.current().span, "expected fn, mod, use, or derived struct item, found %s", describe(p.current()))
 		}
 	}
 	return program, nil
+}
+
+// copyDerive recognizes only the semantic marker implemented by this compiler.
+func (p *parser) copyDerive() error {
+	start, _ := p.expect("#")
+	if _, err := p.expect("["); err != nil {
+		return err
+	}
+	if !p.take("derive") {
+		return sourceError(start.span, "only #[derive(Copy, Clone)] attributes are supported")
+	}
+	if _, err := p.expect("("); err != nil {
+		return err
+	}
+	seen := map[string]bool{}
+	for !p.at(")") {
+		name, err := p.identifier()
+		if err != nil {
+			return err
+		}
+		if (name.text != "Copy" && name.text != "Clone") || seen[name.text] {
+			return sourceError(name.span, "derive must contain Copy and Clone exactly once")
+		}
+		seen[name.text] = true
+		if !p.take(",") {
+			break
+		}
+	}
+	if _, err := p.expect(")"); err != nil {
+		return err
+	}
+	if _, err := p.expect("]"); err != nil {
+		return err
+	}
+	if !seen["Copy"] || !seen["Clone"] {
+		return sourceError(start.span, "derive must contain both Copy and Clone")
+	}
+	return nil
+}
+
+func (p *parser) structDeclaration(start token, public bool) (*Struct, error) {
+	name, err := p.identifier()
+	if err != nil {
+		return nil, err
+	}
+	if p.at("(") || p.at(";") {
+		return nil, sourceError(p.current().span, "tuple and unit structs are not supported; use named fields")
+	}
+	if p.at("<") {
+		return nil, sourceError(p.current().span, "generic structs are not supported")
+	}
+	if _, err := p.expect("{"); err != nil {
+		return nil, err
+	}
+	declaration := &Struct{Name: name.text, Public: public, Copy: true, Span: start.span}
+	for !p.at("}") {
+		fieldStart := p.current()
+		public := p.take("pub")
+		if public && p.at("(") {
+			return nil, sourceError(p.current().span, "restricted field visibility is not supported")
+		}
+		field, err := p.identifier()
+		if err != nil {
+			return nil, err
+		}
+		if _, err := p.expect(":"); err != nil {
+			return nil, err
+		}
+		typ, err := p.typeName()
+		if err != nil {
+			return nil, err
+		}
+		declaration.Fields = append(declaration.Fields, StructField{Name: field.text, Type: typ, Public: public, Span: fieldStart.span})
+		if !p.take(",") {
+			break
+		}
+	}
+	if _, err := p.expect("}"); err != nil {
+		return nil, err
+	}
+	return declaration, nil
+}
+
+func (p *parser) structLiteral(e *Expr) (*Expr, error) {
+	p.index++ // opening brace, already inspected by atom
+	e.Kind = "struct"
+	for !p.at("}") {
+		if p.at("..") {
+			return nil, sourceError(p.current().span, "struct update syntax is not supported")
+		}
+		field, err := p.identifier()
+		if err != nil {
+			return nil, err
+		}
+		value := &Expr{Kind: "name", Text: field.text, Span: field.span}
+		if p.take(":") {
+			value, err = p.fullExpression(1)
+			if err != nil {
+				return nil, err
+			}
+		}
+		e.Fields = append(e.Fields, FieldValue{Name: field.text, Value: value, Span: field.span})
+		if !p.take(",") {
+			break
+		}
+	}
+	if _, err := p.expect("}"); err != nil {
+		return nil, err
+	}
+	return e, nil
+}
+
+func (p *parser) postfix(e *Expr) (*Expr, error) {
+	for p.take(".") {
+		if p.current().kind == "int" {
+			return nil, sourceError(p.current().span, "tuple fields and floating-point literals are not supported")
+		}
+		field, err := p.identifier()
+		if err != nil {
+			return nil, err
+		}
+		e = &Expr{Kind: "field", Text: field.text, Left: e, Span: e.Span}
+		if p.at("(") {
+			return nil, sourceError(p.current().span, "methods and callable fields are not supported")
+		}
+	}
+	return e, nil
+}
+
+func (p *parser) fullExpression(min int) (*Expr, error) {
+	previous := p.noStructLiteral
+	p.noStructLiteral = false
+	defer func() { p.noStructLiteral = previous }()
+	return p.expression(min)
+}
+
+func (p *parser) condition() (*Expr, error) {
+	previous := p.noStructLiteral
+	p.noStructLiteral = true
+	defer func() { p.noStructLiteral = previous }()
+	return p.expression(1)
 }
 
 // path keeps source spelling for resolution. Keywords may lead a path, with
@@ -238,15 +402,23 @@ func (p *parser) typeName() (string, error) {
 		}
 		return "&str", nil
 	}
-	for _, typ := range []string{"i32", "i64", "bool"} {
-		if p.take(typ) {
-			return typ, nil
+	if start.kind == "ident" || p.at("::") {
+		_, path, err := p.path()
+		if err != nil {
+			return "", err
 		}
+		if p.at("<") {
+			return "", sourceError(p.current().span, "generic type arguments are not supported")
+		}
+		return path, nil
 	}
-	return "", sourceError(start.span, "unsupported type %s (supported: i32, i64, bool, &str, ())", describe(start))
+	return "", sourceError(start.span, "unsupported type %s", describe(start))
 }
 
 func (p *parser) block() (*Block, error) {
+	previous := p.noStructLiteral
+	p.noStructLiteral = false
+	defer func() { p.noStructLiteral = previous }()
 	start, err := p.expect("{")
 	if err != nil {
 		return nil, err
@@ -271,7 +443,7 @@ func (p *parser) block() (*Block, error) {
 		if err != nil {
 			return nil, err
 		}
-		if e.Kind == "name" && isAssignment(p.current().kind) {
+		if (e.Kind == "name" || e.Kind == "field") && isAssignment(p.current().kind) {
 			op := p.current()
 			p.index++
 			rhs, err := p.expression(1)
@@ -281,7 +453,13 @@ func (p *parser) block() (*Block, error) {
 			if _, err = p.expect(";"); err != nil {
 				return nil, err
 			}
-			b.Statements = append(b.Statements, Stmt{Kind: "assign", Name: e.Text, Op: op.kind, Expr: rhs, Span: e.Span})
+			assignment := Stmt{Kind: "assign", Op: op.kind, Expr: rhs, Span: e.Span}
+			if e.Kind == "field" {
+				assignment.Target = e
+			} else {
+				assignment.Name = e.Text
+			}
+			b.Statements = append(b.Statements, assignment)
 			continue
 		}
 		if p.take(";") {
@@ -309,7 +487,14 @@ func (p *parser) block() (*Block, error) {
 // Parentheses opt back into ordinary expression parsing, as do all RHS contexts.
 func (p *parser) statementExpression() (*Expr, error) {
 	if p.at("if") || p.at("{") {
-		return p.prefix()
+		e, err := p.prefix()
+		if err != nil {
+			return nil, err
+		}
+		if e.Kind == "if" || e.Kind == "block" {
+			return e, nil
+		}
+		return p.expressionRest(e, 1)
 	}
 	return p.expression(1)
 }
@@ -357,7 +542,7 @@ func (p *parser) statement() (Stmt, bool, error) {
 		_, err = p.expect(";")
 	case p.take("while"):
 		s.Kind = "while"
-		s.Expr, err = p.expression(1)
+		s.Expr, err = p.condition()
 		if err != nil {
 			return s, true, err
 		}
@@ -368,7 +553,7 @@ func (p *parser) statement() (Stmt, bool, error) {
 	case p.take("continue"):
 		s.Kind = "continue"
 		_, err = p.expect(";")
-	case p.at("fn") || p.at("mod") || p.at("use") || p.at("pub"):
+	case p.at("fn") || p.at("mod") || p.at("use") || p.at("pub") || p.at("struct") || p.at("#"):
 		return s, true, sourceError(start.span, "function-local items and imports are not supported")
 	default:
 		return s, false, nil
@@ -379,7 +564,7 @@ func (p *parser) statement() (Stmt, bool, error) {
 func (p *parser) ifExpression(start token) (*Expr, error) {
 	e := &Expr{Kind: "if", Span: start.span}
 	var err error
-	e.Left, err = p.expression(1)
+	e.Left, err = p.condition()
 	if err != nil {
 		return nil, err
 	}
@@ -413,6 +598,10 @@ func (p *parser) expression(min int) (*Expr, error) {
 	if err != nil {
 		return nil, err
 	}
+	return p.expressionRest(left, min)
+}
+
+func (p *parser) expressionRest(left *Expr, min int) (*Expr, error) {
 	for {
 		op := p.current()
 		prec := precedence[op.kind]
@@ -450,6 +639,15 @@ func (p *parser) prefix() (*Expr, error) {
 		}
 		return &Expr{Kind: "unary", Op: t.kind, Right: rhs, Span: t.span}, nil
 	}
+	e, err := p.atom()
+	if err != nil {
+		return nil, err
+	}
+	return p.postfix(e)
+}
+
+func (p *parser) atom() (*Expr, error) {
+	t := p.current()
 	if p.take("if") {
 		return p.ifExpression(t)
 	}
@@ -464,7 +662,7 @@ func (p *parser) prefix() (*Expr, error) {
 		if p.take(")") {
 			return &Expr{Kind: "unit", Span: t.span}, nil
 		}
-		e, err := p.expression(1)
+		e, err := p.fullExpression(1)
 		if err != nil {
 			return nil, err
 		}
@@ -486,6 +684,9 @@ func (p *parser) prefix() (*Expr, error) {
 		return nil, err
 	}
 	e := &Expr{Kind: "name", Text: path, Span: name.span}
+	if p.at("{") && !p.noStructLiteral {
+		return p.structLiteral(e)
+	}
 	macro := p.take("!")
 	if macro && strings.Contains(path, "::") {
 		return nil, sourceError(name.span, "qualified macros are not supported")
@@ -500,7 +701,7 @@ func (p *parser) prefix() (*Expr, error) {
 			e.Kind = "call"
 		}
 		for !p.at(")") {
-			arg, err := p.expression(1)
+			arg, err := p.fullExpression(1)
 			if err != nil {
 				return nil, err
 			}
