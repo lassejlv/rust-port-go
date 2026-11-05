@@ -2,7 +2,11 @@
 // Runtime adapters required by the complete pinned slice.rs/vec.rs port.
 package rustcindex
 
-import "os"
+import (
+	"os"
+
+	"github.com/lassejlv/rust-port-go/port/support/rustfmt"
+)
 
 // IndexDropContext reports source unwinding to destructor implementations without
 // altering Go's global panic behavior or sharing state across goroutines.
@@ -23,9 +27,13 @@ func indexCapturePanic(body func()) (value any) {
 	body()
 	return nil
 }
-func (ops ValueOps[T]) hasDrop() bool { return ops.DropWithContext != nil || ops.Drop != nil }
+func (ops ValueOps[T]) hasDrop() bool {
+	return ops.DropWithRuntimeContext != nil || ops.DropWithContext != nil || ops.Drop != nil
+}
 func (ops ValueOps[T]) dropAt(value *T, context IndexDropContext) {
-	if ops.DropWithContext != nil {
+	if ops.DropWithRuntimeContext != nil {
+		ops.DropWithRuntimeContext(value, rustfmt.Context{Unwinding: context.Unwinding})
+	} else if ops.DropWithContext != nil {
 		ops.DropWithContext(value, context)
 	} else if ops.Drop != nil {
 		ops.Drop(value)

@@ -321,3 +321,12 @@ The ledger remains at30 completed top-level source files. Full span/session/symb
 - Checkpoint26 passed all four hosted jobs. Checkpoint27 passed Linux, macOS and the complete original-span reference job; its upstream comparison job remains in progress.
 
 The ledger remains at30 completed top-level source files. These sorting operations support the remaining complete compiler collection ports. Full span/source-map/hygiene, Cargo graph and current-context typed-vector work continue; production Rust compilation remains unfinished.
+
+## 2026-11-05 — checkpoint 29: current runtime through typed vector ownership
+
+- Added explicit current-context clone/clone_from, push, extend, collection and owned-iterator operations on the established IndexVec storage. Element/iterator operation dictionaries receive the caller's metadata; vectors and escaping iterators retain no construction-time runtime. Existing entrypoints remain empty-context conveniences.
+- Source capacity failures now raise before the affected element/iterator cleanup. RawVec, trusted Extend and trusted collection failure sites retain their distinct observed source locations, even when the panic text is identical. Recover forwarding and actual cleanup-abort boundaries preserve the shared protocol.
+- The complete unchanged UnordBag plus actual SDK Vec matches228 independent operation processes, including88 native aborts. Cases cover current observer B versus no observer, clone-prefix cleanup, catchable first destructor failures during an outer unwind, actual second-panic cleanup, resumed callbacks, iterator cleanup and zero-sized usize-maximum boundaries.
+- The isolated actual Go1.23 race gates pass for storage, vectors and intervals (22.875s,77.990s and48.533s), retaining the earlier150,068-record corpus. Fresh native regeneration, vet and four integrity checks pass. The owner's default/nightly descendant checks also retain all legacy fixture bytes.
+
+The ledger remains at30 completed top-level source files. This additive ownership bridge enables full unordered-bag and codec integration without a duplicate vector engine. Full compiler span/source-map/hygiene and Cargo graph work continue; production Rust compilation remains unfinished.

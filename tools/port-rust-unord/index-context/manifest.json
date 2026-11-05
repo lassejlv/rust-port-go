@@ -1,0 +1,78 @@
+{
+  "scope": "Additive current-operation context bridge over genuine IndexVec storage; actual unchanged whole UnordBag and SDK Vec oracle; no std file completion credit",
+  "cases": 228,
+  "aborts": 88,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "locations": {
+    "clone": {
+      "File": "tools/port-rust-unord/index-context/oracle.rs",
+      "Line": 11,
+      "Column": 213
+    },
+    "element_drop": {
+      "File": "tools/port-rust-unord/index-context/oracle.rs",
+      "Line": 12,
+      "Column": 278
+    },
+    "panic in a destructor during cleanup": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      "Line": 233,
+      "Column": 5
+    },
+    "capacity overflow": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/alloc/src/raw_vec/mod.rs",
+      "Line": 29,
+      "Column": 5
+    },
+    "next": {
+      "File": "tools/port-rust-unord/index-context/oracle.rs",
+      "Line": 16,
+      "Column": 180
+    },
+    "iterator_drop": {
+      "File": "tools/port-rust-unord/index-context/oracle.rs",
+      "Line": 17,
+      "Column": 179
+    },
+    "capacity overflow.extend_trusted_none": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/alloc/src/vec/mod.rs",
+      "Line": 4326,
+      "Column": 13
+    },
+    "capacity overflow.collect_trusted_none": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/alloc/src/vec/spec_from_iter_nested.rs",
+      "Line": 57,
+      "Column": 18
+    },
+    "outer.unwind": {
+      "File": "tools/port-rust-unord/index-context/oracle.rs",
+      "Line": 39,
+      "Column": 103
+    },
+    "outer.processing": {
+      "File": "tools/port-rust-unord/index-context/oracle.rs",
+      "Line": 39,
+      "Column": 193
+    }
+  },
+  "fixture_sha256": "45735136d9976315de07693c0015baaad5fa462f3ffb0ea303ac7bbe12639a85",
+  "raw_sha256": "d7014f97f690880eb3139dc2a7d04ca9cd868f2233735be4691454699c7986c7",
+  "go_sources": {
+    "vec_context.go": "9e3de06192ba5d1539b2383d7470b49d8365b867f6e3aa13e07d412df02db1f6",
+    "vec.go": "b6ef4b98609ad6f8f20813eb9817d50ac3ef79893ac31f67ce0c9a8d5816c13d",
+    "slice.go": "909ceac8ca4b25d0ccd67b86ca391e185e5a758b92633b48c6d097cae3866619",
+    "vec_runtime.go": "79ce0668e37a636de75ed6a7fbbfbd972b32620e645ba12b8cafb9ce65d710c5",
+    "idx.go": "b67b2f7509e3b82a0d8f4ca791f7f043ae9c07e6cdf72a9df3b472b7012953aa",
+    "vec_context_oracle_test.go": "e930c09b31d78487310076b6b6d97ceeb64e7506604a3a83e46c3a495f3338b2",
+    "vec_context_test.go": "7e14025aa363d546b54f73fb12e2e127dc02589356dd7a5711ff3ea092e42a5e"
+  },
+  "reference_sources": {
+    "oracle.rs": "10755c27dd26c15caa35e754070e358ad51ff15c81978204676742906a7854c1",
+    "generate.py": "2fc104822e1a3ba098afda33edbbe0e9c8467047eb374dddd1c678a9ae50e4d5",
+    "README.md": "2662ca477eb5a79f1d053dc344cd41ca2f54447497dbff3875ed55f29ba081a0",
+    "test_tools.py": "983b5cfaf059513eaad7f0a0f6e1fd263707c982ee29ccf9bfcda12a9758b794"
+  },
+  "sdk_selector_sha256": "d82aaaaf1c7849c1418345f61e617fa68c3445470cddbd859f0906fc39f5363c"
+}

@@ -201,11 +201,13 @@ jobs:
           python3 tools/port-rust-unord/cached/generate.py --check
           python3 tools/port-rust-unord/cached/generate_hooks.py --check
           python3 tools/port-rust-unord/panic/generate.py --check
+          python3 tools/port-rust-unord/index-context/generate.py --check
           python3 tools/port-rust-unord/map/generate.py --skip-prepare --check
           python3 tools/port-rust-unord/traits/generate.py --skip-prepare --check
           python3 -m unittest discover -s tools/port-rust-unord/table -p 'test_*.py'
           python3 -m unittest discover -s tools/port-rust-unord/panic -p 'test_*.py'
           python3 -m unittest discover -s tools/port-rust-unord/cached -p 'test_*.py'
+          python3 -m unittest discover -s tools/port-rust-unord/index-context -p 'test_*.py'
         env:
           FERRUGO_GO: go
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home

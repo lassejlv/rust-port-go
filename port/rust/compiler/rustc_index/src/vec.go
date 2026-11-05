@@ -5,6 +5,8 @@ package rustcindex
 
 import (
 	"reflect"
+
+	"github.com/lassejlv/rust-port-go/port/support/rustfmt"
 )
 
 // IndexVec owns a typed vector. Raw supports the complete uint length domain
@@ -224,14 +226,7 @@ func (v *IndexVec[I, T]) pushRaw(value T) {
 	}
 	v.Raw.data = append(v.Raw.data, value)
 }
-func (v *IndexVec[I, T]) Push(value T) (key I) {
-	owned := true
-	defer indexDeferValueOnPanic(&value, v.Ops, &owned)
-	key = v.NextIndex()
-	v.pushRaw(value)
-	owned = false
-	return
-}
+func (v *IndexVec[I, T]) Push(value T) I { return v.PushWithContext(value, rustfmt.Context{}) }
 func (v *IndexVec[I, T]) Pop() (T, bool) {
 	if v.Len() == 0 {
 		var zero T
@@ -294,18 +289,11 @@ func (v *IndexVec[I, T]) Close() {
 	v.CloseWithContext(IndexDropContext{})
 }
 func (v *IndexVec[I, T]) CloseWithContext(context IndexDropContext) {
-	close := func() {
-		defer func() {
-			if !v.Raw.zeroSized {
-				v.Raw.data = nil
-			}
-		}()
-		v.truncateContext(0, context)
-	}
+	runtime := rustfmt.Context{Unwinding: context.Unwinding}
 	if context.Unwinding {
-		indexStorageUnwindCleanup(close)
+		indexStorageUnwindCleanup(func() { v.CloseWithRuntimeContext(runtime) })
 	} else {
-		close()
+		v.CloseWithRuntimeContext(runtime)
 	}
 }
 func (v *IndexVec[I, T]) ShrinkToFit() {
@@ -424,7 +412,7 @@ func cloneRawIntoVec[I, T any](raw IndexRaw[T], idx Idx[I], ops ValueOps[T], con
 		}
 	}()
 	v.reserveExactRaw(raw.Len())
-	if ops.TrivialClone || (raw.zeroSized && ops.Clone == nil && ops.CloneRef == nil) {
+	if ops.TrivialClone || (raw.zeroSized && ops.Clone == nil && ops.CloneRef == nil && ops.CloneRefWithContext == nil) {
 		v.extendRawCopy(raw)
 		return
 	}
@@ -433,19 +421,13 @@ func cloneRawIntoVec[I, T any](raw IndexRaw[T], idx Idx[I], ops ValueOps[T], con
 	}
 	return
 }
-func (v *IndexVec[I, T]) Clone() *IndexVec[I, T] {
-	return cloneRawIntoVec(v.Raw, v.Idx, v.Ops, v.Config)
-}
+func (v *IndexVec[I, T]) Clone() *IndexVec[I, T] { return v.CloneWithContext(rustfmt.Context{}) }
 
 // Derive(Clone) supplies no clone_from override for IndexVec. Its inherited
 // default clones the whole source, then replaces/drops the old vector. This is
 // distinct from IndexSlice::clone_into, which reuses Vec element clone_from.
 func (v *IndexVec[I, T]) CloneFrom(source *IndexVec[I, T]) {
-	cloned := source.Clone()
-	old := *v
-	*v = *cloned
-	cloned.Raw = rawFromSlice([]T{}, cloned.Ops)
-	dropRaw(old.Raw, old.Ops)
+	v.CloneFromWithContext(source, rustfmt.Context{})
 }
 func (v *IndexVec[I, T]) Equal(other *IndexVec[I, T]) bool    { return v.AsSlice().Equal(other.AsSlice()) }
 func (v *IndexVec[I, T]) NotEqual(other *IndexVec[I, T]) bool { return !v.Equal(other) }
@@ -530,31 +512,14 @@ func (it *OwnedIterator[T]) Close() {
 	it.CloseWithContext(IndexDropContext{})
 }
 func (it *OwnedIterator[T]) CloseWithContext(context IndexDropContext) {
-	close := func() {
-		if it.closed {
-			return
-		}
-		remaining := it.AsSlice()
-		it.front = it.back
-		it.closed = true
-		defer func() {
-			if !it.raw.zeroSized {
-				clear(it.raw.data)
-				it.raw.data = nil
-			}
-		}()
-		dropRawContext(remaining, it.ops, context)
-	}
+	runtime := rustfmt.Context{Unwinding: context.Unwinding}
 	if context.Unwinding {
-		indexStorageUnwindCleanup(close)
+		indexStorageUnwindCleanup(func() { it.CloseWithRuntimeContext(runtime) })
 	} else {
-		close()
+		it.CloseWithRuntimeContext(runtime)
 	}
 }
-func (it *OwnedIterator[T]) Clone() *OwnedIterator[T] {
-	v := cloneRawIntoVec(it.AsSlice(), UsizeIdx(), it.ops, defaultIndexStorageConfig())
-	return v.IntoIter()
-}
+func (it *OwnedIterator[T]) Clone() *OwnedIterator[T] { return it.CloneWithContext(rustfmt.Context{}) }
 
 type EnumeratedOwnedIterator[I, T any] struct {
 	inner       *OwnedIterator[T]
@@ -747,21 +712,29 @@ func (it *EnumeratedDrainIterator[I, T]) CloseWithContext(context IndexDropConte
 // Close supplies source iterator Drop; callers constructing wrappers retain the
 // Rust ownership contract and must not reuse a moved iterator.
 type IndexValueIterator[T any] struct {
-	Next             func() (T, bool)
-	SizeHint         func() (uint, uint, bool)
-	Close            func()
-	CloseWithContext func(IndexDropContext)
-	TrustedLength    bool
+	Next                    func() (T, bool)
+	NextWithContext         func(rustfmt.Context) (T, bool)
+	SizeHint                func() (uint, uint, bool)
+	SizeHintWithContext     func(rustfmt.Context) (uint, uint, bool)
+	Close                   func()
+	CloseWithContext        func(IndexDropContext)
+	CloseWithRuntimeContext func(rustfmt.Context)
+	TrustedLength           bool
 	// Owned identifies the actual Vec::IntoIter specialization, allowing moves
 	// and capacity reuse without manufacturing calls to next or size_hint.
 	Owned *OwnedIterator[T]
 	// Trusted-length extension calls Iterator::for_each. Its default dispatches
 	// to fold with a unit accumulator; both independently overridable slots are
 	// retained for the unit instantiation used by this storage implementation.
-	ForEachOverride  func(func(T))
-	FoldUnitOverride func(func(T))
+	ForEachOverride             func(func(T))
+	FoldUnitOverride            func(func(T))
+	ForEachWithContextOverride  func(rustfmt.Context, func(T))
+	FoldUnitWithContextOverride func(rustfmt.Context, func(T))
 }
-type IndexIntoIterator[T any] struct{ IntoIter func() IndexValueIterator[T] }
+type IndexIntoIterator[T any] struct {
+	IntoIter            func() IndexValueIterator[T]
+	IntoIterWithContext func(rustfmt.Context) IndexValueIterator[T]
+}
 
 func iteratorHint[T any](it IndexValueIterator[T]) (uint, uint, bool) {
 	if it.SizeHint != nil {
@@ -788,7 +761,7 @@ func iteratorForEach[T any](it IndexValueIterator[T], consume func(T)) {
 }
 func (it *OwnedIterator[T]) IntoIterator() IndexIntoIterator[T] {
 	return IndexIntoIterator[T]{IntoIter: func() IndexValueIterator[T] {
-		return IndexValueIterator[T]{Next: it.Next, SizeHint: func() (uint, uint, bool) { n := it.Len(); return n, n, true }, Close: it.Close, CloseWithContext: it.CloseWithContext, TrustedLength: true, Owned: it}
+		return IndexValueIterator[T]{Next: it.Next, SizeHint: func() (uint, uint, bool) { n := it.Len(); return n, n, true }, Close: it.Close, CloseWithContext: it.CloseWithContext, CloseWithRuntimeContext: it.CloseWithRuntimeContext, TrustedLength: true, Owned: it}
 	}}
 }
 func (it *OwnedIterator[T]) forgetRemaining() {
@@ -816,7 +789,9 @@ func (it *OwnedIterator[T]) takeRaw() IndexRaw[T] {
 	return raw
 }
 
-func (v *IndexVec[I, T]) Extend(source IndexIntoIterator[T]) { v.extendIterator(source.IntoIter()) }
+func (v *IndexVec[I, T]) Extend(source IndexIntoIterator[T]) {
+	v.ExtendWithContext(source, rustfmt.Context{})
+}
 func (v *IndexVec[I, T]) extendIterator(it IndexValueIterator[T]) {
 	defer indexDeferValueIterator(it)
 	if it.Owned != nil {
@@ -866,77 +841,8 @@ func (v *IndexVec[I, T]) extendIterator(it IndexValueIterator[T]) {
 func IndexVecFromIterator[I, T any](source IndexIntoIterator[T], idx Idx[I], ops ValueOps[T]) *IndexVec[I, T] {
 	return IndexVecFromIteratorWithConfig(source, idx, ops, defaultIndexStorageConfig())
 }
-func IndexVecFromIteratorWithConfig[I, T any](source IndexIntoIterator[T], idx Idx[I], ops ValueOps[T], config IndexStorageConfig) (v *IndexVec[I, T]) {
-	v = NewIndexVecWithConfig(idx, ops, config)
-	defer func() {
-		if p := recover(); p != nil {
-			v.CloseWithContext(IndexDropContext{true})
-			panic(p)
-		}
-	}()
-	it := source.IntoIter()
-	defer indexDeferValueIterator(it)
-	if it.Owned != nil {
-		owned := it.Owned
-		if owned.front == 0 || owned.Len() >= owned.raw.Cap()/2 {
-			v.Raw = owned.takeRaw()
-			return
-		}
-		v.extendRawCopy(owned.AsSlice())
-		owned.forgetRemaining()
-		return
-	}
-	if it.TrustedLength {
-		_, upper, some := iteratorHint(it)
-		if !some {
-			panic("rustcindex: trusted iterator length overflow")
-		}
-		v.reserveExactRaw(upper)
-		it.Close = nil
-		it.CloseWithContext = nil
-		v.extendIterator(it)
-		return
-	}
-	first, ok := it.Next()
-	if !ok {
-		return
-	}
-	owned := true
-	func() {
-		defer func() {
-			if p := recover(); p != nil {
-				if owned {
-					indexDropDuringUnwind(&first, ops)
-				}
-				panic(p)
-			}
-		}()
-		lower, _, _ := iteratorHint(it)
-		capacity := lower
-		if capacity != ^uint(0) {
-			capacity++
-		}
-		size := ops.RustSize
-		if size == 0 {
-			size = uint(reflect.TypeFor[T]().Size())
-		}
-		minimum := uint(1)
-		if size == 1 {
-			minimum = 8
-		} else if size <= 1024 {
-			minimum = 4
-		}
-		if capacity < minimum {
-			capacity = minimum
-		}
-		v.reserveExactRaw(capacity)
-		v.pushRaw(first)
-		owned = false
-	}()
-	it.Close = nil
-	it.CloseWithContext = nil
-	v.extendIterator(it)
-	return
+func IndexVecFromIteratorWithConfig[I, T any](source IndexIntoIterator[T], idx Idx[I], ops ValueOps[T], config IndexStorageConfig) *IndexVec[I, T] {
+	return IndexVecFromIteratorWithConfigAndContext(source, idx, ops, config, rustfmt.Context{})
 }
 
 type IndexSliceMapView[I, T any] struct {

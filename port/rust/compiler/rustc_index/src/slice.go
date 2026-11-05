@@ -9,6 +9,8 @@ import (
 	"reflect"
 	"strconv"
 	"strings"
+
+	"github.com/lassejlv/rust-port-go/port/support/rustfmt"
 )
 
 // IndexStorageConfig selects source arithmetic checks and debug assertions.
@@ -24,13 +26,16 @@ func defaultIndexStorageConfig() IndexStorageConfig { return IndexStorageConfig{
 // Such values must have no distinct per-element payload. Borrow/drop ownership
 // and the supplied trait laws remain caller contracts rather than Go lifetimes.
 type ValueOps[T any] struct {
-	Clone                             func(T) T
-	CloneFrom                         func(*T, T)
-	Equal                             func(T, T) bool
-	NotEqual                          func(T, T) bool
-	Debug                             func(T) string
-	Compare                           func(T, T) int
-	CloneRef                          func(*T) T
+	Clone     func(T) T
+	CloneFrom func(*T, T)
+	Equal     func(T, T) bool
+	NotEqual  func(T, T) bool
+	Debug     func(T) string
+	Compare   func(T, T) int
+	CloneRef  func(*T) T
+	// Contextual operations borrow the current call's runtime metadata. The
+	// dictionary itself must not capture a construction-time runtime scope.
+	CloneRefWithContext               func(*T, rustfmt.Context) T
 	CloneFromRef                      func(*T, *T)
 	EqualRef                          func(*T, *T) bool
 	NotEqualRef                       func(*T, *T) bool
@@ -41,6 +46,7 @@ type ValueOps[T any] struct {
 	CompareRef                        func(*T, *T) int
 	Drop                              func(*T)
 	DropWithContext                   func(*T, IndexDropContext)
+	DropWithRuntimeContext            func(*T, rustfmt.Context)
 	Copy, TrivialClone, RustZeroSized bool
 	// RustSize optionally supplies the source element size for capacity-growth
 	// buckets when its Go representation carries different metadata.
@@ -49,6 +55,9 @@ type ValueOps[T any] struct {
 
 func (ops ValueOps[T]) clone(v T) T { return ops.cloneAt(&v) }
 func (ops ValueOps[T]) cloneAt(v *T) T {
+	if ops.CloneRefWithContext != nil {
+		return ops.CloneRefWithContext(v, rustfmt.Context{})
+	}
 	if ops.CloneRef != nil {
 		return ops.CloneRef(v)
 	}
