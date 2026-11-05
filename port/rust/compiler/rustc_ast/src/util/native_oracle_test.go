@@ -642,9 +642,20 @@ func TestAstUtilProducerDirectoryFailClosed(t *testing.T) {
 		t.Fatal("missing directory accepted")
 	}
 	dir := t.TempDir()
+	canonical, err := filepath.EvalSymlinks(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
 	resolved, err := astDirectory(root, func(string) (string, bool) { return dir, true })
-	if err != nil || resolved != dir {
+	if err != nil || resolved != canonical {
 		t.Fatalf("relocated directory rejected: %s %v", resolved, err)
+	}
+	alias := filepath.Join(t.TempDir(), "directory-alias")
+	if err := os.Symlink(dir, alias); err == nil {
+		resolved, err := astDirectory(root, func(string) (string, bool) { return alias, true })
+		if err != nil || resolved != canonical {
+			t.Fatalf("directory alias rejected: %s %v", resolved, err)
+		}
 	}
 	target := filepath.Join(dir, "source")
 	if err = os.WriteFile(target, []byte("{}"), 0600); err != nil {

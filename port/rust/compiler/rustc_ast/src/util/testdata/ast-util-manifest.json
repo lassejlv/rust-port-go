@@ -13,7 +13,7 @@
     "port/rust/compiler/rustc_ast/src/util/comments.go": "907689b85084603d3c4e3def6114ea04e42b9a70e4cc5786f3ac7d72118f06fa",
     "port/rust/compiler/rustc_ast/src/util/unicode.go": "fbd0e6ad71d2d730d7d9b8b8cca66690e64c3710172fca6dd44163ee4c385012",
     "port/rust/compiler/rustc_ast/src/util/comments/tests_test.go": "d1aed9db3b3f3510a2c0df9feaabb03b6eba4091a1c7630bfb291747710fced1",
-    "port/rust/compiler/rustc_ast/src/util/native_oracle_test.go": "08c3fbfe4fd120449e76722f651e94a0fe8aa972fc44dd55d2363209d407a383",
+    "port/rust/compiler/rustc_ast/src/util/native_oracle_test.go": "85e8bb0fec15df438110f3f13d8e5c5118c4409486ab20129c28d13c82867bfe",
     "tools/port-rust-ast-util/audit.py": "bcdd35b1d6fc61efa09165329214fb03e368da69e98189df26d1a5621ba43708",
     "tools/port-rust-ast-util/generate.py": "c3f758e680cdedb0fa38cc8a5f8e3c956c01d7f12fe4ea31e0aeca340b6e9cfa",
     "tools/port-rust-ast-util/oracle.rs": "1ef30ac45ec86c72d2ef3d6f7a89d0f49b55e1b49e77cb4b8a8e01cc6749ade6",

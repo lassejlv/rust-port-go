@@ -1,0 +1,67 @@
+{
+  "root": "/tmp/ferrugo-macos-ast-fix.8bpsez7v",
+  "checks": [
+    {
+      "name": "native",
+      "argv": [
+        "python3",
+        "tools/port-rust-ast-util/generate.py",
+        "--prepared"
+      ],
+      "returncode": 0,
+      "seconds": 26.711,
+      "log": "/tmp/ferrugo-macos-ast-fix-native.log",
+      "log_sha256": "5249cc91cbaaed925202818a5d9309479a326605e02706fff973d57b49ebf2fa"
+    },
+    {
+      "name": "normal",
+      "argv": [
+        "/workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go",
+        "test",
+        "-p",
+        "1",
+        "-count=1",
+        "./port/rust/compiler/rustc_ast/src/util",
+        "-run",
+        "^TestAstUtilProducerDirectoryFailClosed$"
+      ],
+      "returncode": 0,
+      "seconds": 59.006,
+      "log": "/tmp/ferrugo-macos-ast-fix-normal.log",
+      "log_sha256": "1d7ece986684bd67342f71df6a533ec10bd59eac2b7c312aa54d8b483d6bd3c2"
+    },
+    {
+      "name": "race",
+      "argv": [
+        "/workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go",
+        "test",
+        "-race",
+        "-p",
+        "1",
+        "-count=1",
+        "./port/rust/compiler/rustc_ast/src/util",
+        "-run",
+        "^TestAstUtilProducerDirectoryFailClosed$"
+      ],
+      "returncode": 0,
+      "seconds": 86.793,
+      "log": "/tmp/ferrugo-macos-ast-fix-race.log",
+      "log_sha256": "ea3fb99e6315854a7a08a9a00febe343ab66b3fe5019e29960fb8e8e49d4ff45"
+    }
+  ],
+  "original_fixture_sha256": {
+    "port/rust/compiler/rustc_ast/src/util/testdata/ast-util-d1o1-flow.bin.gz": "9337b2a7e70b9118ad98f990e6c1e912253fee335b07de51d3652aa9ae106b31",
+    "port/rust/compiler/rustc_ast/src/util/testdata/ast-util-d0o0-flow.bin.gz": "9337b2a7e70b9118ad98f990e6c1e912253fee335b07de51d3652aa9ae106b31",
+    "port/rust/compiler/rustc_ast/src/util/testdata/ast-util-d0o0-tags.jsonl.gz": "06408eba8e4c88222450863bf5b9f760ce5952419adcc6413f4b24914360dfeb",
+    "port/rust/compiler/rustc_ast/src/util/testdata/ast-util-d1o0-flow.bin.gz": "9337b2a7e70b9118ad98f990e6c1e912253fee335b07de51d3652aa9ae106b31",
+    "port/rust/compiler/rustc_ast/src/util/testdata/ast-util-d0o0.tsv.gz": "e249c13281f2c5c4ff6a2cd1c60c9bc118e00ea47f426913e7a18a69b26ca6f3",
+    "port/rust/compiler/rustc_ast/src/util/testdata/ast-util-d0o1-tags.jsonl.gz": "06408eba8e4c88222450863bf5b9f760ce5952419adcc6413f4b24914360dfeb",
+    "port/rust/compiler/rustc_ast/src/util/testdata/ast-util-d0o1.tsv.gz": "e249c13281f2c5c4ff6a2cd1c60c9bc118e00ea47f426913e7a18a69b26ca6f3",
+    "port/rust/compiler/rustc_ast/src/util/testdata/ast-util-d1o1.tsv.gz": "e249c13281f2c5c4ff6a2cd1c60c9bc118e00ea47f426913e7a18a69b26ca6f3",
+    "port/rust/compiler/rustc_ast/src/util/testdata/ast-util-d0o1-flow.bin.gz": "9337b2a7e70b9118ad98f990e6c1e912253fee335b07de51d3652aa9ae106b31",
+    "port/rust/compiler/rustc_ast/src/util/testdata/ast-util-d1o0-tags.jsonl.gz": "06408eba8e4c88222450863bf5b9f760ce5952419adcc6413f4b24914360dfeb",
+    "port/rust/compiler/rustc_ast/src/util/testdata/ast-util-d1o0.tsv.gz": "e249c13281f2c5c4ff6a2cd1c60c9bc118e00ea47f426913e7a18a69b26ca6f3",
+    "port/rust/compiler/rustc_ast/src/util/testdata/ast-util-d1o1-tags.jsonl.gz": "06408eba8e4c88222450863bf5b9f760ce5952419adcc6413f4b24914360dfeb"
+  },
+  "all_original_fixtures_unchanged": true
+}
