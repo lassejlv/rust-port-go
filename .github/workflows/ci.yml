@@ -243,6 +243,7 @@ jobs:
         run: |
           python3 tools/test_executable_dispatch.py
           python3 -m unittest discover -s tools/port-rust-span-reference -p 'test_*.py'
+          python3 -m unittest discover -s tools/port-rust-span-lib -p 'test_reference_cold.py'
       - name: Build unchanged span crate and run all original tests
         run: python3 tools/port-rust-span-reference/prepare.py --fetch-source --fetch-deps
         env:

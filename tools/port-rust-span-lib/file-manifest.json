@@ -39,7 +39,7 @@
   "status": "partial-serializer-validation",
   "tool_inputs_sha256": {
     "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
-    "tools/port-rust-span-lib/reference.py": "117a79cd95eecbe8555ba5ccd244e0c5492dc6f666cbb6e9f0bdf0abfbf9d722",
+    "tools/port-rust-span-lib/reference.py": "2094b30a5149056c683edffc6cc4a8d6d6984d81933ecb10c80e5f34c355db9e",
     "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
   }
 }

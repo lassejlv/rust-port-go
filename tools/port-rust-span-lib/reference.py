@@ -24,14 +24,28 @@ def load_profile(path):
     path = Path(path)
     if not path.is_absolute():
         path = ROOT / path
-    if path.is_symlink() or path.stat().st_size > 1024 * 1024:
+    if path.is_symlink():
         raise RuntimeError('invalid original reference profile file')
-    profile = json.loads(path.read_text())
-    if profile.get('source_revision') != PIN or profile.get('unicode') != [18, 0, 0] or profile.get('cfg_bootstrap') is not False or profile.get('cfg_release') != '1.101.0':
-        raise RuntimeError('reference source/runtime selection differs')
-    debug, overflow = profile.get('debug_assertions'), profile.get('overflow_checks')
-    if type(debug) is not bool or type(overflow) is not bool:
-        raise RuntimeError('invalid original build flags')
+    try:
+        size = path.stat().st_size
+    except FileNotFoundError:
+        # Only these exact default-cache names are cold flag selectors. The
+        # complete verifier below must still prepare/verify the real source.
+        canonical = ROOT / '.toolchain/oracles/rustc-span-reference'
+        choices = {canonical / f'build-profile-d{int(d)}o{int(o)}.json': (d, o)
+                   for d in (False, True) for o in (False, True)}
+        if path not in choices:
+            raise
+        debug, overflow = choices[path]
+    else:
+        if size > 1024 * 1024:
+            raise RuntimeError('invalid original reference profile file')
+        profile = json.loads(path.read_text())
+        if profile.get('source_revision') != PIN or profile.get('unicode') != [18, 0, 0] or profile.get('cfg_bootstrap') is not False or profile.get('cfg_release') != '1.101.0':
+            raise RuntimeError('reference source/runtime selection differs')
+        debug, overflow = profile.get('debug_assertions'), profile.get('overflow_checks')
+        if type(debug) is not bool or type(overflow) is not bool:
+            raise RuntimeError('invalid original build flags')
     spec = importlib.util.spec_from_file_location('ferrugo_lib_verified_reference', ROOT / 'tools/port-rust-fatal-error/reference.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
