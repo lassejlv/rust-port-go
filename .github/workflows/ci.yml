@@ -440,6 +440,27 @@ jobs:
           python3 tools/port-rust-def-id/indexmap-alias/generate.py --offline --check
         env:
           RUSTUP_TOOLCHAIN: 1.99.1
+      - name: Fetch pinned Unicode source objects before read-only checks
+        if: matrix.component == 'identity'
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+
+          profile = json.loads(Path("port/rust/compiler/rustc_span/src/symbol_unicode18_manifest.json").read_text())
+          source = Path(os.environ["FERRUGO_RUST_SOURCE"])
+          env = os.environ.copy()
+          env.pop("GIT_NO_LAZY_FETCH", None)
+          for item in profile["source_dependencies"]:
+              data = subprocess.check_output(["git", "-C", str(source), "show", profile["rust_revision"] + ":" + item["path"]], env=env)
+              blob = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+              if blob != item["git_blob"] or hashlib.sha256(data).hexdigest() != item["sha256"]:
+                  raise SystemExit("Pinned Unicode source mismatch: " + item["path"])
+          print("Hydrated and verified", len(profile["source_dependencies"]), "pinned Unicode source objects")
+          PY
       - name: Compare Symbol and edit-distance source and derived APIs
         if: matrix.component == 'identity'
         run: |

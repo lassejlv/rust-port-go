@@ -391,4 +391,6 @@ The source ledger remains31 completed top-level files. These scoped prerequisite
 
 The ledger now records 40 completed top-level files. The 13-file goal remains active until the four held implementations close their owned-value contracts. AST utility/IR, unordered-collection and Cargo prerequisite work continues in parallel. Production Rust compilation remains unfinished.
 
-The first checkpoint35 hosted identity gate found seven previously added IndexMap support files missing from the alias proof manifest. Genuine native/Go regeneration and a second strict check pass all24 scripts/9,600 operations; the historical gzip bytes remain unchanged. The follow-up refreshes only those evidence bindings.
+The first checkpoint35 hosted identity gate found seven previously added IndexMap support files missing from the alias proof manifest. Genuine native/Go regeneration and a second strict check pass all 24 scripts/9,600 operations; the historical gzip bytes remain unchanged. The follow-up refreshes only those evidence bindings.
+
+A clean identity runner then exposed missing pinned standard-library source objects before the offline Unicode comparison. CI now hydrates exactly the four recorded source dependencies and verifies their Git blob and SHA256 identities first. A fresh filtered bare cache reproduced the initial missing-object failure, then passed all four byte-verified offline reads after preparation; native observations and compiler pins are unchanged.
