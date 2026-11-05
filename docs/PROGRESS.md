@@ -390,3 +390,5 @@ The source ledger remains31 completed top-level files. These scoped prerequisite
 - Nine complete source/test files (1,942 lines) are accepted: analyzer, caching, edit distance, fatal errors and the five canonical original child test files. Together those children preserve all 43 original span test declarations. No full DefID, container, serializer, tracing or standard-library credit follows.
 
 The ledger now records 40 completed top-level files. The 13-file goal remains active until the four held implementations close their owned-value contracts. AST utility/IR, unordered-collection and Cargo prerequisite work continues in parallel. Production Rust compilation remains unfinished.
+
+The first checkpoint35 hosted identity gate found seven previously added IndexMap support files missing from the alias proof manifest. Genuine native/Go regeneration and a second strict check pass all24 scripts/9,600 operations; the historical gzip bytes remain unchanged. The follow-up refreshes only those evidence bindings.

@@ -286,6 +286,26 @@
       "sha256": "f6d58ffe8d9196511e28a8300f2b04eb951ef9f3ec602c82b6591be8b3eef2f5"
     },
     {
+      "path": "port/support/rustindexmap/entry_format.go",
+      "sha256": "655d3a7e154d11eace23bf60dfb53f447dbcdea0cbaa6b81a46ed80108d5e83f"
+    },
+    {
+      "path": "port/support/rustindexmap/entry_format_bounds_test.go",
+      "sha256": "cc0c93acecfbca28ea3a643a467b4ed1f5895e0c2b9582eeaf3b0b499e1815a2"
+    },
+    {
+      "path": "port/support/rustindexmap/entry_format_oracle_test.go",
+      "sha256": "fd657ec43d70523c2eb95c8e9f8ce71ee0fc8b2578e1c041b4c13ffbe3c2fda6"
+    },
+    {
+      "path": "port/support/rustindexmap/indexed_entry.go",
+      "sha256": "4553a7bdc9b45bf6aab6a38952ad31a88ecfe94ed701a29710f7145d635a46fa"
+    },
+    {
+      "path": "port/support/rustindexmap/indexed_oracle_test.go",
+      "sha256": "b53c70f89015b0002d855310c7e09425a38740dc3b01a809ea910a2a71812f52"
+    },
+    {
       "path": "port/support/rustindexmap/inner.go",
       "sha256": "47e5313e215e3398303e73483df9b1d28f6bd5e29fd2f82eef7111748b944e5a"
     },
@@ -312,6 +332,14 @@
     {
       "path": "port/support/rustindexmap/owned_oracle_test.go",
       "sha256": "f4c9a8226c0c6e23c4b8c6ec3b5d5fe611ba59d283021d2119149f0fe962ff05"
+    },
+    {
+      "path": "port/support/rustindexmap/position.go",
+      "sha256": "a6fa50f0081d5410f2022b1610543fed3826435451ea0c27299f2b162d2574d3"
+    },
+    {
+      "path": "port/support/rustindexmap/position_oracle_test.go",
+      "sha256": "b2f29fd73c5dfbefec2fe2cd75f355bee1cfc0f514c495695c44b9bd53d2e3e1"
     },
     {
       "path": "port/support/rustindexmap/processing_guard_test.go",
