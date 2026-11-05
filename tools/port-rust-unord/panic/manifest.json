@@ -97,7 +97,7 @@
   "sdk_helper_sha256": "d82aaaaf1c7849c1418345f61e617fa68c3445470cddbd859f0906fc39f5363c",
   "go_sources": {
     "port/support/rustfmt/formatter.go": "28143fe2b65b26d9b9aaee9cdf96ac96fcea7b8e404e0787ef1e92ac7fe132f7",
-    "port/support/rustfmt/panic.go": "543d6ed8e0e45e76eda40a4724df00a05f575ba0a8bc00f28e7472a688298bea",
+    "port/support/rustfmt/panic.go": "215086bed1fdc10c547013bc9cd8557434fdd962ca0678fdd2e6bb9994b22fd8",
     "port/support/rusthashmap/entry.go": "b55490821799cbeae591bc1b547915cfa9b1d78c4229f409ba6817398a59ac48",
     "port/support/rusthashmap/extend.go": "a61bb97335386ed368ff7c9c6b85e309de2827ad2eaf02bad648339c568439e0",
     "port/support/rusthashmap/map.go": "91eca9e86aabfcf5210a5d63f3d1ab8952c62e6b01515951011165fcc11dd562",

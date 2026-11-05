@@ -42,6 +42,6 @@ class SourceGuards(unittest.TestCase):
   with patch.dict(os.environ,{'FERRUGO_RUSTC':'.toolchain/rust/bin/rustc'}):
    expected=g.ROOT/'.toolchain/rust/bin/rustc'
    if not expected.exists():self.skipTest('optional local compiler not present')
-   self.assertEqual(g.executable('FERRUGO_RUSTC',pathlib.Path('unused'),'rustc'),str(expected.resolve()))
+   self.assertEqual(g.executable('FERRUGO_RUSTC',pathlib.Path('unused'),'rustc'),str(expected.absolute()))
 
 if __name__=='__main__':unittest.main()

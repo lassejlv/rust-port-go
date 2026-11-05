@@ -45,6 +45,11 @@ type PanicOperations struct {
 	// Locations is caller-owned immutable profile metadata, keyed by semantic
 	// source site IDs. File spellings are supplied verbatim, never normalized.
 	Locations map[string]SourceLocation
+	// LocationCells is the primary borrowed immutable source-cell profile.
+	// Entries retain their actual identity through hook invocation. An explicit
+	// nil entry is authoritative; absent keys fall back to Locations. Callers
+	// preserve these cells and their immutable data for the operation lifetime.
+	LocationCells map[string]*SourceLocation
 }
 
 func WithPanicOperations(context Context, operations *PanicOperations) Context {
@@ -67,13 +72,17 @@ func (c Context) panicOperations() *PanicOperations {
 	return c.Runtime.Panic
 }
 
-// SourcePanicLocation resolves an explicit selected-profile source site. A
-// missing dictionary/site remains honestly unlocated. The returned scalar copy
-// grants no Rust pointer/ABI identity or mutable access to profile metadata.
+// SourcePanicLocation resolves a selected-profile source site. Primary cells
+// preserve identity, including explicit nil. The Locations convenience returns
+// scalar copies and grants no source-cell identity. Missing sites stay nil;
+// neither route infers filenames or grants mutable access to profile metadata.
 func (c Context) SourcePanicLocation(site string) *SourceLocation {
 	ops := c.panicOperations()
 	if ops == nil {
 		return nil
+	}
+	if location, ok := ops.LocationCells[site]; ok {
+		return location
 	}
 	location, ok := ops.Locations[site]
 	if !ok {

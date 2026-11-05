@@ -132,6 +132,7 @@ jobs:
           python3 -m unittest discover -s tools/port-rust-span-encoding -p 'test_*.py'
           python3 tools/port-rust-fingerprint/generate.py --offline --check
           python3 tools/port-rust-fingerprint/decode-metadata/generate.py --offline --check
+          python3 tools/port-rust-indexmap/replace-owned/generate.py --offline --check
           python3 tools/port-rust-fingerprint/hasher-contract/generate.py --offline --check
           python3 tools/port-lexer-debug/generate.py --check
           python3 -m unittest discover -s tools/port-lexer-debug -p 'test_*.py'
@@ -250,7 +251,9 @@ jobs:
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: nightly-2026-11-04
       - name: Compare explicit panic operations with the original runtime
-        run: python3 tools/port-rust-panic-runtime/generate.py --check
+        run: |
+          python3 tools/port-rust-panic-runtime/generate.py --check
+          python3 tools/port-rust-panic-runtime/location-cells/generate.py --check
         env:
           FERRUGO_RUSTC: rustc
           RUSTUP_TOOLCHAIN: nightly-2026-11-04

@@ -348,3 +348,11 @@ The source ledger remains at30 completed top-level files. The compiler's larger 
 - Hosted checkpoints27–29 had passed Linux, macOS and the original-span jobs, then failed the stale Fingerprint manifest hash. Checkpoint30's native string/Unicode comparisons passed, but a tool-selection test used a basename rustup cannot dispatch. The test now preserves rustc's required command name while checking selection through another PATH directory; all12 integrity checks pass.
 
 The source ledger remains at30 completed top-level files. Full Cargo graph acceptance and coherent span/session/hygiene/source-map integration continue. Production Rust compilation remains unfinished.
+
+## 2026-11-05 — checkpoint 32: borrowed locations and assignment ownership
+
+- Added an explicit immutable location-cell profile. Repeated raises can now borrow the same actual cell through the hook; value-map conveniences still return independent copies and missing profiles stay unlocated. The actual SDK matches107 scripts,1,283 hooks and20,635 within-process identity comparisons. Numeric addresses are not compared between languages.
+- Added the scoped live-destination drop-and-replace operation needed by compiler collections. It consumes the replacement, keeps the destination cell and installs the replacement's complete destruction operations after either successful old Drop or catchable old Drop failure. The original Rust assignment and default clone_from match72 cases, including30 real native aborts. Independent isolated Go1.23 race/vet passes.
+- Refreshed all12 lexer/literal comparison bindings and the original panic/component/collection protocols against the new neutral helper. Existing native observations and compressed fixtures remain unchanged. These supporting operations receive no whole standard-library source-file credit.
+
+The source ledger remains at30 completed top-level files. The complete Cargo graph algorithms and original tests have passed independent acceptance; its final shared stdio/capture/locking dependency is still being completed. Full span/session/hygiene/source-map and collection ports continue. Production Rust compilation remains unfinished.

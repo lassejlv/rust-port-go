@@ -24,7 +24,13 @@ filename is substituted. Plain `Context.Panic` is the ordinary opaque,
 unlocated convenience. A nil observer does not claim to reproduce Rust's
 default stderr/backtrace hook.
 
-`PanicOperations.Locations` is an optional caller-owned immutable map from
+`PanicOperations.LocationCells` is the primary caller-owned immutable map of
+actual borrowed location cells. Hook invocations preserve each cell's identity;
+explicit nil entries remain nil. The separate `location-cells/` native proof
+retains107 scripts,1,283 hooks and20,635 within-process identity comparisons.
+No numeric addresses cross the language boundary.
+
+`PanicOperations.Locations` is an optional caller-owned immutable value map from
 component-owned semantic site IDs to actual compiled `SourceLocation` values.
 `Context.SourcePanicLocation` returns nil for missing sites and preserves the
 supplied spelling verbatim. A normal context does not select a logical source

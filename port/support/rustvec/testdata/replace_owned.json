@@ -1,0 +1,5630 @@
+[
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "normal",
+      "Observer": "none",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:none:false",
+      "drop:1:none:false:true",
+      "mut:1001",
+      "local:1:none:false",
+      "field:1:none:false",
+      "caught:false",
+      "state:2:2:true",
+      "drop:2:none:false:false",
+      "mut:1002",
+      "local:2:none:false",
+      "field:2:none:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "normal",
+      "Observer": "none",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:none:false",
+      "drop:1:none:false:true",
+      "mut:1001",
+      "local:1:none:true",
+      "field:1:none:true",
+      "caught:true",
+      "state:2:2:true",
+      "drop:2:none:false:false",
+      "mut:1002",
+      "local:2:none:false",
+      "field:2:none:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "normal",
+      "Observer": "none",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:none:false",
+      "drop:1:none:false:true",
+      "mut:1001",
+      "local:1:none:false",
+      "field:1:none:false",
+      "caught:true",
+      "state:2:2:true",
+      "drop:2:none:false:false",
+      "mut:1002",
+      "local:2:none:false",
+      "field:2:none:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "normal",
+      "Observer": "none",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      "enter:none:false",
+      "drop:1:none:false:true",
+      "mut:1001",
+      "local:1:none:true",
+      "field:1:none:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "normal",
+      "Observer": "A",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:A:false",
+      "drop:1:A:false:true",
+      "mut:1001",
+      "local:1:A:false",
+      "field:1:A:false",
+      "caught:false",
+      "state:2:2:true",
+      "drop:2:A:false:false",
+      "mut:1002",
+      "local:2:A:false",
+      "field:2:A:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "normal",
+      "Observer": "A",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:A:false",
+      "drop:1:A:false:true",
+      "mut:1001",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 347,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 13
+        },
+        "Payload": "body"
+      },
+      "local:1:A:true",
+      "field:1:A:true",
+      "caught:true",
+      "state:2:2:true",
+      "drop:2:A:false:false",
+      "mut:1002",
+      "local:2:A:false",
+      "field:2:A:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "normal",
+      "Observer": "A",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:A:false",
+      "drop:1:A:false:true",
+      "mut:1001",
+      "local:1:A:false",
+      "field:1:A:false",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 192,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 10
+        },
+        "Payload": "field"
+      },
+      "caught:true",
+      "state:2:2:true",
+      "drop:2:A:false:false",
+      "mut:1002",
+      "local:2:A:false",
+      "field:2:A:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "normal",
+      "Observer": "A",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      "enter:A:false",
+      "drop:1:A:false:true",
+      "mut:1001",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 347,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 13
+        },
+        "Payload": "body"
+      },
+      "local:1:A:true",
+      "field:1:A:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 192,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 10
+        },
+        "Payload": "field"
+      },
+      {
+        "CanUnwind": false,
+        "ForceNoBacktrace": true,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 5,
+          "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+          "Line": 233
+        },
+        "Payload": "panic in a destructor during cleanup"
+      }
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "normal",
+      "Observer": "B",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:B:false",
+      "drop:1:B:false:true",
+      "mut:1001",
+      "local:1:B:false",
+      "field:1:B:false",
+      "caught:false",
+      "state:2:2:true",
+      "drop:2:B:false:false",
+      "mut:1002",
+      "local:2:B:false",
+      "field:2:B:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "normal",
+      "Observer": "B",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:B:false",
+      "drop:1:B:false:true",
+      "mut:1001",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 347,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 13
+        },
+        "Payload": "body"
+      },
+      "local:1:B:true",
+      "field:1:B:true",
+      "caught:true",
+      "state:2:2:true",
+      "drop:2:B:false:false",
+      "mut:1002",
+      "local:2:B:false",
+      "field:2:B:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "normal",
+      "Observer": "B",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:B:false",
+      "drop:1:B:false:true",
+      "mut:1001",
+      "local:1:B:false",
+      "field:1:B:false",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 192,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 10
+        },
+        "Payload": "field"
+      },
+      "caught:true",
+      "state:2:2:true",
+      "drop:2:B:false:false",
+      "mut:1002",
+      "local:2:B:false",
+      "field:2:B:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "normal",
+      "Observer": "B",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      "enter:B:false",
+      "drop:1:B:false:true",
+      "mut:1001",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 347,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 13
+        },
+        "Payload": "body"
+      },
+      "local:1:B:true",
+      "field:1:B:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 192,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 10
+        },
+        "Payload": "field"
+      },
+      {
+        "CanUnwind": false,
+        "ForceNoBacktrace": true,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 5,
+          "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+          "Line": 233
+        },
+        "Payload": "panic in a destructor during cleanup"
+      }
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "inherited",
+      "Observer": "none",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:none:true",
+      "drop:1:none:true:true",
+      "mut:1001",
+      "local:1:none:true",
+      "field:1:none:true",
+      "caught:false",
+      "state:2:2:true",
+      "drop:2:none:true:false",
+      "mut:1002",
+      "local:2:none:true",
+      "field:2:none:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "inherited",
+      "Observer": "none",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:none:true",
+      "drop:1:none:true:true",
+      "mut:1001",
+      "local:1:none:true",
+      "field:1:none:true",
+      "caught:true",
+      "state:2:2:true",
+      "drop:2:none:true:false",
+      "mut:1002",
+      "local:2:none:true",
+      "field:2:none:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "inherited",
+      "Observer": "none",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:none:true",
+      "drop:1:none:true:true",
+      "mut:1001",
+      "local:1:none:true",
+      "field:1:none:true",
+      "caught:true",
+      "state:2:2:true",
+      "drop:2:none:true:false",
+      "mut:1002",
+      "local:2:none:true",
+      "field:2:none:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "inherited",
+      "Observer": "none",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      "enter:none:true",
+      "drop:1:none:true:true",
+      "mut:1001",
+      "local:1:none:true",
+      "field:1:none:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "inherited",
+      "Observer": "A",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 102,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:A:true",
+      "drop:1:A:true:true",
+      "mut:1001",
+      "local:1:A:true",
+      "field:1:A:true",
+      "caught:false",
+      "state:2:2:true",
+      "drop:2:A:true:false",
+      "mut:1002",
+      "local:2:A:true",
+      "field:2:A:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "inherited",
+      "Observer": "A",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 102,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:A:true",
+      "drop:1:A:true:true",
+      "mut:1001",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 347,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 13
+        },
+        "Payload": "body"
+      },
+      "local:1:A:true",
+      "field:1:A:true",
+      "caught:true",
+      "state:2:2:true",
+      "drop:2:A:true:false",
+      "mut:1002",
+      "local:2:A:true",
+      "field:2:A:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "inherited",
+      "Observer": "A",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 102,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:A:true",
+      "drop:1:A:true:true",
+      "mut:1001",
+      "local:1:A:true",
+      "field:1:A:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 192,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 10
+        },
+        "Payload": "field"
+      },
+      "caught:true",
+      "state:2:2:true",
+      "drop:2:A:true:false",
+      "mut:1002",
+      "local:2:A:true",
+      "field:2:A:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "inherited",
+      "Observer": "A",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 102,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:A:true",
+      "drop:1:A:true:true",
+      "mut:1001",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 347,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 13
+        },
+        "Payload": "body"
+      },
+      "local:1:A:true",
+      "field:1:A:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 192,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 10
+        },
+        "Payload": "field"
+      },
+      {
+        "CanUnwind": false,
+        "ForceNoBacktrace": true,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 5,
+          "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+          "Line": 233
+        },
+        "Payload": "panic in a destructor during cleanup"
+      }
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "inherited",
+      "Observer": "B",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 102,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:B:true",
+      "drop:1:B:true:true",
+      "mut:1001",
+      "local:1:B:true",
+      "field:1:B:true",
+      "caught:false",
+      "state:2:2:true",
+      "drop:2:B:true:false",
+      "mut:1002",
+      "local:2:B:true",
+      "field:2:B:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "inherited",
+      "Observer": "B",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 102,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:B:true",
+      "drop:1:B:true:true",
+      "mut:1001",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 347,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 13
+        },
+        "Payload": "body"
+      },
+      "local:1:B:true",
+      "field:1:B:true",
+      "caught:true",
+      "state:2:2:true",
+      "drop:2:B:true:false",
+      "mut:1002",
+      "local:2:B:true",
+      "field:2:B:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "inherited",
+      "Observer": "B",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 102,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:B:true",
+      "drop:1:B:true:true",
+      "mut:1001",
+      "local:1:B:true",
+      "field:1:B:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 192,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 10
+        },
+        "Payload": "field"
+      },
+      "caught:true",
+      "state:2:2:true",
+      "drop:2:B:true:false",
+      "mut:1002",
+      "local:2:B:true",
+      "field:2:B:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "inherited",
+      "Observer": "B",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 102,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:B:true",
+      "drop:1:B:true:true",
+      "mut:1001",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 347,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 13
+        },
+        "Payload": "body"
+      },
+      "local:1:B:true",
+      "field:1:B:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 192,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 10
+        },
+        "Payload": "field"
+      },
+      {
+        "CanUnwind": false,
+        "ForceNoBacktrace": true,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 5,
+          "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+          "Line": 233
+        },
+        "Payload": "panic in a destructor during cleanup"
+      }
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "processing",
+      "Observer": "none",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:none:true",
+      "drop:1:none:true:true",
+      "mut:1001",
+      "local:1:none:true",
+      "field:1:none:true",
+      "caught:false",
+      "state:2:2:true",
+      "drop:2:none:true:false",
+      "mut:1002",
+      "local:2:none:true",
+      "field:2:none:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "processing",
+      "Observer": "none",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      "enter:none:true",
+      "drop:1:none:true:true",
+      "mut:1001"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "processing",
+      "Observer": "none",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      "enter:none:true",
+      "drop:1:none:true:true",
+      "mut:1001",
+      "local:1:none:true",
+      "field:1:none:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "processing",
+      "Observer": "none",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      "enter:none:true",
+      "drop:1:none:true:true",
+      "mut:1001"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "processing",
+      "Observer": "A",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 261,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:A:true",
+      "drop:1:A:true:true",
+      "mut:1001",
+      "local:1:A:true",
+      "field:1:A:true",
+      "caught:false",
+      "state:2:2:true",
+      "drop:2:A:true:false",
+      "mut:1002",
+      "local:2:A:true",
+      "field:2:A:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "processing",
+      "Observer": "A",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 261,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:A:true",
+      "drop:1:A:true:true",
+      "mut:1001"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "processing",
+      "Observer": "A",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 261,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:A:true",
+      "drop:1:A:true:true",
+      "mut:1001",
+      "local:1:A:true",
+      "field:1:A:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "processing",
+      "Observer": "A",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 261,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:A:true",
+      "drop:1:A:true:true",
+      "mut:1001"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "processing",
+      "Observer": "B",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 261,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:B:true",
+      "drop:1:B:true:true",
+      "mut:1001",
+      "local:1:B:true",
+      "field:1:B:true",
+      "caught:false",
+      "state:2:2:true",
+      "drop:2:B:true:false",
+      "mut:1002",
+      "local:2:B:true",
+      "field:2:B:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "processing",
+      "Observer": "B",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 261,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:B:true",
+      "drop:1:B:true:true",
+      "mut:1001"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "processing",
+      "Observer": "B",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 261,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:B:true",
+      "drop:1:B:true:true",
+      "mut:1001",
+      "local:1:B:true",
+      "field:1:B:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "assign",
+      "Context": "processing",
+      "Observer": "B",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 261,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:B:true",
+      "drop:1:B:true:true",
+      "mut:1001"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "normal",
+      "Observer": "none",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:none:false",
+      "clone:2:none:false",
+      "drop:1:none:false:true",
+      "mut:1001",
+      "local:1:none:false",
+      "field:1:none:false",
+      "caught:false",
+      "state:12:12:true",
+      "drop:2:none:false:false",
+      "mut:1002",
+      "local:2:none:false",
+      "field:2:none:false",
+      "drop:12:none:false:false",
+      "mut:1012",
+      "local:12:none:false",
+      "field:12:none:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "normal",
+      "Observer": "none",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:none:false",
+      "clone:2:none:false",
+      "drop:1:none:false:true",
+      "mut:1001",
+      "local:1:none:true",
+      "field:1:none:true",
+      "caught:true",
+      "state:12:12:true",
+      "drop:2:none:false:false",
+      "mut:1002",
+      "local:2:none:false",
+      "field:2:none:false",
+      "drop:12:none:false:false",
+      "mut:1012",
+      "local:12:none:false",
+      "field:12:none:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "normal",
+      "Observer": "none",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:none:false",
+      "clone:2:none:false",
+      "drop:1:none:false:true",
+      "mut:1001",
+      "local:1:none:false",
+      "field:1:none:false",
+      "caught:true",
+      "state:12:12:true",
+      "drop:2:none:false:false",
+      "mut:1002",
+      "local:2:none:false",
+      "field:2:none:false",
+      "drop:12:none:false:false",
+      "mut:1012",
+      "local:12:none:false",
+      "field:12:none:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "normal",
+      "Observer": "none",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      "enter:none:false",
+      "clone:2:none:false",
+      "drop:1:none:false:true",
+      "mut:1001",
+      "local:1:none:true",
+      "field:1:none:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "normal",
+      "Observer": "A",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:A:false",
+      "clone:2:A:false",
+      "drop:1:A:false:true",
+      "mut:1001",
+      "local:1:A:false",
+      "field:1:A:false",
+      "caught:false",
+      "state:12:12:true",
+      "drop:2:A:false:false",
+      "mut:1002",
+      "local:2:A:false",
+      "field:2:A:false",
+      "drop:12:A:false:false",
+      "mut:1012",
+      "local:12:A:false",
+      "field:12:A:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "normal",
+      "Observer": "A",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:A:false",
+      "clone:2:A:false",
+      "drop:1:A:false:true",
+      "mut:1001",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 347,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 13
+        },
+        "Payload": "body"
+      },
+      "local:1:A:true",
+      "field:1:A:true",
+      "caught:true",
+      "state:12:12:true",
+      "drop:2:A:false:false",
+      "mut:1002",
+      "local:2:A:false",
+      "field:2:A:false",
+      "drop:12:A:false:false",
+      "mut:1012",
+      "local:12:A:false",
+      "field:12:A:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "normal",
+      "Observer": "A",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:A:false",
+      "clone:2:A:false",
+      "drop:1:A:false:true",
+      "mut:1001",
+      "local:1:A:false",
+      "field:1:A:false",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 192,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 10
+        },
+        "Payload": "field"
+      },
+      "caught:true",
+      "state:12:12:true",
+      "drop:2:A:false:false",
+      "mut:1002",
+      "local:2:A:false",
+      "field:2:A:false",
+      "drop:12:A:false:false",
+      "mut:1012",
+      "local:12:A:false",
+      "field:12:A:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "normal",
+      "Observer": "A",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      "enter:A:false",
+      "clone:2:A:false",
+      "drop:1:A:false:true",
+      "mut:1001",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 347,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 13
+        },
+        "Payload": "body"
+      },
+      "local:1:A:true",
+      "field:1:A:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 192,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 10
+        },
+        "Payload": "field"
+      },
+      {
+        "CanUnwind": false,
+        "ForceNoBacktrace": true,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 5,
+          "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+          "Line": 233
+        },
+        "Payload": "panic in a destructor during cleanup"
+      }
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "normal",
+      "Observer": "B",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:B:false",
+      "clone:2:B:false",
+      "drop:1:B:false:true",
+      "mut:1001",
+      "local:1:B:false",
+      "field:1:B:false",
+      "caught:false",
+      "state:12:12:true",
+      "drop:2:B:false:false",
+      "mut:1002",
+      "local:2:B:false",
+      "field:2:B:false",
+      "drop:12:B:false:false",
+      "mut:1012",
+      "local:12:B:false",
+      "field:12:B:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "normal",
+      "Observer": "B",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:B:false",
+      "clone:2:B:false",
+      "drop:1:B:false:true",
+      "mut:1001",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 347,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 13
+        },
+        "Payload": "body"
+      },
+      "local:1:B:true",
+      "field:1:B:true",
+      "caught:true",
+      "state:12:12:true",
+      "drop:2:B:false:false",
+      "mut:1002",
+      "local:2:B:false",
+      "field:2:B:false",
+      "drop:12:B:false:false",
+      "mut:1012",
+      "local:12:B:false",
+      "field:12:B:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "normal",
+      "Observer": "B",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:B:false",
+      "clone:2:B:false",
+      "drop:1:B:false:true",
+      "mut:1001",
+      "local:1:B:false",
+      "field:1:B:false",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 192,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 10
+        },
+        "Payload": "field"
+      },
+      "caught:true",
+      "state:12:12:true",
+      "drop:2:B:false:false",
+      "mut:1002",
+      "local:2:B:false",
+      "field:2:B:false",
+      "drop:12:B:false:false",
+      "mut:1012",
+      "local:12:B:false",
+      "field:12:B:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "normal",
+      "Observer": "B",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      "enter:B:false",
+      "clone:2:B:false",
+      "drop:1:B:false:true",
+      "mut:1001",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 347,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 13
+        },
+        "Payload": "body"
+      },
+      "local:1:B:true",
+      "field:1:B:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 192,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 10
+        },
+        "Payload": "field"
+      },
+      {
+        "CanUnwind": false,
+        "ForceNoBacktrace": true,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 5,
+          "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+          "Line": 233
+        },
+        "Payload": "panic in a destructor during cleanup"
+      }
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "inherited",
+      "Observer": "none",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:none:true",
+      "clone:2:none:true",
+      "drop:1:none:true:true",
+      "mut:1001",
+      "local:1:none:true",
+      "field:1:none:true",
+      "caught:false",
+      "state:12:12:true",
+      "drop:2:none:true:false",
+      "mut:1002",
+      "local:2:none:true",
+      "field:2:none:true",
+      "drop:12:none:true:false",
+      "mut:1012",
+      "local:12:none:true",
+      "field:12:none:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "inherited",
+      "Observer": "none",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:none:true",
+      "clone:2:none:true",
+      "drop:1:none:true:true",
+      "mut:1001",
+      "local:1:none:true",
+      "field:1:none:true",
+      "caught:true",
+      "state:12:12:true",
+      "drop:2:none:true:false",
+      "mut:1002",
+      "local:2:none:true",
+      "field:2:none:true",
+      "drop:12:none:true:false",
+      "mut:1012",
+      "local:12:none:true",
+      "field:12:none:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "inherited",
+      "Observer": "none",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:none:true",
+      "clone:2:none:true",
+      "drop:1:none:true:true",
+      "mut:1001",
+      "local:1:none:true",
+      "field:1:none:true",
+      "caught:true",
+      "state:12:12:true",
+      "drop:2:none:true:false",
+      "mut:1002",
+      "local:2:none:true",
+      "field:2:none:true",
+      "drop:12:none:true:false",
+      "mut:1012",
+      "local:12:none:true",
+      "field:12:none:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "inherited",
+      "Observer": "none",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      "enter:none:true",
+      "clone:2:none:true",
+      "drop:1:none:true:true",
+      "mut:1001",
+      "local:1:none:true",
+      "field:1:none:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "inherited",
+      "Observer": "A",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 102,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:A:true",
+      "clone:2:A:true",
+      "drop:1:A:true:true",
+      "mut:1001",
+      "local:1:A:true",
+      "field:1:A:true",
+      "caught:false",
+      "state:12:12:true",
+      "drop:2:A:true:false",
+      "mut:1002",
+      "local:2:A:true",
+      "field:2:A:true",
+      "drop:12:A:true:false",
+      "mut:1012",
+      "local:12:A:true",
+      "field:12:A:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "inherited",
+      "Observer": "A",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 102,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:A:true",
+      "clone:2:A:true",
+      "drop:1:A:true:true",
+      "mut:1001",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 347,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 13
+        },
+        "Payload": "body"
+      },
+      "local:1:A:true",
+      "field:1:A:true",
+      "caught:true",
+      "state:12:12:true",
+      "drop:2:A:true:false",
+      "mut:1002",
+      "local:2:A:true",
+      "field:2:A:true",
+      "drop:12:A:true:false",
+      "mut:1012",
+      "local:12:A:true",
+      "field:12:A:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "inherited",
+      "Observer": "A",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 102,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:A:true",
+      "clone:2:A:true",
+      "drop:1:A:true:true",
+      "mut:1001",
+      "local:1:A:true",
+      "field:1:A:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 192,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 10
+        },
+        "Payload": "field"
+      },
+      "caught:true",
+      "state:12:12:true",
+      "drop:2:A:true:false",
+      "mut:1002",
+      "local:2:A:true",
+      "field:2:A:true",
+      "drop:12:A:true:false",
+      "mut:1012",
+      "local:12:A:true",
+      "field:12:A:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "inherited",
+      "Observer": "A",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 102,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:A:true",
+      "clone:2:A:true",
+      "drop:1:A:true:true",
+      "mut:1001",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 347,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 13
+        },
+        "Payload": "body"
+      },
+      "local:1:A:true",
+      "field:1:A:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 192,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 10
+        },
+        "Payload": "field"
+      },
+      {
+        "CanUnwind": false,
+        "ForceNoBacktrace": true,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 5,
+          "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+          "Line": 233
+        },
+        "Payload": "panic in a destructor during cleanup"
+      }
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "inherited",
+      "Observer": "B",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 102,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:B:true",
+      "clone:2:B:true",
+      "drop:1:B:true:true",
+      "mut:1001",
+      "local:1:B:true",
+      "field:1:B:true",
+      "caught:false",
+      "state:12:12:true",
+      "drop:2:B:true:false",
+      "mut:1002",
+      "local:2:B:true",
+      "field:2:B:true",
+      "drop:12:B:true:false",
+      "mut:1012",
+      "local:12:B:true",
+      "field:12:B:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "inherited",
+      "Observer": "B",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 102,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:B:true",
+      "clone:2:B:true",
+      "drop:1:B:true:true",
+      "mut:1001",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 347,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 13
+        },
+        "Payload": "body"
+      },
+      "local:1:B:true",
+      "field:1:B:true",
+      "caught:true",
+      "state:12:12:true",
+      "drop:2:B:true:false",
+      "mut:1002",
+      "local:2:B:true",
+      "field:2:B:true",
+      "drop:12:B:true:false",
+      "mut:1012",
+      "local:12:B:true",
+      "field:12:B:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "inherited",
+      "Observer": "B",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 102,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:B:true",
+      "clone:2:B:true",
+      "drop:1:B:true:true",
+      "mut:1001",
+      "local:1:B:true",
+      "field:1:B:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 192,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 10
+        },
+        "Payload": "field"
+      },
+      "caught:true",
+      "state:12:12:true",
+      "drop:2:B:true:false",
+      "mut:1002",
+      "local:2:B:true",
+      "field:2:B:true",
+      "drop:12:B:true:false",
+      "mut:1012",
+      "local:12:B:true",
+      "field:12:B:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "inherited",
+      "Observer": "B",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 102,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 102,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:B:true",
+      "clone:2:B:true",
+      "drop:1:B:true:true",
+      "mut:1001",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 347,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 13
+        },
+        "Payload": "body"
+      },
+      "local:1:B:true",
+      "field:1:B:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 192,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 10
+        },
+        "Payload": "field"
+      },
+      {
+        "CanUnwind": false,
+        "ForceNoBacktrace": true,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 5,
+          "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+          "Line": 233
+        },
+        "Payload": "panic in a destructor during cleanup"
+      }
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "processing",
+      "Observer": "none",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:none:true",
+      "clone:2:none:true",
+      "drop:1:none:true:true",
+      "mut:1001",
+      "local:1:none:true",
+      "field:1:none:true",
+      "caught:false",
+      "state:12:12:true",
+      "drop:2:none:true:false",
+      "mut:1002",
+      "local:2:none:true",
+      "field:2:none:true",
+      "drop:12:none:true:false",
+      "mut:1012",
+      "local:12:none:true",
+      "field:12:none:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "processing",
+      "Observer": "none",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      "enter:none:true",
+      "clone:2:none:true",
+      "drop:1:none:true:true",
+      "mut:1001"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "processing",
+      "Observer": "none",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      "enter:none:true",
+      "clone:2:none:true",
+      "drop:1:none:true:true",
+      "mut:1001",
+      "local:1:none:true",
+      "field:1:none:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "processing",
+      "Observer": "none",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      "enter:none:true",
+      "clone:2:none:true",
+      "drop:1:none:true:true",
+      "mut:1001"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "processing",
+      "Observer": "A",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 261,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:A:true",
+      "clone:2:A:true",
+      "drop:1:A:true:true",
+      "mut:1001",
+      "local:1:A:true",
+      "field:1:A:true",
+      "caught:false",
+      "state:12:12:true",
+      "drop:2:A:true:false",
+      "mut:1002",
+      "local:2:A:true",
+      "field:2:A:true",
+      "drop:12:A:true:false",
+      "mut:1012",
+      "local:12:A:true",
+      "field:12:A:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "processing",
+      "Observer": "A",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 261,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:A:true",
+      "clone:2:A:true",
+      "drop:1:A:true:true",
+      "mut:1001"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "processing",
+      "Observer": "A",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 261,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:A:true",
+      "clone:2:A:true",
+      "drop:1:A:true:true",
+      "mut:1001",
+      "local:1:A:true",
+      "field:1:A:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "processing",
+      "Observer": "A",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 261,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:A:true",
+      "clone:2:A:true",
+      "drop:1:A:true:true",
+      "mut:1001"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "processing",
+      "Observer": "B",
+      "Failure": "none",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 261,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:B:true",
+      "clone:2:B:true",
+      "drop:1:B:true:true",
+      "mut:1001",
+      "local:1:B:true",
+      "field:1:B:true",
+      "caught:false",
+      "state:12:12:true",
+      "drop:2:B:true:false",
+      "mut:1002",
+      "local:2:B:true",
+      "field:2:B:true",
+      "drop:12:B:true:false",
+      "mut:1012",
+      "local:12:B:true",
+      "field:12:B:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "processing",
+      "Observer": "B",
+      "Failure": "body",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 261,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:B:true",
+      "clone:2:B:true",
+      "drop:1:B:true:true",
+      "mut:1001"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "processing",
+      "Observer": "B",
+      "Failure": "field",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 261,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:B:true",
+      "clone:2:B:true",
+      "drop:1:B:true:true",
+      "mut:1001",
+      "local:1:B:true",
+      "field:1:B:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone_from",
+      "Context": "processing",
+      "Observer": "B",
+      "Failure": "both",
+      "Infos": {
+        "body": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 347,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 13
+          },
+          "Payload": "body"
+        },
+        "field": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 192,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 10
+          },
+          "Payload": "field"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 261,
+            "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 261,
+          "File": "tools/port-rust-indexmap/replace_owned_oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:B:true",
+      "clone:2:B:true",
+      "drop:1:B:true:true",
+      "mut:1001"
+    ]
+  }
+]
