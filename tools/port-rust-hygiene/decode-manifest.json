@@ -57,6 +57,7 @@
   },
   "support_bindings": {
     "port/support/rustsort/cached.go": "ccbc376acc8b03ec77676811c9d0039fa26e77f2bb08bda62bce8b5845f28abd",
+    "port/support/rustsort/cached_zero_sized.go": "c62b7ebeed35ec36ada9f0bed412d44afe7f5677b5bfe09c36936b99a294f66d",
     "port/support/rustsort/drift.go": "20fb5c73a0d4574799451cc06db2bf2dab27b363dcd577ebac61f6c6f1afe5fa",
     "port/support/rustsort/key_function.go": "c5bc5b6fddc4a839ede57a1bd5df1b09646cb933fba257c6c242e0e47119e572",
     "port/support/rustsort/merge.go": "b5344aaab99fd601572766762d7705da7b392f63af225083307a9cced9c1f475",
