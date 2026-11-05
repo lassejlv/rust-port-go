@@ -131,6 +131,7 @@ jobs:
           python3 tools/port-rust-span-encoding/ambient-debug/generate.py -check
           python3 -m unittest discover -s tools/port-rust-span-encoding -p 'test_*.py'
           python3 tools/port-rust-fingerprint/generate.py --offline --check
+          python3 tools/port-rust-fingerprint/decode-metadata/generate.py --offline --check
           python3 tools/port-rust-fingerprint/hasher-contract/generate.py --offline --check
           python3 tools/port-lexer-debug/generate.py --check
           python3 -m unittest discover -s tools/port-lexer-debug -p 'test_*.py'
@@ -160,6 +161,34 @@ jobs:
           go test -race -tags 'semver_no_std semver_serde' ./port/dependencies/semver/v1_0_28/...
           go test -race -tags rustc_stable_hash_nightly ./port/dependencies/rustc-stable-hash/v0_1_2/...
           go vet -tags 'semver_no_std semver_serde rustc_stable_hash_nightly' ./port/dependencies/...
+  unix-error-reference:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23.x'
+          cache: false
+      - name: Install exact SDK comparison compiler
+        run: rustup toolchain install nightly-2026-11-04 --profile minimal
+      - name: Verify SDK source and compare native host error formatting
+        run: |
+          python3 tools/port-rust-str/prepare.py --fetch
+          python3 tools/port-rust-errno/generate.py --check --go go --rustc rustc --output native-errno.json
+          python3 -m unittest discover -s tools/port-rust-errno -p 'test_*.py'
+          go test -race ./port/support/rusterrno
+          CGO_ENABLED=0 go test ./port/support/rusterrno
+        env:
+          FERRUGO_RUSTC: rustc
+          RUSTUP_TOOLCHAIN: nightly-2026-11-04
+      - uses: actions/upload-artifact@v4
+        with:
+          name: native-errno-${{ matrix.os }}
+          path: native-errno.json
   span-reference:
     runs-on: ubuntu-latest
     steps:

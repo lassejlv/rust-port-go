@@ -1,0 +1,81 @@
+{
+  "actual_aborts": 6,
+  "client_sha256": "c06f18df3bcf176821f1a65b9f6c94def39a7a237caaa2723089ce9648dc90df",
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+  "fixture_sha256": "e623be96970567c2db2365bffe64555e3cb9e82d2303e0ed1834a2a819a6db0d",
+  "go_production_sha256": "8eac712643f1ea86a5093946b0415079b1b0c9797252a1e9f7fdc2808d3a65fa",
+  "go_replay_sha256": "98ded5d05cd12666109353169fcb38bbb56b9f00b725a92a14d7be6e2e04b754",
+  "helpers_sha256": {
+    "generate.py": "945fee83b602f3b652e662a32ee1a2ce1bfa71df67c46039fe9c999d6af7481d"
+  },
+  "location_profile": "Only known Fingerprint reference wrapper path is mapped to original/compiler/...; the oracle repository prefix is stripped. Raw native filenames remain in every hook event. Production locations are caller-supplied and absent by default.",
+  "locations": {
+    "decode-metadata::ambient": {
+      "Column": 14,
+      "File": "tools/port-rust-fingerprint/decode-metadata/oracle.rs",
+      "Line": 27
+    },
+    "rustc_data_structures::Fingerprint::decode.raw_length": {
+      "Column": 68,
+      "File": "original/compiler/rustc_data_structures/src/fingerprint.rs",
+      "Line": 180
+    }
+  },
+  "raw_sha256": "88c7d8fc92a22b62cb5ef407563faa73fd0dbbdf11bfe079e09b87e4d831feb8",
+  "records": 24,
+  "reference_helpers_sha256": {
+    "tools/port-rust-edition/reference-build/prepare.py": "686a2ce150ea86e39634a080152c2736d011ed05afe9aa31b9180a225e3f83b0",
+    "tools/port-rust-fingerprint/reference-build/Cargo.lock": "2b7fe691f88cf16b5f2a82dc972ac424a81f1fcbe59c4e6764b73bb325105bdd",
+    "tools/port-rust-fingerprint/reference-build/Cargo.toml": "38aa9bd2abbf494486d439b6dfae352978e6581edaa4cb4531bd5c3557bbf19f",
+    "tools/port-rust-fingerprint/reference-build/lib.rs": "0d62819aa52bc60c1dd7dc3ee76031651dc9085a1071f4c124a4a2ffd7682c0d",
+    "tools/port-rust-fingerprint/reference-build/prepare.py": "4d0e14a6eba43bbdf3cb3f45419d0b4d4a000d8aee6b1c1b18dd7df93a8bbd8b"
+  },
+  "reference_provenance_sha256": "229e83c4bdfdd6e64044fe3ad0b25bb579f5b48c417999ca8a6357d72ed1d06c",
+  "registry_dependencies": [
+    {
+      "compiled_source_files": 10,
+      "compiled_source_tree_sha256": "fb700687badc6ceb65c40182c729952e0954afcf62a05468c1954e8acfd241b3",
+      "name": "equivalent",
+      "sha256": "877a4ace8713b0bcf2a4e7eec82529c029f1d0619886d18145fea96c3ffe5c0f",
+      "version": "1.0.2"
+    },
+    {
+      "compiled_source_files": 50,
+      "compiled_source_tree_sha256": "bb7c75ab3fa03892e4f001bc2b861b51cb370559fdc583a30d78ea17a8248582",
+      "name": "hashbrown",
+      "sha256": "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a",
+      "version": "0.17.1"
+    },
+    {
+      "compiled_source_files": 42,
+      "compiled_source_tree_sha256": "ee0c75e324cbbd4b81962cbc69a7b32b1f7ab2974fa4a96452d5284e2a8c06d8",
+      "name": "indexmap",
+      "sha256": "d466e9454f08e4a911e14806c24e16fba1b4c121d1ea474396f396069cf949d9",
+      "version": "2.14.0"
+    },
+    {
+      "compiled_source_files": 17,
+      "compiled_source_tree_sha256": "1414a6a2040951f51bdff3dd8d54ad5c46ced2ff5602bc97eb28a6829a7c4005",
+      "name": "rustc-stable-hash",
+      "sha256": "781442f29170c5c93b7185ad559492601acdc71d5bb0706f5868094f45cfcd08",
+      "version": "0.1.2"
+    },
+    {
+      "compiled_source_files": 19,
+      "compiled_source_tree_sha256": "2ade7b56ec3bf0d6df7ce61815fc63ddfe48d2d00bf1ba916342f636e1e8b9d4",
+      "name": "smallvec",
+      "sha256": "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03",
+      "version": "1.15.1"
+    },
+    {
+      "compiled_source_files": 11,
+      "compiled_source_tree_sha256": "4f14cd9449ac0ddbc4244dbe13a7460300d889e8f16cd9cb39b575967369bf60",
+      "name": "thin-vec",
+      "sha256": "d6a4b9ba8738cb4a4f399d37e266becfd475e75eb73425b87a05a2f2039ba63e",
+      "version": "0.2.21"
+    }
+  ],
+  "schema": 1,
+  "scope": "Original complete Fingerprint/PackedFingerprint decode via safe caller-defined Decoder raw-byte override; main55,292-row corpus remains unchanged.",
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179"
+}

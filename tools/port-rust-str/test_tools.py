@@ -44,8 +44,10 @@ class Tools(unittest.TestCase):
  def test_bare_path_selection_preserves_selected_executable(self):
   actual,_=prepare.selected()
   with tempfile.TemporaryDirectory()as directory:
-   entry=Path(directory)/'selected-rustc';entry.symlink_to(actual)
-   with patch.dict(os.environ,{'PATH':directory,'FERRUGO_RUSTC':'selected-rustc'}):
+   # rustup dispatches by argv[0]; a real rustup-installed compiler must keep
+   # its rustc basename even when selected through a different PATH directory.
+   entry=Path(directory)/'rustc';entry.symlink_to(actual)
+   with patch.dict(os.environ,{'PATH':directory,'FERRUGO_RUSTC':'rustc'}):
     selected,version=prepare.selected();self.assertEqual(selected,str(entry));self.assertIn(prepare.COMMIT,version)
  def test_wrong_compiler_rejected(self):
   with patch('prepare.shutil.which',return_value='/selected'),patch('prepare.subprocess.run',return_value=subprocess.CompletedProcess([],0,b'release: wrong\n',b'')):

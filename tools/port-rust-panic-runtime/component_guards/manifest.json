@@ -55,7 +55,7 @@
     "port/rust/compiler/rustc_lexer/src/callback_owned.go": "19cf5fa724577f6dcaa386969fa2cd5e8ba27174596ade85495e798762519677",
     "port/rust/compiler/rustc_lexer/src/tokenizer.go": "afc2802b4811ffc016f1ab9a2d4995a737c4ed5fc6089d17cf00a435399a756a",
     "port/dependencies/rustc-literal-escaper/v0_0_8/src/callback_owned.go": "9a0bf291822878d69726e6ec3c921b912b12a7f821806f27d7124784515d0b50",
-    "port/rust/compiler/rustc_data_structures/src/fingerprint.go": "9be79f436ca967a83cceff4b9def6d8411cc7b2392707e82d526198f03578b13",
+    "port/rust/compiler/rustc_data_structures/src/fingerprint.go": "8eac712643f1ea86a5093946b0415079b1b0c9797252a1e9f7fdc2808d3a65fa",
     "port/rust/compiler/rustc_data_structures/src/stable_hash_context.go": "41f60495c9f034b45b3fedff5bcbcc6040c46ef1d166be426885a880694bf75b",
     "port/rust/compiler/rustc_lexer/src/profile.go": "19ccc25c39f7370d148fc57715c54b86331f2b5c6e76accff8116d9bf1f2bdc0",
     "port/rust/compiler/rustc_data_structures/src/binary_search_util/owned.go": "a8e9c52c1a78b877033be8879706531a1c601f90fa9743470f3c61d05b644aa3",

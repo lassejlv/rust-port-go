@@ -1,0 +1,28 @@
+{
+  "archive_sha256": "d99600cbf56d2db40112095e99e138f9e2f30002ef2774d288dc525e28a1357c",
+  "archive_url": "https://static.rust-lang.org/dist/2026-11-04/rust-src-nightly.tar.xz",
+  "compiler_commit": "708c94ef093ecc42fb8851e17d8383d999727abc",
+  "licenses": {
+    "COPYRIGHT": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af",
+    "LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "LICENSE-MIT": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1"
+  },
+  "manifest_sha256": "3740867978321544cb6ab736d104730a951d0b6aeda69866118765ec073f823e",
+  "retained_license_location": "port/support/ruststr (unchanged official SDK license bytes)",
+  "schema": 1,
+  "scope": "Scoped SDK Unix format_error/CStr display only; no whole std/libc source-file credit",
+  "sources": {
+    "library/core/src/byte_str/mod.rs": {
+      "bytes": 13705,
+      "sha256": "b226ca9d3d6610301e05d7789bb657eaa6831949d3861b18dc83b0faf02dd269"
+    },
+    "library/core/src/ffi/c_str.rs": {
+      "bytes": 33273,
+      "sha256": "ab103d9679d4af28cc60eba4612a50a7f53f090db33c9f860051bc97a228382d"
+    },
+    "library/std/src/sys/io/error/unix.rs": {
+      "bytes": 6811,
+      "sha256": "ac08e50966bc90b0c9e255a304b2ac4743dfacde7f9591443f737cbeb1e0857a"
+    }
+  }
+}

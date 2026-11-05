@@ -905,7 +905,7 @@
     }
   ],
   "source_test_go_target": "port/rust/compiler/rustc_data_structures/src/fingerprint/tests_test.go",
-  "go_owned_component_sha256": "fd3a1836bba6df3b63404a4167705abc55e080ae25809cffc2238842478454b6",
+  "go_owned_component_sha256": "8eac712643f1ea86a5093946b0415079b1b0c9797252a1e9f7fdc2808d3a65fa",
   "go_tests": [
     {
       "path": "port/rust/compiler/rustc_data_structures/src/fingerprint/tests_test.go",

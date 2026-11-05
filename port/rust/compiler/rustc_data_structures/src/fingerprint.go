@@ -214,10 +214,15 @@ func (value Fingerprint) Encode(encoder FingerprintEncoder) {
 func DecodeFingerprint(decoder FingerprintDecoder) Fingerprint {
 	return DecodeFingerprintWithContext(FingerprintDropContext{}, decoder)
 }
+
+// The actual selected source profile supplies the decode unwrap's location;
+// no filename or Go caller coordinates are inferred by this used contract.
+const FingerprintDecodeLengthPanicSite = "rustc_data_structures::Fingerprint::decode.raw_length"
+
 func DecodeFingerprintWithContext(context FingerprintDropContext, decoder FingerprintDecoder) Fingerprint {
 	bytes := decoder.ReadRawBytes(16)
 	if len(bytes) != 16 {
-		context.Panic("called `Result::unwrap()` on an `Err` value: TryFromSliceError(())")
+		context.PanicAt(rustfmt.SourcePanicInfo{Payload: "called `Result::unwrap()` on an `Err` value: TryFromSliceError(())", Kind: rustfmt.PanicOwnedString, CanUnwind: true, Location: context.SourcePanicLocation(FingerprintDecodeLengthPanicSite)})
 	}
 	var array [16]byte
 	copy(array[:], bytes)

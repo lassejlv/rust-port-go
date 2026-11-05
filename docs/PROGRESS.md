@@ -339,3 +339,12 @@ The ledger remains at30 completed top-level source files. This additive ownershi
 - Isolated minimum-Go formatter/string race checks pass (46.164s/4.841s), along with fresh native regeneration and SDK/source integrity checks. All12 lexer/literal scopes and the literal dependency's complete scalar trace regenerate with unchanged raw and compressed fixture bytes; their helper bindings are refreshed.
 
 The source ledger remains at30 completed top-level files. The compiler's larger span/source-map/hygiene group now consumes these exact operations; full Cargo graph validation is also ready for independent acceptance. Production Rust compilation remains unfinished.
+
+## 2026-11-05 — checkpoint 31: native Unix errors and retained panic metadata
+
+- Added the scoped SDK Unix error formatter: actual XSI strerror_r, the source's zeroed128-byte buffer/negative-result rule and exact lossy CStr writer chunks. No Go errno table or inferred capitalization supplies Rust error text. Explicit bindings support builds without cgo; this gives no whole std/libc file credit.
+- The standalone actual-SDK comparison passes84,123 errno/CStr requests, including all non-NUL one/two-byte strings, seeded longer invalid UTF-8 and fallible writer calls. Isolated Go1.23 race/vet and no-cgo execution pass;386 is compile-only. New independent Linux/macOS jobs compare each host's real Rust std and libc and retain host reports.
+- Corrected Fingerprint's safe custom-decoder short-slice panic to retain the actual owned-string kind and optional selected-source location. A separate unchanged-source client retains24 normal/inherited/processing records and6 real aborts for both packed and unpacked decodes. The original55,292-row fixture and36 native abort cases regenerate unchanged, as do all182 integrated component records/107 native aborts. Refreshed their production bindings after the earlier cleanup-runtime integration.
+- Hosted checkpoints27–29 had passed Linux, macOS and the original-span jobs, then failed the stale Fingerprint manifest hash. Checkpoint30's native string/Unicode comparisons passed, but a tool-selection test used a basename rustup cannot dispatch. The test now preserves rustc's required command name while checking selection through another PATH directory; all12 integrity checks pass.
+
+The source ledger remains at30 completed top-level files. Full Cargo graph acceptance and coherent span/session/hygiene/source-map integration continue. Production Rust compilation remains unfinished.
