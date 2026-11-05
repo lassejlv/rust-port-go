@@ -19,7 +19,7 @@ jobs:
           go-version: '1.23.x'
           cache: false
       - run: go vet ./...
-      - run: go test -race ./...
+      - run: go test -race -timeout 30m ./...
       - run: make demo
       - name: Install Rust comparison toolchain
         run: |
@@ -96,7 +96,15 @@ jobs:
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: 1.99.1
       - name: Compare Cargo graph with original debug and release builds
-        run: go run ./tools/port-cargo-graph -check
+        run: |
+          go run ./tools/port-cargo-graph -check
+          python3 tools/port-cargo-graph/contracts/generate_errno.py --check
+          python3 tools/port-cargo-graph/contracts/generate_stdio.py --offline --check
+          python3 tools/port-cargo-graph/contracts/generate_owned.py --check
+          python3 tools/port-cargo-graph/contracts/generate_equality.py --check
+          python3 tools/port-cargo-graph/contracts/audit.py --check
+          python3 tools/port-rust-str/prepare.py --fetch
+          python3 tools/port-cargo-graph/contracts/audit_sort_sources.py --fetch --check
         env:
           FERRUGO_CARGO: cargo
           FERRUGO_RUSTC: rustc
@@ -257,6 +265,11 @@ jobs:
         env:
           FERRUGO_RUSTC: rustc
           RUSTUP_TOOLCHAIN: nightly-2026-11-04
+      - name: Compare scoped stderr runtime against both exact SDKs
+        run: |
+          export FERRUGO_STDIO_RUSTC_199="$FERRUGO_RUSTC" FERRUGO_STDIO_RUSTC_1101="$FERRUGO_RUSTC_NIGHTLY"
+          python3 tools/port-rust-stdio/generate.py --rustc-199 "$FERRUGO_RUSTC" --rustc-1101 "$FERRUGO_RUSTC_NIGHTLY" --check
+          python3 -m unittest discover -s tools/port-rust-stdio -p 'test_*.py'
       - name: Compare original component cleanup and current runtime scopes
         run: |
           python3 -m unittest discover -s tools/port-rust-panic-runtime/component_guards -p 'test_*.py'

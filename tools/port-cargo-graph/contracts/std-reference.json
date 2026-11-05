@@ -1,0 +1,83 @@
+{
+  "reference_only": true,
+  "compiler_commit": "58cf8f9c35b355199727627d07ae34a4e2846d67",
+  "sources": [
+    {
+      "path": "library/alloc/src/collections/btree/append.rs",
+      "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/append.rs",
+      "sha256": "15098cde20e056970ae44911df9dbbcd290ebb2f6cc18751b9bed9006aff54fc",
+      "git_blob": "cc8d793e98e4d64afb10df3611da2bab5e44d22e",
+      "bytes": 2697
+    },
+    {
+      "path": "library/alloc/src/collections/btree/borrow.rs",
+      "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/borrow.rs",
+      "sha256": "ad6a86684e01895df92fbfd6f9c4ac69182f19bcaf926a79a579014c14e4b33f",
+      "git_blob": "e848ac3f2d1925c854f684cc85b27b1c078a05be",
+      "bytes": 2958
+    },
+    {
+      "path": "library/alloc/src/collections/btree/dedup_sorted_iter.rs",
+      "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/dedup_sorted_iter.rs",
+      "sha256": "cf3228e4287fe8e544494cb50819ace515f9b480fa6f3011f7b3abfe69b15a86",
+      "git_blob": "6bcf0bca519af49a21700c521b8b85db5a4b71ea",
+      "bytes": 1154
+    },
+    {
+      "path": "library/alloc/src/collections/btree/fix.rs",
+      "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/fix.rs",
+      "sha256": "690f95d7744400ef22f3ef23947d671c838944de0b8c9cb031455fe8efd0d71c",
+      "git_blob": "b0c67597946917ee33680979bf1d89198df9043a",
+      "bytes": 7457
+    },
+    {
+      "path": "library/alloc/src/collections/btree/map/entry.rs",
+      "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/map/entry.rs",
+      "sha256": "7b312d09e6d1b8321c2c1e4273f8dcd095de7f2e39b1f8245d663bc3fc7dad79",
+      "git_blob": "1c2ad5c568e6a488a94c934e7a64c61147cd8f1d",
+      "bytes": 22273
+    },
+    {
+      "path": "library/alloc/src/collections/btree/map.rs",
+      "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/map.rs",
+      "sha256": "2ce3f3468c9686421c216a74b38211fefdfe506c794b3c350bbf69ce3fb71a19",
+      "git_blob": "0a1f7738632c197625dae4c62e1f344b0212d9bd",
+      "bytes": 129492
+    },
+    {
+      "path": "library/alloc/src/collections/btree/navigate.rs",
+      "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/navigate.rs",
+      "sha256": "930d1f8c072be5456a9aab02b6ab7f5f620151e0e280db896ef6654cb3ab53f8",
+      "git_blob": "b2a7de74875d9fc50420b7c6461907294903a13d",
+      "bytes": 30171
+    },
+    {
+      "path": "library/alloc/src/collections/btree/node.rs",
+      "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/node.rs",
+      "sha256": "2200ca0a4fe38592c314dc7f5f40bbb160e06b6f9e4abd1eb5bc40701540ab25",
+      "git_blob": "84dd4b7e49def6126f665e62df59f7902b62413c",
+      "bytes": 79123
+    },
+    {
+      "path": "library/alloc/src/collections/btree/remove.rs",
+      "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/remove.rs",
+      "sha256": "498bdc571e9a3426a24fd33131a087e57c900194c4dcc6cfa2cf5c0fa388fa68",
+      "git_blob": "9d870b86f34a0ec15eb2728680014a2ec4d56d33",
+      "bytes": 4841
+    },
+    {
+      "path": "library/alloc/src/collections/btree/search.rs",
+      "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/search.rs",
+      "sha256": "687b99a6f5f146591738c8039371499d5c5ca9adfdb47b9519694aba62387021",
+      "git_blob": "96e5bf108024b66b22d94b17f3fd46455e589c1a",
+      "bytes": 10822
+    },
+    {
+      "path": "library/alloc/src/collections/btree/set.rs",
+      "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/set.rs",
+      "sha256": "a7be8e5e576fac0975d0af0f24407ddd709751820bbb1f5059d55f08414a4888",
+      "git_blob": "2a483b3d3982ebe03238a4fe8a35a1fa5fc7e94f",
+      "bytes": 83670
+    }
+  ]
+}

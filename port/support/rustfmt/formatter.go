@@ -42,6 +42,9 @@ func DefaultOptions() Options { return Options{Fill: ' '} }
 type RuntimeMetadata struct {
 	Value any
 	Panic *PanicOperations
+	// Profiles borrows immutable selected-build metadata independently of the
+	// current runtime payload and panic operations. Components use named keys.
+	Profiles map[string]any
 }
 type Context struct {
 	Unwinding, ProcessingPanic bool

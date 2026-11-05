@@ -6,7 +6,7 @@
   "prototype_sha256": "9b0d5bb2d8e45012b263a3ed1e37bd412fb52ff1a6c5d58d8df4ec5afb652a9d",
   "generator_sha256": "6869022bcb471e56567cbb9359a52d08773b03020efeef77ab46d2e96a68fb5a",
   "go_bindings": {
-    "port/support/rustfmt/formatter.go": "28143fe2b65b26d9b9aaee9cdf96ac96fcea7b8e404e0787ef1e92ac7fe132f7",
+    "port/support/rustfmt/formatter.go": "98b68bed6b04e1337db3b5b7424ffa3b0f8a14f6513cf0995d3599547724411d",
     "port/support/rustfmt/panic.go": "215086bed1fdc10c547013bc9cd8557434fdd962ca0678fdd2e6bb9994b22fd8",
     "port/support/rustfmt/panic_test.go": "35e505d2cb781262dde6ec09441b3a1a4e4cfbfda15d30b64b245ccc3d1177f7"
   },

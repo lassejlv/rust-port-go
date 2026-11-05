@@ -1,0 +1,219 @@
+{
+  "format": 1,
+  "cargo_revision": "24de4721844c7a4d839072bab6fb66d41c9bc1f4",
+  "source": {
+    "path": "src/util/graph.rs",
+    "git_blob": "74cdc51a0c36f21ce64f291540be571c05b12d63",
+    "sha256": "238123cc4c8300921008db5bcec1bbdf0946a023e0acafe9997e6917b5fada51",
+    "lines": 303,
+    "bytes": 8926
+  },
+  "primary_targets": [
+    {
+      "path": "port/cargo/src/util/graph.go",
+      "sha256": "e4627accc01ba1d6613e5e8154ce875a9dca38c606a5ee5aea94bc5dc9230d4d"
+    },
+    {
+      "path": "port/cargo/src/util/graph_owned.go",
+      "sha256": "099a8044eb38916924f9bfb0ec2affc5219a42d0cf4942a2cc026835ea34d3f8"
+    },
+    {
+      "path": "port/cargo/src/util/graph_owned_traversal.go",
+      "sha256": "e8c28a657fea0ba7fb2b61df6b8285a1be8107527a29ffb3acca9f5aa44f9958"
+    },
+    {
+      "path": "port/cargo/src/util/graph_btree.go",
+      "sha256": "12d98c36576091c022869ff315315eb410a36411ab73af9f627a52c82a382a99"
+    }
+  ],
+  "method_mapping": {
+    "Graph<N,E>": "OwnedGraph[N,E]",
+    "new/default": "NewOwnedGraph[WithConfig]",
+    "add": "Add[WithContext] consumed N",
+    "link": "Link[WithContext] consumed N,N ->GraphEdgeMut[E]",
+    "reversed": "Reversed[WithContext], RHS E clone before LHS key clones/default/assignment",
+    "contains<Borrow<Q>>": "Contains[WithContext]/OwnedGraphContainsBorrowed",
+    "edge": "Edge[WithContext] shared actual E",
+    "edges": "Edges[WithContext] eager lookup +lazy borrowed GraphEdgesIter",
+    "sort/sort_inner_visit": "Sort[WithContext] ->GraphOwnedNodes with actual N ownership, std BTree marks and return-place cleanup",
+    "iter/len": "Iter[WithContext]/Len; exact size hints and source iterator comparison order",
+    "is_path_from_to": "IsPathFromTo[WithContext], std BTreeSet shared keys",
+    "path_to_bottom/path_to_top/private path_to": "PathToBottom/Top[WithContext], actual query/graph cells and std BTreeMap backlinks",
+    "fmt::Debug": "WriteDebugFormatter, borrowed DisplayNode and fallible writer/character calls",
+    "print_for_test cfg(debug_assertions)": "private printOwnedForTest, actual stable PartialOrd::lt sort and overridden Ne dedup, last equal reference retained",
+    "PartialEq/Eq": "Equal[WithContext], lazy persistent DiffIter with shared subtree skips",
+    "Clone/Clone::clone_from default": "Clone/CloneFrom[WithContext], Rc sharing and assignment cleanup",
+    "implicit field Drop": "Close[WithContext] owned tree/value destructors"
+  },
+  "original_tests": {
+    "declaration_order": [
+      "path_to_case",
+      "path_to_self",
+      "reverse"
+    ],
+    "mapped_go_declarations": [
+      "TestGraphUpstreamPathToCase",
+      "TestGraphUpstreamPathToSelf",
+      "TestGraphUpstreamReverse"
+    ],
+    "mapped_target": {
+      "path": "port/cargo/src/util/graph_test.go",
+      "sha256": "090f77ba424a1c6971223ebec8dafa983f8a0ac6ee2fdded8ec1792d4988b63d"
+    },
+    "primary_replay": {
+      "path": "port/cargo/src/util/graph_owned_oracle_test.go",
+      "sha256": "50e3ba8b62689b7759e87bf51b355202d9da104fe9aea8336194d32547080af6"
+    },
+    "upstream_tests_per_native_profile": 3,
+    "extra_upstream_declaration_credit": 0
+  },
+  "contract_tests": {
+    "path": "port/cargo/src/util/graph_owned_contract_test.go",
+    "sha256": "72fc9d652fe89adf65b03a226bf89c2b05f6780a9b6fa1b3fb395771505c96dc"
+  },
+  "native_evidence": {
+    "path": "tools/port-cargo-graph/contracts/owned-validation.json",
+    "sha256": "1df4438ec9e95c7790b45db12955514d96b5e46da058c0ba7a2fed9e6baabd65"
+  },
+  "native_observations": 66302,
+  "profiles": [
+    {
+      "name": "d0o0",
+      "debug_assertions": false,
+      "overflow_checks": false,
+      "opt_level": 0,
+      "original_tests_passed": 3,
+      "has_specialisation": false,
+      "records": 16098,
+      "aborts": 2437
+    },
+    {
+      "name": "d0o1",
+      "debug_assertions": false,
+      "overflow_checks": true,
+      "opt_level": 0,
+      "original_tests_passed": 3,
+      "has_specialisation": false,
+      "records": 16098,
+      "aborts": 2437
+    },
+    {
+      "name": "d1o0",
+      "debug_assertions": true,
+      "overflow_checks": false,
+      "opt_level": 0,
+      "original_tests_passed": 3,
+      "has_specialisation": false,
+      "records": 17053,
+      "aborts": 2525
+    },
+    {
+      "name": "d1o1",
+      "debug_assertions": true,
+      "overflow_checks": true,
+      "opt_level": 0,
+      "original_tests_passed": 3,
+      "has_specialisation": false,
+      "records": 17053,
+      "aborts": 2525
+    }
+  ],
+  "partial_dependency_inventory": {
+    "path": "port/dependencies/im-rc/v15_1_0/source-manifest.json",
+    "sha256": "8c3b9ca2b4c70f6a90fa22f17c650136932e653b6d38962e99d73cf9631fdfb3"
+  },
+  "partial_std_reference": {
+    "reference_only": true,
+    "compiler_commit": "58cf8f9c35b355199727627d07ae34a4e2846d67",
+    "sources": [
+      {
+        "path": "library/alloc/src/collections/btree/append.rs",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/append.rs",
+        "sha256": "15098cde20e056970ae44911df9dbbcd290ebb2f6cc18751b9bed9006aff54fc",
+        "git_blob": "cc8d793e98e4d64afb10df3611da2bab5e44d22e",
+        "bytes": 2697
+      },
+      {
+        "path": "library/alloc/src/collections/btree/borrow.rs",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/borrow.rs",
+        "sha256": "ad6a86684e01895df92fbfd6f9c4ac69182f19bcaf926a79a579014c14e4b33f",
+        "git_blob": "e848ac3f2d1925c854f684cc85b27b1c078a05be",
+        "bytes": 2958
+      },
+      {
+        "path": "library/alloc/src/collections/btree/dedup_sorted_iter.rs",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/dedup_sorted_iter.rs",
+        "sha256": "cf3228e4287fe8e544494cb50819ace515f9b480fa6f3011f7b3abfe69b15a86",
+        "git_blob": "6bcf0bca519af49a21700c521b8b85db5a4b71ea",
+        "bytes": 1154
+      },
+      {
+        "path": "library/alloc/src/collections/btree/fix.rs",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/fix.rs",
+        "sha256": "690f95d7744400ef22f3ef23947d671c838944de0b8c9cb031455fe8efd0d71c",
+        "git_blob": "b0c67597946917ee33680979bf1d89198df9043a",
+        "bytes": 7457
+      },
+      {
+        "path": "library/alloc/src/collections/btree/map/entry.rs",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/map/entry.rs",
+        "sha256": "7b312d09e6d1b8321c2c1e4273f8dcd095de7f2e39b1f8245d663bc3fc7dad79",
+        "git_blob": "1c2ad5c568e6a488a94c934e7a64c61147cd8f1d",
+        "bytes": 22273
+      },
+      {
+        "path": "library/alloc/src/collections/btree/map.rs",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/map.rs",
+        "sha256": "2ce3f3468c9686421c216a74b38211fefdfe506c794b3c350bbf69ce3fb71a19",
+        "git_blob": "0a1f7738632c197625dae4c62e1f344b0212d9bd",
+        "bytes": 129492
+      },
+      {
+        "path": "library/alloc/src/collections/btree/navigate.rs",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/navigate.rs",
+        "sha256": "930d1f8c072be5456a9aab02b6ab7f5f620151e0e280db896ef6654cb3ab53f8",
+        "git_blob": "b2a7de74875d9fc50420b7c6461907294903a13d",
+        "bytes": 30171
+      },
+      {
+        "path": "library/alloc/src/collections/btree/node.rs",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/node.rs",
+        "sha256": "2200ca0a4fe38592c314dc7f5f40bbb160e06b6f9e4abd1eb5bc40701540ab25",
+        "git_blob": "84dd4b7e49def6126f665e62df59f7902b62413c",
+        "bytes": 79123
+      },
+      {
+        "path": "library/alloc/src/collections/btree/remove.rs",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/remove.rs",
+        "sha256": "498bdc571e9a3426a24fd33131a087e57c900194c4dcc6cfa2cf5c0fa388fa68",
+        "git_blob": "9d870b86f34a0ec15eb2728680014a2ec4d56d33",
+        "bytes": 4841
+      },
+      {
+        "path": "library/alloc/src/collections/btree/search.rs",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/search.rs",
+        "sha256": "687b99a6f5f146591738c8039371499d5c5ca9adfdb47b9519694aba62387021",
+        "git_blob": "96e5bf108024b66b22d94b17f3fd46455e589c1a",
+        "bytes": 10822
+      },
+      {
+        "path": "library/alloc/src/collections/btree/set.rs",
+        "url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/collections/btree/set.rs",
+        "sha256": "a7be8e5e576fac0975d0af0f24407ddd709751820bbb1f5059d55f08414a4888",
+        "git_blob": "2a483b3d3982ebe03238a4fe8a35a1fa5fc7e94f",
+        "bytes": 83670
+      }
+    ]
+  },
+  "shared_sort_compatibility": "Pinned1.101 scoped rustsort.Stable, reference layout, compared here against actual1.99.1 std sort; no std source-file credit.",
+  "panic_locations": "Exact profile metadata is supplied through caller-owned PanicOperations.Locations semantic site keys; no Go stack locations or implicit fabricated Rust build filenames.",
+  "source_preconditions": [
+    "Ord/Eq/Clone laws and fixed type dictionaries",
+    "Rc profile is not Send/Sync; operations remain on the valid serialized source owner",
+    "source shared/exclusive borrow and affine ownership rules",
+    "no physical Rust allocator/stack/layout identity claim",
+    "source callback panics can retain partial mutations/leak prepared return places; no rollback guarantee is invented"
+  ],
+  "legacy_value_api": "graph.go/GraphOptions remain effect-free value/trivial-Drop conveniences; all former sorted-slice/eager-clone observations are historical adapter evidence. Full owned/borrowed source contracts use OwnedGraph.",
+  "inventory": "Only parent main ledger controls whole Graph file credit. All im-rc/std support slices stay explicitly partial and excluded from whole-file/project counts."
+}

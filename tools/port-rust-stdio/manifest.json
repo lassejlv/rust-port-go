@@ -1,0 +1,120 @@
+{
+  "schema": 1,
+  "status": "scoped-used-stdio-contract-no-source-file-credit",
+  "sdk_versions": {
+    "1.99": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1\n",
+    "1.101": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5\n"
+  },
+  "sdk_sources": {
+    "1.99": {
+      "archive_url": "https://static.rust-lang.org/dist/2026-10-15/rust-src-1.99.1.tar.xz",
+      "archive_sha256": "e485a88c45db546b73571df7bebfcb4454ba4fb552c492e25fc5b00eeb5bf22d",
+      "files_sha256": {
+        "library/std/src/io/stdio.rs": "1f153042bcb99252db274392242ff825bc51e39c6ccf2dbe080776fb4d894737",
+        "library/core/src/io/write.rs": "a6c344ba3ef0b8d9d0ec8ee85c8b0ece1f1a522a0e0f897e5ee911ffe21234ea",
+        "library/std/src/sync/reentrant_lock.rs": "ade7f5a8328c7e6bdbe301f97ac5cf9d01a08536b145cd5653e68911fc039518",
+        "library/std/src/sync/poison.rs": "4a66d88019ac53f7930459910b803f7195c02a1e05df147d4da51bdb8d4ca2b2",
+        "library/std/src/sync/poison/mutex.rs": "5e45f2804aaee6b2dd24af91b471757cd15010058b03b39b4cbba90809e3fb8c",
+        "library/alloc/src/io/impls.rs": "9a1b8bc5c03150d0c5edb7f7d890c25f244f4b2af2ef5198cbdf1e7e6c282daa",
+        "library/alloc/src/raw_vec/mod.rs": "cda0e96514e65a55b8ed559b02b7bc5f2dcb7854695a501ac0b03b0eeab0361c",
+        "library/alloc/src/vec/mod.rs": "e0c798ff16cf1770ef3266d28440d93dd65402b3afe1df4e184f15af17fb1e3e",
+        "library/alloc/src/vec/spec_extend.rs": "a0816ad0f39b947889771bf06930bf8e0c4ce794846d83863349697ec7c415ec",
+        "library/alloc/src/sync.rs": "b2f806b0f696a181018072625dceed25304aa97dfef6a79bac9800d529afdd0e"
+      }
+    },
+    "1.101": {
+      "archive_url": "https://static.rust-lang.org/dist/2026-11-04/rust-src-nightly.tar.xz",
+      "archive_sha256": "d99600cbf56d2db40112095e99e138f9e2f30002ef2774d288dc525e28a1357c",
+      "files_sha256": {
+        "library/std/src/io/stdio.rs": "51b77ee1e277ac14351170f8fffcf38367e4bff5e5373262ce373e033467dc15",
+        "library/core/src/io/write.rs": "4225cdb4d498d4e05efedf5c9ce69461b77f5c239d595b3a04b06e2a6120642c",
+        "library/std/src/sync/reentrant_lock.rs": "f71bad3a14dbe963409760485ae8acca9c0eb7b09d0181d87543bf7ddb4942b2",
+        "library/std/src/sync/poison.rs": "7da8d1fa66422bdfa7bc26cc164599aec73561f030316039b499b1bce4176274",
+        "library/std/src/sync/poison/mutex.rs": "c1af66573708eab9fa6118f0b47961aec002d785a97bccaf2a03f00bb7fb04d4",
+        "library/alloc/src/io/impls.rs": "f41c183f4b8bd885687e77c606b4f75aa3addc852c01c42689d8548eff7beffc",
+        "library/alloc/src/raw_vec/mod.rs": "b8f2f10976bdcaa9c455c47303d67d2804db323a650ff90ccc26e56cd9b841b1",
+        "library/alloc/src/vec/mod.rs": "c80d5ca8ad48ba974490be2003e057f976830af60186b02346a5bb0fb87b1b00",
+        "library/alloc/src/vec/spec_extend.rs": "0f0b7e6ddc1683192cee8e6f59af2a8455645e911b637fdf57576cf045515f28",
+        "library/alloc/src/sync.rs": "db8204be8473143ee55389510aae033c34daaf6bf5e499ae6dee2eae8ac444be"
+      }
+    }
+  },
+  "records": 178,
+  "actual_native_SIGABRT": 20,
+  "locations": {
+    "1.99": {
+      "format": {
+        "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/io/write.rs",
+        "Line": 411,
+        "Column": 17
+      },
+      "body": {
+        "File": "tools/port-rust-stdio/oracle.rs",
+        "Line": 15,
+        "Column": 21
+      },
+      "outer": {
+        "File": "tools/port-rust-stdio/oracle.rs",
+        "Line": 16,
+        "Column": 22
+      },
+      "io": {
+        "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/io/stdio.rs",
+        "Line": 1168,
+        "Column": 9
+      }
+    },
+    "1.101": {
+      "format": {
+        "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/io/write.rs",
+        "Line": 411,
+        "Column": 17
+      },
+      "body": {
+        "File": "tools/port-rust-stdio/oracle.rs",
+        "Line": 15,
+        "Column": 21
+      },
+      "outer": {
+        "File": "tools/port-rust-stdio/oracle.rs",
+        "Line": 16,
+        "Column": 22
+      },
+      "io": {
+        "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/std/src/io/stdio.rs",
+        "Line": 1162,
+        "Column": 9
+      }
+    }
+  },
+  "request_sha256": "354b778466a142c1e35cbfec526e399d922d9c6169c360989a99e73258f64fa4",
+  "raw_sha256": "273655a35b40208c79af4ee717d9c854eb69051fcdc7ee7783987937f3c5168a",
+  "fixture_sha256": "5f12356b9537dfd6b25f46e9271c7a0150f7c6d3c93a1420c8b513bd7a4e4aae",
+  "inputs_sha256": {
+    "port/support/ruststdio/capture_owner.go": "46a5da665425fb03eb476a10f719441c14a86d1666d28923db4892dc967fc0c1",
+    "port/support/ruststdio/native_unix.go": "99c9883db64e5709159121df146e73ccc63626a18fe2b9cd85c3d50b2b7498e5",
+    "port/support/ruststdio/native_windows.go": "bc05b7565614dae51be4dc2383f5df7bf0dfd5a3eda717e663dbca9ce132170a",
+    "port/support/ruststdio/oracle_test.go": "d999a37b9d784f77448872984da72fe359d7d4e2aff60c10ae9b31c6878171a5",
+    "port/support/ruststdio/stdio.go": "a2303b4c5cd429e157ea8e59049f16b1002f87acfae77de67f4cf497ebe60b73",
+    "port/support/ruststdio/stdio_test.go": "ba14a93c55b91a19d8db1633fdf21653c0bed82de878b78f5f3aaa017e2ad895",
+    "tools/port-rust-stdio/generate.py": "7d03348533bf27b6a8227c7dd82f642533682f06d06bfdce7bc454cbcf663558",
+    "tools/port-rust-stdio/prepare.py": "7a5e3fade80e4bff401490e92b6bd33933b99ff44c9493551ce593ec11e381dc",
+    "tools/port-rust-stdio/test_tools.py": "84874d382aad62accb02fe11fa56716205ca57ceeef70532b40a096e56d37398",
+    "tools/port-rust-stdio/oracle.rs": "70f674dcaa95129b9cc2e580dc0736d9ca7d4d9eb7511804eb2544b0473b77ae",
+    "tools/port-rust-stdio/write_observer.c": "0156ae09c7796edad7ef43ed83c4dbd41947cb5f8bdaf3e4df512c3c51985cf1"
+  },
+  "source_only_branch_evidence": {
+    "reentrant_lock_count": {
+      "source": "library/std/src/sync/reentrant_lock.rs",
+      "width": "u32",
+      "increment": "checked_add(1), assignment only on Some",
+      "overflow": "Option.expect, OwnedString lock count overflow in reentrant mutex",
+      "source_callsite": [
+        291,
+        45
+      ],
+      "scope": "Exact source verified both archives; Go private-limit simulation only, no native 2^32 public-guard construction claimed."
+    }
+  },
+  "native_scope": "Actual selected SDK std::io _eprint, StderrLock and output capture; safe Rust public APIs and child-only libc observation/injection. Concurrency observes64 complete512-yield records, no scheduler-order commitment. Abort stderr and positively identified terminal panic diagnostic write observations are omitted; all preceding source-operation events retained, no postabort state."
+}

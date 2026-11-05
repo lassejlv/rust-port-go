@@ -1,0 +1,95 @@
+{
+  "Schema": 1,
+  "Status": "original-graph-real-stdio-composition",
+  "WholeDependencyPort": false,
+  "CargoRevision": "24de4721844c7a4d839072bab6fb66d41c9bc1f4",
+  "GraphBlob": "74cdc51a0c36f21ce64f291540be571c05b12d63",
+  "GraphSHA256": "238123cc4c8300921008db5bcec1bbdf0946a023e0acafe9997e6917b5fada51",
+  "Compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "DebugAssertions": true,
+  "OverflowChecks": true,
+  "Specialisation": false,
+  "DebugSymbols": false,
+  "PointerBits": 64,
+  "NativeCases": 72,
+  "NativeEIOCases": 8,
+  "OriginalTests": 3,
+  "FixtureSHA256": "2e3da7f89a856e3a75cffa7c05e59a6f00eeaa534ac94016118b5b72faaa2113",
+  "Registry": [
+    {
+      "name": "bitmaps",
+      "version": "2.1.0",
+      "archive_sha256": "031043d04099746d8db04daf1fa424b2bc8bd69d92b25962dcde24da39ab64a2",
+      "expanded_tree_sha256": "22fa68d895504c881fb75d509885bdba8240e6d252e25d036fb1e60f0414e101",
+      "archive_files": 12
+    },
+    {
+      "name": "im-rc",
+      "version": "15.1.0",
+      "archive_sha256": "af1955a75fa080c677d3972822ec4bad316169ab1cfc6c257a942c2265dbe5fe",
+      "expanded_tree_sha256": "a079091d2d4d6acd82754d2da6fab465a2d354f2fbfe1866a98d3476ec286f10",
+      "archive_files": 48
+    },
+    {
+      "name": "rand_core",
+      "version": "0.6.4",
+      "archive_sha256": "ec0be4795e2f6a28069bec0b5ff3e2ac9bafc99e6a9a7dc3547996c5c816922c",
+      "expanded_tree_sha256": "6cfac2c063e2930bcfc203ba1ff7e9c8b6d34ff0e110c74cae22a1902f74d12c",
+      "archive_files": 14
+    },
+    {
+      "name": "rand_xoshiro",
+      "version": "0.6.0",
+      "archive_sha256": "6f97cdb2a36ed4183de61b2f824cc45c9f1037f28afe0a322e9fff4c108b5aaa",
+      "expanded_tree_sha256": "9917f0eb8d1537a2c6ae36bda2f15e49a25533984e665588f6c7d68d0462a4df",
+      "archive_files": 26
+    },
+    {
+      "name": "sized-chunks",
+      "version": "0.6.5",
+      "archive_sha256": "16d69225bde7a69b235da73377861095455d298f2b970996eec25ddbb42b3d1e",
+      "expanded_tree_sha256": "da0013aea5cff1f96625e596d0d3e5cc1bbde976d4f76001716a86577576188c",
+      "archive_files": 28
+    },
+    {
+      "name": "typenum",
+      "version": "1.20.1",
+      "archive_sha256": "b6f5e870be6c3b371b77fe0ee0bafb859fa4964b4404c27de1d380043c4dda20",
+      "expanded_tree_sha256": "41af7f7aaaaee3722ef1f544735c19923d1739ec71b80f56e013bd7f243246ab",
+      "archive_files": 26
+    },
+    {
+      "name": "version_check",
+      "version": "0.9.5",
+      "archive_sha256": "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a",
+      "expanded_tree_sha256": "22bd0943c8a5cbbd7e960be6076e7b90d50ffbab1c3d7e3490b0a369c25fa724",
+      "archive_files": 13
+    }
+  ],
+  "Files": [
+    {
+      "Path": "tools/port-cargo-graph/contracts/stdio_oracle.rs",
+      "SHA256": "86910f4d5a04636115d3423b451d559beb347e693c1f9fffdbe3e805d43513f2"
+    },
+    {
+      "Path": "tools/port-cargo-graph/contracts/generate_stdio.py",
+      "SHA256": "b474c41295ef608ecfacdbcab59bacc2c7e2ae3a41364428a6acbd1bf45557ee"
+    },
+    {
+      "Path": "tools/port-rust-stdio/write_observer.c",
+      "SHA256": "0156ae09c7796edad7ef43ed83c4dbd41947cb5f8bdaf3e4df512c3c51985cf1"
+    },
+    {
+      "Path": "tools/port-cargo-graph/Cargo.toml",
+      "SHA256": "ee10dfede39e0dc48850343273bb2c2cdf2ffd98b36ca0beb0355ea58ca9a65d"
+    },
+    {
+      "Path": "tools/port-cargo-graph/Cargo.lock",
+      "SHA256": "0411c64d7bbab5c036742bfdb79f456aad36e58dd5bc01872547d7d656fc572a"
+    },
+    {
+      "Path": "tools/port-cargo-graph/contracts/generate_owned.py",
+      "SHA256": "6b1a616b5b4d8718460fa79bf7c938655a2751ac58a13ffbea043524f8777488"
+    }
+  ]
+}

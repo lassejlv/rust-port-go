@@ -1,0 +1,125 @@
+{
+  "scope": "Read-only exact Rust1.99.1 versus official1.101 source audit for Graph printer reference-key stable sort; no std file completion credit. Original bytes remain unchanged and are never compiled from canonicalized text.",
+  "reference_compiler_commit": "58cf8f9c35b355199727627d07ae34a4e2846d67",
+  "shared_source_catalog_sha256": "0fe45cc7c9619b35bd18db45e0224debfca37e5240463dfe9a2a28c362450caf",
+  "shared_sdk_archive_url": "https://static.rust-lang.org/dist/2026-11-04/rust-src-nightly.tar.xz",
+  "shared_sdk_archive_sha256": "d99600cbf56d2db40112095e99e138f9e2f30002ef2774d288dc525e28a1357c",
+  "source_files": [
+    {
+      "path": "library/core/src/slice/sort/shared/mod.rs",
+      "reference_url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/slice/sort/shared/mod.rs",
+      "reference_bytes": 1548,
+      "reference_sha256": "fa9eec2901bafba25c9c1e1684df76dbb1f86e0bbd04f18f3e67cee54dcdfcc8",
+      "reference_git_blob": "e1977d79f32076488e37048d17be77e37a321b0c",
+      "shared_sdk_bytes": 1548,
+      "shared_sdk_sha256": "fa9eec2901bafba25c9c1e1684df76dbb1f86e0bbd04f18f3e67cee54dcdfcc8",
+      "byte_identical": true,
+      "canonical_sha256": "fa9eec2901bafba25c9c1e1684df76dbb1f86e0bbd04f18f3e67cee54dcdfcc8",
+      "sdk_abort_immediate_calls": 0
+    },
+    {
+      "path": "library/core/src/slice/sort/shared/pivot.rs",
+      "reference_url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/slice/sort/shared/pivot.rs",
+      "reference_bytes": 3575,
+      "reference_sha256": "09788115fcd10dac381446e2a68c228266ed2c78d4840fcdb3b77b7bd06bce6e",
+      "reference_git_blob": "9eb60f854ce21c4aa9959b9ad24c382378854009",
+      "shared_sdk_bytes": 3585,
+      "shared_sdk_sha256": "a9c3f207678555dc1c03e50fa73bf8de7d459844039de4d0bd8892a0e4f1317b",
+      "byte_identical": false,
+      "canonical_sha256": "09788115fcd10dac381446e2a68c228266ed2c78d4840fcdb3b77b7bd06bce6e",
+      "sdk_abort_immediate_calls": 1
+    },
+    {
+      "path": "library/core/src/slice/sort/shared/smallsort.rs",
+      "reference_url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/slice/sort/shared/smallsort.rs",
+      "reference_bytes": 32293,
+      "reference_sha256": "85c75bc93745ff1d4a6d33939d48408c2f7304aa8ffd952b73199ec1f8a175e1",
+      "reference_git_blob": "40939f922bcb6fdc7ee0d30427fa861827043827",
+      "shared_sdk_bytes": 32343,
+      "shared_sdk_sha256": "480d10a3ad88477d1d620361f238cebf9861381e6c0210fb26ba2f1d3d3576cf",
+      "byte_identical": false,
+      "canonical_sha256": "85c75bc93745ff1d4a6d33939d48408c2f7304aa8ffd952b73199ec1f8a175e1",
+      "sdk_abort_immediate_calls": 5
+    },
+    {
+      "path": "library/core/src/slice/sort/stable/mod.rs",
+      "reference_url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/slice/sort/stable/mod.rs",
+      "reference_bytes": 7112,
+      "reference_sha256": "3f2b2d8543a1cb91c9352e041bed49949a31cbd4b1030ec1a82cca1304cb22d3",
+      "reference_git_blob": "8b4e5c0c8c3a10d020b9dafe32be94a421da2b6e",
+      "shared_sdk_bytes": 7112,
+      "shared_sdk_sha256": "3f2b2d8543a1cb91c9352e041bed49949a31cbd4b1030ec1a82cca1304cb22d3",
+      "byte_identical": true,
+      "canonical_sha256": "3f2b2d8543a1cb91c9352e041bed49949a31cbd4b1030ec1a82cca1304cb22d3",
+      "sdk_abort_immediate_calls": 0
+    },
+    {
+      "path": "library/core/src/slice/sort/stable/drift.rs",
+      "reference_url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/slice/sort/stable/drift.rs",
+      "reference_bytes": 12456,
+      "reference_sha256": "5992b53abed257aa1c2dc2bb811d6a525294471e7a98d434f161d376100bf9c9",
+      "reference_git_blob": "1edffe095a89d0a8f6087c45a2095020827666e7",
+      "shared_sdk_bytes": 12456,
+      "shared_sdk_sha256": "5992b53abed257aa1c2dc2bb811d6a525294471e7a98d434f161d376100bf9c9",
+      "byte_identical": true,
+      "canonical_sha256": "5992b53abed257aa1c2dc2bb811d6a525294471e7a98d434f161d376100bf9c9",
+      "sdk_abort_immediate_calls": 0
+    },
+    {
+      "path": "library/core/src/slice/sort/stable/quicksort.rs",
+      "reference_url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/slice/sort/stable/quicksort.rs",
+      "reference_bytes": 10557,
+      "reference_sha256": "4a41df6bc7c4e0a6fcb655fde9bf73ed62f3a675ca805f2f766919ce249d8f4c",
+      "reference_git_blob": "acc8a5e838e12a6fa1df25df22540f997fea555d",
+      "shared_sdk_bytes": 10561,
+      "shared_sdk_sha256": "89efcde0e6f416c1e08728960bdfff1f9750b0a35a598254702f4d91f9cc1e2b",
+      "byte_identical": false,
+      "canonical_sha256": "a3916ce71f192019b9ee889f295d799cb5c82897ecde1b643f9a25e43cbeec18",
+      "sdk_abort_immediate_calls": 1
+    },
+    {
+      "path": "library/core/src/slice/sort/stable/merge.rs",
+      "reference_url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/slice/sort/stable/merge.rs",
+      "reference_bytes": 5654,
+      "reference_sha256": "d98c59ba9932ff64ce5dca62bf28433ddfa9b604c7b3e4c226f29b673f8b00c0",
+      "reference_git_blob": "26d8480b7f71f467d1feb76175b42cafd8623afd",
+      "shared_sdk_bytes": 5654,
+      "shared_sdk_sha256": "d98c59ba9932ff64ce5dca62bf28433ddfa9b604c7b3e4c226f29b673f8b00c0",
+      "byte_identical": true,
+      "canonical_sha256": "d98c59ba9932ff64ce5dca62bf28433ddfa9b604c7b3e4c226f29b673f8b00c0",
+      "sdk_abort_immediate_calls": 0
+    },
+    {
+      "path": "library/alloc/src/slice.rs",
+      "reference_url": "https://raw.githubusercontent.com/rust-lang/rust/58cf8f9c35b355199727627d07ae34a4e2846d67/library/alloc/src/slice.rs",
+      "reference_bytes": 33649,
+      "reference_sha256": "67228d05babee451c4f29b12fb6e922d1b7be19cf8bdc7efb21edd02c8a69a3e",
+      "reference_git_blob": "e6b540f093ba5f60db54af8047e730336158a18b",
+      "shared_sdk_bytes": 35548,
+      "shared_sdk_sha256": "085b18c8f564ecdb4575bf50b387ddbbf52b37bf9985cb0bc3899db49ab24778",
+      "byte_identical": false
+    }
+  ],
+  "alloc_slice_sort_items": [
+    {
+      "item": "pub fn sort(&mut self)",
+      "sha256": "4b23e580ca0b8a267a76c45181582bdb87699ebf9e278495e2551bafb24d4bad",
+      "bytes": 94,
+      "byte_identical": true
+    },
+    {
+      "item": "fn stable_sort<T, F>(",
+      "sha256": "dab806aed11f9b9e0ae4f47e5c81c08bb5f51ab5b133a01e154cc2d86903375e",
+      "bytes": 146,
+      "byte_identical": true
+    },
+    {
+      "item": "impl<T> sort::stable::BufGuard<T> for Vec<T>",
+      "sha256": "5fd478e55a15d24ac44d9888422b640d27c9acf21b6411240ec0f5471377369b",
+      "bytes": 245,
+      "byte_identical": true
+    }
+  ],
+  "only_sort_algorithm_text_differences": "Internal invariant abort intrinsic spellings: core::intrinsics::abort()/intrinsics::abort() versus intrinsics::abort_immediate(). Both selected public sorts have the same input/type dispatch, comparisons, moves and cleanup; invalid internal length/scratch guards remain aborts. Other alloc::slice APIs are excluded.",
+  "audit_tool_sha256": "6bee01c17cc6651ef0525842e861389a59b3ddec122214ac46f443173a8d746b"
+}

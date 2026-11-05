@@ -76,11 +76,11 @@
         "sources": {
           "path": "tools/port-inventory/data/cargo-sources.jsonl",
           "entries": 1379,
-          "sha256": "72d125d59c16f3cddfc752af45163946d0cbf44cc5e7b342edc34d1c59e19d80",
+          "sha256": "c6cec28d0cbee6a24032dd077cd74505ecada29f5da61cdc9868f789862fe4dd",
           "statuses": {
-            "unported": 1374,
+            "unported": 1373,
             "ported": 0,
-            "validated": 5
+            "validated": 6
           },
           "roles": {
             "build_script": 4,
@@ -121,9 +121,9 @@
         }
       },
       "statuses": {
-        "unported": 3073,
+        "unported": 3072,
         "ported": 0,
-        "validated": 5
+        "validated": 6
       }
     }
   ],
@@ -132,9 +132,9 @@
     "support": 26383,
     "submodules": 13,
     "statuses": {
-      "unported": 67296,
+      "unported": 67295,
       "ported": 0,
-      "validated": 30
+      "validated": 31
     }
   },
   "mapping": "Implementation .rs files mirror to .go; test harnesses to _test.go; Rust input subjects retain .rs; support files retain their source path and suffix",

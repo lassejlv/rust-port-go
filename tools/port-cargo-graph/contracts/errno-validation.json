@@ -1,0 +1,24 @@
+{
+  "scope": "Actual SDK1.99.1 io::Error Display used by Cargo stderr; host libc, exact writer calls/failures, signed i32 raw OS errors. Complements genuine whole-graph EPIPE/EBADF proofs; no std-file credit.",
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+  "host": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "libc": [
+    "glibc",
+    "2.41"
+  ],
+  "requests": 4451,
+  "request_sha256": "e49d57342ad54623f1bdc549beec535306bb493c0566817ccc1e6c3140398654",
+  "output_sha256": "90fd3f3dba2843cc34d8305f9959c9ecc4ccac63a44c66da26757bb94e603026",
+  "files": {
+    "tools/port-cargo-graph/contracts/generate_errno.py": "8a69b52f0444d456f282dcc2a4bc202b8f964432e2b190ea82a636b32fc60898",
+    "tools/port-cargo-graph/contracts/native_errno.rs": "28403ff890aac736a06854ce71d09265db205b338ffe600fe0e63cc1ec4cf006",
+    "tools/port-rust-errno/generate.py": "af7c8d823ae3355f645b4e444ddf87b256e7c766f29676d4681801d4170608b5",
+    "tools/port-rust-errno/replay/main.go": "ba32b93fdee03629baa64e91e627b169d81044417cded07938be4fa6ef413cfd",
+    "port/cargo/src/util/graph_owned_traversal.go": "e8c28a657fea0ba7fb2b61df6b8285a1be8107527a29ffb3acca9f5aa44f9958",
+    "port/cargo/src/util/graph_owned.go": "099a8044eb38916924f9bfb0ec2affc5219a42d0cf4942a2cc026835ea34d3f8",
+    "port/support/rusterrno/error.go": "0e7a6debca9d4a3edd921b4ede10886fa922023c26d34331c22e36325df3cb6d",
+    "port/support/rusterrno/error_test.go": "eb74916208d38d9d3bee569db2efbec5b1a8c0b6c874760705e0b4c8cb6e83de",
+    "port/support/rusterrno/native_cgo.go": "e18bb9e00afb4c278f592565f6c1991482a55dbcd205bad80396bb26c2e2c751",
+    "port/support/rusterrno/native_unavailable.go": "76cdcd2650604f5d6ddd85e34dd1ca9a9933382ee84ab7cd8ab0b51c9b33b151"
+  }
+}

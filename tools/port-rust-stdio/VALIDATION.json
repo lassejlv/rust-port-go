@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "status": "independently-validated-scoped-helper-no-source-file-credit",
+  "native_cases": 178,
+  "actual_native_SIGABRT": 20,
+  "profiles": [
+    "rustc1.99.1 58cf8f9c35b355199727627d07ae34a4e2846d67",
+    "rustc1.101.0-nightly 708c94ef093ecc42fb8851e17d8383d999727abc"
+  ],
+  "checks": {
+    "go1.23.12_race": "PASS 1.321s",
+    "go1.23.12_vet": "PASS",
+    "go1.27.3_test_vet": "PASS",
+    "go1.23.12_fuzz_executions": 173672,
+    "fuzz_seconds": 5,
+    "python_tool_integrity_tests": 16,
+    "portable_bare_PATH_native_check": "PASS",
+    "copied_helper_symlink_toolchain_native_check": "PASS",
+    "windows_amd64_go1.23_test_compile": "PASS; compilation only, no Windows kernel/native runtime claim",
+    "root_isolated_go1.23_race": "PASS 1.772s"
+  },
+  "native_observations": [
+    "whole-statement concurrency and explicit shared-capture concurrency",
+    "reentrant and pre-held stderr leases",
+    "capture Arc counts and actual slot identity through remove/restore/replace/unwind",
+    "Vec capacity before/after and safe try_lock refusal while held",
+    "SourceMap named-const59+10+7 bytes =>len76/cap118 in both SDKs",
+    "source panic payload/kind/file/line/column/can_unwind/force_no_backtrace",
+    "normal/inherited/processing contexts and20actualabortprocesses",
+    "EIO guard release before hook spawns+joins another locking thread",
+    "EINTR/EBADF/partial/WriteZero and independently ignored IO failure",
+    "formatter-only error hook runs inside held source lock"
+  ],
+  "source_only_limit_branch": "SDK reentrant lock count is checked u32; private Go synthetic limit test only, no native2^32-guard construction claim",
+  "arc_boundary": "CaptureOwner composes caller real Owned Arc value/destructor; legacy borrowed Capture convenience has no Arc-count claim. No complete Arc/TLS/global allocator or full std-file credit.",
+  "manifest_sha256": "afae69a03339c334d8cf174ed7695d4fcdb434da3a7b97607c548fa591c3d6e0",
+  "fixture_sha256": "5f12356b9537dfd6b25f46e9271c7a0150f7c6d3c93a1420c8b513bd7a4e4aae",
+  "production_sha256": {
+    "port/support/ruststdio/capture_owner.go": "46a5da665425fb03eb476a10f719441c14a86d1666d28923db4892dc967fc0c1",
+    "port/support/ruststdio/native_unix.go": "99c9883db64e5709159121df146e73ccc63626a18fe2b9cd85c3d50b2b7498e5",
+    "port/support/ruststdio/native_windows.go": "bc05b7565614dae51be4dc2383f5df7bf0dfd5a3eda717e663dbca9ce132170a",
+    "port/support/ruststdio/oracle_test.go": "d999a37b9d784f77448872984da72fe359d7d4e2aff60c10ae9b31c6878171a5",
+    "port/support/ruststdio/stdio.go": "a2303b4c5cd429e157ea8e59049f16b1002f87acfae77de67f4cf497ebe60b73",
+    "port/support/ruststdio/stdio_test.go": "ba14a93c55b91a19d8db1633fdf21653c0bed82de878b78f5f3aaa017e2ad895"
+  }
+}

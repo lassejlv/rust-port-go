@@ -1,0 +1,6204 @@
+{
+  "Schema": 1,
+  "Cases": [
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a7d0a477261706820666f72207465737473203d204772617068207b0a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "7d",
+        "0a",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a7d0a477261706820666f72207465737473203d204772617068207b0a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "7d",
+        "0a",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": false,
+        "Preheld": true,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": false,
+        "Preheld": true,
+        "Repeats": 1,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": false,
+        "Preheld": true,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a7d0a477261706820666f72207465737473203d204772617068207b0a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "7d",
+        "0a",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": false,
+        "Preheld": true,
+        "Repeats": 2,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a7d0a477261706820666f72207465737473203d204772617068207b0a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "7d",
+        "0a",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": true,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 28,
+          "Capacity": 36,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 28,
+          "Capacity": 36,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 28,
+          "Capacity": 36,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": true,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 28,
+          "Capacity": 32,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 28,
+          "Capacity": 32,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 28,
+          "Capacity": 32,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": true,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 28,
+          "Capacity": 36,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "print2",
+          "Length": 56,
+          "Capacity": 72,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 56,
+          "Capacity": 72,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 56,
+          "Capacity": 72,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a477261706820666f72207465737473203d204772617068207b0a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": true,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 28,
+          "Capacity": 32,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "print2",
+          "Length": 56,
+          "Capacity": 64,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 56,
+          "Capacity": 64,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 56,
+          "Capacity": 64,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a477261706820666f72207465737473203d204772617068207b0a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": true,
+        "Preheld": true,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 28,
+          "Capacity": 36,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 28,
+          "Capacity": 36,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 28,
+          "Capacity": 36,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": true,
+        "Preheld": true,
+        "Repeats": 1,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 28,
+          "Capacity": 32,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 28,
+          "Capacity": 32,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 28,
+          "Capacity": 32,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": true,
+        "Preheld": true,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 28,
+          "Capacity": 36,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "print2",
+          "Length": 56,
+          "Capacity": 72,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 56,
+          "Capacity": 72,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 56,
+          "Capacity": 72,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a477261706820666f72207465737473203d204772617068207b0a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": true,
+        "Preheld": true,
+        "Repeats": 2,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 28,
+          "Capacity": 32,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "print2",
+          "Length": 56,
+          "Capacity": 64,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 56,
+          "Capacity": 64,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a477261706820666f72207465737473203d204772617068207b0a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 56,
+          "Capacity": 64,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a7d0a477261706820666f72207465737473203d204772617068207b0a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "7d",
+        "0a",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "7d",
+        "0a",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": false,
+        "Preheld": true,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": false,
+        "Preheld": true,
+        "Repeats": 1,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": false,
+        "Preheld": true,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "7d",
+        "0a",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": false,
+        "Preheld": true,
+        "Repeats": 2,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "7d",
+        "0a",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": true,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 34,
+          "Capacity": 36,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 34,
+          "Capacity": 36,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 34,
+          "Capacity": 36,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": true,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 34,
+          "Capacity": 64,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 34,
+          "Capacity": 64,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 34,
+          "Capacity": 64,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": true,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 34,
+          "Capacity": 36,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "print2",
+          "Length": 68,
+          "Capacity": 72,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 68,
+          "Capacity": 72,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 68,
+          "Capacity": 72,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": true,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 34,
+          "Capacity": 64,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "print2",
+          "Length": 68,
+          "Capacity": 128,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 68,
+          "Capacity": 128,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 68,
+          "Capacity": 128,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": true,
+        "Preheld": true,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 34,
+          "Capacity": 36,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 34,
+          "Capacity": 36,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 34,
+          "Capacity": 36,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": true,
+        "Preheld": true,
+        "Repeats": 1,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 34,
+          "Capacity": 64,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 34,
+          "Capacity": 64,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 34,
+          "Capacity": 64,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": true,
+        "Preheld": true,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 34,
+          "Capacity": 36,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "print2",
+          "Length": 68,
+          "Capacity": 72,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 68,
+          "Capacity": 72,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 68,
+          "Capacity": 72,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": true,
+        "Preheld": true,
+        "Repeats": 2,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 34,
+          "Capacity": 64,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "print2",
+          "Length": 68,
+          "Capacity": 128,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 68,
+          "Capacity": 128,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 68,
+          "Capacity": 128,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "7d",
+        "0a",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "7d",
+        "0a",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": false,
+        "Preheld": true,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": false,
+        "Preheld": true,
+        "Repeats": 1,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": false,
+        "Preheld": true,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "7d",
+        "0a",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": false,
+        "Preheld": true,
+        "Repeats": 2,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "7d",
+        "0a",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": true,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 62,
+          "Capacity": 72,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 62,
+          "Capacity": 72,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 62,
+          "Capacity": 72,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": true,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 62,
+          "Capacity": 64,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 62,
+          "Capacity": 64,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 62,
+          "Capacity": 64,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": true,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 62,
+          "Capacity": 72,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "print2",
+          "Length": 124,
+          "Capacity": 144,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 124,
+          "Capacity": 144,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 124,
+          "Capacity": 144,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": true,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 62,
+          "Capacity": 64,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "print2",
+          "Length": 124,
+          "Capacity": 128,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 124,
+          "Capacity": 128,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 124,
+          "Capacity": 128,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": true,
+        "Preheld": true,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 62,
+          "Capacity": 72,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 62,
+          "Capacity": 72,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 62,
+          "Capacity": 72,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": true,
+        "Preheld": true,
+        "Repeats": 1,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 62,
+          "Capacity": 64,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 62,
+          "Capacity": 64,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 62,
+          "Capacity": 64,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": true,
+        "Preheld": true,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 62,
+          "Capacity": 72,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "print2",
+          "Length": 124,
+          "Capacity": 144,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 124,
+          "Capacity": 144,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 124,
+          "Capacity": 144,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": true,
+        "Preheld": true,
+        "Repeats": 2,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 62,
+          "Capacity": 64,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "print2",
+          "Length": 124,
+          "Capacity": 128,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 124,
+          "Capacity": 128,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 124,
+          "Capacity": 128,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "202020202d20",
+        "33",
+        "0a",
+        "20202d20",
+        "33",
+        "0a",
+        "202020202d20",
+        "34",
+        "0a",
+        "20202d20",
+        "34",
+        "0a",
+        "202020202d20",
+        "35",
+        "0a",
+        "20202d20",
+        "35",
+        "0a",
+        "202020202d20",
+        "36",
+        "0a",
+        "20202d20",
+        "36",
+        "0a",
+        "202020202d20",
+        "37",
+        "0a",
+        "20202d20",
+        "37",
+        "0a",
+        "202020202d20",
+        "38",
+        "0a",
+        "20202d20",
+        "38",
+        "0a",
+        "202020202d20",
+        "39",
+        "0a",
+        "20202d20",
+        "39",
+        "0a",
+        "202020202d20",
+        "3130",
+        "0a",
+        "20202d20",
+        "3130",
+        "0a",
+        "202020202d20",
+        "3131",
+        "0a",
+        "20202d20",
+        "3131",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "202020202d20",
+        "33",
+        "0a",
+        "20202d20",
+        "33",
+        "0a",
+        "202020202d20",
+        "34",
+        "0a",
+        "20202d20",
+        "34",
+        "0a",
+        "202020202d20",
+        "35",
+        "0a",
+        "20202d20",
+        "35",
+        "0a",
+        "202020202d20",
+        "36",
+        "0a",
+        "20202d20",
+        "36",
+        "0a",
+        "202020202d20",
+        "37",
+        "0a",
+        "20202d20",
+        "37",
+        "0a",
+        "202020202d20",
+        "38",
+        "0a",
+        "20202d20",
+        "38",
+        "0a",
+        "202020202d20",
+        "39",
+        "0a",
+        "20202d20",
+        "39",
+        "0a",
+        "202020202d20",
+        "3130",
+        "0a",
+        "20202d20",
+        "3130",
+        "0a",
+        "202020202d20",
+        "3131",
+        "0a",
+        "20202d20",
+        "3131",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "202020202d20",
+        "33",
+        "0a",
+        "20202d20",
+        "33",
+        "0a",
+        "202020202d20",
+        "34",
+        "0a",
+        "20202d20",
+        "34",
+        "0a",
+        "202020202d20",
+        "35",
+        "0a",
+        "20202d20",
+        "35",
+        "0a",
+        "202020202d20",
+        "36",
+        "0a",
+        "20202d20",
+        "36",
+        "0a",
+        "202020202d20",
+        "37",
+        "0a",
+        "20202d20",
+        "37",
+        "0a",
+        "202020202d20",
+        "38",
+        "0a",
+        "20202d20",
+        "38",
+        "0a",
+        "202020202d20",
+        "39",
+        "0a",
+        "20202d20",
+        "39",
+        "0a",
+        "202020202d20",
+        "3130",
+        "0a",
+        "20202d20",
+        "3130",
+        "0a",
+        "202020202d20",
+        "3131",
+        "0a",
+        "20202d20",
+        "3131",
+        "0a",
+        "7d",
+        "0a",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "202020202d20",
+        "33",
+        "0a",
+        "20202d20",
+        "33",
+        "0a",
+        "202020202d20",
+        "34",
+        "0a",
+        "20202d20",
+        "34",
+        "0a",
+        "202020202d20",
+        "35",
+        "0a",
+        "20202d20",
+        "35",
+        "0a",
+        "202020202d20",
+        "36",
+        "0a",
+        "20202d20",
+        "36",
+        "0a",
+        "202020202d20",
+        "37",
+        "0a",
+        "20202d20",
+        "37",
+        "0a",
+        "202020202d20",
+        "38",
+        "0a",
+        "20202d20",
+        "38",
+        "0a",
+        "202020202d20",
+        "39",
+        "0a",
+        "20202d20",
+        "39",
+        "0a",
+        "202020202d20",
+        "3130",
+        "0a",
+        "20202d20",
+        "3130",
+        "0a",
+        "202020202d20",
+        "3131",
+        "0a",
+        "20202d20",
+        "3131",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "202020202d20",
+        "33",
+        "0a",
+        "20202d20",
+        "33",
+        "0a",
+        "202020202d20",
+        "34",
+        "0a",
+        "20202d20",
+        "34",
+        "0a",
+        "202020202d20",
+        "35",
+        "0a",
+        "20202d20",
+        "35",
+        "0a",
+        "202020202d20",
+        "36",
+        "0a",
+        "20202d20",
+        "36",
+        "0a",
+        "202020202d20",
+        "37",
+        "0a",
+        "20202d20",
+        "37",
+        "0a",
+        "202020202d20",
+        "38",
+        "0a",
+        "20202d20",
+        "38",
+        "0a",
+        "202020202d20",
+        "39",
+        "0a",
+        "20202d20",
+        "39",
+        "0a",
+        "202020202d20",
+        "3130",
+        "0a",
+        "20202d20",
+        "3130",
+        "0a",
+        "202020202d20",
+        "3131",
+        "0a",
+        "20202d20",
+        "3131",
+        "0a",
+        "7d",
+        "0a",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "202020202d20",
+        "33",
+        "0a",
+        "20202d20",
+        "33",
+        "0a",
+        "202020202d20",
+        "34",
+        "0a",
+        "20202d20",
+        "34",
+        "0a",
+        "202020202d20",
+        "35",
+        "0a",
+        "20202d20",
+        "35",
+        "0a",
+        "202020202d20",
+        "36",
+        "0a",
+        "20202d20",
+        "36",
+        "0a",
+        "202020202d20",
+        "37",
+        "0a",
+        "20202d20",
+        "37",
+        "0a",
+        "202020202d20",
+        "38",
+        "0a",
+        "20202d20",
+        "38",
+        "0a",
+        "202020202d20",
+        "39",
+        "0a",
+        "20202d20",
+        "39",
+        "0a",
+        "202020202d20",
+        "3130",
+        "0a",
+        "20202d20",
+        "3130",
+        "0a",
+        "202020202d20",
+        "3131",
+        "0a",
+        "20202d20",
+        "3131",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": false,
+        "Preheld": true,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "202020202d20",
+        "33",
+        "0a",
+        "20202d20",
+        "33",
+        "0a",
+        "202020202d20",
+        "34",
+        "0a",
+        "20202d20",
+        "34",
+        "0a",
+        "202020202d20",
+        "35",
+        "0a",
+        "20202d20",
+        "35",
+        "0a",
+        "202020202d20",
+        "36",
+        "0a",
+        "20202d20",
+        "36",
+        "0a",
+        "202020202d20",
+        "37",
+        "0a",
+        "20202d20",
+        "37",
+        "0a",
+        "202020202d20",
+        "38",
+        "0a",
+        "20202d20",
+        "38",
+        "0a",
+        "202020202d20",
+        "39",
+        "0a",
+        "20202d20",
+        "39",
+        "0a",
+        "202020202d20",
+        "3130",
+        "0a",
+        "20202d20",
+        "3130",
+        "0a",
+        "202020202d20",
+        "3131",
+        "0a",
+        "20202d20",
+        "3131",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": false,
+        "Preheld": true,
+        "Repeats": 1,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "202020202d20",
+        "33",
+        "0a",
+        "20202d20",
+        "33",
+        "0a",
+        "202020202d20",
+        "34",
+        "0a",
+        "20202d20",
+        "34",
+        "0a",
+        "202020202d20",
+        "35",
+        "0a",
+        "20202d20",
+        "35",
+        "0a",
+        "202020202d20",
+        "36",
+        "0a",
+        "20202d20",
+        "36",
+        "0a",
+        "202020202d20",
+        "37",
+        "0a",
+        "20202d20",
+        "37",
+        "0a",
+        "202020202d20",
+        "38",
+        "0a",
+        "20202d20",
+        "38",
+        "0a",
+        "202020202d20",
+        "39",
+        "0a",
+        "20202d20",
+        "39",
+        "0a",
+        "202020202d20",
+        "3130",
+        "0a",
+        "20202d20",
+        "3130",
+        "0a",
+        "202020202d20",
+        "3131",
+        "0a",
+        "20202d20",
+        "3131",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": false,
+        "Preheld": true,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "202020202d20",
+        "33",
+        "0a",
+        "20202d20",
+        "33",
+        "0a",
+        "202020202d20",
+        "34",
+        "0a",
+        "20202d20",
+        "34",
+        "0a",
+        "202020202d20",
+        "35",
+        "0a",
+        "20202d20",
+        "35",
+        "0a",
+        "202020202d20",
+        "36",
+        "0a",
+        "20202d20",
+        "36",
+        "0a",
+        "202020202d20",
+        "37",
+        "0a",
+        "20202d20",
+        "37",
+        "0a",
+        "202020202d20",
+        "38",
+        "0a",
+        "20202d20",
+        "38",
+        "0a",
+        "202020202d20",
+        "39",
+        "0a",
+        "20202d20",
+        "39",
+        "0a",
+        "202020202d20",
+        "3130",
+        "0a",
+        "20202d20",
+        "3130",
+        "0a",
+        "202020202d20",
+        "3131",
+        "0a",
+        "20202d20",
+        "3131",
+        "0a",
+        "7d",
+        "0a",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "202020202d20",
+        "33",
+        "0a",
+        "20202d20",
+        "33",
+        "0a",
+        "202020202d20",
+        "34",
+        "0a",
+        "20202d20",
+        "34",
+        "0a",
+        "202020202d20",
+        "35",
+        "0a",
+        "20202d20",
+        "35",
+        "0a",
+        "202020202d20",
+        "36",
+        "0a",
+        "20202d20",
+        "36",
+        "0a",
+        "202020202d20",
+        "37",
+        "0a",
+        "20202d20",
+        "37",
+        "0a",
+        "202020202d20",
+        "38",
+        "0a",
+        "20202d20",
+        "38",
+        "0a",
+        "202020202d20",
+        "39",
+        "0a",
+        "20202d20",
+        "39",
+        "0a",
+        "202020202d20",
+        "3130",
+        "0a",
+        "20202d20",
+        "3130",
+        "0a",
+        "202020202d20",
+        "3131",
+        "0a",
+        "20202d20",
+        "3131",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": false,
+        "Preheld": true,
+        "Repeats": 2,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "202020202d20",
+        "33",
+        "0a",
+        "20202d20",
+        "33",
+        "0a",
+        "202020202d20",
+        "34",
+        "0a",
+        "20202d20",
+        "34",
+        "0a",
+        "202020202d20",
+        "35",
+        "0a",
+        "20202d20",
+        "35",
+        "0a",
+        "202020202d20",
+        "36",
+        "0a",
+        "20202d20",
+        "36",
+        "0a",
+        "202020202d20",
+        "37",
+        "0a",
+        "20202d20",
+        "37",
+        "0a",
+        "202020202d20",
+        "38",
+        "0a",
+        "20202d20",
+        "38",
+        "0a",
+        "202020202d20",
+        "39",
+        "0a",
+        "20202d20",
+        "39",
+        "0a",
+        "202020202d20",
+        "3130",
+        "0a",
+        "20202d20",
+        "3130",
+        "0a",
+        "202020202d20",
+        "3131",
+        "0a",
+        "20202d20",
+        "3131",
+        "0a",
+        "7d",
+        "0a",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "202020202d20",
+        "33",
+        "0a",
+        "20202d20",
+        "33",
+        "0a",
+        "202020202d20",
+        "34",
+        "0a",
+        "20202d20",
+        "34",
+        "0a",
+        "202020202d20",
+        "35",
+        "0a",
+        "20202d20",
+        "35",
+        "0a",
+        "202020202d20",
+        "36",
+        "0a",
+        "20202d20",
+        "36",
+        "0a",
+        "202020202d20",
+        "37",
+        "0a",
+        "20202d20",
+        "37",
+        "0a",
+        "202020202d20",
+        "38",
+        "0a",
+        "20202d20",
+        "38",
+        "0a",
+        "202020202d20",
+        "39",
+        "0a",
+        "20202d20",
+        "39",
+        "0a",
+        "202020202d20",
+        "3130",
+        "0a",
+        "20202d20",
+        "3130",
+        "0a",
+        "202020202d20",
+        "3131",
+        "0a",
+        "20202d20",
+        "3131",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": true,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 192,
+          "Capacity": 288,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 192,
+          "Capacity": 288,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 192,
+          "Capacity": 288,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": true,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 192,
+          "Capacity": 256,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 192,
+          "Capacity": 256,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 192,
+          "Capacity": 256,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": true,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 192,
+          "Capacity": 288,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "print2",
+          "Length": 384,
+          "Capacity": 576,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 384,
+          "Capacity": 576,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 384,
+          "Capacity": 576,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": true,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 192,
+          "Capacity": 256,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "print2",
+          "Length": 384,
+          "Capacity": 512,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 384,
+          "Capacity": 512,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 384,
+          "Capacity": 512,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": true,
+        "Preheld": true,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 192,
+          "Capacity": 288,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 192,
+          "Capacity": 288,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 192,
+          "Capacity": 288,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": true,
+        "Preheld": true,
+        "Repeats": 1,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 192,
+          "Capacity": 256,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 192,
+          "Capacity": 256,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 192,
+          "Capacity": 256,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": true,
+        "Preheld": true,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 192,
+          "Capacity": 288,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "print2",
+          "Length": 384,
+          "Capacity": 576,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 384,
+          "Capacity": 576,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 384,
+          "Capacity": 576,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": true,
+        "Preheld": true,
+        "Repeats": 2,
+        "InitialCapacity": 16,
+        "Error": "none"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 16,
+          "ArcStrong": 2,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 192,
+          "Capacity": 256,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "print2",
+          "Length": 384,
+          "Capacity": 512,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "popped",
+          "Length": 384,
+          "Capacity": 512,
+          "ArcStrong": 2,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        },
+        {
+          "Stage": "dropped",
+          "Length": 384,
+          "Capacity": 512,
+          "ArcStrong": 1,
+          "CaptureHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a"
+        }
+      ],
+      "CaptureSlotReturned": true,
+      "Hooks": [],
+      "HookOtherThreadLocked": null,
+      "PrintResults": [
+        {
+          "Failed": false,
+          "Payload": null
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "eio"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [
+        "477261706820666f72207465737473203d20"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [
+        {
+          "Payload": "failed printing to stderr: Input/output error (os error 5)",
+          "Kind": "owned_string",
+          "Location": {
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/io/stdio.rs",
+            "Line": 1168,
+            "Column": 9
+          },
+          "CanUnwind": true,
+          "ForceNoBacktrace": false
+        }
+      ],
+      "HookOtherThreadLocked": true,
+      "PrintResults": [
+        {
+          "Failed": true,
+          "Payload": "failed printing to stderr: Input/output error (os error 5)"
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 0,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "eio"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [
+        {
+          "Payload": "failed printing to stderr: Input/output error (os error 5)",
+          "Kind": "owned_string",
+          "Location": {
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/io/stdio.rs",
+            "Line": 1168,
+            "Column": 9
+          },
+          "CanUnwind": true,
+          "ForceNoBacktrace": false
+        }
+      ],
+      "HookOtherThreadLocked": true,
+      "PrintResults": [
+        {
+          "Failed": true,
+          "Payload": "failed printing to stderr: Input/output error (os error 5)"
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "eio"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [
+        "477261706820666f72207465737473203d20"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [
+        {
+          "Payload": "failed printing to stderr: Input/output error (os error 5)",
+          "Kind": "owned_string",
+          "Location": {
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/io/stdio.rs",
+            "Line": 1168,
+            "Column": 9
+          },
+          "CanUnwind": true,
+          "ForceNoBacktrace": false
+        }
+      ],
+      "HookOtherThreadLocked": true,
+      "PrintResults": [
+        {
+          "Failed": true,
+          "Payload": "failed printing to stderr: Input/output error (os error 5)"
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 1,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "eio"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [
+        {
+          "Payload": "failed printing to stderr: Input/output error (os error 5)",
+          "Kind": "owned_string",
+          "Location": {
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/io/stdio.rs",
+            "Line": 1168,
+            "Column": 9
+          },
+          "CanUnwind": true,
+          "ForceNoBacktrace": false
+        }
+      ],
+      "HookOtherThreadLocked": true,
+      "PrintResults": [
+        {
+          "Failed": true,
+          "Payload": "failed printing to stderr: Input/output error (os error 5)"
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "eio"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [
+        "477261706820666f72207465737473203d20"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [
+        {
+          "Payload": "failed printing to stderr: Input/output error (os error 5)",
+          "Kind": "owned_string",
+          "Location": {
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/io/stdio.rs",
+            "Line": 1168,
+            "Column": 9
+          },
+          "CanUnwind": true,
+          "ForceNoBacktrace": false
+        }
+      ],
+      "HookOtherThreadLocked": true,
+      "PrintResults": [
+        {
+          "Failed": true,
+          "Payload": "failed printing to stderr: Input/output error (os error 5)"
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 3,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "eio"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [
+        {
+          "Payload": "failed printing to stderr: Input/output error (os error 5)",
+          "Kind": "owned_string",
+          "Location": {
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/io/stdio.rs",
+            "Line": 1168,
+            "Column": 9
+          },
+          "CanUnwind": true,
+          "ForceNoBacktrace": false
+        }
+      ],
+      "HookOtherThreadLocked": true,
+      "PrintResults": [
+        {
+          "Failed": true,
+          "Payload": "failed printing to stderr: Input/output error (os error 5)"
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 1,
+        "InitialCapacity": 0,
+        "Error": "eio"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "",
+      "Writes": [
+        "477261706820666f72207465737473203d20"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [
+        {
+          "Payload": "failed printing to stderr: Input/output error (os error 5)",
+          "Kind": "owned_string",
+          "Location": {
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/io/stdio.rs",
+            "Line": 1168,
+            "Column": 9
+          },
+          "CanUnwind": true,
+          "ForceNoBacktrace": false
+        }
+      ],
+      "HookOtherThreadLocked": true,
+      "PrintResults": [
+        {
+          "Failed": true,
+          "Payload": "failed printing to stderr: Input/output error (os error 5)"
+        }
+      ]
+    },
+    {
+      "Request": {
+        "Nodes": 12,
+        "Capture": false,
+        "Preheld": false,
+        "Repeats": 2,
+        "InitialCapacity": 0,
+        "Error": "eio"
+      },
+      "NativeExit": 0,
+      "Exit": 0,
+      "StderrHex": "477261706820666f72207465737473203d204772617068207b0a20202d20300a202020202d20310a20202d20310a202020202d20320a20202d20320a202020202d20330a20202d20330a202020202d20340a20202d20340a202020202d20350a20202d20350a202020202d20360a20202d20360a202020202d20370a20202d20370a202020202d20380a20202d20380a202020202d20390a20202d20390a202020202d2031300a20202d2031300a202020202d2031310a20202d2031310a7d0a",
+      "Writes": [
+        "477261706820666f72207465737473203d20",
+        "477261706820666f72207465737473203d20",
+        "4772617068207b0a",
+        "20202d20",
+        "30",
+        "0a",
+        "202020202d20",
+        "31",
+        "0a",
+        "20202d20",
+        "31",
+        "0a",
+        "202020202d20",
+        "32",
+        "0a",
+        "20202d20",
+        "32",
+        "0a",
+        "202020202d20",
+        "33",
+        "0a",
+        "20202d20",
+        "33",
+        "0a",
+        "202020202d20",
+        "34",
+        "0a",
+        "20202d20",
+        "34",
+        "0a",
+        "202020202d20",
+        "35",
+        "0a",
+        "20202d20",
+        "35",
+        "0a",
+        "202020202d20",
+        "36",
+        "0a",
+        "20202d20",
+        "36",
+        "0a",
+        "202020202d20",
+        "37",
+        "0a",
+        "20202d20",
+        "37",
+        "0a",
+        "202020202d20",
+        "38",
+        "0a",
+        "20202d20",
+        "38",
+        "0a",
+        "202020202d20",
+        "39",
+        "0a",
+        "20202d20",
+        "39",
+        "0a",
+        "202020202d20",
+        "3130",
+        "0a",
+        "20202d20",
+        "3130",
+        "0a",
+        "202020202d20",
+        "3131",
+        "0a",
+        "20202d20",
+        "3131",
+        "0a",
+        "7d",
+        "0a"
+      ],
+      "Snapshots": [
+        {
+          "Stage": "before",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "set",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print1",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "print2",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "popped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        },
+        {
+          "Stage": "dropped",
+          "Length": 0,
+          "Capacity": 0,
+          "ArcStrong": 1,
+          "CaptureHex": ""
+        }
+      ],
+      "CaptureSlotReturned": false,
+      "Hooks": [
+        {
+          "Payload": "failed printing to stderr: Input/output error (os error 5)",
+          "Kind": "owned_string",
+          "Location": {
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/std/src/io/stdio.rs",
+            "Line": 1168,
+            "Column": 9
+          },
+          "CanUnwind": true,
+          "ForceNoBacktrace": false
+        }
+      ],
+      "HookOtherThreadLocked": true,
+      "PrintResults": [
+        {
+          "Failed": true,
+          "Payload": "failed printing to stderr: Input/output error (os error 5)"
+        },
+        {
+          "Failed": false,
+          "Payload": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "format": 1,
+  "cargo_revision": "24de4721844c7a4d839072bab6fb66d41c9bc1f4",
+  "source_git_blob": "74cdc51a0c36f21ce64f291540be571c05b12d63",
+  "source_sha256": "238123cc4c8300921008db5bcec1bbdf0946a023e0acafe9997e6917b5fada51",
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+  "pointer_bits": 64,
+  "profiles": [
+    {
+      "name": "d0o0",
+      "debug_assertions": false,
+      "overflow_checks": false,
+      "opt_level": 0,
+      "has_specialisation": false,
+      "original_tests_passed": 3,
+      "records": 340
+    },
+    {
+      "name": "d0o1",
+      "debug_assertions": false,
+      "overflow_checks": true,
+      "opt_level": 0,
+      "has_specialisation": false,
+      "original_tests_passed": 3,
+      "records": 340
+    },
+    {
+      "name": "d1o0",
+      "debug_assertions": true,
+      "overflow_checks": false,
+      "opt_level": 0,
+      "has_specialisation": false,
+      "original_tests_passed": 3,
+      "records": 340
+    },
+    {
+      "name": "d1o1",
+      "debug_assertions": true,
+      "overflow_checks": true,
+      "opt_level": 0,
+      "has_specialisation": false,
+      "original_tests_passed": 3,
+      "records": 340
+    }
+  ],
+  "native_observations": 1360,
+  "retained_rows": 340,
+  "raw_bytes": 9274975,
+  "raw_sha256": "db80efd9bb5b25ebeb60aea01cf006b8db6ba61464a597bdb9d0541b4c03c64d",
+  "fixture_sha256": "2e1b7ca397e245a5f82972c5979aaaa8c5f66d21da445f603a92464982c90b82",
+  "external_client_prefix_sha256": "c31ef9dc8bed3f810d60fdf16557010fe12addf445957151c3dd6a069e60151a",
+  "compiled_client_sha256": "bc0e48acc03b9b0e1e97d6be356f7a4feda78285aed44a6facff4050edc9eb98",
+  "registry_dependencies": [
+    {
+      "name": "bitmaps",
+      "version": "2.1.0",
+      "archive_sha256": "031043d04099746d8db04daf1fa424b2bc8bd69d92b25962dcde24da39ab64a2",
+      "expanded_tree_sha256": "22fa68d895504c881fb75d509885bdba8240e6d252e25d036fb1e60f0414e101",
+      "archive_files": 12
+    },
+    {
+      "name": "im-rc",
+      "version": "15.1.0",
+      "archive_sha256": "af1955a75fa080c677d3972822ec4bad316169ab1cfc6c257a942c2265dbe5fe",
+      "expanded_tree_sha256": "a079091d2d4d6acd82754d2da6fab465a2d354f2fbfe1866a98d3476ec286f10",
+      "archive_files": 48
+    },
+    {
+      "name": "rand_core",
+      "version": "0.6.4",
+      "archive_sha256": "ec0be4795e2f6a28069bec0b5ff3e2ac9bafc99e6a9a7dc3547996c5c816922c",
+      "expanded_tree_sha256": "6cfac2c063e2930bcfc203ba1ff7e9c8b6d34ff0e110c74cae22a1902f74d12c",
+      "archive_files": 14
+    },
+    {
+      "name": "rand_xoshiro",
+      "version": "0.6.0",
+      "archive_sha256": "6f97cdb2a36ed4183de61b2f824cc45c9f1037f28afe0a322e9fff4c108b5aaa",
+      "expanded_tree_sha256": "9917f0eb8d1537a2c6ae36bda2f15e49a25533984e665588f6c7d68d0462a4df",
+      "archive_files": 26
+    },
+    {
+      "name": "sized-chunks",
+      "version": "0.6.5",
+      "archive_sha256": "16d69225bde7a69b235da73377861095455d298f2b970996eec25ddbb42b3d1e",
+      "expanded_tree_sha256": "da0013aea5cff1f96625e596d0d3e5cc1bbde976d4f76001716a86577576188c",
+      "archive_files": 28
+    },
+    {
+      "name": "typenum",
+      "version": "1.20.1",
+      "archive_sha256": "b6f5e870be6c3b371b77fe0ee0bafb859fa4964b4404c27de1d380043c4dda20",
+      "expanded_tree_sha256": "41af7f7aaaaee3722ef1f544735c19923d1739ec71b80f56e013bd7f243246ab",
+      "archive_files": 26
+    },
+    {
+      "name": "version_check",
+      "version": "0.9.5",
+      "archive_sha256": "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a",
+      "expanded_tree_sha256": "22bd0943c8a5cbbd7e960be6076e7b90d50ffbab1c3d7e3490b0a369c25fa724",
+      "archive_files": 13
+    }
+  ],
+  "bindings": {
+    "port/cargo/src/util/graph_btree.go": "12d98c36576091c022869ff315315eb410a36411ab73af9f627a52c82a382a99",
+    "port/cargo/src/util/graph_owned.go": "099a8044eb38916924f9bfb0ec2affc5219a42d0cf4942a2cc026835ea34d3f8",
+    "port/cargo/src/util/graph_owned_contract_test.go": "72fc9d652fe89adf65b03a226bf89c2b05f6780a9b6fa1b3fb395771505c96dc",
+    "port/cargo/src/util/graph_owned_equality_test.go": "bdedc776ce04f087fac642bf93cc87cf7697918f5c2116e7135aedec073bc639",
+    "port/cargo/src/util/graph_owned_oracle_test.go": "50e3ba8b62689b7759e87bf51b355202d9da104fe9aea8336194d32547080af6",
+    "port/cargo/src/util/graph_owned_traversal.go": "e8c28a657fea0ba7fb2b61df6b8285a1be8107527a29ffb3acca9f5aa44f9958",
+    "port/dependencies/im-rc/v15_1_0/src/fakepool.go": "2936f7932263b56a079d286794d4d8a65d79a0968a8a2f72a8b578de22a38575",
+    "port/dependencies/im-rc/v15_1_0/src/nodes/btree.go": "80bdd0c4d43c7330ebfda8c802440e415e55ca3f70b5e56aada5e832789f4880",
+    "port/dependencies/im-rc/v15_1_0/src/ord/map.go": "ade39a1391422a83864db06c484a3eac852284d061127b3099f21f67754c6067",
+    "tools/port-cargo-graph/contracts/audit_sort_sources.py": "6bee01c17cc6651ef0525842e861389a59b3ddec122214ac46f443173a8d746b",
+    "tools/port-cargo-graph/contracts/equality_oracle.rs": "696d50f49227bf3332aa3b526d408a485e93bed2292ad5893d6f021a2719fbdb",
+    "tools/port-cargo-graph/contracts/generate_equality.py": "6f8446ca169928ba8520a222c3b891c737d55ec21ebc97b6a10fdc848fefbfd9",
+    "tools/port-cargo-graph/contracts/generate_owned.py": "6b1a616b5b4d8718460fa79bf7c938655a2751ac58a13ffbea043524f8777488",
+    "tools/port-cargo-graph/contracts/owned-validation.json": "1df4438ec9e95c7790b45db12955514d96b5e46da058c0ba7a2fed9e6baabd65",
+    "tools/port-cargo-graph/contracts/owned_oracle.rs": "1841bcd939f08240a8f4618fb0d47e6fd3659ff4229be678671adfdcf63e71c8",
+    "tools/port-cargo-graph/contracts/std-sort-reference.json": "87cfba5a42f56b15094d2bca248dd594e3b20514875ef1e41c649718a2b926d1",
+    "tools/port-rust-unord/sort/SOURCES.json": "0fe45cc7c9619b35bd18db45e0224debfca37e5240463dfe9a2a28c362450caf"
+  },
+  "scope": "Supplemental actual-source equality proof: different insertion shapes, equal-sized distinct keys in both directions, shared-prefix COW before final/middle difference, equal cloned edge value and Eq-default fallback. No original source edits, no dependency/std completion credit.",
+  "bounds": {
+    "case_seconds": 5,
+    "stdout_bytes": 8388608,
+    "stderr_bytes": 1048576,
+    "raw_fixture_bytes": 100663296,
+    "core_dumps": false
+  }
+}

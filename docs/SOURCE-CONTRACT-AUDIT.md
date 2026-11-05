@@ -6,15 +6,20 @@ text is insufficient when a caller can supply other formatter options, a
 fallible writer, independent character writes or owned callback state.
 
 Review of the typed-storage block and follow-up API review exposed gaps in
-seven earlier implementation records. One remains reopened as `unported`,
-retaining all existing port and comparison evidence. Union-find's gaps closed
-in checkpoint 18; lexer, binary search, format parser and restricted names
-close in checkpoint 19; Base-N closes in checkpoint 23. The reopened status means full-file work remains; it does
-not remove the implemented algorithms or their tests.
+seven earlier implementation records. All seven have now closed: union-find in
+checkpoint18; lexer, binary search, format parser and restricted names in19;
+Base-N in23; and Cargo graph in33. Historical evidence remained retained while
+those rows were reopened. Independent source/API review of the larger compiler
+files continues before their completion credit.
 
-| Upstream file | Remaining contract |
-| --- | --- |
-| Cargo `src/util/graph.rs` | Borrowed Display/Debug writer dispatch and remaining generic persistent-container observations |
+Cargo graph now uses a primary owned/borrowed interface backed by genuine Rc
+persistent containers, exact source comparisons/cleanup and complete fallible
+formatting. Its main/equality proofs retain67,662 observations across all four
+assertion/overflow profiles and all three original tests. Seventy-two actual
+whole-graph stdio cases additionally check shared capture bytes/capacity/Arc
+counts, pre-held leases and IO guard release before panic hooks. Supporting
+stdio, libc and persistent-container operations remain scoped dependencies;
+this closure gives no entire std/im-rc/Arc/TLS source-file credit.
 
 Base-N now consumes arbitrary owned `Self`, dispatches independent method
 overrides, completes conversion/destruction before static length calculation,

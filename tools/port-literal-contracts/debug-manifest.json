@@ -33,7 +33,7 @@
     "port/support/rustfmt/char_debug.go": "ee693582aab3bd317cb9ef124f86dbc9b8852b3c46adbd99ba6880fb9cb2e891",
     "port/support/rustfmt/char_debug_tables.go": "c6924f94132671c791c7b8ce8f6b80e03186d1a1f835e73e8ed1da19cef7cd28",
     "port/support/rustfmt/char_debug_test.go": "e8ed700fcd5b796b8efd021531a6318eb2acf370a518d96ae62bc920cea08e09",
-    "port/support/rustfmt/formatter.go": "28143fe2b65b26d9b9aaee9cdf96ac96fcea7b8e404e0787ef1e92ac7fe132f7",
+    "port/support/rustfmt/formatter.go": "98b68bed6b04e1337db3b5b7424ffa3b0f8a14f6513cf0995d3599547724411d",
     "port/support/rustfmt/panic.go": "215086bed1fdc10c547013bc9cd8557434fdd962ca0678fdd2e6bb9994b22fd8",
     "port/support/rustfmt/panic_location_cells_test.go": "30856f354eff19cb1298b6b0c544206d63b98d171f42f11a4d35cbb5c1120e2a",
     "port/support/rustfmt/panic_test.go": "35e505d2cb781262dde6ec09441b3a1a4e4cfbfda15d30b64b245ccc3d1177f7",

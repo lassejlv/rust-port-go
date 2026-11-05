@@ -60,7 +60,7 @@
     "port/rust/compiler/rustc_lexer/src/profile.go": "19ccc25c39f7370d148fc57715c54b86331f2b5c6e76accff8116d9bf1f2bdc0",
     "port/rust/compiler/rustc_data_structures/src/binary_search_util/owned.go": "a8e9c52c1a78b877033be8879706531a1c601f90fa9743470f3c61d05b644aa3",
     "port/rust/compiler/rustc_index/src/interval_owned.go": "ee82e491d3b50d1db6f55da4e0127d357ac722174d8a45357329240730bba851",
-    "port/support/rustfmt/formatter.go": "28143fe2b65b26d9b9aaee9cdf96ac96fcea7b8e404e0787ef1e92ac7fe132f7",
+    "port/support/rustfmt/formatter.go": "98b68bed6b04e1337db3b5b7424ffa3b0f8a14f6513cf0995d3599547724411d",
     "port/support/rustfmt/panic.go": "215086bed1fdc10c547013bc9cd8557434fdd962ca0678fdd2e6bb9994b22fd8",
     "port/dependencies/rustc-literal-escaper/v0_0_8/src/component_guard_runtime_test.go": "856b52344115b1ea4f0f449a21eb117fa3ddff7064967e80b9fc75afa6ad4366",
     "port/rust/compiler/rustc_data_structures/src/binary_search_util/component_guard_runtime_test.go": "384dbfbcbef3c6589bd19f3246e8c86146ce215320c33eb7c59933cd21acf4dd",
