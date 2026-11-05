@@ -198,11 +198,11 @@
     "port/support/rustfmt/formatter.go": "28143fe2b65b26d9b9aaee9cdf96ac96fcea7b8e404e0787ef1e92ac7fe132f7"
   },
   "contract_evidence_sha256": {
-    "tools/port-literal-contracts/debug-manifest.json": "d0d3b18896580e7e942e9d6bfd1b4b5130dfa2110c2ed999b19e750bd618f8aa",
+    "tools/port-literal-contracts/debug-manifest.json": "10075e4f1bcdde7b1d4f30180b2a740158903a6c7158c2489549e1b91a277568",
     "tools/port-literal-contracts/debug.tsv.gz": "cce2e94b8794ab34d040f96a63883b6bd7fa259ad2ccaff1dfbad7b67fd6c5da",
-    "tools/port-literal-contracts/owned-manifest.json": "1cab320d204d62d73b38da81cdc110aaea78f95fc4c60dc8a70aaee39eeb2318",
+    "tools/port-literal-contracts/owned-manifest.json": "966d6f6fd32fcdfb871c343a4a5be0ce3edc4e3f33506fc47b0586fd24877053",
     "tools/port-literal-contracts/owned.tsv.gz": "2c8827a5e1fd1ba93a983bb4733ae131160a30fa4891511e03e063f18b662f42",
-    "tools/port-literal-contracts/processing-manifest.json": "d78a233bcbc9b1024f04dc6a87b6d1b9d2e516ab034db32a0ebc8ab552e7694b",
+    "tools/port-literal-contracts/processing-manifest.json": "40dd08795862646a9883c30eedf4864c032986d6d03aef857bc5c7046c61998e",
     "tools/port-literal-contracts/processing.tsv.gz": "5c28facc4d328716f9f250e64eeca814b9fd3d6ae0e76bad35f67e024789324d"
   }
 }

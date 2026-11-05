@@ -234,3 +234,13 @@ jobs:
           FERRUGO_CARGO: cargo
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: nightly-2026-11-04
+      - name: Compare exact string slicing and Unicode 18 formatting
+        run: |
+          python3 tools/port-rust-str/prepare.py --fetch
+          python3 tools/port-rust-str/generate.py --check
+          python3 tools/port-rust-str/generate_ambient.py --check
+          python3 tools/port-rust-unicode18/generate.py --check
+          python3 -m unittest discover -s tools/port-rust-str -p 'test_*.py'
+        env:
+          FERRUGO_RUSTC: rustc
+          RUSTUP_TOOLCHAIN: nightly-2026-11-04

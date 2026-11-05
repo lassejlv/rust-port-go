@@ -1,0 +1,39 @@
+{
+  "archive_bytes": 6030868,
+  "channel_manifest_url": "https://static.rust-lang.org/dist/2026-11-04/channel-rust-nightly.toml",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "compiler_commit": "708c94ef093ecc42fb8851e17d8383d999727abc",
+  "licenses": {
+    "COPYRIGHT": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af",
+    "LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "LICENSE-MIT": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1"
+  },
+  "manifest_sha256": "3740867978321544cb6ab736d104730a951d0b6aeda69866118765ec073f823e",
+  "schema": 1,
+  "scope": "Scoped selected SDK str indexing/boundaries/slice_error_fail_rt only; no standard-library source-file completion credit",
+  "sha256": "d99600cbf56d2db40112095e99e138f9e2f30002ef2774d288dc525e28a1357c",
+  "sources": {
+    "library/core/src/iter/range.rs": {
+      "bytes": 59285,
+      "member": "rust-src-nightly/rust-src/lib/rustlib/src/rust/library/core/src/iter/range.rs",
+      "sha256": "890121268f80bb4d7378b9b0f63067dcc700f5082e6e4475eb70997ad5310dcc"
+    },
+    "library/core/src/ops/range.rs": {
+      "bytes": 45515,
+      "member": "rust-src-nightly/rust-src/lib/rustlib/src/rust/library/core/src/ops/range.rs",
+      "sha256": "5d791bd2ee8997e93ac72c35db831815d9acbb7aed05cd1539799b7677a13d20"
+    },
+    "library/core/src/str/mod.rs": {
+      "bytes": 118505,
+      "member": "rust-src-nightly/rust-src/lib/rustlib/src/rust/library/core/src/str/mod.rs",
+      "sha256": "ad6b19bb106b466a183a22adc25e66160c4e8f74c25ace9f39f76e4f595e24c1"
+    },
+    "library/core/src/str/traits.rs": {
+      "bytes": 34787,
+      "member": "rust-src-nightly/rust-src/lib/rustlib/src/rust/library/core/src/str/traits.rs",
+      "sha256": "9e4f51a60ae74ad2b6e5ab4718b80cd5d475f0b7b6a050cbf0895c45ed25c998"
+    }
+  },
+  "url": "https://static.rust-lang.org/dist/2026-11-04/rust-src-nightly.tar.xz",
+  "version": "1.101.0-nightly (708c94ef0 2026-11-03)"
+}

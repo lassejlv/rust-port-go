@@ -330,3 +330,12 @@ The ledger remains at30 completed top-level source files. These sorting operatio
 - The isolated actual Go1.23 race gates pass for storage, vectors and intervals (22.875s,77.990s and48.533s), retaining the earlier150,068-record corpus. Fresh native regeneration, vet and four integrity checks pass. The owner's default/nightly descendant checks also retain all legacy fixture bytes.
 
 The ledger remains at30 completed top-level source files. This additive ownership bridge enables full unordered-bag and codec integration without a duplicate vector engine. Full compiler span/source-map/hygiene and Cargo graph work continue; production Rust compilation remains unfinished.
+
+## 2026-11-05 — checkpoint 30: exact string slicing and Unicode 18 formatting
+
+- Added scoped Rust string range indexing and character-boundary operations, including inclusive/exhausted ranges, borrowed successful results and all six slice-error priorities. Panic payloads retain exact Unicode character formatting, source excerpts and caller-supplied locations; current-context formatting starts before the hook.
+- The actual official SDK matches197,024 requests,85,911 exact panic records and27 ambient cases, including8 real aborts. Source/channel/archive identities and licenses are verified;12 integrity checks include a separate checkout sharing the canonical toolchain. Go1.23 source-helper race/vet passes.
+- Added an independent Unicode18 formatting proof that requires no unfinished Symbol implementation. Every valid scalar's char/str writer calls and public escape_debug result match1,112,064 native observations in272 SHA-256 blocks. The new profile coexists with the earlier Unicode17 comparison helpers and receives no whole standard-library source-file credit.
+- Isolated minimum-Go formatter/string race checks pass (46.164s/4.841s), along with fresh native regeneration and SDK/source integrity checks. All12 lexer/literal scopes and the literal dependency's complete scalar trace regenerate with unchanged raw and compressed fixture bytes; their helper bindings are refreshed.
+
+The source ledger remains at30 completed top-level files. The compiler's larger span/source-map/hygiene group now consumes these exact operations; full Cargo graph validation is also ready for independent acceptance. Production Rust compilation remains unfinished.

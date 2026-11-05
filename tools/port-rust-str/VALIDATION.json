@@ -1,0 +1,28 @@
+{
+  "actual_native_aborts": 8,
+  "ambient_cases": 27,
+  "bare_path_live_checks": 2,
+  "cases": 197024,
+  "files_sha256": {
+    "port/support/ruststr/ambient_test.go": "94a1d818d44466762267c84b63bee7c7891435317171d7ac3795d73193586b95",
+    "port/support/ruststr/slice.go": "ee0f6e966959829aeb5eb0c677afe2cab80562148535b57fe993d459abfbfb17",
+    "port/support/ruststr/slice_test.go": "39f361e5b6b306d4c207fde38f7d4ced8306265d5a9b96c3de228a8203aa7737",
+    "port/support/ruststr/testdata/ambient-manifest.json": "eb2ee1262a4db66f5259ece68dd35f6f3a5b68df72fc2be8beeb1a480f525ec2",
+    "port/support/ruststr/testdata/manifest.json": "c42b3b12748aa89d4752c3c1334587749c89f17c3c1c21a9e67e0f06ce4832ee",
+    "tools/port-rust-str/SOURCES.json": "91ab5ca470924e1e76d3508a48f6725cfcd037bb7f31c6ac418f950c6a445a5d",
+    "tools/port-rust-str/prepare.py": "5df1dfbf484f49fee301817efe04cc91319db2e1b2cb38134735ee83b6bef6c1",
+    "tools/port-rust-str/test_tools.py": "5238e97e2bc63d42609fcbf14263b3c0c557ee1456dd428b20082f74c56d0bcb"
+  },
+  "fuzz_executions": 238325,
+  "fuzz_seconds": 11.02,
+  "go123_race_seconds": 3.636,
+  "go127_replay": true,
+  "integrity_tests": 12,
+  "isolated_snapshot_shared_toolchain_live_checks": 2,
+  "minimum_go": "1.23.12",
+  "native_panics": 85911,
+  "profile": "official nightly2026-11-04 rustc1.101.0 commit708c94ef093ecc42fb8851e17d8383d999727abc Unicode18",
+  "schema": 1,
+  "status": "validated-scoped-runtime-no-source-file-credit",
+  "vet": true
+}

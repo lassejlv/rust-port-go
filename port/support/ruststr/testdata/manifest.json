@@ -1,0 +1,58 @@
+{
+  "cases": 197024,
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+  "fixture_sha256": "a4f7e8da792a0cdf147f31120c2c3b1bb67f29f02606ff0cf7df7fcde18b556c",
+  "go_sources": {
+    "port/support/rustfmt/unicode18.go": "e2d3251c139f53548ac92c6f68998ac1bd6685720741725741cf89df0fd9a91f",
+    "port/support/ruststr/slice.go": "ee0f6e966959829aeb5eb0c677afe2cab80562148535b57fe993d459abfbfb17"
+  },
+  "location_profile": "Caller filenames are exact oracle-relative paths after stripping only repository-root prefix; production never normalizes supplied locations.",
+  "locations": {
+    "exhausted": {
+      "Column": 67,
+      "File": "tools/port-rust-str/oracle.rs",
+      "Line": 14
+    },
+    "from": {
+      "Column": 20,
+      "File": "tools/port-rust-str/oracle.rs",
+      "Line": 10
+    },
+    "inclusive": {
+      "Column": 25,
+      "File": "tools/port-rust-str/oracle.rs",
+      "Line": 12
+    },
+    "range": {
+      "Column": 21,
+      "File": "tools/port-rust-str/oracle.rs",
+      "Line": 9
+    },
+    "to": {
+      "Column": 18,
+      "File": "tools/port-rust-str/oracle.rs",
+      "Line": 11
+    },
+    "to_inclusive": {
+      "Column": 28,
+      "File": "tools/port-rust-str/oracle.rs",
+      "Line": 13
+    }
+  },
+  "oracle_sha256": "e9812139ab1a6f71c9fac6d70c1f2d8132216df006094c1d86f8649447f291e8",
+  "panics": 85911,
+  "raw_sha256": "3ff163a7f1caf9f5f98e7410189fcf3e01a6b28a8bf21f052c1ebca938afe51d",
+  "request_sha256": "dd0c4692c2238ea23e2ff69c0688f951eb614e3dccad5efb0b2002fa4ee7dacf",
+  "schema": 1,
+  "scope": "Scoped actual SDK str indexing/boundaries/panic payloads, no std-file credit",
+  "sdk_source_sha256": "91ab5ca470924e1e76d3508a48f6725cfcd037bb7f31c6ac418f950c6a445a5d",
+  "tool_sha256": {
+    "generate.py": "e544893a63c124be29d84a55576fec815b6dc09c6fab0eab141e622301488e56",
+    "prepare.py": "5df1dfbf484f49fee301817efe04cc91319db2e1b2cb38134735ee83b6bef6c1"
+  },
+  "unicode": [
+    18,
+    0,
+    0
+  ]
+}
