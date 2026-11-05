@@ -310,3 +310,14 @@ The ledger remains at30 completed top-level source files. Shared panic integrati
 - The isolated Go1.23 full race suite and vet pass, as do optional semver/stable-hash feature races and the added component/collection guard checks. Hosted validation now regenerates the new runtime, dependency and component proofs against their exact original toolchains.
 
 The ledger remains at30 completed top-level source files. Full span/session/symbol/hygiene/source-map files, Cargo graph, unordered collections and their required dependencies continue in parallel. Production Rust compilation remains unfinished.
+
+## 2026-11-05 — checkpoint 28: unstable and cached-key sorting
+
+- Added the scoped original SDK's unstable sorting strategy, including small sorting networks, partition selection and heap fallback. The actual implementation matches103,895 requests and11,487,102 comparison events, with94,502 caught panics and exact final slot/destructor commitments.
+- Added cached-key sorting with owned mutable key functions, actual tuple PartialOrd defaults/overrides, u32/usize index selection, stable permutation and deterministic key/function destruction. The original SDK matches5,768 ordinary cases,121,352 function calls,81,600 key drops and121,472 comparisons.
+- Retained99 ambient-context cases/36 native aborts and198 explicit-hook processes/72 native aborts, covering resumed callbacks, hook ordering, remaining key cleanup and function/field destructor boundaries.
+- Independent isolated Go1.23 sorting race/vet, fresh actual-SDK regeneration for all three new corpora and four tool-integrity checks pass. These adapters receive no whole std or Unord source-file credit.
+- Added explicit cold-cache hydration for the component proof's separate pinned lexer input. A real local Git partial clone verifies offline rejection, explicit fetch, exact revision/path identity and subsequent offline reuse. Fresh182-case component regeneration retains every native fixture byte.
+- Checkpoint26 passed all four hosted jobs. Checkpoint27 passed Linux, macOS and the complete original-span reference job; its upstream comparison job remains in progress.
+
+The ledger remains at30 completed top-level source files. These sorting operations support the remaining complete compiler collection ports. Full span/source-map/hygiene, Cargo graph and current-context typed-vector work continue; production Rust compilation remains unfinished.

@@ -46,7 +46,7 @@
   "fixture_sha256": "e01319541f1d882512cc3ec07a14037cfda5bf079d31df10f2e2c6061ce84a1e",
   "files": {
     "tools/port-rust-panic-runtime/component_guards/oracle.rs": "824872b89261d5e581d2b7f77388f9470575e866a784b3e45bc42224181837cc",
-    "tools/port-rust-panic-runtime/component_guards/generate.py": "f9c216a3cba7d86cd6e5800797767948681fcaa32b7d0576d5634b5c5fb93d94",
+    "tools/port-rust-panic-runtime/component_guards/generate.py": "993464638be1e6afd8685c6a18418957cf685317f239b994894c17ceb564dd00",
     "tools/port-rust-panic-runtime/component_guards/dependencies/Cargo.toml": "8ef77a442898c5b778546b975fa3a3d5dcbdb5c310ddbdab795e01c717924cd9",
     "tools/port-rust-panic-runtime/component_guards/dependencies/Cargo.lock": "723a22e8209f58a9b4b61ad7fb6194feac813a1158cdd0b653c8b6bf45a1da34",
     "tools/port-rust-span-reference/sources.json": "b5b283946d0f2094e2ee6b7da6cb00c3601cecc02954afea3f91b42492b024bb",

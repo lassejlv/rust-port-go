@@ -1,0 +1,71 @@
+{
+  "scope": "Actual std cached-key ownedFnMut ordinary-hook-once/resume/complete field and element cleanup; no standard-library file credit",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+  "sdk_libraries": {
+    "libstd-530112f2fd58de10.rlib": "8fdbba1c8e59d13f0382407bce5800f9a75ecb49b4d0fdb4bcb616284bb354a1",
+    "libcore-7832d2fe4fa07f06.rlib": "4fb8e711916ca10f1a349a8d5cde7ed17cd968d4b71833f10d9c799b2ab3f645",
+    "liballoc-6e37827f505ea391.rlib": "d4d0c141c89ab81f1a6e5b8b17e6296d5acd8208480b62ad63f563628dfb93ba"
+  },
+  "cases": 198,
+  "aborts": 72,
+  "locations": {
+    "function_drop": {
+      "File": "tools/port-rust-unord/cached/oracle.rs",
+      "Line": 45,
+      "Column": 200
+    },
+    "token_drop": {
+      "File": "tools/port-rust-unord/cached/oracle.rs",
+      "Line": 43,
+      "Column": 91
+    },
+    "panic in a destructor during cleanup": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      "Line": 233,
+      "Column": 5
+    },
+    "key_function": {
+      "File": "tools/port-rust-unord/cached/oracle.rs",
+      "Line": 47,
+      "Column": 488
+    },
+    "key_compare": {
+      "File": "tools/port-rust-unord/cached/oracle.rs",
+      "Line": 15,
+      "Column": 277
+    },
+    "key_drop": {
+      "File": "tools/port-rust-unord/cached/oracle.rs",
+      "Line": 16,
+      "Column": 196
+    },
+    "outer.unwind": {
+      "File": "tools/port-rust-unord/cached/hooks.rs",
+      "Line": 16,
+      "Column": 650
+    },
+    "outer.processing": {
+      "File": "tools/port-rust-unord/cached/hooks.rs",
+      "Line": 16,
+      "Column": 741
+    }
+  },
+  "fixture_sha256": "dcf9c0ed3f99a552911697c2164c3de1d0da61847381289fb8d29d3d9af00dfb",
+  "raw_sha256": "5570c50f5fcdec6246f0cbc7573f0801a79e6ab1695775a8638d827b9d8806cc",
+  "reference_sources": {
+    "hooks.rs": "aef3f7119049ca819c2129f9246f999011f378ead4c9c992acb91b74f8ab52b6",
+    "oracle.rs": "71119e962f60a5be6dea72144999bc21d33dc6a02153bf7fdd9e2d48f8243905",
+    "generate.py": "f14ff8e654ab1db410f9c060b0484ef8404fd0c72979d7923b50e00397dc8a89",
+    "generate_hooks.py": "3557db8854bb31578c8213ccdcc72087ff7ba7907deeecd56630e3b12d337b38"
+  },
+  "sdk_selector_sha256": "d82aaaaf1c7849c1418345f61e617fa68c3445470cddbd859f0906fc39f5363c",
+  "go_sources": {
+    "cached.go": "ccbc376acc8b03ec77676811c9d0039fa26e77f2bb08bda62bce8b5845f28abd",
+    "key_function.go": "c5bc5b6fddc4a839ede57a1bd5df1b09646cb933fba257c6c242e0e47119e572",
+    "unstable.go": "bb8f020c61729c43e48a49a638fa885d3d90bc778f14ae273b2fd45f8bade63d",
+    "network.go": "c89ed4658707f19997f78cf46d2c1deb31d60af3a20a7420186566d4386521f4",
+    "stable.go": "6b636f0403be3b441a7176e66136f634846d658da915e462b98997370b093760",
+    "shared.go": "9117a60564f30108fa97fd412f55a434835e9706d4db4a1413e29a9d7a2a67a7",
+    "panic_sites.go": "1bfa9ac4eae8770fa353acebc2a1458b22a9e728c35a0d9a6781166a34d87d06"
+  }
+}

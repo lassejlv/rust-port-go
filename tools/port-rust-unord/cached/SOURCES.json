@@ -1,0 +1,52 @@
+{
+  "scope": "Read-only source audit matching the actual official SDK used by the original stable-sort reference. No standard-library completion credit.",
+  "official_archive_url": "https://static.rust-lang.org/dist/2026-11-04/rust-src-nightly.tar.xz",
+  "official_archive_sha256": "d99600cbf56d2db40112095e99e138f9e2f30002ef2774d288dc525e28a1357c",
+  "files": [
+    {
+      "path": "library/alloc/src/slice.rs",
+      "bytes": 35548,
+      "sha256": "085b18c8f564ecdb4575bf50b387ddbbf52b37bf9985cb0bc3899db49ab24778"
+    },
+    {
+      "path": "library/alloc/src/vec/spec_from_iter.rs",
+      "bytes": 2373,
+      "sha256": "503e0f7c6949ef2e99437cda219ac07a992428b7964d1320fc738f9e29824e02"
+    },
+    {
+      "path": "library/alloc/src/vec/spec_from_iter_nested.rs",
+      "bytes": 2376,
+      "sha256": "327aeaf0a1f6bb3b537f342f161f549759846a16f0863f154d6ac2c9ca766aa5"
+    },
+    {
+      "path": "library/alloc/src/vec/spec_extend.rs",
+      "bytes": 1519,
+      "sha256": "0f0b7e6ddc1683192cee8e6f59af2a8455645e911b637fdf57576cf045515f28"
+    },
+    {
+      "path": "library/core/src/iter/adapters/map.rs",
+      "bytes": 6481,
+      "sha256": "43edceb9d52c0c0da4ecabf3f761081672f2c929aa2aada78686504c16bb68ef"
+    },
+    {
+      "path": "library/core/src/iter/adapters/enumerate.rs",
+      "bytes": 9695,
+      "sha256": "b64a625b876695472133816d411fc3fce3e2d5221178ff30a34370ab24ab9c95"
+    },
+    {
+      "path": "library/core/src/slice/iter/macros.rs",
+      "bytes": 20773,
+      "sha256": "8db181ab6087b436dcc4c350efc7283ecc4912e34ca20d8bf7460fca5084c26c"
+    },
+    {
+      "path": "library/core/src/tuple.rs",
+      "bytes": 8691,
+      "sha256": "ef0ace6edb4851d158a19375eae4aebc41cfd1054577138cc8e01e18aa73324a"
+    },
+    {
+      "path": "library/core/src/cmp.rs",
+      "bytes": 84542,
+      "sha256": "d3483dc7d11df42f41d9abb8305d91c30c0662a304511552bdcc1f12ecd77988"
+    }
+  ]
+}

@@ -48,7 +48,7 @@ their locations are unmodified.
 ```sh
 python3 tools/port-rust-span-reference/install.py --fetch
 python3 tools/port-rust-span-reference/prepare.py --fetch-source --fetch-deps
-python3 tools/port-rust-panic-runtime/component_guards/generate.py --fetch-deps
+python3 tools/port-rust-panic-runtime/component_guards/generate.py --fetch-source --fetch-deps
 python3 tools/port-rust-panic-runtime/component_guards/generate.py --prepared --check
 ```
 
@@ -58,6 +58,9 @@ Ordinary generation is offline. Tool selection honors `--rustc`/`--cargo` and
 has an ownership marker; no unowned directory is overwritten. Compilations and
 all native/Go children have bounded timeouts and native core dumps are disabled.
 Existing gzip bytes are preserved whenever the uncompressed corpus is equal.
+`--fetch-source` explicitly hydrates the exact pinned lexer blob as well as
+the span graph; the lexer is a separate source input outside that graph.
+Offline generation rejects a missing blob before writing reference outputs.
 
 The five `component_guard_runtime_test.go` files replay the baseline without
 Rust or network access. Their shared caller witness is in `validation/`.

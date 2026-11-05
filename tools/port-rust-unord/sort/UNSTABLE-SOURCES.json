@@ -1,0 +1,42 @@
+{
+  "scope": "Read-only source audit matching the actual official SDK used by the original stable-sort reference. No standard-library completion credit.",
+  "official_archive_url": "https://static.rust-lang.org/dist/2026-11-04/rust-src-nightly.tar.xz",
+  "official_archive_sha256": "d99600cbf56d2db40112095e99e138f9e2f30002ef2774d288dc525e28a1357c",
+  "files": [
+    {
+      "path": "library/core/src/slice/sort/shared/mod.rs",
+      "bytes": 1548,
+      "sha256": "fa9eec2901bafba25c9c1e1684df76dbb1f86e0bbd04f18f3e67cee54dcdfcc8"
+    },
+    {
+      "path": "library/core/src/slice/sort/shared/pivot.rs",
+      "bytes": 3585,
+      "sha256": "a9c3f207678555dc1c03e50fa73bf8de7d459844039de4d0bd8892a0e4f1317b"
+    },
+    {
+      "path": "library/core/src/slice/sort/shared/smallsort.rs",
+      "bytes": 32343,
+      "sha256": "480d10a3ad88477d1d620361f238cebf9861381e6c0210fb26ba2f1d3d3576cf"
+    },
+    {
+      "path": "library/core/src/slice/sort/unstable/mod.rs",
+      "bytes": 4971,
+      "sha256": "23fa044fde8d3542f5f298654923ed2426930373259e6f71670c75b80501cf9a"
+    },
+    {
+      "path": "library/core/src/slice/sort/unstable/heapsort.rs",
+      "bytes": 2289,
+      "sha256": "6e126fcfaaee8e0b7f70a9d94dc8a512a2ba28c93811db621ec2784a62501ccb"
+    },
+    {
+      "path": "library/core/src/slice/sort/unstable/quicksort.rs",
+      "bytes": 15200,
+      "sha256": "b99b2c37f53ee7ac5a3baee454f876216b413c7a4cfb7d2382d9bdf36d9774d8"
+    },
+    {
+      "path": "library/alloc/src/slice.rs",
+      "bytes": 35548,
+      "sha256": "085b18c8f564ecdb4575bf50b387ddbbf52b37bf9985cb0bc3899db49ab24778"
+    }
+  ]
+}

@@ -12,6 +12,19 @@ def run(command,env,timeout=180):
  if p.returncode:raise RuntimeError(f'command failed({p.returncode}):{command[:2]}\n{p.stderr.decode(errors="replace")[-6000:]}')
  return p.stdout
 def no_core():resource.setrlimit(resource.RLIMIT_CORE,(0,0))
+def read_lexer_source(source,blob,revision,env,fetch):
+ git_env=env.copy();git_env['GIT_NO_LAZY_FETCH']='1'
+ status=subprocess.run(['git','-C',str(source),'cat-file','--batch-check'],input=(blob+'\n').encode(),env=git_env,capture_output=True,timeout=30)
+ if status.returncode:raise RuntimeError('cannot inspect pinned lexer source cache')
+ if status.stdout.decode().strip().endswith(' missing'):
+  if not fetch:raise RuntimeError('pinned lexer blob missing; prepare with --fetch-source')
+  fetch_env=env.copy();fetch_env.pop('GIT_NO_LAZY_FETCH',None)
+  run(['git','-C',source,'-c','fetch.negotiationAlgorithm=noop','fetch','--no-tags','--no-write-fetch-head','--recurse-submodules=no','--filter=blob:none','origin',blob],fetch_env)
+ actual=run(['git','-C',source,'rev-parse',revision+':compiler/rustc_lexer/src/lib.rs'],git_env).decode().strip()
+ if actual!=blob:raise RuntimeError('lexer revision/path object differs')
+ body=run(['git','-C',source,'cat-file','blob',blob],git_env)
+ if hashlib.sha1(f'blob {len(body)}\0'.encode()+body).hexdigest()!=blob:raise RuntimeError('lexer object differs')
+ return body
 def requests():
  for component,cases in [
   ('stable_hash_context',['ok','call']),
@@ -28,14 +41,14 @@ def requests():
  yield {'component':'predicate','case':'call','mode':'unobserved'}
  yield {'component':'internal','case':'ok','mode':'processing'}
 def main():
- p=argparse.ArgumentParser();p.add_argument('--check',action='store_true');p.add_argument('--prepared',action='store_true');p.add_argument('--fetch-deps',action='store_true');p.add_argument('--rustc');p.add_argument('--cargo');args=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--check',action='store_true');p.add_argument('--prepared',action='store_true');p.add_argument('--fetch-source',action='store_true');p.add_argument('--fetch-deps',action='store_true');p.add_argument('--rustc');p.add_argument('--cargo');args=p.parse_args()
  env=os.environ.copy();rustc=reference.executable(args.rustc,'FERRUGO_RUSTC',pathlib.Path('.toolchain/rust-nightly-2026-11-04/bin/rustc'));cargo=reference.executable(args.cargo,'FERRUGO_CARGO',pathlib.Path('.toolchain/rust-nightly-2026-11-04/bin/cargo'))
  selection=json.loads((REFERENCE/'toolchain.json').read_text())
  if run([rustc,'--version'],env).decode().strip()!=selection['rustc']or run([cargo,'--version'],env).decode().strip()!=selection['cargo']:raise RuntimeError('component proof requires exact matching nightly tools')
  source=reference.path_option(env.get('FERRUGO_RUST_SOURCE','.toolchain/upstream-rust'),'FERRUGO_RUST_SOURCE');cargo_home=reference.path_option(env.get('CARGO_HOME','.toolchain/port-cargo-home'),'CARGO_HOME')
  if not source.is_dir()or not cargo_home.is_dir():raise RuntimeError('source/registry cache unavailable')
  env['CARGO_HOME']=str(cargo_home);env['RUSTC']=str(rustc);env['RUSTC_BOOTSTRAP']='1'
- if not args.prepared:run([sys.executable,REFERENCE/'prepare.py'],env)
+ if not args.prepared:run([sys.executable,REFERENCE/'prepare.py',*(['--fetch-source']if args.fetch_source else[])],env)
  profile=json.loads((ROOT/'.toolchain/oracles/rustc-span-reference/build-profile-d1o1.json').read_text())
  graph=json.loads((REFERENCE/'sources.json').read_text());proof_data=pathlib.Path(profile['provenance_path']).read_bytes()
  if profile['rustc_version']!=selection['rustc']or profile['source_revision']!=graph['revision']or not profile['debug_assertions']or not profile['overflow_checks']or sha(proof_data)!=profile['provenance_sha256']or json.loads(proof_data)['source_graph_sha256']!=sha((REFERENCE/'sources.json').read_bytes()):raise RuntimeError('reference profile/provenance differs')
@@ -43,8 +56,8 @@ def main():
   base=pathlib.Path(profile['workspace'])/('original'if f['path'].startswith('compiler/')else'upstream-root');data=(base/f['path']).read_bytes()
   if len(data)!=f['bytes']or sha(data)!=f['sha256']:raise RuntimeError('reference source bytes differ:'+f['path'])
  lexer_blob=json.loads((ROOT/'tools/port-lexer-oracle/manifest.json').read_text())['sources']['compiler/rustc_lexer/src/lib.rs']
- env['GIT_NO_LAZY_FETCH']='1';lexer_source=run(['git','-C',source,'show',lexer_blob],env)
- if hashlib.sha1(f'blob {len(lexer_source)}\0'.encode()+lexer_source).hexdigest()!=lexer_blob:raise RuntimeError('lexer object differs')
+ lexer_source=read_lexer_source(source,lexer_blob,graph['revision'],env,args.fetch_source)
+ env['GIT_NO_LAZY_FETCH']='1'
  cache=ROOT/'.toolchain/oracles/panic-component-guards';marker=cache/'ownership.json';identity={'tool':'port-rust-panic-runtime/component_guards','revision':graph['revision']}
  if cache.exists()and any(cache.iterdir())and not marker.is_file():raise RuntimeError('unowned component output cache')
  cache.mkdir(parents=True,exist_ok=True)

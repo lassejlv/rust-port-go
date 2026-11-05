@@ -197,11 +197,15 @@ jobs:
         run: |
           python3 tools/port-rust-unord/table/check.py
           python3 tools/port-rust-unord/sort/generate.py --check
+          python3 tools/port-rust-unord/sort/generate_unstable.py --check
+          python3 tools/port-rust-unord/cached/generate.py --check
+          python3 tools/port-rust-unord/cached/generate_hooks.py --check
           python3 tools/port-rust-unord/panic/generate.py --check
           python3 tools/port-rust-unord/map/generate.py --skip-prepare --check
           python3 tools/port-rust-unord/traits/generate.py --skip-prepare --check
           python3 -m unittest discover -s tools/port-rust-unord/table -p 'test_*.py'
           python3 -m unittest discover -s tools/port-rust-unord/panic -p 'test_*.py'
+          python3 -m unittest discover -s tools/port-rust-unord/cached -p 'test_*.py'
         env:
           FERRUGO_GO: go
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
@@ -220,7 +224,9 @@ jobs:
           FERRUGO_RUSTC: rustc
           RUSTUP_TOOLCHAIN: nightly-2026-11-04
       - name: Compare original component cleanup and current runtime scopes
-        run: python3 tools/port-rust-panic-runtime/component_guards/generate.py --fetch-deps --check
+        run: |
+          python3 -m unittest discover -s tools/port-rust-panic-runtime/component_guards -p 'test_*.py'
+          python3 tools/port-rust-panic-runtime/component_guards/generate.py --fetch-source --fetch-deps --check
         env:
           FERRUGO_RUSTC: rustc
           FERRUGO_CARGO: cargo

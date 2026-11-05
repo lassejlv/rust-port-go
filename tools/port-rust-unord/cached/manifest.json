@@ -1,0 +1,41 @@
+{
+  "scope": "Actual std1.101 cached-key owned FnMut/tuple PartialOrd/temporary destruction/permutation; supporting dependency, no standard-library file completion credit",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+  "sdk_libraries": {
+    "libstd-530112f2fd58de10.rlib": "8fdbba1c8e59d13f0382407bce5800f9a75ecb49b4d0fdb4bcb616284bb354a1",
+    "libcore-7832d2fe4fa07f06.rlib": "4fb8e711916ca10f1a349a8d5cde7ed17cd968d4b71833f10d9c799b2ab3f645",
+    "liballoc-6e37827f505ea391.rlib": "d4d0c141c89ab81f1a6e5b8b17e6296d5acd8208480b62ad63f563628dfb93ba"
+  },
+  "counts": {
+    "cases": 5768,
+    "compares": 121472,
+    "key_drops": 81600,
+    "function_calls": 121352,
+    "function_drops": 5768,
+    "token_drops": 5768,
+    "moves": 144,
+    "partial_cmp": 60736,
+    "chaining_less": 60736,
+    "other_comparisons": 0
+  },
+  "fixture_sha256": "379c5903f3f8eb290b153e884b3d859fb8d451bb8f69f303f5bd27fb0af363f4",
+  "raw_sha256": "a7e87ac5ce97e2c78426ef1700876c91d02981a6a87530f609afb47470555dcd",
+  "children": {
+    "cases": 99,
+    "aborts": 36,
+    "fixture_sha256": "93d98d5ea733d9aa39401671e0e94acb8cba519d6a29b011992fb77dbd734387",
+    "raw_sha256": "3951b8a09b81150521a8b7b354cbebe2fc38ca90da6de4e24de0e14a6153f7c3"
+  },
+  "oracle_sha256": "71119e962f60a5be6dea72144999bc21d33dc6a02153bf7fdd9e2d48f8243905",
+  "generator_sha256": "f14ff8e654ab1db410f9c060b0484ef8404fd0c72979d7923b50e00397dc8a89",
+  "shared_generator_sha256": "d82aaaaf1c7849c1418345f61e617fa68c3445470cddbd859f0906fc39f5363c",
+  "go_sources": {
+    "cached.go": "ccbc376acc8b03ec77676811c9d0039fa26e77f2bb08bda62bce8b5845f28abd",
+    "key_function.go": "c5bc5b6fddc4a839ede57a1bd5df1b09646cb933fba257c6c242e0e47119e572",
+    "unstable.go": "bb8f020c61729c43e48a49a638fa885d3d90bc778f14ae273b2fd45f8bade63d",
+    "network.go": "c89ed4658707f19997f78cf46d2c1deb31d60af3a20a7420186566d4386521f4",
+    "stable.go": "6b636f0403be3b441a7176e66136f634846d658da915e462b98997370b093760",
+    "shared.go": "9117a60564f30108fa97fd412f55a434835e9706d4db4a1413e29a9d7a2a67a7"
+  },
+  "source_audit_sha256": "0c5244cc14bc721ffd53b55de4daece3eb935afaad908d781840d37f48af3d1e"
+}
