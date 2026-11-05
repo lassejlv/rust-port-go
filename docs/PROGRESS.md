@@ -408,3 +408,5 @@ A clean identity runner then exposed missing pinned standard-library source obje
 - Final API review withholds the 133-line comments implementation: public Vec<String> needs an owning vector interface beyond a Go slice and matching clone capacity. The four large span files also remain partial; their public vectors and composed cleanup/Arc/path contracts are explicitly tracked alongside String ownership.
 
 The ledger records 45 complete top-level files. The initial six-file leaf target remains open for comments.rs. The next acceptance goal is five files/684 lines: comments, AST IR/visitors, packed integers and NodeId. Full production Rust compilation and the complete compiler/Cargo port remain unfinished.
+
+GitHub rejected checkpoint36 before starting any jobs because two new job-level environment expressions used the unavailable runner context. The follow-up derives both producer paths from RUNNER_TEMP inside the setup step and exports them through GITHUB_ENV. All 54 shell blocks and YAML parsing pass; source code, native data and the 45-file ledger are unchanged.

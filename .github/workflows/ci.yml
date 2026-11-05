@@ -601,8 +601,6 @@ jobs:
       CARGO_BUILD_JOBS: '1'
       GOMAXPROCS: '2'
       GORACE: atexit_sleep_ms=0
-      FERRUGO_AST_UTIL_PROFILE_DIR: ${{ runner.temp }}/ferrugo-leaf-producer
-      FERRUGO_TIME_SPAN_PROOF: ${{ runner.temp }}/ferrugo-leaf-producer
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
@@ -629,6 +627,8 @@ jobs:
               'FERRUGO_RUSTC_NIGHTLY': executable(nightly, 'rustc'),
               'FERRUGO_STRING_RUSTC_199': executable(stable, 'rustc'),
               'FERRUGO_STRING_RUSTC_1101': executable(nightly, 'rustc'),
+              'FERRUGO_AST_UTIL_PROFILE_DIR': os.path.join(os.environ['RUNNER_TEMP'], 'ferrugo-leaf-producer'),
+              'FERRUGO_TIME_SPAN_PROOF': os.path.join(os.environ['RUNNER_TEMP'], 'ferrugo-leaf-producer'),
           }
           with open(os.environ['GITHUB_ENV'], 'a') as output:
               for name, value in values.items():
