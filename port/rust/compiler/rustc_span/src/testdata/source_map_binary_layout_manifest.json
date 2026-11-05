@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "records": 74,
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+  "sdk_archive_sha256": "d99600cbf56d2db40112095e99e138f9e2f30002ef2774d288dc525e28a1357c",
+  "sdk_sources": {
+    "library/alloc/src/rcs/arc.rs": "e6453bc5d044b7eef1659634a52dd6d9f29898bb4d35e027fca9f685f3044cf6",
+    "library/core/src/alloc/layout.rs": "9d92c8a5f4213625e24807d02efc0c01121ba1ded8622a930eb2af63343af9be"
+  },
+  "raw_sha256": "3f2d85584af12bb56488d2f3ddd1cacaf4087b29e8829117cab3f6ec0485ddea",
+  "gzip_sha256": "9af1b92bbd5faf3e7324c8b0cbccc1cc73b7a4243c01dd5ac44c4bee94b233dc",
+  "wrapper_sha256": "16b8703bff6b6c6a503f2c2012c6bd3e759626e1e877867facbaa4d5bf1af401",
+  "scope": "Actual Arc<[u8]>::new_uninit_slice for small valid/large invalid lengths, plus exact public Layout recipe for boundary-valid huge lengths without allocation. Header shim is only repr(C) two actual atomic usize counters and unit, matching selected SDK ArcInner<()> fields; no Arc or allocator file credit. No fake SourceFile/File metadata and no huge allocations."
+}

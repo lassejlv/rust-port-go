@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_sha256": "9fa60e859a71b59b6787028a569a17d9fa0b5f047af9bb12de14e9c34af6eeb3",
+  "records": 1648,
+  "caught_panics": 594,
+  "profiles": [
+    "d0o0",
+    "d0o1",
+    "d1o0",
+    "d1o1"
+  ],
+  "raw_sha256": "14bbe2a82f8b83bfda978c9cb5de92c350dab8de6917b29bf27372cea577adb7",
+  "gzip_sha256": "62563b7a747ef50967f23a9d92983050f06ea5977cd55c39c5c22becefee1e45",
+  "wrapper_sha256": "06cb78a3f9e384ef6c61db740ecec1b98fc548d343a2ed56b6a09e562d6be165",
+  "normalization": "None. Native original/compiler/... file spelling is explicitly supplied by the Go profile; payload kind, byte message, line and column are retained.",
+  "complete": false,
+  "remaining": "Other SourceMap assertion/allocation/arithmetic operation sites and runtime contexts remain under validation."
+}

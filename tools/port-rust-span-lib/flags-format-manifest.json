@@ -1,0 +1,25 @@
+{
+  "client_sha256": "a6b33fb045c2be18b5a700417bb0ebf9b35702b7662d1ec163f816423b21c3c7",
+  "fixture_sha256": "cf994ec95514d7ffbee02c2ab1e02dde9dea08bf61cf6eda2c402c2836745be1",
+  "generator_sha256": "ab540e77bf4ca247ffed0f737ce2a5cf9bb4c3fef5bb9b90e3ef50ff98dcfad4",
+  "native_raw_bytes": 611578,
+  "native_raw_sha256": "6d142cc4b50f21fe69a6d7b1ef343abd5b5d21848e5ad3cd5d05b521e8500a39",
+  "observer_sha256": "8d65e31a0cea95c8a23b9878857d5a44ae139adcf340e55eff35d825983de159",
+  "raw_sha256": "c517f576f65f4f30fc3b19cde896e25aaefbe863b0274b768aa04e2cc0f81706",
+  "records": 7528,
+  "reference_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "status": "partial-lib-validation",
+  "tool_inputs_sha256": {
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-span-lib/reference.py": "2094b30a5149056c683edffc6cc4a8d6d6984d81933ecb10c80e5f34c355db9e",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+  },
+  "unicode": [
+    18,
+    0,
+    0
+  ]
+}

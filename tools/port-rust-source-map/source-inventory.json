@@ -1,0 +1,364 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "full_original_file_candidates": 5,
+  "full_original_line_total": 2574,
+  "files": [
+    {
+      "source": "compiler/rustc_span/src/source_map.rs",
+      "git_blob": "caad0da3292619754f321a8e713cfc154dbe7641",
+      "lines": 1327,
+      "bytes": 51576,
+      "sha256": "9fa60e859a71b59b6787028a569a17d9fa0b5f047af9bb12de14e9c34af6eeb3",
+      "status": "scoped_partial_owned_buffer_api_pending",
+      "go_counterparts": [
+        "port/rust/compiler/rustc_span/src/source_map.go",
+        "port/rust/compiler/rustc_span/src/source_map_binary_layout.go",
+        "port/rust/compiler/rustc_span/src/source_map_extensions.go",
+        "port/rust/compiler/rustc_span/src/source_map_files.go",
+        "port/rust/compiler/rustc_span/src/source_map_format.go",
+        "port/rust/compiler/rustc_span/src/source_map_io_error.go",
+        "port/rust/compiler/rustc_span/src/source_map_io_unix.go",
+        "port/rust/compiler/rustc_span/src/source_map_io_windows.go",
+        "port/rust/compiler/rustc_span/src/source_map_io_windows_kind.go",
+        "port/rust/compiler/rustc_span/src/source_map_loader.go",
+        "port/rust/compiler/rustc_span/src/source_map_locations.go",
+        "port/rust/compiler/rustc_span/src/source_map_mapping.go",
+        "port/rust/compiler/rustc_span/src/source_map_owned.go",
+        "port/rust/compiler/rustc_span/src/source_map_panic.go",
+        "port/rust/compiler/rustc_span/src/source_map_path.go",
+        "port/rust/compiler/rustc_span/src/source_map_path_traits.go",
+        "port/rust/compiler/rustc_span/src/source_map_points.go",
+        "port/rust/compiler/rustc_span/src/source_map_source.go",
+        "port/rust/compiler/rustc_span/src/source_map_stderr.go",
+        "port/rust/compiler/rustc_span/src/source_map_tracing.go",
+        "port/rust/compiler/rustc_span/src/source_map_tracing_profile.go",
+        "port/rust/compiler/rustc_span/src/source_map_consuming.go"
+      ],
+      "evidence": [
+        "tools/port-rust-source-map/PORT.md",
+        "tools/port-rust-source-map/generate.py",
+        "port/rust/compiler/rustc_span/src/source_map_oracle_test.go",
+        "port/rust/compiler/rustc_span/src/testdata/source_map_algorithms_manifest.json"
+      ],
+      "supplemental_evidence": "All source_map-prefixed replay/testdata files in frozen176-path handoff; enabled tracing, mutable Debug, borrowed/owned callbacks/errors/results, SourcePanic metadata, host paths/IO, MAX metadata, original Span wrappers, sparse metadata and Arc layout. Full consuming Into<Cow<Path>> primary and16-case/2-abort witness are retained separately; fresh8record session/assert producer preserves actual filenames."
+    },
+    {
+      "source": "compiler/rustc_span/src/source_map/tests.rs",
+      "git_blob": "a4d0b1895f8d8a37cbef755e9f2d80598b64d5d2",
+      "lines": 799,
+      "bytes": 28517,
+      "sha256": "05ce3195d37fd69e5d95b13ae4b549cc3e265524b7cef99595101cb2f1e17b60",
+      "status": "accepted_checkpoint35",
+      "go_counterparts": [
+        "port/rust/compiler/rustc_span/src/source_map/tests_test.go"
+      ],
+      "original_test_declarations": 19,
+      "mapping": [
+        {
+          "source_declaration": "t3",
+          "source_line": 62,
+          "go_declaration": "TestSourceMapOriginalT3",
+          "go_line": 54,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "t4",
+          "source_line": 80,
+          "go_declaration": "TestSourceMapOriginalT4",
+          "go_line": 68,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "t5",
+          "source_line": 92,
+          "go_declaration": "TestSourceMapOriginalT5",
+          "go_line": 79,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "t6",
+          "source_line": 116,
+          "go_declaration": "TestSourceMapOriginalT6",
+          "go_line": 94,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "t7",
+          "source_line": 134,
+          "go_declaration": "TestSourceMapOriginalT7",
+          "go_line": 105,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "span_to_snippet_and_lines_spanning_multiple_lines",
+          "source_line": 158,
+          "go_declaration": "TestSourceMapOriginalSpanToSnippetAndLinesSpanningMultipleLines",
+          "go_line": 122,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "t8",
+          "source_line": 180,
+          "go_declaration": "TestSourceMapOriginalT8",
+          "go_line": 143,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "t9",
+          "source_line": 190,
+          "go_declaration": "TestSourceMapOriginalT9",
+          "go_line": 149,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "span_merging_fail",
+          "source_line": 200,
+          "go_declaration": "TestSourceMapOriginalSpanMergingFail",
+          "go_line": 181,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "t10",
+          "source_line": 214,
+          "go_declaration": "TestSourceMapOriginalT10",
+          "go_line": 194,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "path_prefix_remapping",
+          "source_line": 302,
+          "go_declaration": "TestSourceMapOriginalPathPrefixRemapping",
+          "go_line": 235,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "to_real_filename_with_full_scopes",
+          "source_line": 349,
+          "go_declaration": "TestSourceMapOriginalToRealFilenameWithFullScopes",
+          "go_line": 269,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "to_real_filename_with_mixed_scopes",
+          "source_line": 475,
+          "go_declaration": "TestSourceMapOriginalToRealFilenameWithMixedScopes",
+          "go_line": 288,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "to_real_filename_without_remapped_cwd",
+          "source_line": 582,
+          "go_declaration": "TestSourceMapOriginalToRealFilenameWithoutRemappedCwd",
+          "go_line": 304,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "path_prefix_remapping_reverse",
+          "source_line": 669,
+          "go_declaration": "TestSourceMapOriginalPathPrefixRemappingReverse",
+          "go_line": 321,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "test_next_point",
+          "source_line": 710,
+          "go_declaration": "TestSourceMapOriginalNextPoint",
+          "go_line": 339,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "test_span_followed_by_stops_at_end_of_file",
+          "source_line": 756,
+          "go_declaration": "TestSourceMapOriginalSpanFollowedByStopsAtEndOfFile",
+          "go_line": 363,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "test_span_followed_by_skips_whitespace",
+          "source_line": 765,
+          "go_declaration": "TestSourceMapOriginalSpanFollowedBySkipsWhitespace",
+          "go_line": 373,
+          "cfg": "all"
+        },
+        {
+          "source_declaration": "read_binary_file_handles_lying_stat",
+          "source_line": 776,
+          "go_declaration": "TestSourceMapOriginalReadBinaryFileHandlesLyingStat",
+          "go_line": 387,
+          "cfg": "target_os=linux"
+        }
+      ],
+      "evidence": [
+        "tools/port-rust-span-reference/prepare.py",
+        "tools/port-rust-source-map/generate_windows_files.py --original-tests",
+        "port/rust/compiler/rustc_span/src/testdata/source_map_algorithms_manifest.json"
+      ],
+      "notes": "Canonical external child test package dot-imports actual parent exports. FULL19original test bodies, test-only helpers and platform conversion stay in the child. The actual private bytepos operation is forwarded through a Go-only witness using real SourceFile/current context/BuildConfig; expected private RealFileName fields are constructed directly from literal paths/scopes by a separate tiny witness. Supplemental parent oracle fixtures have their own test-only builders. No production algorithm is copied and no new Rust public API or original-file credit is claimed.",
+      "restored_assertion": {
+        "rust_line": 722,
+        "go_line": 346,
+        "scope": "Only exact omitted pre-advance snippet sanity assertion restored under explicit root authorization."
+      },
+      "go_only_support": [
+        "port/rust/compiler/rustc_span/src/source_map_source_test_witness.go",
+        "port/rust/compiler/rustc_span/src/source_map_oracle_helpers_test.go"
+      ]
+    },
+    {
+      "source": "compiler/rustc_span/src/analyze_source_file.rs",
+      "git_blob": "59cda1238cc77b33006ca77b53d96a3b548cfb24",
+      "lines": 298,
+      "bytes": 11781,
+      "sha256": "15cb5f3992b3e6f178b1bfac78ed136dd95f6d5b87c3eb4e4587da69b132734d",
+      "status": "accepted_checkpoint35",
+      "go_counterparts": [
+        "port/rust/compiler/rustc_span/src/analyze_source_file.go"
+      ],
+      "evidence": [
+        "tools/port-rust-analyze-source-file/README.md",
+        "tools/port-rust-analyze-source-file/generate.py",
+        "tools/port-rust-analyze-source-file/generate_panic.py",
+        "port/rust/compiler/rustc_span/src/analyze_source_file_oracle_test.go",
+        "port/rust/compiler/rustc_span/src/analyze_source_file_panic_test.go",
+        "port/rust/compiler/rustc_span/src/testdata/analyze_source_file_manifest.json"
+      ],
+      "notes": "30780 full original-state records in4debug/overflow profiles;64runtime cases16SIGABRT. Native generic/SSE2; LSX preserved as portable exact branch state machine, no native LSX hardware execution claim."
+    },
+    {
+      "source": "compiler/rustc_span/src/analyze_source_file/tests.rs",
+      "git_blob": "e4a24239d8ea1f8983d316fab0f585f3da8712c3",
+      "lines": 109,
+      "bytes": 2420,
+      "sha256": "40a5dbc5455eeb698eea5b3de69d584d88e667c8ca9459930e8d6e8485730549",
+      "status": "accepted_checkpoint35",
+      "go_counterparts": [
+        "port/rust/compiler/rustc_span/src/analyze_source_file/tests_test.go"
+      ],
+      "original_macro_generated_test_declarations": 12,
+      "mapping": [
+        {
+          "source_macro_case": "empty_text",
+          "source_line": 28,
+          "go_subtest": "TestOriginalAnalyzeCases/empty_text",
+          "go_table_line": 18
+        },
+        {
+          "source_macro_case": "newlines_short",
+          "source_line": 35,
+          "go_subtest": "TestOriginalAnalyzeCases/newlines_short",
+          "go_table_line": 19
+        },
+        {
+          "source_macro_case": "newlines_long",
+          "source_line": 42,
+          "go_subtest": "TestOriginalAnalyzeCases/newlines_long",
+          "go_table_line": 20
+        },
+        {
+          "source_macro_case": "newline_and_multi_byte_char_in_same_chunk",
+          "source_line": 49,
+          "go_subtest": "TestOriginalAnalyzeCases/newline_and_multi_byte_char_in_same_chunk",
+          "go_table_line": 21
+        },
+        {
+          "source_macro_case": "newline_and_control_char_in_same_chunk",
+          "source_line": 56,
+          "go_subtest": "TestOriginalAnalyzeCases/newline_and_control_char_in_same_chunk",
+          "go_table_line": 22
+        },
+        {
+          "source_macro_case": "multi_byte_char_short",
+          "source_line": 63,
+          "go_subtest": "TestOriginalAnalyzeCases/multi_byte_char_short",
+          "go_table_line": 23
+        },
+        {
+          "source_macro_case": "multi_byte_char_long",
+          "source_line": 70,
+          "go_subtest": "TestOriginalAnalyzeCases/multi_byte_char_long",
+          "go_table_line": 24
+        },
+        {
+          "source_macro_case": "multi_byte_char_across_chunk_boundary",
+          "source_line": 77,
+          "go_subtest": "TestOriginalAnalyzeCases/multi_byte_char_across_chunk_boundary",
+          "go_table_line": 25
+        },
+        {
+          "source_macro_case": "multi_byte_char_across_chunk_boundary_tail",
+          "source_line": 84,
+          "go_subtest": "TestOriginalAnalyzeCases/multi_byte_char_across_chunk_boundary_tail",
+          "go_table_line": 26
+        },
+        {
+          "source_macro_case": "non_narrow_short",
+          "source_line": 91,
+          "go_subtest": "TestOriginalAnalyzeCases/non_narrow_short",
+          "go_table_line": 27
+        },
+        {
+          "source_macro_case": "non_narrow_long",
+          "source_line": 98,
+          "go_subtest": "TestOriginalAnalyzeCases/non_narrow_long",
+          "go_table_line": 28
+        },
+        {
+          "source_macro_case": "output_offset_all",
+          "source_line": 105,
+          "go_subtest": "TestOriginalAnalyzeCases/output_offset_all",
+          "go_table_line": 29
+        }
+      ],
+      "evidence": [
+        "port/rust/compiler/rustc_span/src/testdata/analyze_source_file_manifest.json",
+        "tools/port-rust-span-reference/prepare.py"
+      ],
+      "notes": "All12 names/order/UTF8 input bytes/line vectors/multibyte position-size vectors independently compared to the pinned Rust macro invocations and exactly match. Go one parent TestOriginalAnalyzeCases creates12named subtests; extra architecture and flag repetitions do not count as additional original declarations."
+    },
+    {
+      "source": "compiler/rustc_span/src/fatal_error.rs",
+      "git_blob": "5e2d82681a11a881ecf267d61b5cb6072adc156e",
+      "lines": 41,
+      "bytes": 1275,
+      "sha256": "45ffa6ade6d4be3d8ec7dfd4e1a9350fe9f9330f55124a60269cd5c4060d18d4",
+      "status": "accepted_checkpoint35",
+      "go_counterparts": [
+        "port/rust/compiler/rustc_span/src/fatal_error.go"
+      ],
+      "supporting_go_counterparts": [
+        "port/rust/compiler/rustc_span/src/source_map_owned.go",
+        "port/rust/compiler/rustc_data_structures/src/fatal_error_marker.go"
+      ],
+      "original_child_test_file": null,
+      "evidence": [
+        "tools/port-rust-fatal-error/README.md",
+        "tools/port-rust-fatal-error/generate.py",
+        "port/rust/compiler/rustc_span/src/fatal_error_oracle_test.go",
+        "port/rust/compiler/rustc_span/src/fatal_error_format_test.go",
+        "port/rust/compiler/rustc_span/src/testdata/fatal_error_unwind_manifest.json"
+      ],
+      "notes": "41-line full file; no tests module or child-test file at pin. Supplemental actual full-original proof36runtime cases20SIGABRT and144formatter/writer/default/trait observations. Generic consumed FnOnce/results use explicit owned runtime witness; no negative Send enforcement in Go (source caller contract)."
+    }
+  ],
+  "scoped_declaration_only": {
+    "source": "compiler/rustc_data_structures/src/lib.rs",
+    "source_git_blob": "c20ac042516af7a2250943a40f890eb8c9024133",
+    "source_line": 124,
+    "declaration": "pub struct FatalErrorMarker;",
+    "go_counterpart": "port/rust/compiler/rustc_data_structures/src/fatal_error_marker.go",
+    "full_file_credit": false,
+    "notes": "Only the unadorned unit declaration is ported. No Debug/Error/Copy/Clone derivation is invented; no full DDS lib.rs credit."
+  },
+  "read_only_review": "Exact authorized child-test sanity assertion and canonical relocation completed. No original Rust, inventory/ledger, native wrapper or fixture data edits. Narrow Go-only private-operation/expected-value witnesses and supplemental parent fixture builders are supporting test adapters.",
+  "canonical_relocation": {
+    "old_parent_path_removed": "port/rust/compiler/rustc_span/src/source_map_upstream_test.go",
+    "canonical_child": "port/rust/compiler/rustc_span/src/source_map/tests_test.go",
+    "external_package": "sourcemap_test",
+    "go_only_witness": "port/rust/compiler/rustc_span/src/source_map_source_test_witness.go",
+    "parent_oracle_fixture_helper": "port/rust/compiler/rustc_span/src/source_map_oracle_helpers_test.go",
+    "windows_original_test_recipe": "generate_windows_files.py --original-tests now compiles the canonical child binary separately from the parent filesystem-oracle binary; native data/manifest has no Go-test/generator binding and remains unchanged."
+  },
+  "review_status": "Root accepted the four small implementation/test mappings; SourceMap implementation remains scoped partial.",
+  "remaining_public_api": "docs/SPAN-API-GAPS.md"
+}

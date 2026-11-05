@@ -149,7 +149,7 @@ func (m spanReplaySourceMap) SpanToDiagnosticString(_ *SessionGlobals, value Spa
 
 func spanReplayPanic(payload any) string {
 	text := fmt.Sprint(payload)
-	for _, item := range [][2]string{{"source_map", "span oracle source_map"}, {"track", "span oracle track"}, {"map", "span oracle map"}, {"drop", "span oracle drop"}, {"hash", "span oracle hash"}, {"subtract", "subtract with overflow"}, {"add", "add with overflow"}, {"missing_session", "session globals are not set"}, {"index", "index out of range"}, {"identity_limit", "DefIndex:"}, {"identity_limit", "SyntaxContext:"}, {"context_limit", "context exceeds hard limit"}, {"debug_assert", "lo <= hi"}, {"debug_assert", "SpanField:"}} {
+	for _, item := range [][2]string{{"source_map", "span oracle source_map"}, {"track", "span oracle track"}, {"map", "span oracle map"}, {"drop", "span oracle drop"}, {"hash", "span oracle hash"}, {"subtract", "subtract with overflow"}, {"add", "add with overflow"}, {"missing_session", "session globals are not set"}, {"missing_session", "cannot access a scoped thread local variable without calling `set` first"}, {"index", "index out of range"}, {"identity_limit", "DefIndex:"}, {"identity_limit", "assertion failed: value <= 0xFFFF_FF00"}, {"identity_limit", "assertion failed: value <= (0xFFFF_FF00 as usize)"}, {"identity_limit", "SyntaxContext:"}, {"identity_limit", "assertion failed: value <= 0x1FFF_FFFF"}, {"identity_limit", "assertion failed: value <= (0x1FFF_FFFF as usize)"}, {"context_limit", "context exceeds hard limit"}, {"debug_assert", "lo <= hi"}, {"debug_assert", "SpanField:"}} {
 		if strings.Contains(text, item[1]) {
 			return item[0]
 		}

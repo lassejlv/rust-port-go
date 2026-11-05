@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "records": 256,
+  "actual_SIGABRT": 96,
+  "profiles": [
+    "d0o0",
+    "d0o1",
+    "d1o0",
+    "d1o1"
+  ],
+  "raw_sha256": "5ec168b9bff12b125f1ba6e146cca4f42ac6d4150d87943b47fd7b6cfe6fc0a4",
+  "gzip_sha256": "7c0e0e3b1e7031d97382e2899c0e182b1d450d168a642d634c20229c250f82df",
+  "wrapper_sha256": "b9c19569e93330a1023f6b52c2ebc3b815d58f16821ba71f086184ea109003ac",
+  "operation_scope": "generic extraction",
+  "scope": "Whole-original generic span_to_source FnMut/value destruction, real local/imported/external SourceFile cells, source-string aliases, Arc counts, external guard release before Fn Drop, unused captures, normal/inherited/processing/body/drop panic and cleanup-abort hooks. Only native wrapper filename prefix removed; SDK/compiler source hook spellings retained."
+}

@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_sha256": "9fa60e859a71b59b6787028a569a17d9fa0b5f047af9bb12de14e9c34af6eeb3",
+  "records": 4,
+  "caught_panics": 2,
+  "profiles": [
+    "d0o0",
+    "d0o1",
+    "d1o0",
+    "d1o1"
+  ],
+  "raw_sha256": "8a865c49fe7b6045de85285566f66dc824422bcaafa92e7a2f2f62fb1c3e3f99",
+  "gzip_sha256": "f47bba6b64b452870abaab4cce475065f29cad97c5659c4cb7a724473d703515",
+  "wrapper_sha256": "06cb78a3f9e384ef6c61db740ecec1b98fc548d343a2ed56b6a09e562d6be165",
+  "normalization": "None. Native original/compiler/... file spelling is explicitly supplied by the Go profile; payload kind, byte message, line and column are retained.",
+  "complete": false,
+  "remaining": "Other SourceMap assertion/allocation/arithmetic operation sites and runtime contexts remain under validation.",
+  "scope": "Compositional actual SDK debug_assert_eq with genuine StableSourceFileId operands/Debug; source try_new_source_file assertion condition cannot fail with lawful deterministic constructors. This validates the complete failure expansion, not a public SourceMap private-branch trigger.",
+  "assert_location": {
+    "File": "/workspace/rust-port-go/tools/port-rust-source-map/panic_sites.rs",
+    "Line": 12,
+    "Column": 295
+  }
+}

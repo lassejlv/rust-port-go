@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_sha256": "9fa60e859a71b59b6787028a569a17d9fa0b5f047af9bb12de14e9c34af6eeb3",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "source_profile": "d1o1; receiver token mutation is7+100 and introduces no flag-dependent arithmetic",
+  "records": 16,
+  "actual_SIGABRT": 2,
+  "locations": {
+    "convert": {
+      "File": "tools/port-rust-source-map/consuming/oracle.rs",
+      "Line": 21,
+      "Column": 65
+    },
+    "outer": {
+      "File": "tools/port-rust-source-map/consuming/oracle.rs",
+      "Line": 50,
+      "Column": 243
+    },
+    "panic in a destructor during cleanup": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      "Line": 233,
+      "Column": 5
+    },
+    "outer_processing": {
+      "File": "tools/port-rust-source-map/consuming/oracle.rs",
+      "Line": 50,
+      "Column": 79
+    }
+  },
+  "raw_sha256": "0ed7814774ec3633f38fa137d8bf6ae00e46d1f228bb5a08a1ea3d5ec9cadba8",
+  "gzip_sha256": "ec6c822216eb39036c926c1c6b91c31090c0536eb78e9440177bd2e971923309",
+  "wrapper_sha256": "d45562eed01bfa77d62934377549fe260d471b4750a46a2324d561a795df8dfe",
+  "generator_sha256": "355f2ae769a2912aed34bec990abd6cda75ff9420dca10f9d3db893c5c4fe58f",
+  "go_bindings": {
+    "port/rust/compiler/rustc_span/src/source_map_consuming.go": "b293bcf49a8c5401eb9b8891a66e5259c34db2a438669f782223c214752a235c",
+    "port/rust/compiler/rustc_span/src/source_map_consuming_test.go": "1244d76ae5a0fcaa3973050edff8acbd5b45596ac53465bb9af3ae515e0406ed",
+    "port/rust/compiler/rustc_span/src/source_map_mapping.go": "2ce9409b687ce926a6e989938e0c864370266a131e7b589a2f9827cc73a3da34"
+  },
+  "scope": "Actual unchanged full-crate public FilePathMapping::to_real_filename accepts a legal custom Into<Cow<Path>> consuming Self. Complete actual receiver retains an owned path and Token with real Arc<AtomicUsize>. Normal destruction, whole-Self retention and later explicit Drop, forget, forget-then-panic; normal/inherited-caught/inherited-escape/processing contexts. All stdout hooks, user/field Drop, result Debug and Rc/drop counters retained. No default filename inference; client compiler remap removes only its repository prefix. Native SIGABRT vs Go exit134 is the explicit host abort representation. Existing512 borrowed Into receiver cases remain separate and unchanged."
+}

@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "records": 512,
+  "actual_SIGABRT": 256,
+  "profiles": [
+    "d0o0",
+    "d0o1",
+    "d1o0",
+    "d1o1"
+  ],
+  "raw_sha256": "f3fcf25e96298567f7f3dbfd1abd73313b47a82b302dfe38df5e288ed2889c9a",
+  "gzip_sha256": "ffde6f2766bd3ad8cea6d2b8968cc6da77afacaf335a4970084ce174f407e170",
+  "wrapper_sha256": "51ec5cdab2ac75067d5378ddc47e23827a6e4ea3520f66c0ccc9ed4389cf8fef",
+  "scope": "Actual public FilePathMapping.to_real_filename with consumed custom Into<Cow<Path>> self, exact borrowed/owned/taken-empty ownership, actual Call/Drop cells, return-place/drop/body panic behavior, normal/inherited/processing+compilerabort hooks. Only wrapper filename prefix removed."
+}

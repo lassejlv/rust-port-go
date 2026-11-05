@@ -1,0 +1,5 @@
+// SPDX-License-Identifier: MIT OR Apache-2.0
+package main
+import("bufio";"encoding/binary";"encoding/hex";"fmt";"os";"strings")
+func wide(s string)RustPath{b,err:=hex.DecodeString(s);if err!=nil||len(b)%2!=0{panic("invalid UTF16 request")};w:=make([]uint16,len(b)/2);for i:=range w{w[i]=binary.LittleEndian.Uint16(b[2*i:])};return RustPathFromUTF16(w)}
+func main(){scan:=bufio.NewScanner(os.Stdin);scan.Buffer(make([]byte,65536),4<<20);for scan.Scan(){p:=strings.Split(scan.Text(),"\t");fmt.Printf("%s\t%x\n",p[0],sourcePathOracleRunViews(p,wide(p[2]),wide(p[3])))};if err:=scan.Err();err!=nil{panic(err)}}

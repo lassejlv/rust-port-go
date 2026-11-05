@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_sha256": "9fa60e859a71b59b6787028a569a17d9fa0b5f047af9bb12de14e9c34af6eeb3",
+  "records": 784,
+  "caught_panics": 108,
+  "profiles": [
+    "d0o0",
+    "d0o1",
+    "d1o0",
+    "d1o1"
+  ],
+  "raw_sha256": "86cd49612212152d928815a23c8f22591be9e34ca71ff280fa2ce3c2743dd43a",
+  "gzip_sha256": "3d53334aa211b614d70b72b6b453c233182e33eff3c47fa0a27f2a512ddfc187",
+  "wrapper_sha256": "06cb78a3f9e384ef6c61db740ecec1b98fc548d343a2ed56b6a09e562d6be165",
+  "normalization": "None. Native original/compiler/... file spelling is explicitly supplied by the Go profile; payload kind, byte message, line and column are retained.",
+  "complete": false,
+  "remaining": "Other SourceMap assertion/allocation/arithmetic operation sites and runtime contexts remain under validation.",
+  "scope": "Actual safe metadata-only imported files over full u32 lengths/positions; start/end/next points and imported-address expect failure, independent arithmetic/debug profiles; exact hook payloads and actual source locations. No giant allocations."
+}

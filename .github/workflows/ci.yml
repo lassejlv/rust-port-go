@@ -351,3 +351,190 @@ jobs:
         env:
           FERRUGO_RUSTC: rustc
           RUSTUP_TOOLCHAIN: nightly-2026-11-04
+  span-components:
+    name: Span components (${{ matrix.component }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        component: [lib, identity, source-map]
+    env:
+      GORACE: atexit_sleep_ms=0
+      GOMAXPROCS: '2'
+      GOFLAGS: -p=1
+      FERRUGO_GO: go
+      FERRUGO_RUSTC: rustc
+      FERRUGO_RUSTDOC: rustdoc
+      FERRUGO_CARGO: cargo
+      FERRUGO_RUST_SOURCE: ${{ github.workspace }}/.toolchain/upstream-rust
+      CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
+      RUSTUP_TOOLCHAIN: nightly-2026-11-04
+      RUSTC_BOOTSTRAP: '1'
+      CFG_RELEASE: 1.101.0
+      LC_ALL: C
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23.12'
+          cache: false
+      - name: Install exact component reference compilers
+        run: |
+          rustup toolchain install nightly-2026-11-04 --profile minimal
+          if [ '${{ matrix.component }}' = identity ]; then
+            rustup toolchain install 1.99.1 --profile minimal
+          fi
+      - name: Prepare and verify the complete original crate graph
+        run: |
+          python3 tools/port-inventory/inventory.py prepare
+          python3 tools/port-inventory/inventory.py verify
+          python3 tools/port-rust-span-reference/prepare.py --fetch-source --fetch-deps
+          python3 -m unittest discover -s tools/port-rust-span-reference -p 'test_*.py'
+      - name: Verify Lib and wrapper proof integrity
+        if: matrix.component == 'lib'
+        run: python3 -m unittest discover -s tools/port-rust-span-lib -p 'test_*.py'
+      - name: Compare portable Lib and serializer observations
+        if: matrix.component == 'lib'
+        run: |
+          for stem in source format display generic generic_ambient session_inputs flags_iter flags_format memory map opaque_callbacks owned_hash boxes pos; do
+            python3 "tools/port-rust-span-lib/generate_${stem}.py" --check
+          done
+          for stem in file trait_defaults trait_failures tracing_profile byte_slice_strategy macro_backtrace_context span_geometry span_hygiene; do
+            python3 "tools/port-rust-span-lib/generate_${stem}.py" --check
+          done
+      - name: Produce verbatim Lib panic and consuming callback evidence
+        if: matrix.component == 'lib'
+        run: |
+          producer="$RUNNER_TEMP/span-lib-producers"
+          python3 tools/port-rust-span-lib/generate_panic.py --output-dir "$producer/panic"
+          python3 tools/port-rust-span-lib/generate_remaining_context.py --output-dir "$producer/remaining"
+          python3 tools/port-rust-span-lib/generate_consuming_callbacks.py --output-dir "$producer/consuming"
+      - name: Replay Lib and codec evidence with the selected producer bundles
+        if: matrix.component == 'lib'
+        run: |
+          go test -p 1 -count=1 -timeout 30m ./port/rust/compiler/rustc_span/src -run '^TestLibUpstream(LookupLine|NormalizeNewlines|Trim|UnnormalizedSourceLength)$'
+          selection='^(TestLib|TestOriginalSpanGeometry$|TestOriginalSpanHygieneWrappers$|TestOriginalMacroBacktraceContext$|TestOriginalConsumingCallbacks$|TestConsumingProducerSelector$|TestOriginalMemory|TestOriginalFileEncoder|TestOriginalDeterministicMap|TestOriginalOpaque)'
+          go test -p 1 -count=1 -timeout 30m ./port/rust/compiler/rustc_span/src ./port/rust/compiler/rustc_serialize/src -run "$selection"
+          go test -p 1 -race -count=1 -timeout 30m ./port/rust/compiler/rustc_span/src ./port/rust/compiler/rustc_serialize/src -run "$selection"
+          go test -p 1 -count=1 -timeout 30m -tags 'ferrugo_rustc_nightly rustc_stable_hash_nightly' ./port/rust/compiler/rustc_span/src ./port/rust/compiler/rustc_serialize/src -run "$selection"
+          go vet -p 1 -tags 'ferrugo_rustc_nightly rustc_stable_hash_nightly' ./port/rust/compiler/rustc_span/src ./port/rust/compiler/rustc_serialize/src
+        env:
+          FERRUGO_LIB_PANIC_PROOF: ${{ runner.temp }}/span-lib-producers/panic
+          FERRUGO_LIB_REMAINING_PROOF: ${{ runner.temp }}/span-lib-producers/remaining
+          FERRUGO_SPAN_CONSUMING_PROOF: ${{ runner.temp }}/span-lib-producers/consuming
+      - name: Verify identity and hygiene proof integrity
+        if: matrix.component == 'identity'
+        run: |
+          python3 -m unittest discover -s tools/port-rust-symbol -p 'test_*.py'
+          python3 -m unittest discover -s tools/port-rust-symbol/panic -p 'test_*.py'
+          python3 -m unittest discover -s tools/port-rust-hygiene -p 'test_*.py'
+          python3 -m unittest discover -s tools/port-rust-def-id/reference-build -p 'test_*.py'
+      - name: Compare scoped DefID dependencies with their accepted stable profile
+        if: matrix.component == 'identity'
+        run: |
+          python3 tools/port-rust-def-id/reference-build/prepare.py --fetch
+          python3 tools/port-rust-def-id/generate.py --offline --check
+          python3 tools/port-rust-def-id/panic_metadata.py --offline --check
+          python3 tools/port-rust-def-id/indexmap-alias/generate.py --offline --check
+        env:
+          RUSTUP_TOOLCHAIN: 1.99.1
+      - name: Compare Symbol and edit-distance source and derived APIs
+        if: matrix.component == 'identity'
+        run: |
+          python3 tools/port-rust-symbol/generate_predefined.py --check
+          python3 tools/port-rust-symbol/verify_predefined.py --offline --check
+          python3 tools/port-rust-symbol/test_original_macros.py --offline --check
+          python3 tools/port-rust-symbol/generate_edit_distance.py --offline --check
+          python3 tools/port-rust-symbol/generate_unicode18.py --offline --check
+          python3 tools/port-rust-symbol/generate.py --offline --check
+          python3 tools/port-rust-symbol/generate_borrow_contract.py --check
+          python3 tools/port-rust-symbol/audit.py --check
+          python3 tools/port-rust-def-id/interval_type.py --offline --check
+      - name: Compare complete hygiene operations and non-Copy commit cleanup
+        if: matrix.component == 'identity'
+        run: |
+          python3 tools/port-rust-hygiene/generate.py --check
+          python3 tools/port-rust-hygiene/commit_generate.py --check
+          python3 tools/port-rust-hygiene/source_inventory.py --check
+      - name: Produce verbatim Symbol and hygiene owned panic evidence
+        if: matrix.component == 'identity'
+        run: |
+          producer="$RUNNER_TEMP/span-identity-producers"
+          python3 tools/port-rust-symbol/panic/generate.py --offline --jobs 1 --output-dir "$producer/symbol"
+          python3 tools/port-rust-hygiene/owned_generate.py --output-dir "$producer/hygiene"
+      - name: Replay identity and hygiene evidence with selected producer bundles
+        if: matrix.component == 'identity'
+        run: |
+          selection='^(TestSymbol|TestIdent|TestDefId|TestOriginalHygiene|TestHygiene)'
+          go test -p 1 -count=1 -timeout 30m ./port/rust/compiler/rustc_span/src -run "$selection"
+          go test -p 1 -race -count=1 -timeout 30m ./port/rust/compiler/rustc_span/src -run "$selection"
+          go test -p 1 -count=1 -timeout 30m ./port/rust/compiler/rustc_span/src/symbol ./port/rust/compiler/rustc_span/src/edit_distance
+          go test -p 1 -race -count=1 -timeout 30m ./port/rust/compiler/rustc_span/src/symbol ./port/rust/compiler/rustc_span/src/edit_distance
+          go test -p 1 -count=1 -timeout 30m -tags 'ferrugo_rustc_nightly rustc_stable_hash_nightly' ./port/rust/compiler/rustc_span/src -run "$selection"
+          go vet -p 1 -tags 'ferrugo_rustc_nightly rustc_stable_hash_nightly' ./port/rust/compiler/rustc_span/src/...
+        env:
+          FERRUGO_SYMBOL_PANIC_PROFILE_DIR: ${{ runner.temp }}/span-identity-producers/symbol
+          FERRUGO_HYGIENE_OWNED_PROFILE_DIR: ${{ runner.temp }}/span-identity-producers/hygiene
+      - name: Verify SourceMap and caching reference selection
+        if: matrix.component == 'source-map'
+        run: |
+          python3 tools/port-rust-str/prepare.py --fetch
+          python3 -m unittest discover -s tools/port-rust-caching-source-map-view -p 'test_*.py'
+          python3 -m unittest discover -s tools/port-rust-source-map -p 'test_*.py'
+      - name: Compare complete SourceMap algorithms, callbacks and runtime scopes
+        if: matrix.component == 'source-map'
+        run: |
+          python3 tools/port-rust-source-map/generate.py --all-profiles --check
+          for stem in format format_locked owned owned_extract owned_into predicate_borrow owned_tracing tracing span_wrappers get_map path io sparse_file binary_layout stderr; do
+            python3 "tools/port-rust-source-map/generate_${stem}.py" --check
+          done
+          python3 tools/port-rust-source-map/generate_owned.py --format-error --check
+          python3 tools/port-rust-source-map/generate_owned_extract.py --predicates --check
+          python3 tools/port-rust-source-map/generate_tracing.py --verbatim --check
+          python3 tools/port-rust-source-map/generate_panic_sites.py --check
+          python3 tools/port-rust-source-map/generate_panic_sites.py --max-domain --check
+          python3 tools/port-rust-source-map/generate_panic_sites.py --width-metadata --check
+          python3 tools/port-rust-source-map/consuming/generate.py --check
+      - name: Produce verbatim SourceMap scoped-session and assertion evidence
+        if: matrix.component == 'source-map'
+        run: |
+          producer="$RUNNER_TEMP/span-source-map-producers"
+          python3 tools/port-rust-source-map/generate_panic_sites.py --session-map --output-dir "$producer"
+          python3 tools/port-rust-source-map/generate_panic_sites.py --assert-id --output-dir "$producer"
+      - name: Compare analyzer, Fatal and caching source-map operations
+        if: matrix.component == 'source-map'
+        run: |
+          python3 tools/port-rust-analyze-source-file/generate.py --check
+          python3 tools/port-rust-analyze-source-file/generate_panic.py --check
+          python3 tools/port-rust-fatal-error/generate.py --check
+          python3 tools/port-rust-caching-source-map-view/generate.py --check
+          python3 tools/port-rust-caching-source-map-view/generate.py --metadata --check
+          python3 tools/port-rust-caching-source-map-view/generate_context.py --check
+          python3 tools/port-rust-caching-source-map-view/panic-sites/generate.py --check
+      - name: Replay SourceMap, analyzer, Fatal and caching evidence
+        if: matrix.component == 'source-map'
+        run: |
+          selection='^(TestSourceMap|TestAnalyze|TestOriginalAnalyze|TestFatalError|TestOriginalCachingSourceMap|TestCachingSourceMap)'
+          go test -p 1 -count=1 -timeout 30m ./port/rust/compiler/rustc_span/src ./port/rust/compiler/rustc_span/src/source_map ./port/rust/compiler/rustc_span/src/analyze_source_file -run "$selection"
+          go test -p 1 -race -count=1 -timeout 30m ./port/rust/compiler/rustc_span/src ./port/rust/compiler/rustc_span/src/source_map ./port/rust/compiler/rustc_span/src/analyze_source_file -run "$selection"
+          go test -p 1 -count=1 -timeout 30m -tags 'ferrugo_rustc_nightly rustc_stable_hash_nightly' ./port/rust/compiler/rustc_span/src -run "$selection"
+          go vet -p 1 -tags 'ferrugo_rustc_nightly rustc_stable_hash_nightly' ./port/rust/compiler/rustc_span/src/...
+        env:
+          FERRUGO_SOURCE_MAP_PANIC_PROOF: ${{ runner.temp }}/span-source-map-producers
+      - name: Verify explicit no-cgo I/O and stdio bindings
+        if: matrix.component == 'source-map'
+        run: |
+          go test -p 1 -count=1 ./port/rust/compiler/rustc_span/src -run '^TestSourceMapRealLoader(ExplicitUnixBindingIsLazyAndCurrent|OversizedSparseFileNativeOracle)$'
+          go test -p 1 -count=1 ./port/support/rusterrno ./port/support/ruststdio
+        env:
+          CGO_ENABLED: '0'
+      - name: Retain verbatim component producer evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: span-${{ matrix.component }}-native-producers
+          path: ${{ runner.temp }}/span-${{ matrix.component }}-producers
+          if-no-files-found: error
+          retention-days: 14

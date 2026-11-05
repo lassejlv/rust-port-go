@@ -221,7 +221,7 @@ func TestSpanSessionRequirementAndDummyContext(t *testing.T) {
 		t.Fatal("interned dummy semantics differ")
 	}
 	for _, operation := range []func(){func() { NewSpan(nil, 0, 40000, RootSyntaxContext(), None[LocalDefId]()) }, func() { interned.DataUntracked(nil) }, func() { interned.Parent(nil) }, func() { interned.IsDummy(nil) }} {
-		if got := spanTestPanic(operation); !strings.Contains(got, "session globals are not set") {
+		if got := spanTestPanic(operation); !strings.Contains(got, "cannot access a scoped thread local variable without calling `set` first") {
 			t.Fatalf("missing session accepted: %q", got)
 		}
 	}

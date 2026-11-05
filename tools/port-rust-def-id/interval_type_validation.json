@@ -1,0 +1,37 @@
+{
+  "status": "partial-def-id-canonical-Step-witness",
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "unicode": [
+    18,
+    0,
+    0
+  ],
+  "reference_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "cases": 9,
+  "raw_sha256": "a4b3dd8709949debe53dc62b868e645d10db3cfe4288a33ae455a422f2b12aba",
+  "fixture_sha256": "57c3af35983d6c4eab504b50f196c1ae309505dd888a2df86d66c1e650ecdeba",
+  "scope": "Actual type_name::<DefIndex/CrateNum/AttrId> and inherited IntervalSet derived Debug through the whole unchanged canonical compiler crates. No facade crate-name substitution; no shared index algorithm edits. Full def_id remains pending its dependencies.",
+  "files": [
+    {
+      "path": "tools/port-rust-def-id/interval_type.py",
+      "sha256": "ab26f5cd722d293839094a32af612f4e0c3f032384897ddd3824b6500678d297"
+    },
+    {
+      "path": "tools/port-rust-def-id/interval_type_oracle.rs",
+      "sha256": "1f8eb3f375712b73b7db9dad67c95620ee9d32d13862a00cc7bb631b0dc429e8"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_index.go",
+      "sha256": "f6bf5bb60e0af215e4858922f999ae25d93a0f45a475d270f491477fefec1f87"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_attr_step.go",
+      "sha256": "d64c7d0c0ca89014e105bf59526dc699358bd4961f51e86b2a21a8505c5660cf"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_interval_type_test.go",
+      "sha256": "2c35495b127a3e1e7c01c7cb00bd3ddbf2aa87410d48b6ccfaf55b584474bf55"
+    }
+  ]
+}

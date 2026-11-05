@@ -7,7 +7,6 @@ package rustcspan
 
 import (
 	"fmt"
-	"sync/atomic"
 
 	datastructures "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src"
 	rustchashes "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_hashes/src"
@@ -18,11 +17,6 @@ import (
 // alignment 4 without an unsafe packed u64 access. No Rust/Go FFI representation
 // or target-endian memory-layout guarantee is implied by the logical bit API.
 type Span struct{ low, high uint32 }
-
-// spanPanicContext is the cold failure-site runtime witness. Production uses
-// rustfmt.Context; a witness must panic or abort and must never return. Keeping
-// this structural allows ordering to be observed at the actual raise site.
-type spanPanicContext interface{ Panic(any) }
 
 func spanFromBits(bits uint64) Span             { return Span{uint32(bits), uint32(bits >> 32)} }
 func (value Span) bits() uint64                 { return uint64(value.low) | uint64(value.high)<<32 }
@@ -233,7 +227,7 @@ func (value Span) Data(session *SessionGlobals, explicit ...SpanEncodingConfig) 
 func (value Span) dataWithContext(session *SessionGlobals, config SpanEncodingConfig, context spanPanicContext) SpanData {
 	data := value.dataUntrackedWithContext(session, config, context)
 	if parent, ok := data.Parent.Get(); ok {
-		trackSpanParent(parent)
+		trackSpanParentWithPanicContext(parent, context)
 	}
 	return data
 }
@@ -271,7 +265,7 @@ func (value Span) IsDummy(session *SessionGlobals) bool {
 	return internedFromSpan(value).data(session).IsDummy()
 }
 
-// MapCtxt accepts a trivial-drop callback. Use MapCtxtOwned for a source FnOnce
+// MapCtxt accepts a trivial-drop callback. Use MapCtxtConsuming for a source FnOnce
 // with an owned capture whose destruction can be observed.
 func (value Span) MapCtxt(session *SessionGlobals, mapContext func(SyntaxContext) SyntaxContext, explicit ...SpanEncodingConfig) Span {
 	profile := spanEncodingConfig(session, explicit...)
@@ -312,6 +306,9 @@ func (value Span) Ctxt() SyntaxContext {
 	return SyntaxContextFromU32(internedFromSpan(value).ctxt)
 }
 func (value Span) WithParent(session *SessionGlobals, parent Option[LocalDefId], explicit ...SpanEncodingConfig) Span {
+	return value.WithParentWithContext(session, parent, rustfmt.Context{}, explicit...)
+}
+func (value Span) WithParentWithContext(session *SessionGlobals, parent Option[LocalDefId], context rustfmt.Context, explicit ...SpanEncodingConfig) Span {
 	profile := spanEncodingConfig(session, explicit...)
 	bits := value.bits()
 	var data SpanData
@@ -324,18 +321,18 @@ func (value Span) WithParent(session *SessionGlobals, parent Option[LocalDefId],
 		if encoded, ok := tryNewSpanWithParent(span.Lo, span.Len, span.Ctxt, p); ok {
 			return encoded
 		}
-		data = span.data(profile)
+		data = span.dataWithContext(profile, context)
 	} else if inlineParentPrefix.get(bits) == 6 {
-		data = inlineParentFromSpan(value).data(profile)
+		data = inlineParentFromSpan(value).dataWithContext(profile, context)
 	} else if inlinePairPrefix.get(bits) == 2 {
-		data = inlinePairFromSpan(value).data(profile)
+		data = inlinePairFromSpan(value).dataWithContext(profile, context)
 	} else {
-		data = internedFromSpan(value).data(session)
+		data = internedFromSpan(value).dataWithContext(session, context)
 	}
 	if old, ok := data.Parent.Get(); ok {
-		trackSpanParent(old)
+		trackSpanParentWithPanicContext(old, context)
 	}
-	return data.withParent(session, parent, profile)
+	return newOrderedSpanWithContext(session, data.Lo, data.Hi, data.Ctxt, parent, profile, context)
 }
 func (value Span) Parent(session *SessionGlobals) Option[LocalDefId] {
 	bits := value.bits()
@@ -450,35 +447,17 @@ func withSpanInterner[T any](session *SessionGlobals, apply func(*SpanInterner) 
 }
 func withSpanInternerWithContext[T any](session *SessionGlobals, context spanPanicContext, apply func(*SpanInterner) T) T {
 	if session == nil {
+		// Public contextual operations model the source scoped-TLS access;
+		// retain the private structural panic witness for the packing tests.
+		switch current := context.(type) {
+		case rustfmt.Context:
+			current.PanicAt(rustfmt.SourcePanicInfo{Payload: "cannot access a scoped thread local variable without calling `set` first", Kind: rustfmt.PanicStaticStr, Location: current.SourcePanicLocation(ScopedSessionPanicSite), CanUnwind: true})
+		case *rustfmt.Context:
+			current.PanicAt(rustfmt.SourcePanicInfo{Payload: "cannot access a scoped thread local variable without calling `set` first", Kind: rustfmt.PanicStaticStr, Location: current.SourcePanicLocation(ScopedSessionPanicSite), CanUnwind: true})
+		}
 		context.Panic("span_encoding: session globals are not set")
 	}
-	session.spanMu.Lock()
+	session.spanMu.LockWithContext(context)
 	defer session.spanMu.Unlock()
 	return apply(&session.spanInterner)
-}
-
-type spanTrackCallback struct{ call func(LocalDefId) }
-
-var spanTrack atomic.Pointer[spanTrackCallback]
-
-func defaultSpanTrack(LocalDefId) {}
-
-// SwapSpanTrack maps the source's global atomic callback replacement. The
-// callback runs after releasing the interner lock and may recurse or panic.
-// Like the source fn pointer, callbacks are trivial-drop code/borrowed-state
-// witnesses; this operation does not own a destructible capture environment.
-func SwapSpanTrack(callback func(LocalDefId)) func(LocalDefId) {
-	if callback == nil {
-		panic("SPAN_TRACK: nil function is not a Rust fn pointer")
-	}
-	previous := spanTrack.Swap(&spanTrackCallback{callback})
-	if previous == nil {
-		return defaultSpanTrack
-	}
-	return previous.call
-}
-func trackSpanParent(parent LocalDefId) {
-	if callback := spanTrack.Load(); callback != nil {
-		callback.call(parent)
-	}
 }

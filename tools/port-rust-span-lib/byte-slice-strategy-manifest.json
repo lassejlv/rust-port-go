@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "status": "scoped-byte-slice-source-Self-closure-no-extra-file-credit",
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "profiles": [
+    {
+      "name": "d0o0",
+      "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+      "reference_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078"
+    },
+    {
+      "name": "d0o1",
+      "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+      "reference_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078"
+    },
+    {
+      "name": "d1o0",
+      "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+      "reference_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078"
+    },
+    {
+      "name": "d1o1",
+      "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+      "reference_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078"
+    }
+  ],
+  "records": 280,
+  "native_client_sha256": "add7c5f5f684bf33cdf03ae5ea68fa57285019c48579d3ec26829cfa73a200c3",
+  "generator_sha256": "0ec79cb704fbd69c09088eac8fb3b1d9fbca1b4ff86d6c12ab66d97293e9fcbe",
+  "reference_tool_inputs_sha256": {
+    "tools/port-rust-span-lib/reference.py": "2094b30a5149056c683edffc6cc4a8d6d6984d81933ecb10c80e5f34c355db9e",
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+  },
+  "raw_sha256": "3fefb29c8f2e7697c0a94b4d3f16fb7a4a51c905cceea244bfee0ba4635f34c7",
+  "fixture_sha256": "a9bbe89b1082ef028c8059b4f311cf996ef962227d459450c12c713c8574e732",
+  "scope": "Complete unchanged original rustc_serialize+rustc_span; concrete MemEncoder, exact type alias and generic SpanEncoder actual-Self projection use opaque specialization. Distinct safe Rust Wrapped(MemEncoder) uses generic EmitU8 operations. Actual capacities/bytes and wrapper method calls retained. SourceFileHash derived array encoding included. No inheritable marker discovery or Rust production fallback."
+}

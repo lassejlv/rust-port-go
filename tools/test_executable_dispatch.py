@@ -33,6 +33,7 @@ class ExecutableDispatch(unittest.TestCase):
             ('tools/port-rust-stable-hash/original-tests/run.py', 'plain'),
             ('tools/port-rust-span-reference/prepare.py', 'span-reference'),
             ('tools/port-rust-fingerprint/hasher-contract/generate.py', 'hash-contract'),
+            ('tools/port-rust-def-id/generate.py', 'root-executable'),
             ('tools/port-rust-def-id/reference-build/prepare.py', 'root-selected'),
         ]
         with tempfile.TemporaryDirectory() as directory:
@@ -67,6 +68,7 @@ class ExecutableDispatch(unittest.TestCase):
     def test_hash_and_def_id_relative_symlinks_keep_command_name(self):
         subjects = [
             ('tools/port-rust-fingerprint/hasher-contract/generate.py', 'hash-contract'),
+            ('tools/port-rust-def-id/generate.py', 'executable'),
             ('tools/port-rust-def-id/reference-build/prepare.py', 'selected'),
         ]
         with tempfile.TemporaryDirectory() as directory:

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "profiles": 4,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "wrapper_sha256": "e4a19eb3739bcd02528c85fc43fe1920a759928a100c068dbe4c0abb7f870116",
+  "raw_sha256": "24725cdb6e3cff57193356834c4b501c2b459e2031b96cee52c36b9cf42a138b",
+  "gzip_sha256": "ea7f875dac13495824908fe73fad666c6a15f3c80b52cc6e164e938235912ee7",
+  "scope": "Actual public get_source_map in genuine SessionGlobals None/Some scopes, returned Arc pointer identity/strong counts, same-container mutation visibility and final loader destruction. All original crate/source/library bodies unchanged."
+}

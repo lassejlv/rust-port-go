@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "records": 42390,
+  "host_profile": "actual matching1.101 std Unix Path/OsStr;64-bit",
+  "raw_sha256": "209646e0af3e6346942d6a9c03cdbf471a99ea4656f53004478e2c7ba2d337f1",
+  "gzip_sha256": "41bda81193174d3c5d9a6058c8af123553159fe59cd90063e0ae3d55e6e2c16e",
+  "wrapper_sha256": "5ee1262e46b06dea535cf985bc0637418772be14d07f8079ee975d56db177ba5",
+  "scope": "All public used-path operations, hash method dispatch+actualborrowoffsets, ownedbufferindependence, mixeddoubleendedcursor state andallDebugC/Scalls+UTF8chunkaliases; Windows separatelypending; no stdsourcefilecredit."
+}

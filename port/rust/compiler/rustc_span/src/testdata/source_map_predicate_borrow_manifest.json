@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "records": 768,
+  "profiles": [
+    "d0o0",
+    "d0o1",
+    "d1o0",
+    "d1o1"
+  ],
+  "raw_sha256": "ff77581a03322e6b354f6524e2580a9cdff22f47bec33ddf7ac5e347f2e1b5fb",
+  "gzip_sha256": "b236bfe8f77aa189ba9f1b86c761543829e3880d9298523c80971688771d876e",
+  "wrapper_sha256": "3cf974f9f57417163f367570cc23f872fbe17451880684d9e2b29ddbb4a758d4",
+  "scope": "Actual whole SourceMap span_take_while HRTB FnMut(&char) actual temporary/environment cell alias comparisons, unused/used owned environment Drop order, count/UTF8 boundaries/normalization/early stop/error return. Within-operation equality only; no Rust/Go ABI address equality."
+}

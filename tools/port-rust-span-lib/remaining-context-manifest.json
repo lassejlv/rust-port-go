@@ -1,0 +1,923 @@
+{
+  "actual_aborts": 1324,
+  "artifact_kind": "span-lib-remaining-producer-v1",
+  "client_source_spelling": "relative ROOT compiler argument; no observer normalization",
+  "files": {
+    "port/dependencies/blake3/v1_8_2/src/hash.go": "898557dd7eb9feecc759557276c5699153a8bc4b023a010d79e6e8797359959e",
+    "port/dependencies/blake3/v1_8_2/src/hash_test.go": "97daa6828997d17c65e9071a5a1d124bc71227714c3dcbeba97de920cb0ea5b5",
+    "port/dependencies/rustc-stable-hash/v0_1_2/src/int_overflow.go": "4db3c8f1f1f251cc131b2851fab06d136deb4a78c08160cb4c50af872dc7b2d8",
+    "port/dependencies/rustc-stable-hash/v0_1_2/src/int_overflow_test.go": "c9ff4197397629a82bf305acff6eab88ca50a535e11767e7714264e726886679",
+    "port/dependencies/rustc-stable-hash/v0_1_2/src/lib.go": "9b1b3dc04169998c0b92ca0cd7d1bf96709059c34c7210e85e2dcc10f3015910",
+    "port/dependencies/rustc-stable-hash/v0_1_2/src/nightly.go": "d587187f1e3600d26c0f83fff26ce5916c9fdf13b527f07b7e6b833cd1c1de68",
+    "port/dependencies/rustc-stable-hash/v0_1_2/src/nightly_disabled.go": "5300446fff181aa84eeb2c447cc5e299321cdc75f5f4cc8d35ba33ac2274b6f9",
+    "port/dependencies/rustc-stable-hash/v0_1_2/src/oracle_test.go": "3faf2b316d244f4785a90e1bdfdf3ebb6451efe64684ca898a6f6bcd09a89afd",
+    "port/dependencies/rustc-stable-hash/v0_1_2/src/ownership.go": "efa4a65286c6cb1cdcb667f9bbe7c3c494c4e0aebbfea71d982baa0c40188b35",
+    "port/dependencies/rustc-stable-hash/v0_1_2/src/panic_guard_test.go": "41fa4c7bc45df4218e92fbd760573413500b6c4ea517b73493fd8f7e232b709c",
+    "port/dependencies/rustc-stable-hash/v0_1_2/src/sip128.go": "f45f77f581dfd03fd18c4201ab96cbc8c0d76b2efe8b5814345c3ad4851d410b",
+    "port/dependencies/rustc-stable-hash/v0_1_2/src/stable_hasher.go": "ca0964e93f488e07c9997316801033a1f0730b31f82e5d8422da7f4ea7745a69",
+    "port/dependencies/unicode-width/v0_2_2/src/scalar.go": "ecea46291184ff140c60836042af19f0b46af5ed7c04e2f368a412bb2576bf0a",
+    "port/dependencies/unicode-width/v0_2_2/src/scalar_tables.go": "0889c075bab8932be575ffc21e501d5ca899ae58657ab44a9537f36c4977fe25",
+    "port/dependencies/unicode-width/v0_2_2/src/scalar_test.go": "ccef49347d9cef78d9b802015c7a704c6bc266f2a18d153c2d30a84de90d4bd4",
+    "port/rust/compiler/rustc_data_structures/src/base_n.go": "ede8ad0cc0386411edfa318381d4b9991dc10439046c7dadeeef73ec16f5c220",
+    "port/rust/compiler/rustc_data_structures/src/base_n/tests_test.go": "402b4c0f9f6ab8f6aedb2cafc89bdcd9fcb82ec530052edadcafe2743258b10a",
+    "port/rust/compiler/rustc_data_structures/src/base_n_format_contract_test.go": "791567a6ea4f2911382dafc1d8926ca3ab09406aae559a1592fdbd7cf858a1c5",
+    "port/rust/compiler/rustc_data_structures/src/base_n_owned.go": "6aa7cd2ca92cf7cb5a255dda094017c660846bc2eaa24df30faaba5fc00c46ee",
+    "port/rust/compiler/rustc_data_structures/src/base_n_owned_contract_test.go": "eb7931c29e437ab3133bdef241f1429f3c5497f66b3fe1b1bc45444f19fb3ebb",
+    "port/rust/compiler/rustc_data_structures/src/binary_search_util/component_guard_runtime_test.go": "384dbfbcbef3c6589bd19f3246e8c86146ce215320c33eb7c59933cd21acf4dd",
+    "port/rust/compiler/rustc_data_structures/src/binary_search_util/mod.go": "206e26204105d9aae997f80876c14e2a6ef04da29b9ccb95a000b5fe0ae78262",
+    "port/rust/compiler/rustc_data_structures/src/binary_search_util/oracle_test.go": "07c818dcdbc02ed9fee177443fc7de33462e334263f76d8abaea24cf81a6a614",
+    "port/rust/compiler/rustc_data_structures/src/binary_search_util/owned.go": "a8e9c52c1a78b877033be8879706531a1c601f90fa9743470f3c61d05b644aa3",
+    "port/rust/compiler/rustc_data_structures/src/binary_search_util/owned_test.go": "9ca3443afc8adc0291575264aa29a0352fd7c59af678419b6658806c691fcd80",
+    "port/rust/compiler/rustc_data_structures/src/binary_search_util/tests_test.go": "fd39e93940992ef4a187b3a746b4a0bd72a9354b163adf2ea87529ff286b436a",
+    "port/rust/compiler/rustc_data_structures/src/component_guard_runtime_test.go": "7a1ba9adbdc0591d7eb77a02d7cab3600c66fbe912228c664b6eba85e87a3d84",
+    "port/rust/compiler/rustc_data_structures/src/fatal_error_marker.go": "34c062189290667abbc0dbdd0a82ecb9635648da6626c5054dcc05a30fa0be3f",
+    "port/rust/compiler/rustc_data_structures/src/fingerprint.go": "8eac712643f1ea86a5093946b0415079b1b0c9797252a1e9f7fdc2808d3a65fa",
+    "port/rust/compiler/rustc_data_structures/src/fingerprint/tests_test.go": "d1b46a5bfcd8591f28eabbc2b449d828cfd07892604e77c9df12dcdba18b54fa",
+    "port/rust/compiler/rustc_data_structures/src/fingerprint_decode_metadata_test.go": "98ded5d05cd12666109353169fcb38bbb56b9f00b725a92a14d7be6e2e04b754",
+    "port/rust/compiler/rustc_data_structures/src/fingerprint_fallback_test.go": "46a1b3aace5907c70e5bbba03ffd8223bc55ceafde8fc83530f535cda73223ea",
+    "port/rust/compiler/rustc_data_structures/src/fingerprint_format.go": "4f941cb198dbe0789e4afe2ccf700fa09dac9e27ccf97d15d9cf69f11eebaa0d",
+    "port/rust/compiler/rustc_data_structures/src/fingerprint_format_primary.go": "6302b7f83eb029c973c06624e2ceb23a836943732994bad134dfe3ed253c2fa9",
+    "port/rust/compiler/rustc_data_structures/src/fingerprint_hash_primary.go": "84992eea8d3bf0da57f0ad14c90fc69d0fb6b8d511cd824279b402c9110e0bba",
+    "port/rust/compiler/rustc_data_structures/src/fingerprint_hash_primary_test.go": "eeb8f906f344b76858a8bb2e8a7fbcb25ee1a66e14d1a2c047bf37b5d10a2d5c",
+    "port/rust/compiler/rustc_data_structures/src/fingerprint_test.go": "7bc936560316b1877a2b0a97944032627b836bab9e28c7c51f75920a819b100f",
+    "port/rust/compiler/rustc_data_structures/src/fingerprint_unhasher.go": "da48cbaa75cb55647991cc3c9d10feb2de4fc9129e20cb27eef632f6c38bfc7b",
+    "port/rust/compiler/rustc_data_structures/src/stable_hash.go": "8c9261bd71e90335e858579f778f7356cb98dc05b3b937f5b6c84a7603efe65e",
+    "port/rust/compiler/rustc_data_structures/src/stable_hash_context.go": "41f60495c9f034b45b3fedff5bcbcc6040c46ef1d166be426885a880694bf75b",
+    "port/rust/compiler/rustc_data_structures/src/svh.go": "a3f2085963bd692e1a691c2bbc52294f336bb5318ceecb96a071470e0771b6ca",
+    "port/rust/compiler/rustc_data_structures/src/svh_oracle_test.go": "6cf2a0f797d876a42992d817116c0a812586f1502af7b172a357db1f363a5316",
+    "port/rust/compiler/rustc_data_structures/src/thousands/mod.go": "426ba52fb088704ab85d66ab08b02e09aae0aedda7563918e4582c0046ee4d98",
+    "port/rust/compiler/rustc_data_structures/src/thousands/oracle_test.go": "f46a0b33472720d06dc8ef47210c2a017c92683cdb281af4c34cb95e57cd09e7",
+    "port/rust/compiler/rustc_data_structures/src/thousands/tests_test.go": "3689de345783be1a86aa4288f36514f1d85fab6727cec6759c12e4fc69d80e04",
+    "port/rust/compiler/rustc_data_structures/src/unhasher_adapter.go": "c8a8ad287f31d5d7ac59e7aa1a9502faf0cf569a6b3c8852a5909ac19f78e19a",
+    "port/rust/compiler/rustc_data_structures/src/union_find.go": "c4828edafb80bf5fc1adc6ff48782eb631a2201230693025a5c1ea2fa557987a",
+    "port/rust/compiler/rustc_data_structures/src/union_find/format_test.go": "f48787032240588fc5062d41b674d1ef7b7dafad2eea15eed1893bd4bd456071",
+    "port/rust/compiler/rustc_data_structures/src/union_find/oracle_test.go": "7d5d39ed3779369fbffac9968b53d3f68f3c63b7e55bc0cde3b3880b7d0e4400",
+    "port/rust/compiler/rustc_data_structures/src/union_find/tests_test.go": "eef9ccd89b5306efa44274f651fbb9575a81b43cd66700cf7434ba77ad329a5c",
+    "port/rust/compiler/rustc_data_structures/src/union_find_format.go": "69a20029488e2235b1e7ccea4c9107965ad4c0afe0f87ad8dfb136f3720f69da",
+    "port/rust/compiler/rustc_data_structures/src/unord_bag.go": "4c8b0d65e91f36610396d1f21213583010129a602ebb3fa065b7f536c864f845",
+    "port/rust/compiler/rustc_data_structures/src/unord_bag_codec.go": "183c6e6a9d960168d4293a39e58519b1597717bc4ed4eaa49cb45e58ad3cb6be",
+    "port/rust/compiler/rustc_data_structures/src/unord_bag_context_test.go": "bbf92948245f8ed71df48a352292d9367c7b860b6a85e231a1a277993c604934",
+    "port/rust/compiler/rustc_data_structures/src/unord_bag_oracle_test.go": "ee4f9db75b641e6201a96f1e505d6fb8c4507601bc5d356caa5589f7807f5142",
+    "port/rust/compiler/rustc_data_structures/src/unord_codec.go": "83bf772a0d682752a0c3b6c0027be1a98966df938ef8929768fbe3d38b2be03b",
+    "port/rust/compiler/rustc_data_structures/src/unord_codec_oracle_test.go": "a9d665cee85ee6543fffae5688875d43a5030a320c9a16cabe2d4a9fd36627ed",
+    "port/rust/compiler/rustc_data_structures/src/unord_map.go": "8d1f7de2c17e6e39d09fac8bcac31e53d9f937868c02c0ccb7bd15dd0ba88f2d",
+    "port/rust/compiler/rustc_data_structures/src/unord_map_test.go": "95f7437e9f675d6a774413c4dddf79e536599948c2b335ad96c9f47fc691cc33",
+    "port/rust/compiler/rustc_data_structures/src/unord_map_traits.go": "a9ecb25f4894d8bffdb5b4e2e296f96e9d626e074ac78990cfc2edd131655a24",
+    "port/rust/compiler/rustc_data_structures/src/unord_set.go": "3e2d0d4475370ce671737ea1f76dcbbded9c862e90f9da368e14009ffeaef06f",
+    "port/rust/compiler/rustc_data_structures/src/unord_stable_hash.go": "04a6739108d232341aecd580ac3ee152249d4a2df328e071a82bcbf1d5fc74bf",
+    "port/rust/compiler/rustc_data_structures/src/unord_traits_test.go": "65d626d5bf7b1c73cf003791ea5860f09f05892d8cd449ae63583bdfedd98309",
+    "port/rust/compiler/rustc_data_structures/src/unord_vector_codec_test.go": "cc6885c80164b2e679dde0550a258d8f3ed5bad60c95f4e4667cec8703eac85d",
+    "port/rust/compiler/rustc_data_structures/src/unord_vector_wrapper_test.go": "a96b0809d049ca13e7bfb436d5eb172ba1919da5b7bd8df40e34da965df2af04",
+    "port/rust/compiler/rustc_hashes/src/hash_primary.go": "9c99d7dd75a693e95a9b082274739eb3daa7a345209a41f6c59325b6b466276d",
+    "port/rust/compiler/rustc_hashes/src/integer_format.go": "dbe275d7ac4dd5855c432bd5084716fe6aba57eec76106e4905f9dd18cf86c37",
+    "port/rust/compiler/rustc_hashes/src/lib.go": "5901a84bba171cefabd6af5a73900d8808519e09985f155f3c36026d050f3152",
+    "port/rust/compiler/rustc_hashes/src/oracle_test.go": "95ada1affa925992edf2d255a17d8c9e1f071d7853ec0d93a27e74a95c8b94b0",
+    "port/rust/compiler/rustc_index/src/component_guard_runtime_test.go": "9d18d7527e625954d1a7bd9fb455c23e67b8f7370c1643c0c85574516f2edaa6",
+    "port/rust/compiler/rustc_index/src/idx.go": "b67b2f7509e3b82a0d8f4ca791f7f043ae9c07e6cdf72a9df3b472b7012953aa",
+    "port/rust/compiler/rustc_index/src/idx_nightly.go": "6a4b83c29b57ff3948729d921b1c6cd398f89a28d20b7ee6e07c673306e05c01",
+    "port/rust/compiler/rustc_index/src/idx_nightly_test.go": "eeb69ff0f0a4b4ade428b4a4ed04f65532f551e3ba558941ec8ae45a1af8463e",
+    "port/rust/compiler/rustc_index/src/idx_oracle_test.go": "0376acf3742077d9e7d6b5cec7bbde9cb197d4dcaed0ab08309a0354d58a2567",
+    "port/rust/compiler/rustc_index/src/idx_test.go": "2ef83b494d1f2ff775c4c43a126113538e7b7ff03b210d283e613cdeb81ac5e2",
+    "port/rust/compiler/rustc_index/src/interval.go": "542b78fd33697be13f456a335014f326dff9647bf2b048c24a54f214b0f9d5d8",
+    "port/rust/compiler/rustc_index/src/interval/compat_test.go": "8c3133a33ed0a38573e10dbe3868ad517fc11ca1a08ed87d1cf05a662f0b68a3",
+    "port/rust/compiler/rustc_index/src/interval/tests_test.go": "0afdcfa21b02ca8096bc67632945abe1c0ad00991b9a9102aede2f045e9a8bf0",
+    "port/rust/compiler/rustc_index/src/interval_format.go": "1c03bedd1e17778be3241032046a45be8d74a2b4afc5e22a71876d898d9661bc",
+    "port/rust/compiler/rustc_index/src/interval_owned.go": "ee82e491d3b50d1db6f55da4e0127d357ac722174d8a45357329240730bba851",
+    "port/rust/compiler/rustc_index/src/slice.go": "909ceac8ca4b25d0ccd67b86ca391e185e5a758b92633b48c6d097cae3866619",
+    "port/rust/compiler/rustc_index/src/vec.go": "b6ef4b98609ad6f8f20813eb9817d50ac3ef79893ac31f67ce0c9a8d5816c13d",
+    "port/rust/compiler/rustc_index/src/vec/oracle_abort_test.go": "fe0d5748b4850f1334ae0286883ae7af0a29f06ac402f247ca09cabf9ee84adb",
+    "port/rust/compiler/rustc_index/src/vec/oracle_codec_default_test.go": "3f02b5ca9a929ae97d841d7710b8d12cd766657a5a9e65897bb2906a32e832cf",
+    "port/rust/compiler/rustc_index/src/vec/oracle_codec_nightly_test.go": "2745cf93034c766361ca8ddeed7f096ec89725c79fe8690c1e174b7a5f0d7c02",
+    "port/rust/compiler/rustc_index/src/vec/oracle_codec_test.go": "fa9fd4627db39704517d0f9b063a8764ba582ee2b6304c4472f429ce78963a73",
+    "port/rust/compiler/rustc_index/src/vec/oracle_custom_test.go": "870983ac20d8bed2a2135b5dc5d90829741b8071811eb577d0d3f74102d96c29",
+    "port/rust/compiler/rustc_index/src/vec/oracle_format_test.go": "75ab423ed24fd216e4bfecb2380f9d2408cb96418ab99611e6ea5640619bfbd8",
+    "port/rust/compiler/rustc_index/src/vec/oracle_integrity_test.go": "cb142fba6870da9dc296271cca77b5750dd51a8fca666ab5a3a64c13c8ac607b",
+    "port/rust/compiler/rustc_index/src/vec/oracle_invert_test.go": "ba6df9603bf7be584792ac0cd59331d9b6c07d2babf1d4e4022ddc9cffa70a39",
+    "port/rust/compiler/rustc_index/src/vec/oracle_iter_test.go": "45d660eda994ab7d9ae6d8cfd00e047ddcb59c8db0252bebd07ab41e2ba87233",
+    "port/rust/compiler/rustc_index/src/vec/oracle_options_test.go": "d64f9be65e82b4d8198859b4ac945e69eed101773aa67d286d0f42a455e1de82",
+    "port/rust/compiler/rustc_index/src/vec/oracle_test.go": "263ad493491c8861eaf6ecf61b5fc612e3cd4a8ef595b3d9d11dac95f85f1060",
+    "port/rust/compiler/rustc_index/src/vec/oracle_zst_test.go": "5c60f3c32eb15129c06b12b5cd62ec1e5e8d43fab4356bc2de8bc647f6f49518",
+    "port/rust/compiler/rustc_index/src/vec/tests_test.go": "fd17753a81e8c8015f04df6aea6113c1b94927586d90978cb7c64e91e6af2853",
+    "port/rust/compiler/rustc_index/src/vec/traits_test.go": "d68a70123dfed4fcaf0ce9ec09cc0928acddda2e734c729624791561231b19d9",
+    "port/rust/compiler/rustc_index/src/vec_context.go": "9e3de06192ba5d1539b2383d7470b49d8365b867f6e3aa13e07d412df02db1f6",
+    "port/rust/compiler/rustc_index/src/vec_context_oracle_test.go": "e930c09b31d78487310076b6b6d97ceeb64e7506604a3a83e46c3a495f3338b2",
+    "port/rust/compiler/rustc_index/src/vec_context_test.go": "7e14025aa363d546b54f73fb12e2e127dc02589356dd7a5711ff3ea092e42a5e",
+    "port/rust/compiler/rustc_index/src/vec_format.go": "0b1b2ed3dc241514919ef6a08ee245213a03db37f81459f94642bda06bcf6577",
+    "port/rust/compiler/rustc_index/src/vec_iter.go": "29e1a560b484eb105eb957643132af3dba68f762cc60062687c91290b0cb48a7",
+    "port/rust/compiler/rustc_index/src/vec_nightly.go": "589c374395416adbf4a5f37d5192e4ae2500bf38044ccb3ee2985dfdec9a049f",
+    "port/rust/compiler/rustc_index/src/vec_runtime.go": "79ce0668e37a636de75ed6a7fbbfbd972b32620e645ba12b8cafb9ce65d710c5",
+    "port/rust/compiler/rustc_serialize/src/container_decode.go": "f9c30e3eb35a008fe468c4ee8a2b6440faab397d5293e44fa44769714eebb93a",
+    "port/rust/compiler/rustc_serialize/src/container_vec.go": "6e695e5ebaa7a0697e8b64293685fe85a67900e86f2443bc570c57c06b22326f",
+    "port/rust/compiler/rustc_serialize/src/lib.go": "128c5255b9374795c8df7fcf1ded413fb9d2b26c8bbfeef579852138d67b41ec",
+    "port/rust/compiler/rustc_serialize/src/map_defaults.go": "871f096a5374400a2334dac3e5b470fe37cce265bb82c7f10ff796104ec0d87b",
+    "port/rust/compiler/rustc_serialize/src/map_defaults_oracle_test.go": "f63ba7e38e28513e79b2bccca19904095e813172e356e6950a50f30189602356",
+    "port/rust/compiler/rustc_serialize/src/map_defaults_test.go": "dc0211cc3b0396308ce5482cb62e57916a8355cfd7ed0684a033836d172226ac",
+    "port/rust/compiler/rustc_serialize/src/opaque_callbacks.go": "e282185c7e4ba83db72847267d6a5d65a6a621719179049044bee71291b82077",
+    "port/rust/compiler/rustc_serialize/src/opaque_callbacks_oracle_test.go": "b9743a63f511da3a77ee7524cbb95f40759167379d6fd692836264427acd77da",
+    "port/rust/compiler/rustc_serialize/src/opaque_file.go": "accf9431126e986a1758b042e5551b5b8bf124cd18c0a248583046d7552bf251",
+    "port/rust/compiler/rustc_serialize/src/opaque_file_oracle_test.go": "b8a7674414d25c9e0a805760de07ecdfaac458a9c8676b8e259e9cb5ec96c791",
+    "port/rust/compiler/rustc_serialize/src/opaque_memory.go": "2c1944379d7fef7f5724958b14e949a5c04ff8a064446852e92b4753606122dd",
+    "port/rust/compiler/rustc_serialize/src/opaque_memory_test.go": "4648b42f8cba404bfa70fed3e9413249da27c765936afd2d952ea7de9de6a568",
+    "port/rust/compiler/rustc_serialize/src/runtime_context.go": "8f7e6ad75fbc9f59f19fb33bb393ed18aa6acb56cbb79f6e1ce5489304bc288d",
+    "port/rust/compiler/rustc_span/src/analyze_source_file.go": "b8a19a47b0f1d2f527347b4a470bef0d3f60c8d309eb155de49a94b592eb5de8",
+    "port/rust/compiler/rustc_span/src/analyze_source_file/tests_test.go": "3cc9bbb958fb0c281e0214bf77d34016e3798c35362dd68d50ac6b75a5bdf532",
+    "port/rust/compiler/rustc_span/src/analyze_source_file_oracle_test.go": "fab227def66ea96b40ec88b11e70a7746379ead08b4b5eb4d8739aa75661d42d",
+    "port/rust/compiler/rustc_span/src/analyze_source_file_panic_test.go": "a1e497a50f2f2dce5bd28cce0408b59f46b101590857cdbd58fca66cbb89ca54",
+    "port/rust/compiler/rustc_span/src/caching_source_map_view.go": "f4fdf220ffe42e44caeab7ee3e77cbbe7a832a75d1c005801f359e70b9736a5a",
+    "port/rust/compiler/rustc_span/src/caching_source_map_view_context_test.go": "1d39f5f5e8d79d66fc3a8fbb90683b5aa9825e76e356c9a5c075ee0e70776b3c",
+    "port/rust/compiler/rustc_span/src/caching_source_map_view_oracle_test.go": "48751bf522164c1c2185fe91107c5e7c83870c1824dbda65086d9e84fdf426bb",
+    "port/rust/compiler/rustc_span/src/caching_source_map_view_panic.go": "c0767c12eb93421e6e9c30b61c607c9fb16f9a7df85a3817ebdcc410ab36cbd0",
+    "port/rust/compiler/rustc_span/src/caching_source_map_view_panic_test.go": "7e558be83227a1910e17481af7aee2197014abb5ba3e7622ac2c0f243d09ee0a",
+    "port/rust/compiler/rustc_span/src/def_id.go": "6f627735df7627e05d3c0ab670b4a693f9a8c81e50bea6695368687aad694d3f",
+    "port/rust/compiler/rustc_span/src/def_id_codec.go": "78c09f77cdfa8f14959274c0a5236131dc523282787b309d28d6ed1fe0dff58e",
+    "port/rust/compiler/rustc_span/src/def_id_codec_oracle_test.go": "559ced6acf608f6d9d37aa2304038ec5afb03eecc8ecbd26942ab71f91cd108e",
+    "port/rust/compiler/rustc_span/src/def_id_collections.go": "29c95e63f8089d977ce1596e82d1efa690f22961d77a359d394b83d89a435534",
+    "port/rust/compiler/rustc_span/src/def_id_collections_oracle_test.go": "f8f01deb314adf13199ad4ef5534f007aa40a3578d538e1a8eda7c111a5563e9",
+    "port/rust/compiler/rustc_span/src/def_id_context.go": "75cf75335613d2fcf89d6760b2fb6a7c33230d72d7cf1d3ead846ce221d27188",
+    "port/rust/compiler/rustc_span/src/def_id_context_oracle_test.go": "4e27b3fee46786a29510948c4ab444e6045b4aa4fe08ea744925cbb0a46f840e",
+    "port/rust/compiler/rustc_span/src/def_id_debug.go": "bcd3375c518fb0820902e3fa7aed5b31bdf47fccd7c7a78c68eb4f1383d06d64",
+    "port/rust/compiler/rustc_span/src/def_id_hash.go": "a7486ebc0d79555aded2500fc9f3090721f1be084ba8c6f017de6293fd8aabdc",
+    "port/rust/compiler/rustc_span/src/def_id_hash_primary.go": "4d59fea85674ebb5cf7587d0478204afc4037b7a83b9333c0c266d0294399304",
+    "port/rust/compiler/rustc_span/src/def_id_hash_primary_test.go": "1e272f7256e19ed6d0898cc9db3d6dcd6dbe83cd363c04953908ab23bdda43e7",
+    "port/rust/compiler/rustc_span/src/def_id_index.go": "f6bf5bb60e0af215e4858922f999ae25d93a0f45a475d270f491477fefec1f87",
+    "port/rust/compiler/rustc_span/src/def_id_indexmap.go": "5143fefde34b205e3471cb43bf0d9326e0bc8a195a0d826c880e0ba23bff920d",
+    "port/rust/compiler/rustc_span/src/def_id_indexmap_alias_oracle_test.go": "581a1d31473e84dbebdda66747d5caeee7b7a0889b84b604f9b99a3fe0b926b1",
+    "port/rust/compiler/rustc_span/src/def_id_interval_type_test.go": "2c35495b127a3e1e7c01c7cb00bd3ddbf2aa87410d48b6ccfaf55b584474bf55",
+    "port/rust/compiler/rustc_span/src/def_id_oracle_test.go": "f2baf91a4d4ed3c01e491b01326f09a66f6502111a5e76b30b2f898523b1a27d",
+    "port/rust/compiler/rustc_span/src/def_id_panic.go": "4420f658b00a2aa5bcbf91eb5f98224f9ae6a6eb0264dc8bb952b69d154fc257",
+    "port/rust/compiler/rustc_span/src/def_id_panic_metadata_test.go": "43737263434cb4e11349292862a5ecaf00c814a00cff463b6269c1ab77f02e3f",
+    "port/rust/compiler/rustc_span/src/def_id_panic_oracle_test.go": "60fb31838046d3567902035e1ced3a0722dc76ce72eb257261ea3f6760c14ccb",
+    "port/rust/compiler/rustc_span/src/def_id_runtime_test.go": "ae7447a0fa4f951d168497142d7e7cf91243ffc6cf238b06e89699e2e6e6c37d",
+    "port/rust/compiler/rustc_span/src/edit_distance.go": "b7f5b38ac87b8060f3380c779626afe99f5dd4f40323db940c740a9ae09984b9",
+    "port/rust/compiler/rustc_span/src/edit_distance/tests_test.go": "f8437c7d423e212d91391c21945477e96279735e957e56294245870e0705bf49",
+    "port/rust/compiler/rustc_span/src/edition.go": "1d3db20cfb44db5693ff23c9ec3e732867d70efb2fb05b18ca75a631c0fd62d4",
+    "port/rust/compiler/rustc_span/src/edition_oracle_test.go": "864a59cdc9eb448262014337982c2c0eed51bec3f94a2266c025afa4e103a8f3",
+    "port/rust/compiler/rustc_span/src/edition_test.go": "0161c526d9e162cd29097f1d9767261e91c813c2e07f7f943d2e1dfb0fed11ca",
+    "port/rust/compiler/rustc_span/src/fatal_error.go": "54427ff0ebd52e9666675e0cb2c34bb2b41408e55ab22a3d2ccee13ef756cffa",
+    "port/rust/compiler/rustc_span/src/fatal_error_format_test.go": "541bbd993c8f9c27cb4e826b86555edb825bdd16fb9f352a87dbd6c0c3c0d1c9",
+    "port/rust/compiler/rustc_span/src/fatal_error_oracle_test.go": "ee68b9d02e646d13a3703fbcbdbe83e1ac3d971973a0ccf19418c72d9d6baa39",
+    "port/rust/compiler/rustc_span/src/hygiene.go": "de2e5c943179e56a641f839287a60492701b7c36c8b5550652c3bb00155057f7",
+    "port/rust/compiler/rustc_span/src/hygiene_cell.go": "9fcec9284d6897d1bbcefce20d641a7a101cb366ad4b9bfc0ce1a54dc8457cb7",
+    "port/rust/compiler/rustc_span/src/hygiene_codec.go": "8a78f7ffb4d6b6e81dddc32e12d9186bbff60c764a3e7882140513913da8ae61",
+    "port/rust/compiler/rustc_span/src/hygiene_codec_context.go": "85b08196e476a610dd1b4fa601248c5aa8e1efaa474c50698838f9adaa701f96",
+    "port/rust/compiler/rustc_span/src/hygiene_codec_oracle_test.go": "74d08c240708051bc4181160089f82088fd7af277f133d5c3f3b4657d38579aa",
+    "port/rust/compiler/rustc_span/src/hygiene_commit_oracle_test.go": "65e805d626b2a849d0a96493684632aa568faa0c37d23b9fb59acd4d1e715839",
+    "port/rust/compiler/rustc_span/src/hygiene_context.go": "26764364b66c1adb0e7e22d9b3e2e6dcbf425162284f368b5fb2f396b124e56c",
+    "port/rust/compiler/rustc_span/src/hygiene_context_ord.go": "064445ef847de604ec5694b1c6a4fc8c24abebee8e36699d3547edbfdad47103",
+    "port/rust/compiler/rustc_span/src/hygiene_core_oracle_test.go": "70494b228f59c1a186fc40c55f07c5035e80a83dbf2a64c88aa997fcead70a54",
+    "port/rust/compiler/rustc_span/src/hygiene_data.go": "cc8545a2beeebd7f45e808422b2fc129497cc84f12f66d08e3227e3930515a11",
+    "port/rust/compiler/rustc_span/src/hygiene_debug.go": "7da022cfa479f305f367e2b5cf6b936b245603d57b0c5ada3bb65a54cc2453c8",
+    "port/rust/compiler/rustc_span/src/hygiene_debug_panic_oracle_test.go": "6482d379562177310679eafc6e85cacf10f6ca314cd14aa25b914bdcce9d0070",
+    "port/rust/compiler/rustc_span/src/hygiene_decode.go": "b5377cc44b5d0e629aa0864d551c46ee4a9306020f6e428fd46ddaff1ea90290",
+    "port/rust/compiler/rustc_span/src/hygiene_decode_oracle_test.go": "c23f63734b88c04be3c7e1142c914bce50af6a545802a43ab6aa13194c4c15a0",
+    "port/rust/compiler/rustc_span/src/hygiene_drop.go": "eed911e80f35b5d1d9e421a9c137123b9c22f6438595694ec67c7478b045c00f",
+    "port/rust/compiler/rustc_span/src/hygiene_encode.go": "31f8df18a643c461b17ecd1dc738002035e145a79a62aeb4804b42810a95f7ed",
+    "port/rust/compiler/rustc_span/src/hygiene_expn.go": "feaee59e294dec01c154329943d2a830242f66fcd1694e4e89b8b0f1bcf9ca70",
+    "port/rust/compiler/rustc_span/src/hygiene_external.go": "78a1eb1baf93234a8c345f8561879d6b31cc35f9c10d2e694630023dadafdd75",
+    "port/rust/compiler/rustc_span/src/hygiene_failure_oracle_test.go": "da17fb3efa2a20a2e21059168f6d772b23f3d7117057e5cf2ed784ae0ad829fc",
+    "port/rust/compiler/rustc_span/src/hygiene_format_oracle_test.go": "cf33d44dd749eca5056c306a3e7ab4c32d456f6d5b2e077eec7f712d166cf8f7",
+    "port/rust/compiler/rustc_span/src/hygiene_graph_oracle_test.go": "5917a6906fbf19c3480dc586e97548693c9ff1c4a6af6686b95f1195ed8cbbed",
+    "port/rust/compiler/rustc_span/src/hygiene_hash.go": "1414635582fa3100b02ec180a09085db14e05a7568c9e991b319effbdad0e21d",
+    "port/rust/compiler/rustc_span/src/hygiene_hash_oracle_test.go": "bc897b0dd5ce0fc265355f71dcc0e004838a321e42e085a906e9f925b6999c54",
+    "port/rust/compiler/rustc_span/src/hygiene_hash_ref.go": "0fd9216bde06d2ab9d136421c7be7a6eb2bb7d4f34c7bb4f8213baf404a73b9a",
+    "port/rust/compiler/rustc_span/src/hygiene_index.go": "ddb22b12e8a53b31f8abbd5d797ffa0bbe0e01a0a5c0a5f4f6a6596ec1579e8c",
+    "port/rust/compiler/rustc_span/src/hygiene_index_failure_oracle_test.go": "8ec9d2baf0782b4a00923c3adbd51dbe68cbb0275fca376da4f7653eb6843765",
+    "port/rust/compiler/rustc_span/src/hygiene_inspect.go": "65282db0e02fb09b14d59c9743296eae35a2a10eb10977d311c0aaaaff9dc82d",
+    "port/rust/compiler/rustc_span/src/hygiene_invalid_codec_oracle_test.go": "c741e31822b0b68d4db4fd2f9158922069444db36e90c86d06ffdbf0f477f5a1",
+    "port/rust/compiler/rustc_span/src/hygiene_oracle_test.go": "20be16a944237e5bb358d778ca5124f20799380287037026d6668cf63780bf70",
+    "port/rust/compiler/rustc_span/src/hygiene_order.go": "8d3df8a0852c19c9d186347b05955159d2b334f792cee2ab2fd15503fc6acbab",
+    "port/rust/compiler/rustc_span/src/hygiene_order_oracle_test.go": "5c0c3c39f9477bfad26dbad1b5776e5e390696ae8702917b4f77d1b599d85bc0",
+    "port/rust/compiler/rustc_span/src/hygiene_owned_oracle_test.go": "38a0f3db5593fd0aa6015d171878e0a5fe9c03b5906abb47f46f66927bc554b9",
+    "port/rust/compiler/rustc_span/src/hygiene_owned_profile_test.go": "711ad7a325cb839c873828457ad53c247a15925609cf1fc1eda75bf89c493f57",
+    "port/rust/compiler/rustc_span/src/hygiene_panic.go": "5665199c9b3dfd2e13771f25d2a20657f8beb89f1c806edbbfb8145dd93d0a77",
+    "port/rust/compiler/rustc_span/src/hygiene_pipeline_oracle_test.go": "93b972727cacbff2e2a24e4edeb32cdaa3f4ee26dcbdae556e1cc3f75cc385ed",
+    "port/rust/compiler/rustc_span/src/hygiene_queue_oracle_test.go": "1c02781cb12b90a5bd80efd733d3b5f037680014ebc13982b2d22485ef894a53",
+    "port/rust/compiler/rustc_span/src/hygiene_remap.go": "a8760c158841affa6ea7421d15f4cda587a4b4debebed6cc30e1d5a3b5af6e82",
+    "port/rust/compiler/rustc_span/src/hygiene_remap_oracle_test.go": "b6d6ed908e8c0fd0f268517f89871b6126127832bc54bfb35285d5fe9d12bdf1",
+    "port/rust/compiler/rustc_span/src/hygiene_remap_ref.go": "801bbeac584ba98f1469df38c142d3832024cba4807d777de2ba61197ccfdaf3",
+    "port/rust/compiler/rustc_span/src/hygiene_span.go": "33a54de44aedef3212d73da62e0e620293bb9f35ca9c2d2e014763e236778060",
+    "port/rust/compiler/rustc_span/src/hygiene_tracing.go": "1e796a7f3dbf64dc736755e1e6c9356e7bcf779b30bb3a746d09c09c4842bd47",
+    "port/rust/compiler/rustc_span/src/hygiene_tracing_oracle_test.go": "c90c0fff3b1e6088e67508bcc8435fdde4678b9c3c0c8dc7106a123fab3cb3ac",
+    "port/rust/compiler/rustc_span/src/hygiene_tracing_profile_test.go": "db2c7151ac09c7e801d4dd122cb23758186d9e6b237e41e937529673ef013ad5",
+    "port/rust/compiler/rustc_span/src/hygiene_tuple.go": "1bfc808312dbb6c8fe0f7f8ad0d44ed06b9d86bff15239dd8228bb39923e39bd",
+    "port/rust/compiler/rustc_span/src/hygiene_types.go": "3e64687df025e9ca88edc9f0ceae60e087943d69e9e890a1c177eedf0cc4bacc",
+    "port/rust/compiler/rustc_span/src/lib.go": "3845e4a03e1340c73dbad7e8803cd5eeef5c2408fdac1eac7ba7b2d803ff1c4d",
+    "port/rust/compiler/rustc_span/src/lib_attr_id.go": "8d100391c4285404847a419105c798cd1b33a9da55e0273fd38c22235f749df4",
+    "port/rust/compiler/rustc_span/src/lib_attr_step.go": "d64c7d0c0ca89014e105bf59526dc699358bd4961f51e86b2a21a8505c5660cf",
+    "port/rust/compiler/rustc_span/src/lib_boxes_oracle_test.go": "18ce4059c94508db1b63210d75f3ce1a49193eaee1918a51bd65a9e786cd4af1",
+    "port/rust/compiler/rustc_span/src/lib_bug_runtime.go": "48a7c6bf986b3aa8ed184c4c701f098ee8979d6ebde8fbf32921ee517df8396e",
+    "port/rust/compiler/rustc_span/src/lib_bug_runtime_cells.go": "8b4a27041dc0d512c2a64f9cd05b209ef571d26bd6446f4fc40f02f4bf5f6ace",
+    "port/rust/compiler/rustc_span/src/lib_byte_slice_strategy.go": "a891fca0b8d206711d3aed5515a80692e835399c3df56e7ba0934672bf9234f4",
+    "port/rust/compiler/rustc_span/src/lib_byte_slice_strategy_oracle_test.go": "8dc19963129865ac31ce3746beb4fe22802152cb0e412524e29742a3ab0b8eb8",
+    "port/rust/compiler/rustc_span/src/lib_codec.go": "bbf08618f5bc104543c42cbccf00c49f69d07d08839978c24d2ee826b41b2dcb",
+    "port/rust/compiler/rustc_span/src/lib_codec_context.go": "455343a1d1fbe81832fc51864d92cbe6c851cd8621131458a1f8e86c42659cce",
+    "port/rust/compiler/rustc_span/src/lib_codec_owned.go": "8ebd847d8c5de995636999924fc0cd3c1b5d4bb86e3e21668d81f8ab0423349f",
+    "port/rust/compiler/rustc_span/src/lib_codec_ref.go": "72f1f8542d06544c5dbd6e7e866a3a921a751ab93254663707149e6ba4ca2f8a",
+    "port/rust/compiler/rustc_span/src/lib_codec_runtime.go": "aa90d5cf3e6c97de0de02ed3f929fbe643dc8d933fd7a2cccf40a51186e7680b",
+    "port/rust/compiler/rustc_span/src/lib_consuming_callbacks_oracle_test.go": "55a92dad436368e89b1d8377058287393e37b468cb349051c891a106ca3a14fd",
+    "port/rust/compiler/rustc_span/src/lib_display_oracle_test.go": "62bfff305735443ac069f24370ff2690db0e9f177ba4e7c4f67fda7bdd73160e",
+    "port/rust/compiler/rustc_span/src/lib_enum.go": "db334e24c61cde51e64c7da982a9e0397eaec4a52b7f7ed027c6ccdff216a7a7",
+    "port/rust/compiler/rustc_span/src/lib_equality_defaults.go": "fe12b34a1495d829dd0ff1c8cbf051c7e631d5bb99cb205bdd4f90dd6530e2e7",
+    "port/rust/compiler/rustc_span/src/lib_error_format.go": "edb45206f4a402b695526d16c592b89e98dfd852df507ee2aeb413c5a980f026",
+    "port/rust/compiler/rustc_span/src/lib_external_src_fn_once.go": "6f26350373499e6927c7943c35b8a547b9e077cc35e198eade88854cbbb1e105",
+    "port/rust/compiler/rustc_span/src/lib_filename.go": "30c45a6ebe2162cdf816a2c5fc2e91c061d37d98b048c16af947fe52aea9b6a5",
+    "port/rust/compiler/rustc_span/src/lib_flags.go": "a4d55ac2236c808a96d33792ed35d55a5344244d1456ec7ed7335de0ad9281b3",
+    "port/rust/compiler/rustc_span/src/lib_flags_oracle_test.go": "60047e7ea8f27ec2bdb3ca63e836010c11902479a1e3ce8b35c056446bf03ead",
+    "port/rust/compiler/rustc_span/src/lib_format_oracle_test.go": "8b474b2880e5f2ec0c9eb1c24555a1388905853ae40be02a16381a4e86735fae",
+    "port/rust/compiler/rustc_span/src/lib_generic_ambient_oracle_test.go": "1f64c0c01478af5256bc492744126b9a8dd8f44c428f9c0263afdad92694ef96",
+    "port/rust/compiler/rustc_span/src/lib_generic_oracle_test.go": "7b22b1e51ab135ba82df631cd34aba072352ab0b90d8f20b4808c02c2e08ea63",
+    "port/rust/compiler/rustc_span/src/lib_hash_primary.go": "3778380ae1b6dd1d61e9931b79141e3db0f8eb0dc8f9f4229a0d9c8b8225a34e",
+    "port/rust/compiler/rustc_span/src/lib_macro_backtrace_context_oracle_test.go": "d3814475c0a3dca946633c03c0087195a623c4d813405f80f6354766afda19c0",
+    "port/rust/compiler/rustc_span/src/lib_order_defaults.go": "98d45b9f7159fea705752400a6bc274465f30cc695b0ec833d84679005cbbe5d",
+    "port/rust/compiler/rustc_span/src/lib_owned_hash_oracle_test.go": "fa0cde9dd852167d23221eba29cf1c29677bc514e8c917bfe8f65e5719e49833",
+    "port/rust/compiler/rustc_span/src/lib_panic.go": "3af7a0514886a3c6033e79a8fa07d189c8f84645a0c4354aa44696f90cd8763c",
+    "port/rust/compiler/rustc_span/src/lib_panic_oracle_test.go": "727693cff65fe2ef255b81a32b21aef83a848c5a67600332cce8e2a376689820",
+    "port/rust/compiler/rustc_span/src/lib_panic_profile_test.go": "2402833055e188dd3a9e0598e8dfbd0ed7ca6070220d3e070d6a3d0cf3210800",
+    "port/rust/compiler/rustc_span/src/lib_pos.go": "41c62bd77c787a54845fa5c2e6ab3f69d2239d7ea180273c36eced0598fbbbd8",
+    "port/rust/compiler/rustc_span/src/lib_pos_context.go": "19aaa3a2cc5bc709cca3decc61e6d5a25698077228d932b40ff2a2bd0dd759ea",
+    "port/rust/compiler/rustc_span/src/lib_pos_oracle_test.go": "c0782db7ff583d0e318cc49453a250ea3bd7ad50da0f685c93e9d7e99d280dee",
+    "port/rust/compiler/rustc_span/src/lib_remaining_context.go": "38b4bfbc00f4b63b9046e8dab5105a6eb427adfdb0ccf35f7ab961745138f14d",
+    "port/rust/compiler/rustc_span/src/lib_remaining_context_oracle_test.go": "6d6d59b811ff6248f26a437b131a19144a8094da72b548ad4c6632991627d7c9",
+    "port/rust/compiler/rustc_span/src/lib_remaining_profile_test.go": "b13e8d790d9fa6a682e532a55801206b3580d40b591ef72ce68cac399c626965",
+    "port/rust/compiler/rustc_span/src/lib_runtime_test.go": "3d020a0d60d99508262084f4abb5ba67068ea8bbc0c28473ef83ed776d23b9da",
+    "port/rust/compiler/rustc_span/src/lib_session.go": "f4eb1afc801a7c295102f2c81b1986b2aa62a75964bb64b905c77070044fb693",
+    "port/rust/compiler/rustc_span/src/lib_session_fn_once.go": "c18ddddbcb1dafb747ecdd184d3896083a184dd9ffa1017369bf2aa9121bc77e",
+    "port/rust/compiler/rustc_span/src/lib_session_inputs_oracle_test.go": "0acb0562fa416ae69920d2b82a4689fab334ccee7a77e11cdecf91626c415862",
+    "port/rust/compiler/rustc_span/src/lib_session_scope.go": "8d1d598e2ba580147b93819434671be2486d70e47866ed864d3adedb5a920613",
+    "port/rust/compiler/rustc_span/src/lib_shared.go": "000cbfbeaa7cd875f3a35944ddedaf64f2e8fc61702e0772f7500062aae0ce94",
+    "port/rust/compiler/rustc_span/src/lib_shared_sync_test.go": "a80477a7963721884702c7fd015ae3f823ffb1c1a1da50eb131388797bdf063c",
+    "port/rust/compiler/rustc_span/src/lib_source_codec.go": "29f5ebf89e0d08e36cb70fb0020b442bbc01d4e9e34be1fe0c70a3cb5e45c54c",
+    "port/rust/compiler/rustc_span/src/lib_source_errors.go": "a20ff9c16091a246b66c2d19d77155c30df5c74367a7d36973a635aac6e1362b",
+    "port/rust/compiler/rustc_span/src/lib_source_file.go": "f1c7790fd9fe52c2cf0f6022edbc05ce8c799dfb21f1e9dcd757b528151eef43",
+    "port/rust/compiler/rustc_span/src/lib_source_format.go": "2aebce49e8cb4e2de9cdef853da0eda0d4217c0d5a235972295e62d94850a5e2",
+    "port/rust/compiler/rustc_span/src/lib_source_hash.go": "6aa82e8804f7c253397de06bab34b63aa6a2abce2579aff9f9e1ed143fc7d0e5",
+    "port/rust/compiler/rustc_span/src/lib_source_metadata.go": "dacd92ed0c0a5173d29aee2e48d10b9a96960a79cff282e0536bbd3f1a680bb7",
+    "port/rust/compiler/rustc_span/src/lib_source_oracle_test.go": "a1427bf9650afe64bad8c7800505b6dbe9af89e0d5c6a7a82892311e35272af8",
+    "port/rust/compiler/rustc_span/src/lib_span_combine.go": "1d1f1ba920e971dde46155679464823e9c68671d114193cb896a2b1c9f8e31a3",
+    "port/rust/compiler/rustc_span/src/lib_span_context.go": "3fcd276768461fcff4c46013c32ee4288337689b1705b10d93c97fcbffef9322",
+    "port/rust/compiler/rustc_span/src/lib_span_geometry_oracle_test.go": "72e3f7aba918802c0f20979654c0d0f8d5ab4dcaf5e51bc049e4cf5b6e5899c0",
+    "port/rust/compiler/rustc_span/src/lib_span_hygiene_oracle_test.go": "30ef49d24bc78d68c3b81db1e22f53647728f2e86d7e338e1ffc371b308123c4",
+    "port/rust/compiler/rustc_span/src/lib_span_ops.go": "3dcb482b467580a306377768de164aa7dbbb3c90353a2293d87c0d927989d9ea",
+    "port/rust/compiler/rustc_span/src/lib_span_proof_bindings_test.go": "564e3c4a428d2cc53052e5a6a43412902647f3a919dc1cfb45ec069aa5692899",
+    "port/rust/compiler/rustc_span/src/lib_span_source_map.go": "016ea35ff1bfbd0cef591ff61c17e8e64d8495d7100c2c8bb7a8ee2030e38c67",
+    "port/rust/compiler/rustc_span/src/lib_span_track.go": "9fca82bceea5d80e56300564ad2324fd6e31121b3c493bd4142737ad7652dfd1",
+    "port/rust/compiler/rustc_span/src/lib_spanned.go": "dc2dd9bcd569aaae13f33f8e9040c08ef017cf99639e112f4f419bc83a7299bd",
+    "port/rust/compiler/rustc_span/src/lib_sync.go": "c987ed80c275ea0078a13cc1ae24b79ff5f4ee4756e58feffa5414da4de73db6",
+    "port/rust/compiler/rustc_span/src/lib_tracing.go": "cf1ca941baa1bd9e70b047ec7411830439bb9eb7f8123f656699e7069b273f94",
+    "port/rust/compiler/rustc_span/src/lib_tracing_profile.go": "944932e46e87a98478f4fed7be22efad178e50f1dd22af14a87a0b0d813e033d",
+    "port/rust/compiler/rustc_span/src/lib_tracing_profile_oracle_test.go": "fac89944f00557aa2a2e02417acda86bd03c15c007ac96bde9a2a45cd5c13876",
+    "port/rust/compiler/rustc_span/src/lib_trait_defaults_oracle_test.go": "94c7fffe4dffbae95f35da577033d905580bae3097a4545399e75e7bb6ea597e",
+    "port/rust/compiler/rustc_span/src/lib_trait_failures_oracle_test.go": "db28af88c5d6f83e2278a41963b8be9fcc422ca7a9805befb76e2f1b59c10e05",
+    "port/rust/compiler/rustc_span/src/lib_value_traits.go": "13391aa3f3a380b8c7d0175c09eb9451f188a06c8835a9991b4bd1d2342e8d5a",
+    "port/rust/compiler/rustc_span/src/map_ctxt_fn_once.go": "5266fa8d6ecb1ed81e7392057155af7b0828d306f40202086115057760173783",
+    "port/rust/compiler/rustc_span/src/map_ctxt_owned.go": "66250890e70ee0a054a7872e828d7757888b6a0e4b25c662667e5b9471747638",
+    "port/rust/compiler/rustc_span/src/map_ctxt_owned_test.go": "1b819bcd45d38542fc3ff551693d42755882d31c963a8bc7be8195cfdba211e6",
+    "port/rust/compiler/rustc_span/src/source_map.go": "804093a6b7ffb4ecb2e148a731ba8a20ccb8d1e1049566f866cfc579aa0cf15c",
+    "port/rust/compiler/rustc_span/src/source_map/tests_test.go": "3dc350e8c26c9c1965079b601297e910d846e05d9c4be4d502ddb133728725c2",
+    "port/rust/compiler/rustc_span/src/source_map_binary_layout.go": "431a61ce673764c5819e365ed6c63a62532997c78fa14b023bb1462c78e512c2",
+    "port/rust/compiler/rustc_span/src/source_map_binary_layout_test.go": "e6d86d2d45113c335dd4c11330f356761cc79921e57243039d77e54771fcf60e",
+    "port/rust/compiler/rustc_span/src/source_map_consuming.go": "b293bcf49a8c5401eb9b8891a66e5259c34db2a438669f782223c214752a235c",
+    "port/rust/compiler/rustc_span/src/source_map_consuming_test.go": "1244d76ae5a0fcaa3973050edff8acbd5b45596ac53465bb9af3ae515e0406ed",
+    "port/rust/compiler/rustc_span/src/source_map_extensions.go": "3c373df3b7202d16f8cf164e769cff073a838abbed344b7c6a42254f7dc934f1",
+    "port/rust/compiler/rustc_span/src/source_map_files.go": "93140f6e6248ba81f0c81bbcc54ff8cc68209eaf583c146f28e38f1d4b01b727",
+    "port/rust/compiler/rustc_span/src/source_map_format.go": "1d646fad079c43b67081348f879361136f6590505ea4c6d847a6d22f447fda67",
+    "port/rust/compiler/rustc_span/src/source_map_format_locked_test.go": "9a87beb0a151d18b06bccc86b6111ee8e2af677a0db333d74b1f72bee120383e",
+    "port/rust/compiler/rustc_span/src/source_map_format_oracle_test.go": "ccea1ae585f6dfc909720065c0803fb916bf875e974458487d75bd8b7fc79cb1",
+    "port/rust/compiler/rustc_span/src/source_map_getter_oracle_test.go": "d2f46031bfd9544c4cce0385e6fe5cd7c83fc2bb4d7851385a1fabef126b557d",
+    "port/rust/compiler/rustc_span/src/source_map_io_binding_test.go": "aab82c01709eec5f0739fe1858dfcc6b014754bc466522f89fcef27123cef1bb",
+    "port/rust/compiler/rustc_span/src/source_map_io_error.go": "eac0daa40dcde07dbd7e1628db71bcfdb3673a26d513f217508c30b154a62d32",
+    "port/rust/compiler/rustc_span/src/source_map_io_unix.go": "715050faffb887169333fcc7c0411986eaa3faa867ed0663ea78f67b85b2eb88",
+    "port/rust/compiler/rustc_span/src/source_map_io_unix_test.go": "3c52c4b50efee774669b8072ddced31402adf29d669056ac9ea05af2121f8f47",
+    "port/rust/compiler/rustc_span/src/source_map_io_windows.go": "f2ab15f71d301a9676d34346cf56d3e7114c16141ee4c073bce55f0d1b06aece",
+    "port/rust/compiler/rustc_span/src/source_map_io_windows_kind.go": "422d3df742cb5c3e8444d7582a3e4a0e68dfc8b0c3b982c8c3d450077bfacc17",
+    "port/rust/compiler/rustc_span/src/source_map_io_windows_test.go": "55ce24145613d7bd9753d21a6eec537b797025654be56fc9c6106feff9d37ca7",
+    "port/rust/compiler/rustc_span/src/source_map_loader.go": "265e714643f3cb24689c87ae3c240de163df7b7c25c65591d41af0aebca3f1fd",
+    "port/rust/compiler/rustc_span/src/source_map_locations.go": "853220e6c9a528b64419784926115109b7e9e5d9f3faafcd10b197d97936f5fe",
+    "port/rust/compiler/rustc_span/src/source_map_mapping.go": "2ce9409b687ce926a6e989938e0c864370266a131e7b589a2f9827cc73a3da34",
+    "port/rust/compiler/rustc_span/src/source_map_oracle_helpers_test.go": "e024a08fc40dd4bca25475bf97e53dd860c0102042255d458534443929a0baa7",
+    "port/rust/compiler/rustc_span/src/source_map_oracle_test.go": "4c4db46e6181082340aacbe1b2a5517df11ca62a03c35bf8a4c2f2cb300b1535",
+    "port/rust/compiler/rustc_span/src/source_map_owned.go": "06642fdcdb1647c9d1cdb55bf6cd4ee834eed69159bc35cc3e13d30128b4b4de",
+    "port/rust/compiler/rustc_span/src/source_map_owned_extract_test.go": "5156b77952b4216eec43a43024de4c8a97de39be6f4e698b211826171866cace",
+    "port/rust/compiler/rustc_span/src/source_map_owned_into_test.go": "4f18ee97aa23956cb5b7dc56b2addb9f2cea208f1a3ecfb4e28e8ddbc5522429",
+    "port/rust/compiler/rustc_span/src/source_map_owned_oracle_test.go": "292c7bbbe0725e3f1d45237feacebe8d7c2ab5a6079ba8d1a3fe36c9c060258e",
+    "port/rust/compiler/rustc_span/src/source_map_owned_tracing_test.go": "be4b88ee36e6b1502cc8ed01e7ccdf08edd7ffcbdeca2fcc18320986d723fef9",
+    "port/rust/compiler/rustc_span/src/source_map_panic.go": "93fd99327df12934f7006738ced00e5b63c564f5bb8662122d37f17f12c2f6a6",
+    "port/rust/compiler/rustc_span/src/source_map_panic_producer_test.go": "2ddfdc468c1caac1bab2bc2f688cf2f58fbff19351fc5874aa7060fa54b2729a",
+    "port/rust/compiler/rustc_span/src/source_map_panic_sites_test.go": "0cccaca718613a51d5f9ef994956afef052ddf4cf29d2c1d94b2e58289a34189",
+    "port/rust/compiler/rustc_span/src/source_map_path.go": "3d0057855fd5646b5d169f658fcc585795a7afd96997964a275e09215e7a3d1e",
+    "port/rust/compiler/rustc_span/src/source_map_path_oracle_test.go": "fb30323b276f061287f24285811493ce3a31c320fa842333754022e3e976ff7f",
+    "port/rust/compiler/rustc_span/src/source_map_path_traits.go": "500ec571510d62221135e64bf8d106d4da51c1e866560c1fcfd2fa6958394a99",
+    "port/rust/compiler/rustc_span/src/source_map_points.go": "97de04405695a9136b21d74680755b7e24250e06cc7df75aa920f20b49fd40e0",
+    "port/rust/compiler/rustc_span/src/source_map_predicate_borrow_test.go": "824c84da19eea973fb7245a59edcdf6ebfa6de9232d0ba26e5c977ba5e0fe851",
+    "port/rust/compiler/rustc_span/src/source_map_source.go": "4d07694762b864e51dd59721c8ca7ce4204945f71c1b7108fbf5d73429ee41d7",
+    "port/rust/compiler/rustc_span/src/source_map_source_test_witness.go": "b73530b8c7195e9b1f3a0b8727ded63f109a3016f7a7d5dfb50e9fcca35b6565",
+    "port/rust/compiler/rustc_span/src/source_map_span_wrappers_test.go": "34ce499ed3890aeed55bd2613b8231e67f30638d8972c5dca8ad6551c3d1b648",
+    "port/rust/compiler/rustc_span/src/source_map_sparse_file_test.go": "5b7763a58b7d781329c183c6a98ea7d7b63e509e0c9575be356b674a6c7b4d3f",
+    "port/rust/compiler/rustc_span/src/source_map_stderr.go": "d60cfa6b35c18213e88b0b35fa85770d9959cfa2c8d2d72f7181ae905a401eae",
+    "port/rust/compiler/rustc_span/src/source_map_stderr_oracle_test.go": "0a7cfbc9ecf17617d8b7564220b409f3286b5da82d4886c2054520ca3f3cc9ff",
+    "port/rust/compiler/rustc_span/src/source_map_tracing.go": "e87356338e61e85b60006e6743324217cfd3868c628de87f860aed4fc6775bd7",
+    "port/rust/compiler/rustc_span/src/source_map_tracing_oracle_test.go": "37e335e1d71c2b21516410e779c5848c8f42c6bb3ad2bdffaa4021963ec929c5",
+    "port/rust/compiler/rustc_span/src/source_map_tracing_profile.go": "ab76ee2346e20066ba0874131ecbadd4735832773a36472eebb89f5e85da62ea",
+    "port/rust/compiler/rustc_span/src/source_map_tracing_profile_test.go": "7c3a5379f762b36c2980893cf779011cf4a9736a108971186f18c081873694f8",
+    "port/rust/compiler/rustc_span/src/span_ambient_debug_test.go": "ae6fd1de3fdf3ec339d09102f14fa55d32838ec649a50788e8cd9fbfe1c040f4",
+    "port/rust/compiler/rustc_span/src/span_debug.go": "5fb15e2b0e8fc2e58d4141bc00a89620a0fe0c5665bda999b3529ce74ef3538c",
+    "port/rust/compiler/rustc_span/src/span_debug_test.go": "d8a504191ff9e6d08b92395a09d12d1a11a2494540193aed02cbf97fc24646a4",
+    "port/rust/compiler/rustc_span/src/span_encoding.go": "4956678a322c6d4830d8cd039ef3a850f7726be9486fff2a851cb4894e272144",
+    "port/rust/compiler/rustc_span/src/span_encoding_test.go": "3b279700c18f2850f9de1b5012ee29343a6c73ce556596b792f165f1cca4774b",
+    "port/rust/compiler/rustc_span/src/span_oracle_test.go": "c98cbce4a08be5953437b0dd42fed64c4ab1032efb749cc150cf3119530fa200",
+    "port/rust/compiler/rustc_span/src/span_requests_test.go": "b747ccd57ff654f7a833f8144900e8ad5be5e5735f1d7f4ace3acc96563549dd",
+    "port/rust/compiler/rustc_span/src/symbol.go": "0bebb03427a008c668e5e67a0fdc9d554603e39d90dd5f594a0a2f7a96969ad0",
+    "port/rust/compiler/rustc_span/src/symbol/tests_test.go": "a46f0a1951fcc96ad65a84fb0d2d2f9f1346377a269fc0db787b0e99ad812b02",
+    "port/rust/compiler/rustc_span/src/symbol_borrow_test.go": "461babf492207af36c08f118c07688ab552f146f3c9b9cefca2bd80f8e4d48bc",
+    "port/rust/compiler/rustc_span/src/symbol_context_ord.go": "a2f1a713257cd0b7a7446c2cb4f26126a8b1f0c0bcb6964df5531afca49e125d",
+    "port/rust/compiler/rustc_span/src/symbol_edit_distance_test.go": "a866b7faec317e1df8a1e89b5cfc7c0bc2dae7fcd20b334da92e1495008f1037",
+    "port/rust/compiler/rustc_span/src/symbol_format.go": "a4ac01d65252022b03acfd978aaa2d6783dcf1a82eb8eaccac6b7db0d029b576",
+    "port/rust/compiler/rustc_span/src/symbol_ident.go": "1b814c2d743fb684f4cb5094ee18b03400631d3166fee5ab082021b28388d58e",
+    "port/rust/compiler/rustc_span/src/symbol_oracle_test.go": "b2f9494b645e239008ef49da97cf8fa2e5360cb62c55b2c9898d60697a2c7baf",
+    "port/rust/compiler/rustc_span/src/symbol_panic.go": "2de5685827acd8dd69dd3b6faa56bd3b3065f888232e1b9ff469efa15d32c121",
+    "port/rust/compiler/rustc_span/src/symbol_panic_contract_test.go": "f6286480e3f5741013b126827781622e33756f758cdb6171c285563e4e10fc8c",
+    "port/rust/compiler/rustc_span/src/symbol_panic_evidence_test.go": "3826b84d0c064cebc8563efa897486b6550cfdc587b167833e39f50674f8aa50",
+    "port/rust/compiler/rustc_span/src/symbol_panic_location_test.go": "8e2b6f7360053b6412c8ad3e044e5140d5f01166942675f1b089c3247ac63962",
+    "port/rust/compiler/rustc_span/src/symbol_predefined.go": "91b529e649c7c608a30af87f48178700505bc6d3060d76d6a94d1ceb89c5643d",
+    "port/rust/compiler/rustc_span/src/symbol_source_test_witness.go": "9b93287216af9fe7b721d3c7b8e344841abf37dc494b75c8f2aabb0c09e0b49a",
+    "port/rust/compiler/rustc_span/src/symbol_unicode.go": "3f660694e68d5fc3644bc5647ae0fc520cc6c1d11bcfc299c273ecad1d55a309",
+    "port/rust/compiler/rustc_span/src/symbol_unicode_test.go": "6a99ca5167c6d5931d818f23b300b99c9d60ae1566f17d4a37188808bccbcdc8",
+    "port/rust/compiler/rustc_span/src/tests_test.go": "98c9f205867721b29df6dc7fe909dc1041452cb68aaa3ebd147db75a251e2319",
+    "port/rust/library/core/src/unicode/unicode_data.go": "a223e91f91b7a38659cb71cb7f0adfa588c40e8a6dee47859ddc7cc9a60baa59",
+    "port/rust/library/core/src/unicode/unicode_data_test.go": "791d9bb1257c3a87df0ad5d989be285824c597cb6b953557abb705823eba26d9",
+    "port/support/rusterrno/error.go": "0e7a6debca9d4a3edd921b4ede10886fa922023c26d34331c22e36325df3cb6d",
+    "port/support/rusterrno/error_test.go": "eb74916208d38d9d3bee569db2efbec5b1a8c0b6c874760705e0b4c8cb6e83de",
+    "port/support/rusterrno/native_cgo.go": "e18bb9e00afb4c278f592565f6c1991482a55dbcd205bad80396bb26c2e2c751",
+    "port/support/rusterrno/native_unavailable.go": "76cdcd2650604f5d6ddd85e34dd1ca9a9933382ee84ab7cd8ab0b51c9b33b151",
+    "port/support/rustfmt/builders.go": "03285fd7319e9d661e67c83c19a84bc4f8d7825c8d6ecbf425a39423107022df",
+    "port/support/rustfmt/builders_non_exhaustive_test.go": "6c84bc9aff575ffc913ea1b4aceb463701e6929d348644348e88b851fb41037d",
+    "port/support/rustfmt/builders_test.go": "c49e3b4e0dd769c00dca490c7101a27cf340fe42f16de4937ada81a17c227ced",
+    "port/support/rustfmt/char_debug.go": "ee693582aab3bd317cb9ef124f86dbc9b8852b3c46adbd99ba6880fb9cb2e891",
+    "port/support/rustfmt/char_debug_tables.go": "c6924f94132671c791c7b8ce8f6b80e03186d1a1f835e73e8ed1da19cef7cd28",
+    "port/support/rustfmt/char_debug_test.go": "e8ed700fcd5b796b8efd021531a6318eb2acf370a518d96ae62bc920cea08e09",
+    "port/support/rustfmt/formatter.go": "98b68bed6b04e1337db3b5b7424ffa3b0f8a14f6513cf0995d3599547724411d",
+    "port/support/rustfmt/integer_radix.go": "ac7a855b63cfd50089f3980f1b379a709f12b7373a5422d9686f1150de2f6550",
+    "port/support/rustfmt/panic.go": "215086bed1fdc10c547013bc9cd8557434fdd962ca0678fdd2e6bb9994b22fd8",
+    "port/support/rustfmt/panic_location_cells_test.go": "30856f354eff19cb1298b6b0c544206d63b98d171f42f11a4d35cbb5c1120e2a",
+    "port/support/rustfmt/panic_test.go": "35e505d2cb781262dde6ec09441b3a1a4e4cfbfda15d30b64b245ccc3d1177f7",
+    "port/support/rustfmt/string_debug_test.go": "17176d415a3e757d422c26a701710b845c9f5ed6f2e82632c90177ac48408865",
+    "port/support/rustfmt/unicode18.go": "e2d3251c139f53548ac92c6f68998ac1bd6685720741725741cf89df0fd9a91f",
+    "port/support/rustfmt/unicode18_oracle_test.go": "0a959b67772518c49a2fbdf867acc09b50a3fecb06eed22a1f41e9771230b424",
+    "port/support/rusthashmap/abort_oracle_test.go": "354ab62924c801d46cc0dca010f194acf045014582cba9cc7a5ec032f9c31995",
+    "port/support/rusthashmap/entry.go": "b55490821799cbeae591bc1b547915cfa9b1d78c4229f409ba6817398a59ac48",
+    "port/support/rusthashmap/entry_format.go": "bf8b6277bf8f7662bef5aa6e3154bf953a1432fd479ebf78e45d74bab85925fb",
+    "port/support/rusthashmap/extend.go": "a61bb97335386ed368ff7c9c6b85e309de2827ad2eaf02bad648339c568439e0",
+    "port/support/rusthashmap/format_oracle_test.go": "237984284b2eba5171da3e259d01075653f9a7cbdecaad8253ac6acbe611de29",
+    "port/support/rusthashmap/fx.go": "391aa731059b241b252104a40913f130d60e21e45b5f75a460ec4c2cf71d5ced",
+    "port/support/rusthashmap/fx_oracle_test.go": "710807a147ed669a4206a5d8b53695dc7ceb9dcfe4a0e0b0f6d209cb23837687",
+    "port/support/rusthashmap/hash_one_test.go": "14553e97479abf2abaac1e93ede06b7368d90723d16261ff49c667ec5699381d",
+    "port/support/rusthashmap/hasher_borrow.go": "da3d31a877c3a169fe6333e354b9ebb4284093d1117476ac620ed1830b68b40b",
+    "port/support/rusthashmap/hasher_borrow_test.go": "74b5f23e724935c1c56fb7f20e9ccea846141a0a635a70f05c0132b9c281fb14",
+    "port/support/rusthashmap/iterator_oracle_test.go": "c7e7d0786f713ad2d805e07cd46878f0fc6180e1e38068551a32327c1415fce9",
+    "port/support/rusthashmap/layout_oracle_test.go": "7cf528b4f27fa59e0299e8f2db4db18f63265abece8e5c8e1893b526445dc184",
+    "port/support/rusthashmap/map.go": "91eca9e86aabfcf5210a5d63f3d1ab8952c62e6b01515951011165fcc11dd562",
+    "port/support/rusthashmap/map_iter.go": "d201dc278bc51dbf8a9997b72f94f2aa23d14b88ecdd1332ec1c580110942af8",
+    "port/support/rusthashmap/map_traits.go": "06c71e309b2fa177e7fbee5cc23657320a5f577e018e03242d798660a8030608",
+    "port/support/rusthashmap/once.go": "79cdb2551815887a9969b6e23cb8e716d65c3319e3a5c23508601bda02efeea4",
+    "port/support/rusthashmap/ownership.go": "4953b4fbda08d0dd0d968ee084459afca1331ae7de8b960ad42d5f45747f25a3",
+    "port/support/rusthashmap/ownership_oracle_test.go": "3da05b4009daeab6d548cd0972050ca12cadb2ae07df8deba5a43702d7691786",
+    "port/support/rusthashmap/panic_oracle_test.go": "b660df3f1bd8da44e6d8e1fdd5ae365848b0335ff5993aa64fb8842fe438c374",
+    "port/support/rusthashmap/panic_sites.go": "8fd6af8a6431dcd9bc161672638ec6a8aca1638da3204ad5e66864d5a8d1bc55",
+    "port/support/rusthashmap/raw.go": "55b537816c8faa198590f60323e7400ee978ff391f6ec2836f34b55783b97efe",
+    "port/support/rusthashmap/raw_clone.go": "a5ebaae7f3db1f1c4cc292b73d3b2f6612a0d83a5a442758d19d571787a92813",
+    "port/support/rusthashmap/raw_iter.go": "8fc3331d114be70e9aef97a9b18176eefbc693cbb3882b4d21f9acb8784d9e94",
+    "port/support/rusthashmap/raw_iter_bucket.go": "9b784cefb2498f7c4d86ff4df852522a4d402cc85ee426867f348c9590412266",
+    "port/support/rusthashmap/raw_iter_bucket_test.go": "c46f524cff323075c2cab64fa1e840a197dd80a1d981a5fb5ded8c35862c55ae",
+    "port/support/rusthashmap/raw_unique.go": "e0c61dff46fe34e25684de347e19e09b69074e52c4f7af066d93424b39847833",
+    "port/support/rusthashmap/scalar_test.go": "e1bc08c4f17f0c223d6eb6eeec2d6ffe41df31ad013ea7a40f9d23eace9a305b",
+    "port/support/rusthashmap/set.go": "1864ecbd25fe19d10765d6f58a382dda103ccfbd89bdf49cff60b691f52c2837",
+    "port/support/rusthashmap/table_oracle_test.go": "5c0c01fa21ca69aedd5151842d4d7afe9212c14d28b2fc8eb15ee849cd8ae338",
+    "port/support/rustindexmap/borrowed_iter.go": "a2f90cb45f73afc15ed790c1a393e42bb596da4d7573b0b72455ca17d3182976",
+    "port/support/rustindexmap/borrowed_iter_oracle_test.go": "33824e6b493a4a22b66076e0ca96818ee1ff825b5ffb3b45de7f35fa34312bfd",
+    "port/support/rustindexmap/builder.go": "c4ecccd2a4c85f14a3080c793133e69096156f2d581c15aaefbb7ad8f07773f3",
+    "port/support/rustindexmap/builder_oracle_test.go": "62daf90a076f019e207a122dc44ead7c8ca00b09dfd268de4faa9f873ba1d022",
+    "port/support/rustindexmap/builder_test.go": "03c3a4de7340978cf9250b6f0168eb475c16194f8348af4bd2cc8e1f88479ff6",
+    "port/support/rustindexmap/clone.go": "10179e06dcab73a78444fd74ecfef77c8da7150838755ca8ada5e04bf9d43639",
+    "port/support/rustindexmap/drain.go": "699582a8e4056f2aa7fa4b49288c1ef037fa957ca6633eb9f4e557b065d1ced1",
+    "port/support/rustindexmap/drain_guard_test.go": "9bbd1b7cbc92640b8b4266c6aefc72213a9aaec0fe0c8acff58fa5e711724870",
+    "port/support/rustindexmap/drain_oracle_test.go": "71811a454e80915e9419a54b2013450fbd9c3771e99bdc438fdd569ce39790e6",
+    "port/support/rustindexmap/entry.go": "f6d58ffe8d9196511e28a8300f2b04eb951ef9f3ec602c82b6591be8b3eef2f5",
+    "port/support/rustindexmap/entry_format.go": "655d3a7e154d11eace23bf60dfb53f447dbcdea0cbaa6b81a46ed80108d5e83f",
+    "port/support/rustindexmap/entry_format_bounds_test.go": "cc0c93acecfbca28ea3a643a467b4ed1f5895e0c2b9582eeaf3b0b499e1815a2",
+    "port/support/rustindexmap/entry_format_oracle_test.go": "fd657ec43d70523c2eb95c8e9f8ce71ee0fc8b2578e1c041b4c13ffbe3c2fda6",
+    "port/support/rustindexmap/indexed_entry.go": "4553a7bdc9b45bf6aab6a38952ad31a88ecfe94ed701a29710f7145d635a46fa",
+    "port/support/rustindexmap/indexed_oracle_test.go": "b53c70f89015b0002d855310c7e09425a38740dc3b01a809ea910a2a71812f52",
+    "port/support/rustindexmap/inner.go": "47e5313e215e3398303e73483df9b1d28f6bd5e29fd2f82eef7111748b944e5a",
+    "port/support/rustindexmap/into_iter.go": "064e91b503f2641b5cec1789e5271fad4e72f74a94132b80e6c4c3eedea668f1",
+    "port/support/rustindexmap/into_iter_oracle_test.go": "4bc6dee881a140aeec6a72d5d50378e71b78008f5b9fe9221efc803f8283b55f",
+    "port/support/rustindexmap/into_projection.go": "e2f06fc1f60a48c3cc0bf7361c36d55a53cf1d21b68f1c4336e727a0a3423deb",
+    "port/support/rustindexmap/map.go": "f99479a30025bc42751fa8442035a02ae89e7a40fb0ecc4fdadc7386186798d2",
+    "port/support/rustindexmap/oracle_test.go": "63d4030e2db663e1111413d52301242448dad0ddd2245d3e7497a69c6b0bb49d",
+    "port/support/rustindexmap/owned_oracle_test.go": "f4c9a8226c0c6e23c4b8c6ec3b5d5fe611ba59d283021d2119149f0fe962ff05",
+    "port/support/rustindexmap/position.go": "a6fa50f0081d5410f2022b1610543fed3826435451ea0c27299f2b162d2574d3",
+    "port/support/rustindexmap/position_oracle_test.go": "b2f29fd73c5dfbefec2fe2cd75f355bee1cfc0f514c495695c44b9bd53d2e3e1",
+    "port/support/rustindexmap/processing_guard_test.go": "d502a83d028f09f313f5c24452873ad9bc92852aee76d63ade230871ad951042",
+    "port/support/rustindexmap/projection_oracle_test.go": "62d971891ba5d5b37d0e5caeccf39b7f8c3677688391efde4f0378f3556bcd8c",
+    "port/support/rustindexmap/range.go": "127a9810255f27e1f21631d188af4a809473820fe08712fbee12150cfa76e0c1",
+    "port/support/rustindexmap/range_runtime_test.go": "dfd9cc8dfd9587c13ef8f1b4a214f976fba49faf152a52309ce18869419ca176",
+    "port/support/rustindexmap/slice.go": "49d6096d1d415daad4ef5fc39d2f47710cdb75f8b536279769229748acd26c87",
+    "port/support/rustindexmap/types.go": "115505cc4a5c7b71af5dee4a7ae140c0311165d92fc1f90e7e01da9f43a6b198",
+    "port/support/rustsort/cached.go": "ccbc376acc8b03ec77676811c9d0039fa26e77f2bb08bda62bce8b5845f28abd",
+    "port/support/rustsort/cached_context_test.go": "bea260c003df76f0ebd63b93d1197040a14a34acd4f3599600b9c5b757e9d0bd",
+    "port/support/rustsort/cached_hooks_test.go": "40491ce821cb06e904ddda9c268fec938a67b1b789e3c4a32c30634d059d9e69",
+    "port/support/rustsort/cached_oracle_test.go": "de89cc8bb907a9c07f2b0ebc95df8545474c97b0b3fa68834976ba0ea644ee50",
+    "port/support/rustsort/drift.go": "20fb5c73a0d4574799451cc06db2bf2dab27b363dcd577ebac61f6c6f1afe5fa",
+    "port/support/rustsort/key_function.go": "c5bc5b6fddc4a839ede57a1bd5df1b09646cb933fba257c6c242e0e47119e572",
+    "port/support/rustsort/merge.go": "b5344aaab99fd601572766762d7705da7b392f63af225083307a9cced9c1f475",
+    "port/support/rustsort/network.go": "c89ed4658707f19997f78cf46d2c1deb31d60af3a20a7420186566d4386521f4",
+    "port/support/rustsort/panic_sites.go": "1bfa9ac4eae8770fa353acebc2a1458b22a9e728c35a0d9a6781166a34d87d06",
+    "port/support/rustsort/shared.go": "9117a60564f30108fa97fd412f55a434835e9706d4db4a1413e29a9d7a2a67a7",
+    "port/support/rustsort/stable.go": "6b636f0403be3b441a7176e66136f634846d658da915e462b98997370b093760",
+    "port/support/rustsort/stable_oracle_test.go": "da7a2c5ff14f35c4c16fd46449a52ac97830f222e2bdb79ca9da90fdedfde6c1",
+    "port/support/rustsort/unstable.go": "bb8f020c61729c43e48a49a638fa885d3d90bc778f14ae273b2fd45f8bade63d",
+    "port/support/rustsort/unstable_oracle_test.go": "a22158d4370e3383923f3637e9a41f1c13bc07b8fcd18650ef405f8ac7c87cbc",
+    "port/support/ruststdio/capture_owner.go": "46a5da665425fb03eb476a10f719441c14a86d1666d28923db4892dc967fc0c1",
+    "port/support/ruststdio/native_unix.go": "99c9883db64e5709159121df146e73ccc63626a18fe2b9cd85c3d50b2b7498e5",
+    "port/support/ruststdio/native_windows.go": "bc05b7565614dae51be4dc2383f5df7bf0dfd5a3eda717e663dbca9ce132170a",
+    "port/support/ruststdio/oracle_test.go": "d999a37b9d784f77448872984da72fe359d7d4e2aff60c10ae9b31c6878171a5",
+    "port/support/ruststdio/stdio.go": "a2303b4c5cd429e157ea8e59049f16b1002f87acfae77de67f4cf497ebe60b73",
+    "port/support/ruststdio/stdio_test.go": "ba14a93c55b91a19d8db1633fdf21653c0bed82de878b78f5f3aaa017e2ad895",
+    "port/support/ruststr/ambient_test.go": "94a1d818d44466762267c84b63bee7c7891435317171d7ac3795d73193586b95",
+    "port/support/ruststr/slice.go": "ee0f6e966959829aeb5eb0c677afe2cab80562148535b57fe993d459abfbfb17",
+    "port/support/ruststr/slice_test.go": "39f361e5b6b306d4c207fde38f7d4ced8306265d5a9b96c3de228a8203aa7737",
+    "port/support/rusttracing/borrow_panic_test.go": "c6cdca83be496726c3b1e13d2b60b54f40000d326b9df5176c1d3aba0951d8a9",
+    "port/support/rusttracing/context.go": "92f2b7c88230aba925744aee4c76a073b2dbe1ff10479c2b3e842c3601dbf177",
+    "port/support/rusttracing/context_test.go": "4424b28ade48cf3e118b0013402e1fc1e28168ed62390c582cb6998513773066",
+    "port/support/rusttracing/dispatch.go": "d18f18796a6df70543682490311264668814666ddfbde68861df9f5c5617439e",
+    "port/support/rusttracing/oracle_test.go": "1ac97b0dfc60bd5dc9e4ed224e9374ee2cafdbc13300598384a136914dd2ea1f",
+    "port/support/rusttracing/processing_test.go": "b4d83f0c4b87ace6afc37c76a55243f3bb7d5eeca804f36804b127aab5d30433",
+    "port/support/rusttracing/producer_evidence_test.go": "ac2650dce1c1d7db92401ad02bea37c287926200084b7f7ca2c186f6d0c235b8",
+    "port/support/rusttracing/registry_poison_test.go": "2911db40de135cb3708d7d87b25cb8659985f6d194cb2e7f556fbe6c2dcb5de6",
+    "port/support/rusttracing/span.go": "43e243f9c8f286b959374e6b015deb6098a78babde0ae6370993ac69306002af",
+    "port/support/rusttracing/value.go": "4e61d9c50c9740cc3bd30f170ba2b7f51e1c47f741cd38b2e15b9068ca33b5a2",
+    "port/support/rustvec/collect.go": "af48d40913abdf1a041d3fbb6efa21bb8216169149d1a5c4ce8ecdfd7a0aea6a",
+    "port/support/rustvec/doc.go": "72af82b537263487eebd608be5dca682dfcf5308068b7dece6801d6a23d0c5a5",
+    "port/support/rustvec/for_each.go": "54c2e25ad61d11cc0ed819b8123bbbb0a6b5b8b0949676db8ef06a254d19a389",
+    "port/support/rustvec/map_unit.go": "fc5326104011f8930aced03a613f8f55ef9a46fa3f887b06649aaaaf7c2f65d1",
+    "port/support/rustvec/ownership.go": "4312821d11339a4abb9f60295f492183eb5c34a26f40876ee990a2f09f89dc6b",
+    "port/support/rustvec/ownership_context_test.go": "a7b09fccb728f6d245fc43907d3448df1be08dbafce371176b1b8ea33a085269",
+    "port/support/rustvec/panic_sites.go": "8d026e818cf7252a9b24595c3e15bed94fd4274753ce2d5e5291ce5b2b5d2ad0",
+    "port/support/rustvec/replace.go": "ec098d1353a2dfab6a3545ec78bf593cc18ca93cf1e4b1bf228aec9f0df33174",
+    "port/support/rustvec/replace_oracle_test.go": "e082247aa2dcae7ac1fa2e6be6e355787fc13d2c9ce35f60a5a7e90c46a6d3bf",
+    "port/support/rustvec/replace_test.go": "2051a179e11682b4caa4c464c7b529762c4a7afe9c2ff2dba1ffd30741820917",
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-span-lib/generate_remaining_context.py": "6cd32beeab9102ebc546307d12a78a26bacb401801d54108c1361bc33ba2e8fd",
+    "tools/port-rust-span-lib/native_remaining_context.rs": "9c318dea0c5b6daf648d8fdea021cdef4e3d15becfab625a5a11804af97b8d5b",
+    "tools/port-rust-span-lib/native_source_helpers.rs": "17e3e6d509f0f5d1a6162ddea3f5f312318362de74dface51d3270679372f3ca",
+    "tools/port-rust-span-lib/reference.py": "2094b30a5149056c683edffc6cc4a8d6d6984d81933ecb10c80e5f34c355db9e",
+    "tools/port-rust-span-lib/span_wrapper_evidence.py": "615ab41baea2877c5b093ddf4f5e0996cb195c07ae7b98485b4d582f57da5a22",
+    "tools/port-rust-span-lib/test_remaining_context.py": "06bdbe5536a1dad29a2bdae9aa15961016f28e051a273215a808982109cf7e16",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+  },
+  "fixture_sha256": "f949da2b7bf61a9d0e2c4627fe829bb7a8e7b8f456176acbd6c4d7f0121385ed",
+  "profiles": [
+    {
+      "name": "d0o0",
+      "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+      "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)"
+    },
+    {
+      "name": "d0o1",
+      "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+      "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)"
+    },
+    {
+      "name": "d1o0",
+      "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+      "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)"
+    },
+    {
+      "name": "d1o1",
+      "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+      "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)"
+    }
+  ],
+  "raw_sha256": "efafbf20c26cb7d12c6a11cff6bc3884fe3354d4e2c09729375ba788e168cc3c",
+  "records": 3520,
+  "schema": 1,
+  "scope": "Actual public methods and complete manual non-Copy FnOnce values, boxed-cell identity, original metavars, real Arc return counts/leakage, unused/call/drop failures, current A/B/nil and normal/inherited/processing contexts, independent assertion/overflow profiles. No copied source body, allocator ABI or arbitrary raw-Go-defer equivalence.",
+  "source_locations": {
+    "call_absent|cannot access a scoped thread local variable without calling `set` first": [
+      "/workspace/rust-port-go/.toolchain/port-cargo-home/registry/src/index.crates.io-1949cf8c6b5b557f/scoped-tls-1.0.1/src/lib.rs",
+      168,
+      9
+    ],
+    "call_absent|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "call_present|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "create_ctorfail|drop": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      22,
+      20
+    ],
+    "create_ctorfail|duplicate symbols in the rustc symbol list and the extra symbols added by the driver: [[114, 101, 109, 97, 105, 110, 105, 110, 103, 95, 100, 117, 112, 108, 105, 99, 97, 116, 101, 95, 115, 121, 109, 98, 111, 108]]": [
+      "original/compiler/rustc_span/src/symbol.rs",
+      2921,
+      13
+    ],
+    "create_ctorfail|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "create_ctorfail|panic in a destructor during cleanup": [
+      "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      233,
+      5
+    ],
+    "create_present|SESSION_GLOBALS should never be overwritten! Use another thread if you need another SessionGlobals": [
+      "original/compiler/rustc_span/src/lib.rs",
+      154,
+      5
+    ],
+    "create_present|drop": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      22,
+      20
+    ],
+    "create_present|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "create_present|panic in a destructor during cleanup": [
+      "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      233,
+      5
+    ],
+    "create|callback": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      21,
+      24
+    ],
+    "create|drop": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      22,
+      20
+    ],
+    "create|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "create|panic in a destructor during cleanup": [
+      "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      233,
+      5
+    ],
+    "def_absent|cannot access a scoped thread local variable without calling `set` first": [
+      "/workspace/rust-port-go/.toolchain/port-cargo-home/registry/src/index.crates.io-1949cf8c6b5b557f/scoped-tls-1.0.1/src/lib.rs",
+      168,
+      9
+    ],
+    "def_absent|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "def_present|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "default_present|SESSION_GLOBALS should never be overwritten! Use another thread if you need another SessionGlobals": [
+      "original/compiler/rustc_span/src/lib.rs",
+      154,
+      5
+    ],
+    "default_present|drop": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      22,
+      20
+    ],
+    "default_present|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "default_present|panic in a destructor during cleanup": [
+      "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      233,
+      5
+    ],
+    "default|callback": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      21,
+      24
+    ],
+    "default|drop": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      22,
+      20
+    ],
+    "default|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "default|panic in a destructor during cleanup": [
+      "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      233,
+      5
+    ],
+    "ed2015_absent|cannot access a scoped thread local variable without calling `set` first": [
+      "/workspace/rust-port-go/.toolchain/port-cargo-home/registry/src/index.crates.io-1949cf8c6b5b557f/scoped-tls-1.0.1/src/lib.rs",
+      168,
+      9
+    ],
+    "ed2015_absent|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "ed2015_present|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "ed2018_absent|cannot access a scoped thread local variable without calling `set` first": [
+      "/workspace/rust-port-go/.toolchain/port-cargo-home/registry/src/index.crates.io-1949cf8c6b5b557f/scoped-tls-1.0.1/src/lib.rs",
+      168,
+      9
+    ],
+    "ed2018_absent|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "ed2018_present|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "ed2021_absent|cannot access a scoped thread local variable without calling `set` first": [
+      "/workspace/rust-port-go/.toolchain/port-cargo-home/registry/src/index.crates.io-1949cf8c6b5b557f/scoped-tls-1.0.1/src/lib.rs",
+      168,
+      9
+    ],
+    "ed2021_absent|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "ed2021_present|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "ed2024_absent|cannot access a scoped thread local variable without calling `set` first": [
+      "/workspace/rust-port-go/.toolchain/port-cargo-home/registry/src/index.crates.io-1949cf8c6b5b557f/scoped-tls-1.0.1/src/lib.rs",
+      168,
+      9
+    ],
+    "ed2024_absent|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "ed2024_present|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "if_absent|callback": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      21,
+      24
+    ],
+    "if_absent|drop": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      22,
+      20
+    ],
+    "if_absent|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "if_absent|panic in a destructor during cleanup": [
+      "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      233,
+      5
+    ],
+    "if_present|callback": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      21,
+      24
+    ],
+    "if_present|drop": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      22,
+      20
+    ],
+    "if_present|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "if_present|panic in a destructor during cleanup": [
+      "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      233,
+      5
+    ],
+    "lines_bad0|attempt to divide by zero": [
+      "original/compiler/rustc_span/src/lib.rs",
+      2281,
+      32
+    ],
+    "lines_bad0|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "lines_bad3|internal error: entered unreachable code": [
+      "original/compiler/rustc_span/src/lib.rs",
+      2312,
+      18
+    ],
+    "lines_bad3|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "lines_ok|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "meta_absent|cannot access a scoped thread local variable without calling `set` first": [
+      "/workspace/rust-port-go/.toolchain/port-cargo-home/registry/src/index.crates.io-1949cf8c6b5b557f/scoped-tls-1.0.1/src/lib.rs",
+      168,
+      9
+    ],
+    "meta_absent|drop": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      22,
+      20
+    ],
+    "meta_absent|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "meta_absent|panic in a destructor during cleanup": [
+      "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      233,
+      5
+    ],
+    "meta_present|callback": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      21,
+      24
+    ],
+    "meta_present|drop": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      22,
+      20
+    ],
+    "meta_present|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "meta_present|panic in a destructor during cleanup": [
+      "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      233,
+      5
+    ],
+    "mixed_absent|cannot access a scoped thread local variable without calling `set` first": [
+      "/workspace/rust-port-go/.toolchain/port-cargo-home/registry/src/index.crates.io-1949cf8c6b5b557f/scoped-tls-1.0.1/src/lib.rs",
+      168,
+      9
+    ],
+    "mixed_absent|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "mixed_present|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "set_present|SESSION_GLOBALS should never be overwritten! Use another thread if you need another SessionGlobals": [
+      "original/compiler/rustc_span/src/lib.rs",
+      164,
+      5
+    ],
+    "set_present|drop": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      22,
+      20
+    ],
+    "set_present|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "set_present|panic in a destructor during cleanup": [
+      "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      233,
+      5
+    ],
+    "set|callback": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      21,
+      24
+    ],
+    "set|drop": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      22,
+      20
+    ],
+    "set|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "set|panic in a destructor during cleanup": [
+      "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      233,
+      5
+    ],
+    "subst_absent|cannot access a scoped thread local variable without calling `set` first": [
+      "/workspace/rust-port-go/.toolchain/port-cargo-home/registry/src/index.crates.io-1949cf8c6b5b557f/scoped-tls-1.0.1/src/lib.rs",
+      168,
+      9
+    ],
+    "subst_absent|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "subst_dummy|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "subst_present|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "with_absent|cannot access a scoped thread local variable without calling `set` first": [
+      "/workspace/rust-port-go/.toolchain/port-cargo-home/registry/src/index.crates.io-1949cf8c6b5b557f/scoped-tls-1.0.1/src/lib.rs",
+      168,
+      9
+    ],
+    "with_absent|drop": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      22,
+      20
+    ],
+    "with_absent|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "with_absent|panic in a destructor during cleanup": [
+      "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      233,
+      5
+    ],
+    "with_present|callback": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      21,
+      24
+    ],
+    "with_present|drop": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      22,
+      20
+    ],
+    "with_present|outer": [
+      "tools/port-rust-span-lib/native_remaining_context.rs",
+      20,
+      15
+    ],
+    "with_present|panic in a destructor during cleanup": [
+      "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      233,
+      5
+    ]
+  },
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "status": "actual-public-context-and-owned-FnOnce-closure-no-extra-file-credit",
+  "tool_inputs_sha256": {
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-span-lib/reference.py": "2094b30a5149056c683edffc6cc4a8d6d6984d81933ecb10c80e5f34c355db9e",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+  }
+}

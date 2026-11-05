@@ -1,0 +1,28 @@
+{
+  "arms": 46,
+  "constants": 68,
+  "generated_sha256": "422d3df742cb5c3e8444d7582a3e4a0e68dfc8b0c3b982c8c3d450077bfacc17",
+  "registry_package": {
+    "archive_sha256": "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc",
+    "name": "windows-sys",
+    "selected_sources": {
+      "src/Windows/Win32/Foundation/mod.rs": "7da61986429ad6764c2c5ec3656ef5c4b3fba6969b6eabbf85991f86966f2994",
+      "src/Windows/Win32/Networking/WinSock/mod.rs": "aabaf4cdcab64e5eb887cc76c80c147c80450c5026cd3d25799f7e757f5d512f"
+    },
+    "version": "0.61.2"
+  },
+  "schema": 1,
+  "scope": "scoped Windows ErrorKind match only; no whole standard-library/dependency file credit",
+  "sdk_archive_sha256": "d99600cbf56d2db40112095e99e138f9e2f30002ef2774d288dc525e28a1357c",
+  "sdk_commit": "708c94ef093ecc42fb8851e17d8383d999727abc",
+  "sdk_sources": {
+    "library/std/src/sys/io/error/windows.rs": {
+      "bytes": 5775,
+      "sha256": "8f7bf74c65aacb5646deae86d9cdedac09fd32b3e035f06b0a5540f887d22a67"
+    },
+    "library/std/src/sys/pal/windows/c/windows_sys.rs": {
+      "bytes": 166746,
+      "sha256": "27c56302e3e1a038eab37d363c09ec1ead1f3ab2c4884493513d663067618e9c"
+    }
+  }
+}

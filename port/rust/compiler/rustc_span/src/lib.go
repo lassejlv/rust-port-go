@@ -1,13 +1,10 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
-// PARTIAL source foundations from compiler/rustc_span/src/lib.rs at
-// 2d20b42b883dcfc014f3c2c56081eeb6091c2179. Only the concrete BytePos/SpanData
-// blocks and Span operations consumed by span_encoding are implemented here.
-// SessionGlobals below exposes an explicitly limited real span-interner
-// runtime; symbols, hygiene allocation, source maps and the remaining lib.rs
-// APIs are unported. This file earns no full-file source completion credit.
+// IN PROGRESS full-file port from compiler/rustc_span/src/lib.rs at
+// 2d20b42b883dcfc014f3c2c56081eeb6091c2179. The implementation is split across
+// lib_*.go helpers. Sessions initialize the real symbol/hygiene/span/source-map
+// runtime. Full-file completion remains pending the remaining dependency and
+// original-source validation gates; this header grants no completion credit.
 package rustcspan
-
-import "sync"
 
 // Option uses a canonical None representation, preserving the source's absent
 // parent without exposing an inactive payload that could change Eq/Hash keys.
@@ -85,30 +82,36 @@ type SpanEncodingConfig struct{ DebugAssertions, OverflowChecks bool }
 
 func DefaultSpanEncodingConfig() SpanEncodingConfig { return SpanEncodingConfig{true, true} }
 
-// SessionGlobals is the real initial span-interner portion of the future full
-// session. Explicit handles adapt scoped TLS; spans must be decoded with their
-// originating session. Nil is permitted only on operations avoiding interning.
+// SessionGlobals owns the real session components. Explicit handles/scopes
+// adapt scoped TLS; spans/symbols/contexts retain their originating-session
+// lifetime contract. Nil is permitted only on operations avoiding sessions.
 type SessionGlobals struct {
-	spanMu        sync.Mutex
-	spanInterner  SpanInterner
-	spanConfig    SpanEncodingConfig
-	spanSourceMap SpanDiagnosticSourceMap
+	symbolInterner *symbolInterner
+	hygieneData    *Lock[HygieneData]
+	metavarSpans   *MetavarSpansMap
+	sourceMap      Option[Shared[SourceMap]]
+	spanMu         spanMutex
+	spanInterner   SpanInterner
+	spanConfig     SpanEncodingConfig
+	spanSourceMap  SpanDiagnosticSourceMap
 }
 
 func NewSpanEncodingSession(config SpanEncodingConfig) *SessionGlobals {
-	return &SessionGlobals{spanConfig: config}
+	return NewSessionGlobals(DefaultEdition, nil, None[SourceMapInputs](), config)
 }
 
-// SpanDiagnosticSourceMap is the real source-map operation consumed by Span
-// Debug. The complete SourceMap implementation remains unported. No synthetic
-// filename/location fallback is supplied when a map is explicitly present.
+// SpanDiagnosticSourceMap is the earlier borrowed-operation convenience kept
+// for compatibility. The primary full constructor installs the actual shared
+// SourceMap; no synthetic filename/location fallback is supplied.
 // Returned strings must be valid UTF-8, matching the source Rust String domain.
 type SpanDiagnosticSourceMap interface {
 	SpanToDiagnosticString(*SessionGlobals, Span) string
 }
 
 func NewSpanEncodingSessionWithSourceMap(config SpanEncodingConfig, sourceMap SpanDiagnosticSourceMap) *SessionGlobals {
-	return &SessionGlobals{spanConfig: config, spanSourceMap: sourceMap}
+	session := NewSpanEncodingSession(config)
+	session.spanSourceMap = sourceMap
+	return session
 }
 func spanEncodingConfig(session *SessionGlobals, explicit ...SpanEncodingConfig) SpanEncodingConfig {
 	if len(explicit) > 1 {

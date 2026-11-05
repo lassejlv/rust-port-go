@@ -1,0 +1,11 @@
+len:1
+slot
+from:1
+after-first:1
+len:2
+slot
+from:2
+hook
+drop:1:true
+after-second:false:2
+drop:2:false

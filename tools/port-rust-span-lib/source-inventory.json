@@ -1,0 +1,1915 @@
+{
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_file": "compiler/rustc_span/src/lib.rs",
+  "source_lines": 2930,
+  "source_bytes": 103322,
+  "source_git_blob": "44fbbbaccd66f3428ea135720511029be547f467",
+  "source_sha256": "9682c3b7d227039f040afff82aae4d2fd8133692bc9ef84f0974323f8a0acca0",
+  "regions": [
+    {
+      "start": 1,
+      "end": 99,
+      "source": "Crate documentation/attributes; imports; module declarations/reexports; tests module declaration (sibling bodies remain separately inventoried)",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib.go",
+          "line": 7,
+          "anchor": "package rustcspan"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 476,
+          "anchor": "func UnicodeVersion()"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/tests_test.go",
+          "line": 14,
+          "anchor": "func TestLibUpstreamLookupLine"
+        }
+      ]
+    },
+    {
+      "start": 100,
+      "end": 113,
+      "source": "Spanned<T> derives, respan and dummy_spanned",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_spanned.go",
+          "line": 15,
+          "anchor": "type Spanned["
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_spanned.go",
+          "line": 23,
+          "anchor": "type SpannedOps["
+        }
+      ]
+    },
+    {
+      "start": 114,
+      "end": 146,
+      "source": "SessionGlobals fields and constructor",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib.go",
+          "line": 88,
+          "anchor": "type SessionGlobals struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_session.go",
+          "line": 15,
+          "anchor": "func NewSessionGlobalsWithContext"
+        }
+      ]
+    },
+    {
+      "start": 147,
+      "end": 201,
+      "source": "create/set/with/default session functions and scoped SESSION_GLOBALS",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_session_scope.go",
+          "line": 9,
+          "anchor": "type SessionScope struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_session_scope.go",
+          "line": 26,
+          "anchor": "func SetSessionGlobalsThenOwned"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_session_scope.go",
+          "line": 67,
+          "anchor": "func CreateSessionGlobalsThenOwned"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_session_scope.go",
+          "line": 95,
+          "anchor": "func CreateSessionIfNotSetThenOwned"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_session_fn_once.go",
+          "line": 25,
+          "anchor": "func SetSessionGlobalsThenConsuming"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_session_fn_once.go",
+          "line": 32,
+          "anchor": "func WithSessionGlobalsConsuming"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_session_fn_once.go",
+          "line": 39,
+          "anchor": "func CreateSessionGlobalsThenConsuming"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_session_fn_once.go",
+          "line": 46,
+          "anchor": "func CreateSessionIfNotSetThenConsuming"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_remaining_context.go",
+          "line": 57,
+          "anchor": "func CreateDefaultSessionGlobalsThenOwned"
+        }
+      ]
+    },
+    {
+      "start": 202,
+      "end": 239,
+      "source": "MetavarSpansMap Default/insert/get/freeze and with_metavar_spans",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_session.go",
+          "line": 117,
+          "anchor": "type MetavarSpansMap struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_session.go",
+          "line": 121,
+          "anchor": "func NewMetavarSpansMap()"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_session_scope.go",
+          "line": 107,
+          "anchor": "func WithMetavarSpans["
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_remaining_context.go",
+          "line": 45,
+          "anchor": "func WithMetavarSpansOwned"
+        }
+      ]
+    },
+    {
+      "start": 240,
+      "end": 276,
+      "source": "RemapPathScopeComponents complete bitflags expansion/derives and codecs",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 17,
+          "anchor": "type RemapPathScopeComponents "
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_flags.go",
+          "line": 12,
+          "anchor": "type RemapPathScopeNamedFlag struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_codec.go",
+          "line": 40,
+          "anchor": "func DecodeRemapPathScopeComponents"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_order_defaults.go",
+          "line": 36,
+          "anchor": "func (value RemapPathScopeComponents) Equal"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_equality_defaults.go",
+          "line": 5,
+          "anchor": "func (value RemapPathScopeComponents) NotEqual"
+        }
+      ]
+    },
+    {
+      "start": 277,
+      "end": 330,
+      "source": "RealFileName / InnerRealFileName definitions and derives",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 125,
+          "anchor": "type innerRealFileName struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 126,
+          "anchor": "type RealFileName struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_format.go",
+          "line": 21,
+          "anchor": "func (value innerRealFileName) WriteDebugFormatter"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_codec.go",
+          "line": 63,
+          "anchor": "func decodeInnerRealFileName"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_order_defaults.go",
+          "line": 208,
+          "anchor": "func (value innerRealFileName) PartialCompare"
+        }
+      ]
+    },
+    {
+      "start": 331,
+      "end": 345,
+      "source": "RealFileName custom stable_hash (skip local only when fully remapped)",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 253,
+          "anchor": "func (value RealFileName) StableHash"
+        }
+      ]
+    },
+    {
+      "start": 346,
+      "end": 509,
+      "source": "RealFileName path/embeddable/local/consuming path, remap predicates, empty/virtual construction, metadata update, lossy conversion",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 132,
+          "anchor": "func EmptyRealFileName()"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 136,
+          "anchor": "func RealFileNameFromVirtualPath"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 156,
+          "anchor": "func (value RealFileName) PathWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 175,
+          "anchor": "func (value RealFileName) EmbeddableNameWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 191,
+          "anchor": "func (value RealFileName) LocalPath()"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 439,
+          "anchor": "func (value RealFileName) toStringLossyWithContext"
+        }
+      ]
+    },
+    {
+      "start": 510,
+      "end": 531,
+      "source": "FileName enum and derives",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 282,
+          "anchor": "type FileName struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 366,
+          "anchor": "func (value FileName) Compare"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_codec.go",
+          "line": 102,
+          "anchor": "func DecodeFileName"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_format.go",
+          "line": 39,
+          "anchor": "func (value FileName) WriteDebugFormatter"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_order_defaults.go",
+          "line": 175,
+          "anchor": "func (value FileName) PartialCompare"
+        }
+      ]
+    },
+    {
+      "start": 532,
+      "end": 572,
+      "source": "FileNameDisplay, private display preference, Display and lossy conversion",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 409,
+          "anchor": "type fileNameDisplayPreference "
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 418,
+          "anchor": "type FileNameDisplay struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 459,
+          "anchor": "func (value FileNameDisplay) WriteDisplayFormatter"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 481,
+          "anchor": "func (value FileNameDisplay) ToStringLossyWithContext"
+        }
+      ]
+    },
+    {
+      "start": 573,
+      "end": 671,
+      "source": "FileName is_real/display constructors, six source-code stable hashes, doctest and consuming local path",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 344,
+          "anchor": "func (value FileName) IsReal()"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 317,
+          "anchor": "func sourceCodeFileName"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 424,
+          "anchor": "func (value *FileName) PreferRemappedUnconditionally"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_filename.go",
+          "line": 345,
+          "anchor": "func (value FileName) IntoLocalPath()"
+        }
+      ]
+    },
+    {
+      "start": 672,
+      "end": 735,
+      "source": "SpanData definition/derives, explicit negative Ord/PartialOrd, construction/getters/contains",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib.go",
+          "line": 30,
+          "anchor": "type SpanData struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_context.go",
+          "line": 39,
+          "anchor": "func (value SpanData) SpanWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_hash_primary.go",
+          "line": 13,
+          "anchor": "func (value SpanData) HashWithHasher"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_equality_defaults.go",
+          "line": 11,
+          "anchor": "func (value SpanData) NotEqual"
+        }
+      ]
+    },
+    {
+      "start": 736,
+      "end": 867,
+      "source": "Span lo/hi/ctxt and lo_hi; visibility/external wrappers; derive/async suggestions; root/shrink/empty/substitution/containment/overlap/trim",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_context.go",
+          "line": 13,
+          "anchor": "func (value Span) LoWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_source_map.go",
+          "line": 10,
+          "anchor": "func (value Span) IsVisibleWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_source_map.go",
+          "line": 16,
+          "anchor": "func (value Span) InExternalMacroWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_ops.go",
+          "line": 47,
+          "anchor": "func (value Span) ShrinkToLoWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_ops.go",
+          "line": 103,
+          "anchor": "func (value Span) TrimStartWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_remaining_context.go",
+          "line": 30,
+          "anchor": "func (value Span) SubstituteDummyWithContext"
+        }
+      ]
+    },
+    {
+      "start": 868,
+      "end": 1058,
+      "source": "Span callsites/ancestor search, edition predicates, source callee, unstable/desugaring/unsafe wrappers",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_ops.go",
+          "line": 174,
+          "anchor": "func (value Span) SourceCallsiteWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_ops.go",
+          "line": 257,
+          "anchor": "func (value Span) SourceCalleeWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_source_map.go",
+          "line": 22,
+          "anchor": "func (value Span) FindAncestorNotFromExternMacroWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_remaining_context.go",
+          "line": 18,
+          "anchor": "func (value Span) IsRust2015WithContext"
+        }
+      ]
+    },
+    {
+      "start": 1059,
+      "end": 1080,
+      "source": "macro_backtrace closure, repeated Next and iterator defaults",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_combine.go",
+          "line": 171,
+          "anchor": "type MacroBacktraceIterator struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_combine.go",
+          "line": 206,
+          "anchor": "func (iter *MacroBacktraceIterator) NextWithContext"
+        }
+      ]
+    },
+    {
+      "start": 1081,
+      "end": 1095,
+      "source": "Span split_at",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_combine.go",
+          "line": 149,
+          "anchor": "func (value Span) SplitAtWithContext"
+        }
+      ]
+    },
+    {
+      "start": 1096,
+      "end": 1160,
+      "source": "Private try_metavars / prepare_to_combine",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_combine.go",
+          "line": 17,
+          "anchor": "func spanTryMetavars"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_combine.go",
+          "line": 49,
+          "anchor": "func spanPrepareToCombine"
+        }
+      ]
+    },
+    {
+      "start": 1161,
+      "end": 1289,
+      "source": "Span with_neighbor/to/inline fast path/to_non_inline/between/until/within_macro/from_inner",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_combine.go",
+          "line": 81,
+          "anchor": "func (value Span) WithNeighborWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_combine.go",
+          "line": 92,
+          "anchor": "func (value Span) ToWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_combine.go",
+          "line": 107,
+          "anchor": "func (value Span) toNonInline"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_source_map.go",
+          "line": 35,
+          "anchor": "func (value Span) WithinMacroWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_combine.go",
+          "line": 139,
+          "anchor": "func (value Span) FromInnerWithContext"
+        }
+      ]
+    },
+    {
+      "start": 1290,
+      "end": 1363,
+      "source": "Span mark-site constructors/apply/remove/adjust/normalization wrappers",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_ops.go",
+          "line": 375,
+          "anchor": "func (value Span) WithDefSiteCtxt("
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_ops.go",
+          "line": 341,
+          "anchor": "func (value Span) ApplyMarkWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_ops.go",
+          "line": 347,
+          "anchor": "func (value *Span) RemoveMarkWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_remaining_context.go",
+          "line": 9,
+          "anchor": "func (value Span) WithDefSiteCtxtWithContext"
+        }
+      ]
+    },
+    {
+      "start": 1364,
+      "end": 1369,
+      "source": "Default Span returns DUMMY_SP; Go zero value is exact DUMMY_SP bits",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/span_encoding.go",
+          "line": 19,
+          "anchor": "type Span struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/span_encoding.go",
+          "line": 23,
+          "anchor": "func DummySpan()"
+        }
+      ]
+    },
+    {
+      "start": 1370,
+      "end": 1375,
+      "source": "AttrId complete newtype_index/orderable/debug-format expansion and inherited traits",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_attr_id.go",
+          "line": 9,
+          "anchor": "type AttrId struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_attr_step.go",
+          "line": 84,
+          "anchor": "func AttrIdIdxWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_order_defaults.go",
+          "line": 146,
+          "anchor": "func (value AttrId) Less"
+        }
+      ]
+    },
+    {
+      "start": 1376,
+      "end": 1414,
+      "source": "SpanEncoder required methods; full def_path_hasher Fn result; provided local-def and owned generic def-key methods/overrides",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec.go",
+          "line": 11,
+          "anchor": "type SpanEncoder interface"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec_owned.go",
+          "line": 11,
+          "anchor": "func SpanDefPathHasherWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec.go",
+          "line": 46,
+          "anchor": "func DefaultSpanEncodeLocalDefId"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec_owned.go",
+          "line": 77,
+          "anchor": "func SpanEncodeDefKey"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec_ref.go",
+          "line": 17,
+          "anchor": "type SpanEncoderOps["
+        }
+      ]
+    },
+    {
+      "start": 1415,
+      "end": 1451,
+      "source": "SpanEncoder for original FileEncoder",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec.go",
+          "line": 121,
+          "anchor": "type SpanFileEncoder struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec.go",
+          "line": 142,
+          "anchor": "func (e *SpanFileEncoder) EncodeSpan"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec_context.go",
+          "line": 38,
+          "anchor": "func (e *SpanFileEncoder) EncodeSpanWithContext"
+        }
+      ]
+    },
+    {
+      "start": 1452,
+      "end": 1488,
+      "source": "SpanEncoder for original MemEncoder",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec.go",
+          "line": 72,
+          "anchor": "type SpanMemEncoder struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec.go",
+          "line": 89,
+          "anchor": "func (e *SpanMemEncoder) EncodeSpan"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec_context.go",
+          "line": 11,
+          "anchor": "func (e *SpanMemEncoder) EncodeSpanWithContext"
+        }
+      ]
+    },
+    {
+      "start": 1489,
+      "end": 1542,
+      "source": "Encodable delegations for Span/Symbol/ByteSymbol/ExpnId/SyntaxContext/CrateNum/DefIndex/DefId; AttrId emits nothing",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec.go",
+          "line": 47,
+          "anchor": "func (value Span) Encode"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec.go",
+          "line": 55,
+          "anchor": "func (value AttrId) Encode"
+        }
+      ]
+    },
+    {
+      "start": 1543,
+      "end": 1579,
+      "source": "BlobDecoder and SpanDecoder complete required-method interfaces/dictionaries",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec.go",
+          "line": 22,
+          "anchor": "type BlobDecoder interface"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec.go",
+          "line": 29,
+          "anchor": "type SpanDecoder interface"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec_ref.go",
+          "line": 227,
+          "anchor": "type SpanDecoderOps["
+        }
+      ]
+    },
+    {
+      "start": 1580,
+      "end": 1626,
+      "source": "BlobDecoder / SpanDecoder for original MemDecoder",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec.go",
+          "line": 113,
+          "anchor": "type SpanMemDecoder struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec.go",
+          "line": 181,
+          "anchor": "func (d *SpanMemDecoder) DecodeSpan"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec_context.go",
+          "line": 65,
+          "anchor": "func (d *SpanMemDecoder) DecodeSpanWithContext"
+        }
+      ]
+    },
+    {
+      "start": 1627,
+      "end": 1680,
+      "source": "Decodable delegations for Span/Symbol/ByteSymbol/ExpnId/SyntaxContext/CrateNum/DefIndex/DefId/AttrId",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec.go",
+          "line": 56,
+          "anchor": "func DecodeSpan("
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec.go",
+          "line": 64,
+          "anchor": "func DecodeAttrId("
+        }
+      ]
+    },
+    {
+      "start": 1681,
+      "end": 1713,
+      "source": "Span Debug actual scoped SourceMap or exact raw getter fallback; SpanData Debug constructs Span",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/span_debug.go",
+          "line": 41,
+          "anchor": "func (value Span) WriteDebugFormatter"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/span_debug.go",
+          "line": 94,
+          "anchor": "func (value SpanData) WriteDebugFormatter"
+        }
+      ]
+    },
+    {
+      "start": 1714,
+      "end": 1730,
+      "source": "MultiByteChar / NormalizedPos and derives",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_pos.go",
+          "line": 136,
+          "anchor": "type MultiByteChar struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_pos.go",
+          "line": 140,
+          "anchor": "type NormalizedPos struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_codec.go",
+          "line": 161,
+          "anchor": "func DecodeMultiByteChar"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_codec.go",
+          "line": 170,
+          "anchor": "func DecodeNormalizedPos"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_format.go",
+          "line": 134,
+          "anchor": "func (value MultiByteChar) WriteDebugFormatter"
+        }
+      ]
+    },
+    {
+      "start": 1731,
+      "end": 1765,
+      "source": "ExternalSource / ExternalSourceKind derives/get_source and Debug-only OffsetOverflowError",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_metadata.go",
+          "line": 19,
+          "anchor": "type ExternalSourceKind struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_metadata.go",
+          "line": 60,
+          "anchor": "type ExternalSource struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_metadata.go",
+          "line": 74,
+          "anchor": "func (value ExternalSource) GetSource"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_format.go",
+          "line": 121,
+          "anchor": "func (OffsetOverflowError) WriteDebugFormatter"
+        }
+      ]
+    },
+    {
+      "start": 1766,
+      "end": 1799,
+      "source": "SourceFileHashAlgorithm derives, exact Display/FromStr",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_hash.go",
+          "line": 17,
+          "anchor": "type SourceFileHashAlgorithm "
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_hash.go",
+          "line": 50,
+          "anchor": "func ParseSourceFileHashAlgorithm"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_hash.go",
+          "line": 63,
+          "anchor": "func (value SourceFileHashAlgorithm) WriteDisplayFormatter"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_value_traits.go",
+          "line": 27,
+          "anchor": "func (value SourceFileHashAlgorithm) StableHash"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_order_defaults.go",
+          "line": 48,
+          "anchor": "func (value SourceFileHashAlgorithm) Less"
+        }
+      ]
+    },
+    {
+      "start": 1800,
+      "end": 1937,
+      "source": "SourceFileHash derives/Display; generic owned AsRef/Read hashing, digest update/finish, matching and borrowed bytes",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_hash.go",
+          "line": 67,
+          "anchor": "type SourceFileHash struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_hash.go",
+          "line": 99,
+          "anchor": "func NewSourceFileHashInMemoryOwned"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_hash.go",
+          "line": 138,
+          "anchor": "func NewSourceFileHashFromOwnedRead"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_hash.go",
+          "line": 147,
+          "anchor": "func newSourceFileHashRead"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_format.go",
+          "line": 75,
+          "anchor": "func (value SourceFileHash) WriteDisplayFormatter"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_byte_slice_strategy.go",
+          "line": 17,
+          "anchor": "func spanByteSliceStrategy"
+        }
+      ]
+    },
+    {
+      "start": 1938,
+      "end": 1979,
+      "source": "SourceFileLines / SourceFileDiffs Clone and is_lines",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_metadata.go",
+          "line": 98,
+          "anchor": "type SourceFileLines struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_metadata.go",
+          "line": 120,
+          "anchor": "type SourceFileDiffs struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_value_traits.go",
+          "line": 75,
+          "anchor": "func (value *SourceFileLines) CloneFrom"
+        }
+      ]
+    },
+    {
+      "start": 1980,
+      "end": 2016,
+      "source": "SourceFile complete fields",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_metadata.go",
+          "line": 169,
+          "anchor": "type SourceFile struct"
+        }
+      ]
+    },
+    {
+      "start": 2017,
+      "end": 2036,
+      "source": "SourceFile hand-written Clone plus inherited default clone_from/drop ownership",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 48,
+          "anchor": "func (value *SourceFile) CloneWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_value_traits.go",
+          "line": 80,
+          "anchor": "func (value *SourceFile) CloneFromWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_metadata.go",
+          "line": 222,
+          "anchor": "func (value *SourceFile) CloseWithContext"
+        }
+      ]
+    },
+    {
+      "start": 2037,
+      "end": 2111,
+      "source": "SourceFile encoding and actual concrete-Self byte specialization",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_codec.go",
+          "line": 178,
+          "anchor": "func (value *SourceFile) EncodeWithByteSliceStrategy"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_byte_slice_strategy.go",
+          "line": 10,
+          "anchor": "func SpanEncoderRefByteSliceStrategy"
+        }
+      ]
+    },
+    {
+      "start": 2112,
+      "end": 2156,
+      "source": "SourceFile decoding, lazy diffs and vector allocation/control flow",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_codec.go",
+          "line": 254,
+          "anchor": "func DecodeSourceFile("
+        }
+      ]
+    },
+    {
+      "start": 2157,
+      "end": 2162,
+      "source": "SourceFile hand-written Debug",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_format.go",
+          "line": 124,
+          "anchor": "func (value *SourceFile) WriteDebugFormatter"
+        }
+      ]
+    },
+    {
+      "start": 2163,
+      "end": 2210,
+      "source": "StableSourceFileId derives/Default and filename+crate stable hashing",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_metadata.go",
+          "line": 136,
+          "anchor": "type StableSourceFileId struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_metadata.go",
+          "line": 157,
+          "anchor": "func stableSourceFileIdFromFilename"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_hash_primary.go",
+          "line": 25,
+          "anchor": "func (value StableSourceFileId) HashWithHasher"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_order_defaults.go",
+          "line": 73,
+          "anchor": "func (value StableSourceFileId) Less"
+        }
+      ]
+    },
+    {
+      "start": 2211,
+      "end": 2261,
+      "source": "SourceFile MAX_FILE_SIZE/new, pre-normalization hashes and lengths, analysis and owned locks/source",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 20,
+          "anchor": "func NewSourceFileWithContext"
+        }
+      ]
+    },
+    {
+      "start": 2262,
+      "end": 2333,
+      "source": "Lazy difference conversion/freeze and lines fast/outlined path",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 85,
+          "anchor": "func (value *SourceFile) convertDiffsToLinesFrozen"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 143,
+          "anchor": "func (value *SourceFile) LinesWithContext"
+        }
+      ]
+    },
+    {
+      "start": 2334,
+      "end": 2382,
+      "source": "line_begin_pos and complete FnOnce external-source loading/hash/normalization/freeze",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 216,
+          "anchor": "func (value *SourceFile) LineBeginPosWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 239,
+          "anchor": "func AddExternalSrcOwned["
+        }
+      ]
+    },
+    {
+      "start": 2383,
+      "end": 2475,
+      "source": "Borrowed/local vs owned/external line extraction, file predicates, coordinate conversion, line lookup/bounds/contains/empty",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 353,
+          "anchor": "func (value *SourceFile) GetLineWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 164,
+          "anchor": "func (value *SourceFile) AbsolutePositionWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 188,
+          "anchor": "func (value *SourceFile) LookupLineWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 199,
+          "anchor": "func (value *SourceFile) LineBoundsWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_remaining_context.go",
+          "line": 36,
+          "anchor": "func (value *SourceFile) CountLinesWithContext"
+        }
+      ]
+    },
+    {
+      "start": 2476,
+      "end": 2513,
+      "source": "Original/normalized coordinate binary searches and arithmetic",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 379,
+          "anchor": "func (value *SourceFile) OriginalRelativeBytePosWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 402,
+          "anchor": "func (value *SourceFile) NormalizedBytePosWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 425,
+          "anchor": "func sourceNormalizedSearch"
+        }
+      ]
+    },
+    {
+      "start": 2514,
+      "end": 2581,
+      "source": "Multibyte positions, file-position/display columns, all five enabled tracing sites",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 289,
+          "anchor": "func (value *SourceFile) byteposToFileCharpos"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 310,
+          "anchor": "func (value *SourceFile) lookupFilePos"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 330,
+          "anchor": "func (value *SourceFile) LookupFilePosWithColDisplayWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_tracing.go",
+          "line": 25,
+          "anchor": "func libTraceMessage"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_tracing_profile.go",
+          "line": 15,
+          "anchor": "type LibTracingProfile struct"
+        }
+      ]
+    },
+    {
+      "start": 2582,
+      "end": 2604,
+      "source": "char_width overrides and str_width scalar sum",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 449,
+          "anchor": "func CharWidth("
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 467,
+          "anchor": "func StrWidthWithContext"
+        }
+      ]
+    },
+    {
+      "start": 2605,
+      "end": 2680,
+      "source": "normalize_src/remove_bom/normalize_newlines and nested CR/CRLF search",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 478,
+          "anchor": "func normalizeSourceWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+          "line": 487,
+          "anchor": "func normalizeSourceNewlines"
+        }
+      ]
+    },
+    {
+      "start": 2681,
+      "end": 2746,
+      "source": "Full generic Pos trait plus impl_pos constructor/conversion/Add/Sub expansion",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_pos_context.go",
+          "line": 10,
+          "anchor": "type PosMethods["
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_pos_context.go",
+          "line": 17,
+          "anchor": "type PosOperations["
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_pos.go",
+          "line": 49,
+          "anchor": "func spanPosAdd"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_pos.go",
+          "line": 82,
+          "anchor": "func (value BytePos) AddWithContext"
+        }
+      ]
+    },
+    {
+      "start": 2747,
+      "end": 2766,
+      "source": "BytePos/RelativeBytePos/CharPos concrete declarations and actual derives (CharPos deliberately has no Hash)",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib.go",
+          "line": 21,
+          "anchor": "type BytePos "
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_pos.go",
+          "line": 22,
+          "anchor": "type RelativeBytePos "
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_pos.go",
+          "line": 23,
+          "anchor": "type CharPos "
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_order_defaults.go",
+          "line": 96,
+          "anchor": "func (value BytePos) PartialCompare"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_hash_primary.go",
+          "line": 8,
+          "anchor": "func (value BytePos) HashWithHasher"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/span_debug.go",
+          "line": 24,
+          "anchor": "func (value BytePos) WriteDebugFormatter"
+        }
+      ]
+    },
+    {
+      "start": 2767,
+      "end": 2790,
+      "source": "BytePos and RelativeBytePos manual codecs",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec.go",
+          "line": 65,
+          "anchor": "func (value BytePos) Encode"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_codec.go",
+          "line": 68,
+          "anchor": "func DecodeRelativeBytePos"
+        }
+      ]
+    },
+    {
+      "start": 2791,
+      "end": 2837,
+      "source": "Loc/SourceFileAndLine/SourceFileAndBytePos/LineInfo/FileLines and exact derives/owned Arc fields",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_metadata.go",
+          "line": 197,
+          "anchor": "type Loc struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_metadata.go",
+          "line": 207,
+          "anchor": "type FileLines struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_format.go",
+          "line": 175,
+          "anchor": "func (value Loc) WriteDebugFormatter"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_value_traits.go",
+          "line": 95,
+          "anchor": "func (value Loc) CloneWithContext"
+        }
+      ]
+    },
+    {
+      "start": 2838,
+      "end": 2839,
+      "source": "SPAN_TRACK static atomic fn pointer",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_track.go",
+          "line": 12,
+          "anchor": "type SpanTrackHook struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_track.go",
+          "line": 33,
+          "anchor": "func SwapSpanTrack"
+        }
+      ]
+    },
+    {
+      "start": 2840,
+      "end": 2871,
+      "source": "FileLinesResult alias; SpanLinesError/SpanSnippetError, boxed DistinctSources, MalformedSourceMapPositions and derives",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_errors.go",
+          "line": 19,
+          "anchor": "type SpanLinesError struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_errors.go",
+          "line": 55,
+          "anchor": "type SpanSnippetError struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_errors.go",
+          "line": 9,
+          "anchor": "type DistinctSources struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_error_format.go",
+          "line": 38,
+          "anchor": "func (value *SpanSnippetError) WriteDebugFormatter"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/source_map_locations.go",
+          "line": 237,
+          "anchor": "func (sm *SourceMap) SpanToLinesWithContext"
+        }
+      ]
+    },
+    {
+      "start": 2872,
+      "end": 2885,
+      "source": "InnerSpan definition/derives/new",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_errors.go",
+          "line": 144,
+          "anchor": "type InnerSpan struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_source_errors.go",
+          "line": 146,
+          "anchor": "func NewInnerSpan"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_spanned.go",
+          "line": 165,
+          "anchor": "func (value InnerSpan) WriteDebugFormatter"
+        }
+      ]
+    },
+    {
+      "start": 2886,
+      "end": 2890,
+      "source": "Span StableHash delegates actual RawSpan to caller Hcx",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_span_ops.go",
+          "line": 387,
+          "anchor": "func (value Span) StableHashWithContext"
+        }
+      ]
+    },
+    {
+      "start": 2891,
+      "end": 2930,
+      "source": "ErrorGuaranteed private unit, actual derives, unchecked construction, FatalError delegation, encode/decode raises",
+      "targets": [
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_spanned.go",
+          "line": 114,
+          "anchor": "type ErrorGuaranteed struct"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_spanned.go",
+          "line": 119,
+          "anchor": "func UncheckedErrorGuaranteed"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_spanned.go",
+          "line": 142,
+          "anchor": "func (value ErrorGuaranteed) RaiseFatalWithContext"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_spanned.go",
+          "line": 158,
+          "anchor": "func DecodeErrorGuaranteed"
+        },
+        {
+          "file": "port/rust/compiler/rustc_span/src/lib_order_defaults.go",
+          "line": 189,
+          "anchor": "func (value ErrorGuaranteed) Less"
+        }
+      ]
+    }
+  ],
+  "original_tests_file": "compiler/rustc_span/src/tests.rs",
+  "original_tests_lines": 119,
+  "original_tests_sha256": "e749dadfca99879e906a6a13a7c3433a5609db24ee4eee34aad20f5db9332fa9",
+  "original_tests_git_blob": "64c40e61162508d8ac4231578b09af6bd371ca38",
+  "original_tests": [
+    {
+      "rust_name": "test_lookup_line",
+      "rust_declaration_line": 4,
+      "go_name": "TestLibUpstreamLookupLine",
+      "go_file": "port/rust/compiler/rustc_span/src/tests_test.go",
+      "go_declaration_line": 14,
+      "assertions": [
+        {
+          "rust_assert_line": 14,
+          "go_assert_line": 21,
+          "expected": "[0,14,25]"
+        },
+        {
+          "rust_assert_line": 16,
+          "go_case_line": 24,
+          "go_case_index": 0,
+          "go_assert_line": 25,
+          "input": 0,
+          "expected": 0
+        },
+        {
+          "rust_assert_line": 17,
+          "go_case_line": 24,
+          "go_case_index": 1,
+          "go_assert_line": 25,
+          "input": 1,
+          "expected": 0
+        },
+        {
+          "rust_assert_line": 19,
+          "go_case_line": 24,
+          "go_case_index": 2,
+          "go_assert_line": 25,
+          "input": 13,
+          "expected": 0
+        },
+        {
+          "rust_assert_line": 20,
+          "go_case_line": 24,
+          "go_case_index": 3,
+          "go_assert_line": 25,
+          "input": 14,
+          "expected": 1
+        },
+        {
+          "rust_assert_line": 21,
+          "go_case_line": 24,
+          "go_case_index": 4,
+          "go_assert_line": 25,
+          "input": 15,
+          "expected": 1
+        },
+        {
+          "rust_assert_line": 23,
+          "go_case_line": 24,
+          "go_case_index": 5,
+          "go_assert_line": 25,
+          "input": 25,
+          "expected": 2
+        },
+        {
+          "rust_assert_line": 24,
+          "go_case_line": 24,
+          "go_case_index": 6,
+          "go_assert_line": 25,
+          "input": 26,
+          "expected": 2
+        }
+      ],
+      "notes": "Same source literal, Anon ZERO, both Sha256 algorithms, start_pos3. Source unwrap maps Go16\u201318; ownership close is additional Go runtime cleanup."
+    },
+    {
+      "rust_name": "test_normalize_newlines",
+      "rust_declaration_line": 28,
+      "go_name": "TestLibUpstreamNormalizeNewlines",
+      "go_file": "port/rust/compiler/rustc_span/src/tests_test.go",
+      "go_declaration_line": 30,
+      "assertions": [
+        {
+          "rust_helper_assert_line": 34,
+          "rust_case_line": 37,
+          "go_case_line": 34,
+          "go_case_index": 0,
+          "go_assert_line": 42,
+          "asserted": "normalized text",
+          "before": "",
+          "expected": ""
+        },
+        {
+          "rust_helper_assert_line": 34,
+          "rust_case_line": 38,
+          "go_case_line": 34,
+          "go_case_index": 1,
+          "go_assert_line": 42,
+          "asserted": "normalized text",
+          "before": "\n",
+          "expected": "\n"
+        },
+        {
+          "rust_helper_assert_line": 34,
+          "rust_case_line": 39,
+          "go_case_line": 34,
+          "go_case_index": 2,
+          "go_assert_line": 42,
+          "asserted": "normalized text",
+          "before": "\r",
+          "expected": "\r"
+        },
+        {
+          "rust_helper_assert_line": 34,
+          "rust_case_line": 40,
+          "go_case_line": 34,
+          "go_case_index": 3,
+          "go_assert_line": 42,
+          "asserted": "normalized text",
+          "before": "\r\r",
+          "expected": "\r\r"
+        },
+        {
+          "rust_helper_assert_line": 34,
+          "rust_case_line": 41,
+          "go_case_line": 34,
+          "go_case_index": 4,
+          "go_assert_line": 42,
+          "asserted": "normalized text",
+          "before": "\r\n",
+          "expected": "\n"
+        },
+        {
+          "rust_helper_assert_line": 34,
+          "rust_case_line": 42,
+          "go_case_line": 34,
+          "go_case_index": 5,
+          "go_assert_line": 42,
+          "asserted": "normalized text",
+          "before": "hello world",
+          "expected": "hello world"
+        },
+        {
+          "rust_helper_assert_line": 34,
+          "rust_case_line": 43,
+          "go_case_line": 34,
+          "go_case_index": 6,
+          "go_assert_line": 42,
+          "asserted": "normalized text",
+          "before": "hello\nworld",
+          "expected": "hello\nworld"
+        },
+        {
+          "rust_helper_assert_line": 34,
+          "rust_case_line": 44,
+          "go_case_line": 34,
+          "go_case_index": 7,
+          "go_assert_line": 42,
+          "asserted": "normalized text",
+          "before": "hello\r\nworld",
+          "expected": "hello\nworld"
+        },
+        {
+          "rust_helper_assert_line": 34,
+          "rust_case_line": 45,
+          "go_case_line": 34,
+          "go_case_index": 8,
+          "go_assert_line": 42,
+          "asserted": "normalized text",
+          "before": "\r\nhello\r\nworld\r\n",
+          "expected": "\nhello\nworld\n"
+        },
+        {
+          "rust_helper_assert_line": 34,
+          "rust_case_line": 46,
+          "go_case_line": 34,
+          "go_case_index": 9,
+          "go_assert_line": 42,
+          "asserted": "normalized text",
+          "before": "\r\r\n",
+          "expected": "\r\n"
+        },
+        {
+          "rust_helper_assert_line": 34,
+          "rust_case_line": 47,
+          "go_case_line": 34,
+          "go_case_index": 10,
+          "go_assert_line": 42,
+          "asserted": "normalized text",
+          "before": "hello\rworld",
+          "expected": "hello\rworld"
+        },
+        {
+          "rust_helper_assert_line": 35,
+          "rust_case_line": 37,
+          "go_case_line": 34,
+          "go_case_index": 0,
+          "go_assert_line": 42,
+          "asserted": "record positions only (as original)",
+          "expected": []
+        },
+        {
+          "rust_helper_assert_line": 35,
+          "rust_case_line": 38,
+          "go_case_line": 34,
+          "go_case_index": 1,
+          "go_assert_line": 42,
+          "asserted": "record positions only (as original)",
+          "expected": []
+        },
+        {
+          "rust_helper_assert_line": 35,
+          "rust_case_line": 39,
+          "go_case_line": 34,
+          "go_case_index": 2,
+          "go_assert_line": 42,
+          "asserted": "record positions only (as original)",
+          "expected": []
+        },
+        {
+          "rust_helper_assert_line": 35,
+          "rust_case_line": 40,
+          "go_case_line": 34,
+          "go_case_index": 3,
+          "go_assert_line": 42,
+          "asserted": "record positions only (as original)",
+          "expected": []
+        },
+        {
+          "rust_helper_assert_line": 35,
+          "rust_case_line": 41,
+          "go_case_line": 34,
+          "go_case_index": 4,
+          "go_assert_line": 42,
+          "asserted": "record positions only (as original)",
+          "expected": [
+            1
+          ]
+        },
+        {
+          "rust_helper_assert_line": 35,
+          "rust_case_line": 42,
+          "go_case_line": 34,
+          "go_case_index": 5,
+          "go_assert_line": 42,
+          "asserted": "record positions only (as original)",
+          "expected": []
+        },
+        {
+          "rust_helper_assert_line": 35,
+          "rust_case_line": 43,
+          "go_case_line": 34,
+          "go_case_index": 6,
+          "go_assert_line": 42,
+          "asserted": "record positions only (as original)",
+          "expected": []
+        },
+        {
+          "rust_helper_assert_line": 35,
+          "rust_case_line": 44,
+          "go_case_line": 34,
+          "go_case_index": 7,
+          "go_assert_line": 42,
+          "asserted": "record positions only (as original)",
+          "expected": [
+            6
+          ]
+        },
+        {
+          "rust_helper_assert_line": 35,
+          "rust_case_line": 45,
+          "go_case_line": 34,
+          "go_case_index": 8,
+          "go_assert_line": 42,
+          "asserted": "record positions only (as original)",
+          "expected": [
+            1,
+            7,
+            13
+          ]
+        },
+        {
+          "rust_helper_assert_line": 35,
+          "rust_case_line": 46,
+          "go_case_line": 34,
+          "go_case_index": 9,
+          "go_assert_line": 42,
+          "asserted": "record positions only (as original)",
+          "expected": [
+            2
+          ]
+        },
+        {
+          "rust_helper_assert_line": 35,
+          "rust_case_line": 47,
+          "go_case_line": 34,
+          "go_case_index": 10,
+          "go_assert_line": 42,
+          "asserted": "record positions only (as original)",
+          "expected": []
+        }
+      ],
+      "notes": "All11 original calls remain in original order; Go42 jointly tests original helper assertions34/35 with pure comparisons. Source find/normalization helper is called directly, not a separate test reimplementation."
+    },
+    {
+      "rust_name": "test_trim",
+      "rust_declaration_line": 51,
+      "go_name": "TestLibUpstreamTrim",
+      "go_file": "port/rust/compiler/rustc_span/src/tests_test.go",
+      "go_declaration_line": 47,
+      "assertions": [
+        {
+          "rust_assert_line": 70,
+          "go_case_line": 56,
+          "go_case_index": 0,
+          "go_assert_line": 57,
+          "asserted": "trim_end"
+        },
+        {
+          "rust_assert_line": 71,
+          "go_case_line": 56,
+          "go_case_index": 1,
+          "go_assert_line": 57,
+          "asserted": "trim_end"
+        },
+        {
+          "rust_assert_line": 72,
+          "go_case_line": 56,
+          "go_case_index": 2,
+          "go_assert_line": 57,
+          "asserted": "trim_end"
+        },
+        {
+          "rust_assert_line": 73,
+          "go_case_line": 56,
+          "go_case_index": 3,
+          "go_assert_line": 57,
+          "asserted": "trim_end"
+        },
+        {
+          "rust_assert_line": 74,
+          "go_case_line": 56,
+          "go_case_index": 4,
+          "go_assert_line": 57,
+          "asserted": "trim_end"
+        },
+        {
+          "rust_assert_line": 76,
+          "go_case_line": 56,
+          "go_case_index": 5,
+          "go_assert_line": 57,
+          "asserted": "trim_end"
+        },
+        {
+          "rust_assert_line": 77,
+          "go_case_line": 56,
+          "go_case_index": 6,
+          "go_assert_line": 57,
+          "asserted": "trim_end"
+        },
+        {
+          "rust_assert_line": 78,
+          "go_case_line": 56,
+          "go_case_index": 7,
+          "go_assert_line": 57,
+          "asserted": "trim_end"
+        },
+        {
+          "rust_assert_line": 80,
+          "go_case_line": 56,
+          "go_case_index": 8,
+          "go_assert_line": 57,
+          "asserted": "trim_end"
+        },
+        {
+          "rust_assert_line": 81,
+          "go_case_line": 56,
+          "go_case_index": 9,
+          "go_assert_line": 57,
+          "asserted": "trim_end"
+        },
+        {
+          "rust_assert_line": 83,
+          "go_case_line": 56,
+          "go_case_index": 10,
+          "go_assert_line": 57,
+          "asserted": "trim_end"
+        },
+        {
+          "rust_assert_line": 85,
+          "go_case_line": 56,
+          "go_case_index": 11,
+          "go_assert_line": 57,
+          "asserted": "trim_end"
+        },
+        {
+          "rust_assert_line": 89,
+          "go_case_line": 64,
+          "go_case_index": 0,
+          "go_assert_line": 65,
+          "asserted": "trim_start"
+        },
+        {
+          "rust_assert_line": 90,
+          "go_case_line": 64,
+          "go_case_index": 1,
+          "go_assert_line": 65,
+          "asserted": "trim_start"
+        },
+        {
+          "rust_assert_line": 91,
+          "go_case_line": 64,
+          "go_case_index": 2,
+          "go_assert_line": 65,
+          "asserted": "trim_start"
+        },
+        {
+          "rust_assert_line": 92,
+          "go_case_line": 64,
+          "go_case_index": 3,
+          "go_assert_line": 65,
+          "asserted": "trim_start"
+        },
+        {
+          "rust_assert_line": 93,
+          "go_case_line": 64,
+          "go_case_index": 4,
+          "go_assert_line": 65,
+          "asserted": "trim_start"
+        },
+        {
+          "rust_assert_line": 95,
+          "go_case_line": 64,
+          "go_case_index": 5,
+          "go_assert_line": 65,
+          "asserted": "trim_start"
+        },
+        {
+          "rust_assert_line": 96,
+          "go_case_line": 64,
+          "go_case_index": 6,
+          "go_assert_line": 65,
+          "asserted": "trim_start"
+        },
+        {
+          "rust_assert_line": 97,
+          "go_case_line": 64,
+          "go_case_index": 7,
+          "go_assert_line": 65,
+          "asserted": "trim_start"
+        },
+        {
+          "rust_assert_line": 99,
+          "go_case_line": 64,
+          "go_case_index": 8,
+          "go_assert_line": 65,
+          "asserted": "trim_start"
+        },
+        {
+          "rust_assert_line": 100,
+          "go_case_line": 64,
+          "go_case_index": 9,
+          "go_assert_line": 65,
+          "asserted": "trim_start"
+        },
+        {
+          "rust_assert_line": 102,
+          "go_case_line": 64,
+          "go_case_index": 10,
+          "go_assert_line": 65,
+          "asserted": "trim_start"
+        },
+        {
+          "rust_assert_line": 104,
+          "go_case_line": 64,
+          "go_case_index": 11,
+          "go_assert_line": 65,
+          "asserted": "trim_start"
+        }
+      ],
+      "notes": "All24 endpoint/Some/None assertions retained in order. Coordinates1/3/5/7/9/11/13 remain Go51. other context999 remains Go52; whole Span comparison therefore retains the source context assertion."
+    },
+    {
+      "rust_name": "test_unnormalized_source_length",
+      "rust_declaration_line": 108,
+      "go_name": "TestLibUpstreamUnnormalizedSourceLength",
+      "go_file": "port/rust/compiler/rustc_span/src/tests_test.go",
+      "go_declaration_line": 70,
+      "assertions": [
+        {
+          "rust_assert_line": 117,
+          "go_assert_line": 76,
+          "asserted": "UnnormalizedSourceLen",
+          "expected": 19
+        },
+        {
+          "rust_assert_line": 118,
+          "go_assert_line": 76,
+          "asserted": "NormalizedSourceLen",
+          "expected": 14
+        }
+      ],
+      "notes": "Same BOM+CRLF source bytes, Anon ZERO and Sha256 choices; source unwrap maps Go72\u201374. Go76 checks both pure field equalities; neither source assertion omitted."
+    }
+  ],
+  "textual_original_assertions": 36,
+  "original_assertion_executions": 56,
+  "audit_findings": [
+    {
+      "status": "owner-native-and-local-Go-verified-pending-Root-coherent-acceptance",
+      "kind": "explicit public current-context/consuming FnOnce closure",
+      "targets": [
+        "port/rust/compiler/rustc_span/src/lib_remaining_context.go",
+        "port/rust/compiler/rustc_span/src/lib_session_fn_once.go"
+      ],
+      "native_proof": "tools/port-rust-span-lib/remaining-context-manifest.json",
+      "native_records": 3520,
+      "actual_native_aborts": 1324,
+      "notes": "All6 source session FnOnce consuming routes and9 public current-context routes closed by3520native cases/1324abort +Go1.23 fresh producer replay12.839s. Root owns final coherent source binding/race acceptance; AddExternalSrc/MapCtxt consuming follow-through separately sibling-owned."
+    }
+  ],
+  "review_status": "Complete line mapping; implementation remains scoped partial for the owned String/Path public API.",
+  "remaining_public_api": "docs/SPAN-API-GAPS.md"
+}

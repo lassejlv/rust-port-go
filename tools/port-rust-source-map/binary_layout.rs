@@ -1,0 +1,7 @@
+// SPDX-License-Identifier: MIT OR Apache-2.0
+// Actual SDK Arc constructor and public Layout operations, no huge allocation.
+use std::{alloc::Layout,io::{self,BufRead},panic::{catch_unwind,AssertUnwindSafe},sync::{Arc,Mutex,atomic::AtomicUsize}};
+#[repr(C)]struct ArcHeader{strong:AtomicUsize,weak:AtomicUsize,data:()}
+static EVENT:Mutex<String>=Mutex::new(String::new());
+fn hex(s:impl AsRef<[u8]>)->String{s.as_ref().iter().map(|b|format!("{b:02x}")).collect()}
+fn main(){std::panic::set_hook(Box::new(|info|{let loc=info.location().unwrap();*EVENT.lock().unwrap()=format!("{}|{}|{}|{}|{}",if info.payload().is::<String>(){"owned_string"}else{"static_str"},loc.file(),loc.line(),loc.column(),hex(info.payload_as_str().unwrap()));}));for line in io::stdin().lock().lines(){let line=line.unwrap();let p:Vec<_>=line.split('\t').collect();let len=p[2].parse::<u64>().unwrap()as usize;EVENT.lock().unwrap().clear();let mut state=String::new();let caught=catch_unwind(AssertUnwindSafe(||{state=if p[1]=="actual"{let value=Arc::<[u8]>::new_uninit_slice(len);format!("ok:{}",value.len())}else{match Layout::array::<u8>(len){Err(_)=>"array".into(),Ok(value)=>match Layout::new::<ArcHeader>().extend(value){Err(_)=>"header".into(),Ok((layout,_))=>{let layout=layout.pad_to_align();format!("ok:{len}:{}:{}",layout.size(),layout.align())}}}};})).is_err();println!("{}\t{caught}\t{state}\t{}",p[0],hex(&*EVENT.lock().unwrap()));}}

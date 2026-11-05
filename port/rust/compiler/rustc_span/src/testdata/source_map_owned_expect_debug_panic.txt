@@ -1,0 +1,2 @@
+cwd:false
+error_debug:true

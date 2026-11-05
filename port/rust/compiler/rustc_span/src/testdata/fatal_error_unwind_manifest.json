@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_sha256": "45ffa6ade6d4be3d8ec7dfd4e1a9350fe9f9330f55124a60269cd5c4060d18d4",
+  "records": 36,
+  "isolated_aborts": 20,
+  "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "raw_sha256": "53cb9f6097422a7bd109150e81a84cf7ab78b4c84a2be08fdd5bc1aec8ff8d2b",
+  "gzip_sha256": "60ea1659b57de6fe6516262e682e84380de140f3974d970566dfc047fc5a9fe2",
+  "wrapper_sha256": "e5b752910c522eedc45e8f7d059136b299dc4f95c72c29d8fbf92df9e28f8a1a",
+  "format_records": 144,
+  "format_raw_sha256": "b0f7a35d160e01be7347e62dd7426aaafbe45659e419a3952130d5538577404e",
+  "format_gzip_sha256": "a28ff0f3455cd2cd6c509d7250b70b2b9f385f42f0a5cc309db22088bf597d7d",
+  "format_wrapper_sha256": "b69ee650455bb20ce1e6b1ece4518ef95749f62d56321726023e7f15b9bd0121",
+  "abort_representation": "Native SIGABRT vs Go exit134 normalized to abort. Complete callback witnesses dispatch ordinary source panic hook and compiler cleanup-abort diagnostic; Raise/resume never dispatch one."
+}

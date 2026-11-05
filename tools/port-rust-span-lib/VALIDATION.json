@@ -1,0 +1,268 @@
+{
+  "canonical_go_target": "port/rust/compiler/rustc_span/src/lib.go",
+  "checks": {
+    "all_twenty_live_checks_before_consuming_closure": true,
+    "box_format_panic_race_seconds": 11.081,
+    "box_pos_race_seconds": 1.091,
+    "final_coherent_snapshot_rebind_and_race": "PASS: coherent scoped implementation; full normal/race/tagged checks, both vet modes, no-CGO and documented test-only follow-ups. See checkpoint35-validation.json.",
+    "final_span_testlib_race_seconds": 20.722,
+    "go127_serializer_seconds": 0.331,
+    "go127_span_testlib_seconds": 3.863,
+    "new_four_profile_closures": true,
+    "old_span_ambient_native_check_after_tls_raise": true,
+    "old_span_encoding_native_check_after_tls_raise": true,
+    "rejected_empty_selection_cli_count": 22,
+    "remaining_context_actual_aborts": 1324,
+    "remaining_context_fresh_producer_and_go_replay": true,
+    "remaining_context_go123_seconds": 12.839,
+    "remaining_context_native_records": 3520,
+    "remaining_context_selector_go_tests": 2,
+    "remaining_context_selector_python_tests": 4,
+    "serializer_native_race_seconds": 1.509,
+    "span_testlib_race_before_box_pos_additions_seconds": 20.918,
+    "tool_integrity_tests": 11,
+    "vet": true
+  },
+  "closure_summary": [
+    "Only actual source comparison derives receive inherited defaults; equal-owner min/max/clamp identity retained.",
+    "SourceFile vector decoding uses genuine vector collection and raises capacity overflow before element reads.",
+    "Inherited AttrId Idx::plus retains its own source failure location.",
+    "Five selected-build tracing Callsite cells are selected before filtering/registration; metadata preserved verbatim.",
+    "Byte encoding uses exact nominal defaults plus explicit selected-original-Self strategies; distinct wrappers remain generic.",
+    "Canonical119-line Rust tests.rs child mapping uses complete Go tests_test.go, preserving all4declarations/36assertions.",
+    "Six session FnOnce consuming primaries own actual rustvec.Owned Self through transparent envelopes and accepted ConsumeValue; manual early/late forget, non-Copy cell identity, unused/call/Drop/field failures and prepared-return leakage match original.",
+    "All9 remaining public context routes expose current caller operations; interned nil-session primary raises genuine scoped-TLS StaticStr at actual access.",
+    "New environment-specific remaining-context producer and fail-closed Go parent/child selection retain verbatim paths and preserve historical raw observations."
+  ],
+  "explicit_boundaries": [
+    "No compiler frontend/backend integration claim.",
+    "No additional dependency/standard-library whole-file completion credit.",
+    "No global Go TLS/panic discovery, allocator/FFI/absolute-address ABI or raw-Go-local-defer transparency claim.",
+    "Root-owned geometry/hygiene, SourceMap, IDs, Symbol and tracing proof remain separately owned."
+  ],
+  "minimum_go": "1.23.12",
+  "original_test_target": "port/rust/compiler/rustc_span/src/tests_test.go",
+  "own_native_manifests": [
+    {
+      "actual_aborts": null,
+      "manifest": "tools/port-rust-span-lib/source-manifest.json",
+      "records": 8232,
+      "sha256": "0725e8e4d22f33bcefa3d7477af672bb253ca5177d1ea29d686d35a8ed17aad7"
+    },
+    {
+      "actual_aborts": null,
+      "manifest": "tools/port-rust-span-lib/format-manifest.json",
+      "records": 63164,
+      "sha256": "de99f82ed63237e8f96c78db8976feea51f171cae6117830f852544c8e5196cb"
+    },
+    {
+      "actual_aborts": null,
+      "manifest": "tools/port-rust-span-lib/display-manifest.json",
+      "records": 12504,
+      "sha256": "3525060694c395dc75850ca153b60d7e18a7dba253881e6a54bd47fb8ab82ddf"
+    },
+    {
+      "actual_aborts": null,
+      "manifest": "tools/port-rust-span-lib/generic-manifest.json",
+      "records": 188,
+      "sha256": "cbea7310ca0d8a4959835f61bfb433cabd5f26c7f07117148bb4375429f37f29"
+    },
+    {
+      "actual_aborts": 42,
+      "manifest": "tools/port-rust-span-lib/generic-ambient-manifest.json",
+      "records": 72,
+      "sha256": "3d6482e7d9a5fe74e958411ec953da3f1dfd9556575edd556da4b8d962627044"
+    },
+    {
+      "actual_aborts": 8,
+      "manifest": "tools/port-rust-span-lib/session-inputs-manifest.json",
+      "records": 22,
+      "sha256": "f6c4be3692e324c83e7b3bd643f2b2939fb26c1e8f95f3f6855b73c356bcd91f"
+    },
+    {
+      "actual_aborts": null,
+      "manifest": "tools/port-rust-span-lib/flags-iter-manifest.json",
+      "records": 65807,
+      "sha256": "0d2999925ebf6aa8a9ac99049bd1dbba2e9fde7c09c3c59726afb1ff67276387"
+    },
+    {
+      "actual_aborts": null,
+      "manifest": "tools/port-rust-span-lib/flags-format-manifest.json",
+      "records": 7528,
+      "sha256": "15a750847d03655bc593c9a5930540260ff9ee1c60fd02dd5a9f90000617572e"
+    },
+    {
+      "actual_aborts": null,
+      "manifest": "tools/port-rust-span-lib/memory-manifest.json",
+      "records": 3256,
+      "sha256": "d0c36820afabc346a9a3fba017df93c3f4dfb815d35359d8823503951553964c"
+    },
+    {
+      "actual_aborts": null,
+      "manifest": "tools/port-rust-span-lib/file-manifest.json",
+      "records": 332,
+      "sha256": "86920a6c7f58612763235cd8def32af244d1457707b5edf7181afc49ed4f1903"
+    },
+    {
+      "actual_aborts": null,
+      "manifest": "tools/port-rust-span-lib/map-manifest.json",
+      "records": 768,
+      "sha256": "befc723ba3623e038b23455e9c3982d37e49a128c6620fcffb0cd155742ead15"
+    },
+    {
+      "actual_aborts": 4,
+      "manifest": "tools/port-rust-span-lib/opaque-callbacks-manifest.json",
+      "records": 62,
+      "sha256": "bed2b5bf181e2fc26eb182836cc85215a85b60b9517bcedc65ae4c6182faa2be"
+    },
+    {
+      "actual_aborts": null,
+      "manifest": "tools/port-rust-span-lib/owned-hash-manifest.json",
+      "records": 28,
+      "sha256": "79b3e7047b56a4e0dd1bddb37d54f53fe8e0389c58694e0fa0373c1cce2267b0"
+    },
+    {
+      "actual_aborts": null,
+      "manifest": "tools/port-rust-span-lib/panic-manifest.json",
+      "records": 256,
+      "sha256": "bc3449ce6bb4ba0e2bccd63cabd50216413e2decfb722a4a8196c56a08ad8bf9"
+    },
+    {
+      "actual_aborts": 5,
+      "manifest": "tools/port-rust-span-lib/boxes-manifest.json",
+      "records": 40,
+      "sha256": "588418577a8d349976219b02e80a64d07fa496f577c727620a6d94733cca4604"
+    },
+    {
+      "actual_aborts": 4,
+      "manifest": "tools/port-rust-span-lib/pos-manifest.json",
+      "records": 15,
+      "sha256": "d912b342af6829ba78bb81b066b853e9499febfdbad6ff00be90a45d66f8b08c"
+    },
+    {
+      "actual_aborts": null,
+      "manifest": "tools/port-rust-span-lib/trait-defaults-manifest.json",
+      "records": 14104,
+      "sha256": "ed9b7e71d8f94804265c67e37b387e4cce2bbcb6fa4f948b7b67e9880eab84cd"
+    },
+    {
+      "actual_aborts": 20,
+      "manifest": "tools/port-rust-span-lib/trait-failures-manifest.json",
+      "records": 84,
+      "sha256": "c7c839bdebd37c2e06a8db197b53efbeb6c08e7080b977941f37af0ad02f789a"
+    },
+    {
+      "actual_aborts": null,
+      "manifest": "tools/port-rust-span-lib/tracing-profile-manifest.json",
+      "records": 192,
+      "sha256": "0f351ce56b9132c8218d9475bb2b667d067ab3f9b2ac001bca69525161405e2b"
+    },
+    {
+      "actual_aborts": null,
+      "manifest": "tools/port-rust-span-lib/byte-slice-strategy-manifest.json",
+      "records": 280,
+      "sha256": "c75171f6c9080334094e2ffe5d855e4e4513f015e28561564c44e9d622601460"
+    },
+    {
+      "actual_aborts": 1324,
+      "manifest": "tools/port-rust-span-lib/remaining-context-manifest.json",
+      "note": "Historical raw retained; coherent Root snapshot regenerates source/replay bindings and producer metadata. Fresh producer locally validated through explicit selector.",
+      "records": 3520,
+      "sha256": "6978d9316b1239108a3b5ee714f8e7a69d29f81bcf6bb7cbeda2dca466a6085c"
+    }
+  ],
+  "own_native_records": 180454,
+  "production_sha256": {
+    "port/rust/compiler/rustc_serialize/src/container_decode.go": "f9c30e3eb35a008fe468c4ee8a2b6440faab397d5293e44fa44769714eebb93a",
+    "port/rust/compiler/rustc_serialize/src/container_vec.go": "6e695e5ebaa7a0697e8b64293685fe85a67900e86f2443bc570c57c06b22326f",
+    "port/rust/compiler/rustc_serialize/src/lib.go": "128c5255b9374795c8df7fcf1ded413fb9d2b26c8bbfeef579852138d67b41ec",
+    "port/rust/compiler/rustc_serialize/src/map_defaults.go": "871f096a5374400a2334dac3e5b470fe37cce265bb82c7f10ff796104ec0d87b",
+    "port/rust/compiler/rustc_serialize/src/opaque_callbacks.go": "e282185c7e4ba83db72847267d6a5d65a6a621719179049044bee71291b82077",
+    "port/rust/compiler/rustc_serialize/src/opaque_file.go": "accf9431126e986a1758b042e5551b5b8bf124cd18c0a248583046d7552bf251",
+    "port/rust/compiler/rustc_serialize/src/opaque_memory.go": "2c1944379d7fef7f5724958b14e949a5c04ff8a064446852e92b4753606122dd",
+    "port/rust/compiler/rustc_serialize/src/runtime_context.go": "8f7e6ad75fbc9f59f19fb33bb393ed18aa6acb56cbb79f6e1ce5489304bc288d",
+    "port/rust/compiler/rustc_span/src/lib.go": "3845e4a03e1340c73dbad7e8803cd5eeef5c2408fdac1eac7ba7b2d803ff1c4d",
+    "port/rust/compiler/rustc_span/src/lib_attr_id.go": "8d100391c4285404847a419105c798cd1b33a9da55e0273fd38c22235f749df4",
+    "port/rust/compiler/rustc_span/src/lib_attr_step.go": "d64c7d0c0ca89014e105bf59526dc699358bd4961f51e86b2a21a8505c5660cf",
+    "port/rust/compiler/rustc_span/src/lib_bug_runtime.go": "48a7c6bf986b3aa8ed184c4c701f098ee8979d6ebde8fbf32921ee517df8396e",
+    "port/rust/compiler/rustc_span/src/lib_bug_runtime_cells.go": "8b4a27041dc0d512c2a64f9cd05b209ef571d26bd6446f4fc40f02f4bf5f6ace",
+    "port/rust/compiler/rustc_span/src/lib_byte_slice_strategy.go": "a891fca0b8d206711d3aed5515a80692e835399c3df56e7ba0934672bf9234f4",
+    "port/rust/compiler/rustc_span/src/lib_codec.go": "bbf08618f5bc104543c42cbccf00c49f69d07d08839978c24d2ee826b41b2dcb",
+    "port/rust/compiler/rustc_span/src/lib_codec_context.go": "455343a1d1fbe81832fc51864d92cbe6c851cd8621131458a1f8e86c42659cce",
+    "port/rust/compiler/rustc_span/src/lib_codec_owned.go": "8ebd847d8c5de995636999924fc0cd3c1b5d4bb86e3e21668d81f8ab0423349f",
+    "port/rust/compiler/rustc_span/src/lib_codec_ref.go": "72f1f8542d06544c5dbd6e7e866a3a921a751ab93254663707149e6ba4ca2f8a",
+    "port/rust/compiler/rustc_span/src/lib_codec_runtime.go": "aa90d5cf3e6c97de0de02ed3f929fbe643dc8d933fd7a2cccf40a51186e7680b",
+    "port/rust/compiler/rustc_span/src/lib_enum.go": "db334e24c61cde51e64c7da982a9e0397eaec4a52b7f7ed027c6ccdff216a7a7",
+    "port/rust/compiler/rustc_span/src/lib_equality_defaults.go": "fe12b34a1495d829dd0ff1c8cbf051c7e631d5bb99cb205bdd4f90dd6530e2e7",
+    "port/rust/compiler/rustc_span/src/lib_error_format.go": "edb45206f4a402b695526d16c592b89e98dfd852df507ee2aeb413c5a980f026",
+    "port/rust/compiler/rustc_span/src/lib_filename.go": "30c45a6ebe2162cdf816a2c5fc2e91c061d37d98b048c16af947fe52aea9b6a5",
+    "port/rust/compiler/rustc_span/src/lib_flags.go": "a4d55ac2236c808a96d33792ed35d55a5344244d1456ec7ed7335de0ad9281b3",
+    "port/rust/compiler/rustc_span/src/lib_hash_primary.go": "3778380ae1b6dd1d61e9931b79141e3db0f8eb0dc8f9f4229a0d9c8b8225a34e",
+    "port/rust/compiler/rustc_span/src/lib_order_defaults.go": "98d45b9f7159fea705752400a6bc274465f30cc695b0ec833d84679005cbbe5d",
+    "port/rust/compiler/rustc_span/src/lib_panic.go": "3af7a0514886a3c6033e79a8fa07d189c8f84645a0c4354aa44696f90cd8763c",
+    "port/rust/compiler/rustc_span/src/lib_pos.go": "41c62bd77c787a54845fa5c2e6ab3f69d2239d7ea180273c36eced0598fbbbd8",
+    "port/rust/compiler/rustc_span/src/lib_pos_context.go": "19aaa3a2cc5bc709cca3decc61e6d5a25698077228d932b40ff2a2bd0dd759ea",
+    "port/rust/compiler/rustc_span/src/lib_remaining_context.go": "38b4bfbc00f4b63b9046e8dab5105a6eb427adfdb0ccf35f7ab961745138f14d",
+    "port/rust/compiler/rustc_span/src/lib_session.go": "f4eb1afc801a7c295102f2c81b1986b2aa62a75964bb64b905c77070044fb693",
+    "port/rust/compiler/rustc_span/src/lib_session_fn_once.go": "c18ddddbcb1dafb747ecdd184d3896083a184dd9ffa1017369bf2aa9121bc77e",
+    "port/rust/compiler/rustc_span/src/lib_session_scope.go": "8d1d598e2ba580147b93819434671be2486d70e47866ed864d3adedb5a920613",
+    "port/rust/compiler/rustc_span/src/lib_shared.go": "000cbfbeaa7cd875f3a35944ddedaf64f2e8fc61702e0772f7500062aae0ce94",
+    "port/rust/compiler/rustc_span/src/lib_source_codec.go": "29f5ebf89e0d08e36cb70fb0020b442bbc01d4e9e34be1fe0c70a3cb5e45c54c",
+    "port/rust/compiler/rustc_span/src/lib_source_errors.go": "a20ff9c16091a246b66c2d19d77155c30df5c74367a7d36973a635aac6e1362b",
+    "port/rust/compiler/rustc_span/src/lib_source_file.go": "f1c7790fd9fe52c2cf0f6022edbc05ce8c799dfb21f1e9dcd757b528151eef43",
+    "port/rust/compiler/rustc_span/src/lib_source_format.go": "2aebce49e8cb4e2de9cdef853da0eda0d4217c0d5a235972295e62d94850a5e2",
+    "port/rust/compiler/rustc_span/src/lib_source_hash.go": "6aa82e8804f7c253397de06bab34b63aa6a2abce2579aff9f9e1ed143fc7d0e5",
+    "port/rust/compiler/rustc_span/src/lib_source_metadata.go": "dacd92ed0c0a5173d29aee2e48d10b9a96960a79cff282e0536bbd3f1a680bb7",
+    "port/rust/compiler/rustc_span/src/lib_span_combine.go": "1d1f1ba920e971dde46155679464823e9c68671d114193cb896a2b1c9f8e31a3",
+    "port/rust/compiler/rustc_span/src/lib_span_context.go": "3fcd276768461fcff4c46013c32ee4288337689b1705b10d93c97fcbffef9322",
+    "port/rust/compiler/rustc_span/src/lib_span_ops.go": "3dcb482b467580a306377768de164aa7dbbb3c90353a2293d87c0d927989d9ea",
+    "port/rust/compiler/rustc_span/src/lib_span_source_map.go": "016ea35ff1bfbd0cef591ff61c17e8e64d8495d7100c2c8bb7a8ee2030e38c67",
+    "port/rust/compiler/rustc_span/src/lib_span_track.go": "9fca82bceea5d80e56300564ad2324fd6e31121b3c493bd4142737ad7652dfd1",
+    "port/rust/compiler/rustc_span/src/lib_spanned.go": "dc2dd9bcd569aaae13f33f8e9040c08ef017cf99639e112f4f419bc83a7299bd",
+    "port/rust/compiler/rustc_span/src/lib_sync.go": "c987ed80c275ea0078a13cc1ae24b79ff5f4ee4756e58feffa5414da4de73db6",
+    "port/rust/compiler/rustc_span/src/lib_tracing.go": "cf1ca941baa1bd9e70b047ec7411830439bb9eb7f8123f656699e7069b273f94",
+    "port/rust/compiler/rustc_span/src/lib_tracing_profile.go": "944932e46e87a98478f4fed7be22efad178e50f1dd22af14a87a0b0d813e033d",
+    "port/rust/compiler/rustc_span/src/lib_value_traits.go": "13391aa3f3a380b8c7d0175c09eb9451f188a06c8835a9991b4bd1d2342e8d5a",
+    "port/rust/compiler/rustc_span/src/map_ctxt_owned.go": "66250890e70ee0a054a7872e828d7757888b6a0e4b25c662667e5b9471747638",
+    "port/rust/compiler/rustc_span/src/span_debug.go": "5fb15e2b0e8fc2e58d4141bc00a89620a0fe0c5665bda999b3529ce74ef3538c",
+    "port/rust/compiler/rustc_span/src/span_encoding.go": "4956678a322c6d4830d8cd039ef3a850f7726be9486fff2a851cb4894e272144",
+    "port/support/rustfmt/integer_radix.go": "ac7a855b63cfd50089f3980f1b379a709f12b7373a5422d9686f1150de2f6550"
+  },
+  "schema": 1,
+  "scoped_serializer_split": "The independent memory/file/map/opaque-callbacks manifests do not bind Go Span inputs. This broad report belongs to full Lib review, not the standalone serializer subset.",
+  "sdk": "1.101.0-nightly708c94ef093ecc42fb8851e17d8383d999727abc Unicode18",
+  "separately_owned_proofs": [
+    {
+      "actual_aborts": 72,
+      "manifest": "tools/port-rust-span-lib/macro-backtrace-context-manifest.json",
+      "owner": "hygiene_finish",
+      "records": 240,
+      "scope": "Actual Next/current-context/owned expansion Arc and tracking panic state; not counted in own_native_records"
+    },
+    {
+      "manifest": "tools/port-rust-span-lib/span-geometry-manifest.json",
+      "owner": "Root",
+      "scope": "Root refreshes coherent source bindings; not modified or counted by this handoff"
+    },
+    {
+      "manifest": "tools/port-rust-span-lib/span-hygiene-manifest.json",
+      "owner": "Root",
+      "scope": "Root refreshes coherent source bindings; not modified or counted by this handoff"
+    }
+  ],
+  "source_audit": {
+    "covered_lines": 2930,
+    "executed_comparisons": 56,
+    "original_test_declarations": 4,
+    "owner_review_artifacts": "tools/port-rust-span-lib/source-inventory.json",
+    "regions": 58,
+    "textual_assertions": 36
+  },
+  "source_file": "compiler/rustc_span/src/lib.rs",
+  "source_git_blob": "44fbbbaccd66f3428ea135720511029be547f467",
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_sha256": "9682c3b7d227039f040afff82aae4d2fd8133692bc9ef84f0974323f8a0acca0",
+  "status": "scoped-validation-passes-owned-String-and-Path-public-API-pending-no-full-lib-credit",
+  "coherent_validation_evidence": "tools/port-rust-span-reference/checkpoint35-validation.json",
+  "remaining_public_api": "docs/SPAN-API-GAPS.md"
+}

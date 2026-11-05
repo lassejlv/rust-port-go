@@ -1,0 +1,74 @@
+{
+  "scope": "Fresh interner storage, occupied and cross-kind borrows, static prefill and STDLIB_STABLE_CRATES storage; no cross-language address or allocator ABI claim.",
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_version": "1.101.0",
+  "nightly_date": "2026-11-04",
+  "compiler_commit": "708c94ef093ecc42fb8851e17d8383d999727abc",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+  "unicode_version": [
+    18,
+    0,
+    0
+  ],
+  "source_sha256": "d623770418e98bafe1190ab29635127bf51736684b732531b280c657f4825973",
+  "profiles": [
+    {
+      "debug_assertions": false,
+      "overflow_checks": false,
+      "source_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078"
+    },
+    {
+      "debug_assertions": false,
+      "overflow_checks": true,
+      "source_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078"
+    },
+    {
+      "debug_assertions": true,
+      "overflow_checks": false,
+      "source_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078"
+    },
+    {
+      "debug_assertions": true,
+      "overflow_checks": true,
+      "source_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078"
+    }
+  ],
+  "reference_inputs": {
+    "tools/port-rust-symbol/symbol_reference.py": "1e783896f57c6fb9d68286cfade47980aeee9996e6d0240ef71dc824e95d4855",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d",
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-span-reference/prepare.py": "4517eedb69d9ab873639d3c15a802e8371ee33dbf2a684c968073e3f547af442",
+    "tools/port-rust-span-reference/verify.py": "413283a6dc0933d03ddf9600321a1af5d93e0be4c36da3b51e82b8a9d3529d79",
+    "tools/port-rust-span-reference/sources.json": "b5b283946d0f2094e2ee6b7da6cb00c3601cecc02954afea3f91b42492b024bb",
+    "tools/port-rust-span-reference/toolchain.json": "39583ec2969fe1c845ef0cf36e4b85a5160147675c1350cee77ff9a689342b5c",
+    "tools/port-rust-span-reference/Cargo.lock": "754f658b67c5a3fd3296ae0f4e3cfcfd60dca900f3552de06895a0c2a7617c7a"
+  },
+  "observations_per_profile": 7,
+  "fixture_sha256": "0f48537c25cd26bcb07cf3cff51a66e66e47326b8cd9578b5000710cab0e31ff",
+  "files": [
+    {
+      "path": "tools/port-rust-symbol/generate_borrow_contract.py",
+      "sha256": "aecd53983081724a663556a9b923491fd6ddd445c7e9a9a80b97527f5adb3eb5"
+    },
+    {
+      "path": "tools/port-rust-symbol/borrow_oracle.rs",
+      "sha256": "693f2b8b3ac2c1047ef67a1be2f2b1c61c96150e181e4338ea467430aa5afa74"
+    },
+    {
+      "path": "tools/port-rust-symbol/native_profile.py",
+      "sha256": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol.go",
+      "sha256": "0bebb03427a008c668e5e67a0fdc9d554603e39d90dd5f594a0a2f7a96969ad0"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_context_ord.go",
+      "sha256": "a2f1a713257cd0b7a7446c2cb4f26126a8b1f0c0bcb6964df5531afca49e125d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_borrow_test.go",
+      "sha256": "461babf492207af36c08f118c07688ab552f146f3c9b9cefca2bd80f8e4d48bc"
+    }
+  ]
+}

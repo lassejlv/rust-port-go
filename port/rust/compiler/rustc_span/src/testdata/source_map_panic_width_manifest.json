@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_sha256": "9fa60e859a71b59b6787028a569a17d9fa0b5f047af9bb12de14e9c34af6eeb3",
+  "records": 1600,
+  "caught_panics": 234,
+  "profiles": [
+    "d0o0",
+    "d0o1",
+    "d1o0",
+    "d1o1"
+  ],
+  "raw_sha256": "495a5e48cf6b56eb1bf92b76df49d35b1cc4d8512bb7e40568dc333dc68ef039",
+  "gzip_sha256": "bff04b1b9cde3134ed4c80def010878d375352d53f581d02b82d63cd32130a74",
+  "wrapper_sha256": "06cb78a3f9e384ef6c61db740ecec1b98fc548d343a2ed56b6a09e562d6be165",
+  "normalization": "None. Native original/compiler/... file spelling is explicitly supplied by the Go profile; payload kind, byte message, line and column are retained.",
+  "complete": false,
+  "remaining": "Other SourceMap assertion/allocation/arithmetic operation sites and runtime contexts remain under validation.",
+  "scope": "Actual public imported SourceFile metadata lengths may differ from its hash-matching lazily loaded text; next/end points retain source arithmetic failures and exact hook locations. Original add_external_src validates the hash, not imported length."
+}

@@ -1,0 +1,1013 @@
+{
+  "revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "status": "partial-pending-aliases-and-span-integration",
+  "native_profiles": [
+    {
+      "revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+      "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+      "debug_assertions": true,
+      "overflow_checks": true,
+      "registry_dependencies": [
+        {
+          "name": "displaydoc",
+          "version": "0.2.5",
+          "checksum": "97369cbbc041bc366949bc74d34658d6cda5621039731c6310521892a3a20ae0",
+          "compiled_files": 39
+        },
+        {
+          "name": "equivalent",
+          "version": "1.0.2",
+          "checksum": "877a4ace8713b0bcf2a4e7eec82529c029f1d0619886d18145fea96c3ffe5c0f",
+          "compiled_files": 10
+        },
+        {
+          "name": "fluent-bundle",
+          "version": "0.16.0",
+          "checksum": "01203cb8918f5711e73891b347816d932046f95f54207710bda99beaeb423bf4",
+          "compiled_files": 29
+        },
+        {
+          "name": "fluent-langneg",
+          "version": "0.13.1",
+          "checksum": "7eebbe59450baee8282d71676f3bfed5689aeab00b27545e83e5f14b1195e8b0",
+          "compiled_files": 10
+        },
+        {
+          "name": "fluent-syntax",
+          "version": "0.12.0",
+          "checksum": "54f0d287c53ffd184d04d8677f590f4ac5379785529e5e08b1c8083acdd5c198",
+          "compiled_files": 27
+        },
+        {
+          "name": "hashbrown",
+          "version": "0.17.1",
+          "checksum": "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a",
+          "compiled_files": 50
+        },
+        {
+          "name": "indexmap",
+          "version": "2.14.0",
+          "checksum": "d466e9454f08e4a911e14806c24e16fba1b4c121d1ea474396f396069cf949d9",
+          "compiled_files": 42
+        },
+        {
+          "name": "intl-memoizer",
+          "version": "0.5.3",
+          "checksum": "310da2e345f5eb861e7a07ee182262e94975051db9e4223e909ba90f392f163f",
+          "compiled_files": 9
+        },
+        {
+          "name": "intl_pluralrules",
+          "version": "7.0.2",
+          "checksum": "078ea7b7c29a2b4df841a7f6ac8775ff6074020c6776d48491ce2268e068f972",
+          "compiled_files": 8
+        },
+        {
+          "name": "itoa",
+          "version": "1.0.15",
+          "checksum": "4a5f13b858c8d314ee3e8f639011f7ccefe71f97f96e50151fb991f267928e2c",
+          "compiled_files": 14
+        },
+        {
+          "name": "memchr",
+          "version": "2.8.0",
+          "checksum": "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79",
+          "compiled_files": 57
+        },
+        {
+          "name": "proc-macro2",
+          "version": "1.0.106",
+          "checksum": "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934",
+          "compiled_files": 33
+        },
+        {
+          "name": "quote",
+          "version": "1.0.45",
+          "checksum": "41f2619966050689382d2b44f664f4bc593e129785a36d6ee376ddf37259b924",
+          "compiled_files": 35
+        },
+        {
+          "name": "rustc-hash",
+          "version": "2.1.1",
+          "checksum": "357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d",
+          "compiled_files": 14
+        },
+        {
+          "name": "rustc-stable-hash",
+          "version": "0.1.2",
+          "checksum": "781442f29170c5c93b7185ad559492601acdc71d5bb0706f5868094f45cfcd08",
+          "compiled_files": 17
+        },
+        {
+          "name": "ryu",
+          "version": "1.0.20",
+          "checksum": "28d3b2b1366ec20994f1fd18c3c594f05c5dd4bc44d8bb0c1c632c8d6829481f",
+          "compiled_files": 37
+        },
+        {
+          "name": "self_cell",
+          "version": "1.2.1",
+          "checksum": "16c2f82143577edb4921b71ede051dac62ca3c16084e918bf7b40c96ae10eb33",
+          "compiled_files": 7
+        },
+        {
+          "name": "serde",
+          "version": "1.0.228",
+          "checksum": "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e",
+          "compiled_files": 33
+        },
+        {
+          "name": "serde_core",
+          "version": "1.0.228",
+          "checksum": "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad",
+          "compiled_files": 27
+        },
+        {
+          "name": "serde_derive",
+          "version": "1.0.228",
+          "checksum": "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79",
+          "compiled_files": 36
+        },
+        {
+          "name": "serde_json",
+          "version": "1.0.145",
+          "checksum": "402a6f66d8c709116cf22f558eab210f5a50187f702eb4d7e5ef38d9a7f1c79c",
+          "compiled_files": 88
+        },
+        {
+          "name": "smallvec",
+          "version": "1.15.1",
+          "checksum": "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03",
+          "compiled_files": 19
+        },
+        {
+          "name": "syn",
+          "version": "2.0.117",
+          "checksum": "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99",
+          "compiled_files": 105
+        },
+        {
+          "name": "synstructure",
+          "version": "0.13.2",
+          "checksum": "728a70f3dbaf5bab7f0c4b1ac8d7ae5ea60a4b5549c8a5914361c99147a709d2",
+          "compiled_files": 8
+        },
+        {
+          "name": "thin-vec",
+          "version": "0.2.21",
+          "checksum": "d6a4b9ba8738cb4a4f399d37e266becfd475e75eb73425b87a05a2f2039ba63e",
+          "compiled_files": 11
+        },
+        {
+          "name": "thiserror",
+          "version": "2.0.17",
+          "checksum": "f63587ca0f12b72a0600bcba1d40081f830876000bb46dd2337a3051618f4fc8",
+          "compiled_files": 105
+        },
+        {
+          "name": "thiserror-impl",
+          "version": "2.0.17",
+          "checksum": "3ff15c8ecd7de3849db632e14d18d2571fa09dfc5ed93479bc4485c7a517c913",
+          "compiled_files": 17
+        },
+        {
+          "name": "tinystr",
+          "version": "0.8.4",
+          "checksum": "b1e27c91459209c2986af3dcf603a5a74a4368754ce37414f59acc971167f643",
+          "compiled_files": 22
+        },
+        {
+          "name": "type-map",
+          "version": "0.5.1",
+          "checksum": "cb30dbbd9036155e74adad6812e9898d03ec374946234fbcebd5dfc7b9187b90",
+          "compiled_files": 8
+        },
+        {
+          "name": "unic-langid",
+          "version": "0.9.6",
+          "checksum": "a28ba52c9b05311f4f6e62d5d9d46f094bd6e84cb8df7b3ef952748d752a7d05",
+          "compiled_files": 9
+        },
+        {
+          "name": "unic-langid-impl",
+          "version": "0.9.6",
+          "checksum": "dce1bf08044d4b7a94028c93786f8566047edc11110595914de93362559bc658",
+          "compiled_files": 31
+        },
+        {
+          "name": "unicode-ident",
+          "version": "1.0.24",
+          "checksum": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+          "compiled_files": 26
+        },
+        {
+          "name": "zerofrom",
+          "version": "0.1.6",
+          "checksum": "50cc42e0333e05660c3587f3bf9d0478688e15d870fab3346451ce7f8c9fbea5",
+          "compiled_files": 9
+        },
+        {
+          "name": "zerovec",
+          "version": "0.11.7",
+          "checksum": "94b5c6b5976d66c1d703c4fd17d3f5e43c8cedaacf604961b171adc7130896d8",
+          "compiled_files": 67
+        }
+      ],
+      "source_provenance_sha256": "9d4bf5daae8d4e88ac7cab6cdb3d80f53606947a8fd4d2af25805f3557d1f515"
+    },
+    {
+      "revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+      "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+      "debug_assertions": true,
+      "overflow_checks": false,
+      "registry_dependencies": [
+        {
+          "name": "displaydoc",
+          "version": "0.2.5",
+          "checksum": "97369cbbc041bc366949bc74d34658d6cda5621039731c6310521892a3a20ae0",
+          "compiled_files": 39
+        },
+        {
+          "name": "equivalent",
+          "version": "1.0.2",
+          "checksum": "877a4ace8713b0bcf2a4e7eec82529c029f1d0619886d18145fea96c3ffe5c0f",
+          "compiled_files": 10
+        },
+        {
+          "name": "fluent-bundle",
+          "version": "0.16.0",
+          "checksum": "01203cb8918f5711e73891b347816d932046f95f54207710bda99beaeb423bf4",
+          "compiled_files": 29
+        },
+        {
+          "name": "fluent-langneg",
+          "version": "0.13.1",
+          "checksum": "7eebbe59450baee8282d71676f3bfed5689aeab00b27545e83e5f14b1195e8b0",
+          "compiled_files": 10
+        },
+        {
+          "name": "fluent-syntax",
+          "version": "0.12.0",
+          "checksum": "54f0d287c53ffd184d04d8677f590f4ac5379785529e5e08b1c8083acdd5c198",
+          "compiled_files": 27
+        },
+        {
+          "name": "hashbrown",
+          "version": "0.17.1",
+          "checksum": "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a",
+          "compiled_files": 50
+        },
+        {
+          "name": "indexmap",
+          "version": "2.14.0",
+          "checksum": "d466e9454f08e4a911e14806c24e16fba1b4c121d1ea474396f396069cf949d9",
+          "compiled_files": 42
+        },
+        {
+          "name": "intl-memoizer",
+          "version": "0.5.3",
+          "checksum": "310da2e345f5eb861e7a07ee182262e94975051db9e4223e909ba90f392f163f",
+          "compiled_files": 9
+        },
+        {
+          "name": "intl_pluralrules",
+          "version": "7.0.2",
+          "checksum": "078ea7b7c29a2b4df841a7f6ac8775ff6074020c6776d48491ce2268e068f972",
+          "compiled_files": 8
+        },
+        {
+          "name": "itoa",
+          "version": "1.0.15",
+          "checksum": "4a5f13b858c8d314ee3e8f639011f7ccefe71f97f96e50151fb991f267928e2c",
+          "compiled_files": 14
+        },
+        {
+          "name": "memchr",
+          "version": "2.8.0",
+          "checksum": "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79",
+          "compiled_files": 57
+        },
+        {
+          "name": "proc-macro2",
+          "version": "1.0.106",
+          "checksum": "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934",
+          "compiled_files": 33
+        },
+        {
+          "name": "quote",
+          "version": "1.0.45",
+          "checksum": "41f2619966050689382d2b44f664f4bc593e129785a36d6ee376ddf37259b924",
+          "compiled_files": 35
+        },
+        {
+          "name": "rustc-hash",
+          "version": "2.1.1",
+          "checksum": "357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d",
+          "compiled_files": 14
+        },
+        {
+          "name": "rustc-stable-hash",
+          "version": "0.1.2",
+          "checksum": "781442f29170c5c93b7185ad559492601acdc71d5bb0706f5868094f45cfcd08",
+          "compiled_files": 17
+        },
+        {
+          "name": "ryu",
+          "version": "1.0.20",
+          "checksum": "28d3b2b1366ec20994f1fd18c3c594f05c5dd4bc44d8bb0c1c632c8d6829481f",
+          "compiled_files": 37
+        },
+        {
+          "name": "self_cell",
+          "version": "1.2.1",
+          "checksum": "16c2f82143577edb4921b71ede051dac62ca3c16084e918bf7b40c96ae10eb33",
+          "compiled_files": 7
+        },
+        {
+          "name": "serde",
+          "version": "1.0.228",
+          "checksum": "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e",
+          "compiled_files": 33
+        },
+        {
+          "name": "serde_core",
+          "version": "1.0.228",
+          "checksum": "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad",
+          "compiled_files": 27
+        },
+        {
+          "name": "serde_derive",
+          "version": "1.0.228",
+          "checksum": "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79",
+          "compiled_files": 36
+        },
+        {
+          "name": "serde_json",
+          "version": "1.0.145",
+          "checksum": "402a6f66d8c709116cf22f558eab210f5a50187f702eb4d7e5ef38d9a7f1c79c",
+          "compiled_files": 88
+        },
+        {
+          "name": "smallvec",
+          "version": "1.15.1",
+          "checksum": "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03",
+          "compiled_files": 19
+        },
+        {
+          "name": "syn",
+          "version": "2.0.117",
+          "checksum": "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99",
+          "compiled_files": 105
+        },
+        {
+          "name": "synstructure",
+          "version": "0.13.2",
+          "checksum": "728a70f3dbaf5bab7f0c4b1ac8d7ae5ea60a4b5549c8a5914361c99147a709d2",
+          "compiled_files": 8
+        },
+        {
+          "name": "thin-vec",
+          "version": "0.2.21",
+          "checksum": "d6a4b9ba8738cb4a4f399d37e266becfd475e75eb73425b87a05a2f2039ba63e",
+          "compiled_files": 11
+        },
+        {
+          "name": "thiserror",
+          "version": "2.0.17",
+          "checksum": "f63587ca0f12b72a0600bcba1d40081f830876000bb46dd2337a3051618f4fc8",
+          "compiled_files": 105
+        },
+        {
+          "name": "thiserror-impl",
+          "version": "2.0.17",
+          "checksum": "3ff15c8ecd7de3849db632e14d18d2571fa09dfc5ed93479bc4485c7a517c913",
+          "compiled_files": 17
+        },
+        {
+          "name": "tinystr",
+          "version": "0.8.4",
+          "checksum": "b1e27c91459209c2986af3dcf603a5a74a4368754ce37414f59acc971167f643",
+          "compiled_files": 22
+        },
+        {
+          "name": "type-map",
+          "version": "0.5.1",
+          "checksum": "cb30dbbd9036155e74adad6812e9898d03ec374946234fbcebd5dfc7b9187b90",
+          "compiled_files": 8
+        },
+        {
+          "name": "unic-langid",
+          "version": "0.9.6",
+          "checksum": "a28ba52c9b05311f4f6e62d5d9d46f094bd6e84cb8df7b3ef952748d752a7d05",
+          "compiled_files": 9
+        },
+        {
+          "name": "unic-langid-impl",
+          "version": "0.9.6",
+          "checksum": "dce1bf08044d4b7a94028c93786f8566047edc11110595914de93362559bc658",
+          "compiled_files": 31
+        },
+        {
+          "name": "unicode-ident",
+          "version": "1.0.24",
+          "checksum": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+          "compiled_files": 26
+        },
+        {
+          "name": "zerofrom",
+          "version": "0.1.6",
+          "checksum": "50cc42e0333e05660c3587f3bf9d0478688e15d870fab3346451ce7f8c9fbea5",
+          "compiled_files": 9
+        },
+        {
+          "name": "zerovec",
+          "version": "0.11.7",
+          "checksum": "94b5c6b5976d66c1d703c4fd17d3f5e43c8cedaacf604961b171adc7130896d8",
+          "compiled_files": 67
+        }
+      ],
+      "source_provenance_sha256": "9d4bf5daae8d4e88ac7cab6cdb3d80f53606947a8fd4d2af25805f3557d1f515"
+    },
+    {
+      "revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+      "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+      "debug_assertions": false,
+      "overflow_checks": true,
+      "registry_dependencies": [
+        {
+          "name": "displaydoc",
+          "version": "0.2.5",
+          "checksum": "97369cbbc041bc366949bc74d34658d6cda5621039731c6310521892a3a20ae0",
+          "compiled_files": 39
+        },
+        {
+          "name": "equivalent",
+          "version": "1.0.2",
+          "checksum": "877a4ace8713b0bcf2a4e7eec82529c029f1d0619886d18145fea96c3ffe5c0f",
+          "compiled_files": 10
+        },
+        {
+          "name": "fluent-bundle",
+          "version": "0.16.0",
+          "checksum": "01203cb8918f5711e73891b347816d932046f95f54207710bda99beaeb423bf4",
+          "compiled_files": 29
+        },
+        {
+          "name": "fluent-langneg",
+          "version": "0.13.1",
+          "checksum": "7eebbe59450baee8282d71676f3bfed5689aeab00b27545e83e5f14b1195e8b0",
+          "compiled_files": 10
+        },
+        {
+          "name": "fluent-syntax",
+          "version": "0.12.0",
+          "checksum": "54f0d287c53ffd184d04d8677f590f4ac5379785529e5e08b1c8083acdd5c198",
+          "compiled_files": 27
+        },
+        {
+          "name": "hashbrown",
+          "version": "0.17.1",
+          "checksum": "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a",
+          "compiled_files": 50
+        },
+        {
+          "name": "indexmap",
+          "version": "2.14.0",
+          "checksum": "d466e9454f08e4a911e14806c24e16fba1b4c121d1ea474396f396069cf949d9",
+          "compiled_files": 42
+        },
+        {
+          "name": "intl-memoizer",
+          "version": "0.5.3",
+          "checksum": "310da2e345f5eb861e7a07ee182262e94975051db9e4223e909ba90f392f163f",
+          "compiled_files": 9
+        },
+        {
+          "name": "intl_pluralrules",
+          "version": "7.0.2",
+          "checksum": "078ea7b7c29a2b4df841a7f6ac8775ff6074020c6776d48491ce2268e068f972",
+          "compiled_files": 8
+        },
+        {
+          "name": "itoa",
+          "version": "1.0.15",
+          "checksum": "4a5f13b858c8d314ee3e8f639011f7ccefe71f97f96e50151fb991f267928e2c",
+          "compiled_files": 14
+        },
+        {
+          "name": "memchr",
+          "version": "2.8.0",
+          "checksum": "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79",
+          "compiled_files": 57
+        },
+        {
+          "name": "proc-macro2",
+          "version": "1.0.106",
+          "checksum": "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934",
+          "compiled_files": 33
+        },
+        {
+          "name": "quote",
+          "version": "1.0.45",
+          "checksum": "41f2619966050689382d2b44f664f4bc593e129785a36d6ee376ddf37259b924",
+          "compiled_files": 35
+        },
+        {
+          "name": "rustc-hash",
+          "version": "2.1.1",
+          "checksum": "357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d",
+          "compiled_files": 14
+        },
+        {
+          "name": "rustc-stable-hash",
+          "version": "0.1.2",
+          "checksum": "781442f29170c5c93b7185ad559492601acdc71d5bb0706f5868094f45cfcd08",
+          "compiled_files": 17
+        },
+        {
+          "name": "ryu",
+          "version": "1.0.20",
+          "checksum": "28d3b2b1366ec20994f1fd18c3c594f05c5dd4bc44d8bb0c1c632c8d6829481f",
+          "compiled_files": 37
+        },
+        {
+          "name": "self_cell",
+          "version": "1.2.1",
+          "checksum": "16c2f82143577edb4921b71ede051dac62ca3c16084e918bf7b40c96ae10eb33",
+          "compiled_files": 7
+        },
+        {
+          "name": "serde",
+          "version": "1.0.228",
+          "checksum": "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e",
+          "compiled_files": 33
+        },
+        {
+          "name": "serde_core",
+          "version": "1.0.228",
+          "checksum": "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad",
+          "compiled_files": 27
+        },
+        {
+          "name": "serde_derive",
+          "version": "1.0.228",
+          "checksum": "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79",
+          "compiled_files": 36
+        },
+        {
+          "name": "serde_json",
+          "version": "1.0.145",
+          "checksum": "402a6f66d8c709116cf22f558eab210f5a50187f702eb4d7e5ef38d9a7f1c79c",
+          "compiled_files": 88
+        },
+        {
+          "name": "smallvec",
+          "version": "1.15.1",
+          "checksum": "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03",
+          "compiled_files": 19
+        },
+        {
+          "name": "syn",
+          "version": "2.0.117",
+          "checksum": "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99",
+          "compiled_files": 105
+        },
+        {
+          "name": "synstructure",
+          "version": "0.13.2",
+          "checksum": "728a70f3dbaf5bab7f0c4b1ac8d7ae5ea60a4b5549c8a5914361c99147a709d2",
+          "compiled_files": 8
+        },
+        {
+          "name": "thin-vec",
+          "version": "0.2.21",
+          "checksum": "d6a4b9ba8738cb4a4f399d37e266becfd475e75eb73425b87a05a2f2039ba63e",
+          "compiled_files": 11
+        },
+        {
+          "name": "thiserror",
+          "version": "2.0.17",
+          "checksum": "f63587ca0f12b72a0600bcba1d40081f830876000bb46dd2337a3051618f4fc8",
+          "compiled_files": 105
+        },
+        {
+          "name": "thiserror-impl",
+          "version": "2.0.17",
+          "checksum": "3ff15c8ecd7de3849db632e14d18d2571fa09dfc5ed93479bc4485c7a517c913",
+          "compiled_files": 17
+        },
+        {
+          "name": "tinystr",
+          "version": "0.8.4",
+          "checksum": "b1e27c91459209c2986af3dcf603a5a74a4368754ce37414f59acc971167f643",
+          "compiled_files": 22
+        },
+        {
+          "name": "type-map",
+          "version": "0.5.1",
+          "checksum": "cb30dbbd9036155e74adad6812e9898d03ec374946234fbcebd5dfc7b9187b90",
+          "compiled_files": 8
+        },
+        {
+          "name": "unic-langid",
+          "version": "0.9.6",
+          "checksum": "a28ba52c9b05311f4f6e62d5d9d46f094bd6e84cb8df7b3ef952748d752a7d05",
+          "compiled_files": 9
+        },
+        {
+          "name": "unic-langid-impl",
+          "version": "0.9.6",
+          "checksum": "dce1bf08044d4b7a94028c93786f8566047edc11110595914de93362559bc658",
+          "compiled_files": 31
+        },
+        {
+          "name": "unicode-ident",
+          "version": "1.0.24",
+          "checksum": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+          "compiled_files": 26
+        },
+        {
+          "name": "zerofrom",
+          "version": "0.1.6",
+          "checksum": "50cc42e0333e05660c3587f3bf9d0478688e15d870fab3346451ce7f8c9fbea5",
+          "compiled_files": 9
+        },
+        {
+          "name": "zerovec",
+          "version": "0.11.7",
+          "checksum": "94b5c6b5976d66c1d703c4fd17d3f5e43c8cedaacf604961b171adc7130896d8",
+          "compiled_files": 67
+        }
+      ],
+      "source_provenance_sha256": "9d4bf5daae8d4e88ac7cab6cdb3d80f53606947a8fd4d2af25805f3557d1f515"
+    },
+    {
+      "revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+      "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+      "debug_assertions": false,
+      "overflow_checks": false,
+      "registry_dependencies": [
+        {
+          "name": "displaydoc",
+          "version": "0.2.5",
+          "checksum": "97369cbbc041bc366949bc74d34658d6cda5621039731c6310521892a3a20ae0",
+          "compiled_files": 39
+        },
+        {
+          "name": "equivalent",
+          "version": "1.0.2",
+          "checksum": "877a4ace8713b0bcf2a4e7eec82529c029f1d0619886d18145fea96c3ffe5c0f",
+          "compiled_files": 10
+        },
+        {
+          "name": "fluent-bundle",
+          "version": "0.16.0",
+          "checksum": "01203cb8918f5711e73891b347816d932046f95f54207710bda99beaeb423bf4",
+          "compiled_files": 29
+        },
+        {
+          "name": "fluent-langneg",
+          "version": "0.13.1",
+          "checksum": "7eebbe59450baee8282d71676f3bfed5689aeab00b27545e83e5f14b1195e8b0",
+          "compiled_files": 10
+        },
+        {
+          "name": "fluent-syntax",
+          "version": "0.12.0",
+          "checksum": "54f0d287c53ffd184d04d8677f590f4ac5379785529e5e08b1c8083acdd5c198",
+          "compiled_files": 27
+        },
+        {
+          "name": "hashbrown",
+          "version": "0.17.1",
+          "checksum": "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a",
+          "compiled_files": 50
+        },
+        {
+          "name": "indexmap",
+          "version": "2.14.0",
+          "checksum": "d466e9454f08e4a911e14806c24e16fba1b4c121d1ea474396f396069cf949d9",
+          "compiled_files": 42
+        },
+        {
+          "name": "intl-memoizer",
+          "version": "0.5.3",
+          "checksum": "310da2e345f5eb861e7a07ee182262e94975051db9e4223e909ba90f392f163f",
+          "compiled_files": 9
+        },
+        {
+          "name": "intl_pluralrules",
+          "version": "7.0.2",
+          "checksum": "078ea7b7c29a2b4df841a7f6ac8775ff6074020c6776d48491ce2268e068f972",
+          "compiled_files": 8
+        },
+        {
+          "name": "itoa",
+          "version": "1.0.15",
+          "checksum": "4a5f13b858c8d314ee3e8f639011f7ccefe71f97f96e50151fb991f267928e2c",
+          "compiled_files": 14
+        },
+        {
+          "name": "memchr",
+          "version": "2.8.0",
+          "checksum": "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79",
+          "compiled_files": 57
+        },
+        {
+          "name": "proc-macro2",
+          "version": "1.0.106",
+          "checksum": "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934",
+          "compiled_files": 33
+        },
+        {
+          "name": "quote",
+          "version": "1.0.45",
+          "checksum": "41f2619966050689382d2b44f664f4bc593e129785a36d6ee376ddf37259b924",
+          "compiled_files": 35
+        },
+        {
+          "name": "rustc-hash",
+          "version": "2.1.1",
+          "checksum": "357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d",
+          "compiled_files": 14
+        },
+        {
+          "name": "rustc-stable-hash",
+          "version": "0.1.2",
+          "checksum": "781442f29170c5c93b7185ad559492601acdc71d5bb0706f5868094f45cfcd08",
+          "compiled_files": 17
+        },
+        {
+          "name": "ryu",
+          "version": "1.0.20",
+          "checksum": "28d3b2b1366ec20994f1fd18c3c594f05c5dd4bc44d8bb0c1c632c8d6829481f",
+          "compiled_files": 37
+        },
+        {
+          "name": "self_cell",
+          "version": "1.2.1",
+          "checksum": "16c2f82143577edb4921b71ede051dac62ca3c16084e918bf7b40c96ae10eb33",
+          "compiled_files": 7
+        },
+        {
+          "name": "serde",
+          "version": "1.0.228",
+          "checksum": "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e",
+          "compiled_files": 33
+        },
+        {
+          "name": "serde_core",
+          "version": "1.0.228",
+          "checksum": "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad",
+          "compiled_files": 27
+        },
+        {
+          "name": "serde_derive",
+          "version": "1.0.228",
+          "checksum": "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79",
+          "compiled_files": 36
+        },
+        {
+          "name": "serde_json",
+          "version": "1.0.145",
+          "checksum": "402a6f66d8c709116cf22f558eab210f5a50187f702eb4d7e5ef38d9a7f1c79c",
+          "compiled_files": 88
+        },
+        {
+          "name": "smallvec",
+          "version": "1.15.1",
+          "checksum": "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03",
+          "compiled_files": 19
+        },
+        {
+          "name": "syn",
+          "version": "2.0.117",
+          "checksum": "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99",
+          "compiled_files": 105
+        },
+        {
+          "name": "synstructure",
+          "version": "0.13.2",
+          "checksum": "728a70f3dbaf5bab7f0c4b1ac8d7ae5ea60a4b5549c8a5914361c99147a709d2",
+          "compiled_files": 8
+        },
+        {
+          "name": "thin-vec",
+          "version": "0.2.21",
+          "checksum": "d6a4b9ba8738cb4a4f399d37e266becfd475e75eb73425b87a05a2f2039ba63e",
+          "compiled_files": 11
+        },
+        {
+          "name": "thiserror",
+          "version": "2.0.17",
+          "checksum": "f63587ca0f12b72a0600bcba1d40081f830876000bb46dd2337a3051618f4fc8",
+          "compiled_files": 105
+        },
+        {
+          "name": "thiserror-impl",
+          "version": "2.0.17",
+          "checksum": "3ff15c8ecd7de3849db632e14d18d2571fa09dfc5ed93479bc4485c7a517c913",
+          "compiled_files": 17
+        },
+        {
+          "name": "tinystr",
+          "version": "0.8.4",
+          "checksum": "b1e27c91459209c2986af3dcf603a5a74a4368754ce37414f59acc971167f643",
+          "compiled_files": 22
+        },
+        {
+          "name": "type-map",
+          "version": "0.5.1",
+          "checksum": "cb30dbbd9036155e74adad6812e9898d03ec374946234fbcebd5dfc7b9187b90",
+          "compiled_files": 8
+        },
+        {
+          "name": "unic-langid",
+          "version": "0.9.6",
+          "checksum": "a28ba52c9b05311f4f6e62d5d9d46f094bd6e84cb8df7b3ef952748d752a7d05",
+          "compiled_files": 9
+        },
+        {
+          "name": "unic-langid-impl",
+          "version": "0.9.6",
+          "checksum": "dce1bf08044d4b7a94028c93786f8566047edc11110595914de93362559bc658",
+          "compiled_files": 31
+        },
+        {
+          "name": "unicode-ident",
+          "version": "1.0.24",
+          "checksum": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+          "compiled_files": 26
+        },
+        {
+          "name": "zerofrom",
+          "version": "0.1.6",
+          "checksum": "50cc42e0333e05660c3587f3bf9d0478688e15d870fab3346451ce7f8c9fbea5",
+          "compiled_files": 9
+        },
+        {
+          "name": "zerovec",
+          "version": "0.11.7",
+          "checksum": "94b5c6b5976d66c1d703c4fd17d3f5e43c8cedaacf604961b171adc7130896d8",
+          "compiled_files": 67
+        }
+      ],
+      "source_provenance_sha256": "9d4bf5daae8d4e88ac7cab6cdb3d80f53606947a8fd4d2af25805f3557d1f515"
+    }
+  ],
+  "records": 90387,
+  "format_writer_records": 13022,
+  "full_hasher_records": 2664,
+  "context_cases": 162,
+  "lazy_panic_cases": 72,
+  "lazy_panic_abort_cases": 14,
+  "context_abort_cases": 64,
+  "raw_sha256": "d6f9876de898f8c08c05d87004350cd5e997151c961afb5e60ea5d65412bfb4b",
+  "fixture_sha256": "8b31358592476781182423c3411d2001552e3d0275ec4cfa62c95e530e67a6de",
+  "production_rust_fallback": false,
+  "isolated_go": false,
+  "scope": "Whole unchanged def_id source and genuine reference dependencies. Collection alias completion, final coherent integration and review remain separate pending obligations.",
+  "go_sources": [
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id.go",
+      "sha256": "6f627735df7627e05d3c0ab670b4a693f9a8c81e50bea6695368687aad694d3f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_codec.go",
+      "sha256": "78c09f77cdfa8f14959274c0a5236131dc523282787b309d28d6ed1fe0dff58e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_codec_oracle_test.go",
+      "sha256": "559ced6acf608f6d9d37aa2304038ec5afb03eecc8ecbd26942ab71f91cd108e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_collections.go",
+      "sha256": "29c95e63f8089d977ce1596e82d1efa690f22961d77a359d394b83d89a435534"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_collections_oracle_test.go",
+      "sha256": "f8f01deb314adf13199ad4ef5534f007aa40a3578d538e1a8eda7c111a5563e9"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_context.go",
+      "sha256": "75cf75335613d2fcf89d6760b2fb6a7c33230d72d7cf1d3ead846ce221d27188"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_context_oracle_test.go",
+      "sha256": "4e27b3fee46786a29510948c4ab444e6045b4aa4fe08ea744925cbb0a46f840e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_debug.go",
+      "sha256": "bcd3375c518fb0820902e3fa7aed5b31bdf47fccd7c7a78c68eb4f1383d06d64"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_hash.go",
+      "sha256": "a7486ebc0d79555aded2500fc9f3090721f1be084ba8c6f017de6293fd8aabdc"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_hash_primary.go",
+      "sha256": "4d59fea85674ebb5cf7587d0478204afc4037b7a83b9333c0c266d0294399304"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_hash_primary_test.go",
+      "sha256": "1e272f7256e19ed6d0898cc9db3d6dcd6dbe83cd363c04953908ab23bdda43e7"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_index.go",
+      "sha256": "f6bf5bb60e0af215e4858922f999ae25d93a0f45a475d270f491477fefec1f87"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_indexmap.go",
+      "sha256": "5143fefde34b205e3471cb43bf0d9326e0bc8a195a0d826c880e0ba23bff920d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_indexmap_alias_oracle_test.go",
+      "sha256": "581a1d31473e84dbebdda66747d5caeee7b7a0889b84b604f9b99a3fe0b926b1"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_interval_type_test.go",
+      "sha256": "2c35495b127a3e1e7c01c7cb00bd3ddbf2aa87410d48b6ccfaf55b584474bf55"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_oracle_test.go",
+      "sha256": "f2baf91a4d4ed3c01e491b01326f09a66f6502111a5e76b30b2f898523b1a27d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_panic.go",
+      "sha256": "4420f658b00a2aa5bcbf91eb5f98224f9ae6a6eb0264dc8bb952b69d154fc257"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_panic_metadata_test.go",
+      "sha256": "43737263434cb4e11349292862a5ecaf00c814a00cff463b6269c1ab77f02e3f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_panic_oracle_test.go",
+      "sha256": "60fb31838046d3567902035e1ced3a0722dc76ce72eb257261ea3f6760c14ccb"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_runtime_test.go",
+      "sha256": "ae7447a0fa4f951d168497142d7e7cf91243ffc6cf238b06e89699e2e6e6c37d"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "tools/port-rust-def-id/generate.py",
+      "sha256": "b199389fc667bc2844303631d0e9ecaf8b1d7ee39724755f3e709f4fa4940c35"
+    },
+    {
+      "path": "tools/port-rust-def-id/oracle.rs",
+      "sha256": "39ec49ffab531a5f1677c0fa84e58fccb633ed8ced72f2235042c7cf7bb24caf"
+    },
+    {
+      "path": "tools/port-rust-def-id/context_oracle.rs",
+      "sha256": "c63e452b144017940468d7813007ed8325139a2017ad17a8f23f583e253bd74c"
+    },
+    {
+      "path": "tools/port-rust-def-id/panic_oracle.rs",
+      "sha256": "504e25a4aa38da41f727ff6ea76e0ec41d7a9ede980ef430c9c9d6947fe4e3af"
+    },
+    {
+      "path": "tools/port-rust-def-id/reference-build/Cargo.lock",
+      "sha256": "54a4abba52837d07586d6b2117b094f97f000642825de6f1fd03675eeb12e704"
+    },
+    {
+      "path": "tools/port-rust-def-id/reference-build/Cargo.toml",
+      "sha256": "edcd5393f358fee87db1ce035da06960b9360ad2cca27e62cdee7de5dd7f9701"
+    },
+    {
+      "path": "tools/port-rust-def-id/reference-build/lib.rs",
+      "sha256": "8bdc003cd0747614cb833b05258c7d15b4faf94767aa6a9e955f917b3eb2c60a"
+    },
+    {
+      "path": "tools/port-rust-def-id/reference-build/prepare.py",
+      "sha256": "2f20e9d881e1ca11594d02b4606b997920a0ad56a106170d1a1a25bf21e8f5f6"
+    },
+    {
+      "path": "tools/port-rust-def-id/reference-build/rustc_hashes.Cargo.toml",
+      "sha256": "e5b2cf8e8e318e9e604d25b09b4c6b439600bee59fb6cbbbceb67e6b2725a808"
+    },
+    {
+      "path": "tools/port-rust-def-id/reference-build/rustc_index_macros.Cargo.toml",
+      "sha256": "b7635182558ddf7c85b6bc7af5b716ad0e6eeb0a980367e5d256065e8eb51afa"
+    },
+    {
+      "path": "tools/port-rust-def-id/reference-build/rustc_macros.Cargo.toml",
+      "sha256": "3232e6584194703388fb5db232089fb10d378b99abcf6d3762ca74423a58f519"
+    },
+    {
+      "path": "tools/port-rust-def-id/reference-build/rustc_serialize.Cargo.toml",
+      "sha256": "ea4dc5fc516dbb2f450b662e48620e031a4bad9347f67bc03cbf1e526ec277e2"
+    },
+    {
+      "path": "tools/port-rust-def-id/reference-build/test_prepare.py",
+      "sha256": "448912f92b4ee86dc977f67e4ab76a33bbec4aadf7ff3ce44adcb3a19e2838d0"
+    },
+    {
+      "path": "tools/port-rust-def-id/collections_oracle.rs",
+      "sha256": "ad9a2df1fcd18c26357774d08c85064b443b607870ca0e39d8a38fbfa58bfbc2"
+    }
+  ],
+  "collection_records": 180,
+  "collection_sha256": "d4c1988e174295b25a63f0a0a49a43d5547d195eedf0584fe9df4f6f088a3d93",
+  "collection_go_paths": "actual DefId/LocalDefId alias map/set/entry wrappers, non-Copy value traits, source Vec iterator constructors, Clone/whole-value CloneFrom, post-panic state and destruction"
+}

@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "scripts": 3072,
+  "events": 123168,
+  "profiles": [
+    "d0o0",
+    "d0o1",
+    "d1o0",
+    "d1o1"
+  ],
+  "wrapper_sha256": "ff1002325ddae87489c71a8964a5f809233428d45cbd6bab28f0dc76ccc84e7a",
+  "raw_sha256": "2996603541d80f8e692d8c22edbe997ceb89680e5ec1cce7815a6f67fd1d1814",
+  "gzip_sha256": "2b1a780c3332cd41b77c7b546985d4d63e4e07b2598914d7109820413b5a6ca0",
+  "normalization": "Only original/ copied-source prefix is removed from Metadata.file and generated event name. Every other field, writer C/S call, context flag and state is retained.",
+  "complete": false,
+  "remaining": "Subscriber/loader panic ownership, imported reverse-map, inherited/processing contexts and extra mapping paths remain WIP."
+}

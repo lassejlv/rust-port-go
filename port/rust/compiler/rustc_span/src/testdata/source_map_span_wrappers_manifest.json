@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "records": 2400,
+  "steps": 350400,
+  "profiles": [
+    "d0o0",
+    "d0o1",
+    "d1o0",
+    "d1o1"
+  ],
+  "raw_sha256": "9f7d302349e3f38e918637c1a435c8481a0bf4f4da0fff8ddbf1606a3aef0925",
+  "gzip_sha256": "4c20547b4d2d0bc23bc2afec7bccc2e9afb96b9145c34e2bbc6815f95bb594ca",
+  "wrapper_sha256": "5101d7b8bc76e81e4519415437d11c28c33021b4e995b20718267015684fef43",
+  "scope": "Complete original Span is_visible/in_external_macro/find_ancestor_not_from_extern_macro/within_macro over real SourceMap local/imported metadata and actual local/registered foreign expansion graphs; metavar insertion/read/freeze/substitution, diagnostic_opaque, lazy external source present/absent, SPAN_TRACK and Arc counts."
+}

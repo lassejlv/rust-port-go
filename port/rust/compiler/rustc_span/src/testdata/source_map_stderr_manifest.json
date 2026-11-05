@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "records": 160,
+  "actual_SIGABRT": 80,
+  "raw_sha256": "a3509029c7e1bb4df3ede328f92ddbf1a3d2161304174bb3b9e06bb76f94d78c",
+  "gzip_sha256": "c4a3d2afa1583e005406789dc3b0ac6a830bfdc54c6fbd8b200a218370d6d042",
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "wrapper_sha256": "b7b7d851e4b277a7e6152952e7f1dfbb6f76002b4eb0d0d4351f708c35657744",
+  "ffi_injection_sha256": "3170d48dddbcebce17c5c3f5f3a13113d69625978d06fdf5125dcdcc0dc867fc",
+  "scope": "Actual full SourceMap fatal new_source_file path with safe metadata-only MAX import. Actual SDK eprintln, open/closed stderr plus explicit child-only libc write errno injection incl unknown500; all hook payload/kind/location, fatal marker and runtime/cleanup outcomes. No original source body modified. Only wrapper filename prefix removed; ordinary SDK paths exact. Abort stderr runtime diagnostic text is not signal ABI and stdout hook events are retained."
+}

@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "status": "lib-verbatim-tracing-profile-no-extra-file-credit",
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "profiles": [
+    {
+      "name": "d0o0",
+      "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+      "reference_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078"
+    },
+    {
+      "name": "d0o1",
+      "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+      "reference_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078"
+    },
+    {
+      "name": "d1o0",
+      "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+      "reference_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078"
+    },
+    {
+      "name": "d1o1",
+      "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+      "reference_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078"
+    }
+  ],
+  "records": 192,
+  "actual_metadata": {
+    "2570": {
+      "Name": "event original/compiler/rustc_span/src/lib.rs:2570",
+      "Level": "INFO",
+      "Target": "rustc_span",
+      "ModulePath": "rustc_span",
+      "File": "original/compiler/rustc_span/src/lib.rs",
+      "Line": 2570,
+      "Kind": "event",
+      "Fields": [
+        "message"
+      ]
+    },
+    "2519": {
+      "Name": "event original/compiler/rustc_span/src/lib.rs:2519",
+      "Level": "DEBUG",
+      "Target": "rustc_span",
+      "ModulePath": "rustc_span",
+      "File": "original/compiler/rustc_span/src/lib.rs",
+      "Line": 2519,
+      "Kind": "event",
+      "Fields": [
+        "message"
+      ]
+    },
+    "2546": {
+      "Name": "event original/compiler/rustc_span/src/lib.rs:2546",
+      "Level": "DEBUG",
+      "Target": "rustc_span",
+      "ModulePath": "rustc_span",
+      "File": "original/compiler/rustc_span/src/lib.rs",
+      "Line": 2546,
+      "Kind": "event",
+      "Fields": [
+        "message"
+      ]
+    },
+    "2547": {
+      "Name": "event original/compiler/rustc_span/src/lib.rs:2547",
+      "Level": "DEBUG",
+      "Target": "rustc_span",
+      "ModulePath": "rustc_span",
+      "File": "original/compiler/rustc_span/src/lib.rs",
+      "Line": 2547,
+      "Kind": "event",
+      "Fields": [
+        "message"
+      ]
+    },
+    "2548": {
+      "Name": "event original/compiler/rustc_span/src/lib.rs:2548",
+      "Level": "DEBUG",
+      "Target": "rustc_span",
+      "ModulePath": "rustc_span",
+      "File": "original/compiler/rustc_span/src/lib.rs",
+      "Line": 2548,
+      "Kind": "event",
+      "Fields": [
+        "message"
+      ]
+    }
+  },
+  "native_client_sha256": "9e730e172e278e1fdcec8f70e4cda1e327f3709385aba870aa15b3fbdd26a801",
+  "generator_sha256": "d51c5c46c6b9283522f3b821050c5cb93edc4e161b5788565da92edd59ef9ed1",
+  "reference_tool_inputs_sha256": {
+    "tools/port-rust-span-lib/reference.py": "2094b30a5149056c683edffc6cc4a8d6d6984d81933ecb10c80e5f34c355db9e",
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+  },
+  "raw_sha256": "210cc62381db783bf1aa9f31328a27e7f9df49343038f1184aa09126d5704244",
+  "fixture_sha256": "44daf0c12cd8595198489d8fc660588178734e55e7466c277f80b678c91f4d4c",
+  "scope": "Actual complete unchanged SourceFile lookup with present/unavailablecode, allfive libsites, repeateduse, realtracing subscriber/callsitefiltering/lazy fullmessage render/drop, all4profiles. Metadata Name/File/Target/ModulePath/Line/Fields retained VERBATIM, no observer path rewriting."
+}

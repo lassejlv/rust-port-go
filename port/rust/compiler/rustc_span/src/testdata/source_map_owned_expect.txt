@@ -1,0 +1,8 @@
+cwd:false
+error_debug:true
+debug_local_drop:true
+hook:true:compiler/rustc_span/src/source_map.rs:255:14
+payload:expecting a current working directory to exist: Custom { kind: Other, error: E }
+error_drop:true:true
+loader_drop:true:true
+caught:true:false

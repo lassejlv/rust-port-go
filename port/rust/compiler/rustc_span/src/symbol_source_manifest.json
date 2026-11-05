@@ -1,0 +1,368 @@
+{
+  "schema": 1,
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_version": "1.101.0",
+  "source_files": [
+    {
+      "path": "compiler/rustc_span/src/symbol.rs",
+      "git_blob": "27b585c9e6fbdb566ce77efa9c7a1e06534dd07b",
+      "sha256": "d623770418e98bafe1190ab29635127bf51736684b732531b280c657f4825973",
+      "lines": 3213,
+      "scope": "complete source implementation",
+      "targets": [
+        {
+          "path": "port/rust/compiler/rustc_span/src/symbol.go",
+          "sha256": "0bebb03427a008c668e5e67a0fdc9d554603e39d90dd5f594a0a2f7a96969ad0"
+        },
+        {
+          "path": "port/rust/compiler/rustc_span/src/symbol_predefined.go",
+          "sha256": "91b529e649c7c608a30af87f48178700505bc6d3060d76d6a94d1ceb89c5643d"
+        },
+        {
+          "path": "port/rust/compiler/rustc_span/src/symbol_ident.go",
+          "sha256": "1b814c2d743fb684f4cb5094ee18b03400631d3166fee5ab082021b28388d58e"
+        },
+        {
+          "path": "port/rust/compiler/rustc_span/src/symbol_format.go",
+          "sha256": "a4ac01d65252022b03acfd978aaa2d6783dcf1a82eb8eaccac6b7db0d029b576"
+        },
+        {
+          "path": "port/rust/compiler/rustc_span/src/symbol_context_ord.go",
+          "sha256": "a2f1a713257cd0b7a7446c2cb4f26126a8b1f0c0bcb6964df5531afca49e125d"
+        },
+        {
+          "path": "port/rust/compiler/rustc_span/src/symbol_panic.go",
+          "sha256": "2de5685827acd8dd69dd3b6faa56bd3b3065f888232e1b9ff469efa15d32c121"
+        }
+      ]
+    },
+    {
+      "path": "compiler/rustc_span/src/edit_distance.rs",
+      "git_blob": "416e9daa8fb090222fa37e6dc6577cf0c27994cf",
+      "sha256": "46fd5412ef0bc4d59559bc48a79edd7b11e1045aec881a61ac6386257aa033fe",
+      "lines": 289,
+      "scope": "complete source implementation",
+      "targets": [
+        {
+          "path": "port/rust/compiler/rustc_span/src/edit_distance.go",
+          "sha256": "b7f5b38ac87b8060f3380c779626afe99f5dd4f40323db940c740a9ae09984b9"
+        },
+        {
+          "path": "port/rust/compiler/rustc_span/src/symbol_panic.go",
+          "sha256": "2de5685827acd8dd69dd3b6faa56bd3b3065f888232e1b9ff469efa15d32c121"
+        }
+      ]
+    }
+  ],
+  "source_test_files": [
+    {
+      "path": "compiler/rustc_span/src/symbol/tests.rs",
+      "git_blob": "40602821615f5d6ee5a5d68878877a19efdf404b",
+      "sha256": "ac1832df4d5c4010b08a8026d52afa7b09c9a62c3e27453b2fed9baaa8c7d0e2",
+      "lines": 35,
+      "target": {
+        "path": "port/rust/compiler/rustc_span/src/symbol/tests_test.go",
+        "sha256": "a46f0a1951fcc96ad65a84fb0d2d2f9f1346377a269fc0db787b0e99ad812b02"
+      },
+      "test_declaration_order": [
+        "interner_tests",
+        "interner_get",
+        "without_first_quote_test"
+      ],
+      "go_declaration_order": [
+        "TestInternerTests",
+        "TestInternerGet",
+        "TestWithoutFirstQuote"
+      ],
+      "assertion_sites": 10,
+      "string_literal_sequence": [
+        "dog",
+        "dog",
+        "cat",
+        "cat",
+        "dog",
+        "chicken",
+        "cow",
+        "dog",
+        "cat",
+        "chicken",
+        "cow",
+        "cat",
+        "dog",
+        "'break"
+      ]
+    },
+    {
+      "path": "compiler/rustc_span/src/edit_distance/tests.rs",
+      "git_blob": "8372856c0d304d23b0284c9967d6b3ecfd0aaee9",
+      "sha256": "9a0cf3ade5d4273c2ea6937471f51406e4a7f54a5ca63f0cae4b872824883047",
+      "lines": 82,
+      "target": {
+        "path": "port/rust/compiler/rustc_span/src/edit_distance/tests_test.go",
+        "sha256": "f8437c7d423e212d91391c21945477e96279735e957e56294245870e0705bf49"
+      },
+      "test_declaration_order": [
+        "test_edit_distance",
+        "test_edit_distance_limit",
+        "test_method_name_similarity_score",
+        "test_find_best_match_for_name",
+        "test_precise_algorithm"
+      ],
+      "go_declaration_order": [
+        "TestEditDistance",
+        "TestEditDistanceLimit",
+        "TestMethodNameSimilarityScore",
+        "TestFindBestMatchForName",
+        "TestPreciseAlgorithm"
+      ],
+      "assertion_sites": 26,
+      "string_literal_sequence": [
+        "\nMäry häd ä little lämb\n\nLittle lämb\n",
+        "\nMary häd ä little lämb\n\nLittle lämb\n",
+        "Mary häd ä little lämb\n\nLittle lämb\n",
+        "abc",
+        "abcd",
+        "abc",
+        "abcd",
+        "abc",
+        "xyz",
+        "abc",
+        "xyz",
+        "empty",
+        "is_empty",
+        "shrunk",
+        "rchunks",
+        "abc",
+        "abcd",
+        "a",
+        "abcd",
+        "edf",
+        "eq",
+        "abc",
+        "xyz",
+        "abcdef",
+        "abcdef",
+        "aaab",
+        "aaabc",
+        "aaaa",
+        "aaab",
+        "1111111111",
+        "AAAA",
+        "aaaa",
+        "AAAA",
+        "AAAA",
+        "aaaa",
+        "AAAA",
+        "a_longer_variable_name",
+        "a_variable_longer_name",
+        "a_longer_variable_name",
+        "ab",
+        "ba",
+        "abde",
+        "bcaed",
+        "abde",
+        "bcaed"
+      ]
+    }
+  ],
+  "reference_only": [
+    {
+      "path": "compiler/rustc_macros/src/symbols.rs",
+      "git_blob": "bba6488e2ea73a98f0b82b43f998d7d163d16e30",
+      "sha256": "270cd2d8dfdd91c6de5eaa2ba0e8ceac6af747aef4af2bf0294fd31a95f5a682",
+      "lines": 333,
+      "scope": "unchanged development reference dependency; no whole-file Go port or inventory credit"
+    },
+    {
+      "path": "compiler/rustc_macros/src/symbols/tests.rs",
+      "git_blob": "f0a7a2106be49830567d8b7ab45de23747cadae4",
+      "sha256": "293d98cf14035236b596e2a2ba08c29de0ff4714b10919e80e5d64f3e4cc76b5",
+      "lines": 86,
+      "scope": "unchanged development reference dependency; no whole-file Go port or inventory credit"
+    },
+    {
+      "path": "compiler/rustc_index_macros/src/newtype.rs",
+      "git_blob": "52f1d070718e89665f70169ef352aeef4d8ab7cf",
+      "sha256": "21beb96d3a0d59a3883948415d1d3680b8415a74e9ee4250d0dce40fb47d36d1",
+      "lines": 400,
+      "scope": "unchanged development reference dependency; no whole-file Go port or inventory credit"
+    }
+  ],
+  "partial_std_dependencies": [
+    {
+      "path": "library/core/src/char/methods.rs",
+      "git_blob": "2a7b088070bd614d051c25b0b535c80ed6f2a170",
+      "sha256": "64f399f062cd94ff28dfc05960d9918b72876277b37e189c264137f1d9991d7f"
+    },
+    {
+      "path": "library/core/src/unicode/unicode_data.rs",
+      "git_blob": "84414a72df88c4718d040cb93777d7a4b265e8d4",
+      "sha256": "a7cd0ad1cfe2840e2ca5d95b5798dcfe508917024d31a23d5f56b459d3b14bd7"
+    },
+    {
+      "path": "library/core/src/fmt/mod.rs",
+      "git_blob": "e37df5f3c24466d62127538da912c7130b76ba2c",
+      "sha256": "72cd4601ca6a6b61612d2edbb58d534e1d5c6403cf23d6228d332e372dd716ba"
+    },
+    {
+      "path": "library/alloc/src/str.rs",
+      "git_blob": "7997e0c053dc9c31c5df09b9da17370235faa72a",
+      "sha256": "ffb206d34a46a08731d883bf488187bbb6935be027a154957b13815324486ec1"
+    }
+  ],
+  "go_only_support": [
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_source_test_witness.go",
+      "sha256": "9b93287216af9fe7b721d3c7b8e344841abf37dc494b75c8f2aabb0c09e0b49a"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_bug_runtime_cells.go",
+      "sha256": "8b4a27041dc0d512c2a64f9cd05b209ef571d26bd6446f4fc40f02f4bf5f6ace",
+      "scope": "borrowed source-cell bridge for used macros.rs bug_impl; no macros/std file credit"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_ident.go",
+      "api": "IdentKey/CanonicalKey equality bridge",
+      "upstream_api_credit": false
+    }
+  ],
+  "unicode_go_bindings": [
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_unicode.go",
+      "sha256": "3f660694e68d5fc3644bc5647ae0fc520cc6c1d11bcfc299c273ecad1d55a309"
+    },
+    {
+      "path": "port/support/rustfmt/unicode18.go",
+      "sha256": "e2d3251c139f53548ac92c6f68998ac1bd6685720741725741cf89df0fd9a91f"
+    },
+    {
+      "path": "port/rust/library/core/src/unicode/unicode_data.go",
+      "sha256": "a223e91f91b7a38659cb71cb7f0adfa588c40e8a6dee47859ddc7cc9a60baa59"
+    }
+  ],
+  "validation": {
+    "compiler_commit": "708c94ef093ecc42fb8851e17d8383d999727abc",
+    "nightly_date": "2026-11-04",
+    "unicode_version": [
+      18,
+      0,
+      0
+    ],
+    "cfg_release": "1.101.0",
+    "whole_crate_records": 60984,
+    "operations": {
+      "B": 512,
+      "C": 136,
+      "E": 19,
+      "F": 38324,
+      "G": 27,
+      "H": 960,
+      "I": 3,
+      "J": 8,
+      "K": 12105,
+      "L": 131,
+      "M": 4388,
+      "N": 512,
+      "O": 6,
+      "P": 64,
+      "R": 2204,
+      "U": 9,
+      "V": 1521,
+      "W": 25,
+      "X": 20,
+      "Z": 10
+    },
+    "original_rust_span_tests": 43,
+    "owned_context_abort_cases": 2,
+    "edit_distance_records": 53248,
+    "edit_distance_profiles": 4,
+    "unicode_scalars": 1112064,
+    "unicode_writer_casing_blocks": 272,
+    "generated_named_constants": 2359,
+    "predefined_profiles": 6,
+    "original_macro_tests": 4
+  },
+  "public_trait_boundaries": [
+    "ContextOrd<E> consumes arbitrary owned E and field glue under current caller metadata before returning noncapturing comparison function; active session supplied at invocation.",
+    "Hash supports required raw-write/finish contract plus every inherited/overridden write_u32 path; hash_slice retains the default element loop.",
+    "Symbol/ByteSymbol stable hashing uses complete caller context trait and actual concrete stable hasher.",
+    "Ident codecs delegate exact Name then Span operations through complete SpanEncoder/SpanDecoder.",
+    "Ident primary AtLocationCell and selected internal cells preserve the same immutable caller-location cell through diagnostic callback and panic hook; scalar At remains a convenience.",
+    "Source callbacks use typed Context.PanicAt/PanicFormattedAt for Rust processing-panic timing; raw Go callback-local defers/recover retain host semantics."
+  ],
+  "representation": "Symbol/ByteSymbol are checked four-byte indices; generic Go Option is not advertised as the Rust niche ABI. Ident builtin Go equality is not source PartialEq; Equal/Hash/CanonicalKey preserve the source key.",
+  "license": "Rust project MIT OR Apache-2.0; existing core Unicode data retains its Unicode3 license and notice.",
+  "inventory": "Parent main ledger owns completion credit; this bounded manifest does not grant whole macro/std/dependency/project credit.",
+  "storage_borrow_followup": {
+    "manifest": {
+      "path": "tools/port-rust-symbol/borrow-validation.json",
+      "sha256": "2add436194d983e72f49911e850e6e8a865222acfe703b641fb2145d82d2c7ba"
+    },
+    "tests": {
+      "path": "port/rust/compiler/rustc_span/src/symbol_borrow_test.go",
+      "sha256": "461babf492207af36c08f118c07688ab552f146f3c9b9cefca2bd80f8e4d48bc"
+    },
+    "fixture": {
+      "path": "port/rust/compiler/rustc_span/src/testdata/symbol_borrows.txt",
+      "sha256": "0f48537c25cd26bcb07cf3cff51a66e66e47326b8cd9578b5000710cab0e31ff"
+    },
+    "observations_per_profile": 7,
+    "profiles": 4,
+    "scope": "Fresh interner storage, occupied and cross-kind borrows, static prefill and STDLIB_STABLE_CRATES storage; no cross-language address or allocator ABI claim.",
+    "current_runtime_comparator": "No-context entry scrubs borrowed Runtime metadata; explicit entry uses current caller scope, preserving inherited panic flags."
+  },
+  "ordinary_panic_contract": {
+    "manifest": {
+      "path": "tools/port-rust-symbol/panic/manifest.json",
+      "sha256": "f7bc535ed5038068979047e8e3e88f029615d8256efe338e581d133e9e1e04bc"
+    },
+    "tests": {
+      "path": "port/rust/compiler/rustc_span/src/symbol_panic_contract_test.go",
+      "sha256": "f6286480e3f5741013b126827781622e33756f758cdb6171c285563e4e10fc8c"
+    },
+    "constructor_profile_tests": {
+      "path": "port/rust/compiler/rustc_span/src/symbol_panic_location_test.go",
+      "sha256": "8e2b6f7360053b6412c8ad3e044e5140d5f01166942675f1b089c3247ac63962"
+    },
+    "borrowed_bug_impl": {
+      "path": "port/rust/compiler/rustc_span/src/lib_bug_runtime_cells.go",
+      "sha256": "8b4a27041dc0d512c2a64f9cd05b209ef571d26bd6446f4fc40f02f4bf5f6ace"
+    },
+    "fixture": {
+      "path": "port/rust/compiler/rustc_span/src/testdata/symbol_panic.jsonl.gz",
+      "sha256": "b3ac84aeccb924c9f44c0cdd3e94130a19e12ae00f5009354b6a4f6fe08fc733"
+    },
+    "native_observations": 660,
+    "retained_rows": 177,
+    "abort_observations": 192,
+    "arithmetic_profiles": 4,
+    "runtime_profile_variants": 8,
+    "locations": "Verbatim locations observed from the actual selected whole-crate/native caller; semantic dictionaries remain unlocated when absent. Root Ident diagnostic projection profile is retained separately.",
+    "payloads": "Generated index/clamp/TLS/arithmetic are static_str; prefill/indexing/RawLifetime/ToString fallback are owned_string; emitted compiler bugs retain ExplicitBug opaque marker.",
+    "context_ord": "Owned E borrows current operation metadata and actual mutable cell; field Drop observes body mutations before returning the noncapturing comparator, invoked under two later actual sessions.",
+    "constructor_cleanup_reference": "tools/port-rust-span-lib/native_session_inputs.rs validates actual consumed SourceMapInputs cleanup after duplicate prefill panic; owner proof stays separate and receives no extra credit here.",
+    "producer_portability": {
+      "reference_adapter": {
+        "path": "tools/port-rust-symbol/symbol_reference.py",
+        "sha256": "1e783896f57c6fb9d68286cfade47980aeee9996e6d0240ef71dc824e95d4855"
+      },
+      "selector_tests": {
+        "path": "port/rust/compiler/rustc_span/src/symbol_panic_evidence_test.go",
+        "sha256": "3826b84d0c064cebc8563efa897486b6550cfdc587b167833e39f50674f8aa50"
+      },
+      "verification_tests": [
+        {
+          "path": "tools/port-rust-symbol/test_reference.py",
+          "sha256": "775b8e1161a771c40dda0bab32de0b81b9bca0bba68c8e195f18ddd41ea54a64"
+        },
+        {
+          "path": "tools/port-rust-symbol/panic/test_portability.py",
+          "sha256": "01504844c7c5f5bc4993ae948e58f08f1ffd405382574df92e15de63d90289ac"
+        }
+      ],
+      "selection": "FERRUGO_SYMBOL_PANIC_PROFILE_DIR explicitly selects a bounded, source-bound native producer bundle in parent and abort children; missing or corrupt selections fail without fallback.",
+      "verification": "All whole-crate Symbol clients invoke complete verification for every needed profile, including --prepared; requested cached profiles select flags only.",
+      "filenames": "Historical and fresh producer filenames remain verbatim; CI generates and retains an environment-specific profile instead of cross-host absolute-path comparison."
+    }
+  }
+}

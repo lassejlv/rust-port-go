@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "records": 64,
+  "actual_SIGABRT": 16,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "raw_sha256": "7f483684b6cd558b5613bdc47c0d7cc6fc386b48a070955d64bf50e45bc7cc0f",
+  "gzip_sha256": "7e29026ac97f41d083eaad1781679454306ff082990cb6c7b6c6992b03e814d3",
+  "wrapper_sha256": "3132c86afecd0899009c564d5f999caf9eb45d9d3d58fa7a02c2ea27eec2405b",
+  "scope": "Entire unchanged analyzer include with actual full rustc_span Pos/MultiByteChar/operators. Native source include uses explicit compiler remap profile analyzer-original; no posthoc source-location normalization. Wrapper filename prefix alone removed. Assert-scan and primitive overflow payload/kind/location, partial vectors and normal/inherited/processing abort context."
+}

@@ -1,0 +1,983 @@
+{
+  "schema": 1,
+  "complete": false,
+  "purpose": "Review inventory of every original source region and explicit function plus generated/derived trait surface. Presence and bindings are not a behavioral equivalence proof or acceptance decision.",
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source": {
+    "path": "compiler/rustc_span/src/hygiene.rs",
+    "sha256": "86a49903b158f4547665773e03d83791a819f60fac616fd413ffdeca2d1471da",
+    "lines": 1766,
+    "explicit_functions": 113
+  },
+  "newtype_macro": {
+    "path": "compiler/rustc_index_macros/src/newtype.rs",
+    "sha256": "21beb96d3a0d59a3883948415d1d3680b8415a74e9ee4250d0dce40fb47d36d1"
+  },
+  "traits": {
+    "SyntaxContext": [
+      "Clone",
+      "Copy",
+      "Eq",
+      "PartialEq",
+      "Hash",
+      "Debug",
+      "Default",
+      "Idx",
+      "Add<usize>",
+      "AddAssign<usize>",
+      "From<u32/usize>",
+      "Into<u32/usize>",
+      "StableHash",
+      "!Ord",
+      "!PartialOrd"
+    ],
+    "ExpnIndex": [
+      "Clone",
+      "Copy",
+      "Eq",
+      "PartialEq",
+      "Hash",
+      "Debug",
+      "Idx",
+      "Add<usize>",
+      "AddAssign<usize>",
+      "From<u32/usize>",
+      "Into<u32/usize>",
+      "Ord",
+      "PartialOrd",
+      "Step"
+    ],
+    "LocalExpnId": [
+      "Clone",
+      "Copy",
+      "Eq",
+      "PartialEq",
+      "Hash",
+      "Debug",
+      "Default",
+      "Idx",
+      "Add<usize>",
+      "AddAssign<usize>",
+      "From<u32/usize>",
+      "Into<u32/usize>",
+      "StableHash",
+      "Encodable",
+      "Decodable",
+      "!Ord",
+      "!PartialOrd"
+    ],
+    "DecodedSyntaxContext": [
+      "Clone",
+      "Copy",
+      "Eq",
+      "PartialEq",
+      "Hash",
+      "Debug",
+      "Idx",
+      "Add<usize>",
+      "AddAssign<usize>",
+      "From<u32/usize>",
+      "Into<u32/usize>",
+      "Encodable",
+      "Decodable"
+    ],
+    "SyntaxContextData": [
+      "Clone",
+      "Copy",
+      "Debug"
+    ],
+    "SyntaxContextKey / (ExpnId, Transparency)": [
+      "Clone",
+      "Copy",
+      "PartialEq",
+      "Eq",
+      "Hash",
+      "Debug",
+      "Encodable",
+      "Decodable",
+      "StableHash"
+    ],
+    "ExpnId": [
+      "Clone",
+      "Copy",
+      "PartialEq",
+      "Eq",
+      "Hash",
+      "Debug",
+      "StableHash"
+    ],
+    "ExpnHash": [
+      "Clone",
+      "Copy",
+      "PartialEq",
+      "Eq",
+      "Hash",
+      "Debug",
+      "Encodable",
+      "Decodable",
+      "StableHash",
+      "ContextOrd<E>"
+    ],
+    "Transparency": [
+      "Clone",
+      "Copy",
+      "PartialEq",
+      "Eq",
+      "PartialOrd",
+      "Hash",
+      "Debug",
+      "Encodable",
+      "Decodable",
+      "StableHash"
+    ],
+    "HygieneRemappingResults<K,O>": [
+      "Default"
+    ],
+    "HygieneData": [
+      "Debug"
+    ],
+    "ExpnData": [
+      "Clone",
+      "Debug",
+      "Encodable",
+      "Decodable",
+      "StableHash",
+      "!PartialEq",
+      "!Hash"
+    ],
+    "ExpnKind": [
+      "Clone",
+      "Debug",
+      "PartialEq",
+      "Encodable",
+      "Decodable",
+      "StableHash"
+    ],
+    "MacroKind": [
+      "Clone",
+      "Copy",
+      "PartialEq",
+      "Eq",
+      "PartialOrd",
+      "Ord",
+      "Encodable",
+      "Decodable",
+      "Hash",
+      "Debug",
+      "StableHash"
+    ],
+    "AstPass": [
+      "Clone",
+      "Copy",
+      "Debug",
+      "PartialEq",
+      "Encodable",
+      "Decodable",
+      "StableHash"
+    ],
+    "DesugaringKind": [
+      "Clone",
+      "Copy",
+      "PartialEq",
+      "Debug",
+      "Encodable",
+      "Decodable",
+      "StableHash"
+    ],
+    "HygieneEncodeContext": [
+      "Default"
+    ],
+    "HygieneDecodeContext": [
+      "Default"
+    ]
+  },
+  "regions": [
+    {
+      "source_lines": [
+        1,
+        51
+      ],
+      "purpose": "module documentation and imports",
+      "source_functions": [],
+      "go_files": {},
+      "native_suites": []
+    },
+    {
+      "source_lines": [
+        52,
+        111
+      ],
+      "purpose": "SyntaxContext, SyntaxContextKey, SyntaxContextData and ExpnIndex",
+      "source_functions": [
+        {
+          "line": 89,
+          "declaration": "fn root() -> SyntaxContextData {"
+        },
+        {
+          "line": 100,
+          "declaration": "fn key(&self) -> SyntaxContextKey {"
+        }
+      ],
+      "go_files": {
+        "port/rust/compiler/rustc_span/src/hygiene.go": "de2e5c943179e56a641f839287a60492701b7c36c8b5550652c3bb00155057f7",
+        "port/rust/compiler/rustc_span/src/hygiene_index.go": "ddb22b12e8a53b31f8abbd5d797ffa0bbe0e01a0a5c0a5f4f6a6596ec1579e8c",
+        "port/rust/compiler/rustc_span/src/hygiene_data.go": "cc8545a2beeebd7f45e808422b2fc129497cc84f12f66d08e3227e3930515a11",
+        "port/rust/compiler/rustc_span/src/hygiene_tuple.go": "1bfc808312dbb6c8fe0f7f8ad0d44ed06b9d86bff15239dd8228bb39923e39bd",
+        "port/rust/compiler/rustc_span/src/hygiene_debug.go": "7da022cfa479f305f367e2b5cf6b936b245603d57b0c5ada3bb65a54cc2453c8",
+        "port/rust/compiler/rustc_span/src/hygiene_hash_ref.go": "0fd9216bde06d2ab9d136421c7be7a6eb2bb7d4f34c7bb4f8213baf404a73b9a",
+        "port/rust/compiler/rustc_span/src/hygiene_order.go": "8d3df8a0852c19c9d186347b05955159d2b334f792cee2ab2fd15503fc6acbab"
+      },
+      "native_suites": [
+        "core",
+        "format",
+        "hash",
+        "order",
+        "owned"
+      ]
+    },
+    {
+      "source_lines": [
+        112,
+        177
+      ],
+      "purpose": "ExpnId, ExpnHash and consumed ContextOrd context",
+      "source_functions": [
+        {
+          "line": 119,
+          "declaration": "fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {"
+        },
+        {
+          "line": 143,
+          "declaration": "fn stable_cmp_with_context(_context: E) -> impl FnMut(&Self, &Self) -> std::cmp::Ordering {"
+        },
+        {
+          "line": 152,
+          "declaration": "pub fn stable_crate_id(self) -> StableCrateId {"
+        },
+        {
+          "line": 160,
+          "declaration": "pub fn local_hash(self) -> Hash64 {"
+        },
+        {
+          "line": 165,
+          "declaration": "pub fn is_root(self) -> bool {"
+        },
+        {
+          "line": 171,
+          "declaration": "fn new(stable_crate_id: StableCrateId, local_hash: Hash64) -> ExpnHash {"
+        }
+      ],
+      "go_files": {
+        "port/rust/compiler/rustc_span/src/hygiene_types.go": "3e64687df025e9ca88edc9f0ceae60e087943d69e9e890a1c177eedf0cc4bacc",
+        "port/rust/compiler/rustc_span/src/hygiene_context_ord.go": "064445ef847de604ec5694b1c6a4fc8c24abebee8e36699d3547edbfdad47103",
+        "port/rust/compiler/rustc_span/src/hygiene_codec.go": "8a78f7ffb4d6b6e81dddc32e12d9186bbff60c764a3e7882140513913da8ae61",
+        "port/rust/compiler/rustc_span/src/hygiene_debug.go": "7da022cfa479f305f367e2b5cf6b936b245603d57b0c5ada3bb65a54cc2453c8",
+        "port/rust/compiler/rustc_span/src/hygiene_hash_ref.go": "0fd9216bde06d2ab9d136421c7be7a6eb2bb7d4f34c7bb4f8213baf404a73b9a"
+      },
+      "native_suites": [
+        "core",
+        "format",
+        "codec",
+        "hash",
+        "owned"
+      ]
+    },
+    {
+      "source_lines": [
+        178,
+        201
+      ],
+      "purpose": "Transparency variants, fallback and derives",
+      "source_functions": [
+        {
+          "line": 197,
+          "declaration": "pub fn fallback(macro_rules: bool) -> Self {"
+        }
+      ],
+      "go_files": {
+        "port/rust/compiler/rustc_span/src/hygiene_types.go": "3e64687df025e9ca88edc9f0ceae60e087943d69e9e890a1c177eedf0cc4bacc",
+        "port/rust/compiler/rustc_span/src/hygiene_drop.go": "eed911e80f35b5d1d9e421a9c137123b9c22f6438595694ec67c7478b045c00f",
+        "port/rust/compiler/rustc_span/src/hygiene_codec.go": "8a78f7ffb4d6b6e81dddc32e12d9186bbff60c764a3e7882140513913da8ae61",
+        "port/rust/compiler/rustc_span/src/hygiene_debug.go": "7da022cfa479f305f367e2b5cf6b936b245603d57b0c5ada3bb65a54cc2453c8",
+        "port/rust/compiler/rustc_span/src/hygiene_hash_ref.go": "0fd9216bde06d2ab9d136421c7be7a6eb2bb7d4f34c7bb4f8213baf404a73b9a",
+        "port/rust/compiler/rustc_span/src/hygiene_order.go": "8d3df8a0852c19c9d186347b05955159d2b334f792cee2ab2fd15503fc6acbab"
+      },
+      "native_suites": [
+        "format",
+        "codec",
+        "invalid_codec",
+        "hash",
+        "order"
+      ]
+    },
+    {
+      "source_lines": [
+        202,
+        276
+      ],
+      "purpose": "LocalExpnId constructors, accessors, allocation and mutation",
+      "source_functions": [
+        {
+          "line": 207,
+          "declaration": "fn from_raw(idx: ExpnIndex) -> LocalExpnId {"
+        },
+        {
+          "line": 212,
+          "declaration": "pub fn as_raw(self) -> ExpnIndex {"
+        },
+        {
+          "line": 216,
+          "declaration": "pub fn fresh_empty() -> LocalExpnId {"
+        },
+        {
+          "line": 225,
+          "declaration": "pub fn fresh(mut expn_data: ExpnData, hcx: impl StableHashCtxt) -> LocalExpnId {"
+        },
+        {
+          "line": 239,
+          "declaration": "pub fn expn_data(self) -> ExpnData {"
+        },
+        {
+          "line": 244,
+          "declaration": "pub fn to_expn_id(self) -> ExpnId {"
+        },
+        {
+          "line": 249,
+          "declaration": "pub fn set_expn_data(self, mut expn_data: ExpnData, hcx: impl StableHashCtxt) {"
+        },
+        {
+          "line": 264,
+          "declaration": "pub fn is_descendant_of(self, ancestor: LocalExpnId) -> bool {"
+        },
+        {
+          "line": 272,
+          "declaration": "pub fn expansion_cause(self) -> Option<Span> {"
+        }
+      ],
+      "go_files": {
+        "port/rust/compiler/rustc_span/src/hygiene_index.go": "ddb22b12e8a53b31f8abbd5d797ffa0bbe0e01a0a5c0a5f4f6a6596ec1579e8c",
+        "port/rust/compiler/rustc_span/src/hygiene_expn.go": "feaee59e294dec01c154329943d2a830242f66fcd1694e4e89b8b0f1bcf9ca70"
+      },
+      "native_suites": [
+        "core",
+        "graph",
+        "owned"
+      ]
+    },
+    {
+      "source_lines": [
+        277,
+        355
+      ],
+      "purpose": "ExpnId lookup, ancestry and expansion cause",
+      "source_functions": [
+        {
+          "line": 280,
+          "declaration": "pub const fn root() -> ExpnId {"
+        },
+        {
+          "line": 285,
+          "declaration": "pub fn expn_hash(self) -> ExpnHash {"
+        },
+        {
+          "line": 290,
+          "declaration": "pub fn from_hash(hash: ExpnHash) -> Option<ExpnId> {"
+        },
+        {
+          "line": 295,
+          "declaration": "pub fn as_local(self) -> Option<LocalExpnId> {"
+        },
+        {
+          "line": 301,
+          "declaration": "pub fn expect_local(self) -> LocalExpnId {"
+        },
+        {
+          "line": 306,
+          "declaration": "pub fn expn_data(self) -> ExpnData {"
+        },
+        {
+          "line": 311,
+          "declaration": "pub fn is_descendant_of(self, ancestor: ExpnId) -> bool {"
+        },
+        {
+          "line": 325,
+          "declaration": "pub fn outer_expn_is_descendant_of(self, ctxt: SyntaxContext) -> bool {"
+        },
+        {
+          "line": 337,
+          "declaration": "pub fn expansion_cause(mut self) -> Option<Span> {"
+        }
+      ],
+      "go_files": {
+        "port/rust/compiler/rustc_span/src/hygiene_types.go": "3e64687df025e9ca88edc9f0ceae60e087943d69e9e890a1c177eedf0cc4bacc",
+        "port/rust/compiler/rustc_span/src/hygiene_expn.go": "feaee59e294dec01c154329943d2a830242f66fcd1694e4e89b8b0f1bcf9ca70"
+      },
+      "native_suites": [
+        "core",
+        "graph",
+        "owned"
+      ]
+    },
+    {
+      "source_lines": [
+        356,
+        500
+      ],
+      "purpose": "Remapping results, generic remapper trait, defaults and concrete remappers",
+      "source_functions": [
+        {
+          "line": 368,
+          "declaration": "pub fn map_id(&self, idx: TKey) -> TRemappedKey {"
+        },
+        {
+          "line": 385,
+          "declaration": "fn stable_hash(&self, t: T, hcx: &mut impl StableHashCtxt, hasher: &mut StableHasher);"
+        },
+        {
+          "line": 386,
+          "declaration": "fn len(&self) -> usize;"
+        },
+        {
+          "line": 387,
+          "declaration": "fn first_non_det_index_mut(&mut self) -> &mut Option<T>;"
+        },
+        {
+          "line": 388,
+          "declaration": "fn first_non_det_index(&self) -> u32;"
+        },
+        {
+          "line": 390,
+          "declaration": "fn commit_end_of_determinism(&mut self)"
+        },
+        {
+          "line": 400,
+          "declaration": "fn remapping_results<TRemappedKey>("
+        },
+        {
+          "line": 435,
+          "declaration": "pub fn with<T>(f: impl FnOnce(SyntaxContextRemapper<'_>) -> T) -> T {"
+        },
+        {
+          "line": 442,
+          "declaration": "pub fn with<T>(f: impl FnOnce(LocalExpnIdRemapper<'_>) -> T) -> T {"
+        },
+        {
+          "line": 449,
+          "declaration": "fn len(&self) -> usize {"
+        },
+        {
+          "line": 454,
+          "declaration": "fn first_non_det_index_mut(&mut self) -> &mut Option<SyntaxContext> {"
+        },
+        {
+          "line": 459,
+          "declaration": "fn first_non_det_index(&self) -> u32 {"
+        },
+        {
+          "line": 464,
+          "declaration": "fn stable_hash("
+        },
+        {
+          "line": 476,
+          "declaration": "fn len(&self) -> usize {"
+        },
+        {
+          "line": 481,
+          "declaration": "fn first_non_det_index_mut(&mut self) -> &mut Option<LocalExpnId> {"
+        },
+        {
+          "line": 486,
+          "declaration": "fn first_non_det_index(&self) -> u32 {"
+        },
+        {
+          "line": 491,
+          "declaration": "fn stable_hash("
+        }
+      ],
+      "go_files": {
+        "port/rust/compiler/rustc_span/src/hygiene_remap.go": "a8760c158841affa6ea7421d15f4cda587a4b4debebed6cc30e1d5a3b5af6e82",
+        "port/rust/compiler/rustc_span/src/hygiene_remap_ref.go": "801bbeac584ba98f1469df38c142d3832024cba4807d777de2ba61197ccfdaf3",
+        "port/rust/compiler/rustc_span/src/hygiene_context_ord.go": "064445ef847de604ec5694b1c6a4fc8c24abebee8e36699d3547edbfdad47103"
+      },
+      "native_suites": [
+        "remap",
+        "owned",
+        "commit"
+      ]
+    },
+    {
+      "source_lines": [
+        501,
+        784
+      ],
+      "purpose": "HygieneData storage, construction, closure lock, private lookup and chain algorithms",
+      "source_functions": [
+        {
+          "line": 526,
+          "declaration": "pub(crate) fn new(edition: Edition) -> Self {"
+        },
+        {
+          "line": 554,
+          "declaration": "fn with<R>(f: impl FnOnce(&mut HygieneData) -> R) -> R {"
+        },
+        {
+          "line": 559,
+          "declaration": "fn expn_hash(&self, expn_id: ExpnId) -> ExpnHash {"
+        },
+        {
+          "line": 567,
+          "declaration": "fn local_expn_data(&self, expn_id: LocalExpnId) -> &ExpnData {"
+        },
+        {
+          "line": 571,
+          "declaration": "fn expn_data(&self, expn_id: ExpnId) -> &ExpnData {"
+        },
+        {
+          "line": 579,
+          "declaration": "fn is_descendant_of(&self, mut expn_id: ExpnId, ancestor: ExpnId) -> bool {"
+        },
+        {
+          "line": 599,
+          "declaration": "fn normalize_to_macros_2_0(&self, ctxt: SyntaxContext) -> SyntaxContext {"
+        },
+        {
+          "line": 604,
+          "declaration": "fn normalize_to_macro_rules(&self, ctxt: SyntaxContext) -> SyntaxContext {"
+        },
+        {
+          "line": 610,
+          "declaration": "fn outer_expn(&self, ctxt: SyntaxContext) -> ExpnId {"
+        },
+        {
+          "line": 616,
+          "declaration": "fn outer_mark(&self, ctxt: SyntaxContext) -> (ExpnId, Transparency) {"
+        },
+        {
+          "line": 622,
+          "declaration": "fn parent_ctxt(&self, ctxt: SyntaxContext) -> SyntaxContext {"
+        },
+        {
+          "line": 626,
+          "declaration": "fn remove_mark(&self, ctxt: &mut SyntaxContext) -> (ExpnId, Transparency) {"
+        },
+        {
+          "line": 632,
+          "declaration": "fn marks(&self, mut ctxt: SyntaxContext) -> Vec<(ExpnId, Transparency)> {"
+        },
+        {
+          "line": 643,
+          "declaration": "fn walk_chain(&self, mut span: Span, to: SyntaxContext) -> Span {"
+        },
+        {
+          "line": 658,
+          "declaration": "fn walk_chain_collapsed(&self, mut span: Span, to: Span) -> Span {"
+        },
+        {
+          "line": 680,
+          "declaration": "fn adjust(&self, ctxt: &mut SyntaxContext, expn_id: ExpnId) -> Option<ExpnId> {"
+        },
+        {
+          "line": 688,
+          "declaration": "fn apply_mark("
+        },
+        {
+          "line": 727,
+          "declaration": "fn alloc_ctxt("
+        }
+      ],
+      "go_files": {
+        "port/rust/compiler/rustc_span/src/hygiene_data.go": "cc8545a2beeebd7f45e808422b2fc129497cc84f12f66d08e3227e3930515a11",
+        "port/rust/compiler/rustc_span/src/hygiene_context.go": "26764364b66c1adb0e7e22d9b3e2e6dcbf425162284f368b5fb2f396b124e56c",
+        "port/rust/compiler/rustc_span/src/hygiene_inspect.go": "65282db0e02fb09b14d59c9743296eae35a2a10eb10977d311c0aaaaff9dc82d",
+        "port/rust/compiler/rustc_span/src/hygiene_drop.go": "eed911e80f35b5d1d9e421a9c137123b9c22f6438595694ec67c7478b045c00f",
+        "port/rust/compiler/rustc_span/src/hygiene_tracing.go": "1e796a7f3dbf64dc736755e1e6c9356e7bcf779b30bb3a746d09c09c4842bd47"
+      },
+      "native_suites": [
+        "core",
+        "graph",
+        "tracing",
+        "owned"
+      ]
+    },
+    {
+      "source_lines": [
+        785,
+        860
+      ],
+      "purpose": "walk helpers, dollar-crate resolver and compact/verbose registry Debug",
+      "source_functions": [
+        {
+          "line": 785,
+          "declaration": "pub fn walk_chain(span: Span, to: SyntaxContext) -> Span {"
+        },
+        {
+          "line": 794,
+          "declaration": "pub fn walk_chain_collapsed(span: Span, to: Span) -> Span {"
+        },
+        {
+          "line": 798,
+          "declaration": "pub fn update_dollar_crate_names(mut get_name: impl FnMut(SyntaxContext) -> Symbol) {"
+        },
+        {
+          "line": 822,
+          "declaration": "pub fn debug_hygiene_data(verbose: bool) -> String {"
+        }
+      ],
+      "go_files": {
+        "port/rust/compiler/rustc_span/src/hygiene_context.go": "26764364b66c1adb0e7e22d9b3e2e6dcbf425162284f368b5fb2f396b124e56c",
+        "port/rust/compiler/rustc_span/src/hygiene_expn.go": "feaee59e294dec01c154329943d2a830242f66fcd1694e4e89b8b0f1bcf9ca70",
+        "port/rust/compiler/rustc_span/src/hygiene_inspect.go": "65282db0e02fb09b14d59c9743296eae35a2a10eb10977d311c0aaaaff9dc82d"
+      },
+      "native_suites": [
+        "core",
+        "graph",
+        "format",
+        "tracing",
+        "owned"
+      ]
+    },
+    {
+      "source_lines": [
+        861,
+        1096
+      ],
+      "purpose": "public SyntaxContext resolution, mutation, root fast paths and external-macro checks",
+      "source_functions": [
+        {
+          "line": 863,
+          "declaration": "pub const fn root() -> SyntaxContext {"
+        },
+        {
+          "line": 868,
+          "declaration": "pub const fn is_root(self) -> bool {"
+        },
+        {
+          "line": 874,
+          "declaration": "pub fn apply_mark(self, expn_id: ExpnId, transparency: Transparency) -> SyntaxContext {"
+        },
+        {
+          "line": 895,
+          "declaration": "pub fn remove_mark(&mut self) -> ExpnId {"
+        },
+        {
+          "line": 900,
+          "declaration": "pub fn marks(self) -> Vec<(ExpnId, Transparency)> {"
+        },
+        {
+          "line": 932,
+          "declaration": "pub fn adjust(&mut self, expn_id: ExpnId) -> Option<ExpnId> {"
+        },
+        {
+          "line": 938,
+          "declaration": "pub fn normalize_to_macros_2_0_and_adjust(&mut self, expn_id: ExpnId) -> Option<ExpnId> {"
+        },
+        {
+          "line": 971,
+          "declaration": "pub fn glob_adjust(&mut self, expn_id: ExpnId, glob_span: Span) -> Option<Option<ExpnId>> {"
+        },
+        {
+          "line": 995,
+          "declaration": "pub fn reverse_glob_adjust("
+        },
+        {
+          "line": 1019,
+          "declaration": "pub fn hygienic_eq(self, other: SyntaxContext, expn_id: ExpnId) -> bool {"
+        },
+        {
+          "line": 1028,
+          "declaration": "pub fn normalize_to_macros_2_0(self) -> SyntaxContext {"
+        },
+        {
+          "line": 1037,
+          "declaration": "pub fn normalize_to_macro_rules(self) -> SyntaxContext {"
+        },
+        {
+          "line": 1047,
+          "declaration": "pub fn outer_expn(self) -> ExpnId {"
+        },
+        {
+          "line": 1054,
+          "declaration": "pub fn outer_expn_data(self) -> ExpnData {"
+        },
+        {
+          "line": 1059,
+          "declaration": "pub(crate) fn dollar_crate_name(self) -> Symbol {"
+        },
+        {
+          "line": 1064,
+          "declaration": "pub fn edition(self) -> Edition {"
+        },
+        {
+          "line": 1072,
+          "declaration": "pub fn in_external_macro(self, sm: &SourceMap) -> bool {"
+        }
+      ],
+      "go_files": {
+        "port/rust/compiler/rustc_span/src/hygiene.go": "de2e5c943179e56a641f839287a60492701b7c36c8b5550652c3bb00155057f7",
+        "port/rust/compiler/rustc_span/src/hygiene_context.go": "26764364b66c1adb0e7e22d9b3e2e6dcbf425162284f368b5fb2f396b124e56c",
+        "port/rust/compiler/rustc_span/src/hygiene_external.go": "78a1eb1baf93234a8c345f8561879d6b31cc35f9c10d2e694630023dadafdd75"
+      },
+      "native_suites": [
+        "core",
+        "graph",
+        "owned"
+      ]
+    },
+    {
+      "source_lines": [
+        1097,
+        1117
+      ],
+      "purpose": "Span::mark_with_reason and consumed StableHashCtxt",
+      "source_functions": [
+        {
+          "line": 1100,
+          "declaration": "pub fn mark_with_reason("
+        }
+      ],
+      "go_files": {
+        "port/rust/compiler/rustc_span/src/hygiene_span.go": "33a54de44aedef3212d73da62e0e620293bb9f35ca9c2d2e014763e236778060"
+      },
+      "native_suites": [
+        "core",
+        "owned"
+      ]
+    },
+    {
+      "source_lines": [
+        1118,
+        1265
+      ],
+      "purpose": "ExpnData constructors, private disambiguator, owned Arc and derives",
+      "source_functions": [
+        {
+          "line": 1182,
+          "declaration": "pub fn new("
+        },
+        {
+          "line": 1214,
+          "declaration": "pub fn default("
+        },
+        {
+          "line": 1238,
+          "declaration": "pub fn allow_unstable("
+        },
+        {
+          "line": 1253,
+          "declaration": "pub fn is_root(&self) -> bool {"
+        },
+        {
+          "line": 1258,
+          "declaration": "fn hash_expn(&self, hcx: &mut impl StableHashCtxt) -> Hash64 {"
+        }
+      ],
+      "go_files": {
+        "port/rust/compiler/rustc_span/src/hygiene_types.go": "3e64687df025e9ca88edc9f0ceae60e087943d69e9e890a1c177eedf0cc4bacc",
+        "port/rust/compiler/rustc_span/src/hygiene_drop.go": "eed911e80f35b5d1d9e421a9c137123b9c22f6438595694ec67c7478b045c00f",
+        "port/rust/compiler/rustc_span/src/hygiene_expn.go": "feaee59e294dec01c154329943d2a830242f66fcd1694e4e89b8b0f1bcf9ca70",
+        "port/rust/compiler/rustc_span/src/hygiene_codec.go": "8a78f7ffb4d6b6e81dddc32e12d9186bbff60c764a3e7882140513913da8ae61",
+        "port/rust/compiler/rustc_span/src/hygiene_debug.go": "7da022cfa479f305f367e2b5cf6b936b245603d57b0c5ada3bb65a54cc2453c8"
+      },
+      "native_suites": [
+        "core",
+        "format",
+        "codec",
+        "owned"
+      ]
+    },
+    {
+      "source_lines": [
+        1266,
+        1424
+      ],
+      "purpose": "ExpnKind, MacroKind, AstPass and DesugaringKind variants, descriptions and derives",
+      "source_functions": [
+        {
+          "line": 1279,
+          "declaration": "pub fn descr(&self) -> String {"
+        },
+        {
+          "line": 1306,
+          "declaration": "pub fn descr(self) -> &'static str {"
+        },
+        {
+          "line": 1314,
+          "declaration": "pub fn descr_expected(self) -> &'static str {"
+        },
+        {
+          "line": 1321,
+          "declaration": "pub fn article(self) -> &'static str {"
+        },
+        {
+          "line": 1338,
+          "declaration": "pub fn descr(self) -> &'static str {"
+        },
+        {
+          "line": 1383,
+          "declaration": "pub fn descr(self) -> &'static str {"
+        },
+        {
+          "line": 1406,
+          "declaration": "pub fn matches(&self, value: &str) -> bool {"
+        }
+      ],
+      "go_files": {
+        "port/rust/compiler/rustc_span/src/hygiene_types.go": "3e64687df025e9ca88edc9f0ceae60e087943d69e9e890a1c177eedf0cc4bacc",
+        "port/rust/compiler/rustc_span/src/hygiene_drop.go": "eed911e80f35b5d1d9e421a9c137123b9c22f6438595694ec67c7478b045c00f",
+        "port/rust/compiler/rustc_span/src/hygiene_codec.go": "8a78f7ffb4d6b6e81dddc32e12d9186bbff60c764a3e7882140513913da8ae61",
+        "port/rust/compiler/rustc_span/src/hygiene_debug.go": "7da022cfa479f305f367e2b5cf6b936b245603d57b0c5ada3bb65a54cc2453c8",
+        "port/rust/compiler/rustc_span/src/hygiene_hash_ref.go": "0fd9216bde06d2ab9d136421c7be7a6eb2bb7d4f34c7bb4f8213baf404a73b9a",
+        "port/rust/compiler/rustc_span/src/hygiene_order.go": "8d3df8a0852c19c9d186347b05955159d2b334f792cee2ab2fd15503fc6acbab"
+      },
+      "native_suites": [
+        "format",
+        "codec",
+        "invalid_codec",
+        "hash",
+        "order"
+      ]
+    },
+    {
+      "source_lines": [
+        1425,
+        1511
+      ],
+      "purpose": "HygieneEncodeContext default, deduplicated queues and generic encode callbacks",
+      "source_functions": [
+        {
+          "line": 1435,
+          "declaration": "fn default() -> HygieneEncodeContext {"
+        },
+        {
+          "line": 1448,
+          "declaration": "pub fn schedule_expn_data_for_encoding(&mut self, expn: ExpnId) {"
+        },
+        {
+          "line": 1454,
+          "declaration": "pub fn encode<T>("
+        },
+        {
+          "line": 1504,
+          "declaration": "pub fn enqueue_syntax_context_for_encoding(&mut self, ctxt: SyntaxContext) {"
+        }
+      ],
+      "go_files": {
+        "port/rust/compiler/rustc_span/src/hygiene_encode.go": "31f8df18a643c461b17ecd1dc738002035e145a79a62aeb4804b42810a95f7ed",
+        "port/rust/compiler/rustc_span/src/hygiene_cell.go": "9fcec9284d6897d1bbcefce20d641a7a101cb366ad4b9bfc0ce1a54dc8457cb7",
+        "port/rust/compiler/rustc_span/src/hygiene_tracing.go": "1e796a7f3dbf64dc736755e1e6c9356e7bcf779b30bb3a746d09c09c4842bd47"
+      },
+      "native_suites": [
+        "queue",
+        "tracing",
+        "owned"
+      ]
+    },
+    {
+      "source_lines": [
+        1512,
+        1653
+      ],
+      "purpose": "decode cache, registration, consumed decoder closures and local-ID codec",
+      "source_functions": [
+        {
+          "line": 1520,
+          "declaration": "pub fn register_local_expn_id(data: ExpnData, hash: ExpnHash) -> ExpnId {"
+        },
+        {
+          "line": 1536,
+          "declaration": "pub fn register_expn_id("
+        },
+        {
+          "line": 1555,
+          "declaration": "pub fn decode_expn_id("
+        },
+        {
+          "line": 1594,
+          "declaration": "fn is_root(self) -> bool {"
+        },
+        {
+          "line": 1603,
+          "declaration": "pub fn decode_syntax_context<D: Decoder>("
+        },
+        {
+          "line": 1634,
+          "declaration": "fn encode(&self, e: &mut E) {"
+        },
+        {
+          "line": 1640,
+          "declaration": "fn decode(d: &mut D) -> Self {"
+        }
+      ],
+      "go_files": {
+        "port/rust/compiler/rustc_span/src/hygiene_decode.go": "b5377cc44b5d0e629aa0864d551c46ee4a9306020f6e428fd46ddaff1ea90290",
+        "port/rust/compiler/rustc_span/src/hygiene_expn.go": "feaee59e294dec01c154329943d2a830242f66fcd1694e4e89b8b0f1bcf9ca70",
+        "port/rust/compiler/rustc_span/src/hygiene_index.go": "ddb22b12e8a53b31f8abbd5d797ffa0bbe0e01a0a5c0a5f4f6a6596ec1579e8c",
+        "port/rust/compiler/rustc_span/src/hygiene_codec.go": "8a78f7ffb4d6b6e81dddc32e12d9186bbff60c764a3e7882140513913da8ae61",
+        "port/rust/compiler/rustc_span/src/hygiene_codec_context.go": "85b08196e476a610dd1b4fa601248c5aa8e1efaa474c50698838f9adaa701f96",
+        "port/rust/compiler/rustc_span/src/hygiene_tracing.go": "1e796a7f3dbf64dc736755e1e6c9356e7bcf779b30bb3a746d09c09c4842bd47"
+      },
+      "native_suites": [
+        "decode",
+        "codec",
+        "tracing",
+        "owned"
+      ]
+    },
+    {
+      "source_lines": [
+        1654,
+        1766
+      ],
+      "purpose": "disambiguator collision handling and custom stable hashing",
+      "source_functions": [
+        {
+          "line": 1654,
+          "declaration": "fn update_disambiguator(expn_data: &mut ExpnData, mut hcx: impl StableHashCtxt) -> ExpnHash {"
+        },
+        {
+          "line": 1690,
+          "declaration": "fn stable_hash_internal("
+        },
+        {
+          "line": 1725,
+          "declaration": "fn stable_hash<Hcx: StableHashCtxt>(&self, hcx: &mut Hcx, hasher: &mut StableHasher) {"
+        },
+        {
+          "line": 1731,
+          "declaration": "fn stable_hash_internal("
+        },
+        {
+          "line": 1756,
+          "declaration": "fn stable_hash<Hcx: StableHashCtxt>(&self, hcx: &mut Hcx, hasher: &mut StableHasher) {"
+        },
+        {
+          "line": 1763,
+          "declaration": "fn stable_hash<Hcx: StableHashCtxt>(&self, hcx: &mut Hcx, hasher: &mut StableHasher) {"
+        }
+      ],
+      "go_files": {
+        "port/rust/compiler/rustc_span/src/hygiene_expn.go": "feaee59e294dec01c154329943d2a830242f66fcd1694e4e89b8b0f1bcf9ca70",
+        "port/rust/compiler/rustc_span/src/hygiene_span.go": "33a54de44aedef3212d73da62e0e620293bb9f35ca9c2d2e014763e236778060",
+        "port/rust/compiler/rustc_span/src/hygiene_remap.go": "a8760c158841affa6ea7421d15f4cda587a4b4debebed6cc30e1d5a3b5af6e82",
+        "port/rust/compiler/rustc_span/src/hygiene_panic.go": "5665199c9b3dfd2e13771f25d2a20657f8beb89f1c806edbbfb8145dd93d0a77"
+      },
+      "native_suites": [
+        "core",
+        "remap",
+        "tracing",
+        "owned"
+      ]
+    }
+  ],
+  "inherited_operations": [
+    "Clone::clone_from",
+    "PartialEq::ne",
+    "PartialOrd predicates",
+    "Ord predicates/min/max/clamp where implemented",
+    "Hash::hash_slice",
+    "Idx::plus/increment_by",
+    "Step::forward/backward and unsafe defaults"
+  ],
+  "representation_contract": "Source-valid closed enum variants and active fields; source ownership is expressed by moved Owned/Once dictionaries, explicit Close, Arc handles, borrowed guards, and current Context. Invalid unchecked newtype construction is outside the original Rust contract.",
+  "surrounding_traits": "SpanEncoder/SpanDecoder delegate SyntaxContext/ExpnId codecs through the existing lib.go boundary. The surrounding source files and translated collection/sort/format/hash/runtime dependencies have independent ownership and receive no completion credit from this inventory."
+}

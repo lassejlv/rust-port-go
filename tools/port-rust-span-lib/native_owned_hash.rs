@@ -1,0 +1,14 @@
+// External original-library observer for consumed AsRef/Read and I/O errors.
+extern crate rustc_span;
+use rustc_span::{SourceFileHash,SourceFileHashAlgorithm};
+use std::{cell::Cell,sync::{Arc,Mutex},io::{self,Read},fmt};
+type Log=Arc<Mutex<Vec<String>>>;
+struct Token(Log);impl Drop for Token{fn drop(&mut self){self.0.lock().unwrap().push(format!("token:{}",std::thread::panicking()));}}
+struct Input{calls:Cell<u32>,log:Log,data:Vec<u8>,_token:Token,panic:bool}
+impl AsRef<[u8]>for Input{fn as_ref(&self)->&[u8]{self.log.lock().unwrap().push("as_ref".into());self.calls.set(self.calls.get()+1);if self.panic{panic!("as_ref")};&self.data}}
+impl Drop for Input{fn drop(&mut self){self.log.lock().unwrap().push(format!("input_drop:{}:{}",self.calls.get(),std::thread::panicking()));}}
+struct IoError(Log);impl fmt::Display for IoError{fn fmt(&self,_:&mut fmt::Formatter<'_>)->fmt::Result{panic!("unexpected display")}}impl fmt::Debug for IoError{fn fmt(&self,_:&mut fmt::Formatter<'_>)->fmt::Result{panic!("unexpected debug")}}impl std::error::Error for IoError{}impl Drop for IoError{fn drop(&mut self){self.0.lock().unwrap().push(format!("error_drop:{}",std::thread::panicking()));}}
+struct Reader{calls:u32,log:Log,_token:Token,mode:u8}
+impl Read for Reader{fn read(&mut self,buf:&mut[u8])->io::Result<usize>{self.log.lock().unwrap().push(format!("read:{}:{}",self.calls,buf.len()));self.calls+=1;if self.mode==5{return Ok(buf.len()+1)};if self.calls==1{buf[..3].copy_from_slice(&[0xff,0,0x80]);return Ok(3)};match self.mode{0=>Ok(0),1|3=>Err(io::Error::new(io::ErrorKind::Other,IoError(self.log.clone()))),2=>panic!("read"),_=>unreachable!()}}}
+impl Drop for Reader{fn drop(&mut self){self.log.lock().unwrap().push(format!("reader_drop:{}:{}",self.calls,std::thread::panicking()));if self.mode==3{panic!("drop")}}}
+fn main(){std::panic::set_hook(Box::new(|_|{}));for kind in[SourceFileHashAlgorithm::Md5,SourceFileHashAlgorithm::Sha1,SourceFileHashAlgorithm::Sha256,SourceFileHashAlgorithm::Blake3]{for mode in[0u8,1,2,3,5]{let log:Log=Default::default();let result=std::panic::catch_unwind(std::panic::AssertUnwindSafe({let log=log.clone();move||SourceFileHash::new(kind,Reader{calls:0,log:log.clone(),_token:Token(log),mode})}));match result{Ok(Ok(hash))=>log.lock().unwrap().push(format!("ok:{hash}")),Ok(Err(error))=>{log.lock().unwrap().push("err".into());drop(error)},Err(_)=>log.lock().unwrap().push("panic".into())};println!("read\t{kind}\t{mode}\t{}",log.lock().unwrap().join(","));}for panic in[false,true]{let log:Log=Default::default();let result=std::panic::catch_unwind(std::panic::AssertUnwindSafe({let log=log.clone();move||SourceFileHash::new_in_memory(kind,Input{calls:Cell::new(0),log:log.clone(),data:vec![0xff,0,0x80],_token:Token(log),panic})}));match result{Ok(hash)=>log.lock().unwrap().push(format!("ok:{hash}")),Err(_)=>log.lock().unwrap().push("panic".into())};println!("as_ref\t{kind}\t{panic}\t{}",log.lock().unwrap().join(","));}}}

@@ -1,0 +1,1931 @@
+{
+  "status": "partial-lib-validation",
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_version": "1.101.0",
+  "nightly_date": "2026-11-04",
+  "compiler_commit": "708c94ef093ecc42fb8851e17d8383d999727abc",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+  "unicode_version": [
+    18,
+    0,
+    0
+  ],
+  "scope": "Actual complete-crate Span wrappers over valid local expansion graphs: source/parent/callee, editions/features, suggestions, ancestor selection, normalization, marks/adjustments, backtrace iteration, exact SPAN_TRACK sequence and Arc reference counts. SourceMap-dependent methods and hook/owned runtime proofs remain separate.",
+  "profiles": [
+    {
+      "name": "d0o0",
+      "debug_assertions": false,
+      "overflow_checks": false,
+      "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+      "records": 480,
+      "steps": 160740,
+      "caught_panics": 8000
+    },
+    {
+      "name": "d0o1",
+      "debug_assertions": false,
+      "overflow_checks": true,
+      "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+      "records": 480,
+      "steps": 160740,
+      "caught_panics": 8000
+    },
+    {
+      "name": "d1o0",
+      "debug_assertions": true,
+      "overflow_checks": false,
+      "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+      "records": 480,
+      "steps": 160740,
+      "caught_panics": 8000
+    },
+    {
+      "name": "d1o1",
+      "debug_assertions": true,
+      "overflow_checks": true,
+      "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+      "records": 480,
+      "steps": 160740,
+      "caught_panics": 8000
+    }
+  ],
+  "records": 1920,
+  "steps": 642960,
+  "request_sha256": "26291d5d029f734f0c359cb0fa10097f2a5fb78e6fda81fe98edab45c5696c37",
+  "raw_sha256": "f942377cbe31443b89a5c78b351e1f4490c163ff9e1e7fad8c8ed4665be7780a",
+  "fixture_sha256": "438f75d351cef510518f408c31d90e2478cc294c6cdb615912bc51e74aeea60b",
+  "files": [
+    {
+      "path": "port/dependencies/blake3/v1_8_2/src/hash.go",
+      "sha256": "898557dd7eb9feecc759557276c5699153a8bc4b023a010d79e6e8797359959e"
+    },
+    {
+      "path": "port/dependencies/blake3/v1_8_2/src/hash_test.go",
+      "sha256": "97daa6828997d17c65e9071a5a1d124bc71227714c3dcbeba97de920cb0ea5b5"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/src/int_overflow.go",
+      "sha256": "4db3c8f1f1f251cc131b2851fab06d136deb4a78c08160cb4c50af872dc7b2d8"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/src/int_overflow_test.go",
+      "sha256": "c9ff4197397629a82bf305acff6eab88ca50a535e11767e7714264e726886679"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/src/lib.go",
+      "sha256": "9b1b3dc04169998c0b92ca0cd7d1bf96709059c34c7210e85e2dcc10f3015910"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/src/nightly.go",
+      "sha256": "d587187f1e3600d26c0f83fff26ce5916c9fdf13b527f07b7e6b833cd1c1de68"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/src/nightly_disabled.go",
+      "sha256": "5300446fff181aa84eeb2c447cc5e299321cdc75f5f4cc8d35ba33ac2274b6f9"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/src/oracle_test.go",
+      "sha256": "3faf2b316d244f4785a90e1bdfdf3ebb6451efe64684ca898a6f6bcd09a89afd"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/src/ownership.go",
+      "sha256": "efa4a65286c6cb1cdcb667f9bbe7c3c494c4e0aebbfea71d982baa0c40188b35"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/src/panic_guard_test.go",
+      "sha256": "41fa4c7bc45df4218e92fbd760573413500b6c4ea517b73493fd8f7e232b709c"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/src/sip128.go",
+      "sha256": "f45f77f581dfd03fd18c4201ab96cbc8c0d76b2efe8b5814345c3ad4851d410b"
+    },
+    {
+      "path": "port/dependencies/rustc-stable-hash/v0_1_2/src/stable_hasher.go",
+      "sha256": "ca0964e93f488e07c9997316801033a1f0730b31f82e5d8422da7f4ea7745a69"
+    },
+    {
+      "path": "port/dependencies/unicode-width/v0_2_2/src/scalar.go",
+      "sha256": "ecea46291184ff140c60836042af19f0b46af5ed7c04e2f368a412bb2576bf0a"
+    },
+    {
+      "path": "port/dependencies/unicode-width/v0_2_2/src/scalar_tables.go",
+      "sha256": "0889c075bab8932be575ffc21e501d5ca899ae58657ab44a9537f36c4977fe25"
+    },
+    {
+      "path": "port/dependencies/unicode-width/v0_2_2/src/scalar_test.go",
+      "sha256": "ccef49347d9cef78d9b802015c7a704c6bc266f2a18d153c2d30a84de90d4bd4"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/base_n/tests_test.go",
+      "sha256": "402b4c0f9f6ab8f6aedb2cafc89bdcd9fcb82ec530052edadcafe2743258b10a"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/base_n.go",
+      "sha256": "ede8ad0cc0386411edfa318381d4b9991dc10439046c7dadeeef73ec16f5c220"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/base_n_format_contract_test.go",
+      "sha256": "791567a6ea4f2911382dafc1d8926ca3ab09406aae559a1592fdbd7cf858a1c5"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/base_n_owned.go",
+      "sha256": "6aa7cd2ca92cf7cb5a255dda094017c660846bc2eaa24df30faaba5fc00c46ee"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/base_n_owned_contract_test.go",
+      "sha256": "eb7931c29e437ab3133bdef241f1429f3c5497f66b3fe1b1bc45444f19fb3ebb"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/binary_search_util/component_guard_runtime_test.go",
+      "sha256": "384dbfbcbef3c6589bd19f3246e8c86146ce215320c33eb7c59933cd21acf4dd"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/binary_search_util/mod.go",
+      "sha256": "206e26204105d9aae997f80876c14e2a6ef04da29b9ccb95a000b5fe0ae78262"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/binary_search_util/oracle_test.go",
+      "sha256": "07c818dcdbc02ed9fee177443fc7de33462e334263f76d8abaea24cf81a6a614"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/binary_search_util/owned.go",
+      "sha256": "a8e9c52c1a78b877033be8879706531a1c601f90fa9743470f3c61d05b644aa3"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/binary_search_util/owned_test.go",
+      "sha256": "9ca3443afc8adc0291575264aa29a0352fd7c59af678419b6658806c691fcd80"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/binary_search_util/tests_test.go",
+      "sha256": "fd39e93940992ef4a187b3a746b4a0bd72a9354b163adf2ea87529ff286b436a"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/component_guard_runtime_test.go",
+      "sha256": "7a1ba9adbdc0591d7eb77a02d7cab3600c66fbe912228c664b6eba85e87a3d84"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fatal_error_marker.go",
+      "sha256": "34c062189290667abbc0dbdd0a82ecb9635648da6626c5054dcc05a30fa0be3f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint/tests_test.go",
+      "sha256": "d1b46a5bfcd8591f28eabbc2b449d828cfd07892604e77c9df12dcdba18b54fa"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint.go",
+      "sha256": "8eac712643f1ea86a5093946b0415079b1b0c9797252a1e9f7fdc2808d3a65fa"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint_decode_metadata_test.go",
+      "sha256": "98ded5d05cd12666109353169fcb38bbb56b9f00b725a92a14d7be6e2e04b754"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint_fallback_test.go",
+      "sha256": "46a1b3aace5907c70e5bbba03ffd8223bc55ceafde8fc83530f535cda73223ea"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint_format.go",
+      "sha256": "4f941cb198dbe0789e4afe2ccf700fa09dac9e27ccf97d15d9cf69f11eebaa0d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint_format_primary.go",
+      "sha256": "6302b7f83eb029c973c06624e2ceb23a836943732994bad134dfe3ed253c2fa9"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint_hash_primary.go",
+      "sha256": "84992eea8d3bf0da57f0ad14c90fc69d0fb6b8d511cd824279b402c9110e0bba"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint_hash_primary_test.go",
+      "sha256": "eeb8f906f344b76858a8bb2e8a7fbcb25ee1a66e14d1a2c047bf37b5d10a2d5c"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint_test.go",
+      "sha256": "7bc936560316b1877a2b0a97944032627b836bab9e28c7c51f75920a819b100f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/fingerprint_unhasher.go",
+      "sha256": "da48cbaa75cb55647991cc3c9d10feb2de4fc9129e20cb27eef632f6c38bfc7b"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/stable_hash.go",
+      "sha256": "8c9261bd71e90335e858579f778f7356cb98dc05b3b937f5b6c84a7603efe65e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/stable_hash_context.go",
+      "sha256": "41f60495c9f034b45b3fedff5bcbcc6040c46ef1d166be426885a880694bf75b"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/svh.go",
+      "sha256": "a3f2085963bd692e1a691c2bbc52294f336bb5318ceecb96a071470e0771b6ca"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/svh_oracle_test.go",
+      "sha256": "6cf2a0f797d876a42992d817116c0a812586f1502af7b172a357db1f363a5316"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/thousands/mod.go",
+      "sha256": "426ba52fb088704ab85d66ab08b02e09aae0aedda7563918e4582c0046ee4d98"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/thousands/oracle_test.go",
+      "sha256": "f46a0b33472720d06dc8ef47210c2a017c92683cdb281af4c34cb95e57cd09e7"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/thousands/tests_test.go",
+      "sha256": "3689de345783be1a86aa4288f36514f1d85fab6727cec6759c12e4fc69d80e04"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unhasher_adapter.go",
+      "sha256": "c8a8ad287f31d5d7ac59e7aa1a9502faf0cf569a6b3c8852a5909ac19f78e19a"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/union_find/format_test.go",
+      "sha256": "f48787032240588fc5062d41b674d1ef7b7dafad2eea15eed1893bd4bd456071"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/union_find/oracle_test.go",
+      "sha256": "7d5d39ed3779369fbffac9968b53d3f68f3c63b7e55bc0cde3b3880b7d0e4400"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/union_find/tests_test.go",
+      "sha256": "eef9ccd89b5306efa44274f651fbb9575a81b43cd66700cf7434ba77ad329a5c"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/union_find.go",
+      "sha256": "c4828edafb80bf5fc1adc6ff48782eb631a2201230693025a5c1ea2fa557987a"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/union_find_format.go",
+      "sha256": "69a20029488e2235b1e7ccea4c9107965ad4c0afe0f87ad8dfb136f3720f69da"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_bag.go",
+      "sha256": "4c8b0d65e91f36610396d1f21213583010129a602ebb3fa065b7f536c864f845"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_bag_codec.go",
+      "sha256": "183c6e6a9d960168d4293a39e58519b1597717bc4ed4eaa49cb45e58ad3cb6be"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_bag_context_test.go",
+      "sha256": "bbf92948245f8ed71df48a352292d9367c7b860b6a85e231a1a277993c604934"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_bag_oracle_test.go",
+      "sha256": "ee4f9db75b641e6201a96f1e505d6fb8c4507601bc5d356caa5589f7807f5142"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_codec.go",
+      "sha256": "83bf772a0d682752a0c3b6c0027be1a98966df938ef8929768fbe3d38b2be03b"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_codec_oracle_test.go",
+      "sha256": "a9d665cee85ee6543fffae5688875d43a5030a320c9a16cabe2d4a9fd36627ed"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_map.go",
+      "sha256": "8d1f7de2c17e6e39d09fac8bcac31e53d9f937868c02c0ccb7bd15dd0ba88f2d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_map_test.go",
+      "sha256": "95f7437e9f675d6a774413c4dddf79e536599948c2b335ad96c9f47fc691cc33"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_map_traits.go",
+      "sha256": "a9ecb25f4894d8bffdb5b4e2e296f96e9d626e074ac78990cfc2edd131655a24"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_set.go",
+      "sha256": "3e2d0d4475370ce671737ea1f76dcbbded9c862e90f9da368e14009ffeaef06f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_stable_hash.go",
+      "sha256": "04a6739108d232341aecd580ac3ee152249d4a2df328e071a82bcbf1d5fc74bf"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_traits_test.go",
+      "sha256": "65d626d5bf7b1c73cf003791ea5860f09f05892d8cd449ae63583bdfedd98309"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_vector_codec_test.go",
+      "sha256": "cc6885c80164b2e679dde0550a258d8f3ed5bad60c95f4e4667cec8703eac85d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_vector_wrapper_test.go",
+      "sha256": "a96b0809d049ca13e7bfb436d5eb172ba1919da5b7bd8df40e34da965df2af04"
+    },
+    {
+      "path": "port/rust/compiler/rustc_hashes/src/hash_primary.go",
+      "sha256": "9c99d7dd75a693e95a9b082274739eb3daa7a345209a41f6c59325b6b466276d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_hashes/src/integer_format.go",
+      "sha256": "dbe275d7ac4dd5855c432bd5084716fe6aba57eec76106e4905f9dd18cf86c37"
+    },
+    {
+      "path": "port/rust/compiler/rustc_hashes/src/lib.go",
+      "sha256": "5901a84bba171cefabd6af5a73900d8808519e09985f155f3c36026d050f3152"
+    },
+    {
+      "path": "port/rust/compiler/rustc_hashes/src/oracle_test.go",
+      "sha256": "95ada1affa925992edf2d255a17d8c9e1f071d7853ec0d93a27e74a95c8b94b0"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/component_guard_runtime_test.go",
+      "sha256": "9d18d7527e625954d1a7bd9fb455c23e67b8f7370c1643c0c85574516f2edaa6"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/idx.go",
+      "sha256": "b67b2f7509e3b82a0d8f4ca791f7f043ae9c07e6cdf72a9df3b472b7012953aa"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/idx_nightly.go",
+      "sha256": "6a4b83c29b57ff3948729d921b1c6cd398f89a28d20b7ee6e07c673306e05c01"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/idx_nightly_test.go",
+      "sha256": "eeb69ff0f0a4b4ade428b4a4ed04f65532f551e3ba558941ec8ae45a1af8463e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/idx_oracle_test.go",
+      "sha256": "0376acf3742077d9e7d6b5cec7bbde9cb197d4dcaed0ab08309a0354d58a2567"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/idx_test.go",
+      "sha256": "2ef83b494d1f2ff775c4c43a126113538e7b7ff03b210d283e613cdeb81ac5e2"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/interval/compat_test.go",
+      "sha256": "8c3133a33ed0a38573e10dbe3868ad517fc11ca1a08ed87d1cf05a662f0b68a3"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/interval/tests_test.go",
+      "sha256": "0afdcfa21b02ca8096bc67632945abe1c0ad00991b9a9102aede2f045e9a8bf0"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/interval.go",
+      "sha256": "542b78fd33697be13f456a335014f326dff9647bf2b048c24a54f214b0f9d5d8"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/interval_format.go",
+      "sha256": "1c03bedd1e17778be3241032046a45be8d74a2b4afc5e22a71876d898d9661bc"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/interval_owned.go",
+      "sha256": "ee82e491d3b50d1db6f55da4e0127d357ac722174d8a45357329240730bba851"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/slice.go",
+      "sha256": "909ceac8ca4b25d0ccd67b86ca391e185e5a758b92633b48c6d097cae3866619"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec/oracle_abort_test.go",
+      "sha256": "fe0d5748b4850f1334ae0286883ae7af0a29f06ac402f247ca09cabf9ee84adb"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec/oracle_codec_default_test.go",
+      "sha256": "3f02b5ca9a929ae97d841d7710b8d12cd766657a5a9e65897bb2906a32e832cf"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec/oracle_codec_nightly_test.go",
+      "sha256": "2745cf93034c766361ca8ddeed7f096ec89725c79fe8690c1e174b7a5f0d7c02"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec/oracle_codec_test.go",
+      "sha256": "fa9fd4627db39704517d0f9b063a8764ba582ee2b6304c4472f429ce78963a73"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec/oracle_custom_test.go",
+      "sha256": "870983ac20d8bed2a2135b5dc5d90829741b8071811eb577d0d3f74102d96c29"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec/oracle_format_test.go",
+      "sha256": "75ab423ed24fd216e4bfecb2380f9d2408cb96418ab99611e6ea5640619bfbd8"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec/oracle_integrity_test.go",
+      "sha256": "cb142fba6870da9dc296271cca77b5750dd51a8fca666ab5a3a64c13c8ac607b"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec/oracle_invert_test.go",
+      "sha256": "ba6df9603bf7be584792ac0cd59331d9b6c07d2babf1d4e4022ddc9cffa70a39"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec/oracle_iter_test.go",
+      "sha256": "45d660eda994ab7d9ae6d8cfd00e047ddcb59c8db0252bebd07ab41e2ba87233"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec/oracle_options_test.go",
+      "sha256": "d64f9be65e82b4d8198859b4ac945e69eed101773aa67d286d0f42a455e1de82"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec/oracle_test.go",
+      "sha256": "263ad493491c8861eaf6ecf61b5fc612e3cd4a8ef595b3d9d11dac95f85f1060"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec/oracle_zst_test.go",
+      "sha256": "5c60f3c32eb15129c06b12b5cd62ec1e5e8d43fab4356bc2de8bc647f6f49518"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec/tests_test.go",
+      "sha256": "fd17753a81e8c8015f04df6aea6113c1b94927586d90978cb7c64e91e6af2853"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec/traits_test.go",
+      "sha256": "d68a70123dfed4fcaf0ce9ec09cc0928acddda2e734c729624791561231b19d9"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec.go",
+      "sha256": "b6ef4b98609ad6f8f20813eb9817d50ac3ef79893ac31f67ce0c9a8d5816c13d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec_context.go",
+      "sha256": "9e3de06192ba5d1539b2383d7470b49d8365b867f6e3aa13e07d412df02db1f6"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec_context_oracle_test.go",
+      "sha256": "e930c09b31d78487310076b6b6d97ceeb64e7506604a3a83e46c3a495f3338b2"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec_context_test.go",
+      "sha256": "7e14025aa363d546b54f73fb12e2e127dc02589356dd7a5711ff3ea092e42a5e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec_format.go",
+      "sha256": "0b1b2ed3dc241514919ef6a08ee245213a03db37f81459f94642bda06bcf6577"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec_iter.go",
+      "sha256": "29e1a560b484eb105eb957643132af3dba68f762cc60062687c91290b0cb48a7"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec_nightly.go",
+      "sha256": "589c374395416adbf4a5f37d5192e4ae2500bf38044ccb3ee2985dfdec9a049f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_index/src/vec_runtime.go",
+      "sha256": "79ce0668e37a636de75ed6a7fbbfbd972b32620e645ba12b8cafb9ce65d710c5"
+    },
+    {
+      "path": "port/rust/compiler/rustc_serialize/src/container_decode.go",
+      "sha256": "f9c30e3eb35a008fe468c4ee8a2b6440faab397d5293e44fa44769714eebb93a"
+    },
+    {
+      "path": "port/rust/compiler/rustc_serialize/src/container_vec.go",
+      "sha256": "6e695e5ebaa7a0697e8b64293685fe85a67900e86f2443bc570c57c06b22326f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_serialize/src/lib.go",
+      "sha256": "128c5255b9374795c8df7fcf1ded413fb9d2b26c8bbfeef579852138d67b41ec"
+    },
+    {
+      "path": "port/rust/compiler/rustc_serialize/src/map_defaults.go",
+      "sha256": "871f096a5374400a2334dac3e5b470fe37cce265bb82c7f10ff796104ec0d87b"
+    },
+    {
+      "path": "port/rust/compiler/rustc_serialize/src/map_defaults_oracle_test.go",
+      "sha256": "f63ba7e38e28513e79b2bccca19904095e813172e356e6950a50f30189602356"
+    },
+    {
+      "path": "port/rust/compiler/rustc_serialize/src/map_defaults_test.go",
+      "sha256": "dc0211cc3b0396308ce5482cb62e57916a8355cfd7ed0684a033836d172226ac"
+    },
+    {
+      "path": "port/rust/compiler/rustc_serialize/src/opaque_callbacks.go",
+      "sha256": "e282185c7e4ba83db72847267d6a5d65a6a621719179049044bee71291b82077"
+    },
+    {
+      "path": "port/rust/compiler/rustc_serialize/src/opaque_callbacks_oracle_test.go",
+      "sha256": "b9743a63f511da3a77ee7524cbb95f40759167379d6fd692836264427acd77da"
+    },
+    {
+      "path": "port/rust/compiler/rustc_serialize/src/opaque_file.go",
+      "sha256": "accf9431126e986a1758b042e5551b5b8bf124cd18c0a248583046d7552bf251"
+    },
+    {
+      "path": "port/rust/compiler/rustc_serialize/src/opaque_file_oracle_test.go",
+      "sha256": "b8a7674414d25c9e0a805760de07ecdfaac458a9c8676b8e259e9cb5ec96c791"
+    },
+    {
+      "path": "port/rust/compiler/rustc_serialize/src/opaque_memory.go",
+      "sha256": "2c1944379d7fef7f5724958b14e949a5c04ff8a064446852e92b4753606122dd"
+    },
+    {
+      "path": "port/rust/compiler/rustc_serialize/src/opaque_memory_test.go",
+      "sha256": "4648b42f8cba404bfa70fed3e9413249da27c765936afd2d952ea7de9de6a568"
+    },
+    {
+      "path": "port/rust/compiler/rustc_serialize/src/runtime_context.go",
+      "sha256": "8f7e6ad75fbc9f59f19fb33bb393ed18aa6acb56cbb79f6e1ce5489304bc288d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/analyze_source_file/tests_test.go",
+      "sha256": "3cc9bbb958fb0c281e0214bf77d34016e3798c35362dd68d50ac6b75a5bdf532"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/analyze_source_file.go",
+      "sha256": "b8a19a47b0f1d2f527347b4a470bef0d3f60c8d309eb155de49a94b592eb5de8"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/analyze_source_file_oracle_test.go",
+      "sha256": "fab227def66ea96b40ec88b11e70a7746379ead08b4b5eb4d8739aa75661d42d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/analyze_source_file_panic_test.go",
+      "sha256": "a1e497a50f2f2dce5bd28cce0408b59f46b101590857cdbd58fca66cbb89ca54"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/caching_source_map_view.go",
+      "sha256": "f4fdf220ffe42e44caeab7ee3e77cbbe7a832a75d1c005801f359e70b9736a5a"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/caching_source_map_view_context_test.go",
+      "sha256": "1d39f5f5e8d79d66fc3a8fbb90683b5aa9825e76e356c9a5c075ee0e70776b3c"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/caching_source_map_view_oracle_test.go",
+      "sha256": "48751bf522164c1c2185fe91107c5e7c83870c1824dbda65086d9e84fdf426bb"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/caching_source_map_view_panic.go",
+      "sha256": "c0767c12eb93421e6e9c30b61c607c9fb16f9a7df85a3817ebdcc410ab36cbd0"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/caching_source_map_view_panic_test.go",
+      "sha256": "7e558be83227a1910e17481af7aee2197014abb5ba3e7622ac2c0f243d09ee0a"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id.go",
+      "sha256": "6f627735df7627e05d3c0ab670b4a693f9a8c81e50bea6695368687aad694d3f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_codec.go",
+      "sha256": "78c09f77cdfa8f14959274c0a5236131dc523282787b309d28d6ed1fe0dff58e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_codec_oracle_test.go",
+      "sha256": "559ced6acf608f6d9d37aa2304038ec5afb03eecc8ecbd26942ab71f91cd108e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_collections.go",
+      "sha256": "29c95e63f8089d977ce1596e82d1efa690f22961d77a359d394b83d89a435534"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_collections_oracle_test.go",
+      "sha256": "f8f01deb314adf13199ad4ef5534f007aa40a3578d538e1a8eda7c111a5563e9"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_context.go",
+      "sha256": "75cf75335613d2fcf89d6760b2fb6a7c33230d72d7cf1d3ead846ce221d27188"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_context_oracle_test.go",
+      "sha256": "4e27b3fee46786a29510948c4ab444e6045b4aa4fe08ea744925cbb0a46f840e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_debug.go",
+      "sha256": "bcd3375c518fb0820902e3fa7aed5b31bdf47fccd7c7a78c68eb4f1383d06d64"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_hash.go",
+      "sha256": "a7486ebc0d79555aded2500fc9f3090721f1be084ba8c6f017de6293fd8aabdc"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_hash_primary.go",
+      "sha256": "4d59fea85674ebb5cf7587d0478204afc4037b7a83b9333c0c266d0294399304"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_hash_primary_test.go",
+      "sha256": "1e272f7256e19ed6d0898cc9db3d6dcd6dbe83cd363c04953908ab23bdda43e7"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_index.go",
+      "sha256": "f6bf5bb60e0af215e4858922f999ae25d93a0f45a475d270f491477fefec1f87"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_indexmap.go",
+      "sha256": "5143fefde34b205e3471cb43bf0d9326e0bc8a195a0d826c880e0ba23bff920d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_indexmap_alias_oracle_test.go",
+      "sha256": "581a1d31473e84dbebdda66747d5caeee7b7a0889b84b604f9b99a3fe0b926b1"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_interval_type_test.go",
+      "sha256": "2c35495b127a3e1e7c01c7cb00bd3ddbf2aa87410d48b6ccfaf55b584474bf55"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_oracle_test.go",
+      "sha256": "f2baf91a4d4ed3c01e491b01326f09a66f6502111a5e76b30b2f898523b1a27d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_panic.go",
+      "sha256": "4420f658b00a2aa5bcbf91eb5f98224f9ae6a6eb0264dc8bb952b69d154fc257"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_panic_metadata_test.go",
+      "sha256": "43737263434cb4e11349292862a5ecaf00c814a00cff463b6269c1ab77f02e3f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_panic_oracle_test.go",
+      "sha256": "60fb31838046d3567902035e1ced3a0722dc76ce72eb257261ea3f6760c14ccb"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/def_id_runtime_test.go",
+      "sha256": "ae7447a0fa4f951d168497142d7e7cf91243ffc6cf238b06e89699e2e6e6c37d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/edit_distance/tests_test.go",
+      "sha256": "f8437c7d423e212d91391c21945477e96279735e957e56294245870e0705bf49"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/edit_distance.go",
+      "sha256": "b7f5b38ac87b8060f3380c779626afe99f5dd4f40323db940c740a9ae09984b9"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/edition.go",
+      "sha256": "1d3db20cfb44db5693ff23c9ec3e732867d70efb2fb05b18ca75a631c0fd62d4"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/edition_oracle_test.go",
+      "sha256": "864a59cdc9eb448262014337982c2c0eed51bec3f94a2266c025afa4e103a8f3"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/edition_test.go",
+      "sha256": "0161c526d9e162cd29097f1d9767261e91c813c2e07f7f943d2e1dfb0fed11ca"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/fatal_error.go",
+      "sha256": "54427ff0ebd52e9666675e0cb2c34bb2b41408e55ab22a3d2ccee13ef756cffa"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/fatal_error_format_test.go",
+      "sha256": "541bbd993c8f9c27cb4e826b86555edb825bdd16fb9f352a87dbd6c0c3c0d1c9"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/fatal_error_oracle_test.go",
+      "sha256": "ee68b9d02e646d13a3703fbcbdbe83e1ac3d971973a0ccf19418c72d9d6baa39"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene.go",
+      "sha256": "de2e5c943179e56a641f839287a60492701b7c36c8b5550652c3bb00155057f7"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_cell.go",
+      "sha256": "9fcec9284d6897d1bbcefce20d641a7a101cb366ad4b9bfc0ce1a54dc8457cb7"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_codec.go",
+      "sha256": "8a78f7ffb4d6b6e81dddc32e12d9186bbff60c764a3e7882140513913da8ae61"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_codec_context.go",
+      "sha256": "85b08196e476a610dd1b4fa601248c5aa8e1efaa474c50698838f9adaa701f96"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_codec_oracle_test.go",
+      "sha256": "74d08c240708051bc4181160089f82088fd7af277f133d5c3f3b4657d38579aa"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_commit_oracle_test.go",
+      "sha256": "65e805d626b2a849d0a96493684632aa568faa0c37d23b9fb59acd4d1e715839"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_context.go",
+      "sha256": "26764364b66c1adb0e7e22d9b3e2e6dcbf425162284f368b5fb2f396b124e56c"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_context_ord.go",
+      "sha256": "064445ef847de604ec5694b1c6a4fc8c24abebee8e36699d3547edbfdad47103"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_core_oracle_test.go",
+      "sha256": "70494b228f59c1a186fc40c55f07c5035e80a83dbf2a64c88aa997fcead70a54"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_data.go",
+      "sha256": "cc8545a2beeebd7f45e808422b2fc129497cc84f12f66d08e3227e3930515a11"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_debug.go",
+      "sha256": "7da022cfa479f305f367e2b5cf6b936b245603d57b0c5ada3bb65a54cc2453c8"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_debug_panic_oracle_test.go",
+      "sha256": "6482d379562177310679eafc6e85cacf10f6ca314cd14aa25b914bdcce9d0070"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_decode.go",
+      "sha256": "b5377cc44b5d0e629aa0864d551c46ee4a9306020f6e428fd46ddaff1ea90290"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_decode_oracle_test.go",
+      "sha256": "c23f63734b88c04be3c7e1142c914bce50af6a545802a43ab6aa13194c4c15a0"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_drop.go",
+      "sha256": "eed911e80f35b5d1d9e421a9c137123b9c22f6438595694ec67c7478b045c00f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_encode.go",
+      "sha256": "31f8df18a643c461b17ecd1dc738002035e145a79a62aeb4804b42810a95f7ed"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_expn.go",
+      "sha256": "feaee59e294dec01c154329943d2a830242f66fcd1694e4e89b8b0f1bcf9ca70"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_external.go",
+      "sha256": "78a1eb1baf93234a8c345f8561879d6b31cc35f9c10d2e694630023dadafdd75"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_failure_oracle_test.go",
+      "sha256": "da17fb3efa2a20a2e21059168f6d772b23f3d7117057e5cf2ed784ae0ad829fc"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_format_oracle_test.go",
+      "sha256": "cf33d44dd749eca5056c306a3e7ab4c32d456f6d5b2e077eec7f712d166cf8f7"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_graph_oracle_test.go",
+      "sha256": "5917a6906fbf19c3480dc586e97548693c9ff1c4a6af6686b95f1195ed8cbbed"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_hash.go",
+      "sha256": "1414635582fa3100b02ec180a09085db14e05a7568c9e991b319effbdad0e21d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_hash_oracle_test.go",
+      "sha256": "bc897b0dd5ce0fc265355f71dcc0e004838a321e42e085a906e9f925b6999c54"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_hash_ref.go",
+      "sha256": "0fd9216bde06d2ab9d136421c7be7a6eb2bb7d4f34c7bb4f8213baf404a73b9a"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_index.go",
+      "sha256": "ddb22b12e8a53b31f8abbd5d797ffa0bbe0e01a0a5c0a5f4f6a6596ec1579e8c"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_index_failure_oracle_test.go",
+      "sha256": "8ec9d2baf0782b4a00923c3adbd51dbe68cbb0275fca376da4f7653eb6843765"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_inspect.go",
+      "sha256": "65282db0e02fb09b14d59c9743296eae35a2a10eb10977d311c0aaaaff9dc82d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_invalid_codec_oracle_test.go",
+      "sha256": "c741e31822b0b68d4db4fd2f9158922069444db36e90c86d06ffdbf0f477f5a1"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_oracle_test.go",
+      "sha256": "20be16a944237e5bb358d778ca5124f20799380287037026d6668cf63780bf70"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_order.go",
+      "sha256": "8d3df8a0852c19c9d186347b05955159d2b334f792cee2ab2fd15503fc6acbab"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_order_oracle_test.go",
+      "sha256": "5c0c3c39f9477bfad26dbad1b5776e5e390696ae8702917b4f77d1b599d85bc0"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_owned_oracle_test.go",
+      "sha256": "38a0f3db5593fd0aa6015d171878e0a5fe9c03b5906abb47f46f66927bc554b9"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_owned_profile_test.go",
+      "sha256": "711ad7a325cb839c873828457ad53c247a15925609cf1fc1eda75bf89c493f57"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_panic.go",
+      "sha256": "5665199c9b3dfd2e13771f25d2a20657f8beb89f1c806edbbfb8145dd93d0a77"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_pipeline_oracle_test.go",
+      "sha256": "93b972727cacbff2e2a24e4edeb32cdaa3f4ee26dcbdae556e1cc3f75cc385ed"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_queue_oracle_test.go",
+      "sha256": "1c02781cb12b90a5bd80efd733d3b5f037680014ebc13982b2d22485ef894a53"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_remap.go",
+      "sha256": "a8760c158841affa6ea7421d15f4cda587a4b4debebed6cc30e1d5a3b5af6e82"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_remap_oracle_test.go",
+      "sha256": "b6d6ed908e8c0fd0f268517f89871b6126127832bc54bfb35285d5fe9d12bdf1"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_remap_ref.go",
+      "sha256": "801bbeac584ba98f1469df38c142d3832024cba4807d777de2ba61197ccfdaf3"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_span.go",
+      "sha256": "33a54de44aedef3212d73da62e0e620293bb9f35ca9c2d2e014763e236778060"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_tracing.go",
+      "sha256": "1e796a7f3dbf64dc736755e1e6c9356e7bcf779b30bb3a746d09c09c4842bd47"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_tracing_oracle_test.go",
+      "sha256": "c90c0fff3b1e6088e67508bcc8435fdde4678b9c3c0c8dc7106a123fab3cb3ac"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_tracing_profile_test.go",
+      "sha256": "db2c7151ac09c7e801d4dd122cb23758186d9e6b237e41e937529673ef013ad5"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_tuple.go",
+      "sha256": "1bfc808312dbb6c8fe0f7f8ad0d44ed06b9d86bff15239dd8228bb39923e39bd"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/hygiene_types.go",
+      "sha256": "3e64687df025e9ca88edc9f0ceae60e087943d69e9e890a1c177eedf0cc4bacc"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib.go",
+      "sha256": "3845e4a03e1340c73dbad7e8803cd5eeef5c2408fdac1eac7ba7b2d803ff1c4d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_attr_id.go",
+      "sha256": "8d100391c4285404847a419105c798cd1b33a9da55e0273fd38c22235f749df4"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_attr_step.go",
+      "sha256": "d64c7d0c0ca89014e105bf59526dc699358bd4961f51e86b2a21a8505c5660cf"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_boxes_oracle_test.go",
+      "sha256": "18ce4059c94508db1b63210d75f3ce1a49193eaee1918a51bd65a9e786cd4af1"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_bug_runtime.go",
+      "sha256": "48a7c6bf986b3aa8ed184c4c701f098ee8979d6ebde8fbf32921ee517df8396e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_bug_runtime_cells.go",
+      "sha256": "8b4a27041dc0d512c2a64f9cd05b209ef571d26bd6446f4fc40f02f4bf5f6ace"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_byte_slice_strategy.go",
+      "sha256": "a891fca0b8d206711d3aed5515a80692e835399c3df56e7ba0934672bf9234f4"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_byte_slice_strategy_oracle_test.go",
+      "sha256": "8dc19963129865ac31ce3746beb4fe22802152cb0e412524e29742a3ab0b8eb8"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_codec.go",
+      "sha256": "bbf08618f5bc104543c42cbccf00c49f69d07d08839978c24d2ee826b41b2dcb"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_codec_context.go",
+      "sha256": "455343a1d1fbe81832fc51864d92cbe6c851cd8621131458a1f8e86c42659cce"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_codec_owned.go",
+      "sha256": "8ebd847d8c5de995636999924fc0cd3c1b5d4bb86e3e21668d81f8ab0423349f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_codec_ref.go",
+      "sha256": "72f1f8542d06544c5dbd6e7e866a3a921a751ab93254663707149e6ba4ca2f8a"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_codec_runtime.go",
+      "sha256": "aa90d5cf3e6c97de0de02ed3f929fbe643dc8d933fd7a2cccf40a51186e7680b"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_consuming_callbacks_oracle_test.go",
+      "sha256": "55a92dad436368e89b1d8377058287393e37b468cb349051c891a106ca3a14fd"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_display_oracle_test.go",
+      "sha256": "62bfff305735443ac069f24370ff2690db0e9f177ba4e7c4f67fda7bdd73160e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_enum.go",
+      "sha256": "db334e24c61cde51e64c7da982a9e0397eaec4a52b7f7ed027c6ccdff216a7a7"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_equality_defaults.go",
+      "sha256": "fe12b34a1495d829dd0ff1c8cbf051c7e631d5bb99cb205bdd4f90dd6530e2e7"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_error_format.go",
+      "sha256": "edb45206f4a402b695526d16c592b89e98dfd852df507ee2aeb413c5a980f026"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_external_src_fn_once.go",
+      "sha256": "6f26350373499e6927c7943c35b8a547b9e077cc35e198eade88854cbbb1e105"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_filename.go",
+      "sha256": "30c45a6ebe2162cdf816a2c5fc2e91c061d37d98b048c16af947fe52aea9b6a5"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_flags.go",
+      "sha256": "a4d55ac2236c808a96d33792ed35d55a5344244d1456ec7ed7335de0ad9281b3"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_flags_oracle_test.go",
+      "sha256": "60047e7ea8f27ec2bdb3ca63e836010c11902479a1e3ce8b35c056446bf03ead"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_format_oracle_test.go",
+      "sha256": "8b474b2880e5f2ec0c9eb1c24555a1388905853ae40be02a16381a4e86735fae"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_generic_ambient_oracle_test.go",
+      "sha256": "1f64c0c01478af5256bc492744126b9a8dd8f44c428f9c0263afdad92694ef96"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_generic_oracle_test.go",
+      "sha256": "7b22b1e51ab135ba82df631cd34aba072352ab0b90d8f20b4808c02c2e08ea63"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_hash_primary.go",
+      "sha256": "3778380ae1b6dd1d61e9931b79141e3db0f8eb0dc8f9f4229a0d9c8b8225a34e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_macro_backtrace_context_oracle_test.go",
+      "sha256": "d3814475c0a3dca946633c03c0087195a623c4d813405f80f6354766afda19c0"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_order_defaults.go",
+      "sha256": "98d45b9f7159fea705752400a6bc274465f30cc695b0ec833d84679005cbbe5d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_owned_hash_oracle_test.go",
+      "sha256": "fa0cde9dd852167d23221eba29cf1c29677bc514e8c917bfe8f65e5719e49833"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_panic.go",
+      "sha256": "3af7a0514886a3c6033e79a8fa07d189c8f84645a0c4354aa44696f90cd8763c"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_panic_oracle_test.go",
+      "sha256": "727693cff65fe2ef255b81a32b21aef83a848c5a67600332cce8e2a376689820"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_panic_profile_test.go",
+      "sha256": "2402833055e188dd3a9e0598e8dfbd0ed7ca6070220d3e070d6a3d0cf3210800"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_pos.go",
+      "sha256": "41c62bd77c787a54845fa5c2e6ab3f69d2239d7ea180273c36eced0598fbbbd8"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_pos_context.go",
+      "sha256": "19aaa3a2cc5bc709cca3decc61e6d5a25698077228d932b40ff2a2bd0dd759ea"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_pos_oracle_test.go",
+      "sha256": "c0782db7ff583d0e318cc49453a250ea3bd7ad50da0f685c93e9d7e99d280dee"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_remaining_context.go",
+      "sha256": "38b4bfbc00f4b63b9046e8dab5105a6eb427adfdb0ccf35f7ab961745138f14d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_remaining_context_oracle_test.go",
+      "sha256": "6d6d59b811ff6248f26a437b131a19144a8094da72b548ad4c6632991627d7c9"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_remaining_profile_test.go",
+      "sha256": "b13e8d790d9fa6a682e532a55801206b3580d40b591ef72ce68cac399c626965"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_runtime_test.go",
+      "sha256": "3d020a0d60d99508262084f4abb5ba67068ea8bbc0c28473ef83ed776d23b9da"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_session.go",
+      "sha256": "f4eb1afc801a7c295102f2c81b1986b2aa62a75964bb64b905c77070044fb693"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_session_fn_once.go",
+      "sha256": "c18ddddbcb1dafb747ecdd184d3896083a184dd9ffa1017369bf2aa9121bc77e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_session_inputs_oracle_test.go",
+      "sha256": "0acb0562fa416ae69920d2b82a4689fab334ccee7a77e11cdecf91626c415862"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_session_scope.go",
+      "sha256": "8d1d598e2ba580147b93819434671be2486d70e47866ed864d3adedb5a920613"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_shared.go",
+      "sha256": "000cbfbeaa7cd875f3a35944ddedaf64f2e8fc61702e0772f7500062aae0ce94"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_shared_sync_test.go",
+      "sha256": "a80477a7963721884702c7fd015ae3f823ffb1c1a1da50eb131388797bdf063c"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_source_codec.go",
+      "sha256": "29f5ebf89e0d08e36cb70fb0020b442bbc01d4e9e34be1fe0c70a3cb5e45c54c"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_source_errors.go",
+      "sha256": "a20ff9c16091a246b66c2d19d77155c30df5c74367a7d36973a635aac6e1362b"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_source_file.go",
+      "sha256": "f1c7790fd9fe52c2cf0f6022edbc05ce8c799dfb21f1e9dcd757b528151eef43"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_source_format.go",
+      "sha256": "2aebce49e8cb4e2de9cdef853da0eda0d4217c0d5a235972295e62d94850a5e2"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_source_hash.go",
+      "sha256": "6aa82e8804f7c253397de06bab34b63aa6a2abce2579aff9f9e1ed143fc7d0e5"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_source_metadata.go",
+      "sha256": "dacd92ed0c0a5173d29aee2e48d10b9a96960a79cff282e0536bbd3f1a680bb7"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_source_oracle_test.go",
+      "sha256": "a1427bf9650afe64bad8c7800505b6dbe9af89e0d5c6a7a82892311e35272af8"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_span_combine.go",
+      "sha256": "1d1f1ba920e971dde46155679464823e9c68671d114193cb896a2b1c9f8e31a3"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_span_context.go",
+      "sha256": "3fcd276768461fcff4c46013c32ee4288337689b1705b10d93c97fcbffef9322"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_span_geometry_oracle_test.go",
+      "sha256": "72e3f7aba918802c0f20979654c0d0f8d5ab4dcaf5e51bc049e4cf5b6e5899c0"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_span_hygiene_oracle_test.go",
+      "sha256": "30ef49d24bc78d68c3b81db1e22f53647728f2e86d7e338e1ffc371b308123c4"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_span_ops.go",
+      "sha256": "3dcb482b467580a306377768de164aa7dbbb3c90353a2293d87c0d927989d9ea"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_span_proof_bindings_test.go",
+      "sha256": "564e3c4a428d2cc53052e5a6a43412902647f3a919dc1cfb45ec069aa5692899"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_span_source_map.go",
+      "sha256": "016ea35ff1bfbd0cef591ff61c17e8e64d8495d7100c2c8bb7a8ee2030e38c67"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_span_track.go",
+      "sha256": "9fca82bceea5d80e56300564ad2324fd6e31121b3c493bd4142737ad7652dfd1"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_spanned.go",
+      "sha256": "dc2dd9bcd569aaae13f33f8e9040c08ef017cf99639e112f4f419bc83a7299bd"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_sync.go",
+      "sha256": "c987ed80c275ea0078a13cc1ae24b79ff5f4ee4756e58feffa5414da4de73db6"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_tracing.go",
+      "sha256": "cf1ca941baa1bd9e70b047ec7411830439bb9eb7f8123f656699e7069b273f94"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_tracing_profile.go",
+      "sha256": "944932e46e87a98478f4fed7be22efad178e50f1dd22af14a87a0b0d813e033d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_tracing_profile_oracle_test.go",
+      "sha256": "fac89944f00557aa2a2e02417acda86bd03c15c007ac96bde9a2a45cd5c13876"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_trait_defaults_oracle_test.go",
+      "sha256": "94c7fffe4dffbae95f35da577033d905580bae3097a4545399e75e7bb6ea597e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_trait_failures_oracle_test.go",
+      "sha256": "db28af88c5d6f83e2278a41963b8be9fcc422ca7a9805befb76e2f1b59c10e05"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/lib_value_traits.go",
+      "sha256": "13391aa3f3a380b8c7d0175c09eb9451f188a06c8835a9991b4bd1d2342e8d5a"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/map_ctxt_fn_once.go",
+      "sha256": "5266fa8d6ecb1ed81e7392057155af7b0828d306f40202086115057760173783"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/map_ctxt_owned.go",
+      "sha256": "66250890e70ee0a054a7872e828d7757888b6a0e4b25c662667e5b9471747638"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/map_ctxt_owned_test.go",
+      "sha256": "1b819bcd45d38542fc3ff551693d42755882d31c963a8bc7be8195cfdba211e6"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map/tests_test.go",
+      "sha256": "3dc350e8c26c9c1965079b601297e910d846e05d9c4be4d502ddb133728725c2"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map.go",
+      "sha256": "804093a6b7ffb4ecb2e148a731ba8a20ccb8d1e1049566f866cfc579aa0cf15c"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_binary_layout.go",
+      "sha256": "431a61ce673764c5819e365ed6c63a62532997c78fa14b023bb1462c78e512c2"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_binary_layout_test.go",
+      "sha256": "e6d86d2d45113c335dd4c11330f356761cc79921e57243039d77e54771fcf60e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_consuming.go",
+      "sha256": "b293bcf49a8c5401eb9b8891a66e5259c34db2a438669f782223c214752a235c"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_consuming_test.go",
+      "sha256": "1244d76ae5a0fcaa3973050edff8acbd5b45596ac53465bb9af3ae515e0406ed"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_extensions.go",
+      "sha256": "3c373df3b7202d16f8cf164e769cff073a838abbed344b7c6a42254f7dc934f1"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_files.go",
+      "sha256": "93140f6e6248ba81f0c81bbcc54ff8cc68209eaf583c146f28e38f1d4b01b727"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_format.go",
+      "sha256": "1d646fad079c43b67081348f879361136f6590505ea4c6d847a6d22f447fda67"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_format_locked_test.go",
+      "sha256": "9a87beb0a151d18b06bccc86b6111ee8e2af677a0db333d74b1f72bee120383e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_format_oracle_test.go",
+      "sha256": "ccea1ae585f6dfc909720065c0803fb916bf875e974458487d75bd8b7fc79cb1"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_getter_oracle_test.go",
+      "sha256": "d2f46031bfd9544c4cce0385e6fe5cd7c83fc2bb4d7851385a1fabef126b557d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_io_binding_test.go",
+      "sha256": "aab82c01709eec5f0739fe1858dfcc6b014754bc466522f89fcef27123cef1bb"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_io_error.go",
+      "sha256": "eac0daa40dcde07dbd7e1628db71bcfdb3673a26d513f217508c30b154a62d32"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_io_unix.go",
+      "sha256": "715050faffb887169333fcc7c0411986eaa3faa867ed0663ea78f67b85b2eb88"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_io_unix_test.go",
+      "sha256": "3c52c4b50efee774669b8072ddced31402adf29d669056ac9ea05af2121f8f47"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_io_windows.go",
+      "sha256": "f2ab15f71d301a9676d34346cf56d3e7114c16141ee4c073bce55f0d1b06aece"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_io_windows_kind.go",
+      "sha256": "422d3df742cb5c3e8444d7582a3e4a0e68dfc8b0c3b982c8c3d450077bfacc17"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_io_windows_test.go",
+      "sha256": "55ce24145613d7bd9753d21a6eec537b797025654be56fc9c6106feff9d37ca7"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_loader.go",
+      "sha256": "265e714643f3cb24689c87ae3c240de163df7b7c25c65591d41af0aebca3f1fd"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_locations.go",
+      "sha256": "853220e6c9a528b64419784926115109b7e9e5d9f3faafcd10b197d97936f5fe"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_mapping.go",
+      "sha256": "2ce9409b687ce926a6e989938e0c864370266a131e7b589a2f9827cc73a3da34"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_oracle_helpers_test.go",
+      "sha256": "e024a08fc40dd4bca25475bf97e53dd860c0102042255d458534443929a0baa7"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_oracle_test.go",
+      "sha256": "4c4db46e6181082340aacbe1b2a5517df11ca62a03c35bf8a4c2f2cb300b1535"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_owned.go",
+      "sha256": "06642fdcdb1647c9d1cdb55bf6cd4ee834eed69159bc35cc3e13d30128b4b4de"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_owned_extract_test.go",
+      "sha256": "5156b77952b4216eec43a43024de4c8a97de39be6f4e698b211826171866cace"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_owned_into_test.go",
+      "sha256": "4f18ee97aa23956cb5b7dc56b2addb9f2cea208f1a3ecfb4e28e8ddbc5522429"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_owned_oracle_test.go",
+      "sha256": "292c7bbbe0725e3f1d45237feacebe8d7c2ab5a6079ba8d1a3fe36c9c060258e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_owned_tracing_test.go",
+      "sha256": "be4b88ee36e6b1502cc8ed01e7ccdf08edd7ffcbdeca2fcc18320986d723fef9"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_panic.go",
+      "sha256": "93fd99327df12934f7006738ced00e5b63c564f5bb8662122d37f17f12c2f6a6"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_panic_producer_test.go",
+      "sha256": "2ddfdc468c1caac1bab2bc2f688cf2f58fbff19351fc5874aa7060fa54b2729a"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_panic_sites_test.go",
+      "sha256": "0cccaca718613a51d5f9ef994956afef052ddf4cf29d2c1d94b2e58289a34189"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_path.go",
+      "sha256": "3d0057855fd5646b5d169f658fcc585795a7afd96997964a275e09215e7a3d1e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_path_oracle_test.go",
+      "sha256": "fb30323b276f061287f24285811493ce3a31c320fa842333754022e3e976ff7f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_path_traits.go",
+      "sha256": "500ec571510d62221135e64bf8d106d4da51c1e866560c1fcfd2fa6958394a99"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_points.go",
+      "sha256": "97de04405695a9136b21d74680755b7e24250e06cc7df75aa920f20b49fd40e0"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_predicate_borrow_test.go",
+      "sha256": "824c84da19eea973fb7245a59edcdf6ebfa6de9232d0ba26e5c977ba5e0fe851"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_source.go",
+      "sha256": "4d07694762b864e51dd59721c8ca7ce4204945f71c1b7108fbf5d73429ee41d7"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_source_test_witness.go",
+      "sha256": "b73530b8c7195e9b1f3a0b8727ded63f109a3016f7a7d5dfb50e9fcca35b6565"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_span_wrappers_test.go",
+      "sha256": "34ce499ed3890aeed55bd2613b8231e67f30638d8972c5dca8ad6551c3d1b648"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_sparse_file_test.go",
+      "sha256": "5b7763a58b7d781329c183c6a98ea7d7b63e509e0c9575be356b674a6c7b4d3f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_stderr.go",
+      "sha256": "d60cfa6b35c18213e88b0b35fa85770d9959cfa2c8d2d72f7181ae905a401eae"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_stderr_oracle_test.go",
+      "sha256": "0a7cfbc9ecf17617d8b7564220b409f3286b5da82d4886c2054520ca3f3cc9ff"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_tracing.go",
+      "sha256": "e87356338e61e85b60006e6743324217cfd3868c628de87f860aed4fc6775bd7"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_tracing_oracle_test.go",
+      "sha256": "37e335e1d71c2b21516410e779c5848c8f42c6bb3ad2bdffaa4021963ec929c5"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_tracing_profile.go",
+      "sha256": "ab76ee2346e20066ba0874131ecbadd4735832773a36472eebb89f5e85da62ea"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_tracing_profile_test.go",
+      "sha256": "7c3a5379f762b36c2980893cf779011cf4a9736a108971186f18c081873694f8"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/span_ambient_debug_test.go",
+      "sha256": "ae6fd1de3fdf3ec339d09102f14fa55d32838ec649a50788e8cd9fbfe1c040f4"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/span_debug.go",
+      "sha256": "5fb15e2b0e8fc2e58d4141bc00a89620a0fe0c5665bda999b3529ce74ef3538c"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/span_debug_test.go",
+      "sha256": "d8a504191ff9e6d08b92395a09d12d1a11a2494540193aed02cbf97fc24646a4"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/span_encoding.go",
+      "sha256": "4956678a322c6d4830d8cd039ef3a850f7726be9486fff2a851cb4894e272144"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/span_encoding_test.go",
+      "sha256": "3b279700c18f2850f9de1b5012ee29343a6c73ce556596b792f165f1cca4774b"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/span_oracle_test.go",
+      "sha256": "c98cbce4a08be5953437b0dd42fed64c4ab1032efb749cc150cf3119530fa200"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/span_requests_test.go",
+      "sha256": "b747ccd57ff654f7a833f8144900e8ad5be5e5735f1d7f4ace3acc96563549dd"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol/tests_test.go",
+      "sha256": "a46f0a1951fcc96ad65a84fb0d2d2f9f1346377a269fc0db787b0e99ad812b02"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol.go",
+      "sha256": "0bebb03427a008c668e5e67a0fdc9d554603e39d90dd5f594a0a2f7a96969ad0"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_borrow_test.go",
+      "sha256": "461babf492207af36c08f118c07688ab552f146f3c9b9cefca2bd80f8e4d48bc"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_context_ord.go",
+      "sha256": "a2f1a713257cd0b7a7446c2cb4f26126a8b1f0c0bcb6964df5531afca49e125d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_edit_distance_test.go",
+      "sha256": "a866b7faec317e1df8a1e89b5cfc7c0bc2dae7fcd20b334da92e1495008f1037"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_format.go",
+      "sha256": "a4ac01d65252022b03acfd978aaa2d6783dcf1a82eb8eaccac6b7db0d029b576"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_ident.go",
+      "sha256": "1b814c2d743fb684f4cb5094ee18b03400631d3166fee5ab082021b28388d58e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_oracle_test.go",
+      "sha256": "b2f9494b645e239008ef49da97cf8fa2e5360cb62c55b2c9898d60697a2c7baf"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_panic.go",
+      "sha256": "2de5685827acd8dd69dd3b6faa56bd3b3065f888232e1b9ff469efa15d32c121"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_panic_contract_test.go",
+      "sha256": "f6286480e3f5741013b126827781622e33756f758cdb6171c285563e4e10fc8c"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_panic_evidence_test.go",
+      "sha256": "3826b84d0c064cebc8563efa897486b6550cfdc587b167833e39f50674f8aa50"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_panic_location_test.go",
+      "sha256": "8e2b6f7360053b6412c8ad3e044e5140d5f01166942675f1b089c3247ac63962"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_predefined.go",
+      "sha256": "91b529e649c7c608a30af87f48178700505bc6d3060d76d6a94d1ceb89c5643d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_source_test_witness.go",
+      "sha256": "9b93287216af9fe7b721d3c7b8e344841abf37dc494b75c8f2aabb0c09e0b49a"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_unicode.go",
+      "sha256": "3f660694e68d5fc3644bc5647ae0fc520cc6c1d11bcfc299c273ecad1d55a309"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/symbol_unicode_test.go",
+      "sha256": "6a99ca5167c6d5931d818f23b300b99c9d60ae1566f17d4a37188808bccbcdc8"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/tests_test.go",
+      "sha256": "98c9f205867721b29df6dc7fe909dc1041452cb68aaa3ebd147db75a251e2319"
+    },
+    {
+      "path": "port/rust/library/core/src/unicode/unicode_data.go",
+      "sha256": "a223e91f91b7a38659cb71cb7f0adfa588c40e8a6dee47859ddc7cc9a60baa59"
+    },
+    {
+      "path": "port/rust/library/core/src/unicode/unicode_data_test.go",
+      "sha256": "791d9bb1257c3a87df0ad5d989be285824c597cb6b953557abb705823eba26d9"
+    },
+    {
+      "path": "port/support/rusterrno/error.go",
+      "sha256": "0e7a6debca9d4a3edd921b4ede10886fa922023c26d34331c22e36325df3cb6d"
+    },
+    {
+      "path": "port/support/rusterrno/error_test.go",
+      "sha256": "eb74916208d38d9d3bee569db2efbec5b1a8c0b6c874760705e0b4c8cb6e83de"
+    },
+    {
+      "path": "port/support/rusterrno/native_cgo.go",
+      "sha256": "e18bb9e00afb4c278f592565f6c1991482a55dbcd205bad80396bb26c2e2c751"
+    },
+    {
+      "path": "port/support/rusterrno/native_unavailable.go",
+      "sha256": "76cdcd2650604f5d6ddd85e34dd1ca9a9933382ee84ab7cd8ab0b51c9b33b151"
+    },
+    {
+      "path": "port/support/rustfmt/builders.go",
+      "sha256": "03285fd7319e9d661e67c83c19a84bc4f8d7825c8d6ecbf425a39423107022df"
+    },
+    {
+      "path": "port/support/rustfmt/builders_non_exhaustive_test.go",
+      "sha256": "6c84bc9aff575ffc913ea1b4aceb463701e6929d348644348e88b851fb41037d"
+    },
+    {
+      "path": "port/support/rustfmt/builders_test.go",
+      "sha256": "c49e3b4e0dd769c00dca490c7101a27cf340fe42f16de4937ada81a17c227ced"
+    },
+    {
+      "path": "port/support/rustfmt/char_debug.go",
+      "sha256": "ee693582aab3bd317cb9ef124f86dbc9b8852b3c46adbd99ba6880fb9cb2e891"
+    },
+    {
+      "path": "port/support/rustfmt/char_debug_tables.go",
+      "sha256": "c6924f94132671c791c7b8ce8f6b80e03186d1a1f835e73e8ed1da19cef7cd28"
+    },
+    {
+      "path": "port/support/rustfmt/char_debug_test.go",
+      "sha256": "e8ed700fcd5b796b8efd021531a6318eb2acf370a518d96ae62bc920cea08e09"
+    },
+    {
+      "path": "port/support/rustfmt/formatter.go",
+      "sha256": "98b68bed6b04e1337db3b5b7424ffa3b0f8a14f6513cf0995d3599547724411d"
+    },
+    {
+      "path": "port/support/rustfmt/integer_radix.go",
+      "sha256": "ac7a855b63cfd50089f3980f1b379a709f12b7373a5422d9686f1150de2f6550"
+    },
+    {
+      "path": "port/support/rustfmt/panic.go",
+      "sha256": "215086bed1fdc10c547013bc9cd8557434fdd962ca0678fdd2e6bb9994b22fd8"
+    },
+    {
+      "path": "port/support/rustfmt/panic_location_cells_test.go",
+      "sha256": "30856f354eff19cb1298b6b0c544206d63b98d171f42f11a4d35cbb5c1120e2a"
+    },
+    {
+      "path": "port/support/rustfmt/panic_test.go",
+      "sha256": "35e505d2cb781262dde6ec09441b3a1a4e4cfbfda15d30b64b245ccc3d1177f7"
+    },
+    {
+      "path": "port/support/rustfmt/string_debug_test.go",
+      "sha256": "17176d415a3e757d422c26a701710b845c9f5ed6f2e82632c90177ac48408865"
+    },
+    {
+      "path": "port/support/rustfmt/unicode18.go",
+      "sha256": "e2d3251c139f53548ac92c6f68998ac1bd6685720741725741cf89df0fd9a91f"
+    },
+    {
+      "path": "port/support/rustfmt/unicode18_oracle_test.go",
+      "sha256": "0a959b67772518c49a2fbdf867acc09b50a3fecb06eed22a1f41e9771230b424"
+    },
+    {
+      "path": "port/support/rusthashmap/abort_oracle_test.go",
+      "sha256": "354ab62924c801d46cc0dca010f194acf045014582cba9cc7a5ec032f9c31995"
+    },
+    {
+      "path": "port/support/rusthashmap/entry.go",
+      "sha256": "b55490821799cbeae591bc1b547915cfa9b1d78c4229f409ba6817398a59ac48"
+    },
+    {
+      "path": "port/support/rusthashmap/entry_format.go",
+      "sha256": "bf8b6277bf8f7662bef5aa6e3154bf953a1432fd479ebf78e45d74bab85925fb"
+    },
+    {
+      "path": "port/support/rusthashmap/extend.go",
+      "sha256": "a61bb97335386ed368ff7c9c6b85e309de2827ad2eaf02bad648339c568439e0"
+    },
+    {
+      "path": "port/support/rusthashmap/format_oracle_test.go",
+      "sha256": "237984284b2eba5171da3e259d01075653f9a7cbdecaad8253ac6acbe611de29"
+    },
+    {
+      "path": "port/support/rusthashmap/fx.go",
+      "sha256": "391aa731059b241b252104a40913f130d60e21e45b5f75a460ec4c2cf71d5ced"
+    },
+    {
+      "path": "port/support/rusthashmap/fx_oracle_test.go",
+      "sha256": "710807a147ed669a4206a5d8b53695dc7ceb9dcfe4a0e0b0f6d209cb23837687"
+    },
+    {
+      "path": "port/support/rusthashmap/hash_one_test.go",
+      "sha256": "14553e97479abf2abaac1e93ede06b7368d90723d16261ff49c667ec5699381d"
+    },
+    {
+      "path": "port/support/rusthashmap/hasher_borrow.go",
+      "sha256": "da3d31a877c3a169fe6333e354b9ebb4284093d1117476ac620ed1830b68b40b"
+    },
+    {
+      "path": "port/support/rusthashmap/hasher_borrow_test.go",
+      "sha256": "74b5f23e724935c1c56fb7f20e9ccea846141a0a635a70f05c0132b9c281fb14"
+    },
+    {
+      "path": "port/support/rusthashmap/iterator_oracle_test.go",
+      "sha256": "c7e7d0786f713ad2d805e07cd46878f0fc6180e1e38068551a32327c1415fce9"
+    },
+    {
+      "path": "port/support/rusthashmap/layout_oracle_test.go",
+      "sha256": "7cf528b4f27fa59e0299e8f2db4db18f63265abece8e5c8e1893b526445dc184"
+    },
+    {
+      "path": "port/support/rusthashmap/map.go",
+      "sha256": "91eca9e86aabfcf5210a5d63f3d1ab8952c62e6b01515951011165fcc11dd562"
+    },
+    {
+      "path": "port/support/rusthashmap/map_iter.go",
+      "sha256": "d201dc278bc51dbf8a9997b72f94f2aa23d14b88ecdd1332ec1c580110942af8"
+    },
+    {
+      "path": "port/support/rusthashmap/map_traits.go",
+      "sha256": "06c71e309b2fa177e7fbee5cc23657320a5f577e018e03242d798660a8030608"
+    },
+    {
+      "path": "port/support/rusthashmap/once.go",
+      "sha256": "79cdb2551815887a9969b6e23cb8e716d65c3319e3a5c23508601bda02efeea4"
+    },
+    {
+      "path": "port/support/rusthashmap/ownership.go",
+      "sha256": "4953b4fbda08d0dd0d968ee084459afca1331ae7de8b960ad42d5f45747f25a3"
+    },
+    {
+      "path": "port/support/rusthashmap/ownership_oracle_test.go",
+      "sha256": "3da05b4009daeab6d548cd0972050ca12cadb2ae07df8deba5a43702d7691786"
+    },
+    {
+      "path": "port/support/rusthashmap/panic_oracle_test.go",
+      "sha256": "b660df3f1bd8da44e6d8e1fdd5ae365848b0335ff5993aa64fb8842fe438c374"
+    },
+    {
+      "path": "port/support/rusthashmap/panic_sites.go",
+      "sha256": "8fd6af8a6431dcd9bc161672638ec6a8aca1638da3204ad5e66864d5a8d1bc55"
+    },
+    {
+      "path": "port/support/rusthashmap/raw.go",
+      "sha256": "55b537816c8faa198590f60323e7400ee978ff391f6ec2836f34b55783b97efe"
+    },
+    {
+      "path": "port/support/rusthashmap/raw_clone.go",
+      "sha256": "a5ebaae7f3db1f1c4cc292b73d3b2f6612a0d83a5a442758d19d571787a92813"
+    },
+    {
+      "path": "port/support/rusthashmap/raw_iter.go",
+      "sha256": "8fc3331d114be70e9aef97a9b18176eefbc693cbb3882b4d21f9acb8784d9e94"
+    },
+    {
+      "path": "port/support/rusthashmap/raw_iter_bucket.go",
+      "sha256": "9b784cefb2498f7c4d86ff4df852522a4d402cc85ee426867f348c9590412266"
+    },
+    {
+      "path": "port/support/rusthashmap/raw_iter_bucket_test.go",
+      "sha256": "c46f524cff323075c2cab64fa1e840a197dd80a1d981a5fb5ded8c35862c55ae"
+    },
+    {
+      "path": "port/support/rusthashmap/raw_unique.go",
+      "sha256": "e0c61dff46fe34e25684de347e19e09b69074e52c4f7af066d93424b39847833"
+    },
+    {
+      "path": "port/support/rusthashmap/scalar_test.go",
+      "sha256": "e1bc08c4f17f0c223d6eb6eeec2d6ffe41df31ad013ea7a40f9d23eace9a305b"
+    },
+    {
+      "path": "port/support/rusthashmap/set.go",
+      "sha256": "1864ecbd25fe19d10765d6f58a382dda103ccfbd89bdf49cff60b691f52c2837"
+    },
+    {
+      "path": "port/support/rusthashmap/table_oracle_test.go",
+      "sha256": "5c0c01fa21ca69aedd5151842d4d7afe9212c14d28b2fc8eb15ee849cd8ae338"
+    },
+    {
+      "path": "port/support/rustindexmap/borrowed_iter.go",
+      "sha256": "a2f90cb45f73afc15ed790c1a393e42bb596da4d7573b0b72455ca17d3182976"
+    },
+    {
+      "path": "port/support/rustindexmap/borrowed_iter_oracle_test.go",
+      "sha256": "33824e6b493a4a22b66076e0ca96818ee1ff825b5ffb3b45de7f35fa34312bfd"
+    },
+    {
+      "path": "port/support/rustindexmap/builder.go",
+      "sha256": "c4ecccd2a4c85f14a3080c793133e69096156f2d581c15aaefbb7ad8f07773f3"
+    },
+    {
+      "path": "port/support/rustindexmap/builder_oracle_test.go",
+      "sha256": "62daf90a076f019e207a122dc44ead7c8ca00b09dfd268de4faa9f873ba1d022"
+    },
+    {
+      "path": "port/support/rustindexmap/builder_test.go",
+      "sha256": "03c3a4de7340978cf9250b6f0168eb475c16194f8348af4bd2cc8e1f88479ff6"
+    },
+    {
+      "path": "port/support/rustindexmap/clone.go",
+      "sha256": "10179e06dcab73a78444fd74ecfef77c8da7150838755ca8ada5e04bf9d43639"
+    },
+    {
+      "path": "port/support/rustindexmap/drain.go",
+      "sha256": "699582a8e4056f2aa7fa4b49288c1ef037fa957ca6633eb9f4e557b065d1ced1"
+    },
+    {
+      "path": "port/support/rustindexmap/drain_guard_test.go",
+      "sha256": "9bbd1b7cbc92640b8b4266c6aefc72213a9aaec0fe0c8acff58fa5e711724870"
+    },
+    {
+      "path": "port/support/rustindexmap/drain_oracle_test.go",
+      "sha256": "71811a454e80915e9419a54b2013450fbd9c3771e99bdc438fdd569ce39790e6"
+    },
+    {
+      "path": "port/support/rustindexmap/entry.go",
+      "sha256": "f6d58ffe8d9196511e28a8300f2b04eb951ef9f3ec602c82b6591be8b3eef2f5"
+    },
+    {
+      "path": "port/support/rustindexmap/entry_format.go",
+      "sha256": "655d3a7e154d11eace23bf60dfb53f447dbcdea0cbaa6b81a46ed80108d5e83f"
+    },
+    {
+      "path": "port/support/rustindexmap/entry_format_bounds_test.go",
+      "sha256": "cc0c93acecfbca28ea3a643a467b4ed1f5895e0c2b9582eeaf3b0b499e1815a2"
+    },
+    {
+      "path": "port/support/rustindexmap/entry_format_oracle_test.go",
+      "sha256": "fd657ec43d70523c2eb95c8e9f8ce71ee0fc8b2578e1c041b4c13ffbe3c2fda6"
+    },
+    {
+      "path": "port/support/rustindexmap/indexed_entry.go",
+      "sha256": "4553a7bdc9b45bf6aab6a38952ad31a88ecfe94ed701a29710f7145d635a46fa"
+    },
+    {
+      "path": "port/support/rustindexmap/indexed_oracle_test.go",
+      "sha256": "b53c70f89015b0002d855310c7e09425a38740dc3b01a809ea910a2a71812f52"
+    },
+    {
+      "path": "port/support/rustindexmap/inner.go",
+      "sha256": "47e5313e215e3398303e73483df9b1d28f6bd5e29fd2f82eef7111748b944e5a"
+    },
+    {
+      "path": "port/support/rustindexmap/into_iter.go",
+      "sha256": "064e91b503f2641b5cec1789e5271fad4e72f74a94132b80e6c4c3eedea668f1"
+    },
+    {
+      "path": "port/support/rustindexmap/into_iter_oracle_test.go",
+      "sha256": "4bc6dee881a140aeec6a72d5d50378e71b78008f5b9fe9221efc803f8283b55f"
+    },
+    {
+      "path": "port/support/rustindexmap/into_projection.go",
+      "sha256": "e2f06fc1f60a48c3cc0bf7361c36d55a53cf1d21b68f1c4336e727a0a3423deb"
+    },
+    {
+      "path": "port/support/rustindexmap/map.go",
+      "sha256": "f99479a30025bc42751fa8442035a02ae89e7a40fb0ecc4fdadc7386186798d2"
+    },
+    {
+      "path": "port/support/rustindexmap/oracle_test.go",
+      "sha256": "63d4030e2db663e1111413d52301242448dad0ddd2245d3e7497a69c6b0bb49d"
+    },
+    {
+      "path": "port/support/rustindexmap/owned_oracle_test.go",
+      "sha256": "f4c9a8226c0c6e23c4b8c6ec3b5d5fe611ba59d283021d2119149f0fe962ff05"
+    },
+    {
+      "path": "port/support/rustindexmap/position.go",
+      "sha256": "a6fa50f0081d5410f2022b1610543fed3826435451ea0c27299f2b162d2574d3"
+    },
+    {
+      "path": "port/support/rustindexmap/position_oracle_test.go",
+      "sha256": "b2f29fd73c5dfbefec2fe2cd75f355bee1cfc0f514c495695c44b9bd53d2e3e1"
+    },
+    {
+      "path": "port/support/rustindexmap/processing_guard_test.go",
+      "sha256": "d502a83d028f09f313f5c24452873ad9bc92852aee76d63ade230871ad951042"
+    },
+    {
+      "path": "port/support/rustindexmap/projection_oracle_test.go",
+      "sha256": "62d971891ba5d5b37d0e5caeccf39b7f8c3677688391efde4f0378f3556bcd8c"
+    },
+    {
+      "path": "port/support/rustindexmap/range.go",
+      "sha256": "127a9810255f27e1f21631d188af4a809473820fe08712fbee12150cfa76e0c1"
+    },
+    {
+      "path": "port/support/rustindexmap/range_runtime_test.go",
+      "sha256": "dfd9cc8dfd9587c13ef8f1b4a214f976fba49faf152a52309ce18869419ca176"
+    },
+    {
+      "path": "port/support/rustindexmap/slice.go",
+      "sha256": "49d6096d1d415daad4ef5fc39d2f47710cdb75f8b536279769229748acd26c87"
+    },
+    {
+      "path": "port/support/rustindexmap/types.go",
+      "sha256": "115505cc4a5c7b71af5dee4a7ae140c0311165d92fc1f90e7e01da9f43a6b198"
+    },
+    {
+      "path": "port/support/rustsort/cached.go",
+      "sha256": "ccbc376acc8b03ec77676811c9d0039fa26e77f2bb08bda62bce8b5845f28abd"
+    },
+    {
+      "path": "port/support/rustsort/cached_context_test.go",
+      "sha256": "bea260c003df76f0ebd63b93d1197040a14a34acd4f3599600b9c5b757e9d0bd"
+    },
+    {
+      "path": "port/support/rustsort/cached_hooks_test.go",
+      "sha256": "40491ce821cb06e904ddda9c268fec938a67b1b789e3c4a32c30634d059d9e69"
+    },
+    {
+      "path": "port/support/rustsort/cached_oracle_test.go",
+      "sha256": "de89cc8bb907a9c07f2b0ebc95df8545474c97b0b3fa68834976ba0ea644ee50"
+    },
+    {
+      "path": "port/support/rustsort/drift.go",
+      "sha256": "20fb5c73a0d4574799451cc06db2bf2dab27b363dcd577ebac61f6c6f1afe5fa"
+    },
+    {
+      "path": "port/support/rustsort/key_function.go",
+      "sha256": "c5bc5b6fddc4a839ede57a1bd5df1b09646cb933fba257c6c242e0e47119e572"
+    },
+    {
+      "path": "port/support/rustsort/merge.go",
+      "sha256": "b5344aaab99fd601572766762d7705da7b392f63af225083307a9cced9c1f475"
+    },
+    {
+      "path": "port/support/rustsort/network.go",
+      "sha256": "c89ed4658707f19997f78cf46d2c1deb31d60af3a20a7420186566d4386521f4"
+    },
+    {
+      "path": "port/support/rustsort/panic_sites.go",
+      "sha256": "1bfa9ac4eae8770fa353acebc2a1458b22a9e728c35a0d9a6781166a34d87d06"
+    },
+    {
+      "path": "port/support/rustsort/shared.go",
+      "sha256": "9117a60564f30108fa97fd412f55a434835e9706d4db4a1413e29a9d7a2a67a7"
+    },
+    {
+      "path": "port/support/rustsort/stable.go",
+      "sha256": "6b636f0403be3b441a7176e66136f634846d658da915e462b98997370b093760"
+    },
+    {
+      "path": "port/support/rustsort/stable_oracle_test.go",
+      "sha256": "da7a2c5ff14f35c4c16fd46449a52ac97830f222e2bdb79ca9da90fdedfde6c1"
+    },
+    {
+      "path": "port/support/rustsort/unstable.go",
+      "sha256": "bb8f020c61729c43e48a49a638fa885d3d90bc778f14ae273b2fd45f8bade63d"
+    },
+    {
+      "path": "port/support/rustsort/unstable_oracle_test.go",
+      "sha256": "a22158d4370e3383923f3637e9a41f1c13bc07b8fcd18650ef405f8ac7c87cbc"
+    },
+    {
+      "path": "port/support/ruststdio/capture_owner.go",
+      "sha256": "46a5da665425fb03eb476a10f719441c14a86d1666d28923db4892dc967fc0c1"
+    },
+    {
+      "path": "port/support/ruststdio/native_unix.go",
+      "sha256": "99c9883db64e5709159121df146e73ccc63626a18fe2b9cd85c3d50b2b7498e5"
+    },
+    {
+      "path": "port/support/ruststdio/native_windows.go",
+      "sha256": "bc05b7565614dae51be4dc2383f5df7bf0dfd5a3eda717e663dbca9ce132170a"
+    },
+    {
+      "path": "port/support/ruststdio/oracle_test.go",
+      "sha256": "d999a37b9d784f77448872984da72fe359d7d4e2aff60c10ae9b31c6878171a5"
+    },
+    {
+      "path": "port/support/ruststdio/stdio.go",
+      "sha256": "a2303b4c5cd429e157ea8e59049f16b1002f87acfae77de67f4cf497ebe60b73"
+    },
+    {
+      "path": "port/support/ruststdio/stdio_test.go",
+      "sha256": "ba14a93c55b91a19d8db1633fdf21653c0bed82de878b78f5f3aaa017e2ad895"
+    },
+    {
+      "path": "port/support/ruststr/ambient_test.go",
+      "sha256": "94a1d818d44466762267c84b63bee7c7891435317171d7ac3795d73193586b95"
+    },
+    {
+      "path": "port/support/ruststr/slice.go",
+      "sha256": "ee0f6e966959829aeb5eb0c677afe2cab80562148535b57fe993d459abfbfb17"
+    },
+    {
+      "path": "port/support/ruststr/slice_test.go",
+      "sha256": "39f361e5b6b306d4c207fde38f7d4ced8306265d5a9b96c3de228a8203aa7737"
+    },
+    {
+      "path": "port/support/rusttracing/borrow_panic_test.go",
+      "sha256": "c6cdca83be496726c3b1e13d2b60b54f40000d326b9df5176c1d3aba0951d8a9"
+    },
+    {
+      "path": "port/support/rusttracing/context.go",
+      "sha256": "92f2b7c88230aba925744aee4c76a073b2dbe1ff10479c2b3e842c3601dbf177"
+    },
+    {
+      "path": "port/support/rusttracing/context_test.go",
+      "sha256": "4424b28ade48cf3e118b0013402e1fc1e28168ed62390c582cb6998513773066"
+    },
+    {
+      "path": "port/support/rusttracing/dispatch.go",
+      "sha256": "d18f18796a6df70543682490311264668814666ddfbde68861df9f5c5617439e"
+    },
+    {
+      "path": "port/support/rusttracing/oracle_test.go",
+      "sha256": "1ac97b0dfc60bd5dc9e4ed224e9374ee2cafdbc13300598384a136914dd2ea1f"
+    },
+    {
+      "path": "port/support/rusttracing/processing_test.go",
+      "sha256": "b4d83f0c4b87ace6afc37c76a55243f3bb7d5eeca804f36804b127aab5d30433"
+    },
+    {
+      "path": "port/support/rusttracing/producer_evidence_test.go",
+      "sha256": "ac2650dce1c1d7db92401ad02bea37c287926200084b7f7ca2c186f6d0c235b8"
+    },
+    {
+      "path": "port/support/rusttracing/registry_poison_test.go",
+      "sha256": "2911db40de135cb3708d7d87b25cb8659985f6d194cb2e7f556fbe6c2dcb5de6"
+    },
+    {
+      "path": "port/support/rusttracing/span.go",
+      "sha256": "43e243f9c8f286b959374e6b015deb6098a78babde0ae6370993ac69306002af"
+    },
+    {
+      "path": "port/support/rusttracing/value.go",
+      "sha256": "4e61d9c50c9740cc3bd30f170ba2b7f51e1c47f741cd38b2e15b9068ca33b5a2"
+    },
+    {
+      "path": "port/support/rustvec/collect.go",
+      "sha256": "af48d40913abdf1a041d3fbb6efa21bb8216169149d1a5c4ce8ecdfd7a0aea6a"
+    },
+    {
+      "path": "port/support/rustvec/doc.go",
+      "sha256": "72af82b537263487eebd608be5dca682dfcf5308068b7dece6801d6a23d0c5a5"
+    },
+    {
+      "path": "port/support/rustvec/for_each.go",
+      "sha256": "54c2e25ad61d11cc0ed819b8123bbbb0a6b5b8b0949676db8ef06a254d19a389"
+    },
+    {
+      "path": "port/support/rustvec/map_unit.go",
+      "sha256": "fc5326104011f8930aced03a613f8f55ef9a46fa3f887b06649aaaaf7c2f65d1"
+    },
+    {
+      "path": "port/support/rustvec/ownership.go",
+      "sha256": "4312821d11339a4abb9f60295f492183eb5c34a26f40876ee990a2f09f89dc6b"
+    },
+    {
+      "path": "port/support/rustvec/ownership_context_test.go",
+      "sha256": "a7b09fccb728f6d245fc43907d3448df1be08dbafce371176b1b8ea33a085269"
+    },
+    {
+      "path": "port/support/rustvec/panic_sites.go",
+      "sha256": "8d026e818cf7252a9b24595c3e15bed94fd4274753ce2d5e5291ce5b2b5d2ad0"
+    },
+    {
+      "path": "port/support/rustvec/replace.go",
+      "sha256": "ec098d1353a2dfab6a3545ec78bf593cc18ca93cf1e4b1bf228aec9f0df33174"
+    },
+    {
+      "path": "port/support/rustvec/replace_oracle_test.go",
+      "sha256": "e082247aa2dcae7ac1fa2e6be6e355787fc13d2c9ce35f60a5a7e90c46a6d3bf"
+    },
+    {
+      "path": "port/support/rustvec/replace_test.go",
+      "sha256": "2051a179e11682b4caa4c464c7b529762c4a7afe9c2ff2dba1ffd30741820917"
+    },
+    {
+      "path": "tools/port-rust-fatal-error/reference.py",
+      "sha256": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b"
+    },
+    {
+      "path": "tools/port-rust-span-lib/generate_span_hygiene.py",
+      "sha256": "145f7bea20b68d33733b5acd9327f1eae90351bd883212ef0e82e7977e1e036d"
+    },
+    {
+      "path": "tools/port-rust-span-lib/native_span_hygiene.rs",
+      "sha256": "617a753f126b2572c7c61b2d046f049cb5831ef252ee2015b5790602f60cd0a4"
+    },
+    {
+      "path": "tools/port-rust-span-lib/reference.py",
+      "sha256": "2094b30a5149056c683edffc6cc4a8d6d6984d81933ecb10c80e5f34c355db9e"
+    },
+    {
+      "path": "tools/port-rust-span-lib/span_wrapper_evidence.py",
+      "sha256": "615ab41baea2877c5b093ddf4f5e0996cb195c07ae7b98485b4d582f57da5a22"
+    },
+    {
+      "path": "tools/port-rust-symbol/native_profile.py",
+      "sha256": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+    }
+  ]
+}

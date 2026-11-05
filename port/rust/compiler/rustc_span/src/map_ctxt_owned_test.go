@@ -36,7 +36,7 @@ func TestMapCtxtOwnedRealCellAndDestructionPoint(t *testing.T) {
 	// Target context needs interning without a session. Environment destruction
 	// must complete before that construction panic, with no second destruction.
 	panicText := spanTestPanic(func() { MapCtxtOwned(span, nil, mapper) })
-	if !strings.Contains(panicText, "session globals are not set") || !reflect.DeepEqual(events, []string{"call:0:false", "drop:9:false:false"}) {
+	if !strings.Contains(panicText, "cannot access a scoped thread local variable without calling `set` first") || !reflect.DeepEqual(events, []string{"call:0:false", "drop:9:false:false"}) {
 		t.Fatalf("destruction/construction order %v panic%q", events, panicText)
 	}
 	if got := spanTestPanic(func() { MapCtxtOwned(span, nil, mapper) }); !strings.Contains(got, "already consumed") || len(events) != 2 {

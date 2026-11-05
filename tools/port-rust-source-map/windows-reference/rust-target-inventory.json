@@ -1,0 +1,302 @@
+[
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libstd-ac07067acc38de3b.dll.a",
+    "bytes": 1857444,
+    "sha256": "143ce1795e50b1d3c1fcbe05e851b2391d24cba60a5f627a797a3b60fd175c97"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libobject-898fa88883139890.rmeta",
+    "bytes": 7041140,
+    "sha256": "91342f2fa71eb0e82fd27a6bc75b78c5e4a9ce8551a0d85b6a7b94fef7e8d79b"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/librustc_std_workspace_core-dcc522a61c231801.rmeta",
+    "bytes": 6376,
+    "sha256": "86785b2317be43b2a61d0e2ea4a5f15a87348f0e33074d16c72f4950a6b961cb"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/librustc_std_workspace_std-fdddc2cafa5b3311.rmeta",
+    "bytes": 8186,
+    "sha256": "4b8de37f5ec277a0f16389f4a504fd6f324e8503f8f398c2d6cc881420df6f76"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libcfg_if-6038a82f8a7fae41.rmeta",
+    "bytes": 5607,
+    "sha256": "13b2b835245e0b54b1f1daa29e642874c2c1a1f2283e5cbd5b61da5b00490e3f"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libgimli-d8985162f9bda771.rmeta",
+    "bytes": 5011822,
+    "sha256": "259485cf290bcc54d25246518bc9617d60158f9ad1471848f87dce90282df957"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libtest-2caad2532ad219d2.rmeta",
+    "bytes": 884396,
+    "sha256": "fe8dc5284a377ccbd6a11c2032db9eddfe1ed3f4f87f49f4bb94a308b9ee5af3"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/librustc_std_workspace_alloc-b7b054f7ca345c53.rmeta",
+    "bytes": 2274,
+    "sha256": "7bf9bbed60f21ac0bd62d078af0a42503496869b4f8292e3a879ddc0e719164e"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libgetopts-14e778d8bef69e14.rmeta",
+    "bytes": 198604,
+    "sha256": "85732bd3ad0b335d9552a5f4f40f94f8feee3805946e309cc3391f0f2f746408"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/liblibc-4fefefdba685b0a4.rmeta",
+    "bytes": 213367,
+    "sha256": "dfbc354e8d8e51c581493845034241465c929e8d40ded971fca4cb06119dce87"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libmemchr-62be3b4acf6f16c4.rmeta",
+    "bytes": 1396913,
+    "sha256": "4a7e8d2a011d40ca40642b5fd0f0450496eaf217e299d07cabba3b9fa60a08b5"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libproc_macro-7ddacf1ac7f36c05.rmeta",
+    "bytes": 909407,
+    "sha256": "b3a3f857779270695c79bfc6f837ebf45934101238c1c8bdd52444851ddfce5b"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libwindows_link-c7a6a897001f12d6.rmeta",
+    "bytes": 3804,
+    "sha256": "89f42b75275d9ba74838efdc5c6ea59809f768f51ad895b076d2fe921f868c6c"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libaddr2line-8b140a88a9bae0f7.rmeta",
+    "bytes": 423853,
+    "sha256": "edf461a74363106895df060b8d875d72f344676504c9ba79d5c90bd77c8263a5"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/librustc_demangle-4224ab18f3c5e908.rmeta",
+    "bytes": 77488,
+    "sha256": "038457ebedaa0606920ef3931cc80959dac00f280c4023c9cdc822596c5deebe"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libadler2-0283751f18b39c29.rmeta",
+    "bytes": 18797,
+    "sha256": "eb1c80f9d3c259743ccc8ae836b6e52e2cb63111329777209b30e9389df7793c"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libpanic_abort-75dc5cb02792963a.rmeta",
+    "bytes": 2965,
+    "sha256": "4b79a779376d93b1a512cff3e93d1344aa7f82df68fae5a4f8c5335f6645a16c"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libcompiler_builtins-ba2f2782c41d926a.rmeta",
+    "bytes": 1782139,
+    "sha256": "8b27a9719efb2c5a526cb1a8a96a2f5ab67bed9516e9bca9fd6f717b0767d64d"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libstd-ac07067acc38de3b.rmeta",
+    "bytes": 6993684,
+    "sha256": "6d9f244cf1c304c7bb49e9e4d3f24d479b7d7f9037fd2840d3ebc1019af1a496"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libpanic_unwind-81ef7e2d3cc9dc7b.rmeta",
+    "bytes": 7383,
+    "sha256": "5c92d0b451d4ed2303390d5656b2a560dc05065f72b789f984a88629c9ed2167"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libhashbrown-2995664a4a750ddb.rmeta",
+    "bytes": 1407463,
+    "sha256": "007f64bcf5dec670e2db667d4ae851a3c5ca1f9e0603a96dbf8c49b6192d2240"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libsysroot-11479f7044a0912c.rmeta",
+    "bytes": 2317,
+    "sha256": "2f585828df4c4796be0ccf25042a5ff8a2f166a1e3e7bf343f47966aaf6cd48d"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/librustc_literal_escaper-ae27594ecd82ecac.rmeta",
+    "bytes": 111565,
+    "sha256": "7a518e65c8f632674cf6ce750ee83e85e9b657682e07dead155db61a77b8911c"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libminiz_oxide-e495af41d650c56d.rmeta",
+    "bytes": 109564,
+    "sha256": "8ad1612863a403b4ff1ab31b3febf2f8205621576beea305a5178fa02766432e"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libunwind-f7f40978a28e82dd.rmeta",
+    "bytes": 19837,
+    "sha256": "313ed086ca9b4a6c97bef52d192a86e52bec13a567e0757a938b49798e00bea9"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libstd_detect-39fc206b45d6a55e.rmeta",
+    "bytes": 623225,
+    "sha256": "ff16f659f9ef1af574812d0f85cf2a0846ba1976752b08020b4ae00965886de6"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/liballoc-a2eb1dc8bb75b50f.rmeta",
+    "bytes": 7274231,
+    "sha256": "c2dfc89b8ffd0312d0ef7ca65287ab0eac1a6b6c1f4d4681e3d870325e637f42"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libcore-a57d7591de7b38df.rmeta",
+    "bytes": 54638461,
+    "sha256": "81693613e81b7c8b9fcb45784a21c97c53fc0d20a4fb098747b041663cc91725"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libobject-898fa88883139890.rlib",
+    "bytes": 216222,
+    "sha256": "45dbf2b95decdeeb3125b9d0e14f0ac0f170ae5125a38876bc328b44de342c4e"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/librustc_std_workspace_core-dcc522a61c231801.rlib",
+    "bytes": 4674,
+    "sha256": "b86a9214d5ca1c5fb91e8147ae3ce611d087765c2b807c8f78c5a0d228571c3b"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/librustc_std_workspace_std-fdddc2cafa5b3311.rlib",
+    "bytes": 4662,
+    "sha256": "c6335b8ca5aa308d6180fdd9cfa5a138276fba6f91079ef7a6f138e2cecbf203"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libcfg_if-6038a82f8a7fae41.rlib",
+    "bytes": 4426,
+    "sha256": "19336dadb39738024d7f165c3859487d5e977b76c9bf92a411789672593059df"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libgimli-d8985162f9bda771.rlib",
+    "bytes": 746796,
+    "sha256": "4534ac44970a7db918ef50c31023203f2b865f626658bd67c72e9a969f631eef"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libtest-2caad2532ad219d2.rlib",
+    "bytes": 5889240,
+    "sha256": "8a3f90df23a24458fba842b06ea9fbad601ea78938cba9d1031ef1bd97b50448"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/librustc_std_workspace_alloc-b7b054f7ca345c53.rlib",
+    "bytes": 4688,
+    "sha256": "e38ec56f2b9eb921af76bce3e96f47ceaaedc02bad1f934b0bcd8b9368b8e3ce"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libgetopts-14e778d8bef69e14.rlib",
+    "bytes": 599718,
+    "sha256": "03f9da21cd13f6dcaa14ba4aab47c6e4514411afb7065fef3f4d11a7bfb2017a"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/liblibc-4fefefdba685b0a4.rlib",
+    "bytes": 4396,
+    "sha256": "381146649df75d3d3f833ffe5b0773cf9ee54b9dbb04031449680a37e5648bb4"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libmemchr-62be3b4acf6f16c4.rlib",
+    "bytes": 330820,
+    "sha256": "9dc2e2ed58d65869867126478b31e4a5534c1bb95fc971f1040b3f44c5ac2bd4"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libproc_macro-7ddacf1ac7f36c05.rlib",
+    "bytes": 3613616,
+    "sha256": "8ba96b0a7861a986c59ecc8d78e7139453c9ad2263d249a8c15cf9aba5591ff1"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libwindows_link-c7a6a897001f12d6.rlib",
+    "bytes": 4520,
+    "sha256": "53cc2ab78e066449f6371f18b13b2399a082602eee40c9820a965af1f2e1ce8a"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libaddr2line-8b140a88a9bae0f7.rlib",
+    "bytes": 24588,
+    "sha256": "af4ccadb82db6feeb67a6102cc64520e4123dfb06ceb9ac2391f83a4add3ff50"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/librustc_demangle-4224ab18f3c5e908.rlib",
+    "bytes": 195350,
+    "sha256": "8f0e9d9e5f18e6d01f6f6c6c7e436efe4c104f6dc08bdfd04feb3e80f425bbdb"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libadler2-0283751f18b39c29.rlib",
+    "bytes": 8714,
+    "sha256": "598d1cedccb90016720b19ee3a47e507e90bce423fc101560daeb69e8df8a4d8"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libpanic_abort-75dc5cb02792963a.rlib",
+    "bytes": 8710,
+    "sha256": "62cbd2ba1fb382a4943cd1009774858c08a8ea8f2bf129d2009d57a45da61a74"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libcompiler_builtins-ba2f2782c41d926a.rlib",
+    "bytes": 3328140,
+    "sha256": "3cd3a3d1478265dddf242d267fde04820cb451ec8705fd178ff1a2983a7ad880"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libstd-ac07067acc38de3b.rlib",
+    "bytes": 9269584,
+    "sha256": "1b32165b62b9e0da18a82f4014746c4b36fb5cc7bb46f5ca1e54f6fdfa5ad20d"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libpanic_unwind-81ef7e2d3cc9dc7b.rlib",
+    "bytes": 27528,
+    "sha256": "d9c5e80c0110186a554341092685b816fac61f099177c12339f65a8561105146"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libhashbrown-2995664a4a750ddb.rlib",
+    "bytes": 34094,
+    "sha256": "5033b4677433c0e9a3c0e2cd4f223acc0e3a83f307af52f8a574d8d5cbf79a26"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libsysroot-11479f7044a0912c.rlib",
+    "bytes": 4456,
+    "sha256": "71ae269f6bc627250d0f0b197335a35f82e2193f8082fda3559c36760689dc49"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/librustc_literal_escaper-ae27594ecd82ecac.rlib",
+    "bytes": 4640,
+    "sha256": "bd1f72ef64a609ebd8850017fad72b186b2abf30f0245d89833abb23c2b095e5"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libminiz_oxide-e495af41d650c56d.rlib",
+    "bytes": 94744,
+    "sha256": "cb740a7d3218fefb7a857169d92840ac0035dba6a9a1f5af0449fc8cb07ef887"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libunwind-f7f40978a28e82dd.rlib",
+    "bytes": 4440,
+    "sha256": "31b95e6c14525dbee9112d7705c0cfa782a691880b3bcb27a5e9723bf66324bd"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libstd_detect-39fc206b45d6a55e.rlib",
+    "bytes": 50174,
+    "sha256": "21c59748262fa7c8cff7eb50e79dcfa6947854455fb712ec303ad0fb606d6f45"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/liballoc-a2eb1dc8bb75b50f.rlib",
+    "bytes": 816514,
+    "sha256": "ba6f1fcc19d045af51de7fe23819eddd304346a3357c3178e5432fcbdf2f24e2"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/libcore-a57d7591de7b38df.rlib",
+    "bytes": 2358680,
+    "sha256": "6032bf2cd251a61d169509df5bf345b8fd91b489a59948013dd69bdb2bc7abcd"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/std-ac07067acc38de3b.dll",
+    "bytes": 5283882,
+    "sha256": "b8f52e918bf9ddc761c2d9a9a63fc999eae12b4a20ae040aa77e37a9aa1c8fd0"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/self-contained/crt2.o",
+    "bytes": 9105,
+    "sha256": "58594eccbd0033eef7648628c743fcb7a1f61d78fbb912f2d06ccf1492010b70"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/self-contained/dllcrt2.o",
+    "bytes": 4796,
+    "sha256": "6425e4978e75e697da5a138bd5b0337ed8c3c446af68d620fcd3bee7c2c44e72"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/rsend.o",
+    "bytes": 324,
+    "sha256": "35a4a22ab2805626bedb7d46d2ba40cab1dbbd1425f9ccc4ae1b454018e87326"
+  },
+  {
+    "path": "lib/rustlib/x86_64-pc-windows-gnu/lib/rsbegin.o",
+    "bytes": 324,
+    "sha256": "2ecf3210a8cb69a57e6fe10586a6066cd344447fbb6ab0413439d787b7c9dd5b"
+  }
+]

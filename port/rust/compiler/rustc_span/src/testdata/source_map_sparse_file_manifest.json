@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "records": 2,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_sha256": "9fa60e859a71b59b6787028a569a17d9fa0b5f047af9bb12de14e9c34af6eeb3",
+  "wrapper_sha256": "c48f338c6d5ae4b36b0419ff2123688dfdac8071f2f2c39b596c32fdd812f183",
+  "raw_sha256": "75b8e780ae6fb62e1f5113bdb7c3e2a9c8d21593312b73f81e00bc700b84a608",
+  "scope": "Actual complete original RealFileLoader with physical Linux sparse files of lengths u32::MAX and u32::MAX+1. Metadata rejection precedes any read or huge allocation. Only filesystem metadata is large; both files have zero data blocks and are removed."
+}

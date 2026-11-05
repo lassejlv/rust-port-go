@@ -1,0 +1,7 @@
+fresh_distinct=true
+occupied_retained=true
+occupied_distinct=true
+cross_kind_shared=true
+prefill_static=true
+stable_crates_static=true
+stable_crates_indices=1982,673,332,1556

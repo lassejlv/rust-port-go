@@ -17,7 +17,7 @@ import (
 // immediate abort required while an existing panic is being processed.
 func spanDebugContextGuard(context rustfmt.Context) {
 	if failure := recover(); failure != nil {
-		context.Panic(failure)
+		context.ResumeUnwind(failure)
 	}
 }
 
@@ -46,6 +46,23 @@ func (value Span) WriteDebugFormatter(session *SessionGlobals, f *rustfmt.Format
 }
 func (value Span) writeDebugFormatterWithContext(session *SessionGlobals, f *rustfmt.Formatter, profile SpanEncodingConfig, runtimeContext rustfmt.Context) error {
 	defer spanDebugContextGuard(runtimeContext)
+	if session != nil {
+		if sourceMap, present := session.sourceMap.Get(); present {
+			text := sourceMap.BorrowWithContext(runtimeContext).SpanToDiagnosticStringWithContext(session, value, runtimeContext)
+			context := value.Ctxt()
+			if err := f.WriteString(text); err != nil {
+				return err
+			}
+			if err := f.WriteString(" ("); err != nil {
+				return err
+			}
+			child := &rustfmt.Formatter{Writer: f.Writer, Options: rustfmt.DefaultOptions(), Context: runtimeContext}
+			if err := context.WriteDebugFormatter(child); err != nil {
+				return err
+			}
+			return f.WriteString(")")
+		}
+	}
 	if session != nil && session.spanSourceMap != nil {
 		text := session.spanSourceMap.SpanToDiagnosticString(session, value)
 		context := value.Ctxt()

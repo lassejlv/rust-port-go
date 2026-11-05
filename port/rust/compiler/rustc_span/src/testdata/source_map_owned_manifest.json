@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_sha256": "9fa60e859a71b59b6787028a569a17d9fa0b5f047af9bb12de14e9c34af6eeb3",
+  "records": 96,
+  "isolated_aborts": 88,
+  "profiles": [
+    "d0o0",
+    "d0o1",
+    "d1o0",
+    "d1o1"
+  ],
+  "raw_sha256": "3a457c3204c110cd1c9698359c8f0970f027b06d7045134cd2daf38df17974f2",
+  "gzip_sha256": "dbddcba9187105d375151b6c4e847efba40496d4f825752207e75edc1bfed978",
+  "wrapper_sha256": "306f2a442a508cc4c142143fcb421b872b50b8998f9d626ceb0bf4237d59ab3b",
+  "normalization": "Only the owned_runtime.rs wrapper file prefix is removed. The original/compiler/... file spelling compiled into the actual source graph is retained verbatim and supplied by an explicit Go panic profile. Every hook payload/kind/location, Debug/Drop event and cell identity observation is retained. Native SIGABRT vs Go exit134 is the explicit host abort representation.",
+  "complete": false,
+  "remaining": "SourceMap other owned callback/result/external-source failure states and host I/O remain under validation."
+}

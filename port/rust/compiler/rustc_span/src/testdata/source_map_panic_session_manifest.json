@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_sha256": "9fa60e859a71b59b6787028a569a17d9fa0b5f047af9bb12de14e9c34af6eeb3",
+  "records": 4,
+  "caught_panics": 4,
+  "profiles": [
+    "d0o0",
+    "d0o1",
+    "d1o0",
+    "d1o1"
+  ],
+  "raw_sha256": "e9d943aaa38168e8a032d39467566304556d660f98dbf9cf6e0374eb37384398",
+  "gzip_sha256": "514c51047e15cf465d6ebcc7fb14ffd47bf4092e699e45cdbe2fc0bf077fbb8c",
+  "wrapper_sha256": "06cb78a3f9e384ef6c61db740ecec1b98fc548d343a2ed56b6a09e562d6be165",
+  "normalization": "None. Native original/compiler/... file spelling is explicitly supplied by the Go profile; payload kind, byte message, line and column are retained.",
+  "complete": false,
+  "remaining": "Other SourceMap assertion/allocation/arithmetic operation sites and runtime contexts remain under validation.",
+  "scope": "Actual public get_source_map on a fresh source thread without SessionGlobals; genuine full-crate scoped-TLS failure and original resumed payload, not a dummy SessionGlobals.",
+  "scoped_tls_location": {
+    "File": "/workspace/rust-port-go/.toolchain/port-cargo-home/registry/src/index.crates.io-1949cf8c6b5b557f/scoped-tls-1.0.1/src/lib.rs",
+    "Line": 168,
+    "Column": 9
+  }
+}

@@ -76,3 +76,11 @@ This is an ongoing source/API review, not an assertion that undiscovered gaps
 cannot exist. Historical checkpoint counts describe records at that time; the
 current inventory includes these corrections. Production Rust compilation
 still requires completion and integration of the broader compiler and Cargo.
+
+Final span review also identified concrete owned-value gaps before completion
+credit: four large implementations use immutable Go strings/views where their
+public source APIs accept or return owned String/Path values. Lawful capacity,
+mutation and move observations cannot be represented by those conveniences.
+Those rows remain unported while shared owning storage and complete primaries
+are implemented. The [API gap record](SPAN-API-GAPS.md) separates this boundary
+from the passing retained algorithm, formatter, ownership and panic suites.

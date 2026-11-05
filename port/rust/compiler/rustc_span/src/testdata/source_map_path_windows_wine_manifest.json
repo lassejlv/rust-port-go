@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "records": 110596,
+  "profile": {
+    "schema": 1,
+    "scope": "both Rust and Go Windows-target PE binaries under Wine on Linux; no native Windows kernel/runtime claim",
+    "compiler": {
+      "source_version": "1.101.0",
+      "nightly_date": "2026-11-04",
+      "compiler_commit": "708c94ef093ecc42fb8851e17d8383d999727abc",
+      "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+      "unicode_version": [
+        18,
+        0,
+        0
+      ]
+    },
+    "target": {
+      "archive_sha256": "191201d8abe237aded8a499a5fbd129336e569629b6391704151b12e68063f25",
+      "inventory_sha256": "e01796bc01f6d220821aed8d9d9b8e106758b6a2cb4f272863915fc0b0034198",
+      "files": 60
+    },
+    "debian": {
+      "inrelease_sha256": "0584fba32e13e0ab8285fb16c27adea1ec03a73669c18702821094fd6ca86675",
+      "package_index_sha256": "7778d3e3f303b7ddb8ce0fe7c8d57473a076c6bf2e8f241f75421d2396352498",
+      "release": "Origin: Debian\nLabel: Debian\nSuite: stable\nVersion: 13.7\nCodename: trixie\nChangelogs: https://metadata.ftp-master.debian.org/changelogs/@CHANGEPATH@_changelog\nDate: Sat, 12 Sep 2026 07:55:41 UTC\nAcquire-By-Hash: yes\nNo-Support-for-Architecture-all: Packages\nArchitectures: all amd64 arm64 armel armhf i386 ppc64el riscv64 s390x\nComponents: main contrib non-free-firmware non-free\nDescription: Debian 13.7 Released 12 September 2026\n",
+      "packages": {
+        "gcc-mingw-w64-x86-64-posix": {
+          "version": "14.2.0-19+27+b1",
+          "sha256": "e32d24cfd1482394f16d9a84c1d0a9f5aa08ee826a79acc383c70cc8c23c4fe5"
+        },
+        "gcc-mingw-w64-x86-64-posix-runtime": {
+          "version": "14.2.0-19+27+b1",
+          "sha256": "c898d96177574a8a7238564a1e799d8ddfed5a3d2ea005510305f9ad466a6f59"
+        },
+        "libwine": {
+          "version": "10.0~repack-6",
+          "sha256": "702c99d2fbaef2a4966667e0cdabd477ed1754c1b3b5d4476606eaf5fd6e1444"
+        },
+        "libz-mingw-w64": {
+          "version": "1.3.1+dfsg-2",
+          "sha256": "c4e6d6bfabe8b6d12c797736a3d762d83513b49f488d1aaf61d4526387a2dd3e"
+        },
+        "mingw-w64-common": {
+          "version": "12.0.0-5",
+          "sha256": "97dce5d0d8aff1cade4786ad4ef5078345477a598829afcac2e7f2fbc5399990"
+        },
+        "mingw-w64-x86-64-dev": {
+          "version": "12.0.0-5",
+          "sha256": "0bf89cf7454cccb49cd2a46a6f7b33896f6ae3a1a2fe33e02c40be6155bbb385"
+        },
+        "wine64": {
+          "version": "10.0~repack-6",
+          "sha256": "4cdf8319d873c13210815c1aac18859a56ea21b0b2d35a3388dab881464ed488"
+        }
+      }
+    },
+    "wine_version": "wine-10.0 (Debian 10.0~repack-6)",
+    "runtime_adaptations": [
+      "workspace wineserver dispatcher symlink to unmodified wineserver64",
+      "workspace nls layout symlink",
+      "workspace prefix system32 symlinks to unmodified authenticated builtin/runtime DLLs"
+    ],
+    "host_libc": "ldd (Debian GLIBC 2.41-12+deb13u4) 2.41"
+  },
+  "selected_go_declarations": {
+    "source_map_path.go": "3d0057855fd5646b5d169f658fcc585795a7afd96997964a275e09215e7a3d1e",
+    "source_map_path_traits.go": "500ec571510d62221135e64bf8d106d4da51c1e866560c1fcfd2fa6958394a99",
+    "symbol_unicode.go": "3f660694e68d5fc3644bc5647ae0fc520cc6c1d11bcfc299c273ecad1d55a309",
+    "option.go": "0c6fdbca74946d1116ddc0079a53b6d6de2d97f80f41ab1ba8f36719b129aa2d",
+    "oracle.go": "04d6621d79ffd682271e4cc11b09a5236e97f46c707aeb51f0e740f04a99ba71",
+    "format_options.go": "9a50b08ac5fbfa77748c7e69b1232116f1405412f6b1cf7d3865ff48b7ba7974",
+    "unhex.go": "978b6e3c5c5d11064870ff516f157e6fa170f62523fed033d43340edf5c85f8a",
+    "main.go": "ee61817a9f4588a2c72e8302cfa5a7aee0a03dff624df49069bd04e47643a390"
+  },
+  "scope": "actual pinned std Windows Path/OsStr vs complete portable Go path helpers; both Windows-target PE binaries under Wine on Linux; no native Windows kernel validation or std file credit",
+  "raw_sha256": "e4cc6931b58dfd663c042a38bc5f4cf1b627504956a85302927e8ae75187f339",
+  "gzip_sha256": "d5a4765551a8270ec57c5435b0c012696ae87fe5529acfa213fbbc351400e02c",
+  "native_wrapper_sha256": "ef2847853fa89c75b7703a9613b21e1a9cc0ab45f1e21941661356ba98c2844c",
+  "go_toolchain": "go version go1.23.12 linux/amd64"
+}

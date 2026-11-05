@@ -1,0 +1,65 @@
+[
+  {
+    "Kind": "DefIndex",
+    "Domain": 0,
+    "TypeName": "rustc_span::def_id::DefIndex",
+    "Compact": "IntervalSet { map: [], domain: 0, _data: PhantomData<rustc_span::def_id::DefIndex> }",
+    "Pretty": "IntervalSet {\n    map: [],\n    domain: 0,\n    _data: PhantomData<rustc_span::def_id::DefIndex>,\n}"
+  },
+  {
+    "Kind": "CrateNum",
+    "Domain": 0,
+    "TypeName": "rustc_span::def_id::CrateNum",
+    "Compact": "IntervalSet { map: [], domain: 0, _data: PhantomData<rustc_span::def_id::CrateNum> }",
+    "Pretty": "IntervalSet {\n    map: [],\n    domain: 0,\n    _data: PhantomData<rustc_span::def_id::CrateNum>,\n}"
+  },
+  {
+    "Kind": "AttrId",
+    "Domain": 0,
+    "TypeName": "rustc_span::AttrId",
+    "Compact": "IntervalSet { map: [], domain: 0, _data: PhantomData<rustc_span::AttrId> }",
+    "Pretty": "IntervalSet {\n    map: [],\n    domain: 0,\n    _data: PhantomData<rustc_span::AttrId>,\n}"
+  },
+  {
+    "Kind": "DefIndex",
+    "Domain": 1,
+    "TypeName": "rustc_span::def_id::DefIndex",
+    "Compact": "IntervalSet { map: [(0, 0)], domain: 1, _data: PhantomData<rustc_span::def_id::DefIndex> }",
+    "Pretty": "IntervalSet {\n    map: [\n        (\n            0,\n            0,\n        ),\n    ],\n    domain: 1,\n    _data: PhantomData<rustc_span::def_id::DefIndex>,\n}"
+  },
+  {
+    "Kind": "CrateNum",
+    "Domain": 1,
+    "TypeName": "rustc_span::def_id::CrateNum",
+    "Compact": "IntervalSet { map: [(0, 0)], domain: 1, _data: PhantomData<rustc_span::def_id::CrateNum> }",
+    "Pretty": "IntervalSet {\n    map: [\n        (\n            0,\n            0,\n        ),\n    ],\n    domain: 1,\n    _data: PhantomData<rustc_span::def_id::CrateNum>,\n}"
+  },
+  {
+    "Kind": "AttrId",
+    "Domain": 1,
+    "TypeName": "rustc_span::AttrId",
+    "Compact": "IntervalSet { map: [(0, 0)], domain: 1, _data: PhantomData<rustc_span::AttrId> }",
+    "Pretty": "IntervalSet {\n    map: [\n        (\n            0,\n            0,\n        ),\n    ],\n    domain: 1,\n    _data: PhantomData<rustc_span::AttrId>,\n}"
+  },
+  {
+    "Kind": "DefIndex",
+    "Domain": 40,
+    "TypeName": "rustc_span::def_id::DefIndex",
+    "Compact": "IntervalSet { map: [(0, 0), (2, 3), (7, 7), (20, 21), (35, 35)], domain: 40, _data: PhantomData<rustc_span::def_id::DefIndex> }",
+    "Pretty": "IntervalSet {\n    map: [\n        (\n            0,\n            0,\n        ),\n        (\n            2,\n            3,\n        ),\n        (\n            7,\n            7,\n        ),\n        (\n            20,\n            21,\n        ),\n        (\n            35,\n            35,\n        ),\n    ],\n    domain: 40,\n    _data: PhantomData<rustc_span::def_id::DefIndex>,\n}"
+  },
+  {
+    "Kind": "CrateNum",
+    "Domain": 40,
+    "TypeName": "rustc_span::def_id::CrateNum",
+    "Compact": "IntervalSet { map: [(0, 0), (2, 3), (7, 7), (20, 21), (35, 35)], domain: 40, _data: PhantomData<rustc_span::def_id::CrateNum> }",
+    "Pretty": "IntervalSet {\n    map: [\n        (\n            0,\n            0,\n        ),\n        (\n            2,\n            3,\n        ),\n        (\n            7,\n            7,\n        ),\n        (\n            20,\n            21,\n        ),\n        (\n            35,\n            35,\n        ),\n    ],\n    domain: 40,\n    _data: PhantomData<rustc_span::def_id::CrateNum>,\n}"
+  },
+  {
+    "Kind": "AttrId",
+    "Domain": 40,
+    "TypeName": "rustc_span::AttrId",
+    "Compact": "IntervalSet { map: [(0, 0), (2, 3), (7, 7), (20, 21), (35, 35)], domain: 40, _data: PhantomData<rustc_span::AttrId> }",
+    "Pretty": "IntervalSet {\n    map: [\n        (\n            0,\n            0,\n        ),\n        (\n            2,\n            3,\n        ),\n        (\n            7,\n            7,\n        ),\n        (\n            20,\n            21,\n        ),\n        (\n            35,\n            35,\n        ),\n    ],\n    domain: 40,\n    _data: PhantomData<rustc_span::AttrId>,\n}"
+  }
+]

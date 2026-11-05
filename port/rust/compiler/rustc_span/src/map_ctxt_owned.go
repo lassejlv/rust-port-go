@@ -14,7 +14,7 @@ type ctxtMapperCell[E any] struct {
 	consumed    atomic.Bool
 }
 
-// CtxtMapper owns a single capture cell, transferred to MapCtxtOwned. Copies of
+// CtxtMapper is the borrowed-Self convenience transferred to MapCtxtOwned. Copies of
 // this descriptor share the same ownership token and cannot be consumed twice.
 // Call and Drop receive the actual same mutated cell. A Drop witness represents
 // the complete source environment destruction, including any fields moved out
@@ -49,11 +49,21 @@ func ctxtMapperDrop[E any](mapper CtxtMapper[E], context rustfmt.Context) (failu
 	return nil
 }
 
-// MapCtxtOwned is the primary source FnOnce ownership path. Decoding failures
+// MapCtxtOwned is the borrowed-Self convenience. MapCtxtConsuming is the complete
+// source FnOnce entry point, including movement of whole Self. Decoding failures
 // destroy an uncalled environment during unwind. A successful invocation
 // destroys it before any target-span reconstruction, and later failures cannot
 // destroy it a second time. Plain Span.MapCtxt is the trivial-drop convenience.
 func MapCtxtOwned[E any](span Span, session *SessionGlobals, mapper CtxtMapper[E], explicit ...SpanEncodingConfig) (result Span) {
+	context := mapper.context
+	context.Runtime = nil
+	return MapCtxtOwnedWithContext(span, session, mapper, context, explicit...)
+}
+
+// MapCtxtOwnedWithContext invokes the borrowed-Self convenience with the
+// current caller context, replacing construction-time ambient metadata.
+func MapCtxtOwnedWithContext[E any](span Span, session *SessionGlobals, mapper CtxtMapper[E], context rustfmt.Context, explicit ...SpanEncodingConfig) (result Span) {
+	mapper.context = context
 	if mapper.cell == nil || mapper.cell.consumed.Swap(true) {
 		mapper.context.Panic("map_ctxt: FnOnce environment is absent or already consumed")
 	}
@@ -61,7 +71,7 @@ func MapCtxtOwned[E any](span Span, session *SessionGlobals, mapper CtxtMapper[E
 	defer func() {
 		failure := recover()
 		if failure != nil && mapper.context.ProcessingPanic {
-			mapper.context.Panic(failure)
+			mapper.context.ResumeUnwind(failure)
 		}
 		if pending {
 			pending = false
@@ -71,15 +81,13 @@ func MapCtxtOwned[E any](span Span, session *SessionGlobals, mapper CtxtMapper[E
 			}
 			if dropFailure := ctxtMapperDrop(mapper, context); dropFailure != nil {
 				if failure != nil {
-					abort := mapper.context
-					abort.ProcessingPanic = true
-					abort.Panic(dropFailure)
+					mapper.context.AbortCleanup()
 				}
-				mapper.context.Panic(dropFailure)
+				mapper.context.ResumeUnwind(dropFailure)
 			}
 		}
 		if failure != nil {
-			mapper.context.Panic(failure)
+			mapper.context.ResumeUnwind(failure)
 		}
 	}()
 	profile := spanEncodingConfig(session, explicit...)

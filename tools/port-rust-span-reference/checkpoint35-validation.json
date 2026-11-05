@@ -1,0 +1,3405 @@
+{
+  "schema": 1,
+  "scope": "Isolated checkpoint35 validation of a scoped partial rustc_span implementation against 13 proposed source/test mappings; compiler/Cargo-wide port remains ongoing",
+  "completed_utc": "2026-11-05T06:21:24.952252+00:00",
+  "snapshot": "/tmp/ferrugo-checkpoint35.s5ibh2ed",
+  "status": "Validation gates PASS for the scoped candidate; full public-API completion is withheld because owned String/Path contracts remain partial",
+  "original_source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_files": 13,
+  "original_source_lines": 11178,
+  "source_credit_status": "Root decision: four large implementations (9236 lines) remain UNPORTED scoped partial for owned String/Path public contracts; nine other proposed source/test rows (1942 lines) may receive credit only after Root review. No blanket 13-file credit.",
+  "owned_string_boundary_assessment": {
+    "path": "/tmp/ferrugo-span35-owned-string-boundary-assessment.json",
+    "bytes": 4568,
+    "sha256": "9080f25c59ba9f2b684117c506c33e44e5ed115d1b5ba67aa24de9c6f121da51"
+  },
+  "source_goal": {
+    "path": "/tmp/ferrugo-checkpoint35-source-goal.json",
+    "bytes": 3167,
+    "sha256": "57672bfd8ca340d027de683493c8a2aa3da4be8570de81a1106a2e17c0e66085"
+  },
+  "minimum_go": "go1.23.12 linux/amd64",
+  "parallelism": {
+    "GOMAXPROCS": "2",
+    "package_parallelism": 1,
+    "GOFLAGS": "-buildvcs=false -p=1",
+    "GORACE": "atexit_sleep_ms=0"
+  },
+  "native_logged_gates": {
+    "passed": 63,
+    "seconds": 1342.099,
+    "generator_invocations": 56,
+    "python_integrity_invocations": 7,
+    "python_integrity_tests": 66
+  },
+  "selected_proof_counts": {
+    "tools/port-rust-span-lib/macro-backtrace-context-manifest.json": {
+      "sha256": "4eb43b11ec4f6377f0e45051b18c4b1103898c230de0a12346f429c92708d680",
+      "records": 240,
+      "aborts": 72
+    },
+    "tools/port-rust-span-lib/remaining-context-manifest.json": {
+      "sha256": "6978d9316b1239108a3b5ee714f8e7a69d29f81bcf6bb7cbeda2dca466a6085c",
+      "records": 3520,
+      "actual_aborts": 1324
+    },
+    "tools/port-rust-span-lib/consuming-callbacks-manifest.json": {
+      "sha256": "966d4463b9ea1ce4b7650ed1c34a6df4670e9112d93f043382e7844588ae806e",
+      "records": 1920,
+      "aborts": 584
+    },
+    "tools/port-rust-span-lib/span-geometry-manifest.json": {
+      "sha256": "64e5fbda941062e93f75bd98878b6ab5dbf0573a107a794cf46330f412ea4d77",
+      "records": 87176
+    },
+    "tools/port-rust-span-lib/span-hygiene-manifest.json": {
+      "sha256": "ecd82e7720290850e800a9432ff386623251d59e126aa3605be4fa3d5bf34007",
+      "records": 1920,
+      "steps": 642960
+    },
+    "tools/port-rust-hygiene/owned-manifest.json": {
+      "sha256": "3409c58c86d6ca15989f880185c6eabfaf8df569d5450241d88d029cf4360793",
+      "cases": 14400,
+      "aborts": 8768
+    },
+    "tools/port-rust-source-map/consuming/VALIDATION.json": {
+      "sha256": "4bce52342ebcf1cadbfd201eddba3e53e1de0c99270a4cfe3382c093aecd244b",
+      "records": 16,
+      "actual_SIGABRT": 2
+    },
+    "tools/port-rust-caching-source-map-view/panic-sites/VALIDATION.json": {
+      "sha256": "2d94e1eceec1dc1c10588640f95929f4ca591df63b23b172faec24bfe726a08e",
+      "records": 324,
+      "actual_SIGABRT": 84,
+      "hook_records": 364
+    },
+    "/tmp/ferrugo-span35-producers/source_map_panic/source_map_panic_session_manifest.json": {
+      "sha256": "08ae0199c312ba4449c1b2835bc11d5825eb355fddef60700213603572002e70",
+      "records": 4,
+      "caught_panics": 4
+    },
+    "/tmp/ferrugo-span35-producers/source_map_panic/source_map_panic_assert_manifest.json": {
+      "sha256": "6a5b62c008ad5855c4a6420214adbcfce3843ad4a086974f4e5a6d938f64a5e3",
+      "records": 4,
+      "caught_panics": 2
+    }
+  },
+  "native_initial_results": [
+    {
+      "name": "python-port-rust-span-reference",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/port-rust-span-reference",
+        "-p",
+        "test_*.py"
+      ],
+      "started_utc": "2026-11-05T05:07:50.977945+00:00",
+      "seconds": 0.42,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/python-port-rust-span-reference.log",
+      "log_sha256": "e6a0fc179d94d4d1693c7c490589a64abdbe7a9a20e62e844b92985833b69e42",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "python-port-rust-span-lib",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/port-rust-span-lib",
+        "-p",
+        "test_*.py"
+      ],
+      "started_utc": "2026-11-05T05:07:51.398232+00:00",
+      "seconds": 1.956,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/python-port-rust-span-lib.log",
+      "log_sha256": "20553aa8f925447618f1577add8195522b403bb4cb739104ea751d334f415a5d",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "python-port-rust-caching-source-map-view",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/port-rust-caching-source-map-view",
+        "-p",
+        "test_*.py"
+      ],
+      "started_utc": "2026-11-05T05:07:53.354457+00:00",
+      "seconds": 0.607,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/python-port-rust-caching-source-map-view.log",
+      "log_sha256": "c5792f9f3a246f2afb9289bff4a8c909a5fb38b6054777de97a29adbff71918d",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "python-port-rust-hygiene",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/port-rust-hygiene",
+        "-p",
+        "test_*.py"
+      ],
+      "started_utc": "2026-11-05T05:07:53.961443+00:00",
+      "seconds": 0.406,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/python-port-rust-hygiene.log",
+      "log_sha256": "c39e00a00eacfb2e7c5cede48cb282850324ec14a08f7d642b39b9eaa0c82b4c",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "python-port-rust-symbol",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/port-rust-symbol",
+        "-p",
+        "test_*.py"
+      ],
+      "started_utc": "2026-11-05T05:07:54.367320+00:00",
+      "seconds": 0.246,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/python-port-rust-symbol.log",
+      "log_sha256": "199ba496f288116d36c62f29346d4fbf0bd75745a1c893abfcbdaa4c6d5b1033",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "python-port-rust-symbol-panic",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/port-rust-symbol/panic",
+        "-p",
+        "test_*.py"
+      ],
+      "started_utc": "2026-11-05T05:07:54.613935+00:00",
+      "seconds": 0.306,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/python-port-rust-symbol-panic.log",
+      "log_sha256": "e31f3e41311d72413b992a5800b780157f60b95540dcb55efa41c0f24fd2c625",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-source",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_source.py"
+      ],
+      "started_utc": "2026-11-05T05:07:54.919965+00:00",
+      "seconds": 9.505,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-source.log",
+      "log_sha256": "704a99eeb7d660bf0f8e36259944421fae9dd7a0840a7f6cb03cf0d503e0f3c7",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-format",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_format.py"
+      ],
+      "started_utc": "2026-11-05T05:08:04.425243+00:00",
+      "seconds": 15.419,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-format.log",
+      "log_sha256": "059a6e757b4a5dafff97ad659a99f639e9fd849be5ac772764a0fec2f3ed3c42",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-display",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_display.py"
+      ],
+      "started_utc": "2026-11-05T05:08:19.844853+00:00",
+      "seconds": 4.857,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-display.log",
+      "log_sha256": "737954648be581b7e1aa47e922095e0a5ac702b8bc774d8d9aefd2731d8b482b",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-generic",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_generic.py"
+      ],
+      "started_utc": "2026-11-05T05:08:24.702692+00:00",
+      "seconds": 4.617,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-generic.log",
+      "log_sha256": "e8216246eaeedb4816e9edace6840175dceb4a86222842f869e4856dddd2fb8d",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-generic_ambient",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_generic_ambient.py"
+      ],
+      "started_utc": "2026-11-05T05:08:29.320289+00:00",
+      "seconds": 4.704,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-generic_ambient.log",
+      "log_sha256": "0723c076de3af25d3c9083f509fd7a211c37621009ceba9bb307b6c10c157eaf",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-session_inputs",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_session_inputs.py"
+      ],
+      "started_utc": "2026-11-05T05:08:34.025101+00:00",
+      "seconds": 4.573,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-session_inputs.log",
+      "log_sha256": "db6bea357f190435b93d38ca59bb71e92d340520bb595054002fd7a3ae97fcec",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-flags_iter",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_flags_iter.py"
+      ],
+      "started_utc": "2026-11-05T05:08:38.598322+00:00",
+      "seconds": 4.634,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-flags_iter.log",
+      "log_sha256": "4e28fc13e57f8b12ece6c4dc9cbc866643d4599df6abe5296bf6ff144c39b545",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-flags_format",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_flags_format.py"
+      ],
+      "started_utc": "2026-11-05T05:08:43.232584+00:00",
+      "seconds": 4.72,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-flags_format.log",
+      "log_sha256": "13d2a3f808f3f92edac45e3008149faef5b826dc4f39d0ce907c88ed493d00a7",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-memory",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_memory.py"
+      ],
+      "started_utc": "2026-11-05T05:08:47.953704+00:00",
+      "seconds": 4.508,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-memory.log",
+      "log_sha256": "cb587e29bc421d26eba593c570a6e8ee02f9220958810f37c45e66126ca03657",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-map",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_map.py"
+      ],
+      "started_utc": "2026-11-05T05:08:52.461518+00:00",
+      "seconds": 4.669,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-map.log",
+      "log_sha256": "35f880cd8c308bc1b96b77306f46273df288d03e6398f2b6b7654a08de175116",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-opaque_callbacks",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_opaque_callbacks.py"
+      ],
+      "started_utc": "2026-11-05T05:08:57.130911+00:00",
+      "seconds": 4.526,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-opaque_callbacks.log",
+      "log_sha256": "79345c8853ecdbc7c53ab258cfa25b854dc5e494cb961cc29b16cc89677d3f95",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-owned_hash",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_owned_hash.py"
+      ],
+      "started_utc": "2026-11-05T05:09:01.657622+00:00",
+      "seconds": 4.494,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-owned_hash.log",
+      "log_sha256": "50195314e9ff3cc1ecaee22217ab9c1771fa06366cce06054c189fdd57162035",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-boxes",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_boxes.py"
+      ],
+      "started_utc": "2026-11-05T05:09:06.151825+00:00",
+      "seconds": 4.547,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-boxes.log",
+      "log_sha256": "c12c9ccc2071fc502ab777ce13388fb8eede37e21de081a3a62fabb082aaec6c",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-pos",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_pos.py"
+      ],
+      "started_utc": "2026-11-05T05:09:10.699377+00:00",
+      "seconds": 4.618,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-pos.log",
+      "log_sha256": "23dacc12c5a98cf2c914afe8cad9612e2161ecdb756bc82128ed40b05396c1d4",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-file",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_file.py"
+      ],
+      "started_utc": "2026-11-05T05:09:15.317759+00:00",
+      "seconds": 25.889,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-file.log",
+      "log_sha256": "d7081915f1b22b7a524cd5ffd2eaf28a624f38baa98e8dad3adbd983194371a6",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-trait_defaults",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_trait_defaults.py"
+      ],
+      "started_utc": "2026-11-05T05:09:41.206918+00:00",
+      "seconds": 22.938,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-trait_defaults.log",
+      "log_sha256": "fa01f7f3fdc554924510617831717ed6256771d059c68d69083093d255e35f76",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-trait_failures",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_trait_failures.py"
+      ],
+      "started_utc": "2026-11-05T05:10:04.145296+00:00",
+      "seconds": 31.962,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-trait_failures.log",
+      "log_sha256": "c9229c24c59cb8e3ef9d2571a151770c00191a79cd6c66a1821265ad2bbe3f16",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-tracing_profile",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_tracing_profile.py"
+      ],
+      "started_utc": "2026-11-05T05:10:36.107430+00:00",
+      "seconds": 22.923,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-tracing_profile.log",
+      "log_sha256": "d77dfc9ed54c7cd6a3dedb38f2baee45ec0fb5965148ece176ca240418bb35d7",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-byte_slice_strategy",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_byte_slice_strategy.py"
+      ],
+      "started_utc": "2026-11-05T05:10:59.031238+00:00",
+      "seconds": 17.452,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-byte_slice_strategy.log",
+      "log_sha256": "0e630cfb30661c00ca731c2b278fdeeabc217045992dae65ce6d762dfc24a8e7",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-panic",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_panic.py"
+      ],
+      "started_utc": "2026-11-05T05:11:16.484436+00:00",
+      "seconds": 21.308,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-panic.log",
+      "log_sha256": "c241f7e900bd7397f795cf27fd49f1cd753e8b400778c70d6898d7623b732b84",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-macro_backtrace_context",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_macro_backtrace_context.py"
+      ],
+      "started_utc": "2026-11-05T05:11:37.793322+00:00",
+      "seconds": 18.34,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-macro_backtrace_context.log",
+      "log_sha256": "3574e025d46a1ce6101f0ff1ec76cd33a5f7c40698625f94a9b76352fa09b5be",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-remaining_context",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_remaining_context.py"
+      ],
+      "started_utc": "2026-11-05T05:11:56.134394+00:00",
+      "seconds": 30.979,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-remaining_context.log",
+      "log_sha256": "cd1fe4dba248db854a3269b246e2064b4fafd128892b730c1707c042612c2c6c",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-consuming_callbacks",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_consuming_callbacks.py"
+      ],
+      "started_utc": "2026-11-05T05:12:27.114240+00:00",
+      "seconds": 23.66,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-consuming_callbacks.log",
+      "log_sha256": "5157a71c85b1d2ee1da0c77d070b6c2b40f83c3af6ae451d972d4767ce3aded0",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-panic-producer",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_panic.py",
+        "--output-dir",
+        "/tmp/ferrugo-span35-producers/panic"
+      ],
+      "started_utc": "2026-11-05T05:12:50.775051+00:00",
+      "seconds": 18.079,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-panic-producer.log",
+      "log_sha256": "c241f7e900bd7397f795cf27fd49f1cd753e8b400778c70d6898d7623b732b84",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-remaining_context-producer",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_remaining_context.py",
+        "--output-dir",
+        "/tmp/ferrugo-span35-producers/remaining_context"
+      ],
+      "started_utc": "2026-11-05T05:13:08.854553+00:00",
+      "seconds": 30.181,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-remaining_context-producer.log",
+      "log_sha256": "cd1fe4dba248db854a3269b246e2064b4fafd128892b730c1707c042612c2c6c",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "lib-consuming_callbacks-producer",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_consuming_callbacks.py",
+        "--output-dir",
+        "/tmp/ferrugo-span35-producers/consuming_callbacks"
+      ],
+      "started_utc": "2026-11-05T05:13:39.036021+00:00",
+      "seconds": 26.098,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/lib-consuming_callbacks-producer.log",
+      "log_sha256": "5157a71c85b1d2ee1da0c77d070b6c2b40f83c3af6ae451d972d4767ce3aded0",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "hygiene-all",
+      "command": [
+        "python3",
+        "tools/port-rust-hygiene/generate.py"
+      ],
+      "started_utc": "2026-11-05T05:14:05.134574+00:00",
+      "seconds": 41.303,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/hygiene-all.log",
+      "log_sha256": "96408a337090f8568e6bea80e474c2df0e02e2a43eb2e203782fb105c1e076e2",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "hygiene-owned",
+      "command": [
+        "python3",
+        "tools/port-rust-hygiene/owned_generate.py"
+      ],
+      "started_utc": "2026-11-05T05:14:46.438642+00:00",
+      "seconds": 70.554,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/hygiene-owned.log",
+      "log_sha256": "98946920b3c6e4907a2f3ffeb46cbe24c56e2fc8778dd395f80ec8ab1eb08e98",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "hygiene-owned-producer",
+      "command": [
+        "python3",
+        "tools/port-rust-hygiene/owned_generate.py",
+        "--output-dir",
+        "/tmp/ferrugo-span35-producers/hygiene_owned"
+      ],
+      "started_utc": "2026-11-05T05:15:56.993591+00:00",
+      "seconds": 68.859,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/hygiene-owned-producer.log",
+      "log_sha256": "98946920b3c6e4907a2f3ffeb46cbe24c56e2fc8778dd395f80ec8ab1eb08e98",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "hygiene-commit",
+      "command": [
+        "python3",
+        "tools/port-rust-hygiene/commit_generate.py"
+      ],
+      "started_utc": "2026-11-05T05:17:05.853060+00:00",
+      "seconds": 23.862,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/hygiene-commit.log",
+      "log_sha256": "603e4c1b1f9e1b8db7a34b340f0bf4025a4fdc59cf7b696746cd9cdd3ef2de3d",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "caching-algorithm",
+      "command": [
+        "python3",
+        "tools/port-rust-caching-source-map-view/generate.py"
+      ],
+      "started_utc": "2026-11-05T05:17:29.715974+00:00",
+      "seconds": 19.828,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/caching-algorithm.log",
+      "log_sha256": "10c9bf235236e0cbec2e43b709cc876bd18053c766493360d21e82e6dbdead73",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "caching-metadata",
+      "command": [
+        "python3",
+        "tools/port-rust-caching-source-map-view/generate.py",
+        "--metadata"
+      ],
+      "started_utc": "2026-11-05T05:17:49.544818+00:00",
+      "seconds": 18.89,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/caching-metadata.log",
+      "log_sha256": "6c31c2be55f0829c2d631a182459c7ed0be3be7b6b87f5dff47e02b9c15a441e",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "caching-context",
+      "command": [
+        "python3",
+        "tools/port-rust-caching-source-map-view/generate_context.py"
+      ],
+      "started_utc": "2026-11-05T05:18:08.435509+00:00",
+      "seconds": 18.229,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/caching-context.log",
+      "log_sha256": "0375e3a1c58b03d381b33181683f1a3070f50807c8871f050c07cf4e4bb52af2",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "span-geometry",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_span_geometry.py"
+      ],
+      "started_utc": "2026-11-05T05:18:26.665177+00:00",
+      "seconds": 79.813,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/span-geometry.log",
+      "log_sha256": "b5f4e3eab1f5f802499e8ea2e66c16f157acf2369cb04fff88e0107da8c42b63",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "span-hygiene",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_span_hygiene.py"
+      ],
+      "started_utc": "2026-11-05T05:19:46.478988+00:00",
+      "seconds": 24.75,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/span-hygiene.log",
+      "log_sha256": "7a225b08cca61c9c1d209dd92c1e466264b715a750360d7398326cf75e8e79d4",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "source-map-consuming",
+      "command": [
+        "python3",
+        "tools/port-rust-source-map/consuming/generate.py",
+        "--check"
+      ],
+      "started_utc": "2026-11-05T05:20:11.229293+00:00",
+      "seconds": 4.666,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/source-map-consuming.log",
+      "log_sha256": "b1aac1e6cdf77dc2a6fca91f2b68bbd19836efc8095a20d6336f3db35d0a527b",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "cache-panic-sites",
+      "command": [
+        "python3",
+        "tools/port-rust-caching-source-map-view/panic-sites/generate.py",
+        "--check"
+      ],
+      "started_utc": "2026-11-05T05:20:15.896173+00:00",
+      "seconds": 19.513,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/cache-panic-sites.log",
+      "log_sha256": "11d4b0228fb751b7856280e4827ed56fb50d4d7aa3dba78373bd9147a5295058",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "symbol-panic-producer",
+      "command": [
+        "python3",
+        "tools/port-rust-symbol/panic/generate.py",
+        "--jobs",
+        "1",
+        "--output-dir",
+        "/tmp/ferrugo-span35-producers/symbol_panic"
+      ],
+      "started_utc": "2026-11-05T05:20:35.409717+00:00",
+      "seconds": 19.419,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-native-logs/symbol-panic-producer.log",
+      "log_sha256": "e7f9893c9adb577f225a02ac18d06c12cf8ea2806a1d0788134605e08ab4fa90",
+      "old_native_observation_changes": []
+    }
+  ],
+  "defid_scoped_results": [
+    {
+      "name": "defid-main",
+      "command": [
+        "python3",
+        "tools/port-rust-def-id/generate.py",
+        "--offline"
+      ],
+      "started_utc": "2026-11-05T05:22:53.712220+00:00",
+      "seconds": 78.782,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-defid-logs/defid-main.log",
+      "log_sha256": "89971f21df7db075a09e48f27e94e202f530c8c2af468bfb8a962c2e761d7ad0",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "defid-interval-types",
+      "command": [
+        "python3",
+        "tools/port-rust-def-id/interval_type.py",
+        "--offline"
+      ],
+      "started_utc": "2026-11-05T05:24:12.494911+00:00",
+      "seconds": 6.099,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-defid-logs/defid-interval-types.log",
+      "log_sha256": "a20d87028420190afdedaa684ed6b7dd6954439aeeeb15b1b70cf4c5f687b184",
+      "old_native_observation_changes": []
+    }
+  ],
+  "source_map_overlay_native_results": [
+    {
+      "name": "source-map-producer-integrity",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/port-rust-source-map",
+        "-p",
+        "test_panic_site_producer.py",
+        "-v"
+      ],
+      "started_utc": "2026-11-05T05:58:09.187646+00:00",
+      "seconds": 0.333,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-overlay-native-logs/source-map-producer-integrity.log",
+      "log_sha256": "a444dec02a5c365527f27ba989b80db1eaf0f233304ae7a5ada87869e22c776f",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "source-map-session-producer",
+      "command": [
+        "python3",
+        "tools/port-rust-source-map/generate_panic_sites.py",
+        "--session-map",
+        "--output-dir",
+        "/tmp/ferrugo-span35-producers/source_map_panic"
+      ],
+      "started_utc": "2026-11-05T05:58:09.521338+00:00",
+      "seconds": 17.598,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-overlay-native-logs/source-map-session-producer.log",
+      "log_sha256": "973be2835c90806c5c26a9230a634ede056d41cb3341d4e88768902634d10b8c",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "source-map-assert-producer",
+      "command": [
+        "python3",
+        "tools/port-rust-source-map/generate_panic_sites.py",
+        "--assert-id",
+        "--output-dir",
+        "/tmp/ferrugo-span35-producers/source_map_panic"
+      ],
+      "started_utc": "2026-11-05T05:58:27.119558+00:00",
+      "seconds": 17.503,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-overlay-native-logs/source-map-assert-producer.log",
+      "log_sha256": "ec6e39100de2e337f62dd28fd902743e835702c7fe1cdd08ec827f124c6feb86",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "span-geometry-rebind",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_span_geometry.py"
+      ],
+      "started_utc": "2026-11-05T05:58:44.623434+00:00",
+      "seconds": 76.163,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-overlay-native-logs/span-geometry-rebind.log",
+      "log_sha256": "b5f4e3eab1f5f802499e8ea2e66c16f157acf2369cb04fff88e0107da8c42b63",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "span-hygiene-rebind",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_span_hygiene.py"
+      ],
+      "started_utc": "2026-11-05T06:00:00.787412+00:00",
+      "seconds": 22.404,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-overlay-native-logs/span-hygiene-rebind.log",
+      "log_sha256": "7a225b08cca61c9c1d209dd92c1e466264b715a750360d7398326cf75e8e79d4",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "caching-algorithm-rebind",
+      "command": [
+        "python3",
+        "tools/port-rust-caching-source-map-view/generate.py"
+      ],
+      "started_utc": "2026-11-05T06:00:23.191840+00:00",
+      "seconds": 19.829,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-overlay-native-logs/caching-algorithm-rebind.log",
+      "log_sha256": "10c9bf235236e0cbec2e43b709cc876bd18053c766493360d21e82e6dbdead73",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "caching-metadata-rebind",
+      "command": [
+        "python3",
+        "tools/port-rust-caching-source-map-view/generate.py",
+        "--metadata"
+      ],
+      "started_utc": "2026-11-05T06:00:43.021080+00:00",
+      "seconds": 18.521,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-overlay-native-logs/caching-metadata-rebind.log",
+      "log_sha256": "6c31c2be55f0829c2d631a182459c7ed0be3be7b6b87f5dff47e02b9c15a441e",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "caching-context-rebind",
+      "command": [
+        "python3",
+        "tools/port-rust-caching-source-map-view/generate_context.py"
+      ],
+      "started_utc": "2026-11-05T06:01:01.542286+00:00",
+      "seconds": 18.047,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-overlay-native-logs/caching-context-rebind.log",
+      "log_sha256": "0375e3a1c58b03d381b33181683f1a3070f50807c8871f050c07cf4e4bb52af2",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "remaining-context-rebind",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_remaining_context.py"
+      ],
+      "started_utc": "2026-11-05T06:01:19.589726+00:00",
+      "seconds": 30.046,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-overlay-native-logs/remaining-context-rebind.log",
+      "log_sha256": "cd1fe4dba248db854a3269b246e2064b4fafd128892b730c1707c042612c2c6c",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "remaining-context-producer-rebind",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_remaining_context.py",
+        "--output-dir",
+        "/tmp/ferrugo-span35-producers/remaining_context"
+      ],
+      "started_utc": "2026-11-05T06:01:49.635673+00:00",
+      "seconds": 30.878,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-overlay-native-logs/remaining-context-producer-rebind.log",
+      "log_sha256": "cd1fe4dba248db854a3269b246e2064b4fafd128892b730c1707c042612c2c6c",
+      "old_native_observation_changes": []
+    }
+  ],
+  "keyed_literal_fix_native_rebind_results": [
+    {
+      "name": "span-geometry-rebind",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_span_geometry.py"
+      ],
+      "started_utc": "2026-11-05T06:13:23.911435+00:00",
+      "seconds": 79.648,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-vet-fix-native-logs/span-geometry-rebind.log",
+      "log_sha256": "b5f4e3eab1f5f802499e8ea2e66c16f157acf2369cb04fff88e0107da8c42b63",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "span-hygiene-rebind",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_span_hygiene.py"
+      ],
+      "started_utc": "2026-11-05T06:14:43.560069+00:00",
+      "seconds": 22.694,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-vet-fix-native-logs/span-hygiene-rebind.log",
+      "log_sha256": "7a225b08cca61c9c1d209dd92c1e466264b715a750360d7398326cf75e8e79d4",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "caching-algorithm-rebind",
+      "command": [
+        "python3",
+        "tools/port-rust-caching-source-map-view/generate.py"
+      ],
+      "started_utc": "2026-11-05T06:15:06.254977+00:00",
+      "seconds": 19.895,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-vet-fix-native-logs/caching-algorithm-rebind.log",
+      "log_sha256": "10c9bf235236e0cbec2e43b709cc876bd18053c766493360d21e82e6dbdead73",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "caching-metadata-rebind",
+      "command": [
+        "python3",
+        "tools/port-rust-caching-source-map-view/generate.py",
+        "--metadata"
+      ],
+      "started_utc": "2026-11-05T06:15:26.150633+00:00",
+      "seconds": 18.761,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-vet-fix-native-logs/caching-metadata-rebind.log",
+      "log_sha256": "6c31c2be55f0829c2d631a182459c7ed0be3be7b6b87f5dff47e02b9c15a441e",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "caching-context-rebind",
+      "command": [
+        "python3",
+        "tools/port-rust-caching-source-map-view/generate_context.py"
+      ],
+      "started_utc": "2026-11-05T06:15:44.912102+00:00",
+      "seconds": 18.173,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-vet-fix-native-logs/caching-context-rebind.log",
+      "log_sha256": "0375e3a1c58b03d381b33181683f1a3070f50807c8871f050c07cf4e4bb52af2",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "remaining-context-rebind",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_remaining_context.py"
+      ],
+      "started_utc": "2026-11-05T06:16:03.085157+00:00",
+      "seconds": 30.684,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-vet-fix-native-logs/remaining-context-rebind.log",
+      "log_sha256": "cd1fe4dba248db854a3269b246e2064b4fafd128892b730c1707c042612c2c6c",
+      "old_native_observation_changes": []
+    },
+    {
+      "name": "remaining-context-producer-rebind",
+      "command": [
+        "python3",
+        "tools/port-rust-span-lib/generate_remaining_context.py",
+        "--output-dir",
+        "/tmp/ferrugo-span35-producers/remaining_context"
+      ],
+      "started_utc": "2026-11-05T06:16:33.769401+00:00",
+      "seconds": 32.214,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-vet-fix-native-logs/remaining-context-producer-rebind.log",
+      "log_sha256": "cd1fe4dba248db854a3269b246e2064b4fafd128892b730c1707c042612c2c6c",
+      "old_native_observation_changes": []
+    }
+  ],
+  "original_complete_reference_profiles": {
+    "build-profile-d0o0.json": {
+      "upstream_tests_passed": 43,
+      "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+      "debug_assertions": false,
+      "overflow_checks": false,
+      "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078"
+    },
+    "build-profile-d0o1.json": {
+      "upstream_tests_passed": 43,
+      "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+      "debug_assertions": false,
+      "overflow_checks": true,
+      "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078"
+    },
+    "build-profile-d1o0.json": {
+      "upstream_tests_passed": 43,
+      "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+      "debug_assertions": true,
+      "overflow_checks": false,
+      "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078"
+    },
+    "build-profile-d1o1.json": {
+      "upstream_tests_passed": 43,
+      "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+      "debug_assertions": true,
+      "overflow_checks": true,
+      "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078"
+    }
+  },
+  "go_frozen_normal_and_race_results": [
+    {
+      "name": "minimum-go-normal",
+      "command": [
+        "/workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go",
+        "test",
+        "-p",
+        "1",
+        "-count=1",
+        "-timeout",
+        "30m",
+        "./port/rust/compiler/rustc_span/src/...",
+        "./port/rust/compiler/rustc_serialize/src",
+        "./port/rust/compiler/rustc_data_structures/src/...",
+        "./port/rust/compiler/rustc_index/src/...",
+        "./port/rust/compiler/rustc_hashes/src",
+        "./port/dependencies/rustc-stable-hash/v0_1_2/src",
+        "./port/dependencies/blake3/v1_8_2/src",
+        "./port/dependencies/unicode-width/v0_2_2/src",
+        "./port/rust/library/core/src/unicode",
+        "./port/support/rustfmt",
+        "./port/support/rustvec",
+        "./port/support/ruststr",
+        "./port/support/rustsort",
+        "./port/support/rusthashmap",
+        "./port/support/rusttracing",
+        "./port/support/rustindexmap",
+        "./port/support/ruststdio",
+        "./port/support/rusterrno"
+      ],
+      "started_utc": "2026-11-05T05:24:30.589975+00:00",
+      "seconds": 348.174,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-go-logs/minimum-go-normal.log",
+      "log_sha256": "4245ad7733c26db32fddcf0b89836b1890d40243c5504b9255b3049ed0e6d50b",
+      "old_native_observation_changes": [],
+      "package_ok_results": [
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src",
+          "seconds": 144.082,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src\t144.082s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/analyze_source_file",
+          "seconds": 0.003,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/analyze_source_file\t0.003s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/edit_distance",
+          "seconds": 0.235,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/edit_distance\t0.235s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/source_map",
+          "seconds": 0.01,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/source_map\t0.010s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/symbol",
+          "seconds": 0.003,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/symbol\t0.003s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_serialize/src",
+          "seconds": 0.124,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_serialize/src\t0.124s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src",
+          "seconds": 11.763,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src\t11.763s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/base_n",
+          "seconds": 0.346,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/base_n\t0.346s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/binary_search_util",
+          "seconds": 2.994,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/binary_search_util\t2.994s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/fingerprint",
+          "seconds": 0.002,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/fingerprint\t0.002s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/thousands",
+          "seconds": 0.332,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/thousands\t0.332s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/union_find",
+          "seconds": 3.964,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/union_find\t3.964s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src",
+          "seconds": 0.51,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src\t0.510s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src/interval",
+          "seconds": 4.021,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src/interval\t4.021s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src/vec",
+          "seconds": 6.854,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src/vec\t6.854s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_hashes/src",
+          "seconds": 0.587,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_hashes/src\t0.587s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/dependencies/rustc-stable-hash/v0_1_2/src",
+          "seconds": 4.236,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/dependencies/rustc-stable-hash/v0_1_2/src\t4.236s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/dependencies/blake3/v1_8_2/src",
+          "seconds": 1.737,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/dependencies/blake3/v1_8_2/src\t1.737s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/dependencies/unicode-width/v0_2_2/src",
+          "seconds": 0.027,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/dependencies/unicode-width/v0_2_2/src\t0.027s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/library/core/src/unicode",
+          "seconds": 0.305,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/library/core/src/unicode\t0.305s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rustfmt",
+          "seconds": 2.916,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rustfmt\t2.916s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rustvec",
+          "seconds": 0.113,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rustvec\t0.113s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/ruststr",
+          "seconds": 0.294,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/ruststr\t0.294s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rustsort",
+          "seconds": 4.351,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rustsort\t4.351s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rusthashmap",
+          "seconds": 6.561,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rusthashmap\t6.561s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rusttracing",
+          "seconds": 0.112,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rusttracing\t0.112s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rustindexmap",
+          "seconds": 14.989,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rustindexmap\t14.989s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/ruststdio",
+          "seconds": 0.047,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/ruststdio\t0.047s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rusterrno",
+          "seconds": 0.003,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rusterrno\t0.003s"
+        }
+      ],
+      "packages_passed": 29
+    },
+    {
+      "name": "minimum-go-race",
+      "go_pid": 655521,
+      "kernel_wait_status": 0,
+      "exit_code": 0,
+      "observed_process_wall_seconds": 1614.695,
+      "timing_resolution_seconds": 0.25,
+      "observed_finished_utc": "2026-11-05T05:57:13.453890+00:00",
+      "packages_passed": 29,
+      "log": "/tmp/ferrugo-span35-go-logs/minimum-go-race.log",
+      "log_sha256": "a5aeae2b33f728603411aa3c352cce0d3e206523d5d6ab8632d7875fdef63e8c",
+      "orchestrator_replacement": "Root-authorized test-only SourceMap producer delta requires a new selector environment before tags; the frozen normal/race Go commands were not interrupted.",
+      "command": [
+        "/workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go",
+        "test",
+        "-p",
+        "1",
+        "-race",
+        "-count=1",
+        "-timeout",
+        "30m",
+        "./port/rust/compiler/rustc_span/src/...",
+        "./port/rust/compiler/rustc_serialize/src",
+        "./port/rust/compiler/rustc_data_structures/src/...",
+        "./port/rust/compiler/rustc_index/src/...",
+        "./port/rust/compiler/rustc_hashes/src",
+        "./port/dependencies/rustc-stable-hash/v0_1_2/src",
+        "./port/dependencies/blake3/v1_8_2/src",
+        "./port/dependencies/unicode-width/v0_2_2/src",
+        "./port/rust/library/core/src/unicode",
+        "./port/support/rustfmt",
+        "./port/support/rustvec",
+        "./port/support/ruststr",
+        "./port/support/rustsort",
+        "./port/support/rusthashmap",
+        "./port/support/rusttracing",
+        "./port/support/rustindexmap",
+        "./port/support/ruststdio",
+        "./port/support/rusterrno"
+      ],
+      "environment_overrides": {
+        "CARGO_HOME": "/workspace/rust-port-go/.toolchain/port-cargo-home",
+        "FERRUGO_GO": "/workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go",
+        "GOCACHE": "/tmp/ferrugo-go123-cache",
+        "GOMAXPROCS": "2",
+        "GOFLAGS": "-buildvcs=false -p=1",
+        "GORACE": "atexit_sleep_ms=0",
+        "FERRUGO_LIB_PANIC_PROOF": "/tmp/ferrugo-span35-producers/panic",
+        "FERRUGO_LIB_REMAINING_PROOF": "/tmp/ferrugo-span35-producers/remaining_context",
+        "FERRUGO_SPAN_CONSUMING_PROOF": "/tmp/ferrugo-span35-producers/consuming_callbacks",
+        "FERRUGO_HYGIENE_OWNED_PROFILE_DIR": "/tmp/ferrugo-span35-producers/hygiene_owned",
+        "FERRUGO_SYMBOL_PANIC_PROFILE_DIR": "/tmp/ferrugo-span35-producers/symbol_panic"
+      },
+      "unset_environment": [
+        "FERRUGO_RUSTC",
+        "FERRUGO_RUSTDOC",
+        "FERRUGO_CARGO",
+        "FERRUGO_RUST_SOURCE"
+      ],
+      "kernel_stat_evidence": {
+        "path": "/tmp/ferrugo-span35-frozen-race-proc-stat.txt",
+        "sha256": "b323e33a26851f6bcddd664ef872144b1b43e3668d598830be0c0402ca1c9945",
+        "state_field_3": "Z",
+        "encoded_wait_status_field_52": 0,
+        "retained_after_orchestrator_replacement": true
+      },
+      "exit_observation_method": "The orchestration process was SIGSTOP parked before tags while the race Go child ran uninterrupted. A0.25s monitor observed /proc/655521/stat state Z and encoded wait status0 (os.waitstatus_to_exitcode=0), recorded the command wall time from CLOCK_BOOTTIME minus kernel start ticks, and hashed the completed log. Only afterward was the parked orchestrator replaced for the Root-authorized SourceMap test/tool delta.",
+      "package_ok_results": [
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src",
+          "seconds": 708.267,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src\t708.267s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/analyze_source_file",
+          "seconds": 0.016,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/analyze_source_file\t0.016s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/edit_distance",
+          "seconds": 0.883,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/edit_distance\t0.883s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/source_map",
+          "seconds": 0.038,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/source_map\t0.038s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/symbol",
+          "seconds": 0.01,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/symbol\t0.010s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_serialize/src",
+          "seconds": 0.509,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_serialize/src\t0.509s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src",
+          "seconds": 66.037,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src\t66.037s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/base_n",
+          "seconds": 1.727,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/base_n\t1.727s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/binary_search_util",
+          "seconds": 16.043,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/binary_search_util\t16.043s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/fingerprint",
+          "seconds": 0.008,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/fingerprint\t0.008s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/thousands",
+          "seconds": 2.79,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/thousands\t2.790s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/union_find",
+          "seconds": 40.633,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/union_find\t40.633s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src",
+          "seconds": 4.004,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src\t4.004s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src/interval",
+          "seconds": 35.461,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src/interval\t35.461s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src/vec",
+          "seconds": 55.017,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src/vec\t55.017s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_hashes/src",
+          "seconds": 4.5,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_hashes/src\t4.500s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/dependencies/rustc-stable-hash/v0_1_2/src",
+          "seconds": 34.292,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/dependencies/rustc-stable-hash/v0_1_2/src\t34.292s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/dependencies/blake3/v1_8_2/src",
+          "seconds": 47.773,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/dependencies/blake3/v1_8_2/src\t47.773s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/dependencies/unicode-width/v0_2_2/src",
+          "seconds": 0.135,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/dependencies/unicode-width/v0_2_2/src\t0.135s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/library/core/src/unicode",
+          "seconds": 2.379,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/library/core/src/unicode\t2.379s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rustfmt",
+          "seconds": 20.871,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rustfmt\t20.871s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rustvec",
+          "seconds": 0.703,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rustvec\t0.703s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/ruststr",
+          "seconds": 2.288,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/ruststr\t2.288s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rustsort",
+          "seconds": 45.324,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rustsort\t45.324s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rusthashmap",
+          "seconds": 69.118,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rusthashmap\t69.118s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rusttracing",
+          "seconds": 0.602,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rusttracing\t0.602s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rustindexmap",
+          "seconds": 144.009,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rustindexmap\t144.009s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/ruststdio",
+          "seconds": 0.341,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/ruststdio\t0.341s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rusterrno",
+          "seconds": 0.008,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rusterrno\t0.008s"
+        }
+      ]
+    }
+  ],
+  "go_frozen_race_durable_observation": {
+    "name": "minimum-go-race",
+    "go_pid": 655521,
+    "kernel_wait_status": 0,
+    "exit_code": 0,
+    "observed_process_wall_seconds": 1614.695,
+    "timing_resolution_seconds": 0.25,
+    "observed_finished_utc": "2026-11-05T05:57:13.453890+00:00",
+    "packages_passed": 29,
+    "log": "/tmp/ferrugo-span35-go-logs/minimum-go-race.log",
+    "log_sha256": "a5aeae2b33f728603411aa3c352cce0d3e206523d5d6ab8632d7875fdef63e8c",
+    "orchestrator_replacement": "Root-authorized test-only SourceMap producer delta requires a new selector environment before tags; the frozen normal/race Go commands were not interrupted.",
+    "command": [
+      "/workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go",
+      "test",
+      "-p",
+      "1",
+      "-race",
+      "-count=1",
+      "-timeout",
+      "30m",
+      "./port/rust/compiler/rustc_span/src/...",
+      "./port/rust/compiler/rustc_serialize/src",
+      "./port/rust/compiler/rustc_data_structures/src/...",
+      "./port/rust/compiler/rustc_index/src/...",
+      "./port/rust/compiler/rustc_hashes/src",
+      "./port/dependencies/rustc-stable-hash/v0_1_2/src",
+      "./port/dependencies/blake3/v1_8_2/src",
+      "./port/dependencies/unicode-width/v0_2_2/src",
+      "./port/rust/library/core/src/unicode",
+      "./port/support/rustfmt",
+      "./port/support/rustvec",
+      "./port/support/ruststr",
+      "./port/support/rustsort",
+      "./port/support/rusthashmap",
+      "./port/support/rusttracing",
+      "./port/support/rustindexmap",
+      "./port/support/ruststdio",
+      "./port/support/rusterrno"
+    ],
+    "environment_overrides": {
+      "CARGO_HOME": "/workspace/rust-port-go/.toolchain/port-cargo-home",
+      "FERRUGO_GO": "/workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go",
+      "GOCACHE": "/tmp/ferrugo-go123-cache",
+      "GOMAXPROCS": "2",
+      "GOFLAGS": "-buildvcs=false -p=1",
+      "GORACE": "atexit_sleep_ms=0",
+      "FERRUGO_LIB_PANIC_PROOF": "/tmp/ferrugo-span35-producers/panic",
+      "FERRUGO_LIB_REMAINING_PROOF": "/tmp/ferrugo-span35-producers/remaining_context",
+      "FERRUGO_SPAN_CONSUMING_PROOF": "/tmp/ferrugo-span35-producers/consuming_callbacks",
+      "FERRUGO_HYGIENE_OWNED_PROFILE_DIR": "/tmp/ferrugo-span35-producers/hygiene_owned",
+      "FERRUGO_SYMBOL_PANIC_PROFILE_DIR": "/tmp/ferrugo-span35-producers/symbol_panic"
+    },
+    "unset_environment": [
+      "FERRUGO_RUSTC",
+      "FERRUGO_RUSTDOC",
+      "FERRUGO_CARGO",
+      "FERRUGO_RUST_SOURCE"
+    ],
+    "kernel_stat_evidence": {
+      "path": "/tmp/ferrugo-span35-frozen-race-proc-stat.txt",
+      "sha256": "b323e33a26851f6bcddd664ef872144b1b43e3668d598830be0c0402ca1c9945",
+      "state_field_3": "Z",
+      "encoded_wait_status_field_52": 0,
+      "retained_after_orchestrator_replacement": true
+    },
+    "exit_observation_method": "The orchestration process was SIGSTOP parked before tags while the race Go child ran uninterrupted. A0.25s monitor observed /proc/655521/stat state Z and encoded wait status0 (os.waitstatus_to_exitcode=0), recorded the command wall time from CLOCK_BOOTTIME minus kernel start ticks, and hashed the completed log. Only afterward was the parked orchestrator replaced for the Root-authorized SourceMap test/tool delta.",
+    "package_ok_results": [
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src",
+        "seconds": 708.267,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src\t708.267s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/analyze_source_file",
+        "seconds": 0.016,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/analyze_source_file\t0.016s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/edit_distance",
+        "seconds": 0.883,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/edit_distance\t0.883s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/source_map",
+        "seconds": 0.038,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/source_map\t0.038s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/symbol",
+        "seconds": 0.01,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/symbol\t0.010s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_serialize/src",
+        "seconds": 0.509,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_serialize/src\t0.509s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src",
+        "seconds": 66.037,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src\t66.037s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/base_n",
+        "seconds": 1.727,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/base_n\t1.727s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/binary_search_util",
+        "seconds": 16.043,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/binary_search_util\t16.043s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/fingerprint",
+        "seconds": 0.008,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/fingerprint\t0.008s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/thousands",
+        "seconds": 2.79,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/thousands\t2.790s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/union_find",
+        "seconds": 40.633,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/union_find\t40.633s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src",
+        "seconds": 4.004,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src\t4.004s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src/interval",
+        "seconds": 35.461,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src/interval\t35.461s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src/vec",
+        "seconds": 55.017,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src/vec\t55.017s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_hashes/src",
+        "seconds": 4.5,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_hashes/src\t4.500s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/dependencies/rustc-stable-hash/v0_1_2/src",
+        "seconds": 34.292,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/dependencies/rustc-stable-hash/v0_1_2/src\t34.292s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/dependencies/blake3/v1_8_2/src",
+        "seconds": 47.773,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/dependencies/blake3/v1_8_2/src\t47.773s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/dependencies/unicode-width/v0_2_2/src",
+        "seconds": 0.135,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/dependencies/unicode-width/v0_2_2/src\t0.135s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/rust/library/core/src/unicode",
+        "seconds": 2.379,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/library/core/src/unicode\t2.379s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/support/rustfmt",
+        "seconds": 20.871,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rustfmt\t20.871s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/support/rustvec",
+        "seconds": 0.703,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rustvec\t0.703s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/support/ruststr",
+        "seconds": 2.288,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/ruststr\t2.288s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/support/rustsort",
+        "seconds": 45.324,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rustsort\t45.324s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/support/rusthashmap",
+        "seconds": 69.118,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rusthashmap\t69.118s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/support/rusttracing",
+        "seconds": 0.602,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rusttracing\t0.602s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/support/rustindexmap",
+        "seconds": 144.009,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rustindexmap\t144.009s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/support/ruststdio",
+        "seconds": 0.341,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/ruststdio\t0.341s"
+      },
+      {
+        "package": "github.com/lassejlv/rust-port-go/port/support/rusterrno",
+        "seconds": 0.008,
+        "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rusterrno\t0.008s"
+      }
+    ]
+  },
+  "go_final_overlay_results": [
+    {
+      "name": "source-map-producer-narrow-race",
+      "command": [
+        "/workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go",
+        "test",
+        "-p",
+        "1",
+        "-race",
+        "-count=1",
+        "-timeout",
+        "30m",
+        "./port/rust/compiler/rustc_span/src",
+        "-run",
+        "^(TestSourceMapNativePanicSessionMap|TestSourceMapStableIdAssertionComposition|TestSourceMapPanicProducer.*)$"
+      ],
+      "started_utc": "2026-11-05T06:03:13.642331+00:00",
+      "seconds": 78.692,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-final-go-logs/source-map-producer-narrow-race.log",
+      "log_sha256": "09aaeb9d62aa2a5ae3d9ffc6c6abb6a1a45af743c32e0b4fd8fd53b61fd2ac29",
+      "old_native_observation_changes": [],
+      "package_ok_results": [
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src",
+          "seconds": 0.052,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src\t0.052s"
+        }
+      ],
+      "packages_passed": 1
+    },
+    {
+      "name": "minimum-go-tagged",
+      "command": [
+        "/workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go",
+        "test",
+        "-p",
+        "1",
+        "-count=1",
+        "-timeout",
+        "30m",
+        "-tags",
+        "ferrugo_rustc_nightly rustc_stable_hash_nightly",
+        "./port/rust/compiler/rustc_span/src/...",
+        "./port/rust/compiler/rustc_serialize/src",
+        "./port/rust/compiler/rustc_data_structures/src/...",
+        "./port/rust/compiler/rustc_index/src/...",
+        "./port/rust/compiler/rustc_hashes/src",
+        "./port/dependencies/rustc-stable-hash/v0_1_2/src",
+        "./port/dependencies/blake3/v1_8_2/src",
+        "./port/dependencies/unicode-width/v0_2_2/src",
+        "./port/rust/library/core/src/unicode",
+        "./port/support/rustfmt",
+        "./port/support/rustvec",
+        "./port/support/ruststr",
+        "./port/support/rustsort",
+        "./port/support/rusthashmap",
+        "./port/support/rusttracing",
+        "./port/support/rustindexmap",
+        "./port/support/ruststdio",
+        "./port/support/rusterrno"
+      ],
+      "started_utc": "2026-11-05T06:04:32.335171+00:00",
+      "seconds": 405.51,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-final-go-logs/minimum-go-tagged.log",
+      "log_sha256": "2e1d95764257f548054de4c676813071c192d77e00ce4219d65bebbf5ac1af6b",
+      "old_native_observation_changes": [],
+      "package_ok_results": [
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src",
+          "seconds": 146.684,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src\t146.684s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/analyze_source_file",
+          "seconds": 0.003,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/analyze_source_file\t0.003s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/edit_distance",
+          "seconds": 0.226,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/edit_distance\t0.226s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/source_map",
+          "seconds": 0.01,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/source_map\t0.010s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/symbol",
+          "seconds": 0.003,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/symbol\t0.003s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_serialize/src",
+          "seconds": 0.136,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_serialize/src\t0.136s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src",
+          "seconds": 11.878,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src\t11.878s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/base_n",
+          "seconds": 0.356,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/base_n\t0.356s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/binary_search_util",
+          "seconds": 3.083,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/binary_search_util\t3.083s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/fingerprint",
+          "seconds": 0.002,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/fingerprint\t0.002s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/thousands",
+          "seconds": 0.304,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/thousands\t0.304s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/union_find",
+          "seconds": 4.225,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_data_structures/src/union_find\t4.225s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src",
+          "seconds": 0.531,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src\t0.531s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src/interval",
+          "seconds": 3.88,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src/interval\t3.880s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src/vec",
+          "seconds": 7.056,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_index/src/vec\t7.056s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_hashes/src",
+          "seconds": 0.623,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_hashes/src\t0.623s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/dependencies/rustc-stable-hash/v0_1_2/src",
+          "seconds": 4.415,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/dependencies/rustc-stable-hash/v0_1_2/src\t4.415s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/dependencies/blake3/v1_8_2/src",
+          "seconds": 1.766,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/dependencies/blake3/v1_8_2/src\t1.766s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/dependencies/unicode-width/v0_2_2/src",
+          "seconds": 0.027,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/dependencies/unicode-width/v0_2_2/src\t0.027s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/library/core/src/unicode",
+          "seconds": 0.297,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/library/core/src/unicode\t0.297s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rustfmt",
+          "seconds": 2.892,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rustfmt\t2.892s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rustvec",
+          "seconds": 0.122,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rustvec\t0.122s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/ruststr",
+          "seconds": 0.299,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/ruststr\t0.299s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rustsort",
+          "seconds": 4.405,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rustsort\t4.405s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rusthashmap",
+          "seconds": 6.095,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rusthashmap\t6.095s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rusttracing",
+          "seconds": 0.108,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rusttracing\t0.108s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rustindexmap",
+          "seconds": 14.869,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rustindexmap\t14.869s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/ruststdio",
+          "seconds": 0.057,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/ruststdio\t0.057s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rusterrno",
+          "seconds": 0.002,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rusterrno\t0.002s"
+        }
+      ],
+      "packages_passed": 29
+    }
+  ],
+  "initial_vet_failure_retained": {
+    "name": "minimum-go-vet",
+    "command": [
+      "/workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go",
+      "vet",
+      "-p",
+      "1",
+      "./port/rust/compiler/rustc_span/src/...",
+      "./port/rust/compiler/rustc_serialize/src",
+      "./port/rust/compiler/rustc_data_structures/src/...",
+      "./port/rust/compiler/rustc_index/src/...",
+      "./port/rust/compiler/rustc_hashes/src",
+      "./port/dependencies/rustc-stable-hash/v0_1_2/src",
+      "./port/dependencies/blake3/v1_8_2/src",
+      "./port/dependencies/unicode-width/v0_2_2/src",
+      "./port/rust/library/core/src/unicode",
+      "./port/support/rustfmt",
+      "./port/support/rustvec",
+      "./port/support/ruststr",
+      "./port/support/rustsort",
+      "./port/support/rusthashmap",
+      "./port/support/rusttracing",
+      "./port/support/rustindexmap",
+      "./port/support/ruststdio",
+      "./port/support/rusterrno"
+    ],
+    "started_utc": "2026-11-05T06:11:17.845827+00:00",
+    "seconds": 54.464,
+    "exit_code": 1,
+    "log": "/tmp/ferrugo-span35-final-go-logs/minimum-go-vet.log",
+    "log_sha256": "a5274242c91509cc010fcf081ec3b9acc772e46d683f713e57c3ba30ecb97cbb",
+    "old_native_observation_changes": []
+  },
+  "go_after_keyed_literal_fix_results": [
+    {
+      "name": "source-map-original-child-normal-after-vet-fix",
+      "command": [
+        "/workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go",
+        "test",
+        "-p",
+        "1",
+        "-count=1",
+        "-timeout",
+        "30m",
+        "./port/rust/compiler/rustc_span/src/source_map"
+      ],
+      "started_utc": "2026-11-05T06:17:11.023145+00:00",
+      "seconds": 9.788,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-resume-go-logs/source-map-original-child-normal-after-vet-fix.log",
+      "log_sha256": "6fbf32dbc464de3059e97d949623201319f39ccdcf4a0a077f8ea440ecfc7f8e",
+      "old_native_observation_changes": [],
+      "package_ok_results": [
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/source_map",
+          "seconds": 0.009,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/source_map\t0.009s"
+        }
+      ],
+      "packages_passed": 1
+    },
+    {
+      "name": "source-map-original-child-race-after-vet-fix",
+      "command": [
+        "/workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go",
+        "test",
+        "-p",
+        "1",
+        "-race",
+        "-count=1",
+        "-timeout",
+        "30m",
+        "./port/rust/compiler/rustc_span/src/source_map"
+      ],
+      "started_utc": "2026-11-05T06:17:20.811841+00:00",
+      "seconds": 14.213,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-resume-go-logs/source-map-original-child-race-after-vet-fix.log",
+      "log_sha256": "4e1d2d44a2d9e8b22e018321fbf0092ad16f9414e7ddcaea5ca61cce30370dce",
+      "old_native_observation_changes": [],
+      "package_ok_results": [
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/source_map",
+          "seconds": 0.042,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src/source_map\t0.042s"
+        }
+      ],
+      "packages_passed": 1
+    },
+    {
+      "name": "minimum-go-vet",
+      "command": [
+        "/workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go",
+        "vet",
+        "-p",
+        "1",
+        "./port/rust/compiler/rustc_span/src/...",
+        "./port/rust/compiler/rustc_serialize/src",
+        "./port/rust/compiler/rustc_data_structures/src/...",
+        "./port/rust/compiler/rustc_index/src/...",
+        "./port/rust/compiler/rustc_hashes/src",
+        "./port/dependencies/rustc-stable-hash/v0_1_2/src",
+        "./port/dependencies/blake3/v1_8_2/src",
+        "./port/dependencies/unicode-width/v0_2_2/src",
+        "./port/rust/library/core/src/unicode",
+        "./port/support/rustfmt",
+        "./port/support/rustvec",
+        "./port/support/ruststr",
+        "./port/support/rustsort",
+        "./port/support/rusthashmap",
+        "./port/support/rusttracing",
+        "./port/support/rustindexmap",
+        "./port/support/ruststdio",
+        "./port/support/rusterrno"
+      ],
+      "started_utc": "2026-11-05T06:17:35.025177+00:00",
+      "seconds": 2.68,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-resume-go-logs/minimum-go-vet.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "old_native_observation_changes": [],
+      "package_ok_results": [],
+      "scope_packages": 29,
+      "package_ok_output_count": 0
+    },
+    {
+      "name": "minimum-go-vet-tagged",
+      "command": [
+        "/workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go",
+        "vet",
+        "-p",
+        "1",
+        "-tags",
+        "ferrugo_rustc_nightly rustc_stable_hash_nightly",
+        "./port/rust/compiler/rustc_span/src/...",
+        "./port/rust/compiler/rustc_serialize/src",
+        "./port/rust/compiler/rustc_data_structures/src/...",
+        "./port/rust/compiler/rustc_index/src/...",
+        "./port/rust/compiler/rustc_hashes/src",
+        "./port/dependencies/rustc-stable-hash/v0_1_2/src",
+        "./port/dependencies/blake3/v1_8_2/src",
+        "./port/dependencies/unicode-width/v0_2_2/src",
+        "./port/rust/library/core/src/unicode",
+        "./port/support/rustfmt",
+        "./port/support/rustvec",
+        "./port/support/ruststr",
+        "./port/support/rustsort",
+        "./port/support/rusthashmap",
+        "./port/support/rusttracing",
+        "./port/support/rustindexmap",
+        "./port/support/ruststdio",
+        "./port/support/rusterrno"
+      ],
+      "started_utc": "2026-11-05T06:17:37.705627+00:00",
+      "seconds": 19.061,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-resume-go-logs/minimum-go-vet-tagged.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "old_native_observation_changes": [],
+      "package_ok_results": [],
+      "scope_packages": 29,
+      "package_ok_output_count": 0
+    },
+    {
+      "name": "minimum-go-no-cgo-io",
+      "command": [
+        "/workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go",
+        "test",
+        "-p",
+        "1",
+        "-count=1",
+        "./port/rust/compiler/rustc_span/src",
+        "-run",
+        "^TestSourceMapRealLoader(ExplicitUnixBindingIsLazyAndCurrent|OversizedSparseFileNativeOracle)$"
+      ],
+      "started_utc": "2026-11-05T06:17:56.767174+00:00",
+      "seconds": 52.384,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-resume-go-logs/minimum-go-no-cgo-io.log",
+      "log_sha256": "5f9c352232b715a1d6e7c3a5349db750464063a5159a15eeca49599f11807307",
+      "old_native_observation_changes": [],
+      "package_ok_results": [
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src",
+          "seconds": 0.003,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src\t0.003s"
+        }
+      ],
+      "packages_passed": 1
+    },
+    {
+      "name": "minimum-go-no-cgo-runtime",
+      "command": [
+        "/workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go",
+        "test",
+        "-p",
+        "1",
+        "-count=1",
+        "./port/support/rusterrno",
+        "./port/support/ruststdio"
+      ],
+      "started_utc": "2026-11-05T06:18:49.151604+00:00",
+      "seconds": 0.733,
+      "exit_code": 0,
+      "log": "/tmp/ferrugo-span35-resume-go-logs/minimum-go-no-cgo-runtime.log",
+      "log_sha256": "ff1741d8f1a46dd66783361a6c469bccc098956b72d6dfa5adefb206e8a6bf73",
+      "old_native_observation_changes": [],
+      "package_ok_results": [
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/rusterrno",
+          "seconds": 0.003,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/rusterrno\t0.003s"
+        },
+        {
+          "package": "github.com/lassejlv/rust-port-go/port/support/ruststdio",
+          "seconds": 0.054,
+          "line": "ok  \tgithub.com/lassejlv/rust-port-go/port/support/ruststdio\t0.054s"
+        }
+      ],
+      "packages_passed": 2
+    }
+  ],
+  "go_validation_coverage": {
+    "normal_packages": 29,
+    "race_packages": 29,
+    "tagged_packages": 29,
+    "vet_packages_per_mode": 29,
+    "source_map_producer_race_packages": 1,
+    "no_cgo_source_map_packages": 1,
+    "no_cgo_runtime_packages": 2,
+    "production_closure_roots": 18,
+    "child_packages": 11,
+    "late_delta": "After full normal/race, the exact SourceMap tool/test producer portability delta passed narrow race and full tagged replay. Default vet then identified four unkeyed cross-package literals in original SourceMap child tests. Root authorized key names only; values/cases stayed unchanged. After genuine six-table plus fresh-remaining rebind, child normal/race, both full vet modes and CGO_DISABLED IO/runtime gates passed. Full tagged replay is retained against the exact pre-key-fix candidate inventory; it was not repeated for this literal-key-only patch. Production source bodies stayed frozen."
+  },
+  "command_plans": {
+    "native": {
+      "path": "/tmp/ferrugo-span35-native-plan.json",
+      "bytes": 8703,
+      "sha256": "c7c927c47240cd6b66b3e2be5a1de677f8557cadf657698fad85516d5ec2a1b2"
+    },
+    "defid": {
+      "path": "/tmp/ferrugo-span35-defid-plan.json",
+      "bytes": 1545,
+      "sha256": "adb615e0564fb7133cd72a3d9f1b11503ee34950daf57f8d72497d75beed50bc"
+    },
+    "go": {
+      "path": "/tmp/ferrugo-span35-go-plan.json",
+      "bytes": 7535,
+      "sha256": "91eebdea69ba8439a9127c6aed40cbcabaa22ae09e00635e65459ec10405a023"
+    },
+    "overlay-native": {
+      "path": "/tmp/ferrugo-span35-overlay-native-plan.json",
+      "bytes": 3041,
+      "sha256": "414856dcea940c5363b00d152a6a9bdb010329876082ecaab349255f91a7bd04"
+    },
+    "final-go": {
+      "path": "/tmp/ferrugo-span35-final-go-plan.json",
+      "bytes": 5938,
+      "sha256": "100576fe4eef3d02672571ae3f2759b8da375474efa1d603abe9070c4cc05c78"
+    },
+    "vet-fix-native": {
+      "path": "/tmp/ferrugo-span35-vet-fix-native-plan.json",
+      "bytes": 2222,
+      "sha256": "42c212c33f75ed144ee8859f5ac4047709b1a37557fa9b7540c04317d159db3f"
+    },
+    "resume-go": {
+      "path": "/tmp/ferrugo-span35-resume-go-plan.json",
+      "bytes": 5035,
+      "sha256": "7400b2ff3090554fc1e92eba38a8288a3862201d222492f66cbada68c587ea33"
+    }
+  },
+  "step_reports": {
+    "native": {
+      "path": "/tmp/ferrugo-span35-native-results.json",
+      "bytes": 19983,
+      "sha256": "a585715d3544695bee573b57475dab27e1d4e723e4b92e370fbaf5ab4842e737"
+    },
+    "defid": {
+      "path": "/tmp/ferrugo-span35-defid-results.json",
+      "bytes": 873,
+      "sha256": "c94671ec87e1feff1c6e77b1d37f8ee7ab89efe76036297ff59b341a8d5bb23d"
+    },
+    "go": {
+      "path": "/tmp/ferrugo-span35-go-results.json",
+      "bytes": 11682,
+      "sha256": "f1aa6b5aa30aad7604c5dafd25ad0da693065c4fc63359f43b2bc1aaae37e19f"
+    },
+    "overlay-native": {
+      "path": "/tmp/ferrugo-span35-overlay-native-results.json",
+      "bytes": 5000,
+      "sha256": "8f6146f9d6e2bcefd4c28cc66a6e2757e173e37f0471be34266dceb31c9f3356"
+    },
+    "final-go": {
+      "path": "/tmp/ferrugo-span35-final-go-results.json",
+      "bytes": 3463,
+      "sha256": "ce4968dd0740e239b91886af23dab9c9bd21b68838ea64673c15b4d794a6a7e0"
+    },
+    "vet-fix-native": {
+      "path": "/tmp/ferrugo-span35-vet-fix-native-results.json",
+      "bytes": 3313,
+      "sha256": "fbe7936341e02b89e7c514b82fa8ed8e5c835dd8b4ad9c1dab8b1be582fd59b5"
+    },
+    "resume-go": {
+      "path": "/tmp/ferrugo-span35-resume-go-results.json",
+      "bytes": 5321,
+      "sha256": "c438858549cb855307e9b0184b0e8d3bc6062afaf3d59e82765e69ff5a5c64ff"
+    }
+  },
+  "historical_native_observations": {
+    "files": 208,
+    "unchanged": true,
+    "sha256": {
+      "tools/port-inventory/data/cargo-sources.jsonl": "c6cec28d0cbee6a24032dd077cd74505ecada29f5da61cdc9868f789862fe4dd",
+      "tools/port-inventory/data/cargo-submodules.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tools/port-inventory/data/cargo-support.jsonl": "0d929129a07af22a4c239bf4c70e08f2e3325135968b2c65955c1594a519011f",
+      "tools/port-inventory/data/rust-sources.jsonl": "1b90aa6b63ce153be61dbc8508a09f0dc6ac5b69cfe8cd21ebd25c3f19e50aa5",
+      "tools/port-inventory/data/rust-submodules.jsonl": "36b6e80b942b1b205b119383876159a0ef7e66420dfb0bdd43a34aef0f87be9d",
+      "tools/port-inventory/data/rust-support.jsonl": "351a860bc00f875eb3e93f2c91698a6b33a02c987b19714e4b1bec57e6b068a6",
+      "tools/port-lexer-debug/char/oracle.bin.gz": "239fa1d4c41794532a0c73d132e38b4304beda8cde15dc9ab10e43ab075a0a9a",
+      "tools/port-lexer-debug/debug.tsv.gz": "e5a133b5b4d002b2c6bc1f5489ba3807324b89b63e34c4cb8d2d1ffcc2d53d41",
+      "tools/port-lexer-debug/internal-context.tsv.gz": "66fcb3e5d877bee97a0727b7c3ceedbf3b3238f931ad0ea7e12a8b0814e7c79b",
+      "tools/port-lexer-debug/iterator-next.tsv.gz": "1ba83b100007a8cf3ee5c7c2630cb25a3770651a40bc96e12beebfcd5c9d157d",
+      "tools/port-lexer-debug/iterator-owned.tsv.gz": "5e504958814b0854e12e49151890b45fa2da00d613b26243340f0f508e110ddb",
+      "tools/port-lexer-debug/iterator-processing.tsv.gz": "cca1c0741f6641e808d9e1a1af5ace8d522a5ac955579b921b52fa457f75ef07",
+      "tools/port-lexer-debug/order.tsv.gz": "f01b8341f6f031cd241b355fefee8ba6b814bc61c1205f5557af80dcc9522106",
+      "tools/port-lexer-debug/owned.tsv.gz": "f6563712269f27b47a5ba358257a4e7ebcf79661414cf95a7619eb5a201cf0d6",
+      "tools/port-lexer-debug/processing.tsv.gz": "6ec37f36f05f2ac75ae5254dc417239bc6705f0fdc310f1d65dc7aab8f677c9f",
+      "tools/port-lexer-debug/profiles.tsv.gz": "9f9395fae28754ce161cd3b32cb5d56b97b8b4761e707df5b4b770790cce51d0",
+      "tools/port-lexer-debug/string/oracle.bin.gz": "9d13ad86e03e8c1a579fca90156489593862a9429ce0716caa6349afb0129ea6",
+      "tools/port-literal-contracts/debug.tsv.gz": "cce2e94b8794ab34d040f96a63883b6bd7fa259ad2ccaff1dfbad7b67fd6c5da",
+      "tools/port-literal-contracts/owned.tsv.gz": "2c8827a5e1fd1ba93a983bb4733ae131160a30fa4891511e03e063f18b662f42",
+      "tools/port-literal-contracts/processing.tsv.gz": "5c28facc4d328716f9f250e64eeca814b9fd3d6ae0e76bad35f67e024789324d",
+      "tools/port-rust-base-n/testdata/oracle.tsv.gz": "98c322602c43542644357be7b7c727c9e8f3904cbda75e117e06ad4d9485e65d",
+      "tools/port-rust-fingerprint/decode-metadata/cases.tsv.gz": "e623be96970567c2db2365bffe64555e3cb9e82d2303e0ed1834a2a819a6db0d",
+      "tools/port-rust-index-storage/oracle/cases.jsonl.gz": "e12fdde73fbe20661ac96c1821bbd1ae25dc311f042679427952fbcd90832ece",
+      "tools/port-rust-interval/compat/cases.jsonl.gz": "09bcc9f8b3747f6100ddcff96a3c92640df585102a4bc13e5211727e9ea5f313",
+      "tools/port-rust-interval/testdata/oracle.jsonl.gz": "716603ba891092d7dec244ef898471147e8bc0ac1ec1ad259231ac1b995e6f6f",
+      "tools/port-rust-panic-runtime/component_guards/cases.jsonl.gz": "e01319541f1d882512cc3ec07a14037cfda5bf079d31df10f2e2c6061ce84a1e",
+      "tools/port-rust-panic-runtime/prototype.jsonl.gz": "2430f56c06b531bedae96b4d24fb496ec060b72761a7429d898fb49851288fbb",
+      "tools/port-rust-parse-format/cases.jsonl.gz": "e442a308e3e672d5d8bebc352a74c5775fda6d80119cccd482dee7d3dde82835",
+      "tools/port-rust-parse-format/char-unicode/oracle.bin.gz": "a7d59efaecffdfaf48ef20830286f2a7ccf1a8340695d3df8279607171a63851",
+      "tools/port-rust-span-lib/consuming-callbacks.jsonl": "43d02d9b9c0a80a0734778af4470b1f3edf598c01c23e01b0791f319d07065ca",
+      "tools/port-rust-span-lib/consuming-callbacks.jsonl.gz": "96255c27330a54d208362ad09e2af8d6ac46bc911d0514e4a4faa44efc8f6198",
+      "tools/port-rust-span-lib/macro-backtrace-context.jsonl.gz": "06a3ca720106c1ab17c0978da845c809202e99ae688349c693975526f9b8046c",
+      "tools/port-rust-union-find/format/cases.jsonl.gz": "fef96f4f3d5df85beb38b456800779062a45c462860b5bd86e7a080064fe42a4",
+      "port/cargo/crates/cargo-util-schemas/src/testdata/restricted_names_cases.bin.gz": "930567f1ded91f8076bdda3df9952d6d8b0cd9878676f0be0d7b2d0915768eb7",
+      "port/cargo/crates/cargo-util-schemas/src/testdata/restricted_names_formats.bin.gz": "7f41aa51d02d4e2deece8c7c952617c20b530478407c734ab5a682ad6dff2e60",
+      "port/cargo/crates/cargo-util-schemas/src/testdata/restricted_names_unicode.bin.gz": "00e8bd7f97f32bf8a8329aff7c00d1d793379d8e59efb8de4e30a0cdac80a368",
+      "port/cargo/src/util/testdata/edit_distance_cases.bin.gz": "a539e2d7bc8816b57a444136567d59996100854ac40df011af69543c5a6b1d09",
+      "port/cargo/src/util/testdata/edit_distance_unicode.bin.gz": "9d502da3959bdb8f3d7418f2ca968b9f22c19576ea6d397f66e6758f2dc67d07",
+      "port/cargo/src/util/testdata/graph_cases.json.gz": "2dd0e6cd25f8eaa9708e878208e42b9d59640df2ef62873bf48098b65d9ed839",
+      "port/cargo/src/util/testdata/graph_equality.jsonl.gz": "2e1b7ca397e245a5f82972c5979aaaa8c5f66d21da445f603a92464982c90b82",
+      "port/cargo/src/util/testdata/graph_owned.jsonl.gz": "5839584d9b517ad609f28db7c418e231ca182d978a61d964cab52aa82a6c3ea1",
+      "port/cargo/src/util/testdata/semver_cases.bin.gz": "d5cb3dbf3160dceced53c9a23138e3d68b82b8d92be66f1244ba7aa5bc3f8cc2",
+      "port/cargo/src/util/testdata/semver_debug_dispatch.tsv.gz": "aaab844070899d65a75462a17481645804d9721a7a009317078695633e854889",
+      "port/cargo/src/util/testdata/semver_debug_probes.tsv.gz": "7b43dc28ec912aa32005abd0d6b66d7c14ca56c7b3ab14fd71c18205adadd077",
+      "port/cargo/src/util/testdata/semver_debug_state.tsv.gz": "b194a3b6976dd371485da5ee9c6f6d1ef4dd3416e3c59f971ac14d85785ce452",
+      "port/cargo/src/util/testdata/semver_format_cases.bin.gz": "19228500face3bcc3293fc14d050d4b824beee993e3bc8aed1b149852b293f08",
+      "port/dependencies/blake3/v1_8_2/src/testdata/native.tsv.gz": "c181c74b8bb3a96ff9118850c3e6c3ebd89d5a54d121e6c6c4147de94eb037d4",
+      "port/dependencies/rustc-literal-escaper/v0_0_8/src/testdata/oracle.bin.gz": "09ce7de619807aa577f112d28f8af89a734f74021537cc94312979cea8736342",
+      "port/dependencies/rustc-stable-hash/v0_1_2/src/testdata/arith_debugfalse_overflowfalse.jsonl.gz": "fa1e1235945bd9ebf6d1866f7594bf82de5e276c4dd81903b9f4f1b3936f51e8",
+      "port/dependencies/rustc-stable-hash/v0_1_2/src/testdata/arith_debugfalse_overflowtrue.jsonl.gz": "fa1e1235945bd9ebf6d1866f7594bf82de5e276c4dd81903b9f4f1b3936f51e8",
+      "port/dependencies/rustc-stable-hash/v0_1_2/src/testdata/arith_debugtrue_overflowfalse.jsonl.gz": "fa1e1235945bd9ebf6d1866f7594bf82de5e276c4dd81903b9f4f1b3936f51e8",
+      "port/dependencies/rustc-stable-hash/v0_1_2/src/testdata/arith_debugtrue_overflowtrue.jsonl.gz": "9a1c72a5250ea3d7c85f0675dad968557fb52d77157375b47ac8b060d5972fb0",
+      "port/dependencies/rustc-stable-hash/v0_1_2/src/testdata/format.jsonl.gz": "b91ae7f7f3825097569a70c91692b0dd76e523c9bf2da0d67f3dc48bfb742c7d",
+      "port/dependencies/rustc-stable-hash/v0_1_2/src/testdata/stream_debugfalse.jsonl.gz": "0b0dbe454da2943a0d817734c47d56608b4f3ba9247978a6190a7100aec9e608",
+      "port/dependencies/rustc-stable-hash/v0_1_2/src/testdata/stream_debugtrue.jsonl.gz": "394856d60e69446504dfd6bd18c12345bbf583dc44756f863e6b686bcce1f561",
+      "port/dependencies/rustc-stable-hash/v0_1_2/src/testdata/trace_nightlyfalse.jsonl.gz": "3aa5031bb72085e71641643792e8af18438cdcb78799f79e16e0028016fc7b89",
+      "port/dependencies/rustc-stable-hash/v0_1_2/src/testdata/trace_nightlytrue.jsonl.gz": "90c4b5eb081613e71c07ee81aeba6835a9f439066af670bcf6820eb4336ab080",
+      "port/dependencies/semver/v1_0_28/src/testdata/clone.jsonl.gz": "d5cdcdcd0b79e804a686228427e4d75aceeec1a85f23cba14a0937dde57ecd57",
+      "port/dependencies/semver/v1_0_28/src/testdata/collector.jsonl.gz": "8bcc10d98a1545c062da9c15af54e6acdf40acdb57494e9340f369f95299a2e8",
+      "port/dependencies/semver/v1_0_28/src/testdata/core.jsonl.gz": "c988a80d51a400a671fdc9a36b231d56f66c79b6d593a2b62a6a6ea1657ec9fb",
+      "port/dependencies/semver/v1_0_28/src/testdata/debug.tsv.gz": "d1efa30951c34d7061ef0d9dc5b9d5eadbcbf516d5ace32a409f51f4d9bc7483",
+      "port/dependencies/semver/v1_0_28/src/testdata/debug_dispatch.tsv.gz": "dd7f6b3fddc276c88864803bc50f6b794297aac72364f39a7d96370153943f62",
+      "port/dependencies/semver/v1_0_28/src/testdata/debug_more.tsv.gz": "1c99e3534eb2f8fb2102eeaccb23a970445abe4ee6753a317feff0b5aaa8e95e",
+      "port/dependencies/semver/v1_0_28/src/testdata/debug_more_dispatch.tsv.gz": "3fd62ca4ef1e238a606db463dfd3102827132264c8840991c522621089b4c579",
+      "port/dependencies/semver/v1_0_28/src/testdata/debug_newline_dispatch.tsv.gz": "f788004ee3d8abf7dedcae178fe79b7eadd42e13f6f3adaefc043077dc1145ca",
+      "port/dependencies/semver/v1_0_28/src/testdata/debug_state.tsv.gz": "246b1e73bd839853e38c98e31fe9a27552b463de135d631409b87456f7009cc6",
+      "port/dependencies/semver/v1_0_28/src/testdata/serde.jsonl.gz": "575ac773cf9029ba5e3a0771e2ea5e5d841e54437018772066b8cb8c46bbff41",
+      "port/dependencies/unicode-width/v0_2_2/src/testdata/scalars.bin.gz": "5ae75543acf5a70e44df0286f8613ad16b09a6e8bf5ea26a2323e9b08d5f74fd",
+      "port/rust/compiler/rustc_data_structures/src/binary_search_util/testdata/oracle.bin.gz": "abe36a14f3b3bb53dde8c42ab07d9c6466757cc22b2dda43b034b123e107e09f",
+      "port/rust/compiler/rustc_data_structures/src/binary_search_util/testdata/owned_oracle.jsonl.gz": "69fcb8a34bb9b6f5b5c6acb6ea2544225d380b4da3e825f3216378b0eba050bf",
+      "port/rust/compiler/rustc_data_structures/src/testdata/base_n_formats.tsv.gz": "1bbcae68d43132928a820165954b10008fd2619e720960c16595f7c44a7ff843",
+      "port/rust/compiler/rustc_data_structures/src/testdata/base_n_owned.jsonl.gz": "d399f784386fb7c4d7ae8c18c3a8f1f26756ae16d83185cc2ff8a7209b891f3b",
+      "port/rust/compiler/rustc_data_structures/src/testdata/fingerprint_hash_contract.jsonl.gz": "0c2f9d66d1165d1849adc00296a49b7f0d676cba1fe85d3e262b7c7c872fbd81",
+      "port/rust/compiler/rustc_data_structures/src/testdata/fingerprint_oracle.tsv.gz": "dcb1fd9c0664a0afe04a84c2928f8a6f43606533182be04a022b6af39df4e818",
+      "port/rust/compiler/rustc_data_structures/src/testdata/svh.tsv.gz": "5c7738a06c751eb49a792ba989c15a3117c9a963d3977ed2f65752ea112d432f",
+      "port/rust/compiler/rustc_data_structures/src/testdata/unord_bag.tsv.gz": "3a194909cd0e1acc7f76fa0fef841141fcb08f85a4fe6c3687a4b94edcc49d23",
+      "port/rust/compiler/rustc_data_structures/src/testdata/unord_bag_context.jsonl.gz": "c99610437b011d396d6a49a75e0abdb0a1959f2e5256a7e5dcb578127e6fdf55",
+      "port/rust/compiler/rustc_data_structures/src/testdata/unord_decode.tsv.gz": "52828cf1d94a095cfffa6ae4fcee1f2e388279643f9c76a55c6d5cb9d2678a31",
+      "port/rust/compiler/rustc_data_structures/src/testdata/unord_map.tsv.gz": "7a6f5aedb8104b437cfc854449c21003cd7b005d27b6c56fc56ecb858f306eec",
+      "port/rust/compiler/rustc_data_structures/src/testdata/unord_traits.tsv.gz": "b0cd8c3748a30edb5a21f56086fba993157d4bfb46ae3c44a24065f39e68f41a",
+      "port/rust/compiler/rustc_data_structures/src/testdata/unord_vector_codec.tsv.gz": "f8c3d68040d712d5807aedd48d99c71e10cf4558854ad0debd018229fe90108d",
+      "port/rust/compiler/rustc_data_structures/src/testdata/unord_vector_wrapper.jsonl.gz": "3b18343139db910cd78b84ae2dc27b130cca9eda6a5a8cad3067fc2e82c55d6c",
+      "port/rust/compiler/rustc_data_structures/src/thousands/testdata/oracle.tsv.gz": "59fcc39bcd625dde82bad00cf0e51f7c582a626ba04efcf89375d2dd55ff651a",
+      "port/rust/compiler/rustc_data_structures/src/union_find/testdata/oracle.jsonl.gz": "5d6191f6014171448f170bb4ea0a5820e5c23288088e99089c10a58aa5df9b5c",
+      "port/rust/compiler/rustc_hashes/src/testdata/oracle.tsv.gz": "d1e0e10844cc54bfa307b1bd3e556c423daf5660339ae1558d8dbb0be2d0b39c",
+      "port/rust/compiler/rustc_index/src/idx_testdata/oracle.jsonl.gz": "f3f49d53bc40a02dd2dc8ed80c421f120dd425732927ae402e3c1164abe2d205",
+      "port/rust/compiler/rustc_index/src/testdata/runtime_context.jsonl.gz": "45735136d9976315de07693c0015baaad5fa462f3ffb0ea303ac7bbe12639a85",
+      "port/rust/compiler/rustc_lexer/src/testdata/unicode_oracle.bin.gz": "8f0b9899786df440d3cd9bd885022339a8d1afd1f0e4eec60a62c73dd85d7c0e",
+      "port/rust/compiler/rustc_parse_format/src/debug_testdata/native.tsv.gz": "75f4f8d52e3e7a31db63c8632b736c779511051a87ae7c5386d59f140ca4bded",
+      "port/rust/compiler/rustc_serialize/src/testdata/file.tsv.gz": "8b741a003f955f7c10f26e83468e213427b9cb2f58ce1a8b31d037a08e7abfb2",
+      "port/rust/compiler/rustc_serialize/src/testdata/map-defaults.tsv.gz": "cc933e09ea8e04b0e14677772f36db8e29a0c0ae140a89d192eaec7b196d56c0",
+      "port/rust/compiler/rustc_serialize/src/testdata/memory.tsv.gz": "11a76be9244191afed20bb410c4c3e234c56f076cb6be18fc6bbde7299a45a3a",
+      "port/rust/compiler/rustc_serialize/src/testdata/opaque-callbacks.tsv.gz": "70fe33e65e81508c9e4c14ee175b4d21bd610f4f31fc8039f71a079c044118b9",
+      "port/rust/compiler/rustc_span/src/edition_testdata/oracle.tsv.gz": "a5f236483e40eded9f9e1fef265186aedf39dc1f285626ddd663d06eb20f8699",
+      "port/rust/compiler/rustc_span/src/span_testdata/ambient-debug/cases.jsonl.gz": "4a6a8bffcf4ea6fef7cbc77e928010ca7149f679143a44eff520a15735c22bd8",
+      "port/rust/compiler/rustc_span/src/span_testdata/cases.jsonl.gz": "c1448d919c7496e7be2bc190480c32a60099a8cf3087ba3b73ea3e26492eb27b",
+      "port/rust/compiler/rustc_span/src/testdata/analyze_source_file.tsv.gz": "4fde5a3f123aa9beeae8523696de9b1df82f05bce9ba4f1a9f65e31d811532d6",
+      "port/rust/compiler/rustc_span/src/testdata/analyze_source_file_panic.tsv.gz": "7e29026ac97f41d083eaad1781679454306ff082990cb6c7b6c6992b03e814d3",
+      "port/rust/compiler/rustc_span/src/testdata/caching_source_map_view.tsv.gz": "36be4ad882daacd98812b7a6f60c15f5cef516f57ec6127222c7a04dbbbc9e8e",
+      "port/rust/compiler/rustc_span/src/testdata/caching_source_map_view_context.jsonl.gz": "8acde44ff0435c268676909cfb7adb159d626c6f3f40b742ad8a38f2be3ae86e",
+      "port/rust/compiler/rustc_span/src/testdata/caching_source_map_view_metadata.tsv.gz": "94ab895ecbb44788f8f2573afa612c7d455b54187ccd116759827270926fc329",
+      "port/rust/compiler/rustc_span/src/testdata/caching_source_map_view_panic.jsonl.gz": "5e5ef87127b40d0f696a8ad7c5251762ef940527d8a29ed7304acee7b885d81e",
+      "port/rust/compiler/rustc_span/src/testdata/def_id_collections.jsonl.gz": "3836f8f1d6244e57463306d1dd14eff5238dd8bbed04bbfcf5e0ee1af1edf129",
+      "port/rust/compiler/rustc_span/src/testdata/def_id_context.jsonl": "05bddda244081e315061b36a7c077d4969fca59abd923df1c3363cf8d75cb4c6",
+      "port/rust/compiler/rustc_span/src/testdata/def_id_indexmap_alias.jsonl.gz": "2df62413ca2e66c08a7964d7487e7c53fc1423d2fdf53a813dafde5a9e084ad1",
+      "port/rust/compiler/rustc_span/src/testdata/def_id_oracle.jsonl.gz": "8b31358592476781182423c3411d2001552e3d0275ec4cfa62c95e530e67a6de",
+      "port/rust/compiler/rustc_span/src/testdata/def_id_panic.jsonl": "d9d8c035e77a4aa2b2cb2b204a900f1aeecfbb623c9d585c7c433523da8fcc47",
+      "port/rust/compiler/rustc_span/src/testdata/def_id_panic_metadata.jsonl": "dd6978a2c53228b048e48b1d975b120050c843a354d9c614542d2e91ec36b5ea",
+      "port/rust/compiler/rustc_span/src/testdata/fatal_error_format.tsv.gz": "a28ff0f3455cd2cd6c509d7250b70b2b9f385f42f0a5cc309db22088bf597d7d",
+      "port/rust/compiler/rustc_span/src/testdata/fatal_error_unwind.tsv.gz": "60ea1659b57de6fe6516262e682e84380de140f3974d970566dfc047fc5a9fe2",
+      "port/rust/compiler/rustc_span/src/testdata/hygiene_codec.jsonl.gz": "2df0605e1a4d7a4ec05183718b1bc3f2c5b21232916c386bc94c525984fb695c",
+      "port/rust/compiler/rustc_span/src/testdata/hygiene_commit.jsonl.gz": "6cc5cc9b99d5c65508409930dbe328311112ee1ce9000fa6708dde6b96fdddfc",
+      "port/rust/compiler/rustc_span/src/testdata/hygiene_core.jsonl.gz": "b6ccdb8065637aa48eee2c148fe23a1efc2806aeae237f06fb541ffc9a612953",
+      "port/rust/compiler/rustc_span/src/testdata/hygiene_decode.jsonl.gz": "5df61ec27d56c6f6441335050c497accd9fe0010ffe0111e20075e33fc883c23",
+      "port/rust/compiler/rustc_span/src/testdata/hygiene_format.jsonl.gz": "ecdaaf2d7464ecf9287ed6029e27254eeb7f53d03479774f1a01f4414f8a5e9c",
+      "port/rust/compiler/rustc_span/src/testdata/hygiene_graph.jsonl.gz": "1ff90f939c3e842db2271326861390bc1091303649fa5704041db23f12ab7e13",
+      "port/rust/compiler/rustc_span/src/testdata/hygiene_hash.jsonl.gz": "d69a20cdf917cffb149c01f94d9f0c16f2e882b859856ba73b6c7ebaf12f525f",
+      "port/rust/compiler/rustc_span/src/testdata/hygiene_invalid_codec.jsonl.gz": "b0619910efd6c6497cf0f545329a34243e366fc56ff8d008fab56a620b74c6a7",
+      "port/rust/compiler/rustc_span/src/testdata/hygiene_order.jsonl.gz": "139a7c08ba4ab824f82d9c8744a1f74aa89602d33bfbd1dfa262295eb00680b5",
+      "port/rust/compiler/rustc_span/src/testdata/hygiene_owned.jsonl.gz": "785633f56cc750a7cd503e9cb41552a11b43da86c70f0335512a2ce26b1fa60e",
+      "port/rust/compiler/rustc_span/src/testdata/hygiene_queue.jsonl.gz": "097a1a969dc84dc5b1eaf735a52b02148693134d96d44732a0ff7672d19e58ce",
+      "port/rust/compiler/rustc_span/src/testdata/hygiene_remap.jsonl.gz": "6d91b66601b22c6974eb9ef52b0b210728785e20565e30d971c6432c164b34e6",
+      "port/rust/compiler/rustc_span/src/testdata/hygiene_tracing.jsonl.gz": "87d2bc9ceac014bc948109f432e25e0cf65cb88ebe5607885d552fb4e32d794b",
+      "port/rust/compiler/rustc_span/src/testdata/lib-boxes.tsv.gz": "9785f1dc3f5c7c820a3c61eb652101b45de97eb4dfc659f2e453a1cdee296911",
+      "port/rust/compiler/rustc_span/src/testdata/lib-byte-slice-strategy.tsv.gz": "a9bbe89b1082ef028c8059b4f311cf996ef962227d459450c12c713c8574e732",
+      "port/rust/compiler/rustc_span/src/testdata/lib-display.tsv.gz": "b92f77acb22c99f76b6d6060cf3e99b09983c45ecff45f16a7f49196593157ee",
+      "port/rust/compiler/rustc_span/src/testdata/lib-flags-format.tsv.gz": "cf994ec95514d7ffbee02c2ab1e02dde9dea08bf61cf6eda2c402c2836745be1",
+      "port/rust/compiler/rustc_span/src/testdata/lib-flags-iter.tsv.gz": "4f6e3c2a0e182725dc02c89c0fe52e0a563d1aa484ba7ba31b2438c37554676e",
+      "port/rust/compiler/rustc_span/src/testdata/lib-format.tsv.gz": "32db942b275ba9874a0bbedef8dbee29f2d4f873fadd45bd7d1658902f769872",
+      "port/rust/compiler/rustc_span/src/testdata/lib-generic-ambient.tsv.gz": "a7e0cafad5368934f26cf4d18f56119608f92e49ede6b01ce05d2316093588b4",
+      "port/rust/compiler/rustc_span/src/testdata/lib-generic.tsv.gz": "9ef2336affed9bb5fb07b29974238cd6424a9e54a454269403b1397848c8c15a",
+      "port/rust/compiler/rustc_span/src/testdata/lib-owned-hash.tsv.gz": "6a318f2a908d89004943165f125c51c6a88db320b4b28b13570eb8bd21439426",
+      "port/rust/compiler/rustc_span/src/testdata/lib-panic.tsv.gz": "fb7b0b498ae71e50364d443fb0fff13732cc61321f822a32366f0c9ff2407d3f",
+      "port/rust/compiler/rustc_span/src/testdata/lib-pos.tsv.gz": "127c36f755579f978f83c20ec033cb3fc559e3cee9bb1a6de590db49a071185e",
+      "port/rust/compiler/rustc_span/src/testdata/lib-remaining-context.jsonl.gz": "f949da2b7bf61a9d0e2c4627fe829bb7a8e7b8f456176acbd6c4d7f0121385ed",
+      "port/rust/compiler/rustc_span/src/testdata/lib-session-inputs.tsv.gz": "0ecd48df16a997e145b296acbf4d3e6d92a533bdc03a3e80d8c1b459112d6a45",
+      "port/rust/compiler/rustc_span/src/testdata/lib-source.tsv.gz": "7df7b7f8ab9e47305bfe36829f6324af98fa307a57bc1dbd73496b72b67a94b9",
+      "port/rust/compiler/rustc_span/src/testdata/lib-tracing-profile.jsonl.gz": "44daf0c12cd8595198489d8fc660588178734e55e7466c277f80b678c91f4d4c",
+      "port/rust/compiler/rustc_span/src/testdata/lib-trait-defaults.tsv.gz": "f772bd24d63981b27402640f8c797f98df5265be704f381daebcec35468e8da1",
+      "port/rust/compiler/rustc_span/src/testdata/lib-trait-failures.jsonl.gz": "314aa5b79085ab7983f79c787cef74aa86559c2e9a7ed605ffcc861511217c3a",
+      "port/rust/compiler/rustc_span/src/testdata/lib_span_geometry.tsv.gz": "710ba453ae51d54b4d450fa71aa06a5dffaf49be5755812dc8dcbd758efc47b0",
+      "port/rust/compiler/rustc_span/src/testdata/lib_span_hygiene.tsv.gz": "438f75d351cef510518f408c31d90e2478cc294c6cdb615912bc51e74aeea60b",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_algorithms.tsv.gz": "57d218f05189638982879bb002d160c05b082847dfa59c43f86325d148d70f3a",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_binary_layout.tsv.gz": "9af1b92bbd5faf3e7324c8b0cbccc1cc73b7a4243c01dd5ac44c4bee94b233dc",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_files_windows_wine.tsv.gz": "0dab34680c768f248059cbd796606b66660a8f2be33e69e3856a11849832ca00",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_formats.tsv.gz": "49f9551714872e6f6b79df2cacf1d367f4f1b86940667336c3a83660197543b3",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_formats_locked.tsv.gz": "7174cd2fddb8ed594c4ebcd62c4c28276e25bb0d0e7bc26e54555b2674e7244c",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_getter.tsv.gz": "ea7f875dac13495824908fe73fad666c6a15f3c80b52cc6e164e938235912ee7",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_io_errors_linux.tsv.gz": "00385fc7ab529e25465493b6669eb736cdbe8aafe30791188b6c4d19ddd977b1",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_io_windows_wine.tsv.gz": "3771431c9eff663b767013cdb4c6c0b0f1630bf3aa30e5f3f1651066b91deaff",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_owned.tsv.gz": "dbddcba9187105d375151b6c4e847efba40496d4f825752207e75edc1bfed978",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_owned_extract.tsv.gz": "7c0e0e3b1e7031d97382e2899c0e182b1d450d168a642d634c20229c250f82df",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_owned_format_error.tsv.gz": "d251b4b0fb3621e98654fa170b3bfe28c75f586876388d404323f10658fbb750",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_owned_into.tsv.gz": "ffde6f2766bd3ad8cea6d2b8968cc6da77afacaf335a4970084ce174f407e170",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_owned_predicates.tsv.gz": "dab860e7d256112d618f677c58f2efdeda5755ff9476b5b0b7dacbee100d9c14",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_owned_tracing.tsv.gz": "c2eb5a9c631e42e7df006cb4455e3f9df2013b2ebd758fbd409c6b58112fab11",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_panic_assert.tsv.gz": "f47bba6b64b452870abaab4cce475065f29cad97c5659c4cb7a724473d703515",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_panic_max.tsv.gz": "3d53334aa211b614d70b72b6b453c233182e33eff3c47fa0a27f2a512ddfc187",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_panic_session.tsv.gz": "514c51047e15cf465d6ebcc7fb14ffd47bf4092e699e45cdbe2fc0bf077fbb8c",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_panic_sites.tsv.gz": "62563b7a747ef50967f23a9d92983050f06ea5977cd55c39c5c22becefee1e45",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_panic_width.tsv.gz": "bff04b1b9cde3134ed4c80def010878d375352d53f581d02b82d63cd32130a74",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_path_unix.tsv.gz": "41bda81193174d3c5d9a6058c8af123553159fe59cd90063e0ae3d55e6e2c16e",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_path_windows_wine.tsv.gz": "d5a4765551a8270ec57c5435b0c012696ae87fe5529acfa213fbbc351400e02c",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_predicate_borrow.tsv.gz": "b236bfe8f77aa189ba9f1b86c761543829e3880d9298523c80971688771d876e",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_span_wrappers.tsv.gz": "4c20547b4d2d0bc23bc2afec7bccc2e9afb96b9145c34e2bbc6815f95bb594ca",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_sparse_file.tsv": "75b8e780ae6fb62e1f5113bdb7c3e2a9c8d21593312b73f81e00bc700b84a608",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_stderr.tsv.gz": "c4a3d2afa1583e005406789dc3b0ac6a830bfdc54c6fbd8b200a218370d6d042",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_tracing.tsv.gz": "2b1a780c3332cd41b77c7b546985d4d63e4e07b2598914d7109820413b5a6ca0",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_tracing_verbatim.tsv.gz": "072073fb64e61ea83cb4884c11395f58180f329cc785aee5d909d9900687a0f6",
+      "port/rust/compiler/rustc_span/src/testdata/symbol_edit_distance.tsv.gz": "4dd9847fcfedc57ee4515c474a127826205bef47051b267b4766d4f104f3791d",
+      "port/rust/compiler/rustc_span/src/testdata/symbol_oracle.tsv.gz": "bc1d044cf2711f851087e31e0204db136edbd480dd9c158b29b2904e5ee7e14f",
+      "port/rust/compiler/rustc_span/src/testdata/symbol_panic.jsonl.gz": "b3ac84aeccb924c9f44c0cdd3e94130a19e12ae00f5009354b6a4f6fe08fc733",
+      "port/rust/library/core/src/unicode/testdata/core_unicode_oracle.bin.gz": "04debfcd5e7bd5a981eeccb7d22eb3cee06a4a28213d1d320cf4fba07b5d567d",
+      "port/support/rustfmt/testdata/native.tsv.gz": "155db4c9bf668c7164b857680ff039fd46cfb986edd2091d86eccbed6824efa9",
+      "port/support/rustfmt/testdata/non_exhaustive.tsv.gz": "503ac2c2327f20e13f009c96fb800b13695900f4cf57e46489e249fe652b5e43",
+      "port/support/rustfmt/testdata/panic-location-cells.tsv.gz": "aebe85c75fc7f50cb04daa05666411a013ff73729e61f5c71ba0f05ce94309d8",
+      "port/support/rusthashmap/testdata/aborts.jsonl.gz": "6da679b89dce877c78359f5f9fca27b4007030235cec08930907476a6b0f7e25",
+      "port/support/rusthashmap/testdata/format.tsv.gz": "c1d2ae8753dd870a130d475db57ed816470e6a01dd7e5568570ddd308f40f567",
+      "port/support/rusthashmap/testdata/fx.tsv.gz": "370402603a32c78686ba7a5d1f56a60c0dee5b2e153f2bbcdbbfbd1a6c5c4ae2",
+      "port/support/rusthashmap/testdata/hash_one.tsv": "839563ef825ef0cb8e99aebda9b928111251f4de7fb5c413aec52bfad0d0eaea",
+      "port/support/rusthashmap/testdata/iterator.tsv.gz": "3c378ffccec355f0cdb1ff965acb5561fc507ea93d76e63fdd64341f39317c63",
+      "port/support/rusthashmap/testdata/layout.tsv.gz": "b1ba0f1c35b68ad2593782c9818155a087c6e8dcd0cfd601b7132b37c1f23c94",
+      "port/support/rusthashmap/testdata/ownership.tsv.gz": "121b8f735d5a32272aed62fef6d2f7600f27083d2b9b95f01a5caf991c3bcc17",
+      "port/support/rusthashmap/testdata/panic_context.jsonl.gz": "46936e9d63fe4c2ff773621f3e580e855fb2c618bf5c67a2b66cfc95457eacb5",
+      "port/support/rusthashmap/testdata/scalar.tsv": "c288a9dea3691eaf7bd87d812658bf83bb43ca6b815565bf47de77aee7899c9b",
+      "port/support/rusthashmap/testdata/table_blocks.tsv.gz": "74b2854f38bcfc02806816f6fae12ae98ee0e7e6c0e7220f562a1135197635d0",
+      "port/support/rustindexmap/testdata/borrowed_iterator.jsonl.gz": "e4c347f9fd21abb0c947084ae5116dbdf0e944801eefd4f0a005bb0cd9094b25",
+      "port/support/rustindexmap/testdata/builder.jsonl.gz": "ab7bee5c15a3575505a35638681ec9275bf536841b8be64ee6a85ed9bd5f1669",
+      "port/support/rustindexmap/testdata/core.jsonl.gz": "a07a53b5a61085b15c0aaf42fbac065f1a480f8ba58ac530b3c41c6cfcacfb08",
+      "port/support/rustindexmap/testdata/drain.jsonl.gz": "369ad7df9d067f035e1366e99ffbb1f1ac115db6c3b0bf3b2df9949b4f6b2032",
+      "port/support/rustindexmap/testdata/entry_format.jsonl.gz": "fecc0b160d8300a9a7e8c84203476a1e0ecd0ff2085ccca5a03817bf6ac1eae1",
+      "port/support/rustindexmap/testdata/indexed.jsonl.gz": "deebeb2f629b474ea4c39b7f60612761817426e4a7258529cf5068e878f8aa6b",
+      "port/support/rustindexmap/testdata/into_iterator.jsonl.gz": "959f14666df9eb88ece81ce7baffba4e7b0ca60cc423c582e6452f8065ed7a88",
+      "port/support/rustindexmap/testdata/owned.jsonl.gz": "1fae3ea645ffee235b1c9d6ecd8a7a6799a7ee15d3111a9c5f259d89b973d817",
+      "port/support/rustindexmap/testdata/position.jsonl.gz": "7b01101a310eb7e0ddee60a0653e107a709401919f3a484a5bf0a848a1259e90",
+      "port/support/rustindexmap/testdata/projection.jsonl.gz": "132a3014d1c680cac5ebf784d8fbfee8fcf19503e4dfa872e9d71fee57a386ba",
+      "port/support/rustsort/testdata/cached.tsv.gz": "379c5903f3f8eb290b153e884b3d859fb8d451bb8f69f303f5bd27fb0af363f4",
+      "port/support/rustsort/testdata/cached_context.jsonl.gz": "93d98d5ea733d9aa39401671e0e94acb8cba519d6a29b011992fb77dbd734387",
+      "port/support/rustsort/testdata/cached_hooks.jsonl.gz": "dcf9c0ed3f99a552911697c2164c3de1d0da61847381289fb8d29d3d9af00dfb",
+      "port/support/rustsort/testdata/stable.tsv.gz": "165036b565a27fd2e6741c6647e328d81a336f6e638cd2fcc37ba6a4e1be9120",
+      "port/support/rustsort/testdata/unstable.tsv.gz": "22fc9d5ce9ee64c5968680c0abc6f6b651a48702afbd7e26253e85dbaa4ae5ad",
+      "port/support/ruststdio/testdata/cases.jsonl.gz": "5f12356b9537dfd6b25f46e9271c7a0150f7c6d3c93a1420c8b513bd7a4e4aae",
+      "port/support/ruststr/testdata/ambient.tsv": "f61ae592258a881a6ef29ef4b2e9acd3dd153749facbb8f2f0e9526c64ed7294",
+      "port/support/ruststr/testdata/cases.tsv.gz": "a4f7e8da792a0cdf147f31120c2c3b1bb67f29f02606ff0cf7df7fcde18b556c",
+      "port/support/rusttracing/testdata/borrow_panic.tsv": "98cb6b077c9e8a92b3dbc775baa03c12cb8da416f9603f808a0909f1885c5017",
+      "port/support/rusttracing/testdata/dispatch.jsonl.gz": "3bee0c54821bb4ca0366f5d464093133de2855ca105f702fcd59c520fcd23abb",
+      "port/support/rusttracing/testdata/processing.tsv": "e27341e91beffc12437173b6b94efab541a317e59d086fad49cc92df78ff57f8",
+      "port/support/rusttracing/testdata/registry_poison.tsv": "cecd2e0f2fbdd27d9759ac1bc6d5f8b289ecadb9eb7fe234ac4a03b2788d66cb"
+    }
+  },
+  "historical_source_map_panic_files": {
+    "files": 10,
+    "unchanged": true,
+    "sha256": {
+      "port/rust/compiler/rustc_span/src/testdata/source_map_panic_assert.tsv.gz": "f47bba6b64b452870abaab4cce475065f29cad97c5659c4cb7a724473d703515",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_panic_max.tsv.gz": "3d53334aa211b614d70b72b6b453c233182e33eff3c47fa0a27f2a512ddfc187",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_panic_session.tsv.gz": "514c51047e15cf465d6ebcc7fb14ffd47bf4092e699e45cdbe2fc0bf077fbb8c",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_panic_sites.tsv.gz": "62563b7a747ef50967f23a9d92983050f06ea5977cd55c39c5c22becefee1e45",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_panic_width.tsv.gz": "bff04b1b9cde3134ed4c80def010878d375352d53f581d02b82d63cd32130a74",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_panic_assert_manifest.json": "e4814f6747b5b9c63bb209ef636bba9c059817b8e9a65aab6c234d377d3b15d9",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_panic_max_manifest.json": "1e4b3e483aab707ffa5ccd9ef95563fb3c980110bd8f179199c9e7d736bbac07",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_panic_session_manifest.json": "f0ee47d9f265427ac709677f78524a623eef39fb31e72800a83233a307a138a6",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_panic_sites_manifest.json": "cfde38a3b9227164bdb1a3440139c1875efee4c8715370e628b7687659882102",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_panic_width_manifest.json": "ddbe881263168fd6c921bf321db7ec2ba7b752f79e58d7aa37d5996417ddca43"
+    }
+  },
+  "authored_native_text_mir": {
+    "unchanged": true,
+    "sha256": {
+      "port/rust/compiler/rustc_span/src/testdata/source_map_owned_expect.txt": "ebeae3531a6e93f002b3b14bbe8c38b549f4b0c521ba6699ea37f7f5a8845a8f",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_owned_expect_debug_panic.txt": "8c0c8e6e03e6020859aeedd1956545bcb7073cb0b2b8e396dd3397b75c6a243b",
+      "port/rust/compiler/rustc_span/src/testdata/source_map_owned_expect_normal.txt": "ebeae3531a6e93f002b3b14bbe8c38b549f4b0c521ba6699ea37f7f5a8845a8f",
+      "port/rust/compiler/rustc_span/src/testdata/symbol_borrows.txt": "0f48537c25cd26bcb07cf3cff51a66e66e47326b8cd9578b5000710cab0e31ff",
+      "tools/port-rust-hygiene/commit-mir.stdout": "b38de260076a306642264ddacb83ffe364ca099ae27c349e0e925f0e066642b6",
+      "tools/port-rust-hygiene/commit-mir.txt": "a3e0d8d30f545f866ad6b3a85e80cb6deae0546fdaacc7896b172b0c363b3b48",
+      "tools/port-rust-source-map/windows-reference/main.go.txt": "ee61817a9f4588a2c72e8302cfa5a7aee0a03dff624df49069bd04e47643a390"
+    }
+  },
+  "accepted_support_sha256": {
+    "port/support/rustvec/collect.go": "af48d40913abdf1a041d3fbb6efa21bb8216169149d1a5c4ce8ecdfd7a0aea6a",
+    "port/support/rustvec/ownership.go": "4312821d11339a4abb9f60295f492183eb5c34a26f40876ee990a2f09f89dc6b"
+  },
+  "format_and_whitespace_check": {
+    "path": "/tmp/ferrugo-span35-format-and-whitespace-check.json",
+    "bytes": 489,
+    "sha256": "1efcfe1818bb480acb90da7199716273456d3c70f75b922e0d9247ae6272eb7b"
+  },
+  "candidate_paths": {
+    "count": 624,
+    "path_list": {
+      "path": "/tmp/ferrugo-checkpoint35-paths.txt",
+      "bytes": 34976,
+      "sha256": "938e36f84079d88d9ab55744f69b22ac5635859f749ae7af79c89c9c5ebf62d6"
+    },
+    "final_sha256_file": "/tmp/ferrugo-checkpoint35-final-authored-sha256.json",
+    "changed_from_root_freeze_count": 46,
+    "new_paths": [
+      "port/rust/compiler/rustc_span/src/source_map_panic_producer_test.go",
+      "tools/port-rust-source-map/PANIC_PRODUCERS.md",
+      "tools/port-rust-source-map/panic_site_producer.py",
+      "tools/port-rust-source-map/test_panic_site_producer.py"
+    ],
+    "changed_from_root_freeze": {
+      "port/rust/compiler/rustc_span/src/source_map/tests_test.go": {
+        "before_sha256": "a5e95308f254498a2a06722cf2c32e8caba1635d968b086847df0d39e26326e3",
+        "final_sha256": "3dc350e8c26c9c1965079b601297e910d846e05d9c4be4d502ddb133728725c2"
+      },
+      "port/rust/compiler/rustc_span/src/source_map_panic_producer_test.go": {
+        "before_sha256": null,
+        "final_sha256": "2ddfdc468c1caac1bab2bc2f688cf2f58fbff19351fc5874aa7060fa54b2729a"
+      },
+      "port/rust/compiler/rustc_span/src/source_map_panic_sites_test.go": {
+        "before_sha256": "f71aebb8e6c7e47ee677a337e80ccaf4d51220db6270cc5796019af65d916ef2",
+        "final_sha256": "0cccaca718613a51d5f9ef994956afef052ddf4cf29d2c1d94b2e58289a34189"
+      },
+      "port/rust/compiler/rustc_span/src/span_encoding.go": {
+        "before_sha256": "3e00cd23ff907b796691a291cc134e8cd41e76e55b5613cd3a6d66d6001406b0",
+        "final_sha256": "4956678a322c6d4830d8cd039ef3a850f7726be9486fff2a851cb4894e272144"
+      },
+      "tools/port-rust-caching-source-map-view/context-manifest.json": {
+        "before_sha256": "7df0afc0b57f84440af2322d593454ffb80a13450634a0ae101a2714e741b424",
+        "final_sha256": "cfd90b367bfb4bd85a653c0e256d8ad41b43e25195dfab2deb3ecfac0010202d"
+      },
+      "tools/port-rust-caching-source-map-view/manifest.json": {
+        "before_sha256": "7c1a94d9da153ab82be8324649628bc523b58a8ae52e421725435012d8c5a25e",
+        "final_sha256": "b317880ef7fc6b5b4c49096fd429cb93d73872a7984c09c2d168fb944cc19b7f"
+      },
+      "tools/port-rust-caching-source-map-view/metadata-manifest.json": {
+        "before_sha256": "c7d67ccc68ee0771edc97eba2d1dc03f6c10a3924b08948550b13acd616bbb43",
+        "final_sha256": "8fd348700be71e6c5209002e243560457225f75711a92e0dc5e610b9a4294e70"
+      },
+      "tools/port-rust-def-id/interval_type_validation.json": {
+        "before_sha256": "cec3a154276051256ffbee6e39e660fc44eb904006f797f71070e96a59e4309a",
+        "final_sha256": "214e46abd2398987500ea6badc569b44351d103521c825d38462fbcc993066ce"
+      },
+      "tools/port-rust-def-id/manifest.json": {
+        "before_sha256": "c8a20b02ea874619a79b578369fe907315d7bf648da41491dc4dda2c293d3f0e",
+        "final_sha256": "faa3c27ee53ddf982b2b808271b8a6215d8863d6f134f0983a60eda9f693b46a"
+      },
+      "tools/port-rust-hygiene/codec-manifest.json": {
+        "before_sha256": "0c1e5db2a1ec0d51b6e2d9469ea762010dc4c0c9c91855faa886ccc7dbf13160",
+        "final_sha256": "9ed6fc89ca05bda1c9cf518c3d91e252d915bd455be769ac858314eda465fac3"
+      },
+      "tools/port-rust-hygiene/core-manifest.json": {
+        "before_sha256": "eed48fafd726719ff567700744be800561539af50f0ca3b38564ff466711df82",
+        "final_sha256": "62a34e8ef8f54092efdcb652af25ae10eabdaab7ee55aae41dc8fbde274daeef"
+      },
+      "tools/port-rust-hygiene/decode-manifest.json": {
+        "before_sha256": "92e9c7da34daaedc3c08a9cabc197ca70b657b7af72f18d4823ad620e33e53fc",
+        "final_sha256": "3934f7d96e169a587236037e038212546112e029548344c0a90461720b09aec2"
+      },
+      "tools/port-rust-hygiene/format-manifest.json": {
+        "before_sha256": "1cce2e02edfaf6ca82a27cfedf1e1447bf783f7d2017e367fbec01d51f242bec",
+        "final_sha256": "a8a974c4d484300df6db820b65980a067b53aa0231e2ad66494941ae0bba34dc"
+      },
+      "tools/port-rust-hygiene/graph-manifest.json": {
+        "before_sha256": "97c3c10f03bbe3f30d7a132cfaf791892168c6317095758088ea27f0b6e7eac1",
+        "final_sha256": "059557d9ca3c498a24ff4671d4ea603c39a16f19d95bb2680701861a74388802"
+      },
+      "tools/port-rust-hygiene/hash-manifest.json": {
+        "before_sha256": "142cbe00bf97587b91a55da1dbfa5fc3719c24fdf8fa87e8af75f8f8e6a97eb0",
+        "final_sha256": "b436fb5273bee300ac4e53beada5124c89a6a9251ea425c50e9aceef0b9933e2"
+      },
+      "tools/port-rust-hygiene/invalid_codec-manifest.json": {
+        "before_sha256": "5e46c7a92dcfc5b76a6b0c655711f55774cbb4e14e9d3225d8158f4b9b0a2b00",
+        "final_sha256": "759c364029e60eb4b1e82f9e5338dff7ef29064d70c8b7cfa2a7276ea12d26da"
+      },
+      "tools/port-rust-hygiene/order-manifest.json": {
+        "before_sha256": "7f4671513aca126cc9f3e945f99056166bbdcd82f43f7249b7142596b74994cc",
+        "final_sha256": "d0900739da3486f3d3f78f4b92429529dfb359240c58c8481e6265635face130"
+      },
+      "tools/port-rust-hygiene/owned-manifest.json": {
+        "before_sha256": "558ee100d4ce114d31b1c414196a75a3b31e7c9e48976e94f9ba5a4d784c690f",
+        "final_sha256": "3409c58c86d6ca15989f880185c6eabfaf8df569d5450241d88d029cf4360793"
+      },
+      "tools/port-rust-hygiene/queue-manifest.json": {
+        "before_sha256": "c226018bf889d524b7ba6a9535cf4d3d05b9c36a6e78e4457c736fb28cd80b5b",
+        "final_sha256": "dc321481244e4da07009598525bd254a48567a8cc5ab2176ae89738ce8bdddf6"
+      },
+      "tools/port-rust-hygiene/remap-manifest.json": {
+        "before_sha256": "41ef5919a3a17897322ddbe2fe6c412d5c99cfa2b94254e3dce4d04deb5d8397",
+        "final_sha256": "872ad355cdeb1d9c3ca256398fbdcd1c4e30722ad86ff4489fd55f85b5b7d52c"
+      },
+      "tools/port-rust-hygiene/tracing-manifest.json": {
+        "before_sha256": "067b51d5d5298fa0a6304c08ec366a5a602529e77402a5e89db75cff0688b5e0",
+        "final_sha256": "0e59c03de99d15fd5af6f92c2cdff73da61077522c83739016fb054a74529d79"
+      },
+      "tools/port-rust-source-map/PANIC_PRODUCERS.md": {
+        "before_sha256": null,
+        "final_sha256": "867e155584b917eaf92ea925c7ae772aa6c28407af3ad94d58077fcb351f72a7"
+      },
+      "tools/port-rust-source-map/generate_panic_sites.py": {
+        "before_sha256": "b9c510d9afb4d140bb4c2fbe48071c27d0503d28a22c31b6ed3a2f12eccd89de",
+        "final_sha256": "9f76f19772f4befad0754bb05d55b935c39b30f710ff2845b86c309bdc4008d8"
+      },
+      "tools/port-rust-source-map/panic_site_producer.py": {
+        "before_sha256": null,
+        "final_sha256": "5a1de9a5cb9545de34eac0b912985c29f21c3989b815065aa59d634f99cc8e0c"
+      },
+      "tools/port-rust-source-map/test_panic_site_producer.py": {
+        "before_sha256": null,
+        "final_sha256": "f86f9ca22c5ca694928852973bc33ec18ae55a79e5d00a8baaf9e5f8afb4d914"
+      },
+      "tools/port-rust-span-lib/boxes-manifest.json": {
+        "before_sha256": "f7cfd8f756d3a7b5b663a319aa7a4c206fc2c72bd93eff8cdbd8135fdf98db1b",
+        "final_sha256": "588418577a8d349976219b02e80a64d07fa496f577c727620a6d94733cca4604"
+      },
+      "tools/port-rust-span-lib/byte-slice-strategy-manifest.json": {
+        "before_sha256": "b6e032634248d4f6a63bf24b6d32c64c4a6c977d4c73823f3cef4f90b7424933",
+        "final_sha256": "c75171f6c9080334094e2ffe5d855e4e4513f015e28561564c44e9d622601460"
+      },
+      "tools/port-rust-span-lib/consuming-callbacks-manifest.json": {
+        "before_sha256": "0fc182b766477ec4848541b5ce70a9d1bd568d58909fe0091d0d7c7393790393",
+        "final_sha256": "966d4463b9ea1ce4b7650ed1c34a6df4670e9112d93f043382e7844588ae806e"
+      },
+      "tools/port-rust-span-lib/display-manifest.json": {
+        "before_sha256": "bce1f91ce7e72cbe053c9b5155638e37d34540e9f30646f05e67d1ee3f7b269a",
+        "final_sha256": "3525060694c395dc75850ca153b60d7e18a7dba253881e6a54bd47fb8ab82ddf"
+      },
+      "tools/port-rust-span-lib/flags-format-manifest.json": {
+        "before_sha256": "a65acfe6d9fe0a49993f908f436d6d2c5b51d63ce322b25f3ac4059126954e67",
+        "final_sha256": "15a750847d03655bc593c9a5930540260ff9ee1c60fd02dd5a9f90000617572e"
+      },
+      "tools/port-rust-span-lib/flags-iter-manifest.json": {
+        "before_sha256": "87602e7453224835e7c41a8084bba0892e8c47d4377dc230f32b2c2278427d42",
+        "final_sha256": "0d2999925ebf6aa8a9ac99049bd1dbba2e9fde7c09c3c59726afb1ff67276387"
+      },
+      "tools/port-rust-span-lib/format-manifest.json": {
+        "before_sha256": "1efa6427be3155fd04b9a2fd27617de349cc192d2e75002b5143d3890701cb39",
+        "final_sha256": "de99f82ed63237e8f96c78db8976feea51f171cae6117830f852544c8e5196cb"
+      },
+      "tools/port-rust-span-lib/generic-ambient-manifest.json": {
+        "before_sha256": "941b9e15f3a0af80dbd1fb77fbe9f9560a8da5a9cca8d6edd94c59c725f89472",
+        "final_sha256": "3d6482e7d9a5fe74e958411ec953da3f1dfd9556575edd556da4b8d962627044"
+      },
+      "tools/port-rust-span-lib/generic-manifest.json": {
+        "before_sha256": "d589f586536a978dbad5d5beb0951aac21ddd39f4f03c51687e5e2d3664f5a92",
+        "final_sha256": "cbea7310ca0d8a4959835f61bfb433cabd5f26c7f07117148bb4375429f37f29"
+      },
+      "tools/port-rust-span-lib/macro-backtrace-context-manifest.json": {
+        "before_sha256": "5b08eb4a5d4e5d8a774f53cc16f366567acdd91973a6d9bbf724d2f14ea711e6",
+        "final_sha256": "4eb43b11ec4f6377f0e45051b18c4b1103898c230de0a12346f429c92708d680"
+      },
+      "tools/port-rust-span-lib/owned-hash-manifest.json": {
+        "before_sha256": "ce854a0f83edbdbd4b9cb35b7f90714a32a458d879c78d6788260df9596bbae4",
+        "final_sha256": "79b3e7047b56a4e0dd1bddb37d54f53fe8e0389c58694e0fa0373c1cce2267b0"
+      },
+      "tools/port-rust-span-lib/panic-manifest.json": {
+        "before_sha256": "14f2b33cce9de7c680aefd3f32bc9e116226358527446e6d01dbc8c1e854cf91",
+        "final_sha256": "bc3449ce6bb4ba0e2bccd63cabd50216413e2decfb722a4a8196c56a08ad8bf9"
+      },
+      "tools/port-rust-span-lib/pos-manifest.json": {
+        "before_sha256": "470da8aec86c3d3eda41e5775476ad5d93957a220bd1f2610a8b51184a394a50",
+        "final_sha256": "d912b342af6829ba78bb81b066b853e9499febfdbad6ff00be90a45d66f8b08c"
+      },
+      "tools/port-rust-span-lib/remaining-context-manifest.json": {
+        "before_sha256": "db881b680da5c85ff03ea404e4b07e56b0f019077ade59f82ff0c4a77778c592",
+        "final_sha256": "6978d9316b1239108a3b5ee714f8e7a69d29f81bcf6bb7cbeda2dca466a6085c"
+      },
+      "tools/port-rust-span-lib/session-inputs-manifest.json": {
+        "before_sha256": "914cd6f400476070d3832bcabc2539f6e2ff84495c963954ce5fca7b22a18a67",
+        "final_sha256": "f6c4be3692e324c83e7b3bd643f2b2939fb26c1e8f95f3f6855b73c356bcd91f"
+      },
+      "tools/port-rust-span-lib/source-manifest.json": {
+        "before_sha256": "29e220334c461b474176c8ea4e85243a2cf58ac6b8660adee8de16dbec6f97de",
+        "final_sha256": "0725e8e4d22f33bcefa3d7477af672bb253ca5177d1ea29d686d35a8ed17aad7"
+      },
+      "tools/port-rust-span-lib/span-geometry-manifest.json": {
+        "before_sha256": "b1d91dc64cf11e541e8d75976ce7b1cc10372aa6af4c2887fa58dd3fffa74462",
+        "final_sha256": "64e5fbda941062e93f75bd98878b6ab5dbf0573a107a794cf46330f412ea4d77"
+      },
+      "tools/port-rust-span-lib/span-hygiene-manifest.json": {
+        "before_sha256": "deaa4b7b0d8898b0dcf0c776ab373990344ac70a0ce69157e390f5dbebb002a1",
+        "final_sha256": "ecd82e7720290850e800a9432ff386623251d59e126aa3605be4fa3d5bf34007"
+      },
+      "tools/port-rust-span-lib/tracing-profile-manifest.json": {
+        "before_sha256": "33a7e8710a60543ddace1cf77554489fbbdffa4910dc763a233b888b9af829da",
+        "final_sha256": "0f351ce56b9132c8218d9475bb2b667d067ab3f9b2ac001bca69525161405e2b"
+      },
+      "tools/port-rust-span-lib/trait-defaults-manifest.json": {
+        "before_sha256": "bad6ab26044256a02ab9b3d1a7a2b83cb695b97b0352844b8b201352d5a9d743",
+        "final_sha256": "ed9b7e71d8f94804265c67e37b387e4cce2bbcb6fa4f948b7b67e9880eab84cd"
+      },
+      "tools/port-rust-span-lib/trait-failures-manifest.json": {
+        "before_sha256": "2093edf3af0772c7322b8a3ccb7803ee0e73fd7827cd5c9255588c888c7618d0",
+        "final_sha256": "c7c839bdebd37c2e06a8db197b53efbeb6c08e7080b977941f37af0ad02f789a"
+      }
+    }
+  },
+  "production_go_changes_from_root_freeze": {
+    "port/rust/compiler/rustc_span/src/span_encoding.go": {
+      "sha256": "4956678a322c6d4830d8cd039ef3a850f7726be9486fff2a851cb4894e272144",
+      "reason": "Authorized official Go1.23 gofmt whitespace only; no semantic body edits"
+    }
+  },
+  "frozen_normal_race_candidate_sha256": {
+    "path": "/tmp/ferrugo-span35-frozen-normal-race-sha256.json",
+    "bytes": 80020,
+    "sha256": "5641e73d49fc07afd5d684dbe7a3aa787603ec61a25c1af71d1f06dea9e5d89f"
+  },
+  "full_tagged_pre_key_fix_candidate_sha256": {
+    "path": "/tmp/ferrugo-span35-pre-vet-fix-authored-sha256.json",
+    "bytes": 80531,
+    "sha256": "abf56b51b3662087caffeab534026828dfb5f85bfd6d677e12e27e7a33fc70d0"
+  },
+  "authorized_original_child_test_key_fix": {
+    "path": "port/rust/compiler/rustc_span/src/source_map/tests_test.go",
+    "before_sha256": "a5e95308f254498a2a06722cf2c32e8caba1635d968b086847df0d39e26326e3",
+    "after_sha256": "3dc350e8c26c9c1965079b601297e910d846e05d9c4be4d502ddb133728725c2",
+    "change": "Add LineIndex/StartCol/EndCol keys to three LineInfo literals and From/To keys to one RustPathMappingEntry literal; all field values and original cases preserved"
+  },
+  "source_map_exact_overlay_sha256": {
+    "path": "/tmp/ferrugo-span35-source-map-overlay-sha256.json",
+    "bytes": 776,
+    "sha256": "f914ce63888d18a7d0b2cb6bcfb4f083dce81b231727a6177b234be7e452d2ec"
+  },
+  "producer_artifact_count": 21,
+  "producer_artifacts": {
+    "/tmp/ferrugo-span35-producers/consuming_callbacks/consuming-callbacks-manifest.json": {
+      "bytes": 34938,
+      "sha256": "966d4463b9ea1ce4b7650ed1c34a6df4670e9112d93f043382e7844588ae806e"
+    },
+    "/tmp/ferrugo-span35-producers/consuming_callbacks/consuming-callbacks.jsonl": {
+      "bytes": 1316640,
+      "sha256": "43d02d9b9c0a80a0734778af4470b1f3edf598c01c23e01b0791f319d07065ca"
+    },
+    "/tmp/ferrugo-span35-producers/consuming_callbacks/consuming-callbacks.jsonl.gz": {
+      "bytes": 30065,
+      "sha256": "96255c27330a54d208362ad09e2af8d6ac46bc911d0514e4a4faa44efc8f6198"
+    },
+    "/tmp/ferrugo-span35-producers/hygiene_owned/hygiene_owned.jsonl": {
+      "bytes": 25579148,
+      "sha256": "9b3935e7ff8a71ba804d50fb2d98b5e51f9d36ee74ae3f231d08668c22a3594c"
+    },
+    "/tmp/ferrugo-span35-producers/hygiene_owned/hygiene_owned.jsonl.gz": {
+      "bytes": 349782,
+      "sha256": "785633f56cc750a7cd503e9cb41552a11b43da86c70f0335512a2ce26b1fa60e"
+    },
+    "/tmp/ferrugo-span35-producers/hygiene_owned/owned-manifest.json": {
+      "bytes": 17789,
+      "sha256": "3409c58c86d6ca15989f880185c6eabfaf8df569d5450241d88d029cf4360793"
+    },
+    "/tmp/ferrugo-span35-producers/panic/lib-panic.tsv": {
+      "bytes": 77641,
+      "sha256": "f3a207d17fcc15b64e14671eba25e03e4978e6916e0a109ccfc281ba921b2f21"
+    },
+    "/tmp/ferrugo-span35-producers/panic/lib-panic.tsv.gz": {
+      "bytes": 3585,
+      "sha256": "fb7b0b498ae71e50364d443fb0fff13732cc61321f822a32366f0c9ff2407d3f"
+    },
+    "/tmp/ferrugo-span35-producers/panic/panic-manifest.json": {
+      "bytes": 34676,
+      "sha256": "6f6be206ada7ee4667d257a3b1301fad37dfb8025976d878365891d5ca79db39"
+    },
+    "/tmp/ferrugo-span35-producers/remaining_context/lib-remaining-context.jsonl": {
+      "bytes": 2383084,
+      "sha256": "efafbf20c26cb7d12c6a11cff6bc3884fe3354d4e2c09729375ba788e168cc3c"
+    },
+    "/tmp/ferrugo-span35-producers/remaining_context/lib-remaining-context.jsonl.gz": {
+      "bytes": 50355,
+      "sha256": "f949da2b7bf61a9d0e2c4627fe829bb7a8e7b8f456176acbd6c4d7f0121385ed"
+    },
+    "/tmp/ferrugo-span35-producers/remaining_context/remaining-context-manifest.json": {
+      "bytes": 74862,
+      "sha256": "6978d9316b1239108a3b5ee714f8e7a69d29f81bcf6bb7cbeda2dca466a6085c"
+    },
+    "/tmp/ferrugo-span35-producers/source_map_panic/source_map_panic_assert.tsv": {
+      "bytes": 1838,
+      "sha256": "d8865c217d59515044cbbe0e717e1c79cca188f1edc10690a51384d5b0cdb17d"
+    },
+    "/tmp/ferrugo-span35-producers/source_map_panic/source_map_panic_assert.tsv.gz": {
+      "bytes": 362,
+      "sha256": "0f79359c3d785fe61214bd7c8f37825618503485ddce63df882cd54bdcfe0354"
+    },
+    "/tmp/ferrugo-span35-producers/source_map_panic/source_map_panic_assert_manifest.json": {
+      "bytes": 3538,
+      "sha256": "6a5b62c008ad5855c4a6420214adbcfce3843ad4a086974f4e5a6d938f64a5e3"
+    },
+    "/tmp/ferrugo-span35-producers/source_map_panic/source_map_panic_session.tsv": {
+      "bytes": 2412,
+      "sha256": "e9d943aaa38168e8a032d39467566304556d660f98dbf9cf6e0374eb37384398"
+    },
+    "/tmp/ferrugo-span35-producers/source_map_panic/source_map_panic_session.tsv.gz": {
+      "bytes": 313,
+      "sha256": "514c51047e15cf465d6ebcc7fb14ffd47bf4092e699e45cdbe2fc0bf077fbb8c"
+    },
+    "/tmp/ferrugo-span35-producers/source_map_panic/source_map_panic_session_manifest.json": {
+      "bytes": 3482,
+      "sha256": "08ae0199c312ba4449c1b2835bc11d5825eb355fddef60700213603572002e70"
+    },
+    "/tmp/ferrugo-span35-producers/symbol_panic/manifest.json": {
+      "bytes": 62168,
+      "sha256": "e2c3b95c2e1a03d8d20cee79528a6e6fd8ad99500e43af663b9cd27902323c0d"
+    },
+    "/tmp/ferrugo-span35-producers/symbol_panic/symbol_panic.jsonl": {
+      "bytes": 83669,
+      "sha256": "4f8340f215379435f7a51f06dd08e6656a5f897c90fcd9e7b0b63403c1e6e40f"
+    },
+    "/tmp/ferrugo-span35-producers/symbol_panic/symbol_panic.jsonl.gz": {
+      "bytes": 3132,
+      "sha256": "b3ac84aeccb924c9f44c0cdd3e94130a19e12ae00f5009354b6a4f6fe08fc733"
+    }
+  },
+  "producer_selectors": {
+    "CARGO_HOME": "/workspace/rust-port-go/.toolchain/port-cargo-home",
+    "FERRUGO_GO": "/workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go",
+    "GOCACHE": "/tmp/ferrugo-go123-cache",
+    "GOMAXPROCS": "2",
+    "GOFLAGS": "-buildvcs=false -p=1",
+    "GORACE": "atexit_sleep_ms=0",
+    "FERRUGO_LIB_PANIC_PROOF": "/tmp/ferrugo-span35-producers/panic",
+    "FERRUGO_LIB_REMAINING_PROOF": "/tmp/ferrugo-span35-producers/remaining_context",
+    "FERRUGO_SPAN_CONSUMING_PROOF": "/tmp/ferrugo-span35-producers/consuming_callbacks",
+    "FERRUGO_HYGIENE_OWNED_PROFILE_DIR": "/tmp/ferrugo-span35-producers/hygiene_owned",
+    "FERRUGO_SYMBOL_PANIC_PROFILE_DIR": "/tmp/ferrugo-span35-producers/symbol_panic",
+    "FERRUGO_SOURCE_MAP_PANIC_PROOF": "/tmp/ferrugo-span35-producers/source_map_panic"
+  },
+  "lib_native_manifest_sha256": {
+    "tools/port-rust-span-lib/boxes-manifest.json": "588418577a8d349976219b02e80a64d07fa496f577c727620a6d94733cca4604",
+    "tools/port-rust-span-lib/byte-slice-strategy-manifest.json": "c75171f6c9080334094e2ffe5d855e4e4513f015e28561564c44e9d622601460",
+    "tools/port-rust-span-lib/consuming-callbacks-manifest.json": "966d4463b9ea1ce4b7650ed1c34a6df4670e9112d93f043382e7844588ae806e",
+    "tools/port-rust-span-lib/display-manifest.json": "3525060694c395dc75850ca153b60d7e18a7dba253881e6a54bd47fb8ab82ddf",
+    "tools/port-rust-span-lib/file-manifest.json": "86920a6c7f58612763235cd8def32af244d1457707b5edf7181afc49ed4f1903",
+    "tools/port-rust-span-lib/flags-format-manifest.json": "15a750847d03655bc593c9a5930540260ff9ee1c60fd02dd5a9f90000617572e",
+    "tools/port-rust-span-lib/flags-iter-manifest.json": "0d2999925ebf6aa8a9ac99049bd1dbba2e9fde7c09c3c59726afb1ff67276387",
+    "tools/port-rust-span-lib/format-manifest.json": "de99f82ed63237e8f96c78db8976feea51f171cae6117830f852544c8e5196cb",
+    "tools/port-rust-span-lib/generic-ambient-manifest.json": "3d6482e7d9a5fe74e958411ec953da3f1dfd9556575edd556da4b8d962627044",
+    "tools/port-rust-span-lib/generic-manifest.json": "cbea7310ca0d8a4959835f61bfb433cabd5f26c7f07117148bb4375429f37f29",
+    "tools/port-rust-span-lib/macro-backtrace-context-manifest.json": "4eb43b11ec4f6377f0e45051b18c4b1103898c230de0a12346f429c92708d680",
+    "tools/port-rust-span-lib/map-manifest.json": "befc723ba3623e038b23455e9c3982d37e49a128c6620fcffb0cd155742ead15",
+    "tools/port-rust-span-lib/memory-manifest.json": "d0c36820afabc346a9a3fba017df93c3f4dfb815d35359d8823503951553964c",
+    "tools/port-rust-span-lib/opaque-callbacks-manifest.json": "bed2b5bf181e2fc26eb182836cc85215a85b60b9517bcedc65ae4c6182faa2be",
+    "tools/port-rust-span-lib/owned-hash-manifest.json": "79b3e7047b56a4e0dd1bddb37d54f53fe8e0389c58694e0fa0373c1cce2267b0",
+    "tools/port-rust-span-lib/panic-manifest.json": "bc3449ce6bb4ba0e2bccd63cabd50216413e2decfb722a4a8196c56a08ad8bf9",
+    "tools/port-rust-span-lib/pos-manifest.json": "d912b342af6829ba78bb81b066b853e9499febfdbad6ff00be90a45d66f8b08c",
+    "tools/port-rust-span-lib/remaining-context-manifest.json": "6978d9316b1239108a3b5ee714f8e7a69d29f81bcf6bb7cbeda2dca466a6085c",
+    "tools/port-rust-span-lib/session-inputs-manifest.json": "f6c4be3692e324c83e7b3bd643f2b2939fb26c1e8f95f3f6855b73c356bcd91f",
+    "tools/port-rust-span-lib/source-manifest.json": "0725e8e4d22f33bcefa3d7477af672bb253ca5177d1ea29d686d35a8ed17aad7",
+    "tools/port-rust-span-lib/span-geometry-manifest.json": "64e5fbda941062e93f75bd98878b6ab5dbf0573a107a794cf46330f412ea4d77",
+    "tools/port-rust-span-lib/span-hygiene-manifest.json": "ecd82e7720290850e800a9432ff386623251d59e126aa3605be4fa3d5bf34007",
+    "tools/port-rust-span-lib/tracing-profile-manifest.json": "0f351ce56b9132c8218d9475bb2b667d067ab3f9b2ac001bca69525161405e2b",
+    "tools/port-rust-span-lib/trait-defaults-manifest.json": "ed9b7e71d8f94804265c67e37b387e4cce2bbcb6fa4f948b7b67e9880eab84cd",
+    "tools/port-rust-span-lib/trait-failures-manifest.json": "c7c839bdebd37c2e06a8db197b53efbeb6c08e7080b977941f37af0ad02f789a"
+  },
+  "authored_binding_audit": {
+    "remaining_hand_authored_report_to_refresh": [
+      {
+        "manifest": "tools/port-rust-span-lib/VALIDATION.json",
+        "authored": true,
+        "issues": [
+          {
+            "kind": "stale",
+            "path": "port/rust/compiler/rustc_span/src/span_encoding.go",
+            "expected_sha256": "3e00cd23ff907b796691a291cc134e8cd41e76e55b5613cd3a6d66d6001406b0",
+            "actual_sha256": "4956678a322c6d4830d8cd039ef3a850f7726be9486fff2a851cb4894e272144"
+          }
+        ]
+      }
+    ],
+    "audit_file": {
+      "path": "/tmp/ferrugo-span35-binding-audit.json",
+      "bytes": 3218,
+      "sha256": "eda98386807c3e375d7b6f37952fb7c7f00afa5d95a89f6d7fc9d9f517a4f826"
+    },
+    "all_generated_authored_tables_current": true
+  },
+  "ledger_evidence_mapping": "/tmp/ferrugo-span35-ledger-evidence-mappings.json",
+  "root_owned_followup": "Apply scoped-partial source inventories, PORTING overview, VALIDATION.json documentation SHA refresh, integration report and CI recipes; withhold blanket 13-file completion credit pending owned String contracts. Root alone stages/commits/pushes. No dependency/DefID whole-file credit.",
+  "root_review": {
+    "accepted_complete_files": [
+      "compiler/rustc_span/src/analyze_source_file.rs",
+      "compiler/rustc_span/src/analyze_source_file/tests.rs",
+      "compiler/rustc_span/src/caching_source_map_view.rs",
+      "compiler/rustc_span/src/edit_distance.rs",
+      "compiler/rustc_span/src/edit_distance/tests.rs",
+      "compiler/rustc_span/src/fatal_error.rs",
+      "compiler/rustc_span/src/tests.rs",
+      "compiler/rustc_span/src/source_map/tests.rs",
+      "compiler/rustc_span/src/symbol/tests.rs"
+    ],
+    "accepted_original_lines": 1942,
+    "scoped_partial_implementation_files": [
+      "compiler/rustc_span/src/hygiene.rs",
+      "compiler/rustc_span/src/lib.rs",
+      "compiler/rustc_span/src/source_map.rs",
+      "compiler/rustc_span/src/symbol.rs"
+    ],
+    "scoped_partial_original_lines": 9236,
+    "expected_validated_top_level_files": 40,
+    "remaining_api": "docs/SPAN-API-GAPS.md",
+    "port_overview": "port/rust/compiler/rustc_span/PORTING.md",
+    "handwritten_binding_refresh": {
+      "tools/port-rust-span-lib/VALIDATION.json": "49c6086e9da942dede9b13470ec493f17b282e9eb027c46bd4307e0c5e4c1170",
+      "tools/port-rust-symbol/VALIDATION.json": "c668a68f6b432aea80c606ebf137ea1d424656d1000c6e9d4a08b83f048f3a08"
+    },
+    "additional_root_checks": {
+      "inventory_unit_tests": 9,
+      "executable_dispatch_tests": 2,
+      "CI_shell_blocks_checked": 46,
+      "existing_CI_jobs_preserved": true
+    },
+    "last_pushed_hosted_run": {
+      "id": 41971712250,
+      "conclusion": "all six jobs passed"
+    },
+    "source_mappings": [
+      {
+        "source": "compiler/rustc_span/src/analyze_source_file.rs",
+        "lines": 298,
+        "sha256": "15cb5f3992b3e6f178b1bfac78ed136dd95f6d5b87c3eb4e4587da69b132734d",
+        "git_blob": "59cda1238cc77b33006ca77b53d96a3b548cfb24",
+        "canonical_go": "port/rust/compiler/rustc_span/src/analyze_source_file.go",
+        "canonical_go_sha256": "b8a19a47b0f1d2f527347b4a470bef0d3f60c8d309eb155de49a94b592eb5de8",
+        "evidence": [
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/analyze_source_file_manifest.json",
+            "sha256": "af187e6de37a1ade9a63dfe63d605c21a5f14cb74023c172e2702c3dc33bfecd"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/analyze_source_file_panic_manifest.json",
+            "sha256": "eec15192e810b077d1b20818648208872cf500c5e2e3797cd7cbd59bbb5a254a"
+          }
+        ],
+        "shared_integration_evidence": "tools/port-rust-span-reference/checkpoint35-validation.json",
+        "completion_status": "Candidate for Root nine-file review; no ledger edits by integrator"
+      },
+      {
+        "source": "compiler/rustc_span/src/analyze_source_file/tests.rs",
+        "lines": 109,
+        "sha256": "40a5dbc5455eeb698eea5b3de69d584d88e667c8ca9459930e8d6e8485730549",
+        "git_blob": "e4a24239d8ea1f8983d316fab0f585f3da8712c3",
+        "canonical_go": "port/rust/compiler/rustc_span/src/analyze_source_file/tests_test.go",
+        "canonical_go_sha256": "3cc9bbb958fb0c281e0214bf77d34016e3798c35362dd68d50ac6b75a5bdf532",
+        "evidence": [
+          {
+            "path": "port/rust/compiler/rustc_span/src/analyze_source_file/tests_test.go",
+            "sha256": "3cc9bbb958fb0c281e0214bf77d34016e3798c35362dd68d50ac6b75a5bdf532"
+          }
+        ],
+        "shared_integration_evidence": "tools/port-rust-span-reference/checkpoint35-validation.json",
+        "completion_status": "Candidate for Root nine-file review; no ledger edits by integrator"
+      },
+      {
+        "source": "compiler/rustc_span/src/caching_source_map_view.rs",
+        "lines": 170,
+        "sha256": "1859b2fe6376229d948ff2116ec91e15cb3ad91fedba6d1d08222c57f10d15c0",
+        "git_blob": "3a3f238a7e55b52ecd812d7315aba6a199e2ef39",
+        "canonical_go": "port/rust/compiler/rustc_span/src/caching_source_map_view.go",
+        "canonical_go_sha256": "f4fdf220ffe42e44caeab7ee3e77cbbe7a832a75d1c005801f359e70b9736a5a",
+        "evidence": [
+          {
+            "path": "tools/port-rust-caching-source-map-view/context-manifest.json",
+            "sha256": "cfd90b367bfb4bd85a653c0e256d8ad41b43e25195dfab2deb3ecfac0010202d"
+          },
+          {
+            "path": "tools/port-rust-caching-source-map-view/manifest.json",
+            "sha256": "b317880ef7fc6b5b4c49096fd429cb93d73872a7984c09c2d168fb944cc19b7f"
+          },
+          {
+            "path": "tools/port-rust-caching-source-map-view/metadata-manifest.json",
+            "sha256": "8fd348700be71e6c5209002e243560457225f75711a92e0dc5e610b9a4294e70"
+          },
+          {
+            "path": "tools/port-rust-caching-source-map-view/panic-sites/VALIDATION.json",
+            "sha256": "2d94e1eceec1dc1c10588640f95929f4ca591df63b23b172faec24bfe726a08e"
+          }
+        ],
+        "shared_integration_evidence": "tools/port-rust-span-reference/checkpoint35-validation.json",
+        "completion_status": "Candidate for Root nine-file review; no ledger edits by integrator"
+      },
+      {
+        "source": "compiler/rustc_span/src/edit_distance.rs",
+        "lines": 289,
+        "sha256": "46fd5412ef0bc4d59559bc48a79edd7b11e1045aec881a61ac6386257aa033fe",
+        "git_blob": "416e9daa8fb090222fa37e6dc6577cf0c27994cf",
+        "canonical_go": "port/rust/compiler/rustc_span/src/edit_distance.go",
+        "canonical_go_sha256": "b7f5b38ac87b8060f3380c779626afe99f5dd4f40323db940c740a9ae09984b9",
+        "evidence": [
+          {
+            "path": "port/rust/compiler/rustc_span/src/symbol_edit_distance_manifest.json",
+            "sha256": "0bfc46be909489c2c364ec9e23c5bafe2005263190ece63c1bc60d0375ffceb6"
+          },
+          {
+            "path": "tools/port-rust-symbol/VALIDATION.json",
+            "sha256": "c668a68f6b432aea80c606ebf137ea1d424656d1000c6e9d4a08b83f048f3a08"
+          }
+        ],
+        "shared_integration_evidence": "tools/port-rust-span-reference/checkpoint35-validation.json",
+        "completion_status": "Candidate for Root nine-file review; no ledger edits by integrator"
+      },
+      {
+        "source": "compiler/rustc_span/src/edit_distance/tests.rs",
+        "lines": 82,
+        "sha256": "9a0cf3ade5d4273c2ea6937471f51406e4a7f54a5ca63f0cae4b872824883047",
+        "git_blob": "8372856c0d304d23b0284c9967d6b3ecfd0aaee9",
+        "canonical_go": "port/rust/compiler/rustc_span/src/edit_distance/tests_test.go",
+        "canonical_go_sha256": "f8437c7d423e212d91391c21945477e96279735e957e56294245870e0705bf49",
+        "evidence": [
+          {
+            "path": "port/rust/compiler/rustc_span/src/edit_distance/tests_test.go",
+            "sha256": "f8437c7d423e212d91391c21945477e96279735e957e56294245870e0705bf49"
+          }
+        ],
+        "shared_integration_evidence": "tools/port-rust-span-reference/checkpoint35-validation.json",
+        "completion_status": "Candidate for Root nine-file review; no ledger edits by integrator"
+      },
+      {
+        "source": "compiler/rustc_span/src/fatal_error.rs",
+        "lines": 41,
+        "sha256": "45ffa6ade6d4be3d8ec7dfd4e1a9350fe9f9330f55124a60269cd5c4060d18d4",
+        "git_blob": "5e2d82681a11a881ecf267d61b5cb6072adc156e",
+        "canonical_go": "port/rust/compiler/rustc_span/src/fatal_error.go",
+        "canonical_go_sha256": "54427ff0ebd52e9666675e0cb2c34bb2b41408e55ab22a3d2ccee13ef756cffa",
+        "evidence": [
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/fatal_error_unwind_manifest.json",
+            "sha256": "051773522409ff7f892114ee0a08bc3789d6fab7275da52ea37a1c703204f8b7"
+          },
+          {
+            "path": "tools/port-rust-fatal-error/README.md",
+            "sha256": "cb048dfcfdcc891ef3a01405e688d87b1ef96018053726ec811cc96041da0aba"
+          }
+        ],
+        "shared_integration_evidence": "tools/port-rust-span-reference/checkpoint35-validation.json",
+        "completion_status": "Candidate for Root nine-file review; no ledger edits by integrator"
+      },
+      {
+        "source": "compiler/rustc_span/src/tests.rs",
+        "lines": 119,
+        "sha256": "e749dadfca99879e906a6a13a7c3433a5609db24ee4eee34aad20f5db9332fa9",
+        "git_blob": "64c40e61162508d8ac4231578b09af6bd371ca38",
+        "canonical_go": "port/rust/compiler/rustc_span/src/tests_test.go",
+        "canonical_go_sha256": "98c9f205867721b29df6dc7fe909dc1041452cb68aaa3ebd147db75a251e2319",
+        "evidence": [
+          {
+            "path": "port/rust/compiler/rustc_span/src/tests_test.go",
+            "sha256": "98c9f205867721b29df6dc7fe909dc1041452cb68aaa3ebd147db75a251e2319"
+          },
+          {
+            "path": "tools/port-rust-span-lib/VALIDATION.json",
+            "sha256": "49c6086e9da942dede9b13470ec493f17b282e9eb027c46bd4307e0c5e4c1170"
+          }
+        ],
+        "shared_integration_evidence": "tools/port-rust-span-reference/checkpoint35-validation.json",
+        "completion_status": "Candidate for Root nine-file review; no ledger edits by integrator"
+      },
+      {
+        "source": "compiler/rustc_span/src/source_map/tests.rs",
+        "lines": 799,
+        "sha256": "05ce3195d37fd69e5d95b13ae4b549cc3e265524b7cef99595101cb2f1e17b60",
+        "git_blob": "a4d0b1895f8d8a37cbef755e9f2d80598b64d5d2",
+        "canonical_go": "port/rust/compiler/rustc_span/src/source_map/tests_test.go",
+        "canonical_go_sha256": "3dc350e8c26c9c1965079b601297e910d846e05d9c4be4d502ddb133728725c2",
+        "evidence": [
+          {
+            "path": "port/rust/compiler/rustc_span/src/source_map/tests_test.go",
+            "sha256": "3dc350e8c26c9c1965079b601297e910d846e05d9c4be4d502ddb133728725c2"
+          }
+        ],
+        "shared_integration_evidence": "tools/port-rust-span-reference/checkpoint35-validation.json",
+        "completion_status": "Candidate for Root nine-file review; no ledger edits by integrator"
+      },
+      {
+        "source": "compiler/rustc_span/src/symbol/tests.rs",
+        "lines": 35,
+        "sha256": "ac1832df4d5c4010b08a8026d52afa7b09c9a62c3e27453b2fed9baaa8c7d0e2",
+        "git_blob": "40602821615f5d6ee5a5d68878877a19efdf404b",
+        "canonical_go": "port/rust/compiler/rustc_span/src/symbol/tests_test.go",
+        "canonical_go_sha256": "a46f0a1951fcc96ad65a84fb0d2d2f9f1346377a269fc0db787b0e99ad812b02",
+        "evidence": [
+          {
+            "path": "port/rust/compiler/rustc_span/src/symbol/tests_test.go",
+            "sha256": "a46f0a1951fcc96ad65a84fb0d2d2f9f1346377a269fc0db787b0e99ad812b02"
+          }
+        ],
+        "shared_integration_evidence": "tools/port-rust-span-reference/checkpoint35-validation.json",
+        "completion_status": "Candidate for Root nine-file review; no ledger edits by integrator"
+      },
+      {
+        "source": "compiler/rustc_span/src/hygiene.rs",
+        "lines": 1766,
+        "sha256": "86a49903b158f4547665773e03d83791a819f60fac616fd413ffdeca2d1471da",
+        "git_blob": "180dd9061aba2c104882261b9e4fcd8fa333dac0",
+        "canonical_go": "port/rust/compiler/rustc_span/src/hygiene.go",
+        "canonical_go_sha256": "de2e5c943179e56a641f839287a60492701b7c36c8b5550652c3bb00155057f7",
+        "evidence": [
+          {
+            "path": "tools/port-rust-hygiene/codec-manifest.json",
+            "sha256": "9ed6fc89ca05bda1c9cf518c3d91e252d915bd455be769ac858314eda465fac3"
+          },
+          {
+            "path": "tools/port-rust-hygiene/commit-manifest.json",
+            "sha256": "d2e61bd678dc6fef0c94c1f7f75bc905a775bf05dd67f715190d898e5fa0c1a2"
+          },
+          {
+            "path": "tools/port-rust-hygiene/core-manifest.json",
+            "sha256": "62a34e8ef8f54092efdcb652af25ae10eabdaab7ee55aae41dc8fbde274daeef"
+          },
+          {
+            "path": "tools/port-rust-hygiene/decode-manifest.json",
+            "sha256": "3934f7d96e169a587236037e038212546112e029548344c0a90461720b09aec2"
+          },
+          {
+            "path": "tools/port-rust-hygiene/format-manifest.json",
+            "sha256": "a8a974c4d484300df6db820b65980a067b53aa0231e2ad66494941ae0bba34dc"
+          },
+          {
+            "path": "tools/port-rust-hygiene/graph-manifest.json",
+            "sha256": "059557d9ca3c498a24ff4671d4ea603c39a16f19d95bb2680701861a74388802"
+          },
+          {
+            "path": "tools/port-rust-hygiene/hash-manifest.json",
+            "sha256": "b436fb5273bee300ac4e53beada5124c89a6a9251ea425c50e9aceef0b9933e2"
+          },
+          {
+            "path": "tools/port-rust-hygiene/invalid_codec-manifest.json",
+            "sha256": "759c364029e60eb4b1e82f9e5338dff7ef29064d70c8b7cfa2a7276ea12d26da"
+          },
+          {
+            "path": "tools/port-rust-hygiene/order-manifest.json",
+            "sha256": "d0900739da3486f3d3f78f4b92429529dfb359240c58c8481e6265635face130"
+          },
+          {
+            "path": "tools/port-rust-hygiene/owned-manifest.json",
+            "sha256": "3409c58c86d6ca15989f880185c6eabfaf8df569d5450241d88d029cf4360793"
+          },
+          {
+            "path": "tools/port-rust-hygiene/queue-manifest.json",
+            "sha256": "dc321481244e4da07009598525bd254a48567a8cc5ab2176ae89738ce8bdddf6"
+          },
+          {
+            "path": "tools/port-rust-hygiene/remap-manifest.json",
+            "sha256": "872ad355cdeb1d9c3ca256398fbdcd1c4e30722ad86ff4489fd55f85b5b7d52c"
+          },
+          {
+            "path": "tools/port-rust-hygiene/tracing-manifest.json",
+            "sha256": "0e59c03de99d15fd5af6f92c2cdff73da61077522c83739016fb054a74529d79"
+          },
+          {
+            "path": "tools/port-rust-hygiene/source-inventory.json",
+            "sha256": "a2b4a1ed9940e5ec93455ac6b1b3548eb51c8a179144349faa84ff2390c04cf9"
+          },
+          {
+            "path": "tools/port-rust-span-lib/macro-backtrace-context-manifest.json",
+            "sha256": "4eb43b11ec4f6377f0e45051b18c4b1103898c230de0a12346f429c92708d680"
+          },
+          {
+            "path": "tools/port-rust-span-lib/span-hygiene-manifest.json",
+            "sha256": "ecd82e7720290850e800a9432ff386623251d59e126aa3605be4fa3d5bf34007"
+          }
+        ],
+        "shared_integration_evidence": "tools/port-rust-span-reference/checkpoint35-validation.json",
+        "completion_status": "UNPORTED scoped partial: owned String/Path contract"
+      },
+      {
+        "source": "compiler/rustc_span/src/lib.rs",
+        "lines": 2930,
+        "sha256": "9682c3b7d227039f040afff82aae4d2fd8133692bc9ef84f0974323f8a0acca0",
+        "git_blob": "44fbbbaccd66f3428ea135720511029be547f467",
+        "canonical_go": "port/rust/compiler/rustc_span/src/lib.go",
+        "canonical_go_sha256": "3845e4a03e1340c73dbad7e8803cd5eeef5c2408fdac1eac7ba7b2d803ff1c4d",
+        "evidence": [
+          {
+            "path": "tools/port-rust-span-lib/boxes-manifest.json",
+            "sha256": "588418577a8d349976219b02e80a64d07fa496f577c727620a6d94733cca4604"
+          },
+          {
+            "path": "tools/port-rust-span-lib/byte-slice-strategy-manifest.json",
+            "sha256": "c75171f6c9080334094e2ffe5d855e4e4513f015e28561564c44e9d622601460"
+          },
+          {
+            "path": "tools/port-rust-span-lib/consuming-callbacks-manifest.json",
+            "sha256": "966d4463b9ea1ce4b7650ed1c34a6df4670e9112d93f043382e7844588ae806e"
+          },
+          {
+            "path": "tools/port-rust-span-lib/display-manifest.json",
+            "sha256": "3525060694c395dc75850ca153b60d7e18a7dba253881e6a54bd47fb8ab82ddf"
+          },
+          {
+            "path": "tools/port-rust-span-lib/file-manifest.json",
+            "sha256": "86920a6c7f58612763235cd8def32af244d1457707b5edf7181afc49ed4f1903"
+          },
+          {
+            "path": "tools/port-rust-span-lib/flags-format-manifest.json",
+            "sha256": "15a750847d03655bc593c9a5930540260ff9ee1c60fd02dd5a9f90000617572e"
+          },
+          {
+            "path": "tools/port-rust-span-lib/flags-iter-manifest.json",
+            "sha256": "0d2999925ebf6aa8a9ac99049bd1dbba2e9fde7c09c3c59726afb1ff67276387"
+          },
+          {
+            "path": "tools/port-rust-span-lib/format-manifest.json",
+            "sha256": "de99f82ed63237e8f96c78db8976feea51f171cae6117830f852544c8e5196cb"
+          },
+          {
+            "path": "tools/port-rust-span-lib/generic-ambient-manifest.json",
+            "sha256": "3d6482e7d9a5fe74e958411ec953da3f1dfd9556575edd556da4b8d962627044"
+          },
+          {
+            "path": "tools/port-rust-span-lib/generic-manifest.json",
+            "sha256": "cbea7310ca0d8a4959835f61bfb433cabd5f26c7f07117148bb4375429f37f29"
+          },
+          {
+            "path": "tools/port-rust-span-lib/macro-backtrace-context-manifest.json",
+            "sha256": "4eb43b11ec4f6377f0e45051b18c4b1103898c230de0a12346f429c92708d680"
+          },
+          {
+            "path": "tools/port-rust-span-lib/map-manifest.json",
+            "sha256": "befc723ba3623e038b23455e9c3982d37e49a128c6620fcffb0cd155742ead15"
+          },
+          {
+            "path": "tools/port-rust-span-lib/memory-manifest.json",
+            "sha256": "d0c36820afabc346a9a3fba017df93c3f4dfb815d35359d8823503951553964c"
+          },
+          {
+            "path": "tools/port-rust-span-lib/opaque-callbacks-manifest.json",
+            "sha256": "bed2b5bf181e2fc26eb182836cc85215a85b60b9517bcedc65ae4c6182faa2be"
+          },
+          {
+            "path": "tools/port-rust-span-lib/owned-hash-manifest.json",
+            "sha256": "79b3e7047b56a4e0dd1bddb37d54f53fe8e0389c58694e0fa0373c1cce2267b0"
+          },
+          {
+            "path": "tools/port-rust-span-lib/panic-manifest.json",
+            "sha256": "bc3449ce6bb4ba0e2bccd63cabd50216413e2decfb722a4a8196c56a08ad8bf9"
+          },
+          {
+            "path": "tools/port-rust-span-lib/pos-manifest.json",
+            "sha256": "d912b342af6829ba78bb81b066b853e9499febfdbad6ff00be90a45d66f8b08c"
+          },
+          {
+            "path": "tools/port-rust-span-lib/remaining-context-manifest.json",
+            "sha256": "6978d9316b1239108a3b5ee714f8e7a69d29f81bcf6bb7cbeda2dca466a6085c"
+          },
+          {
+            "path": "tools/port-rust-span-lib/session-inputs-manifest.json",
+            "sha256": "f6c4be3692e324c83e7b3bd643f2b2939fb26c1e8f95f3f6855b73c356bcd91f"
+          },
+          {
+            "path": "tools/port-rust-span-lib/source-manifest.json",
+            "sha256": "0725e8e4d22f33bcefa3d7477af672bb253ca5177d1ea29d686d35a8ed17aad7"
+          },
+          {
+            "path": "tools/port-rust-span-lib/span-geometry-manifest.json",
+            "sha256": "64e5fbda941062e93f75bd98878b6ab5dbf0573a107a794cf46330f412ea4d77"
+          },
+          {
+            "path": "tools/port-rust-span-lib/span-hygiene-manifest.json",
+            "sha256": "ecd82e7720290850e800a9432ff386623251d59e126aa3605be4fa3d5bf34007"
+          },
+          {
+            "path": "tools/port-rust-span-lib/tracing-profile-manifest.json",
+            "sha256": "0f351ce56b9132c8218d9475bb2b667d067ab3f9b2ac001bca69525161405e2b"
+          },
+          {
+            "path": "tools/port-rust-span-lib/trait-defaults-manifest.json",
+            "sha256": "ed9b7e71d8f94804265c67e37b387e4cce2bbcb6fa4f948b7b67e9880eab84cd"
+          },
+          {
+            "path": "tools/port-rust-span-lib/trait-failures-manifest.json",
+            "sha256": "c7c839bdebd37c2e06a8db197b53efbeb6c08e7080b977941f37af0ad02f789a"
+          },
+          {
+            "path": "tools/port-rust-span-lib/PORT.md",
+            "sha256": "780b60ef7b87ea5246b906ae04865751e4f28daad0e3da20b753648de85f037b"
+          },
+          {
+            "path": "tools/port-rust-span-lib/VALIDATION.json",
+            "sha256": "49c6086e9da942dede9b13470ec493f17b282e9eb027c46bd4307e0c5e4c1170"
+          }
+        ],
+        "shared_integration_evidence": "tools/port-rust-span-reference/checkpoint35-validation.json",
+        "completion_status": "UNPORTED scoped partial: owned String/Path contract"
+      },
+      {
+        "source": "compiler/rustc_span/src/source_map.rs",
+        "lines": 1327,
+        "sha256": "9fa60e859a71b59b6787028a569a17d9fa0b5f047af9bb12de14e9c34af6eeb3",
+        "git_blob": "caad0da3292619754f321a8e713cfc154dbe7641",
+        "canonical_go": "port/rust/compiler/rustc_span/src/source_map.go",
+        "canonical_go_sha256": "804093a6b7ffb4ecb2e148a731ba8a20ccb8d1e1049566f866cfc579aa0cf15c",
+        "evidence": [
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_algorithms_manifest.json",
+            "sha256": "9c819c975745e77a2e942f7cf6c7c387724c6a583b59b125a0bf097fb4251f2f"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_binary_layout_manifest.json",
+            "sha256": "e531d08a49123e4014107d1b5915f023da1637575baf7d2bccec6f1e8340548d"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_files_windows_wine_manifest.json",
+            "sha256": "8cddc92f2cf07e8509122c2ce66fa83684b2134c27bda474ad357d7e2cc08e9a"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_formats_locked_manifest.json",
+            "sha256": "fd9d9bf8ffc6e90fb09f402857241bdc58e884ce4a3a27e08b463c9cec0fae30"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_formats_manifest.json",
+            "sha256": "e8ad43d92f699b392506e869e30eaa2a692b5d716a12c53c280c62fb8a100dd8"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_getter_manifest.json",
+            "sha256": "ee92a96cb44616350404c0b463b342480cb39234ea7b0f06927cad1fa179ccc1"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_io_errors_linux_manifest.json",
+            "sha256": "c7b499d7e9a68336f819a3fc1612659bd96f7c33a074db832bf276948ddee981"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_io_windows_wine_manifest.json",
+            "sha256": "ac3eed009dee8b194be1ec895dd9def58105dd08acd70b9776b7063f417a2eac"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_owned_extract_manifest.json",
+            "sha256": "68f8bb0b0116b334c30ae0a3e205fa24f46240c18c27335edbb92f1b9a6f410e"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_owned_format_error_manifest.json",
+            "sha256": "f68ff5d7bb7955ba8fa63b507c370d730636c4b8a91cd49c60445218f5e72af2"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_owned_into_manifest.json",
+            "sha256": "e05ae0f730affd7a4f9a50978cdc424f537554a5bfd523baeddb7473d7a949b3"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_owned_manifest.json",
+            "sha256": "85783ea0ca5629fa366a5f5dbb2f4d77f02c5abf77f5ef46396b0332b1023886"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_owned_predicates_manifest.json",
+            "sha256": "d3e53b186b710f9df0cc991fc1f7fb1929b1d5e9a2c8799b776ce42a01fc6152"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_owned_tracing_manifest.json",
+            "sha256": "d960f2a9a47b7aee9dbfedaf4f55d19a5fd754b25a8937ec7a0b830c01abb24c"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_panic_assert_manifest.json",
+            "sha256": "e4814f6747b5b9c63bb209ef636bba9c059817b8e9a65aab6c234d377d3b15d9"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_panic_max_manifest.json",
+            "sha256": "1e4b3e483aab707ffa5ccd9ef95563fb3c980110bd8f179199c9e7d736bbac07"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_panic_session_manifest.json",
+            "sha256": "f0ee47d9f265427ac709677f78524a623eef39fb31e72800a83233a307a138a6"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_panic_sites_manifest.json",
+            "sha256": "cfde38a3b9227164bdb1a3440139c1875efee4c8715370e628b7687659882102"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_panic_width_manifest.json",
+            "sha256": "ddbe881263168fd6c921bf321db7ec2ba7b752f79e58d7aa37d5996417ddca43"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_path_unix_manifest.json",
+            "sha256": "732fc7f91d2a27367ad07bc386355044c5ef5e5cbf9b7f66553919e07fb87eb3"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_path_windows_wine_manifest.json",
+            "sha256": "cbb35c0929ace0ff52bce3f331facb5384a67129b98cd110552af6409a14ecc1"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_predicate_borrow_manifest.json",
+            "sha256": "cd5be0687fddf1a2843890ca90821f4996f9387e82cddf81fbbcfb48bfd5031d"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_span_wrappers_manifest.json",
+            "sha256": "518b083a168abbc39a6bddd7b44daa0c71d43c4cbc93353b682149ca576daf14"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_sparse_file_manifest.json",
+            "sha256": "00fb1c82bad29b951a72a991e2814fd3bf3a76ec25d872b792a04818b566e7f8"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_stderr_manifest.json",
+            "sha256": "7ec7af456bb29986d2fefb28abc910d9162b978f7efa09c2383ee8861b477f1b"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_tracing_manifest.json",
+            "sha256": "d2c03dfab3b40c100aa827338db43193f380de57904378c6806542082fb5e75f"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/testdata/source_map_tracing_verbatim_manifest.json",
+            "sha256": "8b64cd5885892c9ad5f73152dba9000c5155e40a75940228e180bdd916eecb13"
+          },
+          {
+            "path": "tools/port-rust-source-map/consuming/VALIDATION.json",
+            "sha256": "4bce52342ebcf1cadbfd201eddba3e53e1de0c99270a4cfe3382c093aecd244b"
+          }
+        ],
+        "shared_integration_evidence": "tools/port-rust-span-reference/checkpoint35-validation.json",
+        "completion_status": "UNPORTED scoped partial: owned String/Path contract"
+      },
+      {
+        "source": "compiler/rustc_span/src/symbol.rs",
+        "lines": 3213,
+        "sha256": "d623770418e98bafe1190ab29635127bf51736684b732531b280c657f4825973",
+        "git_blob": "27b585c9e6fbdb566ce77efa9c7a1e06534dd07b",
+        "canonical_go": "port/rust/compiler/rustc_span/src/symbol.go",
+        "canonical_go_sha256": "0bebb03427a008c668e5e67a0fdc9d554603e39d90dd5f594a0a2f7a96969ad0",
+        "evidence": [
+          {
+            "path": "port/rust/compiler/rustc_span/src/symbol_edit_distance_manifest.json",
+            "sha256": "0bfc46be909489c2c364ec9e23c5bafe2005263190ece63c1bc60d0375ffceb6"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/symbol_macro_tests_manifest.json",
+            "sha256": "d47588777a986572610a6f4ce34157223e3e2b8cbf2b8e7865b57a8e031d5d45"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/symbol_oracle_manifest.json",
+            "sha256": "2f3ef1f4612a2b98ce1da2a313d6e4aa47a189686a418ff1df6f2c8a4ca545e1"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/symbol_predefined_manifest.json",
+            "sha256": "73c8a41bd29f4432fe41db735d185eaf5cfc98febb1f3b42c85a99ebfa4ecbdc"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/symbol_source_manifest.json",
+            "sha256": "4eb7791966616232e92eb9f562e7bd78aeb840c8fba26239a737c736fd3de688"
+          },
+          {
+            "path": "port/rust/compiler/rustc_span/src/symbol_unicode18_manifest.json",
+            "sha256": "5a8e3199553692c2201986353527e6ca7341131a5da797abeb1e78ac78b6f2fc"
+          },
+          {
+            "path": "tools/port-rust-symbol/borrow-validation.json",
+            "sha256": "2add436194d983e72f49911e850e6e8a865222acfe703b641fb2145d82d2c7ba"
+          },
+          {
+            "path": "tools/port-rust-symbol/panic/manifest.json",
+            "sha256": "f7bc535ed5038068979047e8e3e88f029615d8256efe338e581d133e9e1e04bc"
+          },
+          {
+            "path": "tools/port-rust-symbol/VALIDATION.json",
+            "sha256": "c668a68f6b432aea80c606ebf137ea1d424656d1000c6e9d4a08b83f048f3a08"
+          }
+        ],
+        "shared_integration_evidence": "tools/port-rust-span-reference/checkpoint35-validation.json",
+        "completion_status": "UNPORTED scoped partial: owned String/Path contract"
+      }
+    ],
+    "documentation_binding_native_followup": [
+      {
+        "name": "root-symbol-doc-bindings-historical",
+        "command": [
+          "python3",
+          "tools/port-rust-symbol/panic/generate.py",
+          "--offline",
+          "--jobs",
+          "1"
+        ],
+        "exit_code": 0,
+        "seconds": 18.861,
+        "log": "/tmp/ferrugo-checkpoint35-root-symbol-historical.log",
+        "log_sha256": "e7f9893c9adb577f225a02ac18d06c12cf8ea2806a1d0788134605e08ab4fa90"
+      },
+      {
+        "name": "root-symbol-doc-bindings-fresh",
+        "command": [
+          "python3",
+          "tools/port-rust-symbol/panic/generate.py",
+          "--offline",
+          "--jobs",
+          "1",
+          "--output-dir",
+          "/tmp/ferrugo-checkpoint35-root-symbol-proof"
+        ],
+        "exit_code": 0,
+        "seconds": 18.895,
+        "log": "/tmp/ferrugo-checkpoint35-root-symbol-fresh.log",
+        "log_sha256": "e7f9893c9adb577f225a02ac18d06c12cf8ea2806a1d0788134605e08ab4fa90"
+      }
+    ],
+    "documentation_binding_native_followup_note": "Both actual660-observation Symbol producers passed after the PORT.md API correction; historical raw/gzip bytes unchanged. Fresh follow-up bundle is separate from the original integration producer artifacts.",
+    "final_symbol_panic_manifest_sha256": "f7bc535ed5038068979047e8e3e88f029615d8256efe338e581d133e9e1e04bc",
+    "symbol_source_audit_after_doc_followup": "PASS: audit.py regenerated exact2source/2test mappings,8declarations/36assertion sites; native60984record evidence unchanged."
+  }
+}

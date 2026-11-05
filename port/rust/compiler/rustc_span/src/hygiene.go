@@ -1,27 +1,23 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
-// PARTIAL foundation from compiler/rustc_span/src/hygiene.rs and its actual
+// Translation of compiler/rustc_span/src/hygiene.rs and its actual
 // newtype_index! expansion at 2d20b42b883dcfc014f3c2c56081eeb6091c2179.
-// Only SyntaxContext's concrete identity, checked conversions, and root blocks
-// used by span_encoding are implemented. Expansion/mark allocation, hygiene
-// resolution, macro-generated operators/codecs and the rest of this file are
-// unported; no full-file completion is claimed.
+// The source's concrete types, allocation, resolution, remapping, codecs,
+// hashing and lifecycle implementations are split across the hygiene*.go files.
+// Original whole-source differential validation is retained under
+// tools/port-rust-hygiene; full-file acceptance is tracked independently.
 package rustcspan
+
+import "github.com/lassejlv/rust-port-go/port/support/rustfmt"
 
 const SyntaxContextMaxAsU32 uint32 = 0x1fffffff
 
 type SyntaxContext struct{ value uint32 }
 
 func SyntaxContextFromU32(value uint32) SyntaxContext {
-	if value > SyntaxContextMaxAsU32 {
-		panic("SyntaxContext: value exceeds MAX")
-	}
-	return SyntaxContext{value}
+	return SyntaxContextFromU32WithContext(value, rustfmt.Context{})
 }
 func SyntaxContextFromUsize(value uint) SyntaxContext {
-	if value > uint(SyntaxContextMaxAsU32) {
-		panic("SyntaxContext: value exceeds MAX")
-	}
-	return SyntaxContext{uint32(value)}
+	return SyntaxContextFromUsizeWithContext(value, rustfmt.Context{})
 }
 func SyntaxContextFromU16(value uint16) SyntaxContext      { return SyntaxContextFromU32(uint32(value)) }
 func RootSyntaxContext() SyntaxContext                     { return SyntaxContext{} }

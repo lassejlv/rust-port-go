@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "records": 8640,
+  "profiles": [
+    "d0o0",
+    "d0o1",
+    "d1o0",
+    "d1o1"
+  ],
+  "raw_sha256": "05eb9e23e0fdd92de37146f94756b4b37fc7ee76cd583bc58005549dc94a1ca9",
+  "gzip_sha256": "49f9551714872e6f6b79df2cacf1d367f4f1b86940667336c3a83660197543b3",
+  "wrapper_sha256": "ca421265af3f8c8baaf3c5af86cf035f6744022c22a6ecf6f6222fd0d3724272",
+  "normalization": "Only the concrete loader-slot pointer hexadecimal digits are replaced by <ptr>, preserving every C/S call and their boundaries.",
+  "complete": false,
+  "remaining": "Locked Debug branch, inherited/processing and callback-panic formatter ownership still WIP."
+}

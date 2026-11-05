@@ -1,0 +1,1025 @@
+{
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_version": "1.101.0",
+  "nightly_date": "2026-11-04",
+  "compiler_commit": "708c94ef093ecc42fb8851e17d8383d999727abc",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+  "unicode_version": [
+    18,
+    0,
+    0
+  ],
+  "cfg_release": "1.101.0",
+  "debug_assertions": true,
+  "overflow_checks": true,
+  "scope": "Symbol/ByteSymbol/Ident/IdentPrinter/MacroRulesNormalizedIdent and edit-distance matching client of complete unchanged rustc_span, actual session/hygiene/macros/hash/codecs; original43 span unit tests pass in shared build. Source18 and constructor caller-location evidence is separately explicit; no Go whole-file completion claim from native source availability.",
+  "source_graph_sha256": "b5b283946d0f2094e2ee6b7da6cb00c3601cecc02954afea3f91b42492b024bb",
+  "selected_lock_sha256": "754f658b67c5a3fd3296ae0f4e3cfcfd60dca900f3552de06895a0c2a7617c7a",
+  "registry_dependencies": [
+    {
+      "name": "arrayref",
+      "version": "0.3.9",
+      "checksum": "76a2e8124351fda1ef8aaaa3bbd7ebbcb486bbcd4225aca0aa0d84bb2db8fecb",
+      "compiled_files": 13
+    },
+    {
+      "name": "arrayvec",
+      "version": "0.7.6",
+      "checksum": "7c02d123df017efcdfbd739ef81735b36c5ba83ec3c59c80a9d7ecc718f92e50",
+      "compiled_files": 21
+    },
+    {
+      "name": "bitflags",
+      "version": "2.10.0",
+      "checksum": "812e12b5285cc515a9c72a5c1d3b6d46a19dac5acfef5265968c166106e31dd3",
+      "compiled_files": 59
+    },
+    {
+      "name": "blake3",
+      "version": "1.8.2",
+      "checksum": "3888aaa89e4b2a40fca9848e400f6a658a5a3978de7be858e209cafa8be9a4a0",
+      "compiled_files": 79
+    },
+    {
+      "name": "block-buffer",
+      "version": "0.10.4",
+      "checksum": "3078c7629b62d3f0439517fa394996acacc5cbc91c5a20d8c658e77abd503a71",
+      "compiled_files": 10
+    },
+    {
+      "name": "cc",
+      "version": "1.4.3",
+      "checksum": "509591b7bcd67f4ef775afad7662703b4935daaa6ec0e5605cfb1090b32a2b6d",
+      "compiled_files": 28
+    },
+    {
+      "name": "cfg-if",
+      "version": "1.0.4",
+      "checksum": "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801",
+      "compiled_files": 14
+    },
+    {
+      "name": "constant_time_eq",
+      "version": "0.3.1",
+      "checksum": "7c74b8349d32d297c9134b8c88677813a227df8f779daa29bfc29c183fe3dca6",
+      "compiled_files": 13
+    },
+    {
+      "name": "cpufeatures",
+      "version": "0.2.17",
+      "checksum": "59ed5838eebb26a2bb2e58f6d5b5316989ae9d08bab10e0e6d103e656d1b0280",
+      "compiled_files": 16
+    },
+    {
+      "name": "crossbeam-deque",
+      "version": "0.8.6",
+      "checksum": "9dd111b7b7f7d55b72c0a6ae361660ee5853c9af73f70c3c2ef6858b950e2e51",
+      "compiled_files": 13
+    },
+    {
+      "name": "crossbeam-epoch",
+      "version": "0.9.20",
+      "checksum": "2d6914041f254d6e9176c01941b21115dcfb7089e55135a35411081bd106ef3f",
+      "compiled_files": 26
+    },
+    {
+      "name": "crossbeam-utils",
+      "version": "0.8.21",
+      "checksum": "d0a5c400df2834b80a4c3327b3aad3a4c4cd4de0629063962b03235697506a28",
+      "compiled_files": 31
+    },
+    {
+      "name": "crypto-common",
+      "version": "0.1.7",
+      "checksum": "78c8292055d1c1df0cce5d180393dc8cce0abec0a7102adb6c7b1eef6016d60a",
+      "compiled_files": 9
+    },
+    {
+      "name": "digest",
+      "version": "0.10.7",
+      "checksum": "9ed9a281f7bc9b7576e61468ba615a66a5c8cfdff42420a70aa82701a3b1e292",
+      "compiled_files": 21
+    },
+    {
+      "name": "displaydoc",
+      "version": "0.2.5",
+      "checksum": "97369cbbc041bc366949bc74d34658d6cda5621039731c6310521892a3a20ae0",
+      "compiled_files": 39
+    },
+    {
+      "name": "either",
+      "version": "1.15.0",
+      "checksum": "48c757948c5ede0e46177b7add2e67155f70e33c07fea8284df6576da70b3719",
+      "compiled_files": 15
+    },
+    {
+      "name": "elsa",
+      "version": "1.11.2",
+      "checksum": "9abf33c656a7256451ebb7d0082c5a471820c31269e49d807c538c252352186e",
+      "compiled_files": 21
+    },
+    {
+      "name": "ena",
+      "version": "0.14.4",
+      "checksum": "eabffdaee24bd1bf95c5ef7cec31260444317e72ea56c4c91750e8b7ee58d5f1",
+      "compiled_files": 18
+    },
+    {
+      "name": "equivalent",
+      "version": "1.0.2",
+      "checksum": "877a4ace8713b0bcf2a4e7eec82529c029f1d0619886d18145fea96c3ffe5c0f",
+      "compiled_files": 10
+    },
+    {
+      "name": "errno",
+      "version": "0.3.14",
+      "checksum": "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb",
+      "compiled_files": 18
+    },
+    {
+      "name": "fastrand",
+      "version": "2.3.0",
+      "checksum": "37909eebbb50d72f9059c3b6d82c0463f2ff062c9e95845c43a6c9c0355411be",
+      "compiled_files": 12
+    },
+    {
+      "name": "find-msvc-tools",
+      "version": "0.1.11",
+      "checksum": "d45db016d36b838f563236e9193d0ee6ce38f3f68b6c94e914b4929c96bbb890",
+      "compiled_files": 18
+    },
+    {
+      "name": "fluent-bundle",
+      "version": "0.16.0",
+      "checksum": "01203cb8918f5711e73891b347816d932046f95f54207710bda99beaeb423bf4",
+      "compiled_files": 29
+    },
+    {
+      "name": "fluent-langneg",
+      "version": "0.13.1",
+      "checksum": "7eebbe59450baee8282d71676f3bfed5689aeab00b27545e83e5f14b1195e8b0",
+      "compiled_files": 10
+    },
+    {
+      "name": "fluent-syntax",
+      "version": "0.12.0",
+      "checksum": "54f0d287c53ffd184d04d8677f590f4ac5379785529e5e08b1c8083acdd5c198",
+      "compiled_files": 27
+    },
+    {
+      "name": "foldhash",
+      "version": "0.2.0",
+      "checksum": "77ce24cb58228fbb8aa041425bb1050850ac19177686ea6e0f41a70416f56fdb",
+      "compiled_files": 12
+    },
+    {
+      "name": "generic-array",
+      "version": "0.14.7",
+      "checksum": "85649ca51fd72272d7821adaf274ad91c288277713d9c18820d8499a7ff69e9a",
+      "compiled_files": 16
+    },
+    {
+      "name": "getrandom",
+      "version": "0.3.3",
+      "checksum": "26145e563e54f2cadc477553f1ec5ee650b00862f0a58bcd12cbdc5f0ea2d2f4",
+      "compiled_files": 41
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.17.1",
+      "checksum": "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a",
+      "compiled_files": 50
+    },
+    {
+      "name": "indexmap",
+      "version": "2.14.0",
+      "checksum": "d466e9454f08e4a911e14806c24e16fba1b4c121d1ea474396f396069cf949d9",
+      "compiled_files": 42
+    },
+    {
+      "name": "intl-memoizer",
+      "version": "0.5.3",
+      "checksum": "310da2e345f5eb861e7a07ee182262e94975051db9e4223e909ba90f392f163f",
+      "compiled_files": 9
+    },
+    {
+      "name": "intl_pluralrules",
+      "version": "7.0.2",
+      "checksum": "078ea7b7c29a2b4df841a7f6ac8775ff6074020c6776d48491ce2268e068f972",
+      "compiled_files": 8
+    },
+    {
+      "name": "itoa",
+      "version": "1.0.15",
+      "checksum": "4a5f13b858c8d314ee3e8f639011f7ccefe71f97f96e50151fb991f267928e2c",
+      "compiled_files": 14
+    },
+    {
+      "name": "jobserver",
+      "version": "0.1.34",
+      "checksum": "9afb3de4395d6b3e67a780b6de64b51c978ecf11cb9a462c66be7d4ca9039d33",
+      "compiled_files": 22
+    },
+    {
+      "name": "libc",
+      "version": "0.2.191",
+      "checksum": "65cd87c9a6d60536580b316ad985726104730a5151c99845f2490428ef91240a",
+      "compiled_files": 452
+    },
+    {
+      "name": "linux-raw-sys",
+      "version": "0.12.1",
+      "checksum": "32a66949e030da00e8c7d4434b251670a91556f4144941d37452769c25d58a53",
+      "compiled_files": 473
+    },
+    {
+      "name": "lock_api",
+      "version": "0.4.14",
+      "checksum": "224399e74b87b5f3557511d98dff8b14089b3dadafcab6bb93eab67d3aace965",
+      "compiled_files": 10
+    },
+    {
+      "name": "log",
+      "version": "0.4.28",
+      "checksum": "34080505efa8e45a4b816c349525ebe327ceaa8559756f0356cba97ef3bf7432",
+      "compiled_files": 23
+    },
+    {
+      "name": "md-5",
+      "version": "0.10.6",
+      "checksum": "d89e7ee0cfbedfc4da3340218492196241d89eefb6dab27de5df917a6d2e78cf",
+      "compiled_files": 15
+    },
+    {
+      "name": "measureme",
+      "version": "12.0.3",
+      "checksum": "6ebd1ebda747ae161a4a377bf93f87e18d46faad2331cc0c7d25b84b1d445f49",
+      "compiled_files": 15
+    },
+    {
+      "name": "memchr",
+      "version": "2.8.0",
+      "checksum": "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79",
+      "compiled_files": 57
+    },
+    {
+      "name": "memmap2",
+      "version": "0.2.3",
+      "checksum": "723e3ebdcdc5c023db1df315364573789f8857c11b631a2fdfad7c00f5c046b4",
+      "compiled_files": 15
+    },
+    {
+      "name": "once_cell",
+      "version": "1.21.3",
+      "checksum": "42f5e15c9953c5e4ccceeb2e7382a716482c34515315f7b03532b8b4e8393d2d",
+      "compiled_files": 29
+    },
+    {
+      "name": "parking_lot",
+      "version": "0.12.5",
+      "checksum": "93857453250e3077bd71ff98b6a65ea6621a19bb0f559a85248955ac12c45a1a",
+      "compiled_files": 28
+    },
+    {
+      "name": "parking_lot_core",
+      "version": "0.9.12",
+      "checksum": "2621685985a2ebf1c516881c026032ac7deafcda1a2c9b7850dc81e3dfcb64c1",
+      "compiled_files": 24
+    },
+    {
+      "name": "perf-event-open-sys",
+      "version": "3.0.0",
+      "checksum": "b29be2ba35c12c6939f6bc73187f728bba82c3c062ecdc5fa90ea739282a1f58",
+      "compiled_files": 9
+    },
+    {
+      "name": "pin-project-lite",
+      "version": "0.2.16",
+      "checksum": "3b3cff922bd51709b605d9ead9aa71031d81447142d828eb4a6eba76fe619f9b",
+      "compiled_files": 80
+    },
+    {
+      "name": "portable-atomic",
+      "version": "1.13.1",
+      "checksum": "c33a9471896f1c69cecef8d20cbe2f7accd12527ce60845ff44c153bb2a21b49",
+      "compiled_files": 67
+    },
+    {
+      "name": "ppv-lite86",
+      "version": "0.2.21",
+      "checksum": "85eae3c4ed2f50dcfe72643da4befc30deadb458a9b590d720cde2f2b1e97da9",
+      "compiled_files": 12
+    },
+    {
+      "name": "proc-macro2",
+      "version": "1.0.106",
+      "checksum": "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934",
+      "compiled_files": 33
+    },
+    {
+      "name": "quote",
+      "version": "1.0.45",
+      "checksum": "41f2619966050689382d2b44f664f4bc593e129785a36d6ee376ddf37259b924",
+      "compiled_files": 35
+    },
+    {
+      "name": "r-efi",
+      "version": "5.3.0",
+      "checksum": "69cdb34c158ceb288df11e18b4bd39de994f6657d83847bdffdbd7f346754b0f",
+      "compiled_files": 69
+    },
+    {
+      "name": "rand",
+      "version": "0.9.3",
+      "checksum": "7ec095654a25171c2124e9e3393a930bddbffdc939556c914957a4c3e0a87166",
+      "compiled_files": 40
+    },
+    {
+      "name": "rand_chacha",
+      "version": "0.9.0",
+      "checksum": "d3022b5f1df60f26e1ffddd6c66e8aa15de382ae63b3a0c1bfc0e4d3e3f325cb",
+      "compiled_files": 12
+    },
+    {
+      "name": "rand_core",
+      "version": "0.9.3",
+      "checksum": "99d9a13982dcf210057a8a78572b2217b667c3beacbf3a0d8b454f6f82837d38",
+      "compiled_files": 14
+    },
+    {
+      "name": "rand_xorshift",
+      "version": "0.4.0",
+      "checksum": "513962919efc330f829edb2535844d1b912b0fbe2ca165d613e4e8788bb05a5a",
+      "compiled_files": 11
+    },
+    {
+      "name": "redox_syscall",
+      "version": "0.5.18",
+      "checksum": "ed2bf2547551a7053d6fdfafda3f938979645c44812fbfcda098faae3f1a362d",
+      "compiled_files": 32
+    },
+    {
+      "name": "rustc-hash",
+      "version": "1.1.0",
+      "checksum": "08d43f7aa6b08d49f382cde6a7982047c3426db949b1424bc4b7ec9ae12c6ce2",
+      "compiled_files": 9
+    },
+    {
+      "name": "rustc-hash",
+      "version": "2.1.1",
+      "checksum": "357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d",
+      "compiled_files": 14
+    },
+    {
+      "name": "rustc-stable-hash",
+      "version": "0.1.2",
+      "checksum": "781442f29170c5c93b7185ad559492601acdc71d5bb0706f5868094f45cfcd08",
+      "compiled_files": 17
+    },
+    {
+      "name": "rustix",
+      "version": "1.1.5",
+      "checksum": "891efababe418670775f199f0d233d84843c227a0949a883ce15b37c78d6629d",
+      "compiled_files": 331
+    },
+    {
+      "name": "scoped-tls",
+      "version": "1.0.1",
+      "checksum": "e1cf6437eb19a8f4a6cc0f7dca544973b0b78843adbfeb3683d1a94a0024a294",
+      "compiled_files": 9
+    },
+    {
+      "name": "scopeguard",
+      "version": "1.2.0",
+      "checksum": "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49",
+      "compiled_files": 11
+    },
+    {
+      "name": "self_cell",
+      "version": "1.2.1",
+      "checksum": "16c2f82143577edb4921b71ede051dac62ca3c16084e918bf7b40c96ae10eb33",
+      "compiled_files": 7
+    },
+    {
+      "name": "serde",
+      "version": "1.0.228",
+      "checksum": "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e",
+      "compiled_files": 33
+    },
+    {
+      "name": "serde_core",
+      "version": "1.0.228",
+      "checksum": "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad",
+      "compiled_files": 27
+    },
+    {
+      "name": "serde_derive",
+      "version": "1.0.228",
+      "checksum": "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79",
+      "compiled_files": 36
+    },
+    {
+      "name": "sha1",
+      "version": "0.10.6",
+      "checksum": "e3bf829a2d51ab4a5ddf1352d8470c140cadc8301b2ae1789db023f01cedd6ba",
+      "compiled_files": 16
+    },
+    {
+      "name": "sha2",
+      "version": "0.10.9",
+      "checksum": "a7507d819769d01a365ab707794a4084392c824f54a7a6a7862f8c3d0892b283",
+      "compiled_files": 31
+    },
+    {
+      "name": "shlex",
+      "version": "2.0.1",
+      "checksum": "f8fadd59c855ef2080decdef8ff161eb6661b86933c9d82e5ba29dc602a55aba",
+      "compiled_files": 13
+    },
+    {
+      "name": "smallvec",
+      "version": "1.15.1",
+      "checksum": "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03",
+      "compiled_files": 19
+    },
+    {
+      "name": "stable_deref_trait",
+      "version": "1.2.1",
+      "checksum": "6ce2be8dc25455e1f91df71bfa12ad37d7af1092ae736f3a6cd0e37bc7810596",
+      "compiled_files": 9
+    },
+    {
+      "name": "syn",
+      "version": "2.0.117",
+      "checksum": "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99",
+      "compiled_files": 105
+    },
+    {
+      "name": "synstructure",
+      "version": "0.13.2",
+      "checksum": "728a70f3dbaf5bab7f0c4b1ac8d7ae5ea60a4b5549c8a5914361c99147a709d2",
+      "compiled_files": 8
+    },
+    {
+      "name": "tempfile",
+      "version": "3.23.0",
+      "checksum": "2d31c77bdf42a745371d260a26ca7163f1e0924b64afa0b688e61b5a9fa02f16",
+      "compiled_files": 32
+    },
+    {
+      "name": "thin-vec",
+      "version": "0.2.21",
+      "checksum": "d6a4b9ba8738cb4a4f399d37e266becfd475e75eb73425b87a05a2f2039ba63e",
+      "compiled_files": 11
+    },
+    {
+      "name": "thiserror",
+      "version": "2.0.17",
+      "checksum": "f63587ca0f12b72a0600bcba1d40081f830876000bb46dd2337a3051618f4fc8",
+      "compiled_files": 105
+    },
+    {
+      "name": "thiserror-impl",
+      "version": "2.0.17",
+      "checksum": "3ff15c8ecd7de3849db632e14d18d2571fa09dfc5ed93479bc4485c7a517c913",
+      "compiled_files": 17
+    },
+    {
+      "name": "tinystr",
+      "version": "0.8.4",
+      "checksum": "b1e27c91459209c2986af3dcf603a5a74a4368754ce37414f59acc971167f643",
+      "compiled_files": 22
+    },
+    {
+      "name": "tracing",
+      "version": "0.1.44",
+      "checksum": "63e71662fa4b2a2c3a26f570f037eb95bb1f85397f3cd8076caed2f026a6d100",
+      "compiled_files": 93
+    },
+    {
+      "name": "tracing-attributes",
+      "version": "0.1.31",
+      "checksum": "7490cfa5ec963746568740651ac6781f701c9c5ea257c58e057f3ba8cf69e8da",
+      "compiled_files": 30
+    },
+    {
+      "name": "tracing-core",
+      "version": "0.1.36",
+      "checksum": "db97caf9d906fbde555dd62fa95ddba9eecfd14cb388e4f491a66d74cd5fb79a",
+      "compiled_files": 28
+    },
+    {
+      "name": "type-map",
+      "version": "0.5.1",
+      "checksum": "cb30dbbd9036155e74adad6812e9898d03ec374946234fbcebd5dfc7b9187b90",
+      "compiled_files": 8
+    },
+    {
+      "name": "typenum",
+      "version": "1.20.0",
+      "checksum": "40ce102ab67701b8526c123c1bab5cbe42d7040ccfd0f64af1a385808d2f43de",
+      "compiled_files": 26
+    },
+    {
+      "name": "unic-langid",
+      "version": "0.9.6",
+      "checksum": "a28ba52c9b05311f4f6e62d5d9d46f094bd6e84cb8df7b3ef952748d752a7d05",
+      "compiled_files": 9
+    },
+    {
+      "name": "unic-langid-impl",
+      "version": "0.9.6",
+      "checksum": "dce1bf08044d4b7a94028c93786f8566047edc11110595914de93362559bc658",
+      "compiled_files": 31
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.24",
+      "checksum": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+      "compiled_files": 26
+    },
+    {
+      "name": "unicode-width",
+      "version": "0.2.2",
+      "checksum": "b4ac048d71ede7ee76d585517add45da530660ef4390e49b098733c6e897f254",
+      "compiled_files": 15
+    },
+    {
+      "name": "version_check",
+      "version": "0.9.5",
+      "checksum": "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a",
+      "compiled_files": 13
+    },
+    {
+      "name": "wasi",
+      "version": "0.14.2+wasi-0.2.4",
+      "checksum": "9683f9a5a998d873c0d21fcbe3c083009670149a8fab228644b8bd36b2c48cb3",
+      "compiled_files": 64
+    },
+    {
+      "name": "windows",
+      "version": "0.61.3",
+      "checksum": "9babd3a767a4c1aef6900409f85f5d53ce2544ccdfaa86dad48c91782c6d6893",
+      "compiled_files": 721
+    },
+    {
+      "name": "windows-collections",
+      "version": "0.2.0",
+      "checksum": "3beeceb5e5cfd9eb1d76b381630e82c4241ccd0d27f1a39ed41b2760b255c5e8",
+      "compiled_files": 12
+    },
+    {
+      "name": "windows-core",
+      "version": "0.61.2",
+      "checksum": "c0fdd3ddb90610c7638aa2b3a3ab2904fb9e5cdbecc643ddb3647212781c4ae3",
+      "compiled_files": 41
+    },
+    {
+      "name": "windows-future",
+      "version": "0.2.1",
+      "checksum": "fc6a41e98427b19fe4b73c550f060b59fa592d7d686537eebf9385621bfbad8e",
+      "compiled_files": 15
+    },
+    {
+      "name": "windows-implement",
+      "version": "0.60.2",
+      "checksum": "053e2e040ab57b9dc951b72c264860db7eb3b0200ba345b4e4c3b14f67855ddf",
+      "compiled_files": 10
+    },
+    {
+      "name": "windows-interface",
+      "version": "0.59.3",
+      "checksum": "3f316c4a2570ba26bbec722032c4099d8c8bc095efccdc15688708623367e358",
+      "compiled_files": 8
+    },
+    {
+      "name": "windows-link",
+      "version": "0.1.3",
+      "checksum": "5e6ad25900d524eaabdbbb96d20b4311e1e7ae1699af4fb28c17ae66c80d798a",
+      "compiled_files": 8
+    },
+    {
+      "name": "windows-link",
+      "version": "0.2.1",
+      "checksum": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5",
+      "compiled_files": 8
+    },
+    {
+      "name": "windows-numerics",
+      "version": "0.2.0",
+      "checksum": "9150af68066c4c5c07ddc0ce30421554771e528bde427614c61038bc2c92c2b1",
+      "compiled_files": 14
+    },
+    {
+      "name": "windows-result",
+      "version": "0.3.4",
+      "checksum": "56f42bd332cc6c8eac5af113fc0c1fd6a8fd2aa08a0119358686e5160d0586c6",
+      "compiled_files": 16
+    },
+    {
+      "name": "windows-strings",
+      "version": "0.4.2",
+      "checksum": "56e6c93f3a0c3b36176cb1327a4958a0353d5d166c2a35cb268ace15e91d3b57",
+      "compiled_files": 21
+    },
+    {
+      "name": "windows-sys",
+      "version": "0.61.2",
+      "checksum": "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc",
+      "compiled_files": 257
+    },
+    {
+      "name": "windows-threading",
+      "version": "0.1.0",
+      "checksum": "b66463ad2e0ea3bbf808b7f1d371311c80e115c0b71d60efc142cafbcfb057a6",
+      "compiled_files": 10
+    },
+    {
+      "name": "wit-bindgen-rt",
+      "version": "0.39.0",
+      "checksum": "6f42320e61fe2cfd34354ecb597f86f413484a798ba44a8ca1165c58d42da6c1",
+      "compiled_files": 13
+    },
+    {
+      "name": "zerocopy",
+      "version": "0.8.27",
+      "checksum": "0894878a5fa3edfd6da3f88c4805f4c8558e2b996227a3d864f47fe11e38282c",
+      "compiled_files": 396
+    },
+    {
+      "name": "zerocopy-derive",
+      "version": "0.8.27",
+      "checksum": "88d2b8d9c68ad2b9e4340d7832716a4d21a22a1154777ad56ea55c51a9cf3831",
+      "compiled_files": 95
+    },
+    {
+      "name": "zerofrom",
+      "version": "0.1.6",
+      "checksum": "50cc42e0333e05660c3587f3bf9d0478688e15d870fab3346451ce7f8c9fbea5",
+      "compiled_files": 9
+    },
+    {
+      "name": "zerovec",
+      "version": "0.11.7",
+      "checksum": "94b5c6b5976d66c1d703c4fd17d3f5e43c8cedaacf604961b171adc7130896d8",
+      "compiled_files": 67
+    }
+  ],
+  "original_rust_span_tests": 43,
+  "requests": 60984,
+  "records": 60984,
+  "operations": {
+    "B": 512,
+    "C": 136,
+    "E": 19,
+    "F": 38324,
+    "G": 27,
+    "H": 960,
+    "I": 3,
+    "J": 8,
+    "K": 12105,
+    "L": 131,
+    "M": 4388,
+    "N": 512,
+    "O": 6,
+    "P": 64,
+    "R": 2204,
+    "U": 9,
+    "V": 1521,
+    "W": 25,
+    "X": 20,
+    "Z": 10
+  },
+  "request_sha256": "658b9b2fa283f582e561b5a0c7e2c905fd3311969680fc5fe24ff1a5f8ce6848",
+  "raw_sha256": "87e47f464bfcf83607c8223512f49554dc2c8350e8c6ea8cdac629457c1b378f",
+  "fixture_sha256": "bc1d044cf2711f851087e31e0204db136edbd480dd9c158b29b2904e5ee7e14f",
+  "formats": [
+    {
+      "pattern": "{}",
+      "debug": false,
+      "options": {
+        "Fill": 32
+      }
+    },
+    {
+      "pattern": "{:20}",
+      "debug": false,
+      "options": {
+        "Fill": 32,
+        "HasWidth": true,
+        "Width": 20
+      }
+    },
+    {
+      "pattern": "{:>20}",
+      "debug": false,
+      "options": {
+        "Fill": 32,
+        "HasWidth": true,
+        "Width": 20,
+        "Align": 2
+      }
+    },
+    {
+      "pattern": "{:*^20}",
+      "debug": false,
+      "options": {
+        "Fill": 42,
+        "HasWidth": true,
+        "Width": 20,
+        "Align": 3
+      }
+    },
+    {
+      "pattern": "{:.0}",
+      "debug": false,
+      "options": {
+        "Fill": 32,
+        "HasPrecision": true,
+        "Precision": 0
+      }
+    },
+    {
+      "pattern": "{:.3}",
+      "debug": false,
+      "options": {
+        "Fill": 32,
+        "HasPrecision": true,
+        "Precision": 3
+      }
+    },
+    {
+      "pattern": "{:+#020.2}",
+      "debug": false,
+      "options": {
+        "Fill": 32,
+        "SignPlus": true,
+        "Alternate": true,
+        "ZeroPad": true,
+        "HasWidth": true,
+        "Width": 20,
+        "HasPrecision": true,
+        "Precision": 2
+      }
+    },
+    {
+      "pattern": "{:🦀^20}",
+      "debug": false,
+      "options": {
+        "Fill": 129408,
+        "HasWidth": true,
+        "Width": 20,
+        "Align": 3
+      }
+    },
+    {
+      "pattern": "{:\u0000^20}",
+      "debug": false,
+      "options": {
+        "Fill": 0,
+        "HasWidth": true,
+        "Width": 20,
+        "Align": 3
+      }
+    },
+    {
+      "pattern": "{:?}",
+      "debug": true,
+      "options": {
+        "Fill": 32
+      }
+    },
+    {
+      "pattern": "{:#?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "Alternate": true
+      }
+    },
+    {
+      "pattern": "{:>20?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "HasWidth": true,
+        "Width": 20,
+        "Align": 2
+      }
+    },
+    {
+      "pattern": "{:<20?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "HasWidth": true,
+        "Width": 20,
+        "Align": 1
+      }
+    },
+    {
+      "pattern": "{:*^20?}",
+      "debug": true,
+      "options": {
+        "Fill": 42,
+        "HasWidth": true,
+        "Width": 20,
+        "Align": 3
+      }
+    },
+    {
+      "pattern": "{:+?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "SignPlus": true
+      }
+    },
+    {
+      "pattern": "{:020?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "HasWidth": true,
+        "Width": 20,
+        "ZeroPad": true
+      }
+    },
+    {
+      "pattern": "{:x?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "DebugLowerHex": true
+      }
+    },
+    {
+      "pattern": "{:#x?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "DebugLowerHex": true,
+        "Alternate": true
+      }
+    },
+    {
+      "pattern": "{:X?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "DebugUpperHex": true
+      }
+    },
+    {
+      "pattern": "{:#X?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "DebugUpperHex": true,
+        "Alternate": true
+      }
+    },
+    {
+      "pattern": "{:+#020x?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "SignPlus": true,
+        "Alternate": true,
+        "ZeroPad": true,
+        "HasWidth": true,
+        "Width": 20,
+        "DebugLowerHex": true
+      }
+    },
+    {
+      "pattern": "{:🦀^20?}",
+      "debug": true,
+      "options": {
+        "Fill": 129408,
+        "HasWidth": true,
+        "Width": 20,
+        "Align": 3
+      }
+    },
+    {
+      "pattern": "{:\u0000^20?}",
+      "debug": true,
+      "options": {
+        "Fill": 0,
+        "HasWidth": true,
+        "Width": 20,
+        "Align": 3
+      }
+    },
+    {
+      "pattern": "{:.0?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "HasPrecision": true,
+        "Precision": 0
+      }
+    },
+    {
+      "pattern": "{:.3?}",
+      "debug": true,
+      "options": {
+        "Fill": 32,
+        "HasPrecision": true,
+        "Precision": 3
+      }
+    }
+  ],
+  "owned_context_aborts": [
+    {
+      "mode": 2,
+      "native_exit": -6,
+      "trace": [
+        "outer-drop",
+        "drop:7:true",
+        "value:8"
+      ]
+    },
+    {
+      "mode": 3,
+      "native_exit": -6,
+      "trace": [
+        "processing",
+        "drop:7:true",
+        "value:8"
+      ]
+    }
+  ],
+  "constructor_direct_locations": {
+    "new0": {
+      "File": "symbol-oracle.rs",
+      "Line": 233,
+      "Column": 13,
+      "Host": false
+    },
+    "new1": {
+      "File": "symbol-oracle.rs",
+      "Line": 234,
+      "Column": 13,
+      "Host": false
+    }
+  },
+  "caller_location_normalization": "Only the native build-directory prefix is normalized: original helper locations use compiler/rustc_span/src/symbol.rs; direct external constructor sites use symbol-oracle.rs. Line and column are unchanged. Go direct At primary receives the explicit caller witness.",
+  "helpers": [
+    {
+      "path": "tools/port-rust-symbol/generate.py",
+      "sha256": "e8b016a7257fe038600467e4787d8d947e346dd8582eb9b461cde02656838e36"
+    },
+    {
+      "path": "tools/port-rust-symbol/oracle.rs",
+      "sha256": "37446530b85b4a34cc249f0bfa75dea38bdc1fb56c334671b243268907e9eb31"
+    },
+    {
+      "path": "tools/port-rust-symbol/native_profile.py",
+      "sha256": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+    }
+  ],
+  "constructor_internal_location_profile": {
+    "rustc_span.symbol.ident.with_dummy_span": {
+      "File": "compiler/rustc_span/src/symbol.rs",
+      "Line": 2495,
+      "Column": 9
+    },
+    "rustc_span.symbol.ident.from_str_and_span": {
+      "File": "compiler/rustc_span/src/symbol.rs",
+      "Line": 2515,
+      "Column": 9
+    },
+    "rustc_span.symbol.ident.with_span_pos": {
+      "File": "compiler/rustc_span/src/symbol.rs",
+      "Line": 2520,
+      "Column": 9
+    },
+    "rustc_span.symbol.ident.without_first_quote": {
+      "File": "compiler/rustc_span/src/symbol.rs",
+      "Line": 2528,
+      "Column": 34
+    },
+    "rustc_span.symbol.ident.normalize_to_macros_2_0": {
+      "File": "compiler/rustc_span/src/symbol.rs",
+      "Line": 2537,
+      "Column": 9
+    },
+    "rustc_span.symbol.ident.normalize_to_macro_rules": {
+      "File": "compiler/rustc_span/src/symbol.rs",
+      "Line": 2547,
+      "Column": 9
+    }
+  },
+  "reference_inputs": {
+    "tools/port-rust-symbol/symbol_reference.py": "1e783896f57c6fb9d68286cfade47980aeee9996e6d0240ef71dc824e95d4855",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d",
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-span-reference/prepare.py": "4517eedb69d9ab873639d3c15a802e8371ee33dbf2a684c968073e3f547af442",
+    "tools/port-rust-span-reference/verify.py": "413283a6dc0933d03ddf9600321a1af5d93e0be4c36da3b51e82b8a9d3529d79",
+    "tools/port-rust-span-reference/sources.json": "b5b283946d0f2094e2ee6b7da6cb00c3601cecc02954afea3f91b42492b024bb",
+    "tools/port-rust-span-reference/toolchain.json": "39583ec2969fe1c845ef0cf36e4b85a5160147675c1350cee77ff9a689342b5c",
+    "tools/port-rust-span-reference/Cargo.lock": "754f658b67c5a3fd3296ae0f4e3cfcfd60dca900f3552de06895a0c2a7617c7a"
+  }
+}

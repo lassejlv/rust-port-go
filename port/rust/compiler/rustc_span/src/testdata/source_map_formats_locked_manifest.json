@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "records": 720,
+  "profiles": [
+    "d0o0",
+    "d0o1",
+    "d1o0",
+    "d1o1"
+  ],
+  "raw_sha256": "ec5a8fed7bff2ecc047902fc7f668169036f35effda205cb1f149d1dcbd5389a",
+  "gzip_sha256": "7174cd2fddb8ed594c4ebcd62c4c28276e25bb0d0e7bc26e54555b2674e7244c",
+  "wrapper_sha256": "7072716509918294bee769880d9631c299509fa3d9ce997a04e391d9cf3d92f8",
+  "scope": "Genuine public safe metadata-only import overflow while original files write lock is held; actual hook formats same Arc<SourceMap>. All writer C/S chunks/errors, options, same-Formatter reuse, hook metadata and postpanic files length retained. Only loader-slot pointer digits normalized. Actual native source filename spelling retained; Go profile explicit."
+}

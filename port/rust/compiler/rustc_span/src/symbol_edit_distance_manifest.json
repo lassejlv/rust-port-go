@@ -1,0 +1,80 @@
+{
+  "rust_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_version": "1.101.0",
+  "nightly_date": "2026-11-04",
+  "compiler_commit": "708c94ef093ecc42fb8851e17d8383d999727abc",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+  "unicode_version": [
+    18,
+    0,
+    0
+  ],
+  "source_path": "compiler/rustc_span/src/edit_distance.rs",
+  "source_blob": "416e9daa8fb090222fa37e6dc6577cf0c27994cf",
+  "source_sha256": "46fd5412ef0bc4d59559bc48a79edd7b11e1045aec881a61ac6386257aa033fe",
+  "source_fragments": [
+    {
+      "name": "pub fn edit_distance(",
+      "first_line": 24,
+      "sha256": "76343aebc5d84c2ab0267bb79cdf63c5bba70d79c4902ee77563fdfc7ff1f3df",
+      "bytes": 2384
+    },
+    {
+      "name": "pub fn edit_distance_with_substrings(",
+      "first_line": 114,
+      "sha256": "383d32762ccd138bee6fe2ec6db7eba14565e65499c43ff4ddf7affe7ae0e0c8",
+      "bytes": 1143
+    }
+  ],
+  "scope": "Two complete unchanged original edit-distance function bodies; Symbol-based matching is validated separately with the whole original span crate.",
+  "word_bits": 64,
+  "profiles": [
+    {
+      "name": "d0o0",
+      "debug_assertions": false,
+      "overflow_checks": false,
+      "records": 13312,
+      "panic_records": 0
+    },
+    {
+      "name": "d0o1",
+      "debug_assertions": false,
+      "overflow_checks": true,
+      "records": 13312,
+      "panic_records": 731
+    },
+    {
+      "name": "d1o0",
+      "debug_assertions": true,
+      "overflow_checks": false,
+      "records": 13312,
+      "panic_records": 0
+    },
+    {
+      "name": "d1o1",
+      "debug_assertions": true,
+      "overflow_checks": true,
+      "records": 13312,
+      "panic_records": 731
+    }
+  ],
+  "requests": 13312,
+  "records": 53248,
+  "request_sha256": "14758015b33a9e6626dba0307ccfec9de226954d17191f2f94974effa8861481",
+  "raw_sha256": "c8338a949f366684679365c5da0e3994c52c3a175db01976e3d5a043b9654755",
+  "fixture_sha256": "4dd9847fcfedc57ee4515c474a127826205bef47051b267b4766d4f104f3791d",
+  "helpers": [
+    {
+      "path": "tools/port-rust-symbol/generate_edit_distance.py",
+      "sha256": "c9f1016be2de7948b51dc23a1f8b2dbc28bfbe9400d5a6413626c5e5d20822f8"
+    },
+    {
+      "path": "tools/port-rust-symbol/edit_distance_oracle.rs",
+      "sha256": "ad1fa425fb8fcb61df56dc21e2070e21c53d9db8f55cfbde1fb37f3361966f6b"
+    },
+    {
+      "path": "tools/port-rust-symbol/native_profile.py",
+      "sha256": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+    }
+  ]
+}

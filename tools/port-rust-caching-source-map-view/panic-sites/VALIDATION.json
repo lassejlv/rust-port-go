@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "source_lines": 170,
+  "source_bytes": 6916,
+  "source_sha256": "1859b2fe6376229d948ff2116ec91e15cb3ad91fedba6d1d08222c57f10d15c0",
+  "source_git_blob": "3a3f238a7e55b52ecd812d7315aba6a199e2ef39",
+  "records": 324,
+  "actual_SIGABRT": 84,
+  "hook_records": 364,
+  "locations": {
+    "rustc_span::caching_source_map_view::new.first_file_index": {
+      "File": "original/compiler/rustc_span/src/caching_source_map_view.rs",
+      "Line": 34,
+      "Column": 43
+    },
+    "rustc_span::caching_source_map_view::pos_to_line.lookup_unwrap": {
+      "File": "original/compiler/rustc_span/src/caching_source_map_view.rs",
+      "Line": 46,
+      "Column": 53
+    },
+    "rustc_span::caching_source_map_view::span_data.lo_upper_bound": {
+      "File": "original/compiler/rustc_span/src/caching_source_map_view.rs",
+      "Line": 133,
+      "Column": 9
+    },
+    "rustc_span::caching_source_map_view::span_data.hi_upper_bound": {
+      "File": "original/compiler/rustc_span/src/caching_source_map_view.rs",
+      "Line": 135,
+      "Column": 9
+    },
+    "rustc_span::caching_source_map_view::span_data.hi_lower_bound": {
+      "File": "original/compiler/rustc_span/src/caching_source_map_view.rs",
+      "Line": 134,
+      "Column": 9
+    },
+    "rustc_span::caching_source_map_view::span_data.file_contains_lo": {
+      "File": "original/compiler/rustc_span/src/caching_source_map_view.rs",
+      "Line": 136,
+      "Column": 9
+    },
+    "outer": {
+      "File": "tools/port-rust-caching-source-map-view/panic-sites/oracle.rs",
+      "Line": 46,
+      "Column": 18
+    },
+    "rustc_span::lib.rs:2427:27": {
+      "File": "original/compiler/rustc_span/src/lib.rs",
+      "Line": 2427,
+      "Column": 27
+    },
+    "rustc_span::lib.rs:2432:35": {
+      "File": "original/compiler/rustc_span/src/lib.rs",
+      "Line": 2432,
+      "Column": 35
+    }
+  },
+  "raw_sha256": "778054efba5f2437042dc161d09b2546e6e5b88921d008a320a5c4edcb79a9f8",
+  "gzip_sha256": "5e5ef87127b40d0f696a8ad7c5251762ef940527d8a29ed7304acee7b885d81e",
+  "wrapper_sha256": "28e496de737cee902e5e42aaa2102e5e6adee84e6ba8715369395b8e2871a762",
+  "generator_sha256": "26ac2855e71c633552c455f083e92261e3b50d2deef92c489a34e2cc4c29b03e",
+  "go_bindings": {
+    "port/rust/compiler/rustc_span/src/caching_source_map_view.go": "f4fdf220ffe42e44caeab7ee3e77cbbe7a832a75d1c005801f359e70b9736a5a",
+    "port/rust/compiler/rustc_span/src/caching_source_map_view_panic.go": "c0767c12eb93421e6e9c30b61c607c9fb16f9a7df85a3817ebdcc410ab36cbd0",
+    "port/rust/compiler/rustc_span/src/caching_source_map_view_panic_test.go": "7e558be83227a1910e17481af7aee2197014abb5ba3e7622ac2c0f243d09ee0a"
+  },
+  "scope": "Entire unchanged rustc_span CachingSourceMapView through verified complete reference. Safe imported metadata, real source files/line locks/Arc counts, ordinary/inherited-caught/actual panic-hook processing, construction caller A then operation A/B/nil observer. All hook fields, payload kind/bytes/verbatim locations/can_unwind/force_no_backtrace, local Drop, state and owner counts retained. Native SIGABRT vs Go exit134 is the explicit host abort class. nil deliberately removes the operation observer and runtime metadata after construction under A; its SourceRuntime processing operation is still explicitly driven by the native panic hook. Construction/priming A observer events remain retained. No private cache/source-map mutation or replacement algorithm."
+}
