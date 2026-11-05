@@ -299,3 +299,14 @@ Thirty top-level source files now have completion evidence. The caching view and
 - Fresh regeneration from an isolated committed snapshot passes all16,656 ownership observations and8,952 actual native aborts across all four profiles. Original tests pass in each profile. All raw and compressed fixture hashes, request hashes and implementation bindings remain unchanged.
 
 The ledger remains at30 completed top-level source files. Shared panic integration, full span/source-map files, unordered collections and Cargo graph continue in parallel; production Rust compilation remains unfinished.
+
+## 2026-11-05 — checkpoint 27: explicit panic operations and cleanup integration
+
+- Added a bounded ordinary-panic protocol with exact caller-supplied payload kinds/source locations, formatting before hook dispatch, separate resume-unwind, and real compiler cleanup-abort metadata. Payloads retain their original identity. There is no Go-global interceptor or standard-library source-file credit.
+- Migrated the accepted ownership/collection/sorting guards to forward existing panics without invoking their hooks again. Only a proven second panic escaping required cleanup dispatches the selected runtime's cleanup diagnostic before abort.
+- Fixed lexer owned callback entrypoints that dropped active runtime metadata. They now use the current caller scope, including an explicit scope with no observer, and restore the cursor's prior scope after the borrow.
+- Compared45 original-runtime cases/24 native aborts,182 original-component scripts/107 native aborts,312 actual SDK collection/sort processes/258 native aborts, and12 unchanged stable-hash dependency cases/6 native aborts. These retain exact hook kinds/locations/flags, current observer scopes, real borrowed cells, local/field/argument destruction, final-return-place leaks and observable abort prefixes.
+- Fresh regeneration of all twelve lexer/literal scopes, the literal dependency's full scalar trace, Base-N ownership and stable sorting retains all prior raw and compressed fixture bytes. New source/tool bindings are refreshed from an isolated minimum-Go snapshot.
+- The isolated Go1.23 full race suite and vet pass, as do optional semver/stable-hash feature races and the added component/collection guard checks. Hosted validation now regenerates the new runtime, dependency and component proofs against their exact original toolchains.
+
+The ledger remains at30 completed top-level source files. Full span/session/symbol/hygiene/source-map files, Cargo graph, unordered collections and their required dependencies continue in parallel. Production Rust compilation remains unfinished.

@@ -1,0 +1,17 @@
+{
+  "complete": false,
+  "scope": "Bounded integrated operation protocol: ordinary versus resume operations, exact payload kinds/locations and identity, formatting before hook, inherited catch/escape, hook recursion, local destruction and actual compiler-generated cleanup abort hooks. Explicit neutral implementation, complete authored caller/Drop witnesses and independent source-component integration are retained. No std file or crate credit.",
+  "rustc": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "toolchain_selection_sha256": "39583ec2969fe1c845ef0cf36e4b85a5160147675c1350cee77ff9a689342b5c",
+  "prototype_sha256": "9b0d5bb2d8e45012b263a3ed1e37bd412fb52ff1a6c5d58d8df4ec5afb652a9d",
+  "generator_sha256": "6869022bcb471e56567cbb9359a52d08773b03020efeef77ab46d2e96a68fb5a",
+  "go_bindings": {
+    "port/support/rustfmt/formatter.go": "28143fe2b65b26d9b9aaee9cdf96ac96fcea7b8e404e0787ef1e92ac7fe132f7",
+    "port/support/rustfmt/panic.go": "543d6ed8e0e45e76eda40a4724df00a05f575ba0a8bc00f28e7472a688298bea",
+    "port/support/rustfmt/panic_test.go": "35e505d2cb781262dde6ec09441b3a1a4e4cfbfda15d30b64b245ccc3d1177f7"
+  },
+  "cases": 45,
+  "aborts": 24,
+  "raw_sha256": "8d955af5845a60a4e3bca30efc76417783407c59f811683e3dee632896c0fe2e",
+  "fixture_sha256": "2430f56c06b531bedae96b4d24fb496ec060b72761a7429d898fb49851288fbb"
+}

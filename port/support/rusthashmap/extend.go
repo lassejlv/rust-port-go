@@ -5,28 +5,37 @@ import "github.com/lassejlv/rust-port-go/port/support/rustvec"
 
 func cleanupInput[T any](input rustvec.IntoIterator[T], c Context) {
 	if p := recover(); p != nil {
+		if c.ProcessingPanic {
+			c.ResumeUnwind(p)
+		}
 		unwind := c
 		unwind.Unwinding = true
-		cleanupOnPanic(func() { input.CloseWithContext(unwind) })
-		panic(p)
+		cleanupOnPanic(unwind, func() { input.CloseWithContext(unwind) })
+		c.ResumeUnwind(p)
 	}
 	input.CloseWithContext(c)
 }
 func cleanupIterator[T any](iterator rustvec.Iterator[T], c Context) {
 	if p := recover(); p != nil {
+		if c.ProcessingPanic {
+			c.ResumeUnwind(p)
+		}
 		unwind := c
 		unwind.Unwinding = true
-		cleanupOnPanic(func() { iterator.CloseWithContext(unwind) })
-		panic(p)
+		cleanupOnPanic(unwind, func() { iterator.CloseWithContext(unwind) })
+		c.ResumeUnwind(p)
 	}
 	iterator.CloseWithContext(c)
 }
 func cleanupUnitMap[T any](iterator rustvec.UnitMap[T], c Context) {
 	if p := recover(); p != nil {
+		if c.ProcessingPanic {
+			c.ResumeUnwind(p)
+		}
 		unwind := c
 		unwind.Unwinding = true
-		cleanupOnPanic(func() { iterator.CloseWithContext(unwind) })
-		panic(p)
+		cleanupOnPanic(unwind, func() { iterator.CloseWithContext(unwind) })
+		c.ResumeUnwind(p)
 	}
 	iterator.CloseWithContext(c)
 }
@@ -66,12 +75,15 @@ func MapFromIterator[K, V any](source rustvec.IntoIterator[Pair[K, V]], layout L
 	complete := false
 	defer func() {
 		if p := recover(); p != nil {
+			if c.ProcessingPanic {
+				c.ResumeUnwind(p)
+			}
 			if !complete {
 				unwind := c
 				unwind.Unwinding = true
-				cleanupOnPanic(func() { m.Close(unwind) })
+				cleanupOnPanic(unwind, func() { m.Close(unwind) })
 			}
-			panic(p)
+			c.ResumeUnwind(p)
 		}
 	}()
 	m.Extend(source, c)
@@ -105,12 +117,15 @@ func SetFromIterator[T any](source rustvec.IntoIterator[T], layout Layout, profi
 	complete := false
 	defer func() {
 		if p := recover(); p != nil {
+			if c.ProcessingPanic {
+				c.ResumeUnwind(p)
+			}
 			if !complete {
 				unwind := c
 				unwind.Unwinding = true
-				cleanupOnPanic(func() { s.Close(unwind) })
+				cleanupOnPanic(unwind, func() { s.Close(unwind) })
 			}
-			panic(p)
+			c.ResumeUnwind(p)
 		}
 	}()
 	s.Extend(source, c)

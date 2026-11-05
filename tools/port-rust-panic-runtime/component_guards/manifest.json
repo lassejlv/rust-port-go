@@ -1,0 +1,71 @@
+{
+  "complete": false,
+  "scope": "Bounded integrated original component callback cleanup/runtime protocol: 182 original scripts and complete Go caller/Drop witnesses, including 107 true native aborts, ordinary/resume/cleanup hooks and current caller metadata. Source algorithms unchanged; independent isolated source/native/race acceptance passed. No dependency file credit.",
+  "rustc": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "reference_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "lexer_git_blob": "0aa57e75889fa2d81deb1ec8bf5480b1c930fff1",
+  "lexer_sha256": "fb7f451aae9d46a171e5599635483b27613a4067d107edd9caf89d79a32ceadf",
+  "registry": [
+    {
+      "name": "memchr",
+      "version": "2.8.0",
+      "checksum": "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79",
+      "compiled_files": 57
+    },
+    {
+      "name": "rustc-literal-escaper",
+      "version": "0.0.8",
+      "checksum": "bfe6f213fb658c8fb95baabd5420393438cf5a98d707f5dd701d9197c705f71e",
+      "compiled_files": 14
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.24",
+      "checksum": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+      "compiled_files": 26
+    },
+    {
+      "name": "unicode-properties",
+      "version": "0.1.4",
+      "checksum": "7df058c713841ad818f1dc5d3fd88063241cc61f49f5fbea4b951e8cf5a8d71d",
+      "compiled_files": 15
+    }
+  ],
+  "source_locations": {
+    "outer_unwind": "ferrugo-native/component_guards/oracle.rs:78:163",
+    "outer_processing": "ferrugo-native/component_guards/oracle.rs:78:83",
+    "callback": "ferrugo-native/component_guards/oracle.rs:33:206",
+    "drop": "ferrugo-native/component_guards/oracle.rs:34:157",
+    "field": "ferrugo-native/component_guards/oracle.rs:37:148",
+    "acc": "ferrugo-native/component_guards/oracle.rs:43:152"
+  },
+  "cases": 182,
+  "aborts": 107,
+  "raw_sha256": "4f63d67f2780f68f44316d2c2c5dc6e6a63d4a44fee5934d2d08c20f649495ef",
+  "fixture_sha256": "e01319541f1d882512cc3ec07a14037cfda5bf079d31df10f2e2c6061ce84a1e",
+  "files": {
+    "tools/port-rust-panic-runtime/component_guards/oracle.rs": "824872b89261d5e581d2b7f77388f9470575e866a784b3e45bc42224181837cc",
+    "tools/port-rust-panic-runtime/component_guards/generate.py": "f9c216a3cba7d86cd6e5800797767948681fcaa32b7d0576d5634b5c5fb93d94",
+    "tools/port-rust-panic-runtime/component_guards/dependencies/Cargo.toml": "8ef77a442898c5b778546b975fa3a3d5dcbdb5c310ddbdab795e01c717924cd9",
+    "tools/port-rust-panic-runtime/component_guards/dependencies/Cargo.lock": "723a22e8209f58a9b4b61ad7fb6194feac813a1158cdd0b653c8b6bf45a1da34",
+    "tools/port-rust-span-reference/sources.json": "b5b283946d0f2094e2ee6b7da6cb00c3601cecc02954afea3f91b42492b024bb",
+    "tools/port-rust-span-reference/toolchain.json": "39583ec2969fe1c845ef0cf36e4b85a5160147675c1350cee77ff9a689342b5c",
+    "tools/port-rust-panic-runtime/component_guards/validation/validation.go": "45697b5810cfb43002bf8afd83df3e638f270f41c3019aa057c8036ad987b165",
+    "port/rust/compiler/rustc_lexer/src/callback_owned.go": "19cf5fa724577f6dcaa386969fa2cd5e8ba27174596ade85495e798762519677",
+    "port/rust/compiler/rustc_lexer/src/tokenizer.go": "afc2802b4811ffc016f1ab9a2d4995a737c4ed5fc6089d17cf00a435399a756a",
+    "port/dependencies/rustc-literal-escaper/v0_0_8/src/callback_owned.go": "9a0bf291822878d69726e6ec3c921b912b12a7f821806f27d7124784515d0b50",
+    "port/rust/compiler/rustc_data_structures/src/fingerprint.go": "9be79f436ca967a83cceff4b9def6d8411cc7b2392707e82d526198f03578b13",
+    "port/rust/compiler/rustc_data_structures/src/stable_hash_context.go": "41f60495c9f034b45b3fedff5bcbcc6040c46ef1d166be426885a880694bf75b",
+    "port/rust/compiler/rustc_lexer/src/profile.go": "19ccc25c39f7370d148fc57715c54b86331f2b5c6e76accff8116d9bf1f2bdc0",
+    "port/rust/compiler/rustc_data_structures/src/binary_search_util/owned.go": "a8e9c52c1a78b877033be8879706531a1c601f90fa9743470f3c61d05b644aa3",
+    "port/rust/compiler/rustc_index/src/interval_owned.go": "ee82e491d3b50d1db6f55da4e0127d357ac722174d8a45357329240730bba851",
+    "port/support/rustfmt/formatter.go": "28143fe2b65b26d9b9aaee9cdf96ac96fcea7b8e404e0787ef1e92ac7fe132f7",
+    "port/support/rustfmt/panic.go": "543d6ed8e0e45e76eda40a4724df00a05f575ba0a8bc00f28e7472a688298bea",
+    "port/dependencies/rustc-literal-escaper/v0_0_8/src/component_guard_runtime_test.go": "856b52344115b1ea4f0f449a21eb117fa3ddff7064967e80b9fc75afa6ad4366",
+    "port/rust/compiler/rustc_data_structures/src/binary_search_util/component_guard_runtime_test.go": "384dbfbcbef3c6589bd19f3246e8c86146ce215320c33eb7c59933cd21acf4dd",
+    "port/rust/compiler/rustc_data_structures/src/component_guard_runtime_test.go": "7a1ba9adbdc0591d7eb77a02d7cab3600c66fbe912228c664b6eba85e87a3d84",
+    "port/rust/compiler/rustc_index/src/component_guard_runtime_test.go": "9d18d7527e625954d1a7bd9fb455c23e67b8f7370c1643c0c85574516f2edaa6",
+    "port/rust/compiler/rustc_lexer/src/component_guard_runtime_test.go": "58bb76abbdfd2f64bc3e34cf9255fdb997ebcf518ca014e3ffe318b863802942"
+  }
+}

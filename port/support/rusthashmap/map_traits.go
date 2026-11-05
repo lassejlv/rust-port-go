@@ -9,12 +9,15 @@ func (m *Map[K, V]) Clone(c Context) *Map[K, V] {
 	complete := false
 	defer func() {
 		if p := recover(); p != nil {
+			if c.ProcessingPanic {
+				c.ResumeUnwind(p)
+			}
 			if !complete {
 				unwind := c
 				unwind.Unwinding = true
-				cleanupOnPanic(func() { next.builder.Close(unwind) })
+				cleanupOnPanic(unwind, func() { next.builder.Close(unwind) })
 			}
-			panic(p)
+			c.ResumeUnwind(p)
 		}
 	}()
 	next.table = m.table.Clone(c)

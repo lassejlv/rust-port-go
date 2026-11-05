@@ -21,25 +21,32 @@ func (bounds IntervalRangeBounds[I]) close(context IntervalPanicContext) {
 func intervalDeferRange[I any](bounds IntervalRangeBounds[I], owned *bool, ambient IntervalPanicContext) {
 	panicValue := recover()
 	if panicValue != nil && ambient.ProcessingPanic {
-		ambient.Panic(panicValue)
+		ambient.ResumeUnwind(panicValue)
 	}
 	if *owned {
 		context := ambient
 		context.Unwinding = context.Unwinding || panicValue != nil
 		close := func() { bounds.close(context) }
 		if panicValue != nil || ambient.ProcessingPanic {
-			indexStorageUnwindCleanup(close)
+			func() {
+				defer func() {
+					if recover() != nil {
+						context.AbortCleanup()
+					}
+				}()
+				close()
+			}()
 		} else {
 			close()
 		}
 	}
 	if panicValue != nil {
-		panic(panicValue)
+		ambient.ResumeUnwind(panicValue)
 	}
 }
 func intervalProcessingGuard(context IntervalPanicContext) {
 	if panicValue := recover(); panicValue != nil {
-		context.Panic(panicValue)
+		context.ResumeUnwind(panicValue)
 	}
 }
 func (set *IntervalSet[I]) bounds(context IntervalPanicContext, bounds IntervalRangeBounds[I]) (uint32, uint32, bool) {

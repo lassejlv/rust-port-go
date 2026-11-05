@@ -85,13 +85,13 @@ func searchCleanup(completed *bool, context SearchContext, close func(SearchCont
 		closed := false
 		defer func() {
 			if !closed {
-				os.Exit(134)
+				context.AbortCleanup()
 			}
 		}()
 		close(context)
 		closed = true
 	}()
-	panic(value)
+	context.ResumeUnwind(value)
 }
 
 func compareExtracted[E, K any](element *E, extractor OwnedExtractor[E, K], query *K, compare func(*K, *K, SearchContext) bool, context SearchContext) (result bool) {

@@ -14,7 +14,7 @@ type UnordStableHash[T any] func(*T, StableHashCtxt, *StableHasher, rusthashmap.
 
 func unordHashBoundary(context rusthashmap.Context) {
 	if p := recover(); p != nil {
-		context.Panic(p)
+		context.ResumeUnwind(p)
 	}
 }
 

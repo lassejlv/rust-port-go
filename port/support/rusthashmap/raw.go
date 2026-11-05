@@ -120,7 +120,7 @@ func (t *RawTable[T]) capacityToBuckets(capacity uint, c Context) uint {
 		return 16
 	}
 	if uint64(capacity) > t.wordMax()/8 {
-		c.Panic("Hash table capacity overflow")
+		capacityOverflow(c)
 	}
 	adjusted := capacity * 8 / 7
 	return uint(1) << uint(bits.Len64(uint64(adjusted-1)))
@@ -141,12 +141,12 @@ func (t *RawTable[T]) allocate(n uint, c Context) {
 	max := t.wordMax() >> 1
 	// This is RawTable's checked allocation layout, including the control tail.
 	if uint64(t.layout.Size) > max/uint64(n) {
-		c.Panic("Hash table capacity overflow")
+		capacityOverflow(c)
 	}
 	dataSize := uint64(t.layout.Size) * uint64(n)
 	ctrlOffset := (dataSize + uint64(align) - 1) &^ (uint64(align) - 1)
 	if ctrlOffset > max || uint64(n)+uint64(t.profile.GroupWidth) > max-ctrlOffset || ctrlOffset+uint64(n)+uint64(t.profile.GroupWidth) > max-(uint64(align)-1) {
-		c.Panic("Hash table capacity overflow")
+		capacityOverflow(c)
 	}
 	if uint64(n)+uint64(t.profile.GroupWidth) > uint64(^uint(0)>>1) || (strconv.IntSize == 32 && uint64(n) > 1<<31-1) {
 		c.Panic("rusthashmap: source allocation exceeds Go host address space")
@@ -336,12 +336,15 @@ func (t *RawTable[T]) insertUnique(hash uint64, value T, c Context) (uint, *T) {
 	inserted := false
 	defer func() {
 		if p := recover(); p != nil {
+			if c.ProcessingPanic {
+				c.ResumeUnwind(p)
+			}
 			if !inserted && t.ops.Drop != nil {
 				unwind := c
 				unwind.Unwinding = true
-				cleanupOnPanic(func() { t.ops.Drop(&value, unwind) })
+				cleanupOnPanic(unwind, func() { t.ops.Drop(&value, unwind) })
 			}
-			panic(p)
+			c.ResumeUnwind(p)
 		}
 	}()
 	index := t.findInsert(hash)
@@ -388,7 +391,7 @@ func (t *RawTable[T]) Reserve(additional uint, c Context) {
 		return
 	}
 	if uint64(additional) > t.wordMax()-uint64(t.items) {
-		c.Panic("Hash table capacity overflow")
+		capacityOverflow(c)
 	}
 	newItems := t.items + additional
 	fullCapacity := uint(0)
@@ -437,13 +440,16 @@ func (t *RawTable[T]) rehashInPlace(c Context) {
 			return
 		}
 		p := recover()
+		if p != nil && c.ProcessingPanic {
+			c.ResumeUnwind(p)
+		}
 		unwind := c
 		unwind.Unwinding = true
 		for i := range t.values {
 			if t.ctrl[i] == deletedTag {
 				t.setCtrl(uint(i), emptyTag)
 				if t.ops.Drop != nil {
-					cleanupOnPanic(func() { t.ops.Drop(&t.values[i], unwind) })
+					cleanupOnPanic(unwind, func() { t.ops.Drop(&t.values[i], unwind) })
 				}
 				var zero T
 				t.values[i] = zero
@@ -452,7 +458,7 @@ func (t *RawTable[T]) rehashInPlace(c Context) {
 		}
 		t.growthLeft = capacityForBuckets(uint(len(t.values))) - t.items
 		if p != nil {
-			panic(p)
+			c.ResumeUnwind(p)
 		}
 	}()
 	mask := uint(len(t.values) - 1)

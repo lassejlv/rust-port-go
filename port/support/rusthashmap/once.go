@@ -40,10 +40,13 @@ func (f *onceCell[S, A, R]) Close(c Context) {
 }
 func cleanupState[S any](state *rustvec.Owned[S], c Context) {
 	if p := recover(); p != nil {
+		if c.ProcessingPanic {
+			c.ResumeUnwind(p)
+		}
 		unwind := c
 		unwind.Unwinding = true
-		cleanupOnPanic(func() { state.DropWithContext(unwind) })
-		panic(p)
+		cleanupOnPanic(unwind, func() { state.DropWithContext(unwind) })
+		c.ResumeUnwind(p)
 	}
 	state.DropWithContext(c)
 }

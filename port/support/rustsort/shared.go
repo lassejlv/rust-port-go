@@ -192,6 +192,6 @@ func (e *engine[T]) bidirectional(v, dst []T) {
 		}
 	}
 	if left != leftEnd || right != rightEnd {
-		e.context.Panic("user-provided comparison function does not correctly implement a total order")
+		orderViolation(e.context)
 	}
 }

@@ -85,12 +85,12 @@ func deferFingerprintComponent[T any](component *OwnedFingerprintComponent[T], a
 		func() {
 			defer func() {
 				if recover() != nil {
-					os.Exit(134)
+					context.AbortCleanup()
 				}
 			}()
 			close()
 		}()
-		panic(panicValue)
+		context.ResumeUnwind(panicValue)
 	}
 	close()
 }

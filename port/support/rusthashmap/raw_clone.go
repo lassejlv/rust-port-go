@@ -28,17 +28,20 @@ func (t *RawTable[T]) cloneElements(source *RawTable[T], c Context) {
 				return
 			}
 			p := recover()
+			if p != nil && c.ProcessingPanic {
+				c.ResumeUnwind(p)
+			}
 			if t.ops.Drop != nil {
 				unwind := c
 				unwind.Unwinding = true
 				for i := 0; i < through; i++ {
 					if t.ctrl[i]&0x80 == 0 {
-						cleanupOnPanic(func() { t.ops.Drop(&t.values[i], unwind) })
+						cleanupOnPanic(unwind, func() { t.ops.Drop(&t.values[i], unwind) })
 					}
 				}
 			}
 			if p != nil {
-				panic(p)
+				c.ResumeUnwind(p)
 			}
 		}()
 		for i := range source.values {

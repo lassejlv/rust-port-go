@@ -33,7 +33,7 @@ func (e *engine[T]) less(a, b *T) (result bool) {
 	// cannot be intercepted by this boundary.
 	defer func() {
 		if p := recover(); p != nil {
-			e.context.Panic(p)
+			e.context.ResumeUnwind(p)
 		}
 	}()
 	return e.compare(a, b, e.context)

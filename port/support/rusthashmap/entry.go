@@ -112,18 +112,24 @@ func (e *Entry[K, V]) insertVacant(value *rustvec.Owned[V], c Context) *V {
 }
 func cleanupEntryValue[K, V any](e *Entry[K, V], value *rustvec.Owned[V], c Context) {
 	if p := recover(); p != nil {
+		if c.ProcessingPanic {
+			c.ResumeUnwind(p)
+		}
 		unwind := c
 		unwind.Unwinding = true
-		cleanupOnPanic(func() { value.DropWithContext(unwind) })
-		cleanupOnPanic(func() { e.Close(unwind) })
-		panic(p)
+		cleanupOnPanic(unwind, func() { value.DropWithContext(unwind) })
+		cleanupOnPanic(unwind, func() { e.Close(unwind) })
+		c.ResumeUnwind(p)
 	}
 	defer func() {
 		if p := recover(); p != nil {
+			if c.ProcessingPanic {
+				c.ResumeUnwind(p)
+			}
 			unwind := c
 			unwind.Unwinding = true
-			cleanupOnPanic(func() { e.Close(unwind) })
-			panic(p)
+			cleanupOnPanic(unwind, func() { e.Close(unwind) })
+			c.ResumeUnwind(p)
 		}
 	}()
 	value.DropWithContext(c)
@@ -158,18 +164,24 @@ func (e *Entry[K, V]) OrInsertWithKeyOwned(makeValue Once[*K, *rustvec.Owned[V]]
 }
 func cleanupEntryOnce[K, V, A, R any](e *Entry[K, V], call Once[A, R], c Context) {
 	if p := recover(); p != nil {
+		if c.ProcessingPanic {
+			c.ResumeUnwind(p)
+		}
 		unwind := c
 		unwind.Unwinding = true
-		cleanupOnPanic(func() { call.Close(unwind) })
-		cleanupOnPanic(func() { e.Close(unwind) })
-		panic(p)
+		cleanupOnPanic(unwind, func() { call.Close(unwind) })
+		cleanupOnPanic(unwind, func() { e.Close(unwind) })
+		c.ResumeUnwind(p)
 	}
 	defer func() {
 		if p := recover(); p != nil {
+			if c.ProcessingPanic {
+				c.ResumeUnwind(p)
+			}
 			unwind := c
 			unwind.Unwinding = true
-			cleanupOnPanic(func() { e.Close(unwind) })
-			panic(p)
+			cleanupOnPanic(unwind, func() { e.Close(unwind) })
+			c.ResumeUnwind(p)
 		}
 	}()
 	call.Close(c)
@@ -180,18 +192,24 @@ func (e *Entry[K, V]) AndModifyOwned(modify Once[*V, struct{}], c Context) *Entr
 	returned := false
 	defer func() {
 		if p := recover(); p != nil {
+			if c.ProcessingPanic {
+				c.ResumeUnwind(p)
+			}
 			unwind := c
 			unwind.Unwinding = true
-			cleanupOnPanic(func() { modify.Close(unwind) })
-			cleanupOnPanic(func() { e.Close(unwind) })
-			panic(p)
+			cleanupOnPanic(unwind, func() { modify.Close(unwind) })
+			cleanupOnPanic(unwind, func() { e.Close(unwind) })
+			c.ResumeUnwind(p)
 		}
 		defer func() {
 			if p := recover(); p != nil {
+				if c.ProcessingPanic {
+					c.ResumeUnwind(p)
+				}
 				unwind := c
 				unwind.Unwinding = true
-				cleanupOnPanic(func() { e.Close(unwind) })
-				panic(p)
+				cleanupOnPanic(unwind, func() { e.Close(unwind) })
+				c.ResumeUnwind(p)
 			}
 		}()
 		modify.Close(c)
@@ -311,10 +329,13 @@ func (e *OccupiedError[K, V]) Close(c Context) {
 	e.Entry.Close(c)
 	defer func() {
 		if p := recover(); p != nil {
+			if c.ProcessingPanic {
+				c.ResumeUnwind(p)
+			}
 			unwind := c
 			unwind.Unwinding = true
-			cleanupOnPanic(func() { e.Value.DropWithContext(unwind) })
-			panic(p)
+			cleanupOnPanic(unwind, func() { e.Value.DropWithContext(unwind) })
+			c.ResumeUnwind(p)
 		}
 	}()
 	e.Key.DropWithContext(c)
@@ -360,8 +381,11 @@ func (e *Entry[K, V]) InsertEntryOwned(value *rustvec.Owned[V], c Context) *Occu
 	o, _ := e.TakeOccupied(c)
 	defer func() {
 		if p := recover(); p != nil {
+			if c.ProcessingPanic {
+				c.ResumeUnwind(p)
+			}
 			o.Close(c)
-			panic(p)
+			c.ResumeUnwind(p)
 		}
 	}()
 	old := o.InsertOwned(value, c)

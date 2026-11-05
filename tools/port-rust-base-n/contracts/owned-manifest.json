@@ -54,8 +54,8 @@
     "port/rust/compiler/rustc_data_structures/src/base_n.go": "ede8ad0cc0386411edfa318381d4b9991dc10439046c7dadeeef73ec16f5c220",
     "port/rust/compiler/rustc_data_structures/src/base_n_owned.go": "6aa7cd2ca92cf7cb5a255dda094017c660846bc2eaa24df30faaba5fc00c46ee",
     "port/rust/compiler/rustc_data_structures/src/base_n_owned_contract_test.go": "eb7931c29e437ab3133bdef241f1429f3c5497f66b3fe1b1bc45444f19fb3ebb",
-    "port/support/rustvec/ownership.go": "81b279308c046f4df73b17460015c88c13de7f86ff6dbe7341f49e46f24b818f",
-    "port/support/rustfmt/formatter.go": "06a378f7cf4ad9825740ce7615b36511ac33a7a11b0b9a6683a3aa31678acebf"
+    "port/support/rustvec/ownership.go": "4312821d11339a4abb9f60295f492183eb5c34a26f40876ee990a2f09f89dc6b",
+    "port/support/rustfmt/formatter.go": "28143fe2b65b26d9b9aaee9cdf96ac96fcea7b8e404e0787ef1e92ac7fe132f7"
   },
   "scope": "Complete unchanged base_n.rs, actual non-Copy argument and field Drop glue; independent Into/ToBaseN overrides, static width, borrowed buffer identity, ambient/caught/escaping/hook panic states. std 1.99 comparison profile; no Rust ABI/layout claim.",
   "bounds": {

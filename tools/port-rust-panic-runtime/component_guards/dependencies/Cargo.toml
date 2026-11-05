@@ -1,0 +1,16 @@
+[package]
+name = "ferrugo-panic-component-dependencies"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[lib]
+path = "empty.rs"
+
+[dependencies]
+memchr = "=2.8.0"
+unicode-ident = "=1.0.24"
+unicode-properties = { version = "=0.1.4", default-features = false, features = ["emoji"] }
+rustc-literal-escaper = "=0.0.8"
+
+[workspace]

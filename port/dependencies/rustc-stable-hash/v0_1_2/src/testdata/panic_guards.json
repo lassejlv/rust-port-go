@@ -1,0 +1,1163 @@
+[
+  {
+    "Request": {
+      "Operation": "write",
+      "Context": "normal",
+      "DropFail": false,
+      "Infos": {
+        "write": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 156,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 12
+          },
+          "Payload": "write"
+        },
+        "clone": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 114,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 11
+          },
+          "Payload": "clone"
+        },
+        "finish": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 138,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 13
+          },
+          "Payload": "finish"
+        },
+        "drop": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 107,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 10
+          },
+          "Payload": "drop"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:false",
+      "write:false",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 156,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 12
+        },
+        "Payload": "write"
+      },
+      "local:write:true",
+      "caught:true",
+      "drop-h:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "write",
+      "Context": "inherited",
+      "DropFail": false,
+      "Infos": {
+        "write": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 156,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 12
+          },
+          "Payload": "write"
+        },
+        "clone": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 114,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 11
+          },
+          "Payload": "clone"
+        },
+        "finish": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 138,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 13
+          },
+          "Payload": "finish"
+        },
+        "drop": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 107,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 10
+          },
+          "Payload": "drop"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 99,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 99,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:true",
+      "write:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 156,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 12
+        },
+        "Payload": "write"
+      },
+      "local:write:true",
+      "caught:true",
+      "drop-h:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "write",
+      "Context": "processing",
+      "DropFail": false,
+      "Infos": {
+        "write": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 156,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 12
+          },
+          "Payload": "write"
+        },
+        "clone": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 114,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 11
+          },
+          "Payload": "clone"
+        },
+        "finish": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 138,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 13
+          },
+          "Payload": "finish"
+        },
+        "drop": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 107,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 10
+          },
+          "Payload": "drop"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 132,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 22
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 132,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 22
+        },
+        "Payload": "outer"
+      },
+      "enter:true",
+      "write:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone",
+      "Context": "normal",
+      "DropFail": false,
+      "Infos": {
+        "write": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 156,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 12
+          },
+          "Payload": "write"
+        },
+        "clone": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 114,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 11
+          },
+          "Payload": "clone"
+        },
+        "finish": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 138,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 13
+          },
+          "Payload": "finish"
+        },
+        "drop": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 107,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 10
+          },
+          "Payload": "drop"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:false",
+      "clone:false",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 114,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 11
+        },
+        "Payload": "clone"
+      },
+      "local:clone:true",
+      "caught:true",
+      "drop-h:false"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone",
+      "Context": "inherited",
+      "DropFail": false,
+      "Infos": {
+        "write": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 156,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 12
+          },
+          "Payload": "write"
+        },
+        "clone": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 114,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 11
+          },
+          "Payload": "clone"
+        },
+        "finish": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 138,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 13
+          },
+          "Payload": "finish"
+        },
+        "drop": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 107,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 10
+          },
+          "Payload": "drop"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 99,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 99,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:true",
+      "clone:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 114,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 11
+        },
+        "Payload": "clone"
+      },
+      "local:clone:true",
+      "caught:true",
+      "drop-h:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "clone",
+      "Context": "processing",
+      "DropFail": false,
+      "Infos": {
+        "write": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 156,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 12
+          },
+          "Payload": "write"
+        },
+        "clone": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 114,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 11
+          },
+          "Payload": "clone"
+        },
+        "finish": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 138,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 13
+          },
+          "Payload": "finish"
+        },
+        "drop": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 107,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 10
+          },
+          "Payload": "drop"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 132,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 22
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 132,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 22
+        },
+        "Payload": "outer"
+      },
+      "enter:true",
+      "clone:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "finish",
+      "Context": "normal",
+      "DropFail": false,
+      "Infos": {
+        "write": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 156,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 12
+          },
+          "Payload": "write"
+        },
+        "clone": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 114,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 11
+          },
+          "Payload": "clone"
+        },
+        "finish": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 138,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 13
+          },
+          "Payload": "finish"
+        },
+        "drop": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 107,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 10
+          },
+          "Payload": "drop"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      "enter:false",
+      "finish:false",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 138,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 13
+        },
+        "Payload": "finish"
+      },
+      "local:finish:true",
+      "drop-h:true",
+      "caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "finish",
+      "Context": "inherited",
+      "DropFail": false,
+      "Infos": {
+        "write": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 156,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 12
+          },
+          "Payload": "write"
+        },
+        "clone": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 114,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 11
+          },
+          "Payload": "clone"
+        },
+        "finish": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 138,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 13
+          },
+          "Payload": "finish"
+        },
+        "drop": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 107,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 10
+          },
+          "Payload": "drop"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 99,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 0,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 99,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:true",
+      "finish:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 138,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 13
+        },
+        "Payload": "finish"
+      },
+      "local:finish:true",
+      "drop-h:true",
+      "caught:true",
+      "outer-caught:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "finish",
+      "Context": "processing",
+      "DropFail": false,
+      "Infos": {
+        "write": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 156,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 12
+          },
+          "Payload": "write"
+        },
+        "clone": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 114,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 11
+          },
+          "Payload": "clone"
+        },
+        "finish": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 138,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 13
+          },
+          "Payload": "finish"
+        },
+        "drop": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 107,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 10
+          },
+          "Payload": "drop"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 132,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 22
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 132,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 22
+        },
+        "Payload": "outer"
+      },
+      "enter:true",
+      "finish:true"
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "finish",
+      "Context": "normal",
+      "DropFail": true,
+      "Infos": {
+        "write": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 156,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 12
+          },
+          "Payload": "write"
+        },
+        "clone": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 114,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 11
+          },
+          "Payload": "clone"
+        },
+        "finish": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 138,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 13
+          },
+          "Payload": "finish"
+        },
+        "drop": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 107,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 10
+          },
+          "Payload": "drop"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      "enter:false",
+      "finish:false",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 138,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 13
+        },
+        "Payload": "finish"
+      },
+      "local:finish:true",
+      "drop-h:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 107,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 10
+        },
+        "Payload": "drop"
+      },
+      {
+        "CanUnwind": false,
+        "ForceNoBacktrace": true,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 5,
+          "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+          "Line": 233
+        },
+        "Payload": "panic in a destructor during cleanup"
+      }
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "finish",
+      "Context": "inherited",
+      "DropFail": true,
+      "Infos": {
+        "write": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 156,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 12
+          },
+          "Payload": "write"
+        },
+        "clone": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 114,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 11
+          },
+          "Payload": "clone"
+        },
+        "finish": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 138,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 13
+          },
+          "Payload": "finish"
+        },
+        "drop": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 107,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 10
+          },
+          "Payload": "drop"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 99,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 21
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 99,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 21
+        },
+        "Payload": "outer"
+      },
+      "enter:true",
+      "finish:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 138,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 13
+        },
+        "Payload": "finish"
+      },
+      "local:finish:true",
+      "drop-h:true",
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 107,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 10
+        },
+        "Payload": "drop"
+      },
+      {
+        "CanUnwind": false,
+        "ForceNoBacktrace": true,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 5,
+          "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+          "Line": 233
+        },
+        "Payload": "panic in a destructor during cleanup"
+      }
+    ]
+  },
+  {
+    "Request": {
+      "Operation": "finish",
+      "Context": "processing",
+      "DropFail": true,
+      "Infos": {
+        "write": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 156,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 12
+          },
+          "Payload": "write"
+        },
+        "clone": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 114,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 11
+          },
+          "Payload": "clone"
+        },
+        "finish": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 138,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 13
+          },
+          "Payload": "finish"
+        },
+        "drop": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 107,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 10
+          },
+          "Payload": "drop"
+        },
+        "panic in a destructor during cleanup": {
+          "CanUnwind": false,
+          "ForceNoBacktrace": true,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 5,
+            "File": "/rustc/58cf8f9c35b355199727627d07ae34a4e2846d67/library/core/src/panicking.rs",
+            "Line": 233
+          },
+          "Payload": "panic in a destructor during cleanup"
+        },
+        "outer": {
+          "CanUnwind": true,
+          "ForceNoBacktrace": false,
+          "Kind": "static_str",
+          "Location": {
+            "Column": 132,
+            "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+            "Line": 22
+          },
+          "Payload": "outer"
+        }
+      }
+    },
+    "Exit": 134,
+    "Events": [
+      {
+        "CanUnwind": true,
+        "ForceNoBacktrace": false,
+        "Kind": "static_str",
+        "Location": {
+          "Column": 132,
+          "File": "tools/port-rust-stable-hash/panic-guards/oracle.rs",
+          "Line": 22
+        },
+        "Payload": "outer"
+      },
+      "enter:true",
+      "finish:true"
+    ]
+  }
+]

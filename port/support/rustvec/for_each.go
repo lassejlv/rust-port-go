@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 package rustvec
 
-import "os"
-
 // ForEachWithContext consumes the actual iterator using its selected source
 // for_each implementation, including its fold default/override and state Drop.
 // consume is a static operation witness, not an arbitrary owned source FnMut:
@@ -33,13 +31,13 @@ func (it Iterator[T]) FoldUnitWithContext(context Context, consume func(T)) {
 func closeBuiltinFold[T any](it *VecIntoIter[T], context Context) {
 	p := recover()
 	if p != nil && context.ProcessingPanic {
-		os.Exit(134)
+		context.ResumeUnwind(p)
 	}
 	if p != nil {
 		unwind := context
 		unwind.Unwinding = true
-		cleanupDuringUnwind(func() { it.CloseWithContext(unwind) })
-		panic(p)
+		cleanupDuringUnwind(unwind, func() { it.CloseWithContext(unwind) })
+		context.ResumeUnwind(p)
 	}
 	it.CloseWithContext(context)
 }

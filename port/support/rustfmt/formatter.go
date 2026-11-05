@@ -4,7 +4,6 @@ package rustfmt
 
 import (
 	"io"
-	"os"
 	"strconv"
 	"strings"
 	"unicode/utf8"
@@ -40,7 +39,10 @@ func DefaultOptions() Options { return Options{Fill: ' '} }
 // The pointer keeps Context comparable even when the borrowed payload is not.
 // Component adapters can carry caller-local tracing/session metadata without a
 // dependency from this neutral formatter onto compiler/runtime packages.
-type RuntimeMetadata struct{ Value any }
+type RuntimeMetadata struct {
+	Value any
+	Panic *PanicOperations
+}
 type Context struct {
 	Unwinding, ProcessingPanic bool
 	Runtime                    *RuntimeMetadata `json:"-"`
@@ -48,10 +50,7 @@ type Context struct {
 
 func (c Context) Panicking() bool { return c.Unwinding || c.ProcessingPanic }
 func (c Context) Panic(value any) {
-	if c.ProcessingPanic {
-		os.Exit(134)
-	}
-	panic(value)
+	c.PanicAt(SourcePanicInfo{Payload: value, Kind: PanicOpaque, CanUnwind: true})
 }
 
 // Formatter is the primary mutable formatter and fallible fmt::Write witness.

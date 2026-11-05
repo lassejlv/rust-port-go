@@ -227,10 +227,13 @@ func dropValues[T any](values []T, ops ElementOps[T], context Context) {
 		func() {
 			defer func() {
 				if p := recover(); p != nil {
+					if context.ProcessingPanic {
+						context.ResumeUnwind(p)
+					}
 					unwind := context
 					unwind.Unwinding = true
-					cleanupDuringUnwind(func() { dropValues(values[i+1:], ops, unwind) })
-					panic(p)
+					cleanupDuringUnwind(unwind, func() { dropValues(values[i+1:], ops, unwind) })
+					context.ResumeUnwind(p)
 				}
 			}()
 			dropElement(&values[i], ops, context)
@@ -240,20 +243,19 @@ func dropValues[T any](values []T, ops ElementOps[T], context Context) {
 func closeIterator[T any](it Iterator[T], context Context) {
 	p := recover()
 	if p != nil && context.ProcessingPanic {
-		os.Exit(134)
+		context.ResumeUnwind(p)
 	}
 	if p != nil {
 		unwind := context
 		unwind.Unwinding = true
-		cleanupDuringUnwind(func() { it.CloseWithContext(unwind) })
+		cleanupDuringUnwind(unwind, func() { it.CloseWithContext(unwind) })
 	} else {
 		it.CloseWithContext(context)
 	}
 	if p != nil {
-		panic(p)
+		context.ResumeUnwind(p)
 	}
 }
-func capacityOverflow(context Context) { context.Panic("capacity overflow") }
 func allocate[T any](capacity uint, config Config) []T {
 	if config.ElementSize == 0 {
 		config.Context.Panic("rustvec: nonzero source element layout witness is required")
@@ -307,12 +309,12 @@ func Collect[T any](source IntoIterator[T], config Config, ops ElementOps[T]) (v
 	defer func() {
 		if p := recover(); p != nil {
 			if context.ProcessingPanic {
-				os.Exit(134)
+				context.ResumeUnwind(p)
 			}
 			unwind := context
 			unwind.Unwinding = true
-			cleanupDuringUnwind(func() { dropValues(values, ops, unwind) })
-			panic(p)
+			cleanupDuringUnwind(unwind, func() { dropValues(values, ops, unwind) })
+			context.ResumeUnwind(p)
 		}
 	}()
 	it := source.IntoIter(context)
@@ -354,12 +356,15 @@ func Collect[T any](source IntoIterator[T], config Config, ops ElementOps[T]) (v
 		owned := true
 		defer func() {
 			if p := recover(); p != nil {
+				if context.ProcessingPanic {
+					context.ResumeUnwind(p)
+				}
 				if owned {
 					unwind := context
 					unwind.Unwinding = true
-					cleanupDuringUnwind(func() { dropElement(&first, ops, unwind) })
+					cleanupDuringUnwind(unwind, func() { dropElement(&first, ops, unwind) })
 				}
-				panic(p)
+				context.ResumeUnwind(p)
 			}
 		}()
 		hint := it.SizeHint(context)
@@ -384,12 +389,15 @@ func Collect[T any](source IntoIterator[T], config Config, ops ElementOps[T]) (v
 				owned := true
 				defer func() {
 					if p := recover(); p != nil {
+						if context.ProcessingPanic {
+							context.ResumeUnwind(p)
+						}
 						if owned {
 							unwind := context
 							unwind.Unwinding = true
-							cleanupDuringUnwind(func() { dropElement(&value, ops, unwind) })
+							cleanupDuringUnwind(unwind, func() { dropElement(&value, ops, unwind) })
 						}
-						panic(p)
+						context.ResumeUnwind(p)
 					}
 				}()
 				hint := it.SizeHint(context)

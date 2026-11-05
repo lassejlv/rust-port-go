@@ -109,12 +109,15 @@ func NewMapWithCapacity[K, V any](capacity uint, layout Layout, profile Profile,
 	complete := false
 	defer func() {
 		if p := recover(); p != nil {
+			if c.ProcessingPanic {
+				c.ResumeUnwind(p)
+			}
 			if !complete {
 				unwind := c
 				unwind.Unwinding = true
-				cleanupOnPanic(func() { builder.Close(unwind) })
+				cleanupOnPanic(unwind, func() { builder.Close(unwind) })
 			}
-			panic(p)
+			c.ResumeUnwind(p)
 		}
 	}()
 	m.table = NewRawTableWithCapacity(capacity, layout, profile, m.elementOps(), c)
@@ -148,11 +151,14 @@ func (m *Map[K, V]) hash(key *K, c Context) uint64 {
 }
 func cleanupHasher(h *OwnedHasher, c Context) {
 	p := recover()
+	if p != nil && c.ProcessingPanic {
+		c.ResumeUnwind(p)
+	}
 	if p != nil {
 		unwind := c
 		unwind.Unwinding = true
-		cleanupOnPanic(func() { h.Close(unwind) })
-		panic(p)
+		cleanupOnPanic(unwind, func() { h.Close(unwind) })
+		c.ResumeUnwind(p)
 	}
 	h.Close(c)
 }
@@ -168,12 +174,15 @@ func (m *Map[K, V]) clonePair(pair *Pair[K, V], c Context) (result Pair[K, V]) {
 	keyLive := true
 	defer func() {
 		if p := recover(); p != nil {
+			if c.ProcessingPanic {
+				c.ResumeUnwind(p)
+			}
 			if keyLive && m.keys.Drop != nil {
 				unwind := c
 				unwind.Unwinding = true
-				cleanupOnPanic(func() { m.keys.Drop(&result.Key, unwind) })
+				cleanupOnPanic(unwind, func() { m.keys.Drop(&result.Key, unwind) })
 			}
-			panic(p)
+			c.ResumeUnwind(p)
 		}
 	}()
 	if m.values.TrivialClone {
@@ -192,12 +201,15 @@ func (m *Map[K, V]) dropPair(pair *Pair[K, V], c Context) {
 	valueStarted := false
 	defer func() {
 		if p := recover(); p != nil {
+			if c.ProcessingPanic {
+				c.ResumeUnwind(p)
+			}
 			if !valueStarted && m.values.Drop != nil {
 				unwind := c
 				unwind.Unwinding = true
-				cleanupOnPanic(func() { m.values.Drop(&pair.Value, unwind) })
+				cleanupOnPanic(unwind, func() { m.values.Drop(&pair.Value, unwind) })
 			}
-			panic(p)
+			c.ResumeUnwind(p)
 		}
 	}()
 	if m.keys.Drop != nil {
@@ -242,20 +254,26 @@ func (m *Map[K, V]) InsertOwned(key *rustvec.Owned[K], value *rustvec.Owned[V], 
 }
 func cleanupTwo[K, V any](key *rustvec.Owned[K], value *rustvec.Owned[V], c Context) {
 	p := recover()
+	if p != nil && c.ProcessingPanic {
+		c.ResumeUnwind(p)
+	}
 	if p != nil {
 		unwind := c
 		unwind.Unwinding = true
-		cleanupOnPanic(func() { value.DropWithContext(unwind) })
-		cleanupOnPanic(func() { key.DropWithContext(unwind) })
-		panic(p)
+		cleanupOnPanic(unwind, func() { value.DropWithContext(unwind) })
+		cleanupOnPanic(unwind, func() { key.DropWithContext(unwind) })
+		c.ResumeUnwind(p)
 	}
 	// Function parameters are destroyed in reverse declaration order.
 	defer func() {
 		if p := recover(); p != nil {
+			if c.ProcessingPanic {
+				c.ResumeUnwind(p)
+			}
 			unwind := c
 			unwind.Unwinding = true
-			cleanupOnPanic(func() { key.DropWithContext(unwind) })
-			panic(p)
+			cleanupOnPanic(unwind, func() { key.DropWithContext(unwind) })
+			c.ResumeUnwind(p)
 		}
 	}()
 	value.DropWithContext(c)
@@ -367,10 +385,13 @@ func (m *Map[K, V]) Close(c Context) {
 	m.live = false
 	defer func() {
 		if p := recover(); p != nil {
+			if c.ProcessingPanic {
+				c.ResumeUnwind(p)
+			}
 			unwind := c
 			unwind.Unwinding = true
-			cleanupOnPanic(func() { m.table.Close(unwind) })
-			panic(p)
+			cleanupOnPanic(unwind, func() { m.table.Close(unwind) })
+			c.ResumeUnwind(p)
 		}
 	}()
 	m.builder.Close(c)

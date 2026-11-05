@@ -50,7 +50,12 @@ func requireUTF8WithContext(input string, context rustfmt.Context) {
 	}
 }
 func mergeCursorContext(a, b rustfmt.Context) rustfmt.Context {
-	return rustfmt.Context{Unwinding: a.Unwinding || b.Unwinding, ProcessingPanic: a.ProcessingPanic || b.ProcessingPanic}
+	b.Unwinding = a.Unwinding || b.Unwinding
+	b.ProcessingPanic = a.ProcessingPanic || b.ProcessingPanic
+	// Callback APIs supply the current operation scope, including nil metadata
+	// when no hook/subscriber is active. Never restore construction-time runtime
+	// metadata into that operation; only the legacy guard flags are combined.
+	return b
 }
 
 // A source operation exclusively borrows its cursor. The temporary context

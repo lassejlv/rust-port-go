@@ -3,10 +3,7 @@
 // associated Hash and FromStableHash result. No Rust ABI/layout is implied.
 package stablehash
 
-import (
-	"github.com/lassejlv/rust-port-go/port/support/rustfmt"
-	"os"
-)
+import "github.com/lassejlv/rust-port-go/port/support/rustfmt"
 
 type DropContext = rustfmt.Context
 
@@ -74,15 +71,15 @@ func (o *Owned[T]) DropWithContext(context DropContext) {
 func runContext(context DropContext, body func()) {
 	defer func() {
 		if p := recover(); p != nil {
-			context.Panic(p)
+			context.ResumeUnwind(p)
 		}
 	}()
 	body()
 }
-func cleanupDuringUnwind(body func()) {
+func cleanupDuringUnwind(context DropContext, body func()) {
 	defer func() {
 		if recover() != nil {
-			os.Exit(134)
+			context.AbortCleanup()
 		}
 	}()
 	body()
@@ -90,19 +87,19 @@ func cleanupDuringUnwind(body func()) {
 func cleanupOwned[T any](arg *Owned[T], context DropContext) {
 	p := recover()
 	if p != nil && context.ProcessingPanic {
-		os.Exit(134)
+		context.ResumeUnwind(p)
 	}
 	if arg.IsLive() {
 		if p != nil {
 			unwind := context
 			unwind.Unwinding = true
-			cleanupDuringUnwind(func() { arg.DropWithContext(unwind) })
+			cleanupDuringUnwind(unwind, func() { arg.DropWithContext(unwind) })
 		} else {
 			arg.DropWithContext(context)
 		}
 	}
 	if p != nil {
-		panic(p)
+		context.ResumeUnwind(p)
 	}
 }
 func callOwned[A, B any](arg *Owned[A], context DropContext, call func(*Owned[A]) *Owned[B]) *Owned[B] {

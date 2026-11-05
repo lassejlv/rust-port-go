@@ -32,7 +32,7 @@ func extendDropValues[T any](state *extendState[T], drop func(*T, Context), c Co
 				if p := recover(); p != nil {
 					unwind := c
 					unwind.Unwinding = true
-					cleanupOnPanic(func() { extendDropValues(state, drop, unwind) })
+					cleanupOnPanic(unwind, func() { extendDropValues(state, drop, unwind) })
 					panic(p)
 				}
 			}()
@@ -83,7 +83,7 @@ func extendIterator[T any](values []T, drop func(*T, Context), mode int, skip bo
 					if !fieldsStarted {
 						unwind := ctx
 						unwind.Unwinding = true
-						cleanupOnPanic(func() { extendDropValues(s, drop, unwind) })
+						cleanupOnPanic(unwind, func() { extendDropValues(s, drop, unwind) })
 					}
 					panic(p)
 				}
@@ -147,7 +147,7 @@ func extendIterator[T any](values []T, drop func(*T, Context), mode int, skip bo
 				if !fieldsStarted {
 					unwind := ctx
 					unwind.Unwinding = true
-					cleanupOnPanic(func() { s.iterator.CloseWithContext(unwind) })
+					cleanupOnPanic(unwind, func() { s.iterator.CloseWithContext(unwind) })
 				}
 				panic(p)
 			}
@@ -188,7 +188,7 @@ func extendMapDropPair(pair *Pair[auditKey, auditValue], keys KeyOps[auditKey], 
 			if !started {
 				unwind := c
 				unwind.Unwinding = true
-				cleanupOnPanic(func() { values.Drop(&pair.Value, unwind) })
+				cleanupOnPanic(unwind, func() { values.Drop(&pair.Value, unwind) })
 			}
 			panic(p)
 		}

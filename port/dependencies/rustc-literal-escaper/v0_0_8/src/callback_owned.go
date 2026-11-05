@@ -1,11 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0 OR MIT
 package literalescaper
 
-import (
-	"os"
-
-	rustfmt "github.com/lassejlv/rust-port-go/port/support/rustfmt"
-)
+import rustfmt "github.com/lassejlv/rust-port-go/port/support/rustfmt"
 
 // CallbackContext exposes ambient source panic state. A locally active panic
 // is tracked separately, so an outer unwind that a caller can catch does not
@@ -50,17 +46,25 @@ func (c ErrorCallback[Env]) Destroy(context CallbackContext) {
 // abort class, represented by exit134, after the Drop witness's own cleanup.
 func ownedCallbackDrop(context CallbackContext, destroy func(CallbackContext)) {
 	if p := recover(); p != nil {
+		if context.ProcessingPanic {
+			context.ResumeUnwind(p)
+		}
 		context.Unwinding = true
 		func() {
 			defer func() {
 				if recover() != nil {
-					os.Exit(134)
+					context.AbortCleanup()
 				}
 			}()
 			destroy(context)
 		}()
-		panic(p)
+		context.ResumeUnwind(p)
 	}
+	defer func() {
+		if payload := recover(); payload != nil {
+			context.ResumeUnwind(payload)
+		}
+	}()
 	destroy(context)
 }
 

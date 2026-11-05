@@ -1,10 +1,7 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 package rustclexer
 
-import (
-	rustfmt "github.com/lassejlv/rust-port-go/port/support/rustfmt"
-	"os"
-)
+import rustfmt "github.com/lassejlv/rust-port-go/port/support/rustfmt"
 
 // Predicate witnesses the owned FnMut(char)->bool in Cursor::eat_while.
 // Env is the actual borrowed call/destruction cell. Drop represents complete
@@ -30,21 +27,6 @@ func EatWhileOwned[Env any](cursor *Cursor, predicate Predicate[Env]) {
 	context, restore := cursor.enterContext(predicate.Context)
 	defer restore()
 	predicate.Context = context
-	defer func() {
-		if p := recover(); p != nil {
-			context := predicate.Context
-			context.Unwinding = true
-			func() {
-				defer func() {
-					if recover() != nil {
-						os.Exit(134)
-					}
-				}()
-				predicate.Destroy(context)
-			}()
-			panic(p)
-		}
-		predicate.Destroy(predicate.Context)
-	}()
+	defer tokenConsumerDrop(predicate.Context, predicate.Destroy)
 	cursor.EatWhile(func(c rune) bool { return predicate.Call(predicate.Env, predicate.Context, c) })
 }

@@ -1,0 +1,118 @@
+{
+  "scope": "Actual std callback hook-once/resume/cleanup-abort and intrinsic capacity/order violations across scoped Map/Vec/Stable-sort dependencies; no std source-file completion credit",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+  "sdk_libraries": {
+    "libstd-530112f2fd58de10.rlib": "8fdbba1c8e59d13f0382407bce5800f9a75ecb49b4d0fdb4bcb616284bb354a1",
+    "libcore-7832d2fe4fa07f06.rlib": "4fb8e711916ca10f1a349a8d5cde7ed17cd968d4b71833f10d9c799b2ab3f645",
+    "liballoc-6e37827f505ea391.rlib": "d4d0c141c89ab81f1a6e5b8b17e6296d5acd8208480b62ad63f563628dfb93ba"
+  },
+  "cases": 312,
+  "aborts": 258,
+  "locations": {
+    "hash": {
+      "File": "tools/port-rust-unord/panic/oracle.rs",
+      "Line": 23,
+      "Column": 195
+    },
+    "eq": {
+      "File": "tools/port-rust-unord/panic/oracle.rs",
+      "Line": 24,
+      "Column": 137
+    },
+    "entry": {
+      "File": "tools/port-rust-unord/panic/oracle.rs",
+      "Line": 39,
+      "Column": 283
+    },
+    "Hash table capacity overflow": {
+      "File": "/cargo/registry/25cdd57fae9f0462/hashbrown-0.17.1/src/raw.rs",
+      "Line": 36,
+      "Column": 40
+    },
+    "hasher_drop": {
+      "File": "tools/port-rust-unord/panic/oracle.rs",
+      "Line": 19,
+      "Column": 126
+    },
+    "panic in a destructor during cleanup": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      "Line": 233,
+      "Column": 5
+    },
+    "value_drop": {
+      "File": "tools/port-rust-unord/panic/oracle.rs",
+      "Line": 28,
+      "Column": 136
+    },
+    "key_drop": {
+      "File": "tools/port-rust-unord/panic/oracle.rs",
+      "Line": 26,
+      "Column": 134
+    },
+    "next": {
+      "File": "tools/port-rust-unord/panic/oracle.rs",
+      "Line": 30,
+      "Column": 239
+    },
+    "capacity overflow": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/alloc/src/raw_vec/mod.rs",
+      "Line": 29,
+      "Column": 5
+    },
+    "iter_drop": {
+      "File": "tools/port-rust-unord/panic/oracle.rs",
+      "Line": 31,
+      "Column": 136
+    },
+    "collected_drop": {
+      "File": "tools/port-rust-unord/panic/oracle.rs",
+      "Line": 33,
+      "Column": 140
+    },
+    "compare": {
+      "File": "tools/port-rust-unord/panic/oracle.rs",
+      "Line": 41,
+      "Column": 152
+    },
+    "user-provided comparison function does not correctly implement a total order": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/slice/sort/shared/smallsort.rs",
+      "Line": 854,
+      "Column": 5
+    },
+    "outer.unwind": {
+      "File": "tools/port-rust-unord/panic/oracle.rs",
+      "Line": 46,
+      "Column": 409
+    },
+    "outer.processing": {
+      "File": "tools/port-rust-unord/panic/oracle.rs",
+      "Line": 46,
+      "Column": 510
+    }
+  },
+  "fixture_sha256": "46936e9d63fe4c2ff773621f3e580e855fb2c618bf5c67a2b66cfc95457eacb5",
+  "raw_sha256": "f1142ae353cc4185200ab842867789e6e7db0ab9d8c721fa5d805c010bd86ae7",
+  "oracle_sha256": "2995f3cb4603f1cd0be7a7f1fc7b4c8285c25cc8605ce94c1d4d757a5fc1c17d",
+  "generator_sha256": "0b658e528a03b04c4fc7d5cd04776a6e8ecb2dc0da65a92c9347b7e282568398",
+  "sdk_helper_sha256": "d82aaaaf1c7849c1418345f61e617fa68c3445470cddbd859f0906fc39f5363c",
+  "go_sources": {
+    "port/support/rustfmt/formatter.go": "28143fe2b65b26d9b9aaee9cdf96ac96fcea7b8e404e0787ef1e92ac7fe132f7",
+    "port/support/rustfmt/panic.go": "543d6ed8e0e45e76eda40a4724df00a05f575ba0a8bc00f28e7472a688298bea",
+    "port/support/rusthashmap/entry.go": "b55490821799cbeae591bc1b547915cfa9b1d78c4229f409ba6817398a59ac48",
+    "port/support/rusthashmap/extend.go": "a61bb97335386ed368ff7c9c6b85e309de2827ad2eaf02bad648339c568439e0",
+    "port/support/rusthashmap/map.go": "91eca9e86aabfcf5210a5d63f3d1ab8952c62e6b01515951011165fcc11dd562",
+    "port/support/rusthashmap/map_traits.go": "06c71e309b2fa177e7fbee5cc23657320a5f577e018e03242d798660a8030608",
+    "port/support/rusthashmap/once.go": "79cdb2551815887a9969b6e23cb8e716d65c3319e3a5c23508601bda02efeea4",
+    "port/support/rusthashmap/ownership.go": "4953b4fbda08d0dd0d968ee084459afca1331ae7de8b960ad42d5f45747f25a3",
+    "port/support/rusthashmap/raw.go": "55b537816c8faa198590f60323e7400ee978ff391f6ec2836f34b55783b97efe",
+    "port/support/rusthashmap/raw_clone.go": "a5ebaae7f3db1f1c4cc292b73d3b2f6612a0d83a5a442758d19d571787a92813",
+    "port/support/rusthashmap/panic_sites.go": "8fd6af8a6431dcd9bc161672638ec6a8aca1638da3204ad5e66864d5a8d1bc55",
+    "port/support/rustvec/ownership.go": "4312821d11339a4abb9f60295f492183eb5c34a26f40876ee990a2f09f89dc6b",
+    "port/support/rustvec/collect.go": "af48d40913abdf1a041d3fbb6efa21bb8216169149d1a5c4ce8ecdfd7a0aea6a",
+    "port/support/rustvec/for_each.go": "54c2e25ad61d11cc0ed819b8123bbbb0a6b5b8b0949676db8ef06a254d19a389",
+    "port/support/rustvec/panic_sites.go": "8d026e818cf7252a9b24595c3e15bed94fd4274753ce2d5e5291ce5b2b5d2ad0",
+    "port/support/rustsort/stable.go": "6b636f0403be3b441a7176e66136f634846d658da915e462b98997370b093760",
+    "port/support/rustsort/shared.go": "9117a60564f30108fa97fd412f55a434835e9706d4db4a1413e29a9d7a2a67a7",
+    "port/support/rustsort/panic_sites.go": "1bfa9ac4eae8770fa353acebc2a1458b22a9e728c35a0d9a6781166a34d87d06"
+  }
+}

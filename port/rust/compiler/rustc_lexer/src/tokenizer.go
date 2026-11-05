@@ -1,10 +1,7 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 package rustclexer
 
-import (
-	rustfmt "github.com/lassejlv/rust-port-go/port/support/rustfmt"
-	"os"
-)
+import rustfmt "github.com/lassejlv/rust-port-go/port/support/rustfmt"
 
 // Tokenizer is the opaque source from_fn iterator over a borrowed input.
 // It advertises neither Clone, Debug nor FusedIterator. Go descriptor copies
@@ -84,20 +81,29 @@ func (c TokenFolder[Env, Acc]) Destroy(context rustfmt.Context) {
 	}
 }
 
-func tokenRequiredCleanup(cleanup func()) {
+func tokenRequiredCleanup(context rustfmt.Context, cleanup func()) {
 	defer func() {
 		if recover() != nil {
-			os.Exit(134)
+			context.AbortCleanup()
 		}
 	}()
 	cleanup()
 }
+func tokenProcessingGuard(context rustfmt.Context) {
+	if payload := recover(); payload != nil {
+		context.ResumeUnwind(payload)
+	}
+}
 func tokenConsumerDrop(context rustfmt.Context, destroy func(rustfmt.Context)) {
 	if p := recover(); p != nil {
+		if context.ProcessingPanic {
+			context.ResumeUnwind(p)
+		}
 		context.Unwinding = true
-		tokenRequiredCleanup(func() { destroy(context) })
-		panic(p)
+		tokenRequiredCleanup(context, func() { destroy(context) })
+		context.ResumeUnwind(p)
 	}
+	defer tokenProcessingGuard(context)
 	destroy(context)
 }
 func ForEachTokenOwned[Env any](it *Tokenizer, callback TokenConsumer[Env]) {
@@ -129,14 +135,18 @@ func FoldTokensOwned[Env, Acc any](it *Tokenizer, initial Acc, callback TokenFol
 	accumulator := initial
 	owned := true
 	defer func() {
+		defer tokenProcessingGuard(callback.Context)
 		if p := recover(); p != nil {
 			context := callback.Context
+			if context.ProcessingPanic {
+				context.ResumeUnwind(p)
+			}
 			context.Unwinding = true
 			if owned && dropAcc != nil {
-				tokenRequiredCleanup(func() { dropAcc(&accumulator, context) })
+				tokenRequiredCleanup(context, func() { dropAcc(&accumulator, context) })
 			}
-			tokenRequiredCleanup(func() { callback.Destroy(context) })
-			panic(p)
+			tokenRequiredCleanup(context, func() { callback.Destroy(context) })
+			context.ResumeUnwind(p)
 		}
 		callback.Destroy(callback.Context)
 	}()

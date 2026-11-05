@@ -39,7 +39,7 @@ func NewStableHashCtxtRef[S any](value *S, ops StableHashCtxtOps[S], ambient ...
 func stableHashInvoke[T any](context rustfmt.Context, call func() T) T {
 	defer func() {
 		if p := recover(); p != nil {
-			context.Panic(p)
+			context.ResumeUnwind(p)
 		}
 	}()
 	return call()
