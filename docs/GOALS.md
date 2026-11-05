@@ -12,6 +12,8 @@ Each completed file must have a recorded source revision and blob identity, a Go
 
 Shared prerequisites now include scoped IndexMap ownership/entry/iterator operations, tracing dispatch and failure handling, and the actual serializers and unordered-bag storage used by the span files. Their native comparisons support the next coherent span checkpoint; these partial dependencies do not increase the completed-file count.
 
+The next acceptance target is13 complete span implementation/test files covering11,178 pinned Rust source lines: session/span primitives, hygiene, symbols, edit distance, source analysis, source maps, caching and fatal errors, together with their original child tests. Complete-file review, current-context/owned callback behavior and a coherent minimum-Go/native comparison must pass before their ledger rows change. Definition-ID aliases and the remaining container APIs continue separately.
+
 ## Implemented milestone: local Cargo library dependencies
 
 Build and run a binary package whose supported Rust code depends on local library-only packages through `path` dependencies, including renamed and transitive dependencies and a shared dependency diamond.

@@ -28,5 +28,44 @@
       "Column": 18
     }
   },
-  "scope": "Actual public set_default and DefaultGuard Drop while get_default holds its source RefCell borrow; actual Id::from_u64(0). Normal, inherited-caught outer unwind and real panic-hook processing contexts. All hook payload/kind/verbatim source locations and frame events retained. Locations are explicit selected-producer profile cells; no Cargo filename inference. Native SIGABRT vs Go exit134 is the explicit host abort class."
+  "scope": "Actual public set_default and DefaultGuard Drop while get_default holds its source RefCell borrow; actual Id::from_u64(0). Normal, inherited-caught outer unwind and real panic-hook processing contexts. All hook payload/kind/verbatim source locations and frame events retained. Locations are explicit selected-producer profile cells; no Cargo filename inference. Native SIGABRT vs Go exit134 is the explicit host abort class.",
+  "raw_bytes": 6222,
+  "source_bindings": {
+    "port/rust/library/core/src/unicode/unicode_data.go": "a223e91f91b7a38659cb71cb7f0adfa588c40e8a6dee47859ddc7cc9a60baa59",
+    "port/support/rustfmt/builders.go": "03285fd7319e9d661e67c83c19a84bc4f8d7825c8d6ecbf425a39423107022df",
+    "port/support/rustfmt/char_debug.go": "ee693582aab3bd317cb9ef124f86dbc9b8852b3c46adbd99ba6880fb9cb2e891",
+    "port/support/rustfmt/char_debug_tables.go": "c6924f94132671c791c7b8ce8f6b80e03186d1a1f835e73e8ed1da19cef7cd28",
+    "port/support/rustfmt/formatter.go": "98b68bed6b04e1337db3b5b7424ffa3b0f8a14f6513cf0995d3599547724411d",
+    "port/support/rustfmt/integer_radix.go": "ac7a855b63cfd50089f3980f1b379a709f12b7373a5422d9686f1150de2f6550",
+    "port/support/rustfmt/panic.go": "215086bed1fdc10c547013bc9cd8557434fdd962ca0678fdd2e6bb9994b22fd8",
+    "port/support/rustfmt/unicode18.go": "e2d3251c139f53548ac92c6f68998ac1bd6685720741725741cf89df0fd9a91f",
+    "port/support/rusttracing/borrow_panic_test.go": "c6cdca83be496726c3b1e13d2b60b54f40000d326b9df5176c1d3aba0951d8a9",
+    "port/support/rusttracing/context.go": "92f2b7c88230aba925744aee4c76a073b2dbe1ff10479c2b3e842c3601dbf177",
+    "port/support/rusttracing/context_test.go": "4424b28ade48cf3e118b0013402e1fc1e28168ed62390c582cb6998513773066",
+    "port/support/rusttracing/dispatch.go": "d18f18796a6df70543682490311264668814666ddfbde68861df9f5c5617439e",
+    "port/support/rusttracing/oracle_test.go": "1ac97b0dfc60bd5dc9e4ed224e9374ee2cafdbc13300598384a136914dd2ea1f",
+    "port/support/rusttracing/processing_test.go": "b4d83f0c4b87ace6afc37c76a55243f3bb7d5eeca804f36804b127aab5d30433",
+    "port/support/rusttracing/producer_evidence_test.go": "ac2650dce1c1d7db92401ad02bea37c287926200084b7f7ca2c186f6d0c235b8",
+    "port/support/rusttracing/registry_poison_test.go": "2911db40de135cb3708d7d87b25cb8659985f6d194cb2e7f556fbe6c2dcb5de6",
+    "port/support/rusttracing/span.go": "43e243f9c8f286b959374e6b015deb6098a78babde0ae6370993ac69306002af",
+    "port/support/rusttracing/value.go": "4e61d9c50c9740cc3bd30f170ba2b7f51e1c47f741cd38b2e15b9068ca33b5a2",
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-span-reference/Cargo.lock": "754f658b67c5a3fd3296ae0f4e3cfcfd60dca900f3552de06895a0c2a7617c7a",
+    "tools/port-rust-span-reference/prepare.py": "4517eedb69d9ab873639d3c15a802e8371ee33dbf2a684c968073e3f547af442",
+    "tools/port-rust-span-reference/sources.json": "b5b283946d0f2094e2ee6b7da6cb00c3601cecc02954afea3f91b42492b024bb",
+    "tools/port-rust-span-reference/toolchain.json": "39583ec2969fe1c845ef0cf36e4b85a5160147675c1350cee77ff9a689342b5c",
+    "tools/port-rust-span-reference/verify.py": "413283a6dc0933d03ddf9600321a1af5d93e0be4c36da3b51e82b8a9d3529d79",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d",
+    "tools/port-rust-tracing/processing/README.md": "ceec1b4e7fe2863e842574b6b50be4b15854a77f9d9813c5e807b17d138c970d",
+    "tools/port-rust-tracing/processing/borrow.rs": "0bb0a1be6fa0c565891f5d1ce48fd3a571f2f6affb0b790a64db61d1f5e96dac",
+    "tools/port-rust-tracing/processing/generate_borrow.py": "919b078dfdaaeaa5ede4197750ca6aa86aaaf77810cd5e694d549c85869260c0",
+    "tools/port-rust-tracing/processing/generate_registry.py": "7e897df59807cf7d282e6e6a321bbe23e703a3502cf3ea38bb355dd4497fb5f3",
+    "tools/port-rust-tracing/processing/producer.py": "943a9ea71ef5b07cd65ee08af5280bbb55d27a2e5c8103c267e5e4526dd5a6e2",
+    "tools/port-rust-tracing/processing/registry.rs": "a96de6a5d78da15a3763999b806782fa8dca17caa2e0c9d1e874de30f1e3e78b",
+    "tools/port-rust-tracing/processing/test_producer.py": "0a964843411fea17ded1ff06ffdb4f31ceda73b4a04a56eb15d6366d9f1ce406"
+  },
+  "producer_profile": {
+    "environment_specific": true,
+    "filenames": "verbatim native producer"
+  }
 }

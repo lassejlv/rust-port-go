@@ -255,14 +255,23 @@ jobs:
         run: |
           python3 tools/port-rust-tracing/generate.py --check
           python3 tools/port-rust-tracing/processing/generate.py --check
-          python3 tools/port-rust-tracing/processing/generate_borrow.py --check
-          python3 tools/port-rust-tracing/processing/generate_registry.py --check
+          producer="$RUNNER_TEMP/ferrugo-tracing-producer"
+          python3 tools/port-rust-tracing/processing/generate_borrow.py --output-dir "$producer"
+          python3 tools/port-rust-tracing/processing/generate_registry.py --output-dir "$producer"
+          FERRUGO_TRACING_PRODUCER_DIR="$producer" go test ./port/support/rusttracing -count=1
+          python3 -m unittest discover -s tools/port-rust-tracing/processing -p 'test_*.py'
         env:
           FERRUGO_RUSTC: rustc
           FERRUGO_RUSTDOC: rustdoc
           FERRUGO_CARGO: cargo
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: nightly-2026-11-04
+      - name: Retain exact native tracing producer evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tracing-native-producer
+          path: ${{ runner.temp }}/ferrugo-tracing-producer
       - name: Verify hash-table and sorting support against actual SDKs
         run: |
           python3 tools/port-rust-unord/table/check.py

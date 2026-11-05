@@ -5,7 +5,6 @@ import (
 	"bytes"
 	"context"
 	"encoding/hex"
-	"encoding/json"
 	"fmt"
 	"os"
 	"os/exec"
@@ -23,14 +22,8 @@ func TestRegistryPoisonChild(t *testing.T) {
 		return
 	}
 	caseName := os.Getenv("FERRUGO_TRACING_POISON_CASE")
-	data, err := os.ReadFile("../../../tools/port-rust-tracing/processing/REGISTRY_VALIDATION.json")
+	profile, _, _, err := tracingProducerLoad("registry")
 	if err != nil {
-		t.Fatal(err)
-	}
-	var profile struct {
-		Locations map[string]*rustfmt.SourceLocation `json:"locations"`
-	}
-	if err := json.Unmarshal(data, &profile); err != nil {
 		t.Fatal(err)
 	}
 	rt := DefaultRuntime()
@@ -159,7 +152,7 @@ func TestRegistryPoisonChild(t *testing.T) {
 }
 
 func TestRegistryPoisonNativeOracle(t *testing.T) {
-	data, err := os.ReadFile("testdata/registry_poison.tsv")
+	profile, data, directory, err := tracingProducerLoad("registry")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -175,7 +168,7 @@ func TestRegistryPoisonNativeOracle(t *testing.T) {
 		}
 		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 		cmd := exec.CommandContext(ctx, binary, "-test.run=^TestRegistryPoisonChild$")
-		cmd.Env = append(os.Environ(), "FERRUGO_TRACING_POISON_MODE="+p[0], "FERRUGO_TRACING_POISON_CASE="+p[1])
+		cmd.Env = append(tracingProducerChildEnv(profile, directory), "FERRUGO_TRACING_POISON_MODE="+p[0], "FERRUGO_TRACING_POISON_CASE="+p[1])
 		var out bytes.Buffer
 		cmd.Stdout = &out
 		cmd.Stderr = os.Stderr

@@ -36,13 +36,14 @@
     "port/support/rustfmt/integer_radix.go": "ac7a855b63cfd50089f3980f1b379a709f12b7373a5422d9686f1150de2f6550",
     "port/support/rustfmt/panic.go": "215086bed1fdc10c547013bc9cd8557434fdd962ca0678fdd2e6bb9994b22fd8",
     "port/support/rustfmt/unicode18.go": "e2d3251c139f53548ac92c6f68998ac1bd6685720741725741cf89df0fd9a91f",
-    "port/support/rusttracing/borrow_panic_test.go": "b75702a8b0bf0ebf929f9787d49f284fc9e40fd976f2c9ba281783d1864d93f7",
+    "port/support/rusttracing/borrow_panic_test.go": "c6cdca83be496726c3b1e13d2b60b54f40000d326b9df5176c1d3aba0951d8a9",
     "port/support/rusttracing/context.go": "92f2b7c88230aba925744aee4c76a073b2dbe1ff10479c2b3e842c3601dbf177",
     "port/support/rusttracing/context_test.go": "4424b28ade48cf3e118b0013402e1fc1e28168ed62390c582cb6998513773066",
     "port/support/rusttracing/dispatch.go": "d18f18796a6df70543682490311264668814666ddfbde68861df9f5c5617439e",
     "port/support/rusttracing/oracle_test.go": "1ac97b0dfc60bd5dc9e4ed224e9374ee2cafdbc13300598384a136914dd2ea1f",
     "port/support/rusttracing/processing_test.go": "b4d83f0c4b87ace6afc37c76a55243f3bb7d5eeca804f36804b127aab5d30433",
-    "port/support/rusttracing/registry_poison_test.go": "e64353545537dbac2084bde025825a6e4b031269ca2add18ad4f56d962174997",
+    "port/support/rusttracing/producer_evidence_test.go": "ac2650dce1c1d7db92401ad02bea37c287926200084b7f7ca2c186f6d0c235b8",
+    "port/support/rusttracing/registry_poison_test.go": "2911db40de135cb3708d7d87b25cb8659985f6d194cb2e7f556fbe6c2dcb5de6",
     "port/support/rusttracing/span.go": "43e243f9c8f286b959374e6b015deb6098a78babde0ae6370993ac69306002af",
     "port/support/rusttracing/value.go": "4e61d9c50c9740cc3bd30f170ba2b7f51e1c47f741cd38b2e15b9068ca33b5a2"
   }

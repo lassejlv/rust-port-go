@@ -5,7 +5,6 @@ import (
 	"bytes"
 	"context"
 	"encoding/hex"
-	"encoding/json"
 	"fmt"
 	"os"
 	"os/exec"
@@ -23,14 +22,8 @@ func TestBorrowPanicChild(t *testing.T) {
 		return
 	}
 	caseName := os.Getenv("FERRUGO_TRACING_BORROW_CASE")
-	data, err := os.ReadFile("../../../tools/port-rust-tracing/processing/BORROW_VALIDATION.json")
+	profile, _, _, err := tracingProducerLoad("borrow")
 	if err != nil {
-		t.Fatal(err)
-	}
-	var profile struct {
-		Locations map[string]*rustfmt.SourceLocation `json:"locations"`
-	}
-	if err := json.Unmarshal(data, &profile); err != nil {
 		t.Fatal(err)
 	}
 	var operation func(rustfmt.Context)
@@ -113,7 +106,7 @@ func TestBorrowPanicChild(t *testing.T) {
 }
 
 func TestBorrowAndZeroIDNativeOracle(t *testing.T) {
-	data, err := os.ReadFile("testdata/borrow_panic.tsv")
+	profile, data, directory, err := tracingProducerLoad("borrow")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -129,7 +122,7 @@ func TestBorrowAndZeroIDNativeOracle(t *testing.T) {
 		}
 		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 		cmd := exec.CommandContext(ctx, binary, "-test.run=^TestBorrowPanicChild$")
-		cmd.Env = append(os.Environ(), "FERRUGO_TRACING_BORROW_MODE="+p[0], "FERRUGO_TRACING_BORROW_CASE="+p[1])
+		cmd.Env = append(tracingProducerChildEnv(profile, directory), "FERRUGO_TRACING_BORROW_MODE="+p[0], "FERRUGO_TRACING_BORROW_CASE="+p[1])
 		var out bytes.Buffer
 		cmd.Stdout = &out
 		cmd.Stderr = os.Stderr

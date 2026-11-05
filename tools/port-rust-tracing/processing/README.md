@@ -41,3 +41,30 @@ python3 tools/port-rust-tracing/processing/generate_borrow.py --check
 python3 tools/port-rust-tracing/processing/generate_registry.py --check
 go test ./port/support/rusttracing
 ```
+
+Borrow and registry evidence contains actual dependency-source Cargo-cache
+filenames. The checked-in files are historical producer profiles. Default
+generation refuses different raw observations and directs a new producer to
+`--output-dir`; observer filenames are never normalized. Both generators can
+write into the same explicit directory:
+
+```sh
+producer="${RUNNER_TEMP:-/tmp}/ferrugo-tracing-producer"
+python3 tools/port-rust-tracing/processing/generate_borrow.py --output-dir "$producer"
+python3 tools/port-rust-tracing/processing/generate_registry.py --output-dir "$producer"
+FERRUGO_TRACING_PRODUCER_DIR="$producer" go test ./port/support/rusttracing -count=1
+python3 -m unittest discover -s tools/port-rust-tracing/processing -p 'test_*.py'
+```
+
+Upload all four files in that directory: BORROW_VALIDATION.json,
+borrow_panic.tsv, REGISTRY_VALIDATION.json and registry_poison.tsv. Each
+manifest binds current source/tool inputs, exact raw bytes and producer
+locations. Parent and child replay validate bounded regular files, source and
+raw hashes, schema/counts and abort coverage. Explicit empty, missing,
+symlinked or corrupted selections never fall back. Parents pass the canonical
+directory and captured manifest SHA to children. Relocation tests replay all
+seventeen cases from a copied bundle without changing its producer metadata.
+The 384 dispatch cases and three processing cases remain stable `--check`
+profiles. Complete verified source/archive/compiler/reference loading remains
+mandatory for every native producer run. This repair changes tooling and Go
+tests only; it adds no whole tracing or Span source-file credit.
