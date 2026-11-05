@@ -1,0 +1,81 @@
+{
+  "scope": "Actual unchanged Map/Set/Bag FromUnordItems and ExtendUnord, FromFxSet allocation transfer, generic and VecIntoIter strategies; no whole Unord/std credit",
+  "cases": 1296,
+  "aborts": 302,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "reference_inputs": {
+    "tools/port-rust-span-lib/reference.py": "2094b30a5149056c683edffc6cc4a8d6d6984d81933ecb10c80e5f34c355db9e",
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+  },
+  "locations": {
+    "next": {
+      "File": "tools/port-rust-unord/items/conversion_oracle.rs",
+      "Line": 18,
+      "Column": 156
+    },
+    "item_drop": {
+      "File": "tools/port-rust-unord/items/conversion_oracle.rs",
+      "Line": 11,
+      "Column": 146
+    },
+    "hash": {
+      "File": "tools/port-rust-unord/items/conversion_oracle.rs",
+      "Line": 12,
+      "Column": 207
+    },
+    "for_each": {
+      "File": "tools/port-rust-unord/items/conversion_oracle.rs",
+      "Line": 20,
+      "Column": 88
+    },
+    "input_drop": {
+      "File": "tools/port-rust-unord/items/conversion_oracle.rs",
+      "Line": 16,
+      "Column": 170
+    },
+    "panic in a destructor during cleanup": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      "Line": 233,
+      "Column": 5
+    },
+    "nested": {
+      "File": "tools/port-rust-unord/items/conversion_oracle.rs",
+      "Line": 26,
+      "Column": 139
+    },
+    "fold": {
+      "File": "tools/port-rust-unord/items/conversion_oracle.rs",
+      "Line": 21,
+      "Column": 100
+    },
+    "outer.unwind": {
+      "File": "tools/port-rust-unord/items/conversion_oracle.rs",
+      "Line": 40,
+      "Column": 919
+    },
+    "outer.processing": {
+      "File": "tools/port-rust-unord/items/conversion_oracle.rs",
+      "Line": 40,
+      "Column": 1009
+    }
+  },
+  "raw_sha256": "a75d1cb530909318d876458241d1b88acfdd98210020e9ee9e32c4c53c721df7",
+  "fixture_sha256": "c22211a5410363901c776bc86b50d9d037a339b3539aca679d5acc1197e0b92e",
+  "files": {
+    "tools/port-rust-unord/items/conversion_oracle.rs": "7d00654704b612bd0b6b18b99d4b764481b79be845c81b6499880fc19d31e2fe",
+    "tools/port-rust-unord/items/generate_conversion.py": "8f836e310808c9ac1aa204061f9e6de6031e242be0ab452a4d010cdf342ad77c",
+    "port/support/rusthashmap/extend_scoped.go": "5df8265f3efb961b22c731d1200549fa5254362b93c7ae5856bca092431ed596",
+    "port/support/rustvec/scoped_consumer.go": "2e91a9838ec5b83b288fb819af192ac5b101ef868373d25bc50a88dbf7b99b4d",
+    "port/support/rustvec/collect.go": "1e8f231b6af033b15370ff1737f85e4eccaf92c7447f7942338cbf1976e64212",
+    "port/rust/compiler/rustc_data_structures/src/unord_items_conversion.go": "cfbdadd1885fdc6928bc7f30c5320eb051368947759aec3ae157ae9f95c6302f",
+    "port/rust/compiler/rustc_data_structures/src/unord_items_conversion_test.go": "5cbd427294163a747ea1ac313c7565dc95bedf181a1b00d55201c15614973b9d",
+    "port/rust/compiler/rustc_data_structures/src/unord_items_collections.go": "97b68c1b62678630ba56553bae302594ff0215ad0e996682f2d5fcff174237df",
+    "port/rust/compiler/rustc_data_structures/src/unord_collection_marker.go": "4869b835249b595045dec07770428a5f23dd608c3b93637ec03f932a6948805d",
+    "port/rust/compiler/rustc_data_structures/src/unord_items.go": "89c74b62b5945e5b6711e4940e67aba2772b0e4f74478578d2b0dddfaa8ec4ea",
+    "port/rust/compiler/rustc_data_structures/src/unord_bound_primaries.go": "1f5ad0c8506beb67ac69950ab19e55de54bc39fcab91a449128497160aa855ec",
+    "port/rust/compiler/rustc_data_structures/src/unord_function.go": "4749340d8542d8d48af8a2c901d7f647ecf1666def468023bace836241b9213f"
+  }
+}

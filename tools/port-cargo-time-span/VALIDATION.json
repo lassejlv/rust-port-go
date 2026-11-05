@@ -1,0 +1,69 @@
+{
+  "actual_native_aborts": 8,
+  "credit_scope": "Only complete Cargo time_span.rs proposed. stdString/fmt/RawVec/anyhow used adapters receive no whole-source-file/crate credit.",
+  "git_blob": "8ef61ed1aa9b32c62ade1a7462123443dd66f389",
+  "go_validation": {
+    "anyhow_race_seconds": 1.011,
+    "go": "1.23.12",
+    "isolated_base": "coherent checkpoint35 plus exact new owned paths",
+    "limitations": "native allocations/cell/buffer identity compared only within process; no allocator/ABI or automatic native backtrace/TLS claim",
+    "string_native_replay_seconds": 0.414,
+    "string_race_seconds": 3.456,
+    "time_span_race_seconds": 2.631,
+    "time_span_replay_seconds": 0.461,
+    "vet": "all3affected packages passed; -p1 GOMAXPROCS2"
+  },
+  "initial_prototype_archive": "/tmp/ferrugo-time-span-pre-owning-prototype",
+  "native_parser_formatter_ownership_context_records": 16676,
+  "native_profiles": [
+    {
+      "debug_assertions": false,
+      "name": "d0o0",
+      "original_assertions": 21,
+      "original_tests": 2,
+      "overflow_checks": false
+    },
+    {
+      "debug_assertions": false,
+      "name": "d0o1",
+      "original_assertions": 21,
+      "original_tests": 2,
+      "overflow_checks": true
+    },
+    {
+      "debug_assertions": true,
+      "name": "d1o0",
+      "original_assertions": 21,
+      "original_tests": 2,
+      "overflow_checks": false
+    },
+    {
+      "debug_assertions": true,
+      "name": "d1o1",
+      "original_assertions": 21,
+      "original_tests": 2,
+      "overflow_checks": true
+    }
+  ],
+  "native_string_operations": 45696,
+  "native_string_scripts": 1344,
+  "native_string_sdks": [
+    "1.99.1/Unicode17",
+    "1.101.0-nightly/Unicode18"
+  ],
+  "original_assertions": 21,
+  "original_tests": 2,
+  "producer_dir": "/tmp/ferrugo-time-span-ownership-review-producer",
+  "python_integrity_tests": 11,
+  "source_file": "src/util/time_span.rs",
+  "source_lines": 73,
+  "source_pin": "24de4721844c7a4d839072bab6fb66d41c9bc1f4",
+  "source_sha256": "185b6ee6c972b98a19ca7577482777c9e706b71869e6a6d3008d5a9a1c36f130",
+  "state": "ready for independent review; no ledger attestation",
+  "tool_only_hardening_refresh": {
+    "changes": "Cache ownership validated before every mkdir/write; paired compiler selection; Go API/fixture bytes unchanged",
+    "fixture_bytes": "Both fixtures unchanged from minimum-Go replay/race/vet validated corpus",
+    "native_regeneration": "PASS; eight std String profiles and four TimeSpan/Anyhow profiles sequentially",
+    "python_integrity_tests": 11
+  }
+}

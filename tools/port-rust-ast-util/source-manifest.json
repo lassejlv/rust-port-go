@@ -1,0 +1,206 @@
+{
+  "schema": 1,
+  "revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "status": "complete-leaf-candidates-with-held-comments-owned-vector-contract",
+  "source_files": [
+    {
+      "path": "compiler/rustc_ast/src/util/case.rs",
+      "blob": "1afd7dea7408ecb9c247e101ac7f4f951c636cf3",
+      "sha256": "bbbb6c9608cae42b1ddb2587311d942252cf08bb1181d5cd7454e93be312ae08",
+      "bytes": 175,
+      "lines": 6,
+      "targets": [
+        "port/rust/compiler/rustc_ast/src/util/case.go",
+        "port/rust/compiler/rustc_ast/src/util/case_types/case.go"
+      ],
+      "regions": [
+        {
+          "start": 1,
+          "end": 6,
+          "contract": "Case identity, variants, Copy/Clone/PartialEq/Eq/Debug and inherited clone_from"
+        }
+      ]
+    },
+    {
+      "path": "compiler/rustc_ast/src/util/comments.rs",
+      "blob": "e12818623d8ec3e429475d723c617d08fbf976f5",
+      "sha256": "c8c64ea483fb455a85c110e88abd3988b0381b350dcf1ce255dacc7fecbde521",
+      "bytes": 4372,
+      "lines": 133,
+      "targets": [
+        "port/rust/compiler/rustc_ast/src/util/comments.go"
+      ],
+      "regions": [
+        {
+          "start": 1,
+          "end": 7,
+          "contract": "actual Span/Symbol, parent CommentKind, canonical child tests"
+        },
+        {
+          "start": 8,
+          "end": 18,
+          "contract": "CommentStyle variants and exact derives"
+        },
+        {
+          "start": 19,
+          "end": 25,
+          "contract": "Comment public fields and deep Clone/default clone_from"
+        },
+        {
+          "start": 26,
+          "end": 34,
+          "contract": "may_have_doc_links"
+        },
+        {
+          "start": 35,
+          "end": 37,
+          "contract": "beautify_doc_string public boundary"
+        },
+        {
+          "start": 38,
+          "end": 52,
+          "contract": "get_vertical_trim"
+        },
+        {
+          "start": 53,
+          "end": 101,
+          "contract": "get_horizontal_trim"
+        },
+        {
+          "start": 102,
+          "end": 133,
+          "contract": "real Symbol borrow, Rust lines, prefix/star removal, conditional interning"
+        }
+      ]
+    },
+    {
+      "path": "compiler/rustc_ast/src/util/unicode.rs",
+      "blob": "6f57d66b2273a2cf4421d42f8057c4290dfc653e",
+      "sha256": "3f6ce1e0422a69f212bb322f5f7e19c94d0d23cecc6d8895843cc9c62d1950dc",
+      "bytes": 1020,
+      "lines": 35,
+      "targets": [
+        "port/rust/compiler/rustc_ast/src/util/unicode.go"
+      ],
+      "regions": [
+        {
+          "start": 1,
+          "end": 6,
+          "contract": "ordered shared immutable flow-control scalar constant"
+        },
+        {
+          "start": 7,
+          "end": 35,
+          "contract": "contains_text_flow_control_chars original memchr/three-byte-skip algorithm"
+        }
+      ]
+    }
+  ],
+  "original_test": {
+    "path": "compiler/rustc_ast/src/util/comments/tests.rs",
+    "blob": "7a87ccea62a7e06db547535406fe7bbe48a852f7",
+    "sha256": "59bf750cd2c25aba56fbd7fd56de05bd693de510a107fb1c5837b00d9f88e4a5",
+    "bytes": 2274,
+    "lines": 64,
+    "target": "port/rust/compiler/rustc_ast/src/util/comments/tests_test.go",
+    "tests": [
+      "test_block_doc_comment_1",
+      "test_block_doc_comment_2",
+      "test_block_doc_comment_3",
+      "test_line_doc_comment",
+      "test_doc_blocks"
+    ],
+    "go_tests": [
+      "TestBlockDocComment1",
+      "TestBlockDocComment2",
+      "TestBlockDocComment3",
+      "TestLineDocComment",
+      "TestDocBlocks"
+    ],
+    "assertions": 10
+  },
+  "scoped_dependencies": [
+    {
+      "path": "compiler/rustc_ast/src/token.rs",
+      "blob": "4ec5fe2a8bd84a9578851f6da04e8a8338f48713",
+      "sha256": "d99c9f5a247cb2f24b759fa719d0c1c884970f32f7ade2b08424a2bea69d3fa9",
+      "bytes": 42471,
+      "lines": 1246,
+      "scope": "ONLY CommentKind declaration and exact derive traits at40\u201344; no whole token.rs credit",
+      "block_sha256": "7b283099460ba11b27991e4bfea0d4139690df72ec7a6b8f441c543114cde1da",
+      "target": "port/rust/compiler/rustc_ast/src/token_comment_kind.go"
+    }
+  ],
+  "inspected_deferred_files": [
+    {
+      "path": "compiler/rustc_ast/src/attr/version.rs",
+      "blob": "62755a2456ae12201b4496c69e1db74cd1dfba5b",
+      "sha256": "1711e4daf919a8190e3703565446200d7777f602729d14395dcb700c39c969fd",
+      "bytes": 1943,
+      "lines": 53
+    },
+    {
+      "path": "compiler/rustc_ast/src/node_id.rs",
+      "blob": "42a5914a41fe3d35c3d8da89b535ec49833f149a",
+      "sha256": "89273655bd42cced470a8067ea6f3012afa3a0f3e9ec4a96680c33cc614a036f",
+      "bytes": 1746,
+      "lines": 52
+    }
+  ],
+  "acceptance": "No completion claim until actual unchanged crate/native proofs, coherent Go checks and independent review. Parent main ledger owns source credit.",
+  "dependencies": [
+    {
+      "port": "rustc_span Symbol/SessionGlobals/BytePos",
+      "contract": "real session interner, borrowed UTF8 and conditional intern; current explicit runtime metadata"
+    },
+    {
+      "port": "rustc_ast token::CommentKind",
+      "contract": "scoped enum/actual macro-derived complete traits only; parent token file remains unported"
+    },
+    {
+      "port": "core Unicode18 WhiteSpace table",
+      "contract": "exact nonASCII lookup plus actual ASCII whitespace cases, not host Go Unicode"
+    },
+    {
+      "port": "rustc_serialize and rustc_span codecs",
+      "contract": "actual SpanEncoder/SpanDecoder dictionaries and real MemEncoder/MemDecoder/footer"
+    },
+    {
+      "port": "rustc_data_structures stable-hash bridge/rustc-stable-hash0.1.2",
+      "contract": "caller-owned real StableSipHasher128 and borrowed context, no hash constants"
+    },
+    {
+      "port": "neutral rustfmt",
+      "contract": "mutable fallible Formatter, explicit panic profile cells and current panic phases"
+    },
+    {
+      "port": "ruststr owning String cells",
+      "contract": "NEW primary StringCell preserves buffer length/capacity/mutation/move/Drop; fresh Clone cap=len. Exact SDK1.101 source and primitive native/Go proof retained in tools/port-cargo-time-span/string-manifest.json. No whole std String/Vec credit."
+    }
+  ],
+  "native_evidence": {
+    "profiles": [
+      "d0o0",
+      "d0o1",
+      "d1o0",
+      "d1o1"
+    ],
+    "records_per_profile": 26042,
+    "request_records_per_profile": 25932,
+    "trait_records_per_profile": 110,
+    "tag_cases_per_profile": 264,
+    "sigabrt_per_profile": 2,
+    "valid_scalars_per_profile": 1112064,
+    "scalar_string_positions": 5,
+    "actual_unchanged_ast_tests_per_profile": 6,
+    "scoped_original_test_declarations": 5,
+    "scoped_original_assertion_sites": 10,
+    "go_validation": "Recorded separately after actual gates in VALIDATION.md; no claim here."
+  },
+  "held_complete_files": [
+    {
+      "path": "compiler/rustc_ast/src/util/comments.rs",
+      "reason": "Public Comment.lines remains []StringCell; exact cloned capacity and owning String cells do not supply source Vec reserve/push/pop/iteration/move operations. Full-file credit withheld pending owning vector interface."
+    }
+  ]
+}

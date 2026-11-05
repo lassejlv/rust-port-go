@@ -1,0 +1,87 @@
+{
+  "scope": "Actual unchanged ordinary Map/Set FromIterator/Extend, actual IntoIterator Self consumption and prepared iterator leaks, nested current insertion consumers; no whole Unord/std credit",
+  "cases": 720,
+  "aborts": 296,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "reference_inputs": {
+    "tools/port-rust-span-lib/reference.py": "2094b30a5149056c683edffc6cc4a8d6d6984d81933ecb10c80e5f34c355db9e",
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+  },
+  "locations": {
+    "next": {
+      "File": "tools/port-rust-unord/collections-iterator/oracle.rs",
+      "Line": 18,
+      "Column": 156
+    },
+    "item_drop": {
+      "File": "tools/port-rust-unord/collections-iterator/oracle.rs",
+      "Line": 11,
+      "Column": 146
+    },
+    "hash": {
+      "File": "tools/port-rust-unord/collections-iterator/oracle.rs",
+      "Line": 12,
+      "Column": 207
+    },
+    "for_each": {
+      "File": "tools/port-rust-unord/collections-iterator/oracle.rs",
+      "Line": 20,
+      "Column": 88
+    },
+    "input_drop": {
+      "File": "tools/port-rust-unord/collections-iterator/oracle.rs",
+      "Line": 16,
+      "Column": 170
+    },
+    "panic in a destructor during cleanup": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      "Line": 233,
+      "Column": 5
+    },
+    "nested": {
+      "File": "tools/port-rust-unord/collections-iterator/oracle.rs",
+      "Line": 26,
+      "Column": 139
+    },
+    "producer_drop": {
+      "File": "tools/port-rust-unord/collections-iterator/oracle.rs",
+      "Line": 29,
+      "Column": 168
+    },
+    "into_iter": {
+      "File": "tools/port-rust-unord/collections-iterator/oracle.rs",
+      "Line": 30,
+      "Column": 199
+    },
+    "fold": {
+      "File": "tools/port-rust-unord/collections-iterator/oracle.rs",
+      "Line": 21,
+      "Column": 100
+    },
+    "outer.unwind": {
+      "File": "tools/port-rust-unord/collections-iterator/oracle.rs",
+      "Line": 38,
+      "Column": 960
+    },
+    "outer.processing": {
+      "File": "tools/port-rust-unord/collections-iterator/oracle.rs",
+      "Line": 38,
+      "Column": 1050
+    }
+  },
+  "raw_sha256": "f52264e733448aceda69536205d702064242c80114545ecd8f95de2e786a6fbc",
+  "fixture_sha256": "666a84d8a30693665796b78560e504c6454195416aff698024d1b8940d7b3453",
+  "files": {
+    "tools/port-rust-unord/collections-iterator/oracle.rs": "33d55286d3cc0bd8c17185c21c03d663f8dd95bb75b37a4c7b0e13bea6327509",
+    "tools/port-rust-unord/collections-iterator/generate.py": "e51ca997b891ffc6d936755b716cd2230cb7cd69752cfc93131958e2cf25cd89",
+    "port/support/rusthashmap/extend_scoped.go": "5df8265f3efb961b22c731d1200549fa5254362b93c7ae5856bca092431ed596",
+    "port/support/rustvec/scoped_consumer.go": "2e91a9838ec5b83b288fb819af192ac5b101ef868373d25bc50a88dbf7b99b4d",
+    "port/support/rustvec/collect.go": "1e8f231b6af033b15370ff1737f85e4eccaf92c7447f7942338cbf1976e64212",
+    "port/rust/compiler/rustc_data_structures/src/unord_collections_iterator_scoped.go": "350ff74dfb40ccb588f423c5465b7650f5ed1aac806f4e5fa182c571bcb199db",
+    "port/rust/compiler/rustc_data_structures/src/unord_collections_iterator_test.go": "30ce98277dbdb7e226dbdc46fb951ef048712adc8b12be47731e20ae3d823611",
+    "port/support/rustvec/ownership.go": "4312821d11339a4abb9f60295f492183eb5c34a26f40876ee990a2f09f89dc6b"
+  }
+}

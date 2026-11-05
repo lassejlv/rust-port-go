@@ -1,0 +1,27 @@
+{
+  "base_revision": "2b747ed465d99b22b05992b28800918a211c59cb",
+  "frozen_string_overlay_sha256": {
+    "port/support/ruststr/owned_string.go": "6bf87a3875ee72c2a5277f5e6b34c462d29985578752ebd47893d5a381e874fa",
+    "port/support/ruststr/owned_string_oracle_test.go": "60ffe4eb8f54fdd0a30c8a76c730d4e62610e9cce05b58019b4443103af60c73",
+    "port/support/ruststr/owned_string_test.go": "027ec408a6f7bb0286fe2b6af326336c47bb52b6f76e4d6c6c10fef6e23a5047",
+    "port/support/ruststr/testdata/owned-string.jsonl.gz": "2d9984b05b2b0108f4cf4f99ebf288984aa5be2e0c2445e8a263a067d252a35d",
+    "tools/port-cargo-time-span/generate_string.py": "3030c13e0e15cb06e5682feafd9b7e18b2a29c009b5e0746ff3559e12d98f21c",
+    "tools/port-cargo-time-span/prepare.py": "b377f99a59d56a706d1cc3af532d51a92d8d0959eea930bc5b8810d7f696c2d6",
+    "tools/port-cargo-time-span/sdk1101.json": "cdfb0be958df30fd9910b97f4462b46448f17abc0f48e3a13ac3f4e9403e57a6",
+    "tools/port-cargo-time-span/sdk199.json": "49d7128145f7d9a00c19bfbe7d1127a7daa5c8d4ae9881e03c0c401619baf383",
+    "tools/port-cargo-time-span/std_string.rs": "b896d40c1c41f6277dfbc4bbac6f3d3756c5b533f64f7312b58c7e2c66f54bae",
+    "tools/port-cargo-time-span/string-manifest.json": "e73f5a48e07a2cb1d77e0f1a557daff0dc55435dc483876fbacdd1d4cd702eaa"
+  },
+  "go_sha256": {
+    "port/rust/compiler/rustc_span/src/source_map_owned_path.go": "308f305c33dd0eeaf73b53ba6fa84bf9c7bd276505413ae454cf416509c6746f",
+    "port/rust/compiler/rustc_span/src/source_map_owned_path_buf.go": "90d319cc386f8f9f6c6a1798d86a17e1f27f1a797dec8ae69300253179dbb95e",
+    "port/rust/compiler/rustc_span/src/source_map_owned_path_cow.go": "5c692edfd06c9a4234430c6add7b0d5a4eedda183111ea198c71021b215179bb",
+    "port/rust/compiler/rustc_span/src/source_map_owned_path_oracle_test.go": "e10dc007c1301c00e028c5550ce9bd30bed756e5cabdd19c24d77adf50e7a898",
+    "port/rust/compiler/rustc_span/src/source_map_owned_path_ownership_test.go": "9578bba33bd46439032300057e5a534fd002450df82a593ae668dfed7628de10",
+    "port/support/ruststr/owned_string_buffer_bridge.go": "e709cbcba057acefc1630dfaf03792d0aad48260191fe1fc0bc64ea29c492d75"
+  },
+  "native_manifest_sha256": "a21f14702aa906de17f9174e40d229ec69b917a4371550921e6f53427de622c8",
+  "producer_sha256": "d3b0e3db09ee76c9af5150d1e2af6e9ebe3f46b4b6317fc9a8b29d276466f6ac",
+  "schema": 1,
+  "scope": "Accepted main base plus exact final frozen String10 and six NEW owning path/bridge Go files; no live Syntax/Unord/Packed/Symbol overlay"
+}

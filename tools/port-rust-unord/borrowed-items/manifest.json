@@ -1,0 +1,81 @@
+{
+  "scope": "Actual unchanged Bag/Set/MapKeys cloned/copied via actual borrowed iterators; selected std Cloned::count invokes I::fold with Clone/Drop while Copied::count invokes independent I::count; no std/whole Unord credit",
+  "cases": 720,
+  "aborts": 74,
+  "bounds": [
+    {
+      "configuration": "positive",
+      "compiles": true,
+      "diagnostic": ""
+    },
+    {
+      "configuration": "no_clone",
+      "compiles": false,
+      "diagnostic": "error[E0599]: the method `cloned` exists for struct `UnordItems<&Value, impl Iterator<Item = &Value>>`, but its trait bounds were not satisfied\n --> tools/port-rust-unord/borrowed-items/bounds.rs:7:36\n  |\n2 | #[cfg(no_clone)]struct Value;\n  |                 ------------ doesn't satisfy `Value: Clone`\n...\n7 |  #[cfg(no_clone)]let _=bag.items().cloned();\n  |                                    ^^^^^^ method cannot be called on `UnordItems<&Value, impl Iterator<Item = &Value>>` due to unsatisfied trait bounds\n  |\n  = note: the following trait bounds were not satisfied:\n          `Value: Clone`\n          `UnordItems<&Value, impl Iterator<Item = &Value>>: Iterator`\n          which is required by `&mut UnordItems<&Value, impl Iterator<Item = &Value>>: Iterator`\nhelp: consider annotating `Value` with `#[derive(Clone)]`\n  |\n2 | #[cfg(no_clone)]#[derive(Clone)]\n  |                 ++++++++++++++++\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0599`.\n"
+    },
+    {
+      "configuration": "no_copy",
+      "compiles": false,
+      "diagnostic": "error[E0599]: the method `copied` exists for struct `UnordItems<&Value, impl Iterator<Item = &Value>>`, but its trait bounds were not satisfied\n --> tools/port-rust-unord/borrowed-items/bounds.rs:8:35\n  |\n3 | #[cfg(no_copy)]#[derive(Clone)]struct Value;\n  |                                ------------ doesn't satisfy `Value: Copy`\n...\n8 |  #[cfg(no_copy)]let _=bag.items().copied();\n  |                                   ^^^^^^ method cannot be called on `UnordItems<&Value, impl Iterator<Item = &Value>>` due to unsatisfied trait bounds\n  |\n  = note: the following trait bounds were not satisfied:\n          `Value: Copy`\n          `UnordItems<&Value, impl Iterator<Item = &Value>>: Iterator`\n          which is required by `&mut UnordItems<&Value, impl Iterator<Item = &Value>>: Iterator`\nhelp: consider annotating `Value` with `#[derive(Clone, Copy)]`\n  |\n3 | #[cfg(no_copy)]#[derive(Clone)]#[derive(Clone, Copy)]\n  |                                ++++++++++++++++++++++\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0599`.\n"
+    },
+    {
+      "configuration": "opaque_cloned",
+      "compiles": false,
+      "diagnostic": "error[E0599]: the method `clone` exists for struct `UnordItems<u64, impl Iterator<Item = u64>>`, but its trait bounds were not satisfied\n  --> tools/port-rust-unord/borrowed-items/bounds.rs:11:50\n   |\n11 |  #[cfg(opaque_cloned)]let _=bag.items().cloned().clone();\n   |                                                  ^^^^^ method cannot be called on `UnordItems<u64, impl Iterator<Item = u64>>` due to unsatisfied trait bounds\n   |\n   = note: the following trait bounds were not satisfied:\n           `impl Iterator<Item = u64>: Clone`\n           which is required by `UnordItems<u64, impl Iterator<Item = u64>>: Clone`\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0599`.\n"
+    },
+    {
+      "configuration": "opaque_copied",
+      "compiles": false,
+      "diagnostic": "error[E0599]: the method `clone` exists for struct `UnordItems<u64, impl Iterator<Item = u64>>`, but its trait bounds were not satisfied\n  --> tools/port-rust-unord/borrowed-items/bounds.rs:12:50\n   |\n12 |  #[cfg(opaque_copied)]let _=bag.items().copied().clone();\n   |                                                  ^^^^^ method cannot be called on `UnordItems<u64, impl Iterator<Item = u64>>` due to unsatisfied trait bounds\n   |\n   = note: the following trait bounds were not satisfied:\n           `impl Iterator<Item = u64>: Clone`\n           which is required by `UnordItems<u64, impl Iterator<Item = u64>>: Clone`\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0599`.\n"
+    }
+  ],
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "reference_inputs": {
+    "tools/port-rust-span-lib/reference.py": "2094b30a5149056c683edffc6cc4a8d6d6984d81933ecb10c80e5f34c355db9e",
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+  },
+  "locations": {
+    "clone": {
+      "File": "tools/port-rust-unord/borrowed-items/oracle.rs",
+      "Line": 11,
+      "Column": 181
+    },
+    "item_drop": {
+      "File": "tools/port-rust-unord/borrowed-items/oracle.rs",
+      "Line": 12,
+      "Column": 146
+    },
+    "panic in a destructor during cleanup": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      "Line": 233,
+      "Column": 5
+    },
+    "outer.unwind": {
+      "File": "tools/port-rust-unord/borrowed-items/oracle.rs",
+      "Line": 35,
+      "Column": 845
+    },
+    "outer.processing": {
+      "File": "tools/port-rust-unord/borrowed-items/oracle.rs",
+      "Line": 35,
+      "Column": 935
+    }
+  },
+  "raw_sha256": "aa2b58827a1b19efb634704a149c2b2a507ae5008459798feda45f27bda992ba",
+  "fixture_sha256": "c9689e0d2e7f3107b08b80c258b520597e73f2abf0dbab8a44b3bf92320878e2",
+  "files": {
+    "tools/port-rust-unord/borrowed-items/oracle.rs": "c0413a8c27cd51338a776c94573a18685c9cfc69525d1cf3ac16a203a58d6d7d",
+    "tools/port-rust-unord/borrowed-items/generate.py": "4bedba8d1db5affd30ee81112937472d8f7f67b838c8eaf48d738d904cad53ad",
+    "tools/port-rust-unord/borrowed-items/bounds.rs": "c885519edc6c498ea49cba245b70fe15faea17db5fc14f6caff185692f004d65",
+    "port/rust/compiler/rustc_data_structures/src/unord_items_borrowed.go": "5eeff4dc0beafbd586ae5234a1b1b2fb0ed560eeaf30616880871e93d2e690bb",
+    "port/rust/compiler/rustc_data_structures/src/unord_items_borrowed_test.go": "9db40a317ef84a1e7b9ef0659e95a382acd27fac9b14c0ceea3110265d3a9079",
+    "port/rust/compiler/rustc_data_structures/src/unord_items_collections.go": "97b68c1b62678630ba56553bae302594ff0215ad0e996682f2d5fcff174237df",
+    "port/rust/compiler/rustc_data_structures/src/unord_collection_marker.go": "4869b835249b595045dec07770428a5f23dd608c3b93637ec03f932a6948805d",
+    "port/rust/compiler/rustc_data_structures/src/unord_items_delegate.go": "2b4902bf03d4a8af36777daa9b9de184a725ac64d3aad93486f90eb660552a42",
+    "port/rust/compiler/rustc_data_structures/src/unord_items.go": "89c74b62b5945e5b6711e4940e67aba2772b0e4f74478578d2b0dddfaa8ec4ea",
+    "port/rust/compiler/rustc_data_structures/src/unord_bound_primaries.go": "1f5ad0c8506beb67ac69950ab19e55de54bc39fcab91a449128497160aa855ec"
+  }
+}

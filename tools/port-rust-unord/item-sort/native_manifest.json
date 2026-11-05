@@ -1,0 +1,86 @@
+{
+  "scope": "Actual unchanged generic UnordItems collect_sorted/collect_stable_ord_by_key with real C BorrowMut/Drop, I.collect override and owned projection; no full Unord/Vec/std credit yet",
+  "cases": 864,
+  "aborts": 268,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "reference_inputs": {
+    "tools/port-rust-span-lib/reference.py": "2094b30a5149056c683edffc6cc4a8d6d6984d81933ecb10c80e5f34c355db9e",
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+  },
+  "locations": {
+    "key": {
+      "File": "tools/port-rust-unord/item-sort/oracle.rs",
+      "Line": 20,
+      "Column": 254
+    },
+    "compare": {
+      "File": "tools/port-rust-unord/item-sort/oracle.rs",
+      "Line": 15,
+      "Column": 216
+    },
+    "key_drop": {
+      "File": "tools/port-rust-unord/item-sort/oracle.rs",
+      "Line": 14,
+      "Column": 187
+    },
+    "item_drop": {
+      "File": "tools/port-rust-unord/item-sort/oracle.rs",
+      "Line": 12,
+      "Column": 166
+    },
+    "input_drop": {
+      "File": "tools/port-rust-unord/item-sort/oracle.rs",
+      "Line": 23,
+      "Column": 166
+    },
+    "borrow": {
+      "File": "tools/port-rust-unord/item-sort/oracle.rs",
+      "Line": 29,
+      "Column": 172
+    },
+    "collection_drop": {
+      "File": "tools/port-rust-unord/item-sort/oracle.rs",
+      "Line": 30,
+      "Column": 181
+    },
+    "panic in a destructor during cleanup": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      "Line": 233,
+      "Column": 5
+    },
+    "project": {
+      "File": "tools/port-rust-unord/item-sort/oracle.rs",
+      "Line": 34,
+      "Column": 238
+    },
+    "projection_drop": {
+      "File": "tools/port-rust-unord/item-sort/oracle.rs",
+      "Line": 33,
+      "Column": 161
+    },
+    "token_drop": {
+      "File": "tools/port-rust-unord/item-sort/oracle.rs",
+      "Line": 31,
+      "Column": 132
+    },
+    "outer.unwind": {
+      "File": "tools/port-rust-unord/item-sort/oracle.rs",
+      "Line": 41,
+      "Column": 1072
+    },
+    "outer.processing": {
+      "File": "tools/port-rust-unord/item-sort/oracle.rs",
+      "Line": 41,
+      "Column": 1162
+    }
+  },
+  "raw_sha256": "bfb9509bd89a166a416a9c9b27b2e26d64cf10d12fc64328810ba69f774d97eb",
+  "fixture_sha256": "61ca9bbaad26733de6fdd8793767801264396fe8439aa858a66f15a8b93c9958",
+  "files": {
+    "tools/port-rust-unord/item-sort/oracle.rs": "868e97d8c930394c75ef3e7f2e789303059bdc536a54d5f624cfe26a9aef56cd",
+    "tools/port-rust-unord/item-sort/generate.py": "c6174456205da6838f24d00263d7f9f76e392ec1dc552a341ac9c64e1579bb1b"
+  }
+}

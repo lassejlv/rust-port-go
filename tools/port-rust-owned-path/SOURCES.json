@@ -1,0 +1,69 @@
+{
+  "archive_bytes": 6030868,
+  "channel_manifest_url": "https://static.rust-lang.org/dist/2026-11-04/channel-rust-nightly.toml",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "compiler_commit": "708c94ef093ecc42fb8851e17d8383d999727abc",
+  "licenses": {
+    "COPYRIGHT": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af",
+    "LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "LICENSE-MIT": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1"
+  },
+  "manifest_sha256": "3740867978321544cb6ab736d104730a951d0b6aeda69866118765ec073f823e",
+  "schema": 1,
+  "scope": "Scoped SDK1.101 owning PathBuf/OsString/Cow operations used by rustc_span; no complete std-source or ABI credit",
+  "sha256": "d99600cbf56d2db40112095e99e138f9e2f30002ef2774d288dc525e28a1357c",
+  "url": "https://static.rust-lang.org/dist/2026-11-04/rust-src-nightly.tar.xz",
+  "version": "1.101.0-nightly (708c94ef0 2026-11-03)",
+  "sources": {
+    "library/std/src/path.rs": {
+      "member": "rust-src-nightly/rust-src/lib/rustlib/src/rust/library/std/src/path.rs",
+      "bytes": 139309,
+      "sha256": "84f5ac3c20387643e7024983675c7d298df1e32cbe5d1c3de263f372bbc77835"
+    },
+    "library/std/src/ffi/os_str.rs": {
+      "member": "rust-src-nightly/rust-src/lib/rustlib/src/rust/library/std/src/ffi/os_str.rs",
+      "bytes": 63161,
+      "sha256": "ee8dccfa999f30508e3c7f0766899f6d95a58e74f8839af52bc7b722a9d2ae70"
+    },
+    "library/std/src/sys/os_str/bytes.rs": {
+      "member": "rust-src-nightly/rust-src/lib/rustlib/src/rust/library/std/src/sys/os_str/bytes.rs",
+      "bytes": 9482,
+      "sha256": "2710bd84612357f191b30365e9327ff9a639d7ba943090e25520e10269430e6e"
+    },
+    "library/std/src/sys/os_str/wtf8.rs": {
+      "member": "rust-src-nightly/rust-src/lib/rustlib/src/rust/library/std/src/sys/os_str/wtf8.rs",
+      "bytes": 8422,
+      "sha256": "1459d8f62e09f94856dc1f5cdc95982df19e297874f1bef14dd2701218ba8078"
+    },
+    "library/alloc/src/wtf8/mod.rs": {
+      "member": "rust-src-nightly/rust-src/lib/rustlib/src/rust/library/alloc/src/wtf8/mod.rs",
+      "bytes": 22275,
+      "sha256": "e43da1c02c776c7b1131213ad5c674c671c94ca36590b690b4ee14c542a69dc1"
+    },
+    "library/core/src/wtf8.rs": {
+      "member": "rust-src-nightly/rust-src/lib/rustlib/src/rust/library/core/src/wtf8.rs",
+      "bytes": 21511,
+      "sha256": "61546b1341129ceeea917f492c78aa6bb2db34a006aa481411ef903bda88b021"
+    },
+    "library/alloc/src/raw_vec/mod.rs": {
+      "member": "rust-src-nightly/rust-src/lib/rustlib/src/rust/library/alloc/src/raw_vec/mod.rs",
+      "bytes": 37980,
+      "sha256": "b8f2f10976bdcaa9c455c47303d67d2804db323a650ff90ccc26e56cd9b841b1"
+    },
+    "library/alloc/src/vec/mod.rs": {
+      "member": "rust-src-nightly/rust-src/lib/rustlib/src/rust/library/alloc/src/vec/mod.rs",
+      "bytes": 174198,
+      "sha256": "c80d5ca8ad48ba974490be2003e057f976830af60186b02346a5bb0fb87b1b00"
+    },
+    "library/alloc/src/string.rs": {
+      "member": "rust-src-nightly/rust-src/lib/rustlib/src/rust/library/alloc/src/string.rs",
+      "bytes": 125007,
+      "sha256": "53d383c077e7593599c6c61706e73090db1b808598c0949bdc14974246a6b095"
+    },
+    "library/alloc/src/borrow.rs": {
+      "member": "rust-src-nightly/rust-src/lib/rustlib/src/rust/library/alloc/src/borrow.rs",
+      "bytes": 15571,
+      "sha256": "2111ce81a16e5c6eba06933192312e8abb35af4e861ed7bcf8c23182a1f73232"
+    }
+  }
+}

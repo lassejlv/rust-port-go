@@ -1,0 +1,30 @@
+{
+  "compiler_commit": "708c94ef093ecc42fb8851e17d8383d999727abc",
+  "archive_sha256": "d99600cbf56d2db40112095e99e138f9e2f30002ef2774d288dc525e28a1357c",
+  "files": [
+    {
+      "path": "library/alloc/src/vec/mod.rs",
+      "sha256": "c80d5ca8ad48ba974490be2003e057f976830af60186b02346a5bb0fb87b1b00"
+    },
+    {
+      "path": "library/alloc/src/raw_vec/mod.rs",
+      "sha256": "b8f2f10976bdcaa9c455c47303d67d2804db323a650ff90ccc26e56cd9b841b1"
+    },
+    {
+      "path": "library/core/src/fmt/mod.rs",
+      "sha256": "72cd4601ca6a6b61612d2edbb58d534e1d5c6403cf23d6228d332e372dd716ba"
+    },
+    {
+      "path": "library/alloc/src/slice.rs",
+      "sha256": "085b18c8f564ecdb4575bf50b387ddbbf52b37bf9985cb0bc3899db49ab24778"
+    },
+    {
+      "path": "library/alloc/src/string.rs",
+      "sha256": "53d383c077e7593599c6c61706e73090db1b808598c0949bdc14974246a6b095"
+    },
+    {
+      "path": "library/alloc/src/fmt.rs",
+      "sha256": "1fb4bf31b175c7eea7ada66f3bb15f6ac320aa755f9c94e81d013a214989cb35"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "scope": "Actual three Fn traits, actual env/argument cells, complete parameter and field destruction, prepared-result leaks and contexts; supporting machinery only",
+  "cases": 147,
+  "aborts": 74,
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+  "sdk_libraries": {
+    "libcore-7832d2fe4fa07f06.rlib": "4fb8e711916ca10f1a349a8d5cde7ed17cd968d4b71833f10d9c799b2ab3f645",
+    "liballoc-6e37827f505ea391.rlib": "d4d0c141c89ab81f1a6e5b8b17e6296d5acd8208480b62ad63f563628dfb93ba",
+    "libstd-530112f2fd58de10.rlib": "8fdbba1c8e59d13f0382407bce5800f9a75ecb49b4d0fdb4bcb616284bb354a1"
+  },
+  "locations": {
+    "argument": {
+      "File": "tools/port-rust-unord/items/function_oracle.rs",
+      "Line": 10,
+      "Column": 156
+    },
+    "environment": {
+      "File": "tools/port-rust-unord/items/function_oracle.rs",
+      "Line": 14,
+      "Column": 149
+    },
+    "token": {
+      "File": "tools/port-rust-unord/items/function_oracle.rs",
+      "Line": 11,
+      "Column": 127
+    },
+    "panic in a destructor during cleanup": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      "Line": 233,
+      "Column": 5
+    },
+    "outer.unwind": {
+      "File": "tools/port-rust-unord/items/function_oracle.rs",
+      "Line": 23,
+      "Column": 98
+    },
+    "outer.processing": {
+      "File": "tools/port-rust-unord/items/function_oracle.rs",
+      "Line": 23,
+      "Column": 188
+    }
+  },
+  "raw_sha256": "f832015a46bb287f295623b06b184d881f57fe980c481a06c119619b7e5343bf",
+  "fixture_sha256": "bcac9872f6bd10f728ff1e1f9deb5c383f9e91ac167e9b64a7add12f2eb6db49",
+  "files": {
+    "port/rust/compiler/rustc_data_structures/src/unord_function.go": "4749340d8542d8d48af8a2c901d7f647ecf1666def468023bace836241b9213f",
+    "port/rust/compiler/rustc_data_structures/src/unord_function_test.go": "b90a9cb9621aea279682a75c8ecb95816a52fd9b4ae8c750d4768c0cc2069c9d",
+    "tools/port-rust-unord/items/function_oracle.rs": "3f73567a05bb5984511239cbfaa1d866ecec4c12691ae4307bdf736b66401e0b",
+    "tools/port-rust-unord/items/generate_function.py": "736dd64f38da05173222082618393e61dc76406bd1b2304e21f9e715fc014de4",
+    "port/rust/compiler/rustc_data_structures/src/unord_items_context_test.go": "fb042cf642c83af33bffed112031c5f3f1984aa49e4ed462530be2fd3fb3b838",
+    "tools/port-rust-unord/items/README.md": "8d62d821f750fe0c846a73bab90b6e842f78596e96873e54a004fcb650a8db05",
+    "tools/port-rust-unord/items/test_tools.py": "35a2ae6ab7409eace1b636be527f05d3e7bbd6fad4980ab5c7648024b4a81a16"
+  }
+}

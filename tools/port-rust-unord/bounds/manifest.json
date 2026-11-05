@@ -1,0 +1,276 @@
+{
+  "scope": "Actual full Unord Default/Clone/Copy/Ord/Sum/Product/associated key admission bounds, same iterator Self and opaque Clone exposure; unused borrowed trait effects absent; no full std or Unord credit",
+  "bounds": [
+    {
+      "configuration": "positive",
+      "compiles": true,
+      "diagnostic": "warning: calls to `std::mem::drop` with a value that implements `Copy` does nothing\n  --> tools/port-rust-unord/bounds/bounds.rs:32:2\n   |\n32 |  drop(UnordItems::new(std::iter::empty::<Value>()).max());drop(UnordItems::new(std::iter::empty::<Value>()).min());\n   |  ^^^^^--------------------------------------------------^\n   |       |\n   |       argument has type `Option<Value>`\n   |\n   = note: `#[warn(dropping_copy_types)]` on by default\nhelp: use `let _ = ...` to ignore the expression or result\n   |\n32 -  drop(UnordItems::new(std::iter::empty::<Value>()).max());drop(UnordItems::new(std::iter::empty::<Value>()).min());\n32 +  let _ = UnordItems::new(std::iter::empty::<Value>()).max();drop(UnordItems::new(std::iter::empty::<Value>()).min());\n   |\n\nwarning: calls to `std::mem::drop` with a value that implements `Copy` does nothing\n  --> tools/port-rust-unord/bounds/bounds.rs:32:59\n   |\n32 |  drop(UnordItems::new(std::iter::empty::<Value>()).max());drop(UnordItems::new(std::iter::empty::<Value>()).min());\n   |                                                           ^^^^^--------------------------------------------------^\n   |                                                                |\n   |                                                                argument has type `Option<Value>`\n   |\nhelp: use `let _ = ...` to ignore the expression or result\n   |\n32 -  drop(UnordItems::new(std::iter::empty::<Value>()).max());drop(UnordItems::new(std::iter::empty::<Value>()).min());\n32 +  drop(UnordItems::new(std::iter::empty::<Value>()).max());let _ = UnordItems::new(std::iter::empty::<Value>()).min();\n   |\n\nwarning: 2 warnings emitted\n\n"
+    },
+    {
+      "configuration": "no_default",
+      "compiles": false,
+      "diagnostic": "error[E0277]: the trait bound `NoDefault: Default` is not satisfied\n  --> tools/port-rust-unord/bounds/bounds.rs:36:27\n   |\n36 |  #[cfg(no_default)]let _=<UnordBag<NoDefault>as Default>::default();\n   |                           ^^^^^^^^^^^^^^^^^^^ the trait `Default` is not implemented for `NoDefault`\n   |\nhelp: the trait `Default` is conditionally implemented for `UnordBag<V>`\n  --> original/compiler/rustc_data_structures/src/unord.rs:683:9\n  ::: original/compiler/rustc_data_structures/src/unord.rs:684:20\n   |\n   = note: unsatisfied requirement introduced here: `_: Default`\n   = note: required for `UnordBag<NoDefault>` to implement `Default`\nhelp: consider annotating `NoDefault` with `#[derive(Default)]`\n   |\n 8 + #[derive(Default)]\n 9 | struct NoDefault;struct NoClone;#[derive(Clone)]struct OnlyClone;struct NoOrd;\n   |\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0277`.\n"
+    },
+    {
+      "configuration": "new_no_default",
+      "compiles": true,
+      "diagnostic": ""
+    },
+    {
+      "configuration": "clone_from_self",
+      "compiles": false,
+      "diagnostic": "error[E0308]: mismatched types\n  --> tools/port-rust-unord/bounds/bounds.rs:38:135\n   |\n38 | ...2(std::iter::empty()));a.clone_from(&b);}\n   |                             ---------- ^^ expected `&UnordItems<Value, I1>`, found `&UnordItems<Value, I2>`\n   |                             |\n   |                             arguments to this method are incorrect\n   |\n   = note: expected reference `&UnordItems<_, I1>`\n              found reference `&UnordItems<_, I2>`\nnote: method defined here\n  --> /rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/clone.rs:194:0\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0308`.\n"
+    },
+    {
+      "configuration": "clone_from_opaque",
+      "compiles": false,
+      "diagnostic": "error[E0599]: the method `clone_from` exists for struct `UnordItems<Value, impl Iterator<Item = Value>>`, but its trait bounds were not satisfied\n  --> tools/port-rust-unord/bounds/bounds.rs:39:64\n   |\n39 |  #[cfg(clone_from_opaque)]{let mut a=opaque();let b=opaque();a.clone_from(&b);}\n   |                                                                ^^^^^^^^^^ method cannot be called on `UnordItems<Value, impl Iterator<Item = Value>>` due to unsatisfied trait bounds\n   |\n   = note: the following trait bounds were not satisfied:\n           `impl Iterator<Item = Value>: Clone`\n           which is required by `UnordItems<Value, impl Iterator<Item = Value>>: Clone`\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0599`.\n"
+    },
+    {
+      "configuration": "clone_item",
+      "compiles": false,
+      "diagnostic": "error[E0599]: the method `clone` exists for struct `UnordItems<NoClone, std::iter::Empty<NoClone>>`, but its trait bounds were not satisfied\n  --> tools/port-rust-unord/bounds/bounds.rs:40:59\n   |\n 8 | struct NoDefault;struct NoClone;#[derive(Clone)]struct OnlyClone;struct NoOrd;\n   |                  -------------- doesn't satisfy `NoClone: Clone`\n...\n40 |  #[cfg(clone_item)]let _=UnordItems::<NoClone,_>::empty().clone();\n   |                                                           ^^^^^ method cannot be called on `UnordItems<NoClone, std::iter::Empty<NoClone>>` due to unsatisfied trait bounds\n   |\n   = note: the following trait bounds were not satisfied:\n           `NoClone: Clone`\n           which is required by `UnordItems<NoClone, std::iter::Empty<NoClone>>: Clone`\nhelp: consider annotating `NoClone` with `#[derive(Clone)]`\n   |\n 8 | struct NoDefault;#[derive(Clone)]\n   |                  ++++++++++++++++\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0599`.\n"
+    },
+    {
+      "configuration": "clone_iterator",
+      "compiles": false,
+      "diagnostic": "error[E0599]: the method `clone` exists for struct `UnordItems<Value, NoCloneInput>`, but its trait bounds were not satisfied\n  --> tools/port-rust-unord/bounds/bounds.rs:41:60\n   |\n17 | struct NoCloneInput;impl Iterator for NoCloneInput{type Item=Value;fn next(&mut self)->Option<Value>{None}}\n   | ------------------- doesn't satisfy `NoCloneInput: Clone`\n...\n41 |  #[cfg(clone_iterator)]let _=UnordItems::new(NoCloneInput).clone();\n   |                                                            ^^^^^ method cannot be called on `UnordItems<Value, NoCloneInput>` due to unsatisfied trait bounds\n   |\n   = note: the following trait bounds were not satisfied:\n           `NoCloneInput: Clone`\n           which is required by `UnordItems<Value, NoCloneInput>: Clone`\nhelp: consider annotating `NoCloneInput` with `#[derive(Clone)]`\n   |\n17 + #[derive(Clone)]\n18 | struct NoCloneInput;impl Iterator for NoCloneInput{type Item=Value;fn next(&mut self)->Option<Value>{None}}\n   |\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0599`.\n"
+    },
+    {
+      "configuration": "cloned_value",
+      "compiles": false,
+      "diagnostic": "error[E0599]: the method `cloned` exists for struct `UnordItems<&NoClone, std::iter::Empty<&NoClone>>`, but its trait bounds were not satisfied\n  --> tools/port-rust-unord/bounds/bounds.rs:42:76\n   |\n 8 | struct NoDefault;struct NoClone;#[derive(Clone)]struct OnlyClone;struct NoOrd;\n   |                  -------------- doesn't satisfy `NoClone: Clone`\n...\n42 |  #[cfg(cloned_value)]let _=UnordItems::new(std::iter::empty::<&NoClone>()).cloned();\n   |                                                                            ^^^^^^\n   |\n   = note: the following trait bounds were not satisfied:\n           `NoClone: Clone`\n           `UnordItems<&NoClone, std::iter::Empty<&NoClone>>: Iterator`\n           which is required by `&mut UnordItems<&NoClone, std::iter::Empty<&NoClone>>: Iterator`\nhelp: consider annotating `NoClone` with `#[derive(Clone)]`\n   |\n 8 | struct NoDefault;#[derive(Clone)]\n   |                  ++++++++++++++++\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0599`.\n"
+    },
+    {
+      "configuration": "copied_value",
+      "compiles": false,
+      "diagnostic": "error[E0599]: the method `copied` exists for struct `UnordItems<&OnlyClone, std::iter::Empty<&OnlyClone>>`, but its trait bounds were not satisfied\n  --> tools/port-rust-unord/bounds/bounds.rs:43:78\n   |\n 8 | struct NoDefault;struct NoClone;#[derive(Clone)]struct OnlyClone;struct NoOrd;\n   |                                                 ---------------- doesn't satisfy `OnlyClone: Copy`\n...\n43 |  #[cfg(copied_value)]let _=UnordItems::new(std::iter::empty::<&OnlyClone>()).copied();\n   |                                                                              ^^^^^^ method cannot be called due to unsatisfied trait bounds\n   |\n   = note: the following trait bounds were not satisfied:\n           `OnlyClone: Copy`\n           `UnordItems<&OnlyClone, std::iter::Empty<&OnlyClone>>: Iterator`\n           which is required by `&mut UnordItems<&OnlyClone, std::iter::Empty<&OnlyClone>>: Iterator`\nhelp: consider annotating `OnlyClone` with `#[derive(Clone, Copy)]`\n   |\n 8 | struct NoDefault;struct NoClone;#[derive(Clone)]#[derive(Clone, Copy)]\n   |                                                 ++++++++++++++++++++++\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0599`.\n"
+    },
+    {
+      "configuration": "max_ord",
+      "compiles": false,
+      "diagnostic": "error[E0277]: the trait bound `NoOrd: Ord` is not satisfied\n  --> tools/port-rust-unord/bounds/bounds.rs:44:68\n   |\n44 |  #[cfg(max_ord)]let _=UnordItems::new(std::iter::empty::<NoOrd>()).max();\n   |                                                                    ^^^ the trait `Ord` is not implemented for `NoOrd`\n   |\nnote: required by a bound in `UnordItems::<T, I>::max`\n  --> original/compiler/rustc_data_structures/src/unord.rs:79:4\nhelp: consider annotating `NoOrd` with `#[derive(Ord)]`\n   |\n 8 | struct NoDefault;struct NoClone;#[derive(Clone)]struct OnlyClone;#[derive(Ord)]\n   |                                                                  ++++++++++++++\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0277`.\n"
+    },
+    {
+      "configuration": "min_ord",
+      "compiles": false,
+      "diagnostic": "error[E0277]: the trait bound `NoOrd: Ord` is not satisfied\n  --> tools/port-rust-unord/bounds/bounds.rs:45:68\n   |\n45 |  #[cfg(min_ord)]let _=UnordItems::new(std::iter::empty::<NoOrd>()).min();\n   |                                                                    ^^^ the trait `Ord` is not implemented for `NoOrd`\n   |\nnote: required by a bound in `UnordItems::<T, I>::min`\n  --> original/compiler/rustc_data_structures/src/unord.rs:87:4\nhelp: consider annotating `NoOrd` with `#[derive(Ord)]`\n   |\n 8 | struct NoDefault;struct NoClone;#[derive(Clone)]struct OnlyClone;#[derive(Ord)]\n   |                                                                  ++++++++++++++\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0277`.\n"
+    },
+    {
+      "configuration": "sum_trait",
+      "compiles": false,
+      "diagnostic": "error[E0277]: a value of type `NoTotal` cannot be made by summing an iterator over elements of type `Value`\n  --> tools/port-rust-unord/bounds/bounds.rs:46:78\n   |\n46 |  #[cfg(sum_trait)]let _:NoTotal=UnordItems::new(std::iter::empty::<Value>()).sum();\n   |                                                                              ^^^ value of type `NoTotal` cannot be made by summing a `std::iter::Iterator<Item=Value>`\n   |\nhelp: the trait `Sum<Value>` is not implemented for `NoTotal`\n  --> tools/port-rust-unord/bounds/bounds.rs:12:1\n   |\n12 | struct NoTotal;\n   | ^^^^^^^^^^^^^^\nhelp: the trait `Sum<Value>` is implemented for `Total`\n  --> tools/port-rust-unord/bounds/bounds.rs:10:1\n   |\n10 | impl Sum<Value> for Total{fn sum<I:Iterator<Item=Value>>(_:I)->Self{Total}}\n   | ^^^^^^^^^^^^^^^^^^^^^^^^^\nnote: required by a bound in `UnordItems::<T, I>::sum`\n  --> original/compiler/rustc_data_structures/src/unord.rs:95:4\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0277`.\n"
+    },
+    {
+      "configuration": "product_trait",
+      "compiles": false,
+      "diagnostic": "error[E0277]: a value of type `NoTotal` cannot be made by multiplying all elements of type `Value` from an iterator\n  --> tools/port-rust-unord/bounds/bounds.rs:47:82\n   |\n47 |  #[cfg(product_trait)]let _:NoTotal=UnordItems::new(std::iter::empty::<Value>()).product();\n   |                                                                                  ^^^^^^^ value of type `NoTotal` cannot be made by multiplying all elements from a `std::iter::Iterator<Item=Value>`\n   |\nhelp: the trait `Product<Value>` is not implemented for `NoTotal`\n  --> tools/port-rust-unord/bounds/bounds.rs:12:1\n   |\n12 | struct NoTotal;\n   | ^^^^^^^^^^^^^^\nhelp: the trait `Product<Value>` is implemented for `Total`\n  --> tools/port-rust-unord/bounds/bounds.rs:11:1\n   |\n11 | impl Product<Value> for Total{fn product<I:Iterator<Item=Value>>(_:I)->Self{Total}}\n   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nnote: required by a bound in `UnordItems::<T, I>::product`\n  --> original/compiler/rustc_data_structures/src/unord.rs:103:4\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0277`.\n"
+    },
+    {
+      "configuration": "key_eq",
+      "compiles": false,
+      "diagnostic": "error[E0277]: the trait bound `Key: Eq` is not satisfied\n  --> tools/port-rust-unord/bounds/bounds.rs:23:34\n   |\n23 | #[cfg(not(key_ord))]impl Ord for Key{fn cmp(&self,_:&Self)->Ordering{Ordering::Equal}}\n   |                                  ^^^ the trait `Eq` is not implemented for `Key`\n   |\nnote: required by a bound in `Ord`\n  --> /rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/cmp.rs:1045:0\nhelp: consider annotating `Key` with `#[derive(Eq)]`\n   |\n19 + #[derive(Eq)]\n20 | struct Key;\n   |\n\nerror[E0277]: the trait bound `Key: Eq` is not satisfied\n  --> tools/port-rust-unord/bounds/bounds.rs:26:66\n   |\n26 | #[cfg(not(key_sized))]impl ToStableHashKey for Item{type KeyType=Key;fn to_stable_hash_key<H:StableHashCtxt>(&self,_:&mut H)->Key{Key}}\n   |                                                                  ^^^ the trait `Eq` is not implemented for `Key`\n   |\n   = note: required for `<Item as ToStableHashKey>::KeyType` to implement `Ord`\nnote: required by a bound in `rustc_data_structures::stable_hash::ToStableHashKey::KeyType`\n  --> original/compiler/rustc_data_structures/src/stable_hash.rs:113:4\nhelp: consider annotating `Key` with `#[derive(Eq)]`\n   |\n19 + #[derive(Eq)]\n20 | struct Key;\n   |\n\nerror: aborting due to 2 previous errors\n\nFor more information about this error, try `rustc --explain E0277`.\n"
+    },
+    {
+      "configuration": "key_partial_ord",
+      "compiles": false,
+      "diagnostic": "error[E0277]: can't compare `Key` with `Key`\n  --> tools/port-rust-unord/bounds/bounds.rs:23:34\n   |\n23 | #[cfg(not(key_ord))]impl Ord for Key{fn cmp(&self,_:&Self)->Ordering{Ordering::Equal}}\n   |                                  ^^^ no implementation for `Key < Key` and `Key > Key`\n   |\n   = help: the trait `PartialOrd` is not implemented for `Key`\nnote: required by a bound in `Ord`\n  --> /rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/cmp.rs:1045:0\nhelp: consider annotating `Key` with `#[derive(PartialOrd)]`\n   |\n19 + #[derive(PartialOrd)]\n20 | struct Key;\n   |\n\nerror[E0277]: can't compare `Key` with `Key`\n  --> tools/port-rust-unord/bounds/bounds.rs:26:66\n   |\n26 | #[cfg(not(key_sized))]impl ToStableHashKey for Item{type KeyType=Key;fn to_stable_hash_key<H:StableHashCtxt>(&self,_:&mut H)->Key{Key}}\n   |                                                                  ^^^ no implementation for `Key < Key` and `Key > Key`\n   |\n   = help: the trait `PartialOrd` is not implemented for `Key`\n   = note: required for `<Item as ToStableHashKey>::KeyType` to implement `Ord`\nnote: required by a bound in `rustc_data_structures::stable_hash::ToStableHashKey::KeyType`\n  --> original/compiler/rustc_data_structures/src/stable_hash.rs:113:4\nhelp: consider annotating `Key` with `#[derive(PartialOrd)]`\n   |\n19 + #[derive(PartialOrd)]\n20 | struct Key;\n   |\n\nerror: aborting due to 2 previous errors\n\nFor more information about this error, try `rustc --explain E0277`.\n"
+    },
+    {
+      "configuration": "key_ord",
+      "compiles": false,
+      "diagnostic": "error[E0277]: the trait bound `Key: Ord` is not satisfied\n  --> tools/port-rust-unord/bounds/bounds.rs:26:66\n   |\n26 | #[cfg(not(key_sized))]impl ToStableHashKey for Item{type KeyType=Key;fn to_stable_hash_key<H:StableHashCtxt>(&self,_:&mut H)->Key{Key}}\n   |                                                                  ^^^ the trait `Ord` is not implemented for `Key`\n   |\nnote: required by a bound in `rustc_data_structures::stable_hash::ToStableHashKey::KeyType`\n  --> original/compiler/rustc_data_structures/src/stable_hash.rs:113:4\nhelp: consider annotating `Key` with `#[derive(Ord)]`\n   |\n19 + #[derive(Ord)]\n20 | struct Key;\n   |\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0277`.\n"
+    },
+    {
+      "configuration": "key_stable_hash",
+      "compiles": false,
+      "diagnostic": "error[E0277]: the trait bound `Key: StableHash` is not satisfied\n  --> tools/port-rust-unord/bounds/bounds.rs:26:66\n   |\n26 | #[cfg(not(key_sized))]impl ToStableHashKey for Item{type KeyType=Key;fn to_stable_hash_key<H:StableHashCtxt>(&self,_:&mut H)->Key{Key}}\n   |                                                                  ^^^ unsatisfied trait bound\n   |\nhelp: the trait `StableHash` is not implemented for `Key`\n  --> tools/port-rust-unord/bounds/bounds.rs:19:1\n   |\n19 | struct Key;\n   | ^^^^^^^^^^\n   = help: the following other types implement trait `StableHash`:\n             !\n             &'a T\n             ()\n             (T1,)\n             (T1, T2)\n             (T1, T2, T3)\n             (T1, T2, T3, T4)\n             Arc<T>\n           and 55 others\nnote: required by a bound in `rustc_data_structures::stable_hash::ToStableHashKey::KeyType`\n  --> original/compiler/rustc_data_structures/src/stable_hash.rs:113:4\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0277`.\n"
+    },
+    {
+      "configuration": "key_sized",
+      "compiles": false,
+      "diagnostic": "error[E0277]: the size for values of type `[u64]` cannot be known at compilation time\n  --> tools/port-rust-unord/bounds/bounds.rs:27:61\n   |\n27 | #[cfg(key_sized)]impl ToStableHashKey for Item{type KeyType=[u64];fn to_stable_hash_key<H:StableHashCtxt>(&self,_:&mut H)->[u64]{pan...\n   |                                                             ^^^^^ doesn't have a size known at compile-time\n   |\n   = help: the trait `Sized` is not implemented for `[u64]`\nnote: required by a bound in `rustc_data_structures::stable_hash::ToStableHashKey::KeyType`\n  --> original/compiler/rustc_data_structures/src/stable_hash.rs:113:4\n\nerror[E0277]: the size for values of type `[u64]` cannot be known at compilation time\n  --> tools/port-rust-unord/bounds/bounds.rs:27:124\n   |\n27 | ...h_key<H:StableHashCtxt>(&self,_:&mut H)->[u64]{panic!(\"unsized\")}}\n   |                                             ^^^^^ doesn't have a size known at compile-time\n   |\n   = help: the trait `Sized` is not implemented for `[u64]`\n   = note: the return type of a function must have a statically known size\n\nerror: aborting due to 2 previous errors\n\nFor more information about this error, try `rustc --explain E0277`.\n"
+    }
+  ],
+  "cases": [
+    {
+      "group": "primitive",
+      "family": 0,
+      "cache": false,
+      "stdout": "empty:0\npush:1:capacity4\nitem:7\n",
+      "allocation": [
+        "ALLOC:0:1:32"
+      ]
+    },
+    {
+      "group": "primitive",
+      "family": 1,
+      "cache": false,
+      "stdout": "clone:1\ninput:101\nclone:1\ninput:2\ninput:101\ninput:1\n",
+      "allocation": []
+    },
+    {
+      "group": "primitive",
+      "family": 2,
+      "cache": false,
+      "stdout": "max_override\ninput:0\nreturned:7\n",
+      "allocation": []
+    },
+    {
+      "group": "primitive",
+      "family": 3,
+      "cache": false,
+      "stdout": "min_override\ninput:0\nreturned:7\n",
+      "allocation": []
+    },
+    {
+      "group": "primitive",
+      "family": 4,
+      "cache": false,
+      "stdout": "sum_override\ninput:0\ncaught:sum_override\n",
+      "allocation": []
+    },
+    {
+      "group": "primitive",
+      "family": 5,
+      "cache": false,
+      "stdout": "product_override\ninput:0\ncaught:product_override\n",
+      "allocation": []
+    },
+    {
+      "group": "primitive",
+      "family": 6,
+      "cache": false,
+      "stdout": "cloned_override\nref_input\ncaught:cloned_override\n",
+      "allocation": []
+    },
+    {
+      "group": "primitive",
+      "family": 7,
+      "cache": false,
+      "stdout": "copied_override\nref_input\ncaught:copied_override\n",
+      "allocation": []
+    },
+    {
+      "group": "key",
+      "family": 0,
+      "cache": false,
+      "stdout": "project:1\nproject:2\nlt:1:2\nreturned:1,2\n",
+      "allocation": []
+    },
+    {
+      "group": "key",
+      "family": 0,
+      "cache": true,
+      "stdout": "project:2\nproject:1\npartial:1:2\nreturned:1,2\n",
+      "allocation": []
+    },
+    {
+      "group": "key",
+      "family": 1,
+      "cache": false,
+      "stdout": "project:2\nproject:1\npartial:1:2\nreturned:1,2\n",
+      "allocation": []
+    },
+    {
+      "group": "key",
+      "family": 1,
+      "cache": true,
+      "stdout": "project:2\nproject:1\npartial:1:2\nreturned:1,2\n",
+      "allocation": []
+    },
+    {
+      "group": "key",
+      "family": 2,
+      "cache": false,
+      "stdout": "project:2\nproject:1\nlt:2:1\nreturned:1,2\n",
+      "allocation": []
+    },
+    {
+      "group": "key",
+      "family": 2,
+      "cache": true,
+      "stdout": "project:1\nproject:2\npartial:2:1\nreturned:1,2\n",
+      "allocation": []
+    },
+    {
+      "group": "key",
+      "family": 3,
+      "cache": false,
+      "stdout": "project:2\nproject:1\nlt:2:1\nreturned:1,2\n",
+      "allocation": []
+    },
+    {
+      "group": "key",
+      "family": 3,
+      "cache": true,
+      "stdout": "project:1\nproject:2\npartial:2:1\nreturned:1,2\n",
+      "allocation": []
+    },
+    {
+      "group": "key",
+      "family": 4,
+      "cache": false,
+      "stdout": "project:2\nproject:1\nlt:2:1\nreturned:101,102\n",
+      "allocation": []
+    },
+    {
+      "group": "key",
+      "family": 4,
+      "cache": true,
+      "stdout": "project:1\nproject:2\npartial:2:1\nreturned:101,102\n",
+      "allocation": []
+    },
+    {
+      "group": "key",
+      "family": 5,
+      "cache": false,
+      "stdout": "project:2\nproject:1\nlt:2:1\nreturned:1,2\n",
+      "allocation": []
+    },
+    {
+      "group": "key",
+      "family": 5,
+      "cache": true,
+      "stdout": "project:1\nproject:2\npartial:2:1\nreturned:1,2\n",
+      "allocation": []
+    },
+    {
+      "group": "key",
+      "family": 6,
+      "cache": false,
+      "stdout": "project:2\nproject:1\nlt:2:1\nreturned:1,2\n",
+      "allocation": []
+    },
+    {
+      "group": "key",
+      "family": 6,
+      "cache": true,
+      "stdout": "project:1\nproject:2\npartial:2:1\nreturned:1,2\n",
+      "allocation": []
+    }
+  ],
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "reference_inputs": {
+    "tools/port-rust-span-lib/reference.py": "2094b30a5149056c683edffc6cc4a8d6d6984d81933ecb10c80e5f34c355db9e",
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+  },
+  "files": {
+    "tools/port-rust-unord/bounds/bounds.rs": "9b777ce7db0ccebbd39fca66e9da7df67cf2b2fb5064dc30176c84ec6734e716",
+    "tools/port-rust-unord/bounds/oracle.rs": "bf0f0bf813c82f1bb4f358f732fd540ae266907eeb88da654cb5d0f7fbe55537",
+    "tools/port-rust-unord/bounds/generate.py": "412be9541990780ad23ae5505ab19d143566056d759b577448010e5584052458",
+    "port/rust/compiler/rustc_data_structures/src/unord_bound_primaries.go": "1f5ad0c8506beb67ac69950ab19e55de54bc39fcab91a449128497160aa855ec",
+    "port/rust/compiler/rustc_data_structures/src/unord_bound_primaries_test.go": "116fd5b825e61df6a6d08e4a8bede86cdc5036435910bcc8324b396416b19fbc",
+    "port/rust/compiler/rustc_data_structures/src/unord_items.go": "89c74b62b5945e5b6711e4940e67aba2772b0e4f74478578d2b0dddfaa8ec4ea",
+    "port/rust/compiler/rustc_data_structures/src/unord_items_delegate.go": "2b4902bf03d4a8af36777daa9b9de184a725ac64d3aad93486f90eb660552a42",
+    "port/rust/compiler/rustc_data_structures/src/unord_items_borrowed.go": "5eeff4dc0beafbd586ae5234a1b1b2fb0ed560eeaf30616880871e93d2e690bb",
+    "port/rust/compiler/rustc_data_structures/src/unord_items_sort.go": "97be41c15d0caf03779c96c7edcd82e6cefaf067982fd4900f03a34669f76ce5",
+    "port/rust/compiler/rustc_data_structures/src/unord_items_vector.go": "61d4f11072483cd05c8cc4741e754b38640006cf6f59589f45812fc4f5e4c27b",
+    "port/rust/compiler/rustc_data_structures/src/unord_collections_sort.go": "0355832d5c8cb33e0ea85873cbfb5f7bfebae772bf1a8598c02c2f81ac57abcd",
+    "port/rust/compiler/rustc_data_structures/src/unord_values_sorted.go": "207f72958fb2d1e08ac4699a7766822501cc57ddd0155115405498a26ddf0e1a",
+    "port/rust/compiler/rustc_data_structures/src/unord_bag.go": "4c8b0d65e91f36610396d1f21213583010129a602ebb3fa065b7f536c864f845"
+  }
+}

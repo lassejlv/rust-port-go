@@ -1,0 +1,94 @@
+{
+  "scope": "Actual unchanged UnordItems max/min/sum/product, independent I max/min/reduce/fold and Sum/Product implementations, owned return/destruction; no std/whole Unord credit",
+  "cases": 2112,
+  "aborts": 234,
+  "bounds": [
+    {
+      "configuration": "positive",
+      "compiles": true,
+      "diagnostic": "warning: struct `Value` is never constructed\n --> tools/port-rust-unord/reductions/bounds.rs:2:8\n  |\n2 | struct Value;\n  |        ^^^^^\n  |\n  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nwarning: 1 warning emitted\n\n"
+    },
+    {
+      "configuration": "no_ord",
+      "compiles": false,
+      "diagnostic": "error[E0277]: the trait bound `Value: Ord` is not satisfied\n --> tools/port-rust-unord/reductions/bounds.rs:4:62\n  |\n4 |  #[cfg(no_ord)]let _=UnordItems::new(std::iter::once(Value)).max();\n  |                                                              ^^^ the trait `Ord` is not implemented for `Value`\n  |\nnote: required by a bound in `UnordItems::<T, I>::max`\n --> original/compiler/rustc_data_structures/src/unord.rs:79:4\nhelp: consider annotating `Value` with `#[derive(Ord)]`\n  |\n2 + #[derive(Ord)]\n3 | struct Value;\n  |\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0277`.\n"
+    },
+    {
+      "configuration": "no_sum",
+      "compiles": false,
+      "diagnostic": "error[E0277]: a value of type `Value` cannot be made by summing an iterator over elements of type `u64`\n --> tools/port-rust-unord/reductions/bounds.rs:5:67\n  |\n5 |  #[cfg(no_sum)]let _:Value=UnordItems::new(std::iter::once(1u64)).sum();\n  |                                                                   ^^^ value of type `Value` cannot be made by summing a `std::iter::Iterator<Item=u64>`\n  |\nhelp: the trait `Sum<u64>` is not implemented for `Value`\n --> tools/port-rust-unord/reductions/bounds.rs:2:1\n  |\n2 | struct Value;\n  | ^^^^^^^^^^^^\nhelp: the trait `Sum` is implemented for `u64`\n --> /rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/iter/traits/accum.rs:50:8\n ::: /rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/iter/traits/accum.rs:206:0\n  |\n  = note: in this macro invocation\nnote: required by a bound in `UnordItems::<T, I>::sum`\n --> original/compiler/rustc_data_structures/src/unord.rs:95:4\n  = note: this error originates in the macro `integer_sum_product` (in Nightly builds, run with -Z macro-backtrace for more info)\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0277`.\n"
+    },
+    {
+      "configuration": "no_product",
+      "compiles": false,
+      "diagnostic": "error[E0277]: a value of type `Value` cannot be made by multiplying all elements of type `u64` from an iterator\n --> tools/port-rust-unord/reductions/bounds.rs:6:71\n  |\n6 |  #[cfg(no_product)]let _:Value=UnordItems::new(std::iter::once(1u64)).product();\n  |                                                                       ^^^^^^^ value of type `Value` cannot be made by multiplying all elements from a `std::iter::Iterator<Item=u64>`\n  |\nhelp: the trait `Product<u64>` is not implemented for `Value`\n --> tools/port-rust-unord/reductions/bounds.rs:2:1\n  |\n2 | struct Value;\n  | ^^^^^^^^^^^^\nhelp: the trait `Product` is implemented for `u64`\n --> /rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/iter/traits/accum.rs:61:8\n ::: /rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/iter/traits/accum.rs:206:0\n  |\n  = note: in this macro invocation\nnote: required by a bound in `UnordItems::<T, I>::product`\n --> original/compiler/rustc_data_structures/src/unord.rs:103:4\n  = note: this error originates in the macro `integer_sum_product` (in Nightly builds, run with -Z macro-backtrace for more info)\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0277`.\n"
+    }
+  ],
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "reference_inputs": {
+    "tools/port-rust-span-lib/reference.py": "2094b30a5149056c683edffc6cc4a8d6d6984d81933ecb10c80e5f34c355db9e",
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+  },
+  "locations": {
+    "next": {
+      "File": "tools/port-rust-unord/reductions/oracle.rs",
+      "Line": 16,
+      "Column": 197
+    },
+    "compare": {
+      "File": "tools/port-rust-unord/reductions/oracle.rs",
+      "Line": 13,
+      "Column": 203
+    },
+    "item_drop": {
+      "File": "tools/port-rust-unord/reductions/oracle.rs",
+      "Line": 10,
+      "Column": 162
+    },
+    "input_drop": {
+      "File": "tools/port-rust-unord/reductions/oracle.rs",
+      "Line": 15,
+      "Column": 156
+    },
+    "panic in a destructor during cleanup": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      "Line": 233,
+      "Column": 5
+    },
+    "total_drop": {
+      "File": "tools/port-rust-unord/reductions/oracle.rs",
+      "Line": 27,
+      "Column": 164
+    },
+    "sum_trait": {
+      "File": "tools/port-rust-unord/reductions/oracle.rs",
+      "Line": 28,
+      "Column": 119
+    },
+    "product_trait": {
+      "File": "tools/port-rust-unord/reductions/oracle.rs",
+      "Line": 29,
+      "Column": 131
+    },
+    "outer.unwind": {
+      "File": "tools/port-rust-unord/reductions/oracle.rs",
+      "Line": 35,
+      "Column": 932
+    },
+    "outer.processing": {
+      "File": "tools/port-rust-unord/reductions/oracle.rs",
+      "Line": 35,
+      "Column": 1022
+    }
+  },
+  "raw_sha256": "48bb9a9fc30c12d2742617fc886d25900d9aaa2bdfdcf3d70da261ae03640384",
+  "fixture_sha256": "1868063efd3f2a60cb7e639f46c0e7e6cfc8435199d900585cd87e08e26d78f7",
+  "files": {
+    "tools/port-rust-unord/reductions/oracle.rs": "e08cdff8411dec962f89b2936c2c784f5dd7b6e39f7c6849b0714e5e50ab89a9",
+    "tools/port-rust-unord/reductions/generate.py": "096b9a71d9b7e05182374c4778314fa9e48836e8f6e66082659343d9123976cd",
+    "tools/port-rust-unord/reductions/bounds.rs": "fc6eed775fd97d81d090f41c2a692393fddd867a0b669c3d22c338f408629d83"
+  }
+}

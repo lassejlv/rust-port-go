@@ -1,0 +1,90 @@
+{
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5\n",
+  "gzip_sha256": "f28369af129d8635bfc3ae9e645f168673545aa3da94833a6343a2ba372377b3",
+  "native_wrapper_sha256": "892892e617fd4ce8e021d5bb222d1f95353aaea2dcb9de53e03cab77803223e3",
+  "operations": 78740,
+  "profiles": [
+    {
+      "build_stderr_sha256": "8458286f40a03631c7b58cc3f06f97c3acab1e01327392691fd1b403a05657ee",
+      "profile": {
+        "host": "x86_64-unknown-linux-gnu",
+        "scope": "actual std on Linux"
+      },
+      "run_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "windows": false
+    },
+    {
+      "build_stderr_sha256": "42b236ad26cadaa3811fd3cd3a41ad577e071ebe4cadc6c8ba90165ef6cc8e7e",
+      "profile": {
+        "compiler": {
+          "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+          "compiler_commit": "708c94ef093ecc42fb8851e17d8383d999727abc",
+          "nightly_date": "2026-11-04",
+          "source_version": "1.101.0",
+          "unicode_version": [
+            18,
+            0,
+            0
+          ]
+        },
+        "debian": {
+          "inrelease_sha256": "0584fba32e13e0ab8285fb16c27adea1ec03a73669c18702821094fd6ca86675",
+          "package_index_sha256": "7778d3e3f303b7ddb8ce0fe7c8d57473a076c6bf2e8f241f75421d2396352498",
+          "packages": {
+            "gcc-mingw-w64-x86-64-posix": {
+              "sha256": "e32d24cfd1482394f16d9a84c1d0a9f5aa08ee826a79acc383c70cc8c23c4fe5",
+              "version": "14.2.0-19+27+b1"
+            },
+            "gcc-mingw-w64-x86-64-posix-runtime": {
+              "sha256": "c898d96177574a8a7238564a1e799d8ddfed5a3d2ea005510305f9ad466a6f59",
+              "version": "14.2.0-19+27+b1"
+            },
+            "libwine": {
+              "sha256": "702c99d2fbaef2a4966667e0cdabd477ed1754c1b3b5d4476606eaf5fd6e1444",
+              "version": "10.0~repack-6"
+            },
+            "libz-mingw-w64": {
+              "sha256": "c4e6d6bfabe8b6d12c797736a3d762d83513b49f488d1aaf61d4526387a2dd3e",
+              "version": "1.3.1+dfsg-2"
+            },
+            "mingw-w64-common": {
+              "sha256": "97dce5d0d8aff1cade4786ad4ef5078345477a598829afcac2e7f2fbc5399990",
+              "version": "12.0.0-5"
+            },
+            "mingw-w64-x86-64-dev": {
+              "sha256": "0bf89cf7454cccb49cd2a46a6f7b33896f6ae3a1a2fe33e02c40be6155bbb385",
+              "version": "12.0.0-5"
+            },
+            "wine64": {
+              "sha256": "4cdf8319d873c13210815c1aac18859a56ea21b0b2d35a3388dab881464ed488",
+              "version": "10.0~repack-6"
+            }
+          },
+          "release": "Origin: Debian\nLabel: Debian\nSuite: stable\nVersion: 13.7\nCodename: trixie\nChangelogs: https://metadata.ftp-master.debian.org/changelogs/@CHANGEPATH@_changelog\nDate: Sat, 12 Sep 2026 07:55:41 UTC\nAcquire-By-Hash: yes\nNo-Support-for-Architecture-all: Packages\nArchitectures: all amd64 arm64 armel armhf i386 ppc64el riscv64 s390x\nComponents: main contrib non-free-firmware non-free\nDescription: Debian 13.7 Released 12 September 2026\n"
+        },
+        "host_libc": "ldd (Debian GLIBC 2.41-12+deb13u4) 2.41",
+        "runtime_adaptations": [
+          "workspace wineserver dispatcher symlink to unmodified wineserver64",
+          "workspace nls layout symlink",
+          "workspace prefix system32 symlinks to unmodified authenticated builtin/runtime DLLs"
+        ],
+        "schema": 1,
+        "scope": "both Rust and Go Windows-target PE binaries under Wine on Linux; no native Windows kernel/runtime claim",
+        "target": {
+          "archive_sha256": "191201d8abe237aded8a499a5fbd129336e569629b6391704151b12e68063f25",
+          "files": 60,
+          "inventory_sha256": "e01796bc01f6d220821aed8d9d9b8e106758b6a2cb4f272863915fc0b0034198"
+        },
+        "wine_version": "wine-10.0 (Debian 10.0~repack-6)"
+      },
+      "run_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "windows": true
+    }
+  ],
+  "raw_sha256": "80f3104b026f9cc0c9acf74a3dda12447d01c774c5250ba84ab5959ea7c31054",
+  "records": 1294,
+  "schema": 1,
+  "scope": "Scoped SDK1.101 owning PathBuf/OsString/Cow operations used by rustc_span; no complete std-source or ABI credit",
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "sources_sha256": "5cc5095a4c4f4402bdf8f06587f6d77f64559eb9bd9092642f9f2e814c56faef"
+}

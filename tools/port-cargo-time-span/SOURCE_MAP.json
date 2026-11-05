@@ -1,0 +1,171 @@
+{
+  "additional_api": "TimeSpanConfig and source-location map are explicit selected-profile adapters, no extra source credit.",
+  "assertions": [
+    {
+      "source_line": 47,
+      "target_line": 15
+    },
+    {
+      "source_line": 48,
+      "target_line": 16
+    },
+    {
+      "source_line": 49,
+      "target_line": 17
+    },
+    {
+      "source_line": 50,
+      "target_line": 18
+    },
+    {
+      "source_line": 51,
+      "target_line": 19
+    },
+    {
+      "source_line": 52,
+      "target_line": 20
+    },
+    {
+      "source_line": 53,
+      "target_line": 21
+    },
+    {
+      "source_line": 54,
+      "target_line": 22
+    },
+    {
+      "source_line": 59,
+      "target_line": 25
+    },
+    {
+      "source_line": 60,
+      "target_line": 26
+    },
+    {
+      "source_line": 61,
+      "target_line": 27
+    },
+    {
+      "source_line": 62,
+      "target_line": 28
+    },
+    {
+      "source_line": 63,
+      "target_line": 29
+    },
+    {
+      "source_line": 64,
+      "target_line": 30
+    },
+    {
+      "source_line": 65,
+      "target_line": 31
+    },
+    {
+      "source_line": 66,
+      "target_line": 32
+    },
+    {
+      "source_line": 67,
+      "target_line": 33
+    },
+    {
+      "source_line": 68,
+      "target_line": 34
+    },
+    {
+      "source_line": 69,
+      "target_line": 35
+    },
+    {
+      "source_line": 70,
+      "target_line": 36
+    },
+    {
+      "source_line": 71,
+      "target_line": 37
+    }
+  ],
+  "contract": "Valid UTF-8 &str domain; all u64 seconds preserved; checked/wrapping overflow independent of debug assertions; genuine owned mutable String payload, disabled or caller-selected real backtrace operation.",
+  "credit": "Only time_span.rs; inline tests included; supporting Rust std String/anyhow used boundaries explicitly partial.",
+  "git_blob": "8ef61ed1aa9b32c62ade1a7462123443dd66f389",
+  "lines": 73,
+  "regions": [
+    {
+      "role": "imports/type reuse actual queue_duration.Duration and scoped anyhow String adapter",
+      "source": [
+        1,
+        4
+      ],
+      "target": "port/cargo/src/util/time_span.go",
+      "target_lines": [
+        7,
+        15
+      ]
+    },
+    {
+      "role": "parse_time_span plus current-context convenience, owned String format_err branch",
+      "source": [
+        5,
+        13
+      ],
+      "target": "port/cargo/src/util/time_span.go",
+      "target_lines": [
+        39,
+        71
+      ]
+    },
+    {
+      "role": "maybe_parse_time_span exact scan/parse/unit/factor/Duration algorithm",
+      "source": [
+        14,
+        38
+      ],
+      "target": "port/cargo/src/util/time_span.go",
+      "target_lines": [
+        73,
+        116
+      ]
+    },
+    {
+      "role": "inline test harness Option/Duration adaptation",
+      "source": [
+        39,
+        43
+      ],
+      "target": "port/cargo/src/util/time_span_test.go",
+      "target_lines": [
+        1,
+        13
+      ]
+    },
+    {
+      "role": "time_spans full original eight assertions in order",
+      "source": [
+        44,
+        55
+      ],
+      "target": "port/cargo/src/util/time_span_test.go",
+      "target_lines": [
+        14,
+        23
+      ]
+    },
+    {
+      "role": "time_span_errors full original thirteen assertions in order",
+      "source": [
+        56,
+        73
+      ],
+      "target": "port/cargo/src/util/time_span_test.go",
+      "target_lines": [
+        24,
+        38
+      ]
+    }
+  ],
+  "revision": "24de4721844c7a4d839072bab6fb66d41c9bc1f4",
+  "schema": 1,
+  "sha256": "185b6ee6c972b98a19ca7577482777c9e706b71869e6a6d3008d5a9a1c36f130",
+  "source": "src/util/time_span.rs"
+}

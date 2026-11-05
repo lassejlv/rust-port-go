@@ -1,0 +1,36 @@
+{
+  "compiler_commit": "58cf8f9c35b355199727627d07ae34a4e2846d67",
+  "archive": {
+    "available": true,
+    "url": "https://static.rust-lang.org/dist/2026-10-15/rust-src-1.99.1.tar.gz",
+    "hash": "b0d6d3a7e46a97adfe6488f8b60c04c019566b8363eeb6ffb32c6cf63609071d",
+    "xz_url": "https://static.rust-lang.org/dist/2026-10-15/rust-src-1.99.1.tar.xz",
+    "xz_hash": "e485a88c45db546b73571df7bebfcb4454ba4fb552c492e25fc5b00eeb5bf22d"
+  },
+  "files": [
+    {
+      "path": "library/alloc/src/vec/mod.rs",
+      "sha256": "e0c798ff16cf1770ef3266d28440d93dd65402b3afe1df4e184f15af17fb1e3e"
+    },
+    {
+      "path": "library/alloc/src/raw_vec/mod.rs",
+      "sha256": "cda0e96514e65a55b8ed559b02b7bc5f2dcb7854695a501ac0b03b0eeab0361c"
+    },
+    {
+      "path": "library/core/src/fmt/mod.rs",
+      "sha256": "a05acbc7ff16c933da7c09199f1a96fb010fd124414efc1918b9b99c57d9f332"
+    },
+    {
+      "path": "library/alloc/src/string.rs",
+      "sha256": "3e9e19850a540af6378741210bdf62ef06946b1d0ba6ab34b1bb68330505bb72"
+    },
+    {
+      "path": "library/alloc/src/fmt.rs",
+      "sha256": "0a141b7965124ded0bf65dcab826d8f26f2807ad010dff5364341f495e9b566d"
+    },
+    {
+      "path": "library/alloc/src/slice.rs",
+      "sha256": "67228d05babee451c4f29b12fb6e922d1b7be19cf8bdc7efb21edd02c8a69a3e"
+    }
+  ]
+}

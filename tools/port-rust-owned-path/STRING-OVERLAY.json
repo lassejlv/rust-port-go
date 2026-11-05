@@ -1,0 +1,12 @@
+{
+  "port/support/ruststr/owned_string.go": "6bf87a3875ee72c2a5277f5e6b34c462d29985578752ebd47893d5a381e874fa",
+  "port/support/ruststr/owned_string_oracle_test.go": "60ffe4eb8f54fdd0a30c8a76c730d4e62610e9cce05b58019b4443103af60c73",
+  "port/support/ruststr/owned_string_test.go": "027ec408a6f7bb0286fe2b6af326336c47bb52b6f76e4d6c6c10fef6e23a5047",
+  "port/support/ruststr/testdata/owned-string.jsonl.gz": "2d9984b05b2b0108f4cf4f99ebf288984aa5be2e0c2445e8a263a067d252a35d",
+  "tools/port-cargo-time-span/generate_string.py": "3030c13e0e15cb06e5682feafd9b7e18b2a29c009b5e0746ff3559e12d98f21c",
+  "tools/port-cargo-time-span/prepare.py": "b377f99a59d56a706d1cc3af532d51a92d8d0959eea930bc5b8810d7f696c2d6",
+  "tools/port-cargo-time-span/sdk1101.json": "cdfb0be958df30fd9910b97f4462b46448f17abc0f48e3a13ac3f4e9403e57a6",
+  "tools/port-cargo-time-span/sdk199.json": "49d7128145f7d9a00c19bfbe7d1127a7daa5c8d4ae9881e03c0c401619baf383",
+  "tools/port-cargo-time-span/std_string.rs": "b896d40c1c41f6277dfbc4bbac6f3d3756c5b533f64f7312b58c7e2c66f54bae",
+  "tools/port-cargo-time-span/string-manifest.json": "e73f5a48e07a2cb1d77e0f1a557daff0dc55435dc483876fbacdd1d4cd702eaa"
+}

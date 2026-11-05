@@ -243,6 +243,10 @@
       "sha256": "69a20029488e2235b1e7ccea4c9107965ad4c0afe0f87ad8dfb136f3720f69da"
     },
     {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord.go",
+      "sha256": "498ab52f2c576d510d19cc25caf8f736e3213cffe5e3c2350eac63a5fe12134a"
+    },
+    {
       "path": "port/rust/compiler/rustc_data_structures/src/unord_bag.go",
       "sha256": "4c8b0d65e91f36610396d1f21213583010129a602ebb3fa065b7f536c864f845"
     },
@@ -255,8 +259,32 @@
       "sha256": "bbf92948245f8ed71df48a352292d9367c7b860b6a85e231a1a277993c604934"
     },
     {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_bag_iterator_owned.go",
+      "sha256": "39668ad1cc82858d7538175788ec445dd6ec1f4347af4109de38af157eabdad3"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_bag_iterator_test.go",
+      "sha256": "3edf24f68dbe6c476d1bba0fb84c52151d6298710fac3bc96f4e67695d46f4de"
+    },
+    {
       "path": "port/rust/compiler/rustc_data_structures/src/unord_bag_oracle_test.go",
       "sha256": "ee4f9db75b641e6201a96f1e505d6fb8c4507601bc5d356caa5589f7807f5142"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_bag_stable_bounds.go",
+      "sha256": "9bfe5fb8019a9142ab3383abaa2e5093ffc7e48d571a92e71b1fd82ebd9b819a"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_bag_stable_bounds_test.go",
+      "sha256": "d591f3939f0e4e9344eca9d68b6ac9e6844b549b14121452374ab41cbe0730b4"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_bound_primaries.go",
+      "sha256": "1f5ad0c8506beb67ac69950ab19e55de54bc39fcab91a449128497160aa855ec"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_bound_primaries_test.go",
+      "sha256": "116fd5b825e61df6a6d08e4a8bede86cdc5036435910bcc8324b396416b19fbc"
     },
     {
       "path": "port/rust/compiler/rustc_data_structures/src/unord_codec.go",
@@ -265,6 +293,118 @@
     {
       "path": "port/rust/compiler/rustc_data_structures/src/unord_codec_oracle_test.go",
       "sha256": "a9d665cee85ee6543fffae5688875d43a5030a320c9a16cabe2d4a9fd36627ed"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_collection_marker.go",
+      "sha256": "4869b835249b595045dec07770428a5f23dd608c3b93637ec03f932a6948805d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_collection_marker_test.go",
+      "sha256": "0149b6c329a2063aee9dbd8bb029c37af72efc1a42550bf1540d3673fb952d92"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_collections_iterator_scoped.go",
+      "sha256": "350ff74dfb40ccb588f423c5465b7650f5ed1aac806f4e5fa182c571bcb199db"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_collections_iterator_test.go",
+      "sha256": "30ce98277dbdb7e226dbdc46fb951ef048712adc8b12be47731e20ae3d823611"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_collections_sort.go",
+      "sha256": "0355832d5c8cb33e0ea85873cbfb5f7bfebae772bf1a8598c02c2f81ac57abcd"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_collections_sort_test.go",
+      "sha256": "a8d73a71a94221923592dee5bf405ec096f10ab57cd4468653574c99997db9ee"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_function.go",
+      "sha256": "4749340d8542d8d48af8a2c901d7f647ecf1666def468023bace836241b9213f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_function_test.go",
+      "sha256": "b90a9cb9621aea279682a75c8ecb95816a52fd9b4ae8c750d4768c0cc2069c9d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items.go",
+      "sha256": "89c74b62b5945e5b6711e4940e67aba2772b0e4f74478578d2b0dddfaa8ec4ea"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_adapter_test.go",
+      "sha256": "dd1cc97bc9dfbe1020ce4f40a730bdf639342b2ab4f17e227ca000225e062fc3"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_boolean.go",
+      "sha256": "4e25b66af7876d92ed17947241d9dede0e564319d0c13e6100d4a4207a7890d1"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_boolean_test.go",
+      "sha256": "25a19756d19c6b73a601f17db0e838c7da09761639149ae02fb1c7ff54dd2e84"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_borrowed.go",
+      "sha256": "5eeff4dc0beafbd586ae5234a1b1b2fb0ed560eeaf30616880871e93d2e690bb"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_borrowed_test.go",
+      "sha256": "9db40a317ef84a1e7b9ef0659e95a382acd27fac9b14c0ceea3110265d3a9079"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_collections.go",
+      "sha256": "97b68c1b62678630ba56553bae302594ff0215ad0e996682f2d5fcff174237df"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_collections_test.go",
+      "sha256": "cacba8cb88251e46ecb40e28c82126deb77ab01defafc17adb950aaa6af61c8c"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_constructor_test.go",
+      "sha256": "3834ae58bd3103602bdc3c51ebcd299056f5c329baf74badf719780e13b01567"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_context_test.go",
+      "sha256": "fb042cf642c83af33bffed112031c5f3f1984aa49e4ed462530be2fd3fb3b838"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_conversion.go",
+      "sha256": "cfbdadd1885fdc6928bc7f30c5320eb051368947759aec3ae157ae9f95c6302f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_conversion_test.go",
+      "sha256": "5cbd427294163a747ea1ac313c7565dc95bedf181a1b00d55201c15614973b9d"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_core_test.go",
+      "sha256": "b71a75591a1507d2765db9f7e67148212305b5d062f6cda4f2f01b5f15dfa391"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_delegate.go",
+      "sha256": "2b4902bf03d4a8af36777daa9b9de184a725ac64d3aad93486f90eb660552a42"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_reduction_test.go",
+      "sha256": "9fc8239d0ec8f3551e0b07697ca37a6ef08b19a8f6dd5d0f0df04c63851c87ae"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_sort.go",
+      "sha256": "97be41c15d0caf03779c96c7edcd82e6cefaf067982fd4900f03a34669f76ce5"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_sort_test.go",
+      "sha256": "425c78b1fc3f8a02db4a025f22020cb0352389d00992ace1eb2d208696a458f4"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_sort_zero_test.go",
+      "sha256": "a74e89e63a37410211cabfe5794b812a9fc32df7a11a37b49b0dc664f692ef54"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_vector.go",
+      "sha256": "61d4f11072483cd05c8cc4741e754b38640006cf6f59589f45812fc4f5e4c27b"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_items_vector_test.go",
+      "sha256": "1eecefd451378a5c1894dc6a4a43dcb9dabf786316474fdeddf90f2e93274066"
     },
     {
       "path": "port/rust/compiler/rustc_data_structures/src/unord_map.go",
@@ -289,6 +429,14 @@
     {
       "path": "port/rust/compiler/rustc_data_structures/src/unord_traits_test.go",
       "sha256": "65d626d5bf7b1c73cf003791ea5860f09f05892d8cd449ae63583bdfedd98309"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_values_sorted.go",
+      "sha256": "207f72958fb2d1e08ac4699a7766822501cc57ddd0155115405498a26ddf0e1a"
+    },
+    {
+      "path": "port/rust/compiler/rustc_data_structures/src/unord_values_sorted_test.go",
+      "sha256": "ed661366203322e559280064939418b7108c59e7d6bb95405225ee5c28d9164c"
     },
     {
       "path": "port/rust/compiler/rustc_data_structures/src/unord_vector_codec_test.go",
@@ -1227,6 +1375,26 @@
       "sha256": "292c7bbbe0725e3f1d45237feacebe8d7c2ab5a6079ba8d1a3fe36c9c060258e"
     },
     {
+      "path": "port/rust/compiler/rustc_span/src/source_map_owned_path.go",
+      "sha256": "308f305c33dd0eeaf73b53ba6fa84bf9c7bd276505413ae454cf416509c6746f"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_owned_path_buf.go",
+      "sha256": "90d319cc386f8f9f6c6a1798d86a17e1f27f1a797dec8ae69300253179dbb95e"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_owned_path_cow.go",
+      "sha256": "5c692edfd06c9a4234430c6add7b0d5a4eedda183111ea198c71021b215179bb"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_owned_path_oracle_test.go",
+      "sha256": "e10dc007c1301c00e028c5550ce9bd30bed756e5cabdd19c24d77adf50e7a898"
+    },
+    {
+      "path": "port/rust/compiler/rustc_span/src/source_map_owned_path_ownership_test.go",
+      "sha256": "9578bba33bd46439032300057e5a534fd002450df82a593ae668dfed7628de10"
+    },
+    {
       "path": "port/rust/compiler/rustc_span/src/source_map_owned_tracing_test.go",
       "sha256": "be4b88ee36e6b1502cc8ed01e7ccdf08edd7ffcbdeca2fcc18320986d723fef9"
     },
@@ -1495,6 +1663,10 @@
       "sha256": "a61bb97335386ed368ff7c9c6b85e309de2827ad2eaf02bad648339c568439e0"
     },
     {
+      "path": "port/support/rusthashmap/extend_scoped.go",
+      "sha256": "5df8265f3efb961b22c731d1200549fa5254362b93c7ae5856bca092431ed596"
+    },
+    {
       "path": "port/support/rusthashmap/format_oracle_test.go",
       "sha256": "237984284b2eba5171da3e259d01075653f9a7cbdecaad8253ac6acbe611de29"
     },
@@ -1731,6 +1903,14 @@
       "sha256": "de89cc8bb907a9c07f2b0ebc95df8545474c97b0b3fa68834976ba0ea644ee50"
     },
     {
+      "path": "port/support/rustsort/cached_zero_sized.go",
+      "sha256": "c62b7ebeed35ec36ada9f0bed412d44afe7f5677b5bfe09c36936b99a294f66d"
+    },
+    {
+      "path": "port/support/rustsort/cached_zero_sized_test.go",
+      "sha256": "4c7d3779580c44b578c2b72893141c254457f7b0a0c23b8ac6a3137e1dc20138"
+    },
+    {
       "path": "port/support/rustsort/drift.go",
       "sha256": "20fb5c73a0d4574799451cc06db2bf2dab27b363dcd577ebac61f6c6f1afe5fa"
     },
@@ -1799,6 +1979,22 @@
       "sha256": "94a1d818d44466762267c84b63bee7c7891435317171d7ac3795d73193586b95"
     },
     {
+      "path": "port/support/ruststr/owned_string.go",
+      "sha256": "6bf87a3875ee72c2a5277f5e6b34c462d29985578752ebd47893d5a381e874fa"
+    },
+    {
+      "path": "port/support/ruststr/owned_string_buffer_bridge.go",
+      "sha256": "e709cbcba057acefc1630dfaf03792d0aad48260191fe1fc0bc64ea29c492d75"
+    },
+    {
+      "path": "port/support/ruststr/owned_string_oracle_test.go",
+      "sha256": "60ffe4eb8f54fdd0a30c8a76c730d4e62610e9cce05b58019b4443103af60c73"
+    },
+    {
+      "path": "port/support/ruststr/owned_string_test.go",
+      "sha256": "027ec408a6f7bb0286fe2b6af326336c47bb52b6f76e4d6c6c10fef6e23a5047"
+    },
+    {
       "path": "port/support/ruststr/slice.go",
       "sha256": "ee0f6e966959829aeb5eb0c677afe2cab80562148535b57fe993d459abfbfb17"
     },
@@ -1848,7 +2044,7 @@
     },
     {
       "path": "port/support/rustvec/collect.go",
-      "sha256": "af48d40913abdf1a041d3fbb6efa21bb8216169149d1a5c4ce8ecdfd7a0aea6a"
+      "sha256": "1e8f231b6af033b15370ff1737f85e4eccaf92c7447f7942338cbf1976e64212"
     },
     {
       "path": "port/support/rustvec/doc.go",
@@ -1885,6 +2081,14 @@
     {
       "path": "port/support/rustvec/replace_test.go",
       "sha256": "2051a179e11682b4caa4c464c7b529762c4a7afe9c2ff2dba1ffd30741820917"
+    },
+    {
+      "path": "port/support/rustvec/scoped_consumer.go",
+      "sha256": "2e91a9838ec5b83b288fb819af192ac5b101ef868373d25bc50a88dbf7b99b4d"
+    },
+    {
+      "path": "port/support/rustvec/scoped_consumer_test.go",
+      "sha256": "98dd731f8097ea4d7507c8ad901ab5e922acc6673a5f300aee92d8685437546e"
     },
     {
       "path": "tools/port-rust-caching-source-map-view/context_oracle.rs",

@@ -1,0 +1,89 @@
+{
+  "scope": "Actual unchanged generic UnordItems logical-ZST C collect/BorrowMut/Drop and usizeMAX cached capacity boundary; no full Unord/std credit",
+  "cases": 828,
+  "aborts": 164,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "reference_inputs": {
+    "tools/port-rust-span-lib/reference.py": "2094b30a5149056c683edffc6cc4a8d6d6984d81933ecb10c80e5f34c355db9e",
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+  },
+  "locations": {
+    "input_drop": {
+      "File": "tools/port-rust-unord/item-sort/zero_oracle.rs",
+      "Line": 22,
+      "Column": 160
+    },
+    "borrow": {
+      "File": "tools/port-rust-unord/item-sort/zero_oracle.rs",
+      "Line": 27,
+      "Column": 171
+    },
+    "collection_drop": {
+      "File": "tools/port-rust-unord/item-sort/zero_oracle.rs",
+      "Line": 28,
+      "Column": 181
+    },
+    "panic in a destructor during cleanup": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      "Line": 233,
+      "Column": 5
+    },
+    "capacity overflow": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/alloc/src/raw_vec/mod.rs",
+      "Line": 29,
+      "Column": 5
+    },
+    "key": {
+      "File": "tools/port-rust-unord/item-sort/zero_oracle.rs",
+      "Line": 19,
+      "Column": 247
+    },
+    "compare": {
+      "File": "tools/port-rust-unord/item-sort/zero_oracle.rs",
+      "Line": 14,
+      "Column": 194
+    },
+    "key_drop": {
+      "File": "tools/port-rust-unord/item-sort/zero_oracle.rs",
+      "Line": 13,
+      "Column": 187
+    },
+    "projection_drop": {
+      "File": "tools/port-rust-unord/item-sort/zero_oracle.rs",
+      "Line": 31,
+      "Column": 143
+    },
+    "token_drop": {
+      "File": "tools/port-rust-unord/item-sort/zero_oracle.rs",
+      "Line": 29,
+      "Column": 132
+    },
+    "outer.unwind": {
+      "File": "tools/port-rust-unord/item-sort/zero_oracle.rs",
+      "Line": 38,
+      "Column": 1044
+    },
+    "outer.processing": {
+      "File": "tools/port-rust-unord/item-sort/zero_oracle.rs",
+      "Line": 38,
+      "Column": 1134
+    }
+  },
+  "raw_sha256": "689777db023a7238e376aa04fca6517d3ffb47d8e837656340d711157d5b3261",
+  "fixture_sha256": "bee15527cfac2737de39be2a6e78da171d7a03577e9e5ecb32983e9b5d22261c",
+  "files": {
+    "tools/port-rust-unord/item-sort/zero_oracle.rs": "16ece4d9e1e7ba72dd101bddb5ce1de70c04b6ba5514655ecde2eeb9140d74e9",
+    "tools/port-rust-unord/item-sort/generate_zero.py": "74aaca33c711afded4455234f2a013d02200bf8babcf12801f2a88615d359602",
+    "port/rust/compiler/rustc_data_structures/src/unord_items_sort.go": "97be41c15d0caf03779c96c7edcd82e6cefaf067982fd4900f03a34669f76ce5",
+    "port/rust/compiler/rustc_data_structures/src/unord_items_sort_zero_test.go": "a74e89e63a37410211cabfe5794b812a9fc32df7a11a37b49b0dc664f692ef54",
+    "port/support/rustsort/cached_zero_sized.go": "c62b7ebeed35ec36ada9f0bed412d44afe7f5677b5bfe09c36936b99a294f66d",
+    "port/rust/compiler/rustc_data_structures/src/unord_items.go": "89c74b62b5945e5b6711e4940e67aba2772b0e4f74478578d2b0dddfaa8ec4ea",
+    "port/rust/compiler/rustc_data_structures/src/unord_bound_primaries.go": "1f5ad0c8506beb67ac69950ab19e55de54bc39fcab91a449128497160aa855ec",
+    "port/rust/compiler/rustc_data_structures/src/unord_function.go": "4749340d8542d8d48af8a2c901d7f647ecf1666def468023bace836241b9213f",
+    "port/rust/compiler/rustc_data_structures/src/unord_items_boolean.go": "4e25b66af7876d92ed17947241d9dede0e564319d0c13e6100d4a4207a7890d1",
+    "port/rust/compiler/rustc_data_structures/src/unord_items_delegate.go": "2b4902bf03d4a8af36777daa9b9de184a725ac64d3aad93486f90eb660552a42"
+  }
+}

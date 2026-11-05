@@ -1,0 +1,95 @@
+{
+  "files": {
+    "port/support/ruststr/owned_string.go": "6bf87a3875ee72c2a5277f5e6b34c462d29985578752ebd47893d5a381e874fa",
+    "port/support/ruststr/owned_string_buffer_bridge.go": "e709cbcba057acefc1630dfaf03792d0aad48260191fe1fc0bc64ea29c492d75",
+    "port/support/ruststr/owned_string_oracle_test.go": "60ffe4eb8f54fdd0a30c8a76c730d4e62610e9cce05b58019b4443103af60c73",
+    "port/support/ruststr/owned_string_test.go": "027ec408a6f7bb0286fe2b6af326336c47bb52b6f76e4d6c6c10fef6e23a5047",
+    "tools/port-cargo-time-span/generate_string.py": "3030c13e0e15cb06e5682feafd9b7e18b2a29c009b5e0746ff3559e12d98f21c",
+    "tools/port-cargo-time-span/prepare.py": "b377f99a59d56a706d1cc3af532d51a92d8d0959eea930bc5b8810d7f696c2d6",
+    "tools/port-cargo-time-span/sdk1101.json": "cdfb0be958df30fd9910b97f4462b46448f17abc0f48e3a13ac3f4e9403e57a6",
+    "tools/port-cargo-time-span/sdk199.json": "49d7128145f7d9a00c19bfbe7d1127a7daa5c8d4ae9881e03c0c401619baf383",
+    "tools/port-cargo-time-span/std_string.rs": "b896d40c1c41f6277dfbc4bbac6f3d3756c5b533f64f7312b58c7e2c66f54bae"
+  },
+  "fixture_sha256": "2d9984b05b2b0108f4cf4f99ebf288984aa5be2e0c2445e8a263a067d252a35d",
+  "operations": 45696,
+  "profiles": [
+    {
+      "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+      "sdk": "1.99"
+    },
+    {
+      "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+      "sdk": "1.101"
+    }
+  ],
+  "raw_sha256": "2b4ee501f898cef4ceab6faf97d22ba1b0e3aa7c5ae919bb1b516f2d3a2a371c",
+  "records": 1344,
+  "schema": 1,
+  "scope": "Scoped genuine std String methods only; both exact SDKs; no whole String source-file credit or allocator/ABI identity",
+  "source1101": {
+    "archive_sha256": "d99600cbf56d2db40112095e99e138f9e2f30002ef2774d288dc525e28a1357c",
+    "compiler_commit": "708c94ef093ecc42fb8851e17d8383d999727abc",
+    "files": [
+      {
+        "path": "library/alloc/src/vec/mod.rs",
+        "sha256": "c80d5ca8ad48ba974490be2003e057f976830af60186b02346a5bb0fb87b1b00"
+      },
+      {
+        "path": "library/alloc/src/raw_vec/mod.rs",
+        "sha256": "b8f2f10976bdcaa9c455c47303d67d2804db323a650ff90ccc26e56cd9b841b1"
+      },
+      {
+        "path": "library/core/src/fmt/mod.rs",
+        "sha256": "72cd4601ca6a6b61612d2edbb58d534e1d5c6403cf23d6228d332e372dd716ba"
+      },
+      {
+        "path": "library/alloc/src/slice.rs",
+        "sha256": "085b18c8f564ecdb4575bf50b387ddbbf52b37bf9985cb0bc3899db49ab24778"
+      },
+      {
+        "path": "library/alloc/src/string.rs",
+        "sha256": "53d383c077e7593599c6c61706e73090db1b808598c0949bdc14974246a6b095"
+      },
+      {
+        "path": "library/alloc/src/fmt.rs",
+        "sha256": "1fb4bf31b175c7eea7ada66f3bb15f6ac320aa755f9c94e81d013a214989cb35"
+      }
+    ]
+  },
+  "source199": {
+    "archive": {
+      "available": true,
+      "hash": "b0d6d3a7e46a97adfe6488f8b60c04c019566b8363eeb6ffb32c6cf63609071d",
+      "url": "https://static.rust-lang.org/dist/2026-10-15/rust-src-1.99.1.tar.gz",
+      "xz_hash": "e485a88c45db546b73571df7bebfcb4454ba4fb552c492e25fc5b00eeb5bf22d",
+      "xz_url": "https://static.rust-lang.org/dist/2026-10-15/rust-src-1.99.1.tar.xz"
+    },
+    "compiler_commit": "58cf8f9c35b355199727627d07ae34a4e2846d67",
+    "files": [
+      {
+        "path": "library/alloc/src/vec/mod.rs",
+        "sha256": "e0c798ff16cf1770ef3266d28440d93dd65402b3afe1df4e184f15af17fb1e3e"
+      },
+      {
+        "path": "library/alloc/src/raw_vec/mod.rs",
+        "sha256": "cda0e96514e65a55b8ed559b02b7bc5f2dcb7854695a501ac0b03b0eeab0361c"
+      },
+      {
+        "path": "library/core/src/fmt/mod.rs",
+        "sha256": "a05acbc7ff16c933da7c09199f1a96fb010fd124414efc1918b9b99c57d9f332"
+      },
+      {
+        "path": "library/alloc/src/string.rs",
+        "sha256": "3e9e19850a540af6378741210bdf62ef06946b1d0ba6ab34b1bb68330505bb72"
+      },
+      {
+        "path": "library/alloc/src/fmt.rs",
+        "sha256": "0a141b7965124ded0bf65dcab826d8f26f2807ad010dff5364341f495e9b566d"
+      },
+      {
+        "path": "library/alloc/src/slice.rs",
+        "sha256": "67228d05babee451c4f29b12fb6e922d1b7be19cf8bdc7efb21edd02c8a69a3e"
+      }
+    ]
+  }
+}

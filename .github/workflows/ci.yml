@@ -312,6 +312,34 @@ jobs:
           FERRUGO_CARGO: cargo
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: nightly-2026-11-04
+      - name: Compare complete unordered collection APIs
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, subprocess, sys
+          manifest = json.loads(pathlib.Path('tools/port-rust-unord/leaf-producers.json').read_text())
+          for name in manifest['producers']:
+              print('Native Unord:', name, flush=True)
+              subprocess.run([sys.executable, name, '--check', '--skip-go'], check=True)
+          PY
+          go test -p 1 -race -count=1 -timeout 30m ./port/rust/compiler/rustc_data_structures/src
+        env:
+          FERRUGO_GO: go
+          FERRUGO_RUSTC: rustc
+          FERRUGO_RUSTDOC: rustdoc
+          FERRUGO_CARGO: cargo
+          CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
+          RUSTUP_TOOLCHAIN: nightly-2026-11-04
+          GORACE: atexit_sleep_ms=0
+      - name: Retain unordered collection source evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unord-native-producers
+          path: |
+            tools/port-rust-unord/**/*manifest.json
+            port/rust/compiler/rustc_data_structures/src/testdata/unord_*
+          if-no-files-found: error
+          retention-days: 14
       - name: Compare complete strict-version-hash module
         run: python3 tools/port-rust-svh/generate.py --check
         env:
@@ -557,5 +585,97 @@ jobs:
         with:
           name: span-${{ matrix.component }}-native-producers
           path: ${{ runner.temp }}/span-${{ matrix.component }}-producers
+          if-no-files-found: error
+          retention-days: 14
+  leaf-ports:
+    name: Leaf ports (${{ matrix.component }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        component: [ast, cargo]
+    env:
+      FERRUGO_GO: go
+      CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
+      CARGO_BUILD_JOBS: '1'
+      GOMAXPROCS: '2'
+      GORACE: atexit_sleep_ms=0
+      FERRUGO_AST_UTIL_PROFILE_DIR: ${{ runner.temp }}/ferrugo-leaf-producer
+      FERRUGO_TIME_SPAN_PROOF: ${{ runner.temp }}/ferrugo-leaf-producer
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23.12'
+          cache: false
+      - name: Install and select paired official Rust toolchains
+        env:
+          LEAF_COMPONENT: ${{ matrix.component }}
+        run: |
+          rustup toolchain install 1.99.1 --profile minimal
+          rustup toolchain install nightly-2026-11-04 --profile minimal
+          python3 - <<'PY'
+          import os, subprocess
+          stable = '1.99.1'
+          nightly = 'nightly-2026-11-04'
+          selected = nightly if os.environ['LEAF_COMPONENT'] == 'ast' else stable
+          def executable(version, name):
+              return subprocess.check_output(['rustup', 'which', '--toolchain', version, name], text=True).strip()
+          values = {
+              'FERRUGO_RUSTC': executable(selected, 'rustc'),
+              'FERRUGO_CARGO': executable(selected, 'cargo'),
+              'FERRUGO_RUSTDOC': executable(selected, 'rustdoc'),
+              'FERRUGO_RUSTC_NIGHTLY': executable(nightly, 'rustc'),
+              'FERRUGO_STRING_RUSTC_199': executable(stable, 'rustc'),
+              'FERRUGO_STRING_RUSTC_1101': executable(nightly, 'rustc'),
+          }
+          with open(os.environ['GITHUB_ENV'], 'a') as output:
+              for name, value in values.items():
+                  output.write(name + '=' + value + '\n')
+          PY
+      - name: Prepare exact source trees and scoped standard-library archive
+        run: |
+          python3 tools/port-inventory/inventory.py prepare
+          python3 tools/port-inventory/inventory.py verify
+          env FERRUGO_RUSTC="$FERRUGO_STRING_RUSTC_1101" python3 tools/port-rust-str/prepare.py --fetch
+      - name: Prepare and observe unchanged AST utilities
+        if: matrix.component == 'ast'
+        run: |
+          for debug in false true; do
+            for overflow in false true; do
+              python3 tools/port-rust-ast-util/reference-build/prepare.py --fetch-source --fetch-deps --debug-assertions "$debug" --overflow-checks "$overflow"
+            done
+          done
+          python3 tools/port-rust-ast-util/generate.py --output-dir "$FERRUGO_AST_UTIL_PROFILE_DIR"
+          python3 -m unittest discover -s tools/port-rust-ast-util -p 'test_*.py'
+      - name: Replay AST source observations and original child tests
+        if: matrix.component == 'ast'
+        run: |
+          go test -p 1 -race -count=1 -timeout 30m ./port/rust/compiler/rustc_ast/src/...
+          go test -p 1 -count=1 -timeout 30m -tags 'ferrugo_rustc_nightly rustc_stable_hash_nightly' ./port/rust/compiler/rustc_ast/src/...
+          go vet -p 1 ./port/rust/compiler/rustc_ast/src/...
+          go vet -p 1 -tags 'ferrugo_rustc_nightly rustc_stable_hash_nightly' ./port/rust/compiler/rustc_ast/src/...
+      - name: Observe actual Cargo time spans and owning String operations
+        if: matrix.component == 'cargo'
+        run: |
+          python3 tools/port-cargo-time-span/prepare.py --fetch
+          python3 tools/port-cargo-time-span/generate_string.py
+          python3 tools/port-cargo-time-span/generate.py --output-dir "$FERRUGO_TIME_SPAN_PROOF"
+          python3 -m unittest discover -s tools/port-cargo-time-span -p 'test_*.py'
+          cp tools/port-cargo-time-span/string-manifest.json "$FERRUGO_TIME_SPAN_PROOF/"
+          cp port/support/ruststr/testdata/owned-string.jsonl.gz "$FERRUGO_TIME_SPAN_PROOF/"
+      - name: Replay Cargo parser and owned error contracts
+        if: matrix.component == 'cargo'
+        run: |
+          go test -p 1 -race -count=1 -timeout 30m ./port/support/ruststr ./port/support/rustanyhow
+          go test -p 1 -race -count=1 -timeout 30m ./port/cargo/src/util -run TimeSpan
+          go vet -p 1 ./port/support/ruststr ./port/support/rustanyhow ./port/cargo/src/util
+      - name: Retain exact leaf producer evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: leaf-${{ matrix.component }}-native-producers
+          path: ${{ runner.temp }}/ferrugo-leaf-producer
           if-no-files-found: error
           retention-days: 14

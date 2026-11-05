@@ -1,0 +1,67 @@
+{
+  "scope": "Actual unchanged SDK cached-key sort of full-uint logical ZST slices; no std file completion claim",
+  "cases": 624,
+  "aborts": 208,
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+  "sdk_libraries": {
+    "libcore-7832d2fe4fa07f06.rlib": "4fb8e711916ca10f1a349a8d5cde7ed17cd968d4b71833f10d9c799b2ab3f645",
+    "liballoc-6e37827f505ea391.rlib": "d4d0c141c89ab81f1a6e5b8b17e6296d5acd8208480b62ad63f563628dfb93ba",
+    "libstd-530112f2fd58de10.rlib": "8fdbba1c8e59d13f0382407bce5800f9a75ecb49b4d0fdb4bcb616284bb354a1"
+  },
+  "locations": {
+    "capacity overflow": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/alloc/src/raw_vec/mod.rs",
+      "Line": 29,
+      "Column": 5
+    },
+    "key_function": {
+      "File": "tools/port-rust-unord/cached-zero-sized/oracle.rs",
+      "Line": 58,
+      "Column": 606
+    },
+    "key_compare": {
+      "File": "tools/port-rust-unord/cached-zero-sized/oracle.rs",
+      "Line": 26,
+      "Column": 277
+    },
+    "function_drop": {
+      "File": "tools/port-rust-unord/cached-zero-sized/oracle.rs",
+      "Line": 56,
+      "Column": 249
+    },
+    "token_drop": {
+      "File": "tools/port-rust-unord/cached-zero-sized/oracle.rs",
+      "Line": 54,
+      "Column": 91
+    },
+    "panic in a destructor during cleanup": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      "Line": 233,
+      "Column": 5
+    },
+    "key_drop": {
+      "File": "tools/port-rust-unord/cached-zero-sized/oracle.rs",
+      "Line": 27,
+      "Column": 196
+    },
+    "outer.unwind": {
+      "File": "tools/port-rust-unord/cached-zero-sized/oracle.rs",
+      "Line": 67,
+      "Column": 905
+    },
+    "outer.processing": {
+      "File": "tools/port-rust-unord/cached-zero-sized/oracle.rs",
+      "Line": 67,
+      "Column": 1013
+    }
+  },
+  "raw_sha256": "0a5f676005e8c537c4173f1310d5ac47287a9a4a4c5876ccdbef7f1749546a5c",
+  "fixture_sha256": "86fe58ff114ba737f1911564ab82ac339d7b187b2dddbd94fdb51de6e476e9ce",
+  "files": {
+    "tools/port-rust-unord/cached-zero-sized/oracle.rs": "bd203157870b55230a02675dd64f06c753c3ce49ce09d33dc997af1b9798bf8f",
+    "tools/port-rust-unord/cached-zero-sized/generate.py": "d0c4ada6ee5f213b232318f280f7151b2ab4be4fdc35391915ec98d2c6f338a1",
+    "tools/port-rust-unord/cached-zero-sized/README.md": "ef3f54ae6eea8425e35bb69a36fb2b3a1e4b34ec42ae0bc9f38b65dfc0709d0d",
+    "tools/port-rust-unord/cached-zero-sized/test_tools.py": "6b36f0b6e5d1f5da328748651cca8b0693d06b96d5b8ab26000f957e6ba19daa"
+  },
+  "allocation_evidence": "ALLOC is an actual native global-allocator observation of the first key-vector allocation before the first key callback. Go source index layout is checked against it; no Go allocator equivalence is claimed."
+}

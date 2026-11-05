@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "status": "candidate-ready-for-independent-parent-review",
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "target": "x86_64-unknown-linux-gnu",
+  "unicode_version": [
+    18,
+    0,
+    0
+  ],
+  "producer_manifest_sha256": "9529f815d6ef7c2ee029422c6dfa76f7090e86b4d7bfd4e65bba66ebfabf71d4",
+  "source_manifest_sha256": "7e77449d1841240c82d55d42555de5d655bdda0834d1dc1c1b31bb3762447a7e",
+  "profiles": {
+    "d0o0": {
+      "rows": 26042,
+      "tags": 264,
+      "aborts": 2,
+      "original_ast_tests": 6
+    },
+    "d0o1": {
+      "rows": 26042,
+      "tags": 264,
+      "aborts": 2,
+      "original_ast_tests": 6
+    },
+    "d1o0": {
+      "rows": 26042,
+      "tags": 264,
+      "aborts": 2,
+      "original_ast_tests": 6
+    },
+    "d1o1": {
+      "rows": 26042,
+      "tags": 264,
+      "aborts": 2,
+      "original_ast_tests": 6
+    }
+  },
+  "scalar_validation": {
+    "valid_scalars_per_profile": 1112064,
+    "positions": 5,
+    "profiles": 4,
+    "total_calls": 22241280
+  },
+  "go": {
+    "version": "go1.23.12",
+    "gomaxprocs": 2,
+    "parallel_packages": 1,
+    "isolated_snapshot": "/tmp/ferrugo-ast-util35.l4z3jvho",
+    "baseline": "coherent Root35 plus exact AST and frozen10-file owning String overlay",
+    "default": {
+      "utilities_seconds": 1.177,
+      "originals_seconds": 0.005
+    },
+    "race": {
+      "utilities_seconds": 6.452,
+      "originals_seconds": 1.015
+    },
+    "tags": {
+      "names": [
+        "ferrugo_rustc_nightly",
+        "rustc_stable_hash_nightly"
+      ],
+      "utilities_seconds": 1.151,
+      "originals_seconds": 0.005
+    },
+    "vet": "passed"
+  },
+  "integrity": {
+    "python_tests": 5,
+    "source_audit": "passed",
+    "native_final_check": "all4profiles-passed-raw-and-gzip-unchanged"
+  },
+  "source_credit": "Parent inventory only;3 complete implementations+1 original child test file. No full token/AST crate/std helper credit."
+}

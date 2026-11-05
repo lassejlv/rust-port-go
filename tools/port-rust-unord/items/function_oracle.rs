@@ -1,0 +1,23 @@
+// Complete actual Fn trait implementations; standard call/drop/return-place
+// behavior supplies the reference for the owned Go trait dictionary.
+#![feature(fn_traits,unboxed_closures,panic_can_unwind,panic_internals)]
+#![allow(internal_features)]
+use std::{cell::Cell,io::{self,Write},ops::{Fn,FnMut,FnOnce},panic::{self,catch_unwind,AssertUnwindSafe}};
+#[derive(Clone,Copy)]struct Config{argument:bool,environment:bool,token:bool,resume:bool}
+thread_local!{static CONFIG:Cell<Config>=const{Cell::new(Config{argument:false,environment:false,token:false,resume:false})};}
+fn event(value:impl AsRef<str>){println!("{}",value.as_ref());io::stdout().flush().unwrap();}fn hex(s:&str)->String{s.bytes().map(|b|format!("{b:02x}")).collect()}
+#[track_caller]fn raise(s:&'static str)->!{if CONFIG.get().resume{panic::resume_unwind(Box::new(s))}else{panic::panic_any(s)}}
+struct Value(u64);impl Drop for Value{fn drop(&mut self){event(format!("value:{}:{}",self.0,std::thread::panicking()));if self.0==7&&CONFIG.get().argument{raise("argument")}}}
+struct Token;impl Drop for Token{fn drop(&mut self){event(format!("token:{}",std::thread::panicking()));if CONFIG.get().token{raise("token")}}}
+struct Function{calls:Cell<u64>,token:Token}
+impl Clone for Function{fn clone(&self)->Self{event(format!("clone:{}:{}",self.calls.get(),std::thread::panicking()));Self{calls:Cell::new(self.calls.get()),token:Token}}}
+impl Drop for Function{fn drop(&mut self){event(format!("environment:{}:{}",self.calls.get(),std::thread::panicking()));if CONFIG.get().environment{raise("environment")}}}
+impl FnOnce<(Value,)> for Function{type Output=Value;extern "rust-call" fn call_once(self,(value,):(Value,))->Value{self.calls.set(self.calls.get()+1);event(format!("once:{}:{}",self.calls.get(),std::thread::panicking()));Value(value.0+3000)}}
+impl FnMut<(Value,)> for Function{extern "rust-call" fn call_mut(&mut self,(value,):(Value,))->Value{self.calls.set(self.calls.get()+1);event(format!("mutable:{}:{}",self.calls.get(),std::thread::panicking()));Value(value.0+2000)}}
+impl Fn<(Value,)> for Function{extern "rust-call" fn call(&self,(value,):(Value,))->Value{self.calls.set(self.calls.get()+1);event(format!("shared:{}:{}",self.calls.get(),std::thread::panicking()));Value(value.0+1000)}}
+fn message(p:Box<dyn std::any::Any+Send>)->String{p.downcast_ref::<&str>().map(|s|(*s).to_owned()).unwrap_or_else(||"opaque".into())}
+fn finish_call(result:Result<Value,Box<dyn std::any::Any+Send>>){match result{Ok(value)=>{event(format!("call_returned:{}",value.0));drop(value)},Err(p)=>event(format!("call_caught:{}",hex(&message(p))))}}
+fn body(kind:usize){event(format!("body:{}",std::thread::panicking()));let result=catch_unwind(AssertUnwindSafe(||{let mut function=Function{calls:Cell::new(10),token:Token};match kind{0=>{finish_call(catch_unwind(AssertUnwindSafe(||Fn::call(&function,(Value(7),)))));drop(function)},1=>{finish_call(catch_unwind(AssertUnwindSafe(||FnMut::call_mut(&mut function,(Value(7),)))));drop(function)},2=>finish_call(catch_unwind(AssertUnwindSafe(||FnOnce::call_once(function,(Value(7),))))),3=>{finish_call(catch_unwind(AssertUnwindSafe(||FnMut::call_mut(&mut function,(Value(7),)))));finish_call(catch_unwind(AssertUnwindSafe(||FnMut::call_mut(&mut function,(Value(7),)))));let clone=function.clone();finish_call(catch_unwind(AssertUnwindSafe(||Fn::call(&clone,(Value(7),)))));drop(clone);drop(function)},_=>unreachable!()}}));event(format!("body_caught:{}:{}",hex(&result.err().map(message).unwrap_or_default()),std::thread::panicking()));}
+struct Outer(usize);impl Drop for Outer{fn drop(&mut self){body(self.0)}}
+fn main(){let args:Vec<_>=std::env::args().collect();let mode=args[1].clone();let kind=args[2].parse::<usize>().unwrap();let flags=args[3].parse::<u8>().unwrap();let resume=args[4]=="true";CONFIG.set(Config{argument:flags&1!=0,environment:flags&2!=0,token:flags&4!=0,resume});let processing=mode=="processing";panic::set_hook(Box::new(move|info|{let payload_kind=if info.payload().is::<&str>(){"static_str"}else if info.payload().is::<String>(){"owned_string"}else{"opaque"};let payload=info.payload().downcast_ref::<&str>().copied().unwrap_or("");let(file,line,column)=info.location().map(|l|(l.file(),l.line(),l.column())).unwrap_or(("",0,0));event(format!("HOOK:{payload_kind}:{}:{}:{}:{}:{}:{line}:{column}",hex(payload),std::thread::panicking(),info.can_unwind(),info.force_no_backtrace(),hex(file)));if processing{body(kind)}}));
+match mode.as_str(){"normal"=>body(kind),"unwind"=>{let _=catch_unwind(||{let _outer=Outer(kind);panic::panic_any("outer")});event("outer_end:false")},"processing"=>{let _=catch_unwind(||panic::panic_any("outer"));event("outer_end:false")},_=>panic!("mode")}}

@@ -1,0 +1,84 @@
+{
+  "scope": "Actual unchanged SDK cached-key sort of full-uint logical ZST slices; no std file completion claim",
+  "cases": 624,
+  "aborts": 208,
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)\nbinary: rustc\ncommit-hash: 708c94ef093ecc42fb8851e17d8383d999727abc\ncommit-date: 2026-11-03\nhost: x86_64-unknown-linux-gnu\nrelease: 1.101.0-nightly\nLLVM version: 23.1.5",
+  "sdk_libraries": {
+    "libcore-7832d2fe4fa07f06.rlib": "4fb8e711916ca10f1a349a8d5cde7ed17cd968d4b71833f10d9c799b2ab3f645",
+    "liballoc-6e37827f505ea391.rlib": "d4d0c141c89ab81f1a6e5b8b17e6296d5acd8208480b62ad63f563628dfb93ba",
+    "libstd-530112f2fd58de10.rlib": "8fdbba1c8e59d13f0382407bce5800f9a75ecb49b4d0fdb4bcb616284bb354a1"
+  },
+  "locations": {
+    "capacity overflow": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/alloc/src/raw_vec/mod.rs",
+      "Line": 29,
+      "Column": 5
+    },
+    "key_function": {
+      "File": "tools/port-rust-unord/cached-zero-sized/oracle.rs",
+      "Line": 58,
+      "Column": 606
+    },
+    "key_compare": {
+      "File": "tools/port-rust-unord/cached-zero-sized/oracle.rs",
+      "Line": 26,
+      "Column": 277
+    },
+    "function_drop": {
+      "File": "tools/port-rust-unord/cached-zero-sized/oracle.rs",
+      "Line": 56,
+      "Column": 249
+    },
+    "token_drop": {
+      "File": "tools/port-rust-unord/cached-zero-sized/oracle.rs",
+      "Line": 54,
+      "Column": 91
+    },
+    "panic in a destructor during cleanup": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      "Line": 233,
+      "Column": 5
+    },
+    "key_drop": {
+      "File": "tools/port-rust-unord/cached-zero-sized/oracle.rs",
+      "Line": 27,
+      "Column": 196
+    },
+    "outer.unwind": {
+      "File": "tools/port-rust-unord/cached-zero-sized/oracle.rs",
+      "Line": 67,
+      "Column": 905
+    },
+    "outer.processing": {
+      "File": "tools/port-rust-unord/cached-zero-sized/oracle.rs",
+      "Line": 67,
+      "Column": 1013
+    }
+  },
+  "raw_sha256": "0a5f676005e8c537c4173f1310d5ac47287a9a4a4c5876ccdbef7f1749546a5c",
+  "fixture_sha256": "86fe58ff114ba737f1911564ab82ac339d7b187b2dddbd94fdb51de6e476e9ce",
+  "files": {
+    "tools/port-rust-unord/cached-zero-sized/oracle.rs": "bd203157870b55230a02675dd64f06c753c3ce49ce09d33dc997af1b9798bf8f",
+    "tools/port-rust-unord/cached-zero-sized/generate.py": "d0c4ada6ee5f213b232318f280f7151b2ab4be4fdc35391915ec98d2c6f338a1",
+    "tools/port-rust-unord/cached-zero-sized/README.md": "ef3f54ae6eea8425e35bb69a36fb2b3a1e4b34ec42ae0bc9f38b65dfc0709d0d",
+    "tools/port-rust-unord/cached-zero-sized/test_tools.py": "6b36f0b6e5d1f5da328748651cca8b0693d06b96d5b8ab26000f957e6ba19daa",
+    "port/support/rustsort/cached_zero_sized.go": "c62b7ebeed35ec36ada9f0bed412d44afe7f5677b5bfe09c36936b99a294f66d",
+    "port/support/rustsort/cached_zero_sized_test.go": "4c7d3779580c44b578c2b72893141c254457f7b0a0c23b8ac6a3137e1dc20138",
+    "port/support/rustsort/cached_oracle_test.go": "de89cc8bb907a9c07f2b0ebc95df8545474c97b0b3fa68834976ba0ea644ee50",
+    "port/support/rustsort/cached_context_test.go": "bea260c003df76f0ebd63b93d1197040a14a34acd4f3599600b9c5b757e9d0bd",
+    "port/support/rustsort/cached.go": "ccbc376acc8b03ec77676811c9d0039fa26e77f2bb08bda62bce8b5845f28abd",
+    "port/support/rustsort/drift.go": "20fb5c73a0d4574799451cc06db2bf2dab27b363dcd577ebac61f6c6f1afe5fa",
+    "port/support/rustsort/key_function.go": "c5bc5b6fddc4a839ede57a1bd5df1b09646cb933fba257c6c242e0e47119e572",
+    "port/support/rustsort/merge.go": "b5344aaab99fd601572766762d7705da7b392f63af225083307a9cced9c1f475",
+    "port/support/rustsort/network.go": "c89ed4658707f19997f78cf46d2c1deb31d60af3a20a7420186566d4386521f4",
+    "port/support/rustsort/panic_sites.go": "1bfa9ac4eae8770fa353acebc2a1458b22a9e728c35a0d9a6781166a34d87d06",
+    "port/support/rustsort/shared.go": "9117a60564f30108fa97fd412f55a434835e9706d4db4a1413e29a9d7a2a67a7",
+    "port/support/rustsort/stable.go": "6b636f0403be3b441a7176e66136f634846d658da915e462b98997370b093760",
+    "port/support/rustsort/unstable.go": "bb8f020c61729c43e48a49a638fa885d3d90bc778f14ae273b2fd45f8bade63d",
+    "port/support/rustvec/collect.go": "1e8f231b6af033b15370ff1737f85e4eccaf92c7447f7942338cbf1976e64212",
+    "port/support/rustvec/scoped_consumer.go": "2e91a9838ec5b83b288fb819af192ac5b101ef868373d25bc50a88dbf7b99b4d",
+    "port/support/rustvec/ownership.go": "4312821d11339a4abb9f60295f492183eb5c34a26f40876ee990a2f09f89dc6b",
+    "port/support/rustvec/panic_sites.go": "8d026e818cf7252a9b24595c3e15bed94fd4274753ce2d5e5291ce5b2b5d2ad0"
+  },
+  "allocation_evidence": "ALLOC is an actual native global-allocator observation of the first key-vector allocation before the first key callback. Go source index layout is checked against it; no Go allocator equivalence is claimed."
+}

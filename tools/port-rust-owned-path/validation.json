@@ -1,0 +1,81 @@
+{
+  "acceptance_workspace": "/tmp/ferrugo-owned-path-scope-v1tkf2ql",
+  "base_revision": "2b747ed465d99b22b05992b28800918a211c59cb",
+  "checks": [
+    {
+      "command": "python3 tools/port-rust-owned-path/generate.py",
+      "cwd": "/workspace/rust-port-go",
+      "exit_code": 0,
+      "result": "1294 actual std owning path scripts; 78740 operations; Windows uses Wine on Linux",
+      "scope": "std-only Linux and Windows Rust clients sequentially; no Go build; local Wine Unix socket permission enabled"
+    },
+    {
+      "command": "python3 -m unittest discover -s tools/port-rust-owned-path -p test_*.py -v",
+      "cwd": "/workspace/rust-port-go",
+      "exit_code": 0,
+      "result": "OK; exact sources/compiler, requests, artifact hashes, Go sources and frozen String10 overlay",
+      "tests": 3
+    },
+    {
+      "command": "env GOMAXPROCS=2 GOCACHE=/tmp/ferrugo-go123-cache /workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go test -p=1 ./port/rust/compiler/rustc_span/src -run ^TestOwnedPath -count=1",
+      "cwd": "/tmp/ferrugo-owned-path-scope-v1tkf2ql",
+      "exit_code": 0,
+      "result": "ok github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src 0.221s",
+      "scope": "isolated accepted main plus exact String10 and six new owning-path Go files only",
+      "tests": 5
+    },
+    {
+      "command": "env GOMAXPROCS=2 GOCACHE=/tmp/ferrugo-go123-cache /workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go test -race -p=1 ./port/rust/compiler/rustc_span/src -run ^TestOwnedPath -count=1",
+      "cwd": "/tmp/ferrugo-owned-path-scope-v1tkf2ql",
+      "exit_code": 0,
+      "result": "ok github.com/lassejlv/rust-port-go/port/rust/compiler/rustc_span/src 2.747s",
+      "scope": "focused minGo race/checkptr on exact isolated accepted main + final String10 + six owning-path Go sources; all1294native replay scripts/78740ops",
+      "tests": 5
+    },
+    {
+      "command": "env GOMAXPROCS=2 GOCACHE=/tmp/ferrugo-go123-cache /workspace/rust-port-go/.toolchain/go123-mod-cache/golang.org/toolchain@v0.0.1-go1.23.12.linux-amd64/bin/go vet -p=1 ./port/rust/compiler/rustc_span/src ./port/support/ruststr",
+      "cwd": "/tmp/ferrugo-owned-path-scope-v1tkf2ql",
+      "exit_code": 0,
+      "result": "no diagnostics",
+      "scope": "scoped span and owning String bridge packages only; sequential after race"
+    }
+  ],
+  "final_verification": {
+    "isolated_final_path_count": 18,
+    "isolated_frozen_string_path_count": 10,
+    "race_checkptr_passed": true,
+    "scoped_vet_passed": true,
+    "source_changes_required": false
+  },
+  "go_sources_sha256": "b3c6125bac99316c35e08dffe97e818560f1168b3981fec08086bdbf191b03a8",
+  "go_toolchain": "go version go1.23.12 linux/amd64",
+  "limits": [
+    "Windows reference is Rust PE under authenticated Wine on Linux; no Windows kernel claim",
+    "Go replay covers portable Windows grammar in Linux package tests; no Go PE replay claimed",
+    "No allocator callback/ABI behavior, forced OOM test or pointer-equality promise across allocation growth/shrink",
+    "No full-file Span acceptance until primary interfaces/public fields use these owners"
+  ],
+  "native_coverage": {
+    "capacity_overflow_panics": 2400,
+    "invalid_extension_panics": 4886,
+    "linux_records": 807,
+    "observations": [
+      "raw OS bytes/WTF8",
+      "length/capacity",
+      "String/OsString/PathBuf buffer moves",
+      "clone/default clone_from/clone_into distinction",
+      "reserve/exact/shrink",
+      "push/pop/name/extension mutation and post-failure states",
+      "Cow borrowed/owned alternatives and all clone_from branches",
+      "lossy String capacity and surrogate joining"
+    ],
+    "windows_wine_records": 487
+  },
+  "native_operations": 78740,
+  "native_records": 1294,
+  "no_full_std_file_or_parent_span_file_credit": true,
+  "schema": 1,
+  "scope": "Accepted main base plus exact final frozen String10 and six NEW owning path/bridge Go files; no live Syntax/Unord/Packed/Symbol overlay",
+  "sdk_commit": "708c94ef093ecc42fb8851e17d8383d999727abc",
+  "upstream_span_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179"
+}

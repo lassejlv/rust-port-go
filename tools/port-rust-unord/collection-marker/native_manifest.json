@@ -1,0 +1,47 @@
+{
+  "scope": "Actual private UnordCollection bounds for exact Map/Set/Bag Self, aliases, ordered/different wrapper rejection, valid empty extension; no whole Unord credit",
+  "bounds": [
+    {
+      "configuration": "positive",
+      "compiles": true,
+      "diagnostic": "warning: struct `Wrapper` is never constructed\n --> tools/port-rust-unord/collection-marker/bounds.rs:6:8\n  |\n6 | struct Wrapper{inner:UnordBag<u64>,ordered:Vec<u64>}\n  |        ^^^^^^^\n  |\n  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nwarning: struct `DerefWrapper` is never constructed\n --> tools/port-rust-unord/collection-marker/bounds.rs:8:8\n  |\n8 | struct DerefWrapper(Wrapper);\n  |        ^^^^^^^^^^^^\n\nwarning: 2 warnings emitted\n\n",
+      "stdout": "next\ndrop\nnext\ndrop\nnext\ndrop\n"
+    },
+    {
+      "configuration": "aliases",
+      "compiles": true,
+      "diagnostic": "warning: unused import: `UnordItems`\n --> tools/port-rust-unord/collection-marker/bounds.rs:1:48\n  |\n1 | use rustc_data_structures::unord::{ExtendUnord,UnordItems,UnordMap,UnordSet,UnordBag};\n  |                                                ^^^^^^^^^^\n  |\n  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default\n\nwarning: struct `Input` is never constructed\n --> tools/port-rust-unord/collection-marker/bounds.rs:4:8\n  |\n4 | struct Input<T>(PhantomData<T>);impl<T>Iterator for Input<T>{type Item=T;fn next(&mut self)->Option<T>{println!(\"next\");None}}\n  |        ^^^^^\n  |\n  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nwarning: struct `Wrapper` is never constructed\n --> tools/port-rust-unord/collection-marker/bounds.rs:6:8\n  |\n6 | struct Wrapper{inner:UnordBag<u64>,ordered:Vec<u64>}\n  |        ^^^^^^^\n\nwarning: struct `DerefWrapper` is never constructed\n --> tools/port-rust-unord/collection-marker/bounds.rs:8:8\n  |\n8 | struct DerefWrapper(Wrapper);\n  |        ^^^^^^^^^^^^\n\nwarning: 4 warnings emitted\n\n",
+      "stdout": ""
+    },
+    {
+      "configuration": "ordered",
+      "compiles": false,
+      "diagnostic": "warning: unused imports: `UnordItems`, `UnordMap`, and `UnordSet`\n --> tools/port-rust-unord/collection-marker/bounds.rs:1:48\n  |\n1 | use rustc_data_structures::unord::{ExtendUnord,UnordItems,UnordMap,UnordSet,UnordBag};\n  |                                                ^^^^^^^^^^ ^^^^^^^^ ^^^^^^^^\n  |\n  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default\n\nerror[E0277]: the trait bound `Vec<u64>: ExtendUnord<u64>` is not satisfied\n  --> tools/port-rust-unord/collection-marker/bounds.rs:15:32\n   |\n15 |  #[cfg(ordered)]requires::<u64,Vec<u64>>();\n   |                                ^^^^^^^^ the trait `unord::UnordCollection` is not implemented for `Vec<u64>`\n   |\nhelp: the following other types implement trait `unord::UnordCollection`\n  --> original/compiler/rustc_data_structures/src/unord.rs:258:0\n   |\n   = note: `UnordSet<V>`\n  ::: original/compiler/rustc_data_structures/src/unord.rs:457:0\n   |\n   = note: `UnordMap<K, V>`\n  ::: original/compiler/rustc_data_structures/src/unord.rs:715:0\n   |\n   = note: `UnordBag<T>`\n   = note: required for `Vec<u64>` to implement `ExtendUnord<u64>`\nnote: required by a bound in `requires`\n  --> tools/port-rust-unord/collection-marker/bounds.rs:3:17\n   |\n 3 | fn requires<T,C:ExtendUnord<T>>(){}\n   |                 ^^^^^^^^^^^^^^ required by this bound in `requires`\n\nerror: aborting due to 1 previous error; 1 warning emitted\n\nFor more information about this error, try `rustc --explain E0277`.\n",
+      "stdout": ""
+    },
+    {
+      "configuration": "wrapper",
+      "compiles": false,
+      "diagnostic": "warning: unused imports: `UnordItems`, `UnordMap`, and `UnordSet`\n --> tools/port-rust-unord/collection-marker/bounds.rs:1:48\n  |\n1 | use rustc_data_structures::unord::{ExtendUnord,UnordItems,UnordMap,UnordSet,UnordBag};\n  |                                                ^^^^^^^^^^ ^^^^^^^^ ^^^^^^^^\n  |\n  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default\n\nerror[E0277]: the trait bound `Wrapper: ExtendUnord<u64>` is not satisfied\n  --> tools/port-rust-unord/collection-marker/bounds.rs:16:32\n   |\n16 |  #[cfg(wrapper)]requires::<u64,Wrapper>();\n   |                                ^^^^^^^ unsatisfied trait bound\n   |\nhelp: the trait `unord::UnordCollection` is not implemented for `Wrapper`\n  --> tools/port-rust-unord/collection-marker/bounds.rs:6:1\n   |\n 6 | struct Wrapper{inner:UnordBag<u64>,ordered:Vec<u64>}\n   | ^^^^^^^^^^^^^^\nhelp: the following other types implement trait `unord::UnordCollection`\n  --> original/compiler/rustc_data_structures/src/unord.rs:258:0\n   |\n   = note: `UnordSet<V>`\n  ::: original/compiler/rustc_data_structures/src/unord.rs:457:0\n   |\n   = note: `UnordMap<K, V>`\n  ::: original/compiler/rustc_data_structures/src/unord.rs:715:0\n   |\n   = note: `UnordBag<T>`\n   = note: required for `Wrapper` to implement `ExtendUnord<u64>`\nnote: required by a bound in `requires`\n  --> tools/port-rust-unord/collection-marker/bounds.rs:3:17\n   |\n 3 | fn requires<T,C:ExtendUnord<T>>(){}\n   |                 ^^^^^^^^^^^^^^ required by this bound in `requires`\n\nerror: aborting due to 1 previous error; 1 warning emitted\n\nFor more information about this error, try `rustc --explain E0277`.\n",
+      "stdout": ""
+    },
+    {
+      "configuration": "deref_wrapper",
+      "compiles": false,
+      "diagnostic": "warning: unused imports: `UnordItems`, `UnordMap`, and `UnordSet`\n --> tools/port-rust-unord/collection-marker/bounds.rs:1:48\n  |\n1 | use rustc_data_structures::unord::{ExtendUnord,UnordItems,UnordMap,UnordSet,UnordBag};\n  |                                                ^^^^^^^^^^ ^^^^^^^^ ^^^^^^^^\n  |\n  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default\n\nerror[E0277]: the trait bound `DerefWrapper: ExtendUnord<u64>` is not satisfied\n  --> tools/port-rust-unord/collection-marker/bounds.rs:17:38\n   |\n17 |  #[cfg(deref_wrapper)]requires::<u64,DerefWrapper>();\n   |                                      ^^^^^^^^^^^^ unsatisfied trait bound\n   |\nhelp: the trait `unord::UnordCollection` is not implemented for `DerefWrapper`\n  --> tools/port-rust-unord/collection-marker/bounds.rs:8:1\n   |\n 8 | struct DerefWrapper(Wrapper);\n   | ^^^^^^^^^^^^^^^^^^^\nhelp: the following other types implement trait `unord::UnordCollection`\n  --> original/compiler/rustc_data_structures/src/unord.rs:258:0\n   |\n   = note: `UnordSet<V>`\n  ::: original/compiler/rustc_data_structures/src/unord.rs:457:0\n   |\n   = note: `UnordMap<K, V>`\n  ::: original/compiler/rustc_data_structures/src/unord.rs:715:0\n   |\n   = note: `UnordBag<T>`\n   = note: required for `DerefWrapper` to implement `ExtendUnord<u64>`\nnote: required by a bound in `requires`\n  --> tools/port-rust-unord/collection-marker/bounds.rs:3:17\n   |\n 3 | fn requires<T,C:ExtendUnord<T>>(){}\n   |                 ^^^^^^^^^^^^^^ required by this bound in `requires`\n\nerror: aborting due to 1 previous error; 1 warning emitted\n\nFor more information about this error, try `rustc --explain E0277`.\n",
+      "stdout": ""
+    }
+  ],
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "reference_inputs": {
+    "tools/port-rust-span-lib/reference.py": "2094b30a5149056c683edffc6cc4a8d6d6984d81933ecb10c80e5f34c355db9e",
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+  },
+  "files": {
+    "tools/port-rust-unord/collection-marker/bounds.rs": "2314f3b408648257778823c4824a9a058cd693937109a40f80e7afbd02ebc120",
+    "tools/port-rust-unord/collection-marker/generate.py": "818cceabd37a71d5e3b78ea7db46c93247cb52b78afacc109358a8c0a017d809"
+  }
+}

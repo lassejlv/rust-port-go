@@ -47,16 +47,18 @@ type IntoIteratorOps[S, T any] struct {
 	Drop     func(*S, Context)
 }
 type iteratorCell[T any] struct {
-	live    bool
-	next    func(Context) (T, bool)
-	hint    func(Context) Hint
-	close   func(Context)
-	each    func(Context, func(T))
-	fold    func(Context, func(T))
-	mapUnit func(Context, ElementOps[T])
-	trusted bool
-	builtin *VecIntoIter[T]
-	collect func(Config, ElementOps[T]) []T
+	live       bool
+	next       func(Context) (T, bool)
+	hint       func(Context) Hint
+	close      func(Context)
+	each       func(Context, func(T))
+	fold       func(Context, func(T))
+	scopedEach func(Context, BorrowedConsumer[T])
+	scopedFold func(Context, BorrowedConsumer[T])
+	mapUnit    func(Context, ElementOps[T])
+	trusted    bool
+	builtin    *VecIntoIter[T]
+	collect    func(Config, ElementOps[T]) []T
 }
 type Iterator[T any] struct{ cell *iteratorCell[T] }
 type inputCell[T any] struct {

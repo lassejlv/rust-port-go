@@ -108,7 +108,7 @@
     "port/support/rusthashmap/raw_clone.go": "a5ebaae7f3db1f1c4cc292b73d3b2f6612a0d83a5a442758d19d571787a92813",
     "port/support/rusthashmap/panic_sites.go": "8fd6af8a6431dcd9bc161672638ec6a8aca1638da3204ad5e66864d5a8d1bc55",
     "port/support/rustvec/ownership.go": "4312821d11339a4abb9f60295f492183eb5c34a26f40876ee990a2f09f89dc6b",
-    "port/support/rustvec/collect.go": "af48d40913abdf1a041d3fbb6efa21bb8216169149d1a5c4ce8ecdfd7a0aea6a",
+    "port/support/rustvec/collect.go": "1e8f231b6af033b15370ff1737f85e4eccaf92c7447f7942338cbf1976e64212",
     "port/support/rustvec/for_each.go": "54c2e25ad61d11cc0ed819b8123bbbb0a6b5b8b0949676db8ef06a254d19a389",
     "port/support/rustvec/panic_sites.go": "8d026e818cf7252a9b24595c3e15bed94fd4274753ce2d5e5291ce5b2b5d2ad0",
     "port/support/rustsort/stable.go": "6b636f0403be3b441a7176e66136f634846d658da915e462b98997370b093760",

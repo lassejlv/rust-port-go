@@ -1,0 +1,14 @@
+[package]
+name = "ferrugo-cargo-time-span-reference"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[[bin]]
+name = "oracle"
+path = "oracle.rs"
+
+[dependencies]
+anyhow = { path = "../../.toolchain/oracles/cargo-time-span/vendor/anyhow-1.0.103" }
+
+[workspace]

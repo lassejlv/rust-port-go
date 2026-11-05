@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "scope": "Complete Unord source supporting native producers; existing lower table/sort/bag proofs run separately",
+  "producers": [
+    "tools/port-rust-unord/adapters/generate.py",
+    "tools/port-rust-unord/bag-iterator/generate.py",
+    "tools/port-rust-unord/bag-stable-bounds/generate.py",
+    "tools/port-rust-unord/borrowed-items/generate.py",
+    "tools/port-rust-unord/bounds/generate.py",
+    "tools/port-rust-unord/cached-zero-sized/generate.py",
+    "tools/port-rust-unord/collection-marker/generate.py",
+    "tools/port-rust-unord/collections-iterator/generate.py",
+    "tools/port-rust-unord/item-sort/generate.py",
+    "tools/port-rust-unord/item-sort/generate_collections.py",
+    "tools/port-rust-unord/item-sort/generate_values.py",
+    "tools/port-rust-unord/item-sort/generate_vector.py",
+    "tools/port-rust-unord/item-sort/generate_zero.py",
+    "tools/port-rust-unord/items/generate_boolean.py",
+    "tools/port-rust-unord/items/generate_collections.py",
+    "tools/port-rust-unord/items/generate_constructor.py",
+    "tools/port-rust-unord/items/generate_conversion.py",
+    "tools/port-rust-unord/items/generate_core.py",
+    "tools/port-rust-unord/items/generate_function.py",
+    "tools/port-rust-unord/reductions/generate.py"
+  ]
+}
