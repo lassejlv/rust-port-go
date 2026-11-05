@@ -8,6 +8,7 @@ PIN='2d20b42b883dcfc014f3c2c56081eeb6091c2179'
 BLOB='0c3d7613d4f1ff69a31c4458bd571074bbd5c618'
 SOURCE='compiler/rustc_data_structures/src/base_n.rs'
 MAX=(1<<64)-1
+OBSERVATION_TIMEOUT=30
 def sha(data):return hashlib.sha256(data).hexdigest()
 def run(args,env,**kw):
  r=subprocess.run([str(x)for x in args],cwd=ROOT,env=env,capture_output=True,timeout=120,**kw)
@@ -47,7 +48,10 @@ def requests():
      for mode in range(4):add(kind=kind,fixed=fixed,base=base,n=n,mode=mode)
  return result
 def observe(binary,request,env):
- r=subprocess.run([str(binary)],input=(request+'\n').encode(),env=env,capture_output=True,timeout=3)
+ try:
+  r=subprocess.run([str(binary)],input=(request+'\n').encode(),env=env,capture_output=True,timeout=OBSERVATION_TIMEOUT)
+ except subprocess.TimeoutExpired as error:
+  raise RuntimeError(f'native observation exceeded {OBSERVATION_TIMEOUT}s: {binary.name}: {request}')from error
  if len(r.stdout)>65536 or len(r.stderr)>65536:raise RuntimeError('native observation exceeded bound')
  lines=r.stdout.decode().splitlines()
  if r.returncode==-signal.SIGABRT:return {'status':'abort','observation':'|'.join(lines)}
@@ -95,7 +99,7 @@ def main():
  old=fixture.read_bytes()if fixture.exists()else b''
  compressed=old if old and gzip.decompress(old)==raw else gzip.compress(raw,mtime=0)
  bindings=['base_n.go','base_n_owned.go','base_n_owned_contract_test.go']
- info=dict(format=1,revision=PIN,source_git_blob=BLOB,source_sha256=sha(original),original_tests_sha256=sha(test),compiler=version,pointer_bits=64,profiles=profiles,records=len(records),request_sha256=sha(('\n'.join(inputs)+'\n').encode()),raw_sha256=sha(raw),fixture_sha256=sha(compressed),retained_fixtures=frozen,bindings={str(path.relative_to(ROOT)):sha(path.read_bytes())for path in [HERE/'owned_oracle.rs',pathlib.Path(__file__),*[TARGET/name for name in bindings],ROOT/'port/support/rustvec/ownership.go',ROOT/'port/support/rustfmt/formatter.go']},scope='Complete unchanged base_n.rs, actual non-Copy argument and field Drop glue; independent Into/ToBaseN overrides, static width, borrowed buffer identity, ambient/caught/escaping/hook panic states. std 1.99 comparison profile; no Rust ABI/layout claim.',bounds={'native_observation_seconds':3,'native_stdout_bytes':65536,'native_stderr_bytes':65536},excluded='Primitive encoded_len base one (or u32 cast-to-one): maximum never decreases; no finite runtime claim. 32-bit runtime is not executable on this host.')
+ info=dict(format=1,revision=PIN,source_git_blob=BLOB,source_sha256=sha(original),original_tests_sha256=sha(test),compiler=version,pointer_bits=64,profiles=profiles,records=len(records),request_sha256=sha(('\n'.join(inputs)+'\n').encode()),raw_sha256=sha(raw),fixture_sha256=sha(compressed),retained_fixtures=frozen,bindings={str(path.relative_to(ROOT)):sha(path.read_bytes())for path in [HERE/'owned_oracle.rs',pathlib.Path(__file__),*[TARGET/name for name in bindings],ROOT/'port/support/rustvec/ownership.go',ROOT/'port/support/rustfmt/formatter.go']},scope='Complete unchanged base_n.rs, actual non-Copy argument and field Drop glue; independent Into/ToBaseN overrides, static width, borrowed buffer identity, ambient/caught/escaping/hook panic states. std 1.99 comparison profile; no Rust ABI/layout claim.',bounds={'native_observation_seconds':OBSERVATION_TIMEOUT,'native_stdout_bytes':65536,'native_stderr_bytes':65536},excluded='Primitive encoded_len base one (or u32 cast-to-one): maximum never decreases; no finite runtime claim. 32-bit runtime is not executable on this host.')
  manifest=HERE/'owned-manifest.json';encoded=(json.dumps(info,indent=2)+'\n').encode()
  if args.check:
   if fixture.read_bytes()!=compressed or manifest.read_bytes()!=encoded:raise RuntimeError('BaseN owned native fixture/bindings differ')

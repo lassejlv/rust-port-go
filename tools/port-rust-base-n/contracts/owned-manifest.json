@@ -50,7 +50,7 @@
   },
   "bindings": {
     "tools/port-rust-base-n/contracts/owned_oracle.rs": "b10ff1afa6cba1ba82915e5b6ced7452b93b11005e36ad2de4f59d9f083f40fe",
-    "tools/port-rust-base-n/contracts/owned_generate.py": "c980271b4e5bd3870398adc5af4a6427e59ccaf07a2d064a0a6effb6944d348f",
+    "tools/port-rust-base-n/contracts/owned_generate.py": "80050dba7bff32de28252c264d9810b3d49f4f7be152f6db5a5906847e4c66bf",
     "port/rust/compiler/rustc_data_structures/src/base_n.go": "ede8ad0cc0386411edfa318381d4b9991dc10439046c7dadeeef73ec16f5c220",
     "port/rust/compiler/rustc_data_structures/src/base_n_owned.go": "6aa7cd2ca92cf7cb5a255dda094017c660846bc2eaa24df30faaba5fc00c46ee",
     "port/rust/compiler/rustc_data_structures/src/base_n_owned_contract_test.go": "eb7931c29e437ab3133bdef241f1429f3c5497f66b3fe1b1bc45444f19fb3ebb",
@@ -59,7 +59,7 @@
   },
   "scope": "Complete unchanged base_n.rs, actual non-Copy argument and field Drop glue; independent Into/ToBaseN overrides, static width, borrowed buffer identity, ambient/caught/escaping/hook panic states. std 1.99 comparison profile; no Rust ABI/layout claim.",
   "bounds": {
-    "native_observation_seconds": 3,
+    "native_observation_seconds": 30,
     "native_stdout_bytes": 65536,
     "native_stderr_bytes": 65536
   },

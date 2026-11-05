@@ -291,3 +291,11 @@ The source ledger remains at 29 completed top-level files. These dependencies un
 - Checkpoints23 and24 passed all hosted Linux, macOS, upstream and native-reference jobs. Shared span/source-map work remains under integration, including an explicitly scoped ordinary-panic/hook protocol and separate resume-unwind behavior; Cargo graph, hygiene/codecs and collection work continue in parallel.
 
 Thirty top-level source files now have completion evidence. The caching view and other larger span files have retained local native comparisons but receive no premature completion record. Production Rust compilation remains unfinished.
+
+## 2026-11-05 — checkpoint 26: reliable native ownership checks
+
+- Checkpoint25 passed the Linux, macOS and complete original-span reference jobs. Its upstream comparison job hit the Base-N ownership client's three-second per-process limit during the last profile, after the first three profiles passed.
+- Increased that isolated observation limit to30seconds and included the exact profile/request in timeout diagnostics. The bounded process still fails on timeout or any unexpected termination; the source corpus and accepted results are unchanged.
+- Fresh regeneration from an isolated committed snapshot passes all16,656 ownership observations and8,952 actual native aborts across all four profiles. Original tests pass in each profile. All raw and compressed fixture hashes, request hashes and implementation bindings remain unchanged.
+
+The ledger remains at30 completed top-level source files. Shared panic integration, full span/source-map files, unordered collections and Cargo graph continue in parallel; production Rust compilation remains unfinished.
