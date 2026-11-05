@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "records": 9,
+  "actual_SIGABRT": 3,
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "raw_sha256": "98cb6b077c9e8a92b3dbc775baa03c12cb8da416f9603f808a0909f1885c5017",
+  "wrapper_sha256": "0bb0a1be6fa0c565891f5d1ce48fd3a571f2f6affb0b790a64db61d1f5e96dac",
+  "locations": {
+    "tracing_core::dispatcher::State::set_default.replace": {
+      "File": "/workspace/rust-port-go/.toolchain/port-cargo-home/registry/src/index.crates.io-1949cf8c6b5b557f/tracing-core-0.1.36/src/dispatcher.rs",
+      "Line": 845,
+      "Column": 31
+    },
+    "tracing_core::dispatcher::DefaultGuard::drop.replace": {
+      "File": "/workspace/rust-port-go/.toolchain/port-cargo-home/registry/src/index.crates.io-1949cf8c6b5b557f/tracing-core-0.1.36/src/dispatcher.rs",
+      "Line": 897,
+      "Column": 65
+    },
+    "tracing_core::span::Id::from_u64.nonzero": {
+      "File": "/workspace/rust-port-go/.toolchain/port-cargo-home/registry/src/index.crates.io-1949cf8c6b5b557f/tracing-core-0.1.36/src/span.rs",
+      "Line": 72,
+      "Column": 31
+    },
+    "outer": {
+      "File": "tools/port-rust-tracing/processing/borrow.rs",
+      "Line": 18,
+      "Column": 18
+    }
+  },
+  "scope": "Actual public set_default and DefaultGuard Drop while get_default holds its source RefCell borrow; actual Id::from_u64(0). Normal, inherited-caught outer unwind and real panic-hook processing contexts. All hook payload/kind/verbatim source locations and frame events retained. Locations are explicit selected-producer profile cells; no Cargo filename inference. Native SIGABRT vs Go exit134 is the explicit host abort class."
+}

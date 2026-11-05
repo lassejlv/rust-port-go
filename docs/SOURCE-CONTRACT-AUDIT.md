@@ -21,6 +21,16 @@ counts, pre-held leases and IO guard release before panic hooks. Supporting
 stdio, libc and persistent-container operations remain scoped dependencies;
 this closure gives no entire std/im-rc/Arc/TLS source-file credit.
 
+Review of the span prerequisites also caught concrete encoder specialization
+and tracing failures. A distinct encoder wrapper must use generic per-byte
+encoding even when Go embedding promotes the concrete encoder's methods;
+explicit source dictionaries preserve specialization for adapters representing
+that same Rust type. Tracing now preserves panic-processing abort boundaries,
+actual RefCell/zero-ID payloads and writer-only registry poisoning. Native
+comparisons retain callback/Drop order, partial state and selected verbatim
+locations. These remain scoped dependency implementations and confer no full
+IndexMap, tracing, serializer or unordered-collections source-file credit.
+
 Base-N now consumes arbitrary owned `Self`, dispatches independent method
 overrides, completes conversion/destruction before static length calculation,
 and returns actual borrowed buffer views. Its 26,752 full formatter records

@@ -7,6 +7,8 @@ permissions:
   contents: read
 jobs:
   bootstrap:
+    env:
+      GORACE: atexit_sleep_ms=0
     strategy:
       fail-fast: false
       matrix:
@@ -163,6 +165,24 @@ jobs:
           FERRUGO_CARGO: cargo
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: 1.99.1
+      - name: Compare scoped IndexMap operations with the locked original
+        run: |
+          python3 tools/port-rust-indexmap/generate.py --offline --check
+          python3 tools/port-rust-indexmap/builder_generate.py --offline --check
+          python3 tools/port-rust-indexmap/owned_generate.py --offline --check
+          python3 tools/port-rust-indexmap/iterator_generate.py --offline --check
+          python3 tools/port-rust-indexmap/into_generate.py --offline --check
+          python3 tools/port-rust-indexmap/projection_generate.py --offline --check
+          python3 tools/port-rust-indexmap/drain_generate.py --offline --check
+          python3 tools/port-rust-indexmap/position_generate.py --offline --check
+          python3 tools/port-rust-indexmap/indexed_generate.py --offline --check
+          python3 tools/port-rust-indexmap/entry_format_generate.py --offline --check
+        env:
+          FERRUGO_GO: go
+          FERRUGO_RUSTC: rustc
+          FERRUGO_CARGO: cargo
+          CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
+          RUSTUP_TOOLCHAIN: 1.99.1
       - name: Verify dependency feature profiles
         run: |
           go test -race -tags semver_no_std ./port/dependencies/semver/v1_0_28/...
@@ -231,6 +251,18 @@ jobs:
           FERRUGO_CARGO: cargo
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: nightly-2026-11-04
+      - name: Compare scoped tracing with the complete original dependencies
+        run: |
+          python3 tools/port-rust-tracing/generate.py --check
+          python3 tools/port-rust-tracing/processing/generate.py --check
+          python3 tools/port-rust-tracing/processing/generate_borrow.py --check
+          python3 tools/port-rust-tracing/processing/generate_registry.py --check
+        env:
+          FERRUGO_RUSTC: rustc
+          FERRUGO_RUSTDOC: rustdoc
+          FERRUGO_CARGO: cargo
+          CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
+          RUSTUP_TOOLCHAIN: nightly-2026-11-04
       - name: Verify hash-table and sorting support against actual SDKs
         run: |
           python3 tools/port-rust-unord/table/check.py
@@ -248,6 +280,26 @@ jobs:
           python3 -m unittest discover -s tools/port-rust-unord/index-context -p 'test_*.py'
         env:
           FERRUGO_GO: go
+          CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
+          RUSTUP_TOOLCHAIN: nightly-2026-11-04
+      - name: Compare scoped serializers and unordered bags with the original
+        run: |
+          python3 tools/port-rust-span-lib/generate_memory.py --check
+          python3 tools/port-rust-span-lib/generate_file.py --check
+          python3 tools/port-rust-span-lib/generate_map.py --check
+          python3 tools/port-rust-span-lib/generate_opaque_callbacks.py --check
+          python3 tools/port-rust-unord/bag/generate.py --check
+          python3 tools/port-rust-unord/bag/generate_context.py --check
+          python3 tools/port-rust-unord/codec/generate.py --check
+          python3 tools/port-rust-unord/codec/generate_vector.py --check
+          python3 tools/port-rust-unord/codec/generate_wrapper.py --check
+          python3 -m unittest discover -s tools/port-rust-unord/bag -p 'test_*.py'
+          python3 -m unittest discover -s tools/port-rust-unord/codec -p 'test_*.py'
+        env:
+          FERRUGO_GO: go
+          FERRUGO_RUSTC: rustc
+          FERRUGO_RUSTDOC: rustdoc
+          FERRUGO_CARGO: cargo
           CARGO_HOME: ${{ github.workspace }}/.toolchain/port-cargo-home
           RUSTUP_TOOLCHAIN: nightly-2026-11-04
       - name: Compare complete strict-version-hash module

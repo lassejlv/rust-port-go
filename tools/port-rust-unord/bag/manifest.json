@@ -1,0 +1,23 @@
+{
+  "scope": "Actual UnordBag storage/traits and fixed item count/get_only foundations; full generic UnordItems algebra/sorting/codecs remain pending",
+  "cases": 1260,
+  "counts": {
+    "C": 36,
+    "H": 375,
+    "D": 849
+  },
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "raw_sha256": "57242822e8436d30c20c72a2e946dd1b50799f859e459ad0c47544fe73167627",
+  "fixture_sha256": "3a194909cd0e1acc7f76fa0fef841141fcb08f85a4fe6c3687a4b94edcc49d23",
+  "files": {
+    "tools/port-rust-unord/bag/oracle.rs": "6a1ee2fc258b59e2ebd1aee84c1942a25943c285d4707676615cd9e2e9a22834",
+    "tools/port-rust-unord/bag/generate.py": "58b87b5b99cc036c7582b1d0eb7af27511edc23f8f721bee815687ecae9c4351",
+    "tools/port-rust-unord/bag/README.md": "1196cb252cf19937652b51d47292e7b9f333c443f53284dd68356b1a1a222bb2",
+    "tools/port-rust-unord/bag/test_tools.py": "49cad2ab9874ce15655248e4d4e92d4a1ff699184eeebebe235338c7ac1a619c",
+    "port/rust/compiler/rustc_data_structures/src/unord_bag.go": "4c8b0d65e91f36610396d1f21213583010129a602ebb3fa065b7f536c864f845",
+    "port/rust/compiler/rustc_data_structures/src/unord_bag_oracle_test.go": "ee4f9db75b641e6201a96f1e505d6fb8c4507601bc5d356caa5589f7807f5142",
+    "port/rust/compiler/rustc_data_structures/src/unord_traits_test.go": "65d626d5bf7b1c73cf003791ea5860f09f05892d8cd449ae63583bdfedd98309"
+  }
+}

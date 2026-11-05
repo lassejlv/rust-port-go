@@ -1,0 +1,21 @@
+{
+  "scope": "Scoped genuine generic HashMap/HashSet/Vec and UnordMap/Set/Bag Decodable dependency; full Unord/serialize/std files remain pending",
+  "cases": 1674,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "raw_sha256": "8b2a76d9d0e022268655f3ef7b6fefe772cfc452a3f174cf99c3a8eed0677008",
+  "fixture_sha256": "52828cf1d94a095cfffa6ae4fcee1f2e388279643f9c76a55c6d5cb9d2678a31",
+  "files": {
+    "tools/port-rust-unord/codec/oracle.rs": "5a48839e89398db25600f70359eb4faac3956910a0c68a25f6fcbdb601547691",
+    "tools/port-rust-unord/codec/generate.py": "3bb3a5faa16252c7557eb38b9038b9657314783fdb091c52b722f7ce5ca5efcc",
+    "tools/port-rust-unord/codec/README.md": "d2f49dfd7b13d5e1b9d130f0590b4c6ccadab491b691f5dd8ca4673b2860d65a",
+    "tools/port-rust-unord/codec/test_tools.py": "8a2699e9a96a96b9307671f89c699ed49fc89d94757c0479a2f9ab9f010e5e34",
+    "port/rust/compiler/rustc_serialize/src/container_decode.go": "f9c30e3eb35a008fe468c4ee8a2b6440faab397d5293e44fa44769714eebb93a",
+    "port/rust/compiler/rustc_serialize/src/container_vec.go": "6e695e5ebaa7a0697e8b64293685fe85a67900e86f2443bc570c57c06b22326f",
+    "port/rust/compiler/rustc_data_structures/src/unord_bag.go": "4c8b0d65e91f36610396d1f21213583010129a602ebb3fa065b7f536c864f845",
+    "port/rust/compiler/rustc_data_structures/src/unord_bag_codec.go": "183c6e6a9d960168d4293a39e58519b1597717bc4ed4eaa49cb45e58ad3cb6be",
+    "port/rust/compiler/rustc_data_structures/src/unord_codec.go": "83bf772a0d682752a0c3b6c0027be1a98966df938ef8929768fbe3d38b2be03b",
+    "port/rust/compiler/rustc_data_structures/src/unord_codec_oracle_test.go": "a9d665cee85ee6543fffae5688875d43a5030a320c9a16cabe2d4a9fd36627ed"
+  }
+}

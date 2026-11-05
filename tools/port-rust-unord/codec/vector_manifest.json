@@ -1,0 +1,29 @@
+{
+  "scope": "Actual generic and opaque slice/Vec/UnordBag encoding/decoding; bulk-dispatch capacity, copy independence, precise exhaustion hook/location/position; no std/full-module credit",
+  "cases": 292,
+  "counts": {
+    "G": 236,
+    "O": 36,
+    "X": 20
+  },
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "location": {
+    "File": "original/compiler/rustc_serialize/src/opaque.rs",
+    "Line": 319,
+    "Column": 9
+  },
+  "raw_sha256": "5c6f9eb69b2ed51aca872ee81ddc928fd538e55b166136a2888ec0c8129cd942",
+  "fixture_sha256": "f8c3d68040d712d5807aedd48d99c71e10cf4558854ad0debd018229fe90108d",
+  "files": {
+    "tools/port-rust-unord/codec/vector_oracle.rs": "cae94ec4b5d4cc3bd60c49e10cb343d9fe845cedab20b08a735aaccf7ef1ea5a",
+    "tools/port-rust-unord/codec/generate_vector.py": "9a7f2c0c6b36adaaf1c2b35852aad51f068ed0ee19a1d4ec9a69c4bbcd3ddb97",
+    "tools/port-rust-unord/index-context/generate.py": "2fc104822e1a3ba098afda33edbbe0e9c8467047eb374dddd1c678a9ae50e4d5",
+    "port/rust/compiler/rustc_data_structures/src/unord_bag.go": "4c8b0d65e91f36610396d1f21213583010129a602ebb3fa065b7f536c864f845",
+    "port/rust/compiler/rustc_data_structures/src/unord_bag_codec.go": "183c6e6a9d960168d4293a39e58519b1597717bc4ed4eaa49cb45e58ad3cb6be",
+    "port/rust/compiler/rustc_data_structures/src/unord_vector_codec_test.go": "cc6885c80164b2e679dde0550a258d8f3ed5bad60c95f4e4667cec8703eac85d",
+    "port/rust/compiler/rustc_serialize/src/container_vec.go": "6e695e5ebaa7a0697e8b64293685fe85a67900e86f2443bc570c57c06b22326f",
+    "port/rust/compiler/rustc_serialize/src/opaque_memory.go": "2c1944379d7fef7f5724958b14e949a5c04ff8a064446852e92b4753606122dd"
+  }
+}

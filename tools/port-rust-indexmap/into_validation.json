@@ -1,0 +1,402 @@
+{
+  "status": "partial-supporting-IndexMap-owning-iterator",
+  "whole_dependency_port": false,
+  "native_profile": {
+    "revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+    "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "debug_assertions": true,
+    "overflow_checks": true,
+    "registry_dependencies": [
+      {
+        "name": "displaydoc",
+        "version": "0.2.5",
+        "checksum": "97369cbbc041bc366949bc74d34658d6cda5621039731c6310521892a3a20ae0",
+        "compiled_files": 39
+      },
+      {
+        "name": "equivalent",
+        "version": "1.0.2",
+        "checksum": "877a4ace8713b0bcf2a4e7eec82529c029f1d0619886d18145fea96c3ffe5c0f",
+        "compiled_files": 10
+      },
+      {
+        "name": "fluent-bundle",
+        "version": "0.16.0",
+        "checksum": "01203cb8918f5711e73891b347816d932046f95f54207710bda99beaeb423bf4",
+        "compiled_files": 29
+      },
+      {
+        "name": "fluent-langneg",
+        "version": "0.13.1",
+        "checksum": "7eebbe59450baee8282d71676f3bfed5689aeab00b27545e83e5f14b1195e8b0",
+        "compiled_files": 10
+      },
+      {
+        "name": "fluent-syntax",
+        "version": "0.12.0",
+        "checksum": "54f0d287c53ffd184d04d8677f590f4ac5379785529e5e08b1c8083acdd5c198",
+        "compiled_files": 27
+      },
+      {
+        "name": "hashbrown",
+        "version": "0.17.1",
+        "checksum": "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a",
+        "compiled_files": 50
+      },
+      {
+        "name": "indexmap",
+        "version": "2.14.0",
+        "checksum": "d466e9454f08e4a911e14806c24e16fba1b4c121d1ea474396f396069cf949d9",
+        "compiled_files": 42
+      },
+      {
+        "name": "intl-memoizer",
+        "version": "0.5.3",
+        "checksum": "310da2e345f5eb861e7a07ee182262e94975051db9e4223e909ba90f392f163f",
+        "compiled_files": 9
+      },
+      {
+        "name": "intl_pluralrules",
+        "version": "7.0.2",
+        "checksum": "078ea7b7c29a2b4df841a7f6ac8775ff6074020c6776d48491ce2268e068f972",
+        "compiled_files": 8
+      },
+      {
+        "name": "itoa",
+        "version": "1.0.15",
+        "checksum": "4a5f13b858c8d314ee3e8f639011f7ccefe71f97f96e50151fb991f267928e2c",
+        "compiled_files": 14
+      },
+      {
+        "name": "memchr",
+        "version": "2.8.0",
+        "checksum": "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79",
+        "compiled_files": 57
+      },
+      {
+        "name": "proc-macro2",
+        "version": "1.0.106",
+        "checksum": "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934",
+        "compiled_files": 33
+      },
+      {
+        "name": "quote",
+        "version": "1.0.45",
+        "checksum": "41f2619966050689382d2b44f664f4bc593e129785a36d6ee376ddf37259b924",
+        "compiled_files": 35
+      },
+      {
+        "name": "rustc-hash",
+        "version": "2.1.1",
+        "checksum": "357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d",
+        "compiled_files": 14
+      },
+      {
+        "name": "rustc-stable-hash",
+        "version": "0.1.2",
+        "checksum": "781442f29170c5c93b7185ad559492601acdc71d5bb0706f5868094f45cfcd08",
+        "compiled_files": 17
+      },
+      {
+        "name": "ryu",
+        "version": "1.0.20",
+        "checksum": "28d3b2b1366ec20994f1fd18c3c594f05c5dd4bc44d8bb0c1c632c8d6829481f",
+        "compiled_files": 37
+      },
+      {
+        "name": "self_cell",
+        "version": "1.2.1",
+        "checksum": "16c2f82143577edb4921b71ede051dac62ca3c16084e918bf7b40c96ae10eb33",
+        "compiled_files": 7
+      },
+      {
+        "name": "serde",
+        "version": "1.0.228",
+        "checksum": "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e",
+        "compiled_files": 33
+      },
+      {
+        "name": "serde_core",
+        "version": "1.0.228",
+        "checksum": "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad",
+        "compiled_files": 27
+      },
+      {
+        "name": "serde_derive",
+        "version": "1.0.228",
+        "checksum": "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79",
+        "compiled_files": 36
+      },
+      {
+        "name": "serde_json",
+        "version": "1.0.145",
+        "checksum": "402a6f66d8c709116cf22f558eab210f5a50187f702eb4d7e5ef38d9a7f1c79c",
+        "compiled_files": 88
+      },
+      {
+        "name": "smallvec",
+        "version": "1.15.1",
+        "checksum": "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03",
+        "compiled_files": 19
+      },
+      {
+        "name": "syn",
+        "version": "2.0.117",
+        "checksum": "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99",
+        "compiled_files": 105
+      },
+      {
+        "name": "synstructure",
+        "version": "0.13.2",
+        "checksum": "728a70f3dbaf5bab7f0c4b1ac8d7ae5ea60a4b5549c8a5914361c99147a709d2",
+        "compiled_files": 8
+      },
+      {
+        "name": "thin-vec",
+        "version": "0.2.21",
+        "checksum": "d6a4b9ba8738cb4a4f399d37e266becfd475e75eb73425b87a05a2f2039ba63e",
+        "compiled_files": 11
+      },
+      {
+        "name": "thiserror",
+        "version": "2.0.17",
+        "checksum": "f63587ca0f12b72a0600bcba1d40081f830876000bb46dd2337a3051618f4fc8",
+        "compiled_files": 105
+      },
+      {
+        "name": "thiserror-impl",
+        "version": "2.0.17",
+        "checksum": "3ff15c8ecd7de3849db632e14d18d2571fa09dfc5ed93479bc4485c7a517c913",
+        "compiled_files": 17
+      },
+      {
+        "name": "tinystr",
+        "version": "0.8.4",
+        "checksum": "b1e27c91459209c2986af3dcf603a5a74a4368754ce37414f59acc971167f643",
+        "compiled_files": 22
+      },
+      {
+        "name": "type-map",
+        "version": "0.5.1",
+        "checksum": "cb30dbbd9036155e74adad6812e9898d03ec374946234fbcebd5dfc7b9187b90",
+        "compiled_files": 8
+      },
+      {
+        "name": "unic-langid",
+        "version": "0.9.6",
+        "checksum": "a28ba52c9b05311f4f6e62d5d9d46f094bd6e84cb8df7b3ef952748d752a7d05",
+        "compiled_files": 9
+      },
+      {
+        "name": "unic-langid-impl",
+        "version": "0.9.6",
+        "checksum": "dce1bf08044d4b7a94028c93786f8566047edc11110595914de93362559bc658",
+        "compiled_files": 31
+      },
+      {
+        "name": "unicode-ident",
+        "version": "1.0.24",
+        "checksum": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+        "compiled_files": 26
+      },
+      {
+        "name": "zerofrom",
+        "version": "0.1.6",
+        "checksum": "50cc42e0333e05660c3587f3bf9d0478688e15d870fab3346451ce7f8c9fbea5",
+        "compiled_files": 9
+      },
+      {
+        "name": "zerovec",
+        "version": "0.11.7",
+        "checksum": "94b5c6b5976d66c1d703c4fd17d3f5e43c8cedaacf604961b171adc7130896d8",
+        "compiled_files": 67
+      }
+    ],
+    "source_provenance_sha256": "9d4bf5daae8d4e88ac7cab6cdb3d80f53606947a8fd4d2af25805f3557d1f515"
+  },
+  "baseline_cases": 1360,
+  "one_shot_failures": 10648,
+  "caught_panics": 10648,
+  "request_sha256": "ba4c60d10f34b106950caa0ebc9b3f4e5757d74a4cac1e6b3bc9ca4ff2fa2e5a",
+  "raw_sha256": "d99cc7d29a6ff31be008592a537488a42866f228c195366c5c08f49d206a7c5f",
+  "fixture_sha256": "959f14666df9eb88ece81ce7baffba4e7b0ca60cc423c582e6452f8065ed7a88",
+  "scope": "Actual nonCopy K/V, nonClone S/H, prepared Vec leak on builderDrop, front/back cursor updates before skipped-element Drop, forward-memory skipped tail cleanup, Count/Last prepared-return leaks, independent Clone/default CloneFrom, mutable slices, normal/inherited contexts and all one-shot observed callback failures. Generic fold/collect and additional inherited APIs are outside this owning-pair corpus.",
+  "files": [
+    {
+      "path": "tools/port-rust-indexmap/into_generate.py",
+      "sha256": "4c89cec19504cffffb851406654b35aee0830f4dbcb06f76b231003afd202dcd"
+    },
+    {
+      "path": "tools/port-rust-indexmap/into_iter_oracle.rs",
+      "sha256": "3c504b37600c3d11c06a8c11f222b7e51c4e940a32a9fd8671e3f0f86abcb221"
+    },
+    {
+      "path": "tools/port-rust-indexmap/subject/builder.go",
+      "sha256": "476cae2d204c73d8cbc2757c089390d5507c3e1269f0394f44ba367afb802236"
+    },
+    {
+      "path": "tools/port-rust-indexmap/subject/drain.go",
+      "sha256": "b4ec2de3ce31be8182bda283af346eeb9e40eee0232d5ef7891baa57f7c37ccc"
+    },
+    {
+      "path": "tools/port-rust-indexmap/subject/entry_format.go",
+      "sha256": "cc02edcf4efbfb0e166913cb08d7e37587a7bd958a847935a79f7c6efc39be2e"
+    },
+    {
+      "path": "tools/port-rust-indexmap/subject/indexed.go",
+      "sha256": "5aaba6dddcaec6cfdca56dccd0c1ae8a94db5f0d7e12f780074ae85f2b547abd"
+    },
+    {
+      "path": "tools/port-rust-indexmap/subject/into_iter.go",
+      "sha256": "e562e5c234b7725896bd68d7a4790be0c44f399469cb18eedcd8b9f89ae9d7ed"
+    },
+    {
+      "path": "tools/port-rust-indexmap/subject/iterator.go",
+      "sha256": "ce3a513d43e20f8fa7b30d26c3863928fd001d94073ee8b0fac6331700eeec4d"
+    },
+    {
+      "path": "tools/port-rust-indexmap/subject/owned.go",
+      "sha256": "39119f2b6cbe102bdfe8589ef5cd5b7ee7d44bcfd6fb24bc66ca4c05522f56a0"
+    },
+    {
+      "path": "tools/port-rust-indexmap/subject/position.go",
+      "sha256": "37a9b8238a35347177ac7024beb1d50f240552c08f45b42278955f89d90b3043"
+    },
+    {
+      "path": "tools/port-rust-indexmap/subject/projection.go",
+      "sha256": "de25829f984418c4194ba94ad13b7804ac939ebdaf4c3edc76ce3d81a636c8bf"
+    },
+    {
+      "path": "tools/port-rust-indexmap/subject/subject.go",
+      "sha256": "c1034862367bf4a6929b4cb933afb965721224d5cdd591c539776388243e26ee"
+    },
+    {
+      "path": "tools/port-rust-indexmap/into-replay/main.go",
+      "sha256": "5304f521ecaa1085c4e598d96d062087db21bc78dd0ed051fef534c03b1289bc"
+    },
+    {
+      "path": "port/support/rustindexmap/borrowed_iter.go",
+      "sha256": "a2f90cb45f73afc15ed790c1a393e42bb596da4d7573b0b72455ca17d3182976"
+    },
+    {
+      "path": "port/support/rustindexmap/borrowed_iter_oracle_test.go",
+      "sha256": "33824e6b493a4a22b66076e0ca96818ee1ff825b5ffb3b45de7f35fa34312bfd"
+    },
+    {
+      "path": "port/support/rustindexmap/builder.go",
+      "sha256": "c4ecccd2a4c85f14a3080c793133e69096156f2d581c15aaefbb7ad8f07773f3"
+    },
+    {
+      "path": "port/support/rustindexmap/builder_oracle_test.go",
+      "sha256": "62daf90a076f019e207a122dc44ead7c8ca00b09dfd268de4faa9f873ba1d022"
+    },
+    {
+      "path": "port/support/rustindexmap/builder_test.go",
+      "sha256": "03c3a4de7340978cf9250b6f0168eb475c16194f8348af4bd2cc8e1f88479ff6"
+    },
+    {
+      "path": "port/support/rustindexmap/clone.go",
+      "sha256": "10179e06dcab73a78444fd74ecfef77c8da7150838755ca8ada5e04bf9d43639"
+    },
+    {
+      "path": "port/support/rustindexmap/drain.go",
+      "sha256": "699582a8e4056f2aa7fa4b49288c1ef037fa957ca6633eb9f4e557b065d1ced1"
+    },
+    {
+      "path": "port/support/rustindexmap/drain_guard_test.go",
+      "sha256": "9bbd1b7cbc92640b8b4266c6aefc72213a9aaec0fe0c8acff58fa5e711724870"
+    },
+    {
+      "path": "port/support/rustindexmap/drain_oracle_test.go",
+      "sha256": "71811a454e80915e9419a54b2013450fbd9c3771e99bdc438fdd569ce39790e6"
+    },
+    {
+      "path": "port/support/rustindexmap/entry.go",
+      "sha256": "f6d58ffe8d9196511e28a8300f2b04eb951ef9f3ec602c82b6591be8b3eef2f5"
+    },
+    {
+      "path": "port/support/rustindexmap/entry_format.go",
+      "sha256": "655d3a7e154d11eace23bf60dfb53f447dbcdea0cbaa6b81a46ed80108d5e83f"
+    },
+    {
+      "path": "port/support/rustindexmap/entry_format_bounds_test.go",
+      "sha256": "cc0c93acecfbca28ea3a643a467b4ed1f5895e0c2b9582eeaf3b0b499e1815a2"
+    },
+    {
+      "path": "port/support/rustindexmap/entry_format_oracle_test.go",
+      "sha256": "fd657ec43d70523c2eb95c8e9f8ce71ee0fc8b2578e1c041b4c13ffbe3c2fda6"
+    },
+    {
+      "path": "port/support/rustindexmap/indexed_entry.go",
+      "sha256": "4553a7bdc9b45bf6aab6a38952ad31a88ecfe94ed701a29710f7145d635a46fa"
+    },
+    {
+      "path": "port/support/rustindexmap/indexed_oracle_test.go",
+      "sha256": "b53c70f89015b0002d855310c7e09425a38740dc3b01a809ea910a2a71812f52"
+    },
+    {
+      "path": "port/support/rustindexmap/inner.go",
+      "sha256": "47e5313e215e3398303e73483df9b1d28f6bd5e29fd2f82eef7111748b944e5a"
+    },
+    {
+      "path": "port/support/rustindexmap/into_iter.go",
+      "sha256": "064e91b503f2641b5cec1789e5271fad4e72f74a94132b80e6c4c3eedea668f1"
+    },
+    {
+      "path": "port/support/rustindexmap/into_iter_oracle_test.go",
+      "sha256": "4bc6dee881a140aeec6a72d5d50378e71b78008f5b9fe9221efc803f8283b55f"
+    },
+    {
+      "path": "port/support/rustindexmap/into_projection.go",
+      "sha256": "e2f06fc1f60a48c3cc0bf7361c36d55a53cf1d21b68f1c4336e727a0a3423deb"
+    },
+    {
+      "path": "port/support/rustindexmap/map.go",
+      "sha256": "f99479a30025bc42751fa8442035a02ae89e7a40fb0ecc4fdadc7386186798d2"
+    },
+    {
+      "path": "port/support/rustindexmap/oracle_test.go",
+      "sha256": "63d4030e2db663e1111413d52301242448dad0ddd2245d3e7497a69c6b0bb49d"
+    },
+    {
+      "path": "port/support/rustindexmap/owned_oracle_test.go",
+      "sha256": "f4c9a8226c0c6e23c4b8c6ec3b5d5fe611ba59d283021d2119149f0fe962ff05"
+    },
+    {
+      "path": "port/support/rustindexmap/position.go",
+      "sha256": "a6fa50f0081d5410f2022b1610543fed3826435451ea0c27299f2b162d2574d3"
+    },
+    {
+      "path": "port/support/rustindexmap/position_oracle_test.go",
+      "sha256": "b2f29fd73c5dfbefec2fe2cd75f355bee1cfc0f514c495695c44b9bd53d2e3e1"
+    },
+    {
+      "path": "port/support/rustindexmap/processing_guard_test.go",
+      "sha256": "d502a83d028f09f313f5c24452873ad9bc92852aee76d63ade230871ad951042"
+    },
+    {
+      "path": "port/support/rustindexmap/projection_oracle_test.go",
+      "sha256": "62d971891ba5d5b37d0e5caeccf39b7f8c3677688391efde4f0378f3556bcd8c"
+    },
+    {
+      "path": "port/support/rustindexmap/range.go",
+      "sha256": "127a9810255f27e1f21631d188af4a809473820fe08712fbee12150cfa76e0c1"
+    },
+    {
+      "path": "port/support/rustindexmap/range_runtime_test.go",
+      "sha256": "dfd9cc8dfd9587c13ef8f1b4a214f976fba49faf152a52309ce18869419ca176"
+    },
+    {
+      "path": "port/support/rustindexmap/slice.go",
+      "sha256": "49d6096d1d415daad4ef5fc39d2f47710cdb75f8b536279769229748acd26c87"
+    },
+    {
+      "path": "port/support/rustindexmap/types.go",
+      "sha256": "115505cc4a5c7b71af5dee4a7ae140c0311165d92fc1f90e7e01da9f43a6b198"
+    },
+    {
+      "path": "port/support/rustvec/replace.go",
+      "sha256": "ec098d1353a2dfab6a3545ec78bf593cc18ca93cf1e4b1bf228aec9f0df33174"
+    }
+  ]
+}

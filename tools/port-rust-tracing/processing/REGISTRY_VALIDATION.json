@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "records": 8,
+  "actual_SIGABRT": 2,
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "raw_sha256": "cecd2e0f2fbdd27d9759ac1bc6d5f8b289ecadb9eb7fe234ac4a03b2788d66cb",
+  "wrapper_sha256": "a96de6a5d78da15a3763999b806782fa8dca17caa2e0c9d1e874de30f1e3e78b",
+  "locations": {
+    "register": {
+      "File": "tools/port-rust-tracing/processing/registry.rs",
+      "Line": 7,
+      "Column": 20
+    },
+    "tracing_core::callsite::Dispatchers::register_dispatch.write_unwrap": {
+      "File": "/workspace/rust-port-go/.toolchain/port-cargo-home/registry/src/index.crates.io-1949cf8c6b5b557f/tracing-core-0.1.36/src/callsite.rs",
+      "Line": 552,
+      "Column": 62
+    },
+    "tracing_core::callsite::Dispatchers::rebuilder.read_unwrap": {
+      "File": "/workspace/rust-port-go/.toolchain/port-cargo-home/registry/src/index.crates.io-1949cf8c6b5b557f/tracing-core-0.1.36/src/callsite.rs",
+      "Line": 548,
+      "Column": 55
+    },
+    "callsite": {
+      "File": "tools/port-rust-tracing/processing/registry.rs",
+      "Line": 8,
+      "Column": 20
+    },
+    "outer": {
+      "File": "tools/port-rust-tracing/processing/registry.rs",
+      "Line": 22,
+      "Column": 18
+    }
+  },
+  "scope": "Actual complete tracing registry after caught subscriber on_register_dispatch writer panic and register_callsite reader panic, with one-dispatch optimization and multiple live registrars. Subsequent Dispatch::new/rebuild, all subscriber Drop states, hooks and normal/inherited-caught/processing contexts retained. Only writers beginning outside panic poison. The standard poisoned read/write unwrap owns its guard until the source hook returns. Native SIGABRT vs Go exit134 is the explicit abort class."
+}

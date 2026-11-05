@@ -10,6 +10,8 @@ Complete `rustc_index` slices/vectors, interval sets and their source tests are 
 
 Each completed file must have a recorded source revision and blob identity, a Go counterpart, all behavior implemented, and reproducible comparison evidence. The bootstrap does not count as a file-for-file port. Production readiness requires the complete frontend, ownership/borrow checking, traits/generics, lowering/code generation, standard libraries, crate/ABI/metadata support, and Cargo's registry, lockfile, feature and workspace behavior, tested against upstream suites and representative production crates.
 
+Shared prerequisites now include scoped IndexMap ownership/entry/iterator operations, tracing dispatch and failure handling, and the actual serializers and unordered-bag storage used by the span files. Their native comparisons support the next coherent span checkpoint; these partial dependencies do not increase the completed-file count.
+
 ## Implemented milestone: local Cargo library dependencies
 
 Build and run a binary package whose supported Rust code depends on local library-only packages through `path` dependencies, including renamed and transitive dependencies and a shared dependency diamond.

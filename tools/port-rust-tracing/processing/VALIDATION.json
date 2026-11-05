@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "records": 3,
+  "actual_SIGABRT": 3,
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "raw_sha256": "e27341e91beffc12437173b6b94efab541a317e59d086fad49cc92df78ff57f8",
+  "wrapper_sha256": "417cc188be273f354a821c518afa68d31f150e0daba1657a40ae7b997b2489a4",
+  "scope": "Actual tracing event!/span!/Dispatch::new invoked inside a real Rust panic hook; subscriber callback raises a new panic. All stdout callback/owned field/subscriber Drop events retained. Native SIGABRT vs Go exit134 is the explicit host abort representation; terminal runtime stderr is not compared. Raw Go callback local defer timing is outside the translation contract; component-owned field/subscriber cleanup is suppressed at the processing boundary."
+}

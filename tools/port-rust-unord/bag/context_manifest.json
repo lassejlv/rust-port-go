@@ -1,0 +1,59 @@
+{
+  "scope": "Actual original fixed Bag get_only and generic/Unord decoding with real Value/Token owned cells, fields/moves/hooks/resume/cleanup; no std or full Unord credit",
+  "cases": 1872,
+  "aborts": 602,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "compiler": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "locations": {
+    "drop": {
+      "File": "tools/port-rust-unord/bag/context_oracle.rs",
+      "Line": 16,
+      "Column": 341
+    },
+    "token": {
+      "File": "tools/port-rust-unord/bag/context_oracle.rs",
+      "Line": 13,
+      "Column": 176
+    },
+    "panic in a destructor during cleanup": {
+      "File": "/rustc/708c94ef093ecc42fb8851e17d8383d999727abc/library/core/src/panicking.rs",
+      "Line": 233,
+      "Column": 5
+    },
+    "read": {
+      "File": "tools/port-rust-unord/bag/context_oracle.rs",
+      "Line": 19,
+      "Column": 335
+    },
+    "MemDecoder exhausted": {
+      "File": "original/compiler/rustc_serialize/src/opaque.rs",
+      "Line": 319,
+      "Column": 9
+    },
+    "outer.unwind": {
+      "File": "tools/port-rust-unord/bag/context_oracle.rs",
+      "Line": 33,
+      "Column": 104
+    },
+    "outer.processing": {
+      "File": "tools/port-rust-unord/bag/context_oracle.rs",
+      "Line": 33,
+      "Column": 194
+    }
+  },
+  "raw_sha256": "7ef592b9b97e60140e9ef2a68bcfd337370c9b046888c190b684ff10cd8a1e5f",
+  "fixture_sha256": "c99610437b011d396d6a49a75e0abdb0a1959f2e5256a7e5dcb578127e6fdf55",
+  "files": {
+    "tools/port-rust-unord/bag/context_oracle.rs": "3bef57c009790ba7d411f739f19063f7a8f3afc349df4dd3bf649571ca8aba6a",
+    "tools/port-rust-unord/bag/generate_context.py": "c4923686699acf1357a9adb7b423686ad1221e265c419d78060c654cfcb8c98c",
+    "tools/port-rust-unord/index-context/generate.py": "2fc104822e1a3ba098afda33edbbe0e9c8467047eb374dddd1c678a9ae50e4d5",
+    "port/rust/compiler/rustc_data_structures/src/unord_bag.go": "4c8b0d65e91f36610396d1f21213583010129a602ebb3fa065b7f536c864f845",
+    "port/rust/compiler/rustc_data_structures/src/unord_bag_codec.go": "183c6e6a9d960168d4293a39e58519b1597717bc4ed4eaa49cb45e58ad3cb6be",
+    "port/rust/compiler/rustc_data_structures/src/unord_codec.go": "83bf772a0d682752a0c3b6c0027be1a98966df938ef8929768fbe3d38b2be03b",
+    "port/rust/compiler/rustc_data_structures/src/unord_bag_context_test.go": "bbf92948245f8ed71df48a352292d9367c7b860b6a85e231a1a277993c604934",
+    "port/rust/compiler/rustc_serialize/src/container_decode.go": "f9c30e3eb35a008fe468c4ee8a2b6440faab397d5293e44fa44769714eebb93a",
+    "port/rust/compiler/rustc_serialize/src/container_vec.go": "6e695e5ebaa7a0697e8b64293685fe85a67900e86f2443bc570c57c06b22326f",
+    "port/rust/compiler/rustc_serialize/src/opaque_memory.go": "2c1944379d7fef7f5724958b14e949a5c04ff8a064446852e92b4753606122dd"
+  }
+}

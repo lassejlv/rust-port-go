@@ -1,0 +1,45 @@
+{
+  "client_sha256": "2aa2c28c5dfb1daf14032b5b35b8700c3f6153cd1cc39c9df38fd3e16601fa3d",
+  "fixture_sha256": "8b741a003f955f7c10f26e83468e213427b9cb2f58ce1a8b31d037a08e7abfb2",
+  "generator_sha256": "d9740cc787f4d68f438e33b08351d6cd0abfae291c0c9457e7468e601171c7ff",
+  "profiles": [
+    {
+      "name": "d0o0",
+      "raw_sha256": "77b93c52eaaf3e4b4be5e79bac2944545903799ac4221d4bd497b76671e9b092",
+      "records": 83,
+      "reference_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+      "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)"
+    },
+    {
+      "name": "d0o1",
+      "raw_sha256": "77b93c52eaaf3e4b4be5e79bac2944545903799ac4221d4bd497b76671e9b092",
+      "records": 83,
+      "reference_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+      "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)"
+    },
+    {
+      "name": "d1o0",
+      "raw_sha256": "f66cf90aae161a3c8b6eb3964f7a4d436aee11aed2eebae1f6a7ab758a671efa",
+      "records": 83,
+      "reference_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+      "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)"
+    },
+    {
+      "name": "d1o1",
+      "raw_sha256": "f66cf90aae161a3c8b6eb3964f7a4d436aee11aed2eebae1f6a7ab758a671efa",
+      "records": 83,
+      "reference_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+      "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)"
+    }
+  ],
+  "raw_sha256": "3b60496f1adf6e55f9eb15e26418e2943a4f38de30e1d1cd3a0db7292c4d0345",
+  "records": 332,
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "status": "partial-serializer-validation",
+  "tool_inputs_sha256": {
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-span-lib/reference.py": "117a79cd95eecbe8555ba5ccd244e0c5492dc6f666cbb6e9f0bdf0abfbf9d722",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+  }
+}

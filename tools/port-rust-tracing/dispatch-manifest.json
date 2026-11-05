@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "scope": "Scoped used-contract adapter only, no tracing dependency-file credit. Original register/filter/hint/callsite/typed visitor/borrowed formatting/span lifecycle and reentrancy dictionary observations. Defaults, failure/owned/abort and full source-file callers remain under validation.",
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "rustc": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "dependencies": [
+    {
+      "name": "tracing",
+      "version": "0.1.44",
+      "checksum": "63e71662fa4b2a2c3a26f570f037eb95bb1f85397f3cd8076caed2f026a6d100",
+      "compiled_files": 93
+    },
+    {
+      "name": "tracing-attributes",
+      "version": "0.1.31",
+      "checksum": "7490cfa5ec963746568740651ac6781f701c9c5ea257c58e057f3ba8cf69e8da",
+      "compiled_files": 30
+    },
+    {
+      "name": "tracing-core",
+      "version": "0.1.36",
+      "checksum": "db97caf9d906fbde555dd62fa95ddba9eecfd14cb388e4f491a66d74cd5fb79a",
+      "compiled_files": 28
+    }
+  ],
+  "cases": 384,
+  "uncompressed_sha256": "2ae4ba9d778dac95f252affa1e3eda1616640936ea267a7898951d6e41d85642",
+  "oracle_sha256": "900eacf5c6655153ee6aa2ab6eb92b09e0a35ad3f3fa29f0f5d7a7e413d98fb3",
+  "generator_sha256": "25d70ad207908a4d2b6440c2e4dfee246548b247ecd9f92354e4f100ba90635b",
+  "go_bindings": {
+    "port/rust/library/core/src/unicode/unicode_data.go": "a223e91f91b7a38659cb71cb7f0adfa588c40e8a6dee47859ddc7cc9a60baa59",
+    "port/support/rustfmt/builders.go": "03285fd7319e9d661e67c83c19a84bc4f8d7825c8d6ecbf425a39423107022df",
+    "port/support/rustfmt/char_debug.go": "ee693582aab3bd317cb9ef124f86dbc9b8852b3c46adbd99ba6880fb9cb2e891",
+    "port/support/rustfmt/char_debug_tables.go": "c6924f94132671c791c7b8ce8f6b80e03186d1a1f835e73e8ed1da19cef7cd28",
+    "port/support/rustfmt/formatter.go": "98b68bed6b04e1337db3b5b7424ffa3b0f8a14f6513cf0995d3599547724411d",
+    "port/support/rustfmt/integer_radix.go": "ac7a855b63cfd50089f3980f1b379a709f12b7373a5422d9686f1150de2f6550",
+    "port/support/rustfmt/panic.go": "215086bed1fdc10c547013bc9cd8557434fdd962ca0678fdd2e6bb9994b22fd8",
+    "port/support/rustfmt/unicode18.go": "e2d3251c139f53548ac92c6f68998ac1bd6685720741725741cf89df0fd9a91f",
+    "port/support/rusttracing/borrow_panic_test.go": "b75702a8b0bf0ebf929f9787d49f284fc9e40fd976f2c9ba281783d1864d93f7",
+    "port/support/rusttracing/context.go": "92f2b7c88230aba925744aee4c76a073b2dbe1ff10479c2b3e842c3601dbf177",
+    "port/support/rusttracing/context_test.go": "4424b28ade48cf3e118b0013402e1fc1e28168ed62390c582cb6998513773066",
+    "port/support/rusttracing/dispatch.go": "d18f18796a6df70543682490311264668814666ddfbde68861df9f5c5617439e",
+    "port/support/rusttracing/oracle_test.go": "1ac97b0dfc60bd5dc9e4ed224e9374ee2cafdbc13300598384a136914dd2ea1f",
+    "port/support/rusttracing/processing_test.go": "b4d83f0c4b87ace6afc37c76a55243f3bb7d5eeca804f36804b127aab5d30433",
+    "port/support/rusttracing/registry_poison_test.go": "e64353545537dbac2084bde025825a6e4b031269ca2add18ad4f56d962174997",
+    "port/support/rusttracing/span.go": "43e243f9c8f286b959374e6b015deb6098a78babde0ae6370993ac69306002af",
+    "port/support/rusttracing/value.go": "4e61d9c50c9740cc3bd30f170ba2b7f51e1c47f741cd38b2e15b9068ca33b5a2"
+  }
+}

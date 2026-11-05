@@ -1,0 +1,17 @@
+{
+  "client_sha256": "5f40fc2030436fa42c49b11a66843318e1a35d7e5f6ef11c1e8dc641cbe508cf",
+  "fixture_sha256": "70fe33e65e81508c9e4c14ee175b4d21bd610f4f31fc8039f71a079c044118b9",
+  "generator_sha256": "12053884c4fe46a0fb1c27fdc1f0e9bb643fbc023a21e3f9c66fe936b8e0d165",
+  "raw_sha256": "3e3d8cce72525978826526de703ed0d44601eba923c593ab2aadb894d5c5e9b7",
+  "records": 62,
+  "reference_provenance_sha256": "33772414b079b147b4a8f906d6775f256ce0296d5f156386c5fea3de3fa3b078",
+  "rustc_version": "rustc 1.101.0-nightly (708c94ef0 2026-11-03)",
+  "schema": 1,
+  "source_revision": "2d20b42b883dcfc014f3c2c56081eeb6091c2179",
+  "status": "partial-serializer-validation",
+  "tool_inputs_sha256": {
+    "tools/port-rust-fatal-error/reference.py": "b236c0b590b2a6f3c902227b2141562af95906f2d559e2c42da74d1239f59b9b",
+    "tools/port-rust-span-lib/reference.py": "117a79cd95eecbe8555ba5ccd244e0c5492dc6f666cbb6e9f0bdf0abfbf9d722",
+    "tools/port-rust-symbol/native_profile.py": "dbe2bdcb2d617b41bee3ac8fddbb3f02059d16cf4ecea7e9476f18e875ee4d1d"
+  }
+}
